@@ -3,1149 +3,1313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Salvador — DASP & Issuer Registration Framework</title>
+    <title>El Salvador DASP Registration — SBLC Law Firm</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #faf9f7;
-            --bg-alt: #f2f0ec;
-            --surface: #ffffff;
-            --surface-hover: #fefefe;
-            --glass: rgba(255,255,255,0.75);
-            --glass-border: rgba(0,0,0,0.06);
-            --amber: #c2790e;
-            --amber-bg: rgba(194,121,14,0.07);
-            --amber-border: rgba(194,121,14,0.18);
-            --blue: #2563eb;
-            --blue-bg: rgba(37,99,235,0.06);
-            --blue-border: rgba(37,99,235,0.15);
-            --green: #0d9255;
-            --green-bg: rgba(13,146,85,0.06);
-            --green-border: rgba(13,146,85,0.15);
+            --white: #ffffff;
+            --bg: #fafbfc;
+            --bg-alt: #f1f4f8;
+            --border: #e3e7ee;
+            --border-light: #eef1f6;
+            --text: #111827;
+            --text-2: #4b5563;
+            --text-3: #9ca3af;
+            --accent: #1d4ed8;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --emerald: #059669;
+            --emerald-light: #ecfdf5;
+            --emerald-border: #a7f3d0;
+            --amber: #d97706;
+            --amber-light: #fffbeb;
+            --amber-border: #fde68a;
             --red: #dc2626;
-            --red-bg: rgba(220,38,38,0.06);
-            --red-border: rgba(220,38,38,0.12);
-            --text: #1a1a1a;
-            --text-2: #555;
-            --text-3: #888;
-            --border: rgba(0,0,0,0.08);
-            --r: 16px;
-            --r-sm: 10px;
-        }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth;scroll-padding-top:60px}
-        body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
-
-        .container{max-width:1080px;margin:0 auto;padding:0 2rem}
-        .tag{display:inline-flex;align-items:center;gap:3px;font-size:0.7rem;font-weight:600;letter-spacing:0.04em;padding:3px 9px;border-radius:6px;text-transform:uppercase}
-        .tag--amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-        .tag--blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-        .tag--green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-        .tag--red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
-        .ref{font-size:0.68rem;font-weight:500;color:var(--blue);background:var(--blue-bg);padding:2px 6px;border-radius:5px;white-space:nowrap}
-
-        /* ── hero ── */
-        .hero{position:relative;background:linear-gradient(160deg,#1b1b2f 0%,#2d2d4a 50%,#1b1b2f 100%);color:#fff;overflow:hidden}
-        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 20% 50%,rgba(194,121,14,0.1),transparent),radial-gradient(ellipse 50% 45% at 80% 50%,rgba(37,99,235,0.06),transparent)}
-        .hero__inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:5.5rem 2rem 4.5rem}
-        .hero__kicker{font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.16em;color:#e8a838;margin-bottom:1rem}
-        .hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem}
-        .hero h1 span{color:#e8a838}
-        .hero__sub{font-size:clamp(0.95rem,1.8vw,1.1rem);color:rgba(255,255,255,0.65);max-width:620px;margin-bottom:2.5rem}
-        .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.75rem;max-width:750px}
-        .kpi{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-sm);padding:1rem 1.25rem;text-align:center}
-        .kpi strong{display:block;font-size:1.35rem;font-weight:700;color:#e8a838}
-        .kpi span{font-size:0.7rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em}
-
-        /* ── nav ── */
-        .topnav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.88);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--border)}
-        .topnav__inner{max-width:1080px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-        .topnav__inner::-webkit-scrollbar{display:none}
-        .topnav a{flex-shrink:0;padding:0.8rem 1.1rem;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);text-decoration:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-        .topnav a:hover,.topnav a.active{color:var(--amber);border-bottom-color:var(--amber)}
-
-        /* ── section ── */
-        .section{padding:4.5rem 0}
-        .section--alt{background:var(--bg-alt)}
-        .section__label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--amber);margin-bottom:0.5rem}
-        .section__title{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:0.4rem}
-        .section__desc{color:var(--text-2);max-width:660px;margin-bottom:2.5rem;font-size:0.95rem}
-
-        /* ── tabs ── */
-        .tabs{display:flex;gap:0.4rem;margin-bottom:2rem;flex-wrap:wrap}
-        .tab-btn{padding:0.55rem 1.2rem;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--surface);color:var(--text-2);font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
-        .tab-btn:hover{border-color:var(--amber);color:var(--text)}
-        .tab-btn.active{background:var(--amber-bg);border-color:var(--amber);color:var(--amber)}
-        .tab-panel{display:none}.tab-panel.active{display:block}
-
-        /* ── phase (accordion) ── */
-        .phase{position:relative;margin-bottom:1.25rem;background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:border-color .25s}
-        .phase:hover{border-color:var(--amber-border)}
-        .phase__head{display:flex;align-items:flex-start;gap:1rem;padding:1.5rem 1.75rem 0.6rem;cursor:pointer;user-select:none}
-        .phase__num{flex-shrink:0;width:38px;height:38px;border-radius:10px;background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber);font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center}
-        .phase__info{flex:1}
-        .phase__kicker{font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);margin-bottom:0.2rem}
-        .phase__title{font-size:1.05rem;font-weight:700;margin-bottom:0.25rem}
-        .phase__summary{font-size:0.88rem;color:var(--text-2)}
-        .phase__toggle{flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--bg-alt);border:1px solid var(--border);color:var(--text-3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s;font-size:0.75rem}
-        .phase.open .phase__toggle{transform:rotate(180deg)}
-        .phase__body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-        .phase.open .phase__body{max-height:5000px}
-        .phase__content{padding:0 1.75rem 1.75rem 5rem}
-        .phase__content h5{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-3);margin:1.1rem 0 0.5rem}
-        .phase__content ul{list-style:none}
-        .phase__content ul li{position:relative;padding:0.25rem 0 0.25rem 1rem;font-size:0.86rem;color:var(--text-2)}
-        .phase__content ul li::before{content:'';position:absolute;left:0;top:0.65rem;width:4px;height:4px;border-radius:50%;background:var(--amber)}
-        .phase__meta{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem}
-        .phase__deadline{display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:var(--text-2);background:var(--bg-alt);border:1px solid var(--border);padding:4px 10px;border-radius:6px}
-        .phase__deadline strong{color:var(--amber)}
-
-        /* ── cards ── */
-        .cards{display:grid;gap:1.25rem}
-        .cards--2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-        .cards--3{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-        .cards--4{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
-        .card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--r);padding:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:border-color .25s}
-        .card:hover{border-color:var(--amber-border)}
-        .card__icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:0.75rem}
-        .card__icon--amber{background:var(--amber-bg)}
-        .card__icon--blue{background:var(--blue-bg)}
-        .card__icon--green{background:var(--green-bg)}
-        .card__icon--red{background:var(--red-bg)}
-        .card h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem}
-        .card h4{font-size:0.92rem;font-weight:700;margin-bottom:0.4rem}
-        .card p,.card li{font-size:0.86rem;color:var(--text-2)}
-        .card ul{list-style:none}
-        .card ul li{position:relative;padding:0.25rem 0 0.25rem 1rem}
-        .card ul li::before{content:'';position:absolute;left:0;top:0.65rem;width:4px;height:4px;border-radius:50%;background:var(--amber)}
-
-        /* ── tables ── */
-        .tbl-wrap{border-radius:var(--r);border:1px solid var(--glass-border);overflow:hidden;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-        table{width:100%;border-collapse:collapse}
-        thead th{background:var(--bg-alt);padding:0.75rem 1rem;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);text-align:left;border-bottom:1px solid var(--border)}
-        tbody td{padding:0.65rem 1rem;font-size:0.86rem;color:var(--text-2);border-bottom:1px solid var(--glass-border)}
-        tbody tr:last-child td{border-bottom:none}
-        tbody tr:hover{background:var(--amber-bg)}
-        .price{color:var(--amber);font-weight:600;white-space:nowrap}
-        .total td{background:var(--amber-bg);font-weight:600;color:var(--text)}
-        .note{font-size:0.78rem;color:var(--text-3);font-style:italic;margin-top:0.4rem}
-
-        /* ── benefits ── */
-        .benefit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
-        .benefit{background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--r-sm);padding:1.15rem}
-        .benefit strong{display:block;color:var(--green);font-size:0.88rem;margin-bottom:0.25rem}
-        .benefit p{font-size:0.8rem;color:var(--text-2)}
-
-        /* ── pricing category ── */
-        .price-cat{margin-bottom:2rem}
-        .price-cat__head{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border)}
-        .price-cat__icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:var(--amber-bg)}
-        .price-cat__title{font-size:1.05rem;font-weight:700}
-        .price-cat__range{margin-left:auto;font-size:1.1rem;font-weight:700;color:var(--amber)}
-
-        /* ── timeline visual ── */
-        .tl-bar{display:flex;border-radius:10px;overflow:hidden;margin-bottom:0.6rem;height:38px}
-        .tl-seg{display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;white-space:nowrap;padding:0 0.5rem;color:#fff}
-
-        /* ── callout ── */
-        .callout{border-radius:var(--r);padding:1.25rem 1.5rem;margin-top:1.25rem;font-size:0.88rem}
-        .callout--amber{background:var(--amber-bg);border:1px solid var(--amber-border);border-left:3px solid var(--amber)}
-        .callout--blue{background:var(--blue-bg);border:1px solid var(--blue-border);border-left:3px solid var(--blue)}
-        .callout--red{background:var(--red-bg);border:1px solid var(--red-border);border-left:3px solid var(--red)}
-        .callout--green{background:var(--green-bg);border:1px solid var(--green-border);border-left:3px solid var(--green)}
-        .callout h4{font-size:0.9rem;font-weight:700;margin-bottom:0.3rem}
-        .callout p{color:var(--text-2)}
-
-        /* ── footer ── */
-        .footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;background:var(--bg-alt)}
-        .footer p{color:var(--text-3);font-size:0.8rem;margin-bottom:0.3rem}
-        .footer a{color:var(--amber);text-decoration:none}
-
-        /* ── responsive ── */
-        @media(max-width:768px){
-            .kpi-row{grid-template-columns:1fr 1fr}
-            .cards--2,.cards--3,.cards--4{grid-template-columns:1fr}
-            .phase__content{padding:0 1.25rem 1.25rem 1.25rem}
-            .benefit-grid{grid-template-columns:1fr}
-            .hero__inner{padding:4rem 1.5rem 3.5rem}
-            thead th,tbody td{padding:0.5rem 0.6rem;font-size:0.78rem}
-            .tl-bar{flex-wrap:wrap;height:auto}
-            .tl-seg{padding:0.4rem 0.5rem;font-size:0.62rem}
+            --red-light: #fef2f2;
+            --red-border: #fecaca;
+            --navy: #0f172a;
         }
 
-        /* ── print ── */
-        @media print{
-            .topnav{display:none!important}
-            .hero{min-height:auto;background:#2d2d4a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-            .section{padding:2rem 0}
-            .phase__body{max-height:none!important}
-            .phase__toggle{display:none}
-            .phase,.card{break-inside:avoid;box-shadow:none}
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; padding: 0 2rem; }
+        .serif { font-family: 'Instrument Serif', Georgia, serif; }
+
+        /* ── NAV ── */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav__inner {
+            max-width: 980px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; gap: 0;
+            overflow-x: auto; scrollbar-width: none;
+        }
+        .nav__inner::-webkit-scrollbar { display: none; }
+        .nav__brand {
+            font-weight: 700; font-size: 0.8rem; letter-spacing: -0.01em;
+            color: var(--navy); padding: 1rem 1.25rem 1rem 0;
+            border-right: 1px solid var(--border); margin-right: 0.5rem;
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .nav a {
+            flex-shrink: 0; padding: 1rem 0.9rem;
+            font-size: 0.78rem; font-weight: 500; color: var(--text-3);
+            text-decoration: none; position: relative;
+            transition: color 0.2s;
+        }
+        .nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0.9rem; right: 0.9rem;
+            height: 2px; background: var(--accent); transform: scaleX(0);
+            transition: transform 0.2s;
+        }
+        .nav a:hover { color: var(--text); }
+        .nav a.active { color: var(--accent); }
+        .nav a.active::after { transform: scaleX(1); }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 6rem 2rem 5rem;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hero__inner {
+            max-width: 980px; margin: 0 auto;
+        }
+        .hero__label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.78rem; font-weight: 600; color: var(--accent);
+            background: var(--accent-light); border: 1px solid var(--accent-border);
+            padding: 0.35rem 1rem; border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 400; line-height: 1.1;
+            letter-spacing: -0.02em; color: var(--navy);
+            max-width: 700px; margin-bottom: 1.25rem;
+        }
+        .hero__desc {
+            font-size: 1.05rem; color: var(--text-2);
+            max-width: 560px; line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .metrics {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            background: var(--border); border-radius: 12px; overflow: hidden;
+            max-width: 680px;
+        }
+        .metric {
+            background: var(--white); padding: 1.25rem 1.5rem;
+            text-align: center;
+        }
+        .metric__val {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem; color: var(--navy);
+            display: block; line-height: 1.2;
+        }
+        .metric__label {
+            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-3); margin-top: 0.25rem;
+        }
+
+        /* ── SECTIONS ── */
+        .section { padding: 4.5rem 0; }
+        .section--alt { background: var(--bg); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .section__label {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.75rem;
+        }
+        .section__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400; color: var(--navy);
+            margin-bottom: 0.4rem; letter-spacing: -0.01em;
+        }
+        .section__desc {
+            color: var(--text-2); max-width: 560px;
+            margin-bottom: 2.5rem; font-size: 0.92rem;
+        }
+
+        /* ── REF TAG ── */
+        .ref {
+            font-size: 0.62rem; font-weight: 600; color: var(--accent);
+            background: var(--accent-light); padding: 1px 6px; border-radius: 4px;
+            white-space: nowrap;
+        }
+        .tag {
+            display: inline-flex; align-items: center;
+            font-size: 0.65rem; font-weight: 600;
+            padding: 3px 8px; border-radius: 4px;
+        }
+        .tag--blue { background: var(--accent-light); color: var(--accent); }
+        .tag--green { background: var(--emerald-light); color: var(--emerald); }
+        .tag--amber { background: var(--amber-light); color: var(--amber); }
+        .tag--red { background: var(--red-light); color: var(--red); }
+
+        /* ── TIMELINE FLOW ── */
+        .flow { position: relative; }
+        .flow::before {
+            content: ''; position: absolute; left: 23px; top: 0; bottom: 0;
+            width: 2px; background: var(--border);
+        }
+        .flow-step {
+            position: relative; padding-left: 64px; margin-bottom: 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .flow-step:last-child { border-bottom: none; }
+        .flow-step__num {
+            position: absolute; left: 0; top: 1.75rem;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--white); border: 2px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.1rem; color: var(--navy);
+            z-index: 1; transition: all 0.25s;
+        }
+        .flow-step.open .flow-step__num {
+            background: var(--accent); border-color: var(--accent);
+            color: var(--white);
+        }
+        .flow-step__head {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            padding: 1.5rem 0; cursor: pointer; user-select: none; gap: 1rem;
+        }
+        .flow-step__phase {
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 0.15rem;
+        }
+        .flow-step__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.15rem; font-weight: 400; color: var(--navy);
+            margin-bottom: 0.2rem;
+        }
+        .flow-step__sub { font-size: 0.85rem; color: var(--text-2); }
+        .flow-step__duration {
+            flex-shrink: 0; font-size: 0.72rem; font-weight: 600;
+            color: var(--text-3); background: var(--bg);
+            padding: 0.3rem 0.75rem; border-radius: 6px;
+            border: 1px solid var(--border); white-space: nowrap;
+            margin-top: 0.2rem;
+        }
+        .flow-step__toggle {
+            flex-shrink: 0; width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-3); transition: transform 0.2s;
+            margin-top: 0.2rem;
+        }
+        .flow-step.open .flow-step__toggle { transform: rotate(180deg); }
+        .flow-step__body {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .flow-step.open .flow-step__body { max-height: 4000px; }
+        .flow-step__content {
+            padding: 0 0 2rem 0;
+        }
+        .flow-step__content h5 {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-3);
+            margin: 1.25rem 0 0.5rem; padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .flow-step__content h5:first-child { margin-top: 0; }
+        .flow-step__content ul { list-style: none; }
+        .flow-step__content li {
+            position: relative; padding: 0.3rem 0 0.3rem 1rem;
+            font-size: 0.85rem; color: var(--text-2);
+        }
+        .flow-step__content li::before {
+            content: ''; position: absolute; left: 0; top: 0.7rem;
+            width: 4px; height: 4px; border-radius: 50%;
+            background: var(--text-3);
+        }
+        .flow-step__tags {
+            display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+        }
+
+        /* ── GANTT BAR ── */
+        .gantt {
+            display: flex; border-radius: 8px; overflow: hidden;
+            margin-bottom: 2rem; border: 1px solid var(--border);
+        }
+        .gantt__seg {
+            display: flex; align-items: center; justify-content: center;
+            padding: 0.6rem 0.3rem; font-size: 0.62rem; font-weight: 600;
+            color: var(--white); text-align: center; line-height: 1.3;
+            letter-spacing: 0.01em;
+        }
+
+        /* ── GRID CARDS ── */
+        .grid { display: grid; gap: 1rem; }
+        .grid--2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+        .grid--3 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+        .grid--4 { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+        .card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: 10px; padding: 1.5rem;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .card__icon {
+            width: 36px; height: 36px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; margin-bottom: 0.75rem;
+        }
+        .card__icon--blue { background: var(--accent-light); }
+        .card__icon--green { background: var(--emerald-light); }
+        .card__icon--amber { background: var(--amber-light); }
+        .card__icon--red { background: var(--red-light); }
+        .card h3 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1rem; font-weight: 400; color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .card p, .card li { font-size: 0.82rem; color: var(--text-2); }
+        .card ul { list-style: none; }
+        .card li {
+            position: relative; padding: 0.2rem 0 0.2rem 0.9rem;
+        }
+        .card li::before {
+            content: ''; position: absolute; left: 0; top: 0.6rem;
+            width: 3px; height: 3px; border-radius: 50%;
+            background: var(--text-3);
+        }
+
+        /* ── TABS ── */
+        .tabs {
+            display: flex; gap: 0.25rem; margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border); padding-bottom: 0;
+        }
+        .tab-btn {
+            padding: 0.65rem 1.2rem; border: none; background: none;
+            font-size: 0.82rem; font-weight: 500; color: var(--text-3);
+            cursor: pointer; font-family: inherit;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px; transition: all 0.2s;
+        }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* ── TABLE ── */
+        .tbl {
+            width: 100%; border-collapse: collapse;
+            border: 1px solid var(--border); border-radius: 10px;
+            overflow: hidden; margin-bottom: 0.5rem;
+        }
+        .tbl thead th {
+            background: var(--bg); padding: 0.7rem 1rem;
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3); text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .tbl tbody td {
+            padding: 0.65rem 1rem; font-size: 0.82rem; color: var(--text-2);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .tbl tbody tr:last-child td { border-bottom: none; }
+        .tbl tbody tr:hover { background: var(--bg); }
+        .price { color: var(--navy); font-weight: 600; white-space: nowrap; }
+        .tbl-note {
+            font-size: 0.75rem; color: var(--text-3); margin-top: 0.4rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ── CALLOUT ── */
+        .callout {
+            border-radius: 8px; padding: 1.25rem 1.5rem;
+            margin-top: 1.25rem; font-size: 0.85rem;
+        }
+        .callout--blue { background: var(--accent-light); border: 1px solid var(--accent-border); }
+        .callout--green { background: var(--emerald-light); border: 1px solid var(--emerald-border); }
+        .callout--amber { background: var(--amber-light); border: 1px solid var(--amber-border); }
+        .callout--red { background: var(--red-light); border: 1px solid var(--red-border); }
+        .callout strong { color: var(--navy); }
+        .callout p { color: var(--text-2); margin: 0; }
+
+        /* ── BENEFIT GRID ── */
+        .benefits {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+        .benefit {
+            background: var(--emerald-light); border: 1px solid var(--emerald-border);
+            border-radius: 8px; padding: 1rem 1.15rem; text-align: center;
+        }
+        .benefit__val {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem; color: var(--emerald); display: block;
+        }
+        .benefit__label {
+            font-size: 0.75rem; font-weight: 500; color: var(--text-2);
+            margin-top: 0.15rem;
+        }
+
+        /* ── PRICING ── */
+        .price-section { margin-bottom: 2.5rem; }
+        .price-section__head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--navy); gap: 1rem; flex-wrap: wrap;
+        }
+        .price-section__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.05rem; font-weight: 400; color: var(--navy);
+        }
+        .price-section__range {
+            font-size: 0.95rem; font-weight: 700; color: var(--accent);
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            padding: 3rem 2rem; text-align: center;
+            background: var(--navy); color: rgba(255,255,255,0.6);
+        }
+        .footer strong { color: var(--white); }
+        .footer p { font-size: 0.78rem; margin-bottom: 0.35rem; }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .footer a:hover { color: var(--white); }
+
+        /* ── SCROLL ANIMATION ── */
+        .fade-in {
+            opacity: 0; transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 4rem 1.5rem 3rem; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+            .benefits { grid-template-columns: repeat(2, 1fr); }
+            .flow-step { padding-left: 52px; }
+            .flow::before { left: 19px; }
+            .flow-step__num { width: 40px; height: 40px; font-size: 1rem; }
+            .gantt { flex-wrap: wrap; }
+            .gantt__seg { min-width: 33%; }
+            .nav__brand { display: none; }
+            .price-section__head { flex-direction: column; gap: 0.25rem; }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            .nav { display: none; }
+            .hero { padding: 2rem; }
+            .section { padding: 2rem 0; }
+            .flow-step__body { max-height: none !important; }
+            .flow-step__toggle { display: none; }
+            .card, .tbl { box-shadow: none; break-inside: avoid; }
+            .fade-in { opacity: 1; transform: none; }
+            .footer { background: #f5f5f5; color: #333; }
+            .footer strong { color: #111; }
         }
     </style>
 </head>
 <body>
 
-<!-- ════ HERO ════ -->
-<section class="hero">
-    <div class="hero__inner">
-        <p class="hero__kicker">El Salvador Digital Assets Framework</p>
-        <h1>DASP & Issuer<br><span>Registration Guide</span></h1>
-        <p class="hero__sub">Complete regulatory playbook — from entity formation to license issuance. Two distinct tracks under the Law for the Issuance of Digital Assets (LEAD, Decree&nbsp;No.&nbsp;643, 2023).</p>
-        <div class="kpi-row">
-            <div class="kpi"><strong>$5,475</strong><span>DASP Reg. Fee</span></div>
-            <div class="kpi"><strong>0%</strong><span>Tax on Digital Assets</span></div>
-            <div class="kpi"><strong>8–12 mo</strong><span>Full Process</span></div>
-            <div class="kpi"><strong>$3,650/yr</strong><span>Annual Renewal</span></div>
-        </div>
-    </div>
-</section>
-
-<!-- ════ NAV ════ -->
-<nav class="topnav">
-    <div class="topnav__inner">
+<!-- ══ NAV ══ -->
+<nav class="nav">
+    <div class="nav__inner">
+        <span class="nav__brand">SBLC</span>
         <a href="#dasp">DASP Flow</a>
         <a href="#issuer">Issuer Flow</a>
         <a href="#personnel">Personnel</a>
-        <a href="#company">Company</a>
+        <a href="#entity">Entity</a>
         <a href="#aml">AML</a>
         <a href="#cyber">Cybersecurity</a>
-        <a href="#tax">Tax Benefits</a>
+        <a href="#tax">Tax</a>
         <a href="#costs">Costs</a>
         <a href="#sanctions">Sanctions</a>
     </div>
 </nav>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- DASP FLOW (merged with timelines)                   -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero__inner">
+        <div class="hero__label">🇸🇻 El Salvador · Digital Assets Framework</div>
+        <h1>DASP & Issuer<br>Registration Guide</h1>
+        <p class="hero__desc">A practitioner's guide to obtaining Digital Asset Service Provider registration and token issuance authorization under the LEAD (Decree No.&nbsp;643, 2023). Based on hands-on experience navigating the CNAD process.</p>
+        <div class="metrics">
+            <div class="metric"><span class="metric__val">$6,132</span><span class="metric__label">Registration Fee</span></div>
+            <div class="metric"><span class="metric__val">0%</span><span class="metric__label">Tax Rate</span></div>
+            <div class="metric"><span class="metric__val">8–12 mo</span><span class="metric__label">Timeline</span></div>
+            <div class="metric"><span class="metric__val">$4,088/yr</span><span class="metric__label">Annual Renewal</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  DASP REGISTRATION FLOW                   -->
+<!-- ══════════════════════════════════════════ -->
 <section class="section" id="dasp">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Track 1</p>
     <h2 class="section__title">DASP Registration Flow</h2>
-    <p class="section__desc">Two-phase process administered by CNAD under LEAD Arts.&nbsp;18–21 and RPSAD Arts.&nbsp;5–14. Estimated total duration: <strong>8–12 months</strong> from entity formation to operational license.</p>
+    <p class="section__desc">Two-phase process administered by CNAD. Estimated <strong>8–12 months</strong> end-to-end. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>. Expect 2–3 rounds of corrections.</p>
 
-    <!-- visual timeline bar -->
-    <div class="tl-bar">
-        <div class="tl-seg" style="flex:2;background:#c2790e;">Entity 2–4 wk</div>
-        <div class="tl-seg" style="flex:2;background:#d4922f;">Personnel 2–4 wk</div>
-        <div class="tl-seg" style="flex:2;background:#2563eb;">Pre-Reg 2–4 wk</div>
-        <div class="tl-seg" style="flex:5;background:#7c3aed;">Docs & Policies 8–16 wk</div>
-        <div class="tl-seg" style="flex:3;background:#0d9255;">CNAD Review 4–8 wk</div>
-        <div class="tl-seg" style="flex:2;background:#059669;">Final 2–4 wk</div>
+    <div class="gantt">
+        <div class="gantt__seg" style="flex:4;background:#1d4ed8;">Entity + Personnel<br>4–6 wk</div>
+        <div class="gantt__seg" style="flex:4;background:#3b82f6;">Pre-Reg + CNAD Response<br>4–6 wk (20 bd)</div>
+        <div class="gantt__seg" style="flex:8;background:#0f172a;">Docs & Policies<br>8–16 wk</div>
+        <div class="gantt__seg" style="flex:12;background:#059669;">CNAD Review × 2–3 rounds<br>12–18 wk (20+10 bd/round)</div>
+        <div class="gantt__seg" style="flex:2;background:#10b981;">Payment<br>10 bd</div>
     </div>
-    <p class="note" style="margin-bottom:2.5rem;">Document preparation (AML policies, business plan, cybersecurity framework) is the longest phase and overlaps with earlier stages. Practical experience shows 8–12 months end-to-end including multiple rounds of CNAD feedback and corrections.</p>
+    <p class="tbl-note">1 round = 20 bd (CNAD review) + 10 bd (applicant cure) ≈ 6 weeks. Significant changes add +5 bd each <span class="ref">RPSAD Art. 9</span>. Extensions up to 50% of established term <span class="ref">RPSAD Art. 44</span>.</p>
 
-    <!-- Phase 1.1 -->
-    <div class="phase open" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">1</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 1 — Pre-Registration</p>
-                <p class="phase__title">Entity Formation & Incorporation</p>
-                <p class="phase__summary">Incorporate a Salvadoran S.A. de C.V. or register a branch of a foreign company. Minimum share capital $2,000 (5% paid at incorporation).</p>
+    <div class="flow">
+
+        <!-- Step 1 -->
+        <div class="flow-step open" data-step>
+            <div class="flow-step__num">1</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
+                    <p class="flow-step__title">Entity Formation & Incorporation</p>
+                    <p class="flow-step__sub">Incorporate S.A. de C.V. or register a branch. Min. share capital $2,000.</p>
+                </div>
+                <span class="flow-step__duration">2–4 wk (parallel with Step 2)</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <h5>Legal Requirements</h5>
+                <ul>
+                    <li>Natural persons: DUI or resident card, domicile in El Salvador <span class="ref">LEAD Art. 18(c)</span></li>
+                    <li>Foreign entities: corporation or branch <strong>domiciled in El Salvador</strong>, registered with CNR <span class="ref">LEAD Art. 18(d)</span></li>
+                    <li>Obtain Tax Identification Number (NIT) <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
+                    <li>Register Board / Sole Administrator with Commercial Registry <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
+                </ul>
+                <h5>Documents</h5>
+                <ul>
+                    <li>Notarized public deed of incorporation <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                    <li>Board of Directors credentials or general POA <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
+                    <li>NIT card copy <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
+                    <li>Company registration certificate <span class="ref">RPSAD Art. 7(d)</span></li>
+                </ul>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <h5>Legal Requirements</h5>
-            <ul>
-                <li>Natural persons: present DUI or resident card, indicate domicile in El Salvador <span class="ref">LEAD Art. 18(c)</span></li>
-                <li>Foreign legal entities: must form a corporation or branch <strong>domiciled in El Salvador</strong>, registered with the National Registry Center (CNR) <span class="ref">LEAD Art. 18(d)</span></li>
-                <li>Obtain Tax Identification Number (NIT) <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                <li>Register Board of Directors / Sole Administrator credentials with Commercial Registry <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
-                <li>Minimum share capital: $2,000 (5% = $100 paid at incorporation)</li>
-            </ul>
-            <h5>Documents</h5>
-            <ul>
-                <li>Notarized public deed of incorporation, registered with Registry of Commerce <span class="ref">RPSAD Art. 7(b)(i)</span></li>
-                <li>Credential of Board of Directors election or general power of attorney <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
-                <li>Copy of Tax Identification Number card <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                <li>Company registration certificate <span class="ref">RPSAD Art. 7(d)</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">Duration: <strong>2–4 weeks</strong></span>
-            </div>
-        </div></div>
-    </div>
 
-    <!-- Phase 1.2 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">2</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 1 — Pre-Registration</p>
-                <p class="phase__title">Mandatory Personnel Onboarding</p>
-                <p class="phase__summary">Appoint Principal and Substitute Compliance Officers and designate a CISO. Register COs with UIF before application.</p>
+        <!-- Step 2 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">2</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
+                    <p class="flow-step__title">Mandatory Personnel Onboarding</p>
+                    <p class="flow-step__sub">Appoint COs and CISO. Register with UIF before application.</p>
+                </div>
+                <span class="flow-step__duration">2–4 wk (parallel with Step 1)</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <h5>Required Appointments</h5>
+                <ul>
+                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">LEAD Art. 21</span> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
+                    <li><strong>Substitute Compliance Officer</strong> — mandatory, same qualifications <span class="ref">AML Law Art. 20</span></li>
+                    <li><strong>CISO</strong> — Board member/manager with authority and direct Board access <span class="ref">RPSAD Art. 25(a)</span></li>
+                </ul>
+                <h5>CO Qualifications</h5>
+                <ul>
+                    <li>AML/CFT/FPADM training + regulatory framework knowledge <span class="ref">UIF Instr. Art. 72</span></li>
+                    <li>Experience in the entity's economic activity <span class="ref">UIF Instr. Art. 72(2)</span></li>
+                    <li><strong>No residency requirement for DASP COs</strong> — explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
+                    <li>Must maintain employment relationship with entity <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
+                </ul>
+                <h5>Documents</h5>
+                <ul>
+                    <li>Board resolution appointing COs <span class="ref">AML Law Art. 20</span></li>
+                    <li>AML/CFT certifications <span class="ref">UIF Instr. Art. 64</span></li>
+                    <li>UIF registration confirmation <span class="ref">UIF Instr. Art. 3</span></li>
+                    <li>Org chart showing CO independence <span class="ref">RPSAD Art. 7(e)</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">CO residency exempt</span>
+                    <span class="tag tag--blue">UIF reg: 5 days from appointment</span>
+                </div>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <h5>Required Appointments</h5>
-            <ul>
-                <li><strong>Principal Compliance Officer</strong> — appointed by Board of Directors, AML/CFT/WMDP certified <span class="ref">LEAD Art. 21</span> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                <li><strong>Substitute Compliance Officer</strong> — mandatory by law, same qualifications <span class="ref">AML Law Art. 20</span></li>
-                <li><strong>CISO / Information Security Officer</strong> — Board member or manager with authority and direct Board access <span class="ref">RPSAD Art. 25(a)</span></li>
-            </ul>
-            <h5>CO Qualifications</h5>
-            <ul>
-                <li>AML/CFT/FPADM prevention training <span class="ref">UIF Instr. Art. 72</span></li>
-                <li>Knowledge of regulatory framework <span class="ref">UIF Instr. Art. 72</span></li>
-                <li>Sufficient experience in the entity's economic activity <span class="ref">UIF Instr. Art. 72(2)</span></li>
-                <li><strong>No residency requirement for DASP COs</strong> — explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                <li>Must maintain employment relationship with the entity <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-            </ul>
-            <h5>Documents</h5>
-            <ul>
-                <li>Board resolution appointing Principal and Substitute CO <span class="ref">AML Law Art. 20</span></li>
-                <li>AML/CFT certifications for both COs <span class="ref">UIF Instr. Art. 64</span></li>
-                <li>UIF platform registration for both COs <span class="ref">UIF Instr. Art. 3</span></li>
-                <li>Organization chart showing CO independence from operations <span class="ref">RPSAD Art. 7(e)</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">Duration: <strong>2–4 weeks</strong></span>
-                <span class="phase__deadline">UIF registration: <strong>5 days</strong> from appointment <span class="ref">UIF Instr. Art. 64</span></span>
-                <span class="tag tag--green">CO residency exemption for DASPs</span>
-            </div>
-        </div></div>
-    </div>
 
-    <!-- Phase 1.3 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">3</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 1 — Pre-Registration</p>
-                <p class="phase__title">Pre-Registration Application & First Presentation</p>
-                <p class="phase__summary">Submit pre-registration form to CNAD with applicant details and desired operating area. Present the product/service — CNAD issues "Objection" or "No Objection".</p>
+        <!-- Step 3 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">3</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
+                    <p class="flow-step__title">Pre-Registration & First Presentation</p>
+                    <p class="flow-step__sub">Submit form to CNAD, present the product. CNAD issues "Objection" or "No Objection".</p>
+                </div>
+                <span class="flow-step__duration">20 bd CNAD response</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Complete CNAD pre-registration form (electronic) <span class="ref">CNAD Procedure</span></li>
+                    <li>Applicant details, operating area, services description <span class="ref">LEAD Art. 18</span></li>
+                    <li>CNAD reviews territorial/material competence <span class="ref">LEAD Arts. 2–4</span></li>
+                    <li>List of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
+                    <li>Documentation of service capacity <span class="ref">RPSAD Art. 7(g)</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">No Objection = proceed to Phase 2</span>
+                    <span class="tag tag--blue">CNAD response: 20 bd</span>
+                    <span class="tag tag--amber">If incomplete: 10 bd to cure</span>
+                </div>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <h5>Process</h5>
-            <ul>
-                <li>Complete CNAD pre-registration form (electronic) <span class="ref">CNAD Procedure</span></li>
-                <li>Provide: applicant details, desired operating area, description of services <span class="ref">LEAD Art. 18</span></li>
-                <li>CNAD reviews territorial/material competence per LEAD Arts. 2–4 <span class="ref">CNAD Procedure</span></li>
-                <li>Present business model and digital asset services per LEAD Art. 19 categories</li>
-                <li>Provide list of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
-                <li>Documentation demonstrating capacity to offer indicated services <span class="ref">RPSAD Art. 7(g)</span></li>
-            </ul>
-            <h5>Outcome</h5>
-            <ul>
-                <li><strong>"No Objection"</strong> → CNAD specifies registration requirements → proceed to Phase 2 <span class="ref">CNAD Procedure</span></li>
-                <li><strong>"Objection"</strong> → address concerns based on territorial/material competence → may resubmit <span class="ref">CNAD Procedure</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">Duration: <strong>2–4 weeks</strong></span>
-            </div>
-        </div></div>
-    </div>
 
-    <!-- Phase 2.1 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">4</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 2 — Definitive Registration</p>
-                <p class="phase__title">Full Documentation Package</p>
-                <p class="phase__summary">Prepare and submit the complete document package per LEAD Art. 20 and RPSAD Arts. 7, 17–35. This is the most time-intensive phase — typically 2–4 months of preparation.</p>
+        <!-- Step 4 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">4</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
+                    <p class="flow-step__title">Full Documentation Package</p>
+                    <p class="flow-step__sub">Prepare and submit ~30 documents per LEAD Art. 20 and RPSAD Arts. 7, 17–35. The most time-intensive phase.</p>
+                </div>
+                <span class="flow-step__duration">8–16 wk preparation</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <h5>A. Business & Corporate</h5>
+                <ul>
+                    <li><strong>3-Year Business Plan</strong> — market strategy, financials, KPIs, risks <span class="ref">CNAD Procedure §1</span></li>
+                    <li>Organizational structure (names, positions, functions) <span class="ref">RPSAD Art. 7(e)</span> <span class="ref">LEAD Art. 20(c)</span></li>
+                    <li>Corporate governance document <span class="ref">RPSAD Art. 7(e)</span></li>
+                </ul>
+                <h5>B. Customer Service</h5>
+                <ul>
+                    <li>Digital asset descriptions: characteristics, price, 12-mo history, volume <span class="ref">RPSAD Art. 22</span></li>
+                    <li>Trading mechanics, fees, complementary products <span class="ref">RPSAD Art. 7(f)</span></li>
+                    <li>Support & communication policy, complaints handling <span class="ref">LEAD Art. 21(d)(g)</span></li>
+                </ul>
+                <h5>C. AML/CFT Package</h5>
+                <ul>
+                    <li>Prevention Policy, Risk Management, CDD (standard + enhanced + PEPs) <span class="ref">RPSAD Art. 19</span> <span class="ref">AML Law Art. 15</span></li>
+                    <li>Transaction Limits, Monitoring, Suspicious Operations Procedures <span class="ref">AML Law Art. 24</span></li>
+                    <li>Reporting Procedures, Training Plan, Restricted Jurisdictions <span class="ref">UIF Instr. Arts. 52, 54</span></li>
+                </ul>
+                <h5>D. KYC / KYB / KYT</h5>
+                <ul>
+                    <li>KYC/KYB procedures with technical integration docs <span class="ref">RPSAD Art. 19</span></li>
+                    <li>KYT protocol <span class="ref">CNAD Guide §2</span></li>
+                    <li>Travel Rule — mandatory for ALL transfers, any amount <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li>
+                </ul>
+                <h5>E. Risk & Continuity</h5>
+                <ul>
+                    <li>Risk factors and management cycle <span class="ref">RPSAD Art. 21</span></li>
+                    <li>Business Continuity Plan <span class="ref">LEAD Art. 21(p)</span></li>
+                    <li>Contingency Plan <span class="ref">RPSAD Art. 25(d)(vii)</span></li>
+                </ul>
+                <h5>F. Security & Custody</h5>
+                <ul>
+                    <li>Asset custody policy, fund segregation <span class="ref">LEAD Art. 21(j)</span></li>
+                    <li>Cybersecurity policies, ICT remediation plan <span class="ref">RPSAD Arts. 25–26</span></li>
+                    <li>Geofencing implementation <span class="ref">RPSAD Art. 20</span></li>
+                </ul>
+                <h5>G. Operations</h5>
+                <ul>
+                    <li>Spot <span class="ref">Art. 28</span>, term <span class="ref">Art. 29</span>, optional <span class="ref">Art. 30</span>, settlement <span class="ref">Art. 31</span>, seizure <span class="ref">Art. 32</span>, arbitration <span class="ref">Art. 33</span>, buyer protection <span class="ref">Art. 34</span>, investments <span class="ref">Art. 35</span></li>
+                    <li>Internal/external audit framework <span class="ref">LEAD Art. 21</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--amber">Digital + physical copies</span>
+                </div>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <h5>A. Business & Corporate</h5>
-            <ul>
-                <li><strong>3-Year Business Plan</strong> for El Salvador: executive summary, market strategy, financial projections, KPIs, risks & mitigations <span class="ref">CNAD Procedure §1</span></li>
-                <li>Detailed organizational structure — names, positions, functions, international structure <span class="ref">RPSAD Art. 7(e)</span> <span class="ref">LEAD Art. 20(c)</span></li>
-                <li>Corporate governance document <span class="ref">RPSAD Art. 7(e)</span></li>
-            </ul>
-            <h5>B. Customer Service & Communication</h5>
-            <ul>
-                <li>Description of each digital asset: characteristics, price, 12-month history, volume <span class="ref">RPSAD Art. 22</span></li>
-                <li>How assets can be bought/sold, transaction fees <span class="ref">RPSAD Art. 22</span></li>
-                <li>Complementary products (custody, loans, deposits) <span class="ref">RPSAD Art. 7(f)</span></li>
-                <li>Customer support & communication system policy <span class="ref">RPSAD Art. 22</span> <span class="ref">LEAD Art. 21(g)</span></li>
-                <li>Complaints-handling policy <span class="ref">LEAD Art. 21(d)</span></li>
-            </ul>
-            <h5>C. AML/CFT/WMDP Package</h5>
-            <ul>
-                <li>AML/CFT/WMDP Prevention Policy <span class="ref">RPSAD Art. 19</span></li>
-                <li>Risk Management Procedures <span class="ref">RPSAD Arts. 17, 23, 24</span></li>
-                <li>CDD Policy — standard and enhanced, including PEPs <span class="ref">AML Law Art. 15</span></li>
-                <li>Transaction Limits Policy <span class="ref">RPSAD Art. 19</span></li>
-                <li>Customer/Counterparty Monitoring Policies <span class="ref">RPSAD Art. 19</span></li>
-                <li>Suspicious Operation Detection Procedures with flowcharts <span class="ref">AML Law Art. 24</span></li>
-                <li>Regulated Operations Reporting Procedures <span class="ref">UIF Instr. Art. 52</span></li>
-                <li>Asset theft prevention policies <span class="ref">RPSAD Art. 19</span></li>
-                <li>Annual Training Plan <span class="ref">AML Law Art. 9(6)</span> <span class="ref">UIF Instr. Art. 54</span></li>
-                <li>Restricted Jurisdictions List <span class="ref">RPSAD Art. 19</span></li>
-            </ul>
-            <h5>D. KYC/KYB/KYT</h5>
-            <ul>
-                <li>KYC and KYB procedures with technical integration documentation <span class="ref">RPSAD Art. 19</span></li>
-                <li>KYT (Know Your Transaction) protocol <span class="ref">CNAD Guide §2</span></li>
-                <li>Travel Rule implementation — mandatory for ALL transfers regardless of amount <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li>
-            </ul>
-            <h5>E. Risk Management & Continuity</h5>
-            <ul>
-                <li>Risk factors: financial, operational, AML/CFT, cybersecurity <span class="ref">RPSAD Art. 21</span></li>
-                <li>Risk management cycle: identification → measurement → monitoring → mitigation → communication <span class="ref">RPSAD Art. 21</span></li>
-                <li>Business Continuity Plan <span class="ref">LEAD Art. 21(p)</span></li>
-                <li>Contingency Plan <span class="ref">RPSAD Art. 25(d)(vii)</span></li>
-            </ul>
-            <h5>F. Security & Custody</h5>
-            <ul>
-                <li>Digital and fiat asset custody policy, segregation of funds <span class="ref">LEAD Art. 21(j)</span></li>
-                <li>Cybersecurity policies: access control, vulnerability management, incident response <span class="ref">RPSAD Arts. 25–26</span></li>
-                <li>ICT security compliance and remediation plan <span class="ref">RPSAD Art. 25</span></li>
-                <li>Geofencing implementation <span class="ref">RPSAD Art. 20</span></li>
-            </ul>
-            <h5>G. Operations</h5>
-            <ul>
-                <li>Digital asset operations: spot <span class="ref">Art. 28</span>, term <span class="ref">Art. 29</span>, optional <span class="ref">Art. 30</span>, settlement <span class="ref">Art. 31</span>, seizure <span class="ref">Art. 32</span>, arbitration <span class="ref">Art. 33</span>, buyer protection <span class="ref">Art. 34</span>, investments <span class="ref">Art. 35</span></li>
-                <li>Internal/external audit framework <span class="ref">LEAD Art. 21</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">Duration: <strong>8–16 weeks</strong> (preparation)</span>
-                <span class="tag tag--amber">Digital + physical copies to CNAD</span>
-            </div>
-        </div></div>
-    </div>
 
-    <!-- Phase 2.2 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">5</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 2 — Definitive Registration</p>
-                <p class="phase__title">Technical Presentation to Regulator</p>
-                <p class="phase__summary">Detailed technical walkthrough of the platform for CNAD — architecture, security, custody, operations, and KYC/KYB integration.</p>
+        <!-- Step 5 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">5</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
+                    <p class="flow-step__title">Technical Presentation</p>
+                    <p class="flow-step__sub">Detailed platform walkthrough for CNAD — architecture, security, custody, KYC integration.</p>
+                </div>
+                <span class="flow-step__duration">during CNAD review</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Platform architecture and DLT protocols <span class="ref">RPSAD Art. 20</span></li>
+                    <li>Settlement accuracy, electronic ledger, monitoring <span class="ref">RPSAD Art. 20(a)–(d)</span></li>
+                    <li>Security measures, penetration testing <span class="ref">RPSAD Art. 26</span></li>
+                    <li>KYC/KYB technical integration <span class="ref">RPSAD Art. 19</span></li>
+                    <li>Custody solutions, asset segregation <span class="ref">LEAD Art. 21(j)</span></li>
+                    <li>Geofencing enforcement <span class="ref">RPSAD Art. 20</span></li>
+                </ul>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <ul>
-                <li>Platform architecture and DLT protocols <span class="ref">RPSAD Art. 20</span></li>
-                <li>Computer systems: settlement accuracy, electronic ledger, monitoring capacity <span class="ref">RPSAD Art. 20(a)–(d)</span></li>
-                <li>Security measures and penetration testing results <span class="ref">RPSAD Art. 26</span></li>
-                <li>KYC/KYB technical integration <span class="ref">RPSAD Art. 19</span></li>
-                <li>Custody solutions and asset segregation <span class="ref">LEAD Art. 21(j)</span></li>
-                <li>Geofencing and restricted jurisdictions enforcement <span class="ref">RPSAD Art. 20</span></li>
-            </ul>
-        </div></div>
-    </div>
 
-    <!-- Phase 2.3 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">6</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Phase 2 — Definitive Registration</p>
-                <p class="phase__title">CNAD Review, Corrections & Final Meeting</p>
-                <p class="phase__summary">CNAD reviews the full package within 20 business days. Expect multiple rounds of feedback, corrections, and supplementary submissions.</p>
+        <!-- Step 6 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">6</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
+                    <p class="flow-step__title">CNAD Review, Corrections & Final Meeting</p>
+                    <p class="flow-step__sub">Each round: 20 bd (CNAD) + 10 bd (applicant). Expect 2–3 rounds of feedback and supplementary submissions.</p>
+                </div>
+                <span class="flow-step__duration">12–18 wk (2–3 rounds)</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>CNAD review: <strong>20 business days</strong> <span class="ref">RPSAD Art. 8</span> <span class="ref">LEAD Art. 20</span></li>
+                    <li>Cure period if incomplete: <strong>10 business days</strong> <span class="ref">RPSAD Art. 8</span></li>
+                    <li>Additional info requests before deadline, CNAD specifies term <span class="ref">RPSAD Art. 8</span></li>
+                    <li>CNAD considers market needs and applicant reputation <span class="ref">RPSAD Art. 8</span></li>
+                    <li>Each significant change: <strong>+5 business days</strong> <span class="ref">RPSAD Art. 9</span></li>
+                    <li>Final meeting: CNAD verifies CDD, Travel Rule, PEPs, UBO, training <span class="ref">CNAD Guide §6.b</span></li>
+                </ul>
+                <div class="callout callout--amber" style="margin-top:0.75rem;">
+                    <p><strong>Timeline math:</strong> 1 round = 20 bd (CNAD review) + 10 bd (applicant cure) ≈ 6 calendar weeks. With 2–3 rounds: <strong>12–18 weeks</strong>. Significant changes add +5 bd each <span class="ref">RPSAD Art. 9</span>. CNAD may extend any term by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
+                </div>
+                <div class="flow-step__tags" style="margin-top:0.5rem;">
+                    <span class="tag tag--blue">Per round: 20 bd CNAD</span>
+                    <span class="tag tag--amber">Per round: 10 bd applicant</span>
+                    <span class="tag tag--amber">Per change: +5 bd</span>
+                    <span class="tag tag--blue">Extension: up to +50%</span>
+                </div>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <h5>Review Process</h5>
-            <ul>
-                <li>CNAD has <strong>20 business days</strong> from receipt to issue resolution <span class="ref">RPSAD Art. 8</span> <span class="ref">LEAD Art. 20</span></li>
-                <li>If incomplete: <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span></li>
-                <li>CNAD may request additional information before the 20-day deadline, specifying compliance term <span class="ref">RPSAD Art. 8</span></li>
-                <li>CNAD considers <strong>economic needs of the market</strong> and <strong>applicant's reputation</strong> <span class="ref">RPSAD Art. 8</span></li>
-                <li>Each significant change reported grants CNAD <strong>+5 business days</strong> <span class="ref">RPSAD Art. 9</span></li>
-            </ul>
-            <h5>Corrections & Final Meeting</h5>
-            <ul>
-                <li>Address all CNAD comments and required corrections (expect 1–3 rounds)</li>
-                <li>Submit supplementary documentation (security remediation plans, updated policies)</li>
-                <li>Final meeting with regulator — CNAD verifies: Board compliance, CO effectiveness, CDD processes, Travel Rule, PEP processes, beneficial ownership, training plans <span class="ref">CNAD Guide §6.b</span></li>
-            </ul>
-            <h5>Outcome</h5>
-            <ul>
-                <li><strong>Favorable resolution</strong> → proceed to payment <span class="ref">RPSAD Art. 8</span></li>
-                <li><strong>Unfavorable resolution</strong> → may resubmit <span class="ref">RPSAD Art. 8</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">CNAD review: <strong>20 bus. days</strong> <span class="ref">RPSAD Art. 8</span></span>
-                <span class="phase__deadline">Cure period: <strong>10 bus. days</strong> <span class="ref">RPSAD Art. 8</span></span>
-                <span class="phase__deadline">Per change: <strong>+5 bus. days</strong> <span class="ref">RPSAD Art. 9</span></span>
-            </div>
-        </div></div>
-    </div>
 
-    <!-- Phase 3 -->
-    <div class="phase" data-phase>
-        <div class="phase__head" data-phase-toggle>
-            <div class="phase__num">7</div>
-            <div class="phase__info">
-                <p class="phase__kicker">Completion</p>
-                <p class="phase__title">Payment, Registration & Tax Benefits Activation</p>
-                <p class="phase__summary">Pay registration fee, receive definitive registration number, and activate full tax exemptions under LEAD Art. 36.</p>
+        <!-- Step 7 -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">7</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Completion</p>
+                    <p class="flow-step__title">Payment, Registration & Tax Benefits</p>
+                    <p class="flow-step__sub">Pay fee, receive registration number, activate full tax exemptions.</p>
+                </div>
+                <span class="flow-step__duration">10 bd payment + 3 bd CNAD→MoF</span>
+                <div class="flow-step__toggle">▾</div>
             </div>
-            <div class="phase__toggle">&#9662;</div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Registration fee: <strong>$6,132</strong> (15 × $408.80 min. salary) within <strong>10 business days</strong> from favorable resolution notification <span class="ref">RPSAD Art. 10</span> <span class="ref">LEAD Art. 12(1)(a)</span></li>
+                    <li>If not paid in time → <strong>not considered registered</strong> <span class="ref">RPSAD Art. 10</span></li>
+                    <li>Definitive registration number assigned after payment verification <span class="ref">RPSAD Art. 11</span></li>
+                    <li>CNAD → Ministry of Finance within <strong>3 business days</strong> after payment verification <span class="ref">RPSAD Art. 11</span></li>
+                    <li>Tax exemption qualification issued <span class="ref">RPSAD Art. 11</span></li>
+                    <li>Code of Ethics: <strong>6 months</strong> from registration <span class="ref">RPSAD Art. 18</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">0% Income Tax</span>
+                    <span class="tag tag--green">0% VAT</span>
+                    <span class="tag tag--green">0% Capital Gains</span>
+                    <span class="tag tag--green">0% Municipal Tax</span>
+                </div>
+            </div></div>
         </div>
-        <div class="phase__body"><div class="phase__content">
-            <ul>
-                <li>Pay registration fee: <strong>$5,475</strong> (15 min. salaries) within <strong>10 business days</strong> of favorable resolution <span class="ref">RPSAD Art. 10</span> <span class="ref">LEAD Art. 12(1)(a)</span></li>
-                <li>Non-payment = not registered <span class="ref">RPSAD Art. 10</span></li>
-                <li>Definitive registration number assigned <span class="ref">RPSAD Art. 11</span></li>
-                <li>CNAD forwards resolution to Ministry of Finance within <strong>3 business days</strong> <span class="ref">RPSAD Art. 11</span></li>
-                <li>Tax exemption qualification issued <span class="ref">RPSAD Art. 11</span></li>
-                <li>CNAD notifies UIF of registration <span class="ref">CNAD Procedure</span></li>
-                <li>Code of Ethics: prepare within <strong>6 calendar months</strong> of registration <span class="ref">RPSAD Art. 18</span></li>
-            </ul>
-            <div class="phase__meta">
-                <span class="phase__deadline">Payment: <strong>10 bus. days</strong> <span class="ref">RPSAD Art. 10</span></span>
-                <span class="phase__deadline">MoF notification: <strong>3 bus. days</strong> <span class="ref">RPSAD Art. 11</span></span>
-                <span class="phase__deadline">Code of Ethics: <strong>6 months</strong> <span class="ref">RPSAD Art. 18</span></span>
-                <span class="tag tag--green">0% Income Tax</span>
-                <span class="tag tag--green">0% VAT</span>
-                <span class="tag tag--green">0% Capital Gains</span>
-            </div>
-        </div></div>
+
+    </div><!-- /flow -->
+
+    <div class="callout callout--amber" style="margin-top:1.5rem;">
+        <p><strong>Note on cure periods:</strong> LEAD Art. 20 grants <strong>5 business days</strong> to cure; RPSAD Art. 8 grants <strong>10 working days</strong>. RPSAD is the more recent and specific regulation — in practice, 10 days applies. CNAD may also request additional info before the 20-day deadline expires, specifying a custom term <span class="ref">RPSAD Art. 8</span>. Any term can be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
     </div>
 
-    <div class="callout callout--amber">
-        <h4>Post-Registration Obligations</h4>
-        <p>Annual renewal fee: <strong>$3,650</strong> due Q1 each year <span class="ref">RPSAD Art. 12</span>. Quarterly reports to CNAD within first 20 days of Apr/Jul/Oct/Jan <span class="ref">RPSAD Arts. 15–16</span>. Non-payment = registration cancelled + loss of tax benefits <span class="ref">RPSAD Art. 12</span>. Records retained <strong>15 years</strong> minimum <span class="ref">AML Law Art. 26</span>.</p>
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>Post-Registration Obligations:</strong> Annual renewal <strong>$4,088</strong> (10 × $408.80), Q1 each year <span class="ref">RPSAD Art. 12</span>. Quarterly reports: first 20 days of Apr/Jul/Oct/Jan <span class="ref">RPSAD Arts. 15–16</span>. Non-payment = registration cancelled + tax benefits lost <span class="ref">RPSAD Art. 12</span>. Records retention: <strong>15 years</strong> <span class="ref">AML Law Art. 26</span>.</p>
     </div>
-
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- ISSUER FLOW                                         -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════ -->
+<!--  ISSUER REGISTRATION FLOW                 -->
+<!-- ══════════════════════════════════════════ -->
 <section class="section section--alt" id="issuer">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Track 2</p>
     <h2 class="section__title">Issuer Registration Flow</h2>
-    <p class="section__desc">Separate registration for entities issuing digital assets. Governed by LEAD Arts.&nbsp;22–32 and the Regulation of Registration of Issuers and Public and Private Issuances (CNAD-017-2023).</p>
+    <p class="section__desc">Separate track for entities issuing digital assets. LEAD Arts.&nbsp;22–32 and Issuer Regulation (CNAD-017-2023).</p>
 
     <div class="tabs">
         <button class="tab-btn active" data-tab="public">Public Issuance</button>
         <button class="tab-btn" data-tab="private">Private Issuance</button>
-        <button class="tab-btn" data-tab="stablecoin">Stablecoin Issuance</button>
+        <button class="tab-btn" data-tab="stablecoin">Stablecoin</button>
     </div>
 
     <!-- PUBLIC -->
     <div class="tab-panel active" id="tab-public">
-        <div class="phase open" data-phase>
-            <div class="phase__head" data-phase-toggle>
-                <div class="phase__num">1</div>
-                <div class="phase__info">
-                    <p class="phase__title">Issuer Registration with CNAD</p>
-                    <p class="phase__summary">Register the issuing entity. May be done simultaneously with issuance registration.</p>
+        <div class="flow">
+            <div class="flow-step open" data-step>
+                <div class="flow-step__num">1</div>
+                <div class="flow-step__head" data-step-toggle>
+                    <div>
+                        <p class="flow-step__title">Issuer Registration</p>
+                        <p class="flow-step__sub">Register the entity with CNAD. May be simultaneous with issuance.</p>
+                    </div>
+                    <div class="flow-step__toggle">▾</div>
                 </div>
-                <div class="phase__toggle">&#9662;</div>
+                <div class="flow-step__body"><div class="flow-step__content">
+                    <h5>Documents <span class="ref">Issuer Reg. Art. 4</span></h5>
+                    <ul>
+                        <li>Sworn statement (notarized) <span class="ref">Art. 4(a)</span></li>
+                        <li>Articles of incorporation, amendments, bylaws <span class="ref">Art. 4(b)</span></li>
+                        <li>Shareholders: 10%+ with ID/TIN + UBO for corporates <span class="ref">Art. 4(c)</span></li>
+                        <li>Directors: ID, TIN, credentials, <strong>CV with experience</strong> <span class="ref">Art. 4(d)</span></li>
+                        <li><strong>3-year audited financials</strong> <span class="ref">Art. 4(g)</span></li>
+                        <li>TIN, website, jurisdictions, previous issuances <span class="ref">Art. 4(h)–(k)</span></li>
+                    </ul>
+                </div></div>
             </div>
-            <div class="phase__body"><div class="phase__content">
-                <h5>Documents <span class="ref">Issuer Reg. Art. 4</span></h5>
-                <ul>
-                    <li>Sworn statement (notarized) — information true, accurate, complete <span class="ref">Art. 4(a)</span></li>
-                    <li>Articles of incorporation, amendments, bylaws <span class="ref">Art. 4(b)</span></li>
-                    <li>Shareholder list: capital participation, ID, TIN. <strong>10%+</strong> holders: ID/TIN copies. UBO for corporate shareholders <span class="ref">Art. 4(c)</span></li>
-                    <li>Directors list: ID, TIN, credentials, term, <strong>CV with professional experience</strong> <span class="ref">Art. 4(d)</span></li>
-                    <li><strong>Audited financial statements — last 3 fiscal years</strong> <span class="ref">Art. 4(g)</span></li>
-                    <li>TIN copy, website URL, jurisdictions of operations, list of previous issuances <span class="ref">Art. 4(h)–(k)</span></li>
-                </ul>
-                <div class="phase__meta">
-                    <span class="phase__deadline">Changes: report within <strong>10 bus. days</strong> <span class="ref">Art. 4</span></span>
-                </div>
-            </div></div>
-        </div>
 
-        <div class="phase" data-phase>
-            <div class="phase__head" data-phase-toggle>
-                <div class="phase__num">2</div>
-                <div class="phase__info">
-                    <p class="phase__title">Prepare RID (Relevant Information Document)</p>
-                    <p class="phase__summary">Draft the RID per Annex A — must be fair, clear, not misleading. Language depends on issuance size.</p>
+            <div class="flow-step" data-step>
+                <div class="flow-step__num">2</div>
+                <div class="flow-step__head" data-step-toggle>
+                    <div>
+                        <p class="flow-step__title">Prepare RID</p>
+                        <p class="flow-step__sub">Relevant Information Document per Annex A. Fair, clear, not misleading.</p>
+                    </div>
+                    <div class="flow-step__toggle">▾</div>
                 </div>
-                <div class="phase__toggle">&#9662;</div>
+                <div class="flow-step__body"><div class="flow-step__content">
+                    <ul>
+                        <li>&lt; $1M → <strong>Spanish</strong> only; ≥ $1M → <strong>Spanish + English</strong> <span class="ref">Art. 10</span></li>
+                        <li>Summary/Cover: issuer info, platforms, amount, trading label <span class="ref">Annex A</span></li>
+                        <li>Body: 3-year IFRS financials, 21 offering sub-items (Debt/Equity/Income), fund destination, DLT technology, risk description & management, dispute resolution, tax regime</li>
+                    </ul>
+                </div></div>
             </div>
-            <div class="phase__body"><div class="phase__content">
-                <ul>
-                    <li>Issuance &lt; $1M → RID in <strong>Spanish</strong> only <span class="ref">Issuer Reg. Art. 10</span></li>
-                    <li>Issuance ≥ $1M → RID in <strong>Spanish + English</strong> <span class="ref">Art. 10</span></li>
-                </ul>
-                <h5>RID Structure <span class="ref">Annex A</span></h5>
-                <ul>
-                    <li><strong>Summary/Cover:</strong> issuer name, address, activity, platforms, amount, trading label</li>
-                    <li><strong>Participants:</strong> issuer, intermediaries, exchanges, blockchains, auditors, legal advisors</li>
-                    <li><strong>Body:</strong> sworn statement, issuer description (3-year IFRS financials), offering characteristics (21 sub-items incl. type: Debt/Equity/Income), fund destination, technology info (DLT, consensus, fees), risk description & management, dispute resolution, tax regime</li>
-                </ul>
-            </div></div>
-        </div>
 
-        <div class="phase" data-phase>
-            <div class="phase__head" data-phase-toggle>
-                <div class="phase__num">3</div>
-                <div class="phase__info">
-                    <p class="phase__title">Certifier Evaluation → CNAD Decision</p>
-                    <p class="phase__summary">Registered certifier evaluates the RID, sends report to CNAD. CNAD decides within 5 business days.</p>
+            <div class="flow-step" data-step>
+                <div class="flow-step__num">3</div>
+                <div class="flow-step__head" data-step-toggle>
+                    <div>
+                        <p class="flow-step__title">Certifier Report & CNAD Decision</p>
+                        <p class="flow-step__sub">Certifier evaluates RID → report to CNAD → decision within 5 business days.</p>
+                    </div>
+                    <div class="flow-step__toggle">▾</div>
                 </div>
-                <div class="phase__toggle">&#9662;</div>
+                <div class="flow-step__body"><div class="flow-step__content">
+                    <ul>
+                        <li>Certifier reviews RID, issues report with risk assessment <span class="ref">Art. 14</span></li>
+                        <li>Report to CNAD within <strong>5 business days</strong> <span class="ref">Art. 15(6)</span></li>
+                        <li>CNAD decision: <strong>5 business days</strong> <span class="ref">Art. 16</span></li>
+                        <li>If incomplete: <strong>20 business days</strong> to cure <span class="ref">Art. 16</span></li>
+                        <li>Use qualification within <strong>3 months</strong> <span class="ref">Art. 17(a)</span></li>
+                        <li>If no certifiers: CNAD certifies <span class="ref">LEAD Art. 45</span></li>
+                    </ul>
+                    <h5>Issuance Documents <span class="ref">Art. 5</span></h5>
+                    <ul>
+                        <li>Sworn statement + Board certification <span class="ref">Art. 5(a)–(b)</span></li>
+                        <li>Certifier's report, platforms, contracts, smart contract addresses + audit <span class="ref">Art. 5(c)–(i)</span></li>
+                        <li>Draft RID per Annex A <span class="ref">Art. 5(j)</span></li>
+                        <li>All relevant persons' identity info <span class="ref">Art. 5(l)</span></li>
+                    </ul>
+                    <p class="tbl-note"><strong>Fee:</strong> 0.01% of offering amount + $50/certification <span class="ref">LEAD Art. 12(2)</span></p>
+                </div></div>
             </div>
-            <div class="phase__body"><div class="phase__content">
-                <ul>
-                    <li>Certifier reviews RID + supporting docs, issues favorable/unfavorable report <span class="ref">Issuer Reg. Art. 14</span></li>
-                    <li>Report: risk assessment (issuer, offering, digital asset, project, technology), financial projection review, reasoned technical opinion <span class="ref">Art. 14(d)–(f)</span></li>
-                    <li>Certifier sends report to CNAD within <strong>5 business days</strong> <span class="ref">Art. 15(6)</span></li>
-                    <li>CNAD decides within <strong>5 business days</strong> of receipt <span class="ref">Art. 16</span></li>
-                    <li>If incomplete: max <strong>20 business days</strong> to complete <span class="ref">Art. 16</span></li>
-                    <li>Issuer must use qualification within <strong>3 months</strong> or it lapses <span class="ref">Art. 17(a)</span></li>
-                    <li>If no registered certifiers: CNAD acts as certifier <span class="ref">LEAD Art. 45</span></li>
-                </ul>
-                <h5>Issuance Documents <span class="ref">Issuer Reg. Art. 5</span></h5>
-                <ul>
-                    <li>Sworn statement + Board certification authorizing issuance <span class="ref">Art. 5(a)–(b)</span></li>
-                    <li>Certifier's report <span class="ref">Art. 5(c)</span></li>
-                    <li>Digital platforms list, draft contracts, smart contract addresses + audit <span class="ref">Art. 5(f)–(i)</span></li>
-                    <li>Draft RID per Annex A <span class="ref">Art. 5(j)</span></li>
-                    <li>Collateral documentation if applicable <span class="ref">Art. 5(k)</span> <span class="ref">Annex D</span></li>
-                    <li>Full identity info of all relevant persons (advisors, dev team, service providers) <span class="ref">Art. 5(l)</span></li>
-                </ul>
-                <div class="phase__meta">
-                    <span class="phase__deadline">CNAD decision: <strong>5 bus. days</strong> <span class="ref">Art. 16</span></span>
-                    <span class="phase__deadline">Use within: <strong>3 months</strong> <span class="ref">Art. 17(a)</span></span>
-                </div>
-                <p class="note" style="margin-top:0.75rem;"><strong>Fee:</strong> 0.01% of authorized public offering amount + $50 per certification <span class="ref">LEAD Art. 12(2)</span></p>
-            </div></div>
         </div>
     </div>
 
     <!-- PRIVATE -->
     <div class="tab-panel" id="tab-private">
-        <div class="cards cards--2">
+        <div class="grid grid--2">
             <div class="card">
-                <div class="card__icon card__icon--amber">🔒</div>
+                <div class="card__icon card__icon--blue">🔒</div>
                 <h3>Private Issuance Rules</h3>
                 <ul>
-                    <li>Max <strong>50 qualified investors</strong> <span class="ref">Issuer Reg. Art. 24</span></li>
-                    <li>No mass media / public appeal <span class="ref">Art. 24</span></li>
+                    <li>Max <strong>50 qualified investors</strong> <span class="ref">Art. 24</span></li>
+                    <li>No public appeal / advertising <span class="ref">Arts. 24, 28</span></li>
                     <li>Cannot be sold in public offerings <span class="ref">Art. 24</span></li>
-                    <li>No advertising permitted <span class="ref">Art. 28</span></li>
-                    <li>Complete acquirer register reported quarterly to CNAD <span class="ref">Art. 28</span></li>
+                    <li>Quarterly acquirer register to CNAD <span class="ref">Art. 28</span></li>
                 </ul>
             </div>
             <div class="card">
-                <div class="card__icon card__icon--blue">👤</div>
+                <div class="card__icon card__icon--green">👤</div>
                 <h3>Qualified Investor</h3>
                 <ul>
-                    <li>Min. <strong>$500,000</strong> investible assets (excl. principal domicile) <span class="ref">Qualified Investors Reg.</span></li>
-                    <li>FSS-authorized institutions, international banks</li>
-                    <li>Autonomous institutions, registered DASPs, issuers</li>
+                    <li><strong>$500,000</strong> investible assets (excl. domicile) <span class="ref">Qualified Investors Reg.</span></li>
+                    <li>FSS institutions, international banks, DASPs</li>
                     <li>SPV with net worth &gt; $500,000</li>
                 </ul>
             </div>
         </div>
         <div class="callout callout--blue" style="margin-top:1rem;">
-            <h4>Documents <span class="ref">Issuer Reg. Art. 25</span></h4>
-            <p>Application with issuer info, articles of incorporation, legal representative credentials, type of digital asset, guarantees, general investor profile, detailed list of qualified investors with CDD files from DASP Compliance Office, <strong>3-year audited financials</strong>. CNAD has <strong>20 business days</strong> to communicate non-objection. Positive administrative silence if no response.</p>
+            <p><strong>Process</strong> <span class="ref">Art. 25</span>: CNAD has <strong>20 business days</strong> for non-objection. Positive administrative silence if no response. Requires 3-year audited financials and CDD files from DASP Compliance Office.</p>
         </div>
     </div>
 
     <!-- STABLECOIN -->
     <div class="tab-panel" id="tab-stablecoin">
-        <div class="cards cards--2">
+        <div class="grid grid--2">
             <div class="card">
                 <div class="card__icon card__icon--green">💵</div>
-                <h3>Stablecoin Issuer Registration</h3>
+                <h3>Issuer Registration</h3>
                 <ul>
-                    <li>Issuer name, TIN, address, legal rep, shareholders, administrators <span class="ref">Stablecoin Issuer Req.</span></li>
-                    <li>Articles of incorporation + amendments</li>
-                    <li>Shareholder list (10%+ with UBO)</li>
-                    <li>Administrator CVs with professional experience</li>
-                    <li><strong>3-year audited financials</strong> (or attestations if 3+ years market presence)</li>
+                    <li>Shareholders 10%+ with UBO <span class="ref">Stablecoin Issuer Req.</span></li>
+                    <li>Administrator CVs with experience</li>
+                    <li><strong>3-year audited financials</strong> (or attestations)</li>
                     <li>Privileged information policies <span class="ref">Stablecoin Reg. Art. 15</span></li>
                 </ul>
             </div>
             <div class="card">
                 <div class="card__icon card__icon--green">🪙</div>
-                <h3>Issuance Info <span class="ref">Stablecoin Reg. Art. 6</span></h3>
+                <h3>Issuance Info <span class="ref">Art. 6</span></h3>
                 <ul>
-                    <li>Quantity of stablecoins to be issued</li>
-                    <li>Type of international reserve asset</li>
-                    <li>Amount of asset reserves</li>
-                    <li>Creation and destruction plans/procedures</li>
-                    <li>Website URL, DLT protocols</li>
+                    <li>Quantity, reserve asset type, reserve amount</li>
+                    <li>Creation/destruction procedures</li>
+                    <li>Website, DLT protocols</li>
                 </ul>
-                <div style="margin-top:0.75rem;">
-                    <span class="phase__deadline">No Objection: <strong>5 bus. days</strong></span>
-                    <span class="phase__deadline">Cure period: <strong>15 bus. days</strong></span>
+                <div class="flow-step__tags" style="margin-top:0.75rem;">
+                    <span class="tag tag--green">No Objection: 5 bus. days</span>
+                    <span class="tag tag--amber">Cure: 15 bus. days</span>
                 </div>
             </div>
         </div>
-        <p class="note" style="margin-top:0.75rem;">Foreign stablecoins seeking admission to an El Salvador platform also require CNAD "No Objection Resolution". CNAD may object if issuance poses systemic risk. <span class="ref">Stablecoin Procedure</span></p>
+        <p class="tbl-note" style="margin-top:0.75rem;">Foreign stablecoins also need CNAD "No Objection". CNAD may object if systemic risk. <span class="ref">Stablecoin Procedure</span></p>
     </div>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- PERSONNEL                                           -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ PERSONNEL ══ -->
 <section class="section" id="personnel">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Team Structure</p>
-    <h2 class="section__title">Mandatory Personnel & Residency</h2>
-    <p class="section__desc">Key personnel required for DASP operations with qualification and residency requirements.</p>
+    <h2 class="section__title">Personnel & Residency Requirements</h2>
+    <p class="section__desc">No nationality requirements for any position. Key selling point: DASP Compliance Officers are exempt from residency.</p>
 
-    <div class="cards cards--2">
+    <div class="grid grid--2">
         <div class="card">
-            <div class="card__icon card__icon--amber">👔</div>
+            <div class="card__icon card__icon--blue">👔</div>
             <h3>Director / Legal Representative</h3>
             <ul>
-                <li>Board of Directors or Sole Administrator <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
-                <li>Credentials registered with Commercial Registry</li>
-                <li>Foreign entities: local representative via POA <span class="ref">LEAD Art. 18(d)</span></li>
+                <li>Board or Sole Administrator <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
+                <li>Credentials in Commercial Registry</li>
+                <li>Foreign: local representative via POA <span class="ref">LEAD Art. 18(d)</span></li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--amber">No explicit residency requirement</span></div>
-            <p class="note">Neither LEAD nor RPSAD require directors to be resident. No nationality requirements.</p>
+            <div style="margin-top:0.75rem"><span class="tag tag--blue">No residency required</span></div>
         </div>
 
         <div class="card">
             <div class="card__icon card__icon--green">🛡️</div>
             <h3>Principal Compliance Officer</h3>
             <ul>
-                <li>Appointed by Board <span class="ref">AML Law Art. 20</span></li>
+                <li>Board-appointed <span class="ref">AML Law Art. 20</span></li>
                 <li>AML/CFT certification <span class="ref">UIF Instr. Art. 64</span></li>
                 <li>UIF registration within 5 days <span class="ref">UIF Instr. Art. 64</span></li>
-                <li>Independence from operational areas <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                <li>Highest rank among direct reports to CEO <span class="ref">AML Law Art. 20</span></li>
+                <li>Independence, highest rank under CEO <span class="ref">AML Law Art. 20</span></li>
             </ul>
             <div style="margin-top:0.75rem"><span class="tag tag--green">No residency for DASPs</span></div>
-            <p class="note">Explicit exemption: DASP COs not required to reside in El Salvador <span class="ref">UIF Instr. Art. 84-B(2)</span>. Must have employment relationship. Other entities' COs must be resident <span class="ref">Arts. 64, 72, 80</span>.</p>
+            <p style="font-size:0.75rem;color:var(--text-3);margin-top:0.3rem;">Explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span>. Must have employment relationship.</p>
         </div>
 
         <div class="card">
             <div class="card__icon card__icon--green">🛡️</div>
             <h3>Substitute Compliance Officer</h3>
             <ul>
-                <li><strong>Mandatory</strong> — not optional <span class="ref">AML Law Art. 20</span></li>
+                <li><strong>Mandatory</strong> by law <span class="ref">AML Law Art. 20</span></li>
                 <li>Same qualifications as Principal CO</li>
-                <li>AML/CFT certification + UIF registration <span class="ref">UIF Instr. Arts. 3, 64</span></li>
-                <li>Acts in absence of Principal CO</li>
+                <li>AML/CFT cert + UIF registration <span class="ref">UIF Instr. Arts. 3, 64</span></li>
             </ul>
             <div style="margin-top:0.75rem"><span class="tag tag--green">No residency for DASPs</span></div>
-            <p class="note">Same exemption as Principal CO <span class="ref">UIF Instr. Art. 84-B(2)</span>.</p>
         </div>
 
         <div class="card">
             <div class="card__icon card__icon--blue">💻</div>
-            <h3>CISO / Information Security Officer</h3>
+            <h3>CISO</h3>
             <ul>
                 <li>Board member or manager <span class="ref">RPSAD Art. 25(a)</span></li>
+                <li>Authority, independence, direct Board access <span class="ref">RPSAD Art. 25(a)</span></li>
                 <li>Coordinates cybersecurity plan</li>
-                <li>Authority and independence in management <span class="ref">RPSAD Art. 25(a)</span></li>
-                <li><strong>Direct access to Board</strong> or President <span class="ref">RPSAD Art. 25(a)</span></li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--amber">No residency requirement</span></div>
+            <div style="margin-top:0.75rem"><span class="tag tag--blue">No residency required</span></div>
         </div>
     </div>
 
-    <div class="callout callout--amber" style="margin-top:1.25rem;">
-        <h4>Prevention Committee <span class="ref">AML Law Art. 23</span></h4>
-        <p>DASPs must constitute a Prevention Committee: at least 3 members including one Board member and the CO. Natural person DASPs may opt not to designate a CO — they personally assume all AML responsibilities <span class="ref">AML Law Art. 22</span>.</p>
+    <div class="callout callout--blue" style="margin-top:1.25rem;">
+        <p><strong>Prevention Committee</strong> <span class="ref">AML Law Art. 23</span>: DASPs must form a Prevention Committee — 3+ members including one Board member and CO. Natural persons may opt out of CO designation — they assume all AML duties personally <span class="ref">AML Law Art. 22</span>.</p>
     </div>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- COMPANY                                             -->
-<!-- ════════════════════════════════════════════════════ -->
-<section class="section section--alt" id="company">
-<div class="container">
-    <p class="section__label">Entity Formation</p>
+<!-- ══ ENTITY ══ -->
+<section class="section section--alt" id="entity">
+<div class="container fade-in">
+    <p class="section__label">Entity</p>
     <h2 class="section__title">Local Company Requirements</h2>
 
-    <div class="cards cards--3">
+    <div class="grid grid--3">
         <div class="card">
-            <div class="card__icon card__icon--amber">🏛️</div>
+            <div class="card__icon card__icon--blue">🏛️</div>
             <h3>Incorporation</h3>
             <ul>
                 <li>S.A. de C.V. or branch <span class="ref">LEAD Art. 18(d)</span></li>
-                <li>Notarized deed, registered with CNR <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                <li>Notarized deed + CNR <span class="ref">RPSAD Art. 7(b)(i)</span></li>
                 <li>NIT required <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                <li>Fiscal domicile in El Salvador <span class="ref">RPSAD Art. 7(c)</span></li>
-                <li>Virtual office acceptable initially</li>
-                <li>Min. capital $2,000 (5% at inception)</li>
+                <li>Fiscal domicile (virtual OK)</li>
+                <li>Capital: $2,000 (5% at start)</li>
             </ul>
         </div>
         <div class="card">
             <div class="card__icon card__icon--blue">🔎</div>
             <h3>UIF Registration</h3>
             <ul>
-                <li>Register entity on UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
-                <li>Register with CNAD for non-BTC assets <span class="ref">UIF Instr. Art. 84-A</span></li>
-                <li>Register with BCR if operating BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
-                <li>Provide UBO info in registration <span class="ref">UIF Instr. Art. 3(2)</span></li>
-                <li>Changes: <strong>15 bus. days</strong> <span class="ref">UIF Instr. Art. 3</span></li>
-                <li>CO changes: <strong>5 bus. days</strong> <span class="ref">AML Law Art. 9(8)</span></li>
+                <li>Entity on UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
+                <li>CNAD for non-BTC; BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
+                <li>UBO info required <span class="ref">UIF Instr. Art. 3(2)</span></li>
+                <li>Changes: 15 bus. days <span class="ref">UIF Instr. Art. 3</span></li>
             </ul>
         </div>
         <div class="card">
             <div class="card__icon card__icon--green">🏦</div>
             <h3>Banking & Accounting</h3>
             <ul>
-                <li>Local bank account required</li>
-                <li>Accounting in <strong>Spanish</strong> and <strong>USD</strong></li>
-                <li>IFRS for SMEs, accrual basis</li>
-                <li>Monthly tax submissions</li>
-                <li>Annual external audit</li>
-                <li>Records: <strong>15 years</strong> min. <span class="ref">AML Law Art. 26</span></li>
+                <li>Local bank account</li>
+                <li>Spanish + USD accounting</li>
+                <li>IFRS for SMEs, annual audit</li>
+                <li>Records: 15 years <span class="ref">AML Law Art. 26</span></li>
             </ul>
         </div>
-    </div>
-
-    <div class="callout callout--blue" style="margin-top:1.25rem;">
-        <h4>Dual Supervision</h4>
-        <p>SSF supervises DASPs operating with <strong>Bitcoin</strong>. CNAD supervises DASPs for <strong>all other digital assets</strong>. <span class="ref">AML Law Art. 12</span> <span class="ref">RPSAD Art. 46</span></p>
     </div>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- AML                                                 -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ AML ══ -->
 <section class="section" id="aml">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Compliance</p>
     <h2 class="section__title">AML & Compliance Framework</h2>
-    <p class="section__desc">Obligations under AML Law 2025, UIF Instructivo, FATF standards, and CNAD Guide for DASPs.</p>
 
-    <div class="cards cards--3">
-        <div class="card">
-            <div class="card__icon card__icon--amber">🔍</div>
-            <h3>Customer Due Diligence</h3>
-            <ul>
-                <li><strong>$1,000 threshold</strong> for occasional CDD <span class="ref">CNAD Guide §2</span></li>
-                <li>3 levels: simplified, standard, enhanced <span class="ref">AML Law Art. 15</span></li>
-                <li>Enhanced: source of wealth, senior management approval <span class="ref">UIF Instr. Art. 13</span></li>
-                <li>PEP policy required <span class="ref">RPSAD Art. 19</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="card__icon card__icon--amber">👥</div>
-            <h3>Beneficial Ownership</h3>
-            <ul>
-                <li>Identify owners ≥ <strong>25%</strong> <span class="ref">AML Law Art. 15</span></li>
-                <li>UIF stricter: ≥ <strong>10%</strong> <span class="ref">UIF Instr. Art. 20(b)</span></li>
-                <li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li>
-                <li>Trusts: all parties identified <span class="ref">UIF Instr. Art. 21</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="card__icon card__icon--red">✈️</div>
-            <h3>Travel Rule</h3>
-            <ul>
-                <li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li>
-                <li>Collect: date, type, quantity, names, DOB, addresses <span class="ref">CNAD Guide §2</span></li>
-                <li>Transaction IDs, exchange rates <span class="ref">CNAD Guide §2</span></li>
-                <li>"Under no circumstances" skip <span class="ref">CNAD Guide §2</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="card__icon card__icon--red">🚨</div>
-            <h3>Suspicious Operations</h3>
-            <ul>
-                <li>Report to UIF within <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li>
-                <li>Analysis: <strong>15 bus. days</strong> (extendable) <span class="ref">AML Law Art. 24</span></li>
-                <li>Must report <strong>attempts</strong> <span class="ref">AML Law Art. 24</span></li>
-                <li>Tipping off prohibited <span class="ref">UIF Instr. Art. 46</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="card__icon card__icon--blue">📊</div>
-            <h3>Regulated Reporting</h3>
-            <ul>
-                <li>Cash &gt; <strong>$10,000</strong> <span class="ref">UIF Instr. Art. 51</span></li>
-                <li>Other means &gt; <strong>$25,000</strong> <span class="ref">UIF Instr. Art. 51</span></li>
-                <li>Electronic transfers ≥ <strong>$1,000</strong> <span class="ref">UIF Instr. Art. 52</span></li>
-                <li>Deadline: 5 bus. days <span class="ref">UIF Instr. Art. 51</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <div class="card__icon card__icon--blue">📚</div>
-            <h3>Training & Records</h3>
-            <ul>
-                <li>Annual training, all employees <span class="ref">UIF Instr. Art. 54</span></li>
-                <li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li>
-                <li>Records: <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
-                <li>Allow transaction reconstruction <span class="ref">AML Law Art. 26</span></li>
-            </ul>
-        </div>
+    <div class="grid grid--3">
+        <div class="card"><div class="card__icon card__icon--blue">🔍</div><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
+        <div class="card"><div class="card__icon card__icon--blue">👥</div><h3>Beneficial Ownership</h3><ul><li>≥ 25% <span class="ref">AML Law Art. 15</span> / ≥ 10% <span class="ref">UIF Instr. Art. 20(b)</span></li><li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li><li>Trusts: all parties <span class="ref">UIF Instr. Art. 21</span></li></ul></div>
+        <div class="card"><div class="card__icon card__icon--red">✈️</div><h3>Travel Rule</h3><ul><li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li><li>Full sender/receiver data <span class="ref">CNAD Guide §2</span></li><li>"Under no circumstances" skip</li></ul></div>
+        <div class="card"><div class="card__icon card__icon--red">🚨</div><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">UIF Instr. Art. 46</span></li></ul></div>
+        <div class="card"><div class="card__icon card__icon--amber">📊</div><h3>Reporting Thresholds</h3><ul><li>Cash &gt; $10,000 <span class="ref">UIF Instr. Art. 51</span></li><li>Other &gt; $25,000 <span class="ref">UIF Instr. Art. 51</span></li><li>E-transfers ≥ $1,000 <span class="ref">UIF Instr. Art. 52</span></li></ul></div>
+        <div class="card"><div class="card__icon card__icon--blue">📚</div><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
     </div>
 
-    <h4 style="margin-top:2rem;margin-bottom:0.75rem;font-size:0.95rem;">Risk Classification by Activity <span class="ref">CNAD Guide §5.a</span></h4>
-    <div class="tbl-wrap">
-        <table>
-            <thead><tr><th>Activity</th><th>LEAD Art.</th><th>Risk</th></tr></thead>
-            <tbody>
-                <tr><td>Exchange digital assets for fiat/other</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
-                <tr><td>Operate exchange/trading platform</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
-                <tr><td>Transfer digital assets for third parties</td><td>19(f.1)</td><td><span class="tag tag--red">High</span></td></tr>
-                <tr><td>Custody/administration for third parties</td><td>19(f.2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-                <tr><td>Receive/transmit buy/sell orders</td><td>19(f.3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-                <tr><td>Execute orders for third parties</td><td>19(f.4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-                <tr><td>Risk/price assessment, subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-                <tr><td>Placing on platforms/wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-                <tr><td>Promote/manage investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-            </tbody>
-        </table>
-    </div>
+    <h3 class="serif" style="margin-top:2.5rem;margin-bottom:1rem;font-size:1.05rem;color:var(--navy);">Risk Classification <span class="ref">CNAD Guide §5.a</span></h3>
+    <table class="tbl">
+        <thead><tr><th>Activity</th><th>LEAD</th><th>Risk Level</th></tr></thead>
+        <tbody>
+            <tr><td>Exchange for fiat / other assets</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td>Operate exchange platform</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td>Transfer for third parties</td><td>19(f.1)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td>Custody / administration</td><td>19(f.2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td>Receive/transmit orders</td><td>19(f.3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td>Execute orders</td><td>19(f.4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td>Risk assessment, subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td>Place on platforms/wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td>Manage investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+        </tbody>
+    </table>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- CYBERSECURITY                                       -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ CYBER ══ -->
 <section class="section section--alt" id="cyber">
-<div class="container">
-    <p class="section__label">Information Security</p>
+<div class="container fade-in">
+    <p class="section__label">Security</p>
     <h2 class="section__title">Cybersecurity Requirements</h2>
-    <p class="section__desc">RPSAD Arts. 25–26: comprehensive governance, real-time monitoring, periodic testing.</p>
+    <p class="section__desc">RPSAD Arts. 25–26: governance, real-time monitoring, mandatory testing.</p>
 
-    <div class="cards cards--3">
-        <div class="card"><h4>Governance <span class="ref">Art. 25(a)</span></h4><p>Internal cyber risk procedures. Internal assessments + external audits. CISO with authority, independence, direct Board access.</p></div>
-        <div class="card"><h4>Identification <span class="ref">Art. 25(b)</span></h4><p>Safeguard mechanisms. Identify weaknesses. Protect: order management, custody, info dissemination, acquirer data.</p></div>
-        <div class="card"><h4>Protection <span class="ref">Art. 25(c)</span></h4><p>SOC, antivirus, intrusion prevention. Acquirer info protection. Internal threat detection. Employee access controls. Training.</p></div>
-        <div class="card"><h4>Detection <span class="ref">Art. 25(d)</span></h4><p>Continuous real-time monitoring. External/internal risk factors. Multi-level security and access controls.</p></div>
-        <div class="card"><h4>Response & Recovery <span class="ref">Art. 25(d)(vi)</span></h4><p>Resume critical processes: <strong>6 hours</strong>. Settle transactions: <strong>24 hours</strong>. Contingency plan for orderly cessation if unrecoverable.</p></div>
-        <div class="card"><h4>Testing <span class="ref">Art. 26</span></h4><p>External cybersecurity auditor. 3 scenarios: confidentiality, availability, integrity breach. Vulnerability assessment + intrusion testing.</p></div>
+    <div class="grid grid--3">
+        <div class="card"><h3>Governance <span class="ref">Art. 25(a)</span></h3><p>Internal procedures, external audits. CISO with authority and independence.</p></div>
+        <div class="card"><h3>Identification <span class="ref">Art. 25(b)</span></h3><p>Safeguard mechanisms. Protect order management, custody, acquirer data systems.</p></div>
+        <div class="card"><h3>Protection <span class="ref">Art. 25(c)</span></h3><p>SOC, IPS, access controls. Internal threat detection. Employee training.</p></div>
+        <div class="card"><h3>Detection <span class="ref">Art. 25(d)</span></h3><p>Continuous real-time monitoring. Multi-level security controls.</p></div>
+        <div class="card"><h3>Recovery <span class="ref">Art. 25(d)(vi)</span></h3><p>Critical processes: <strong>6 hours</strong>. Transaction settlement: <strong>24 hours</strong>.</p></div>
+        <div class="card"><h3>Testing <span class="ref">Art. 26</span></h3><p>External auditor. 3 scenarios: confidentiality, availability, integrity.</p></div>
     </div>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- TAX BENEFITS                                        -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ TAX ══ -->
 <section class="section" id="tax">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Incentives</p>
     <h2 class="section__title">Tax Benefits <span class="ref">LEAD Art. 36</span></h2>
-    <p class="section__desc">Registered DASPs, issuers, and acquirers enjoy comprehensive tax exemptions on digital asset activities.</p>
 
-    <div class="benefit-grid">
-        <div class="benefit"><strong>0% Income Tax</strong><p>All yields and income from digital assets exempt. <span class="ref">Art. 36(b)(c)</span></p></div>
-        <div class="benefit"><strong>0% Capital Gains</strong><p>Purchase, sale, or any transfer exempt from all taxation. <span class="ref">Art. 36(b)</span></p></div>
-        <div class="benefit"><strong>0% VAT (IVA)</strong><p>Exempt from IVA. No withholding obligations. <span class="ref">Art. 36(c)</span></p></div>
-        <div class="benefit"><strong>0% Municipal Tax</strong><p>Exempt from all municipal taxes on digital asset activities. <span class="ref">Art. 36(c)</span></p></div>
-        <div class="benefit"><strong>Shareholder Pass-Through</strong><p>Benefits apply to partners/shareholders individually. <span class="ref">Art. 36(d)</span></p></div>
-        <div class="benefit"><strong>Activation</strong><p>From provisional registration date. CNAD notifies MoF within 3 days. <span class="ref">RPSAD Art. 11</span></p></div>
+    <div class="benefits">
+        <div class="benefit"><span class="benefit__val">0%</span><span class="benefit__label">Income Tax <span class="ref">Art. 36(b)(c)</span></span></div>
+        <div class="benefit"><span class="benefit__val">0%</span><span class="benefit__label">Capital Gains <span class="ref">Art. 36(b)</span></span></div>
+        <div class="benefit"><span class="benefit__val">0%</span><span class="benefit__label">VAT (IVA) <span class="ref">Art. 36(c)</span></span></div>
+        <div class="benefit"><span class="benefit__val">0%</span><span class="benefit__label">Municipal Tax <span class="ref">Art. 36(c)</span></span></div>
+        <div class="benefit"><span class="benefit__val">✓</span><span class="benefit__label">Shareholder Pass-Through <span class="ref">Art. 36(d)</span></span></div>
+        <div class="benefit"><span class="benefit__val">Day 1</span><span class="benefit__label">From Registration <span class="ref">RPSAD Art. 11</span></span></div>
     </div>
-    <div class="callout callout--red" style="margin-top:1rem;">
-        <h4>Exception <span class="ref">LEAD Art. 36(e)</span></h4>
-        <p>Benefits do NOT apply to exchange of digital assets for goods/services outside Art. 19 of LEAD. Non-payment of annual renewal = automatic loss of all tax benefits <span class="ref">RPSAD Art. 12</span>.</p>
+    <div class="callout callout--amber" style="margin-top:1rem;">
+        <p><strong>Exception</strong> <span class="ref">Art. 36(e)</span>: Does not apply to exchange for goods/services outside Art. 19. Non-renewal = automatic loss of benefits <span class="ref">RPSAD Art. 12</span>.</p>
     </div>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- COSTS                                               -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ COSTS ══ -->
 <section class="section section--alt" id="costs">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Budget</p>
     <h2 class="section__title">Costs & Service Pricing</h2>
-    <p class="section__desc">Market rates as of Q1 2026 based on multiple service providers. All prices in USD.</p>
+    <p class="section__desc">Market rates Q1 2026, based on multiple international and local service providers.</p>
+
+    <!-- ═══ SECTION A: À LA CARTE ═══ -->
+    <h3 class="serif" style="font-size:1.15rem;color:var(--navy);margin-bottom:1.5rem;">A. À la carte — individual services</h3>
 
     <!-- 1. Company Formation -->
-    <div class="price-cat">
-        <div class="price-cat__head">
-            <div class="price-cat__icon">🏛️</div>
-            <div class="price-cat__title">1. Company Formation</div>
-            <div class="price-cat__range">$6,000 – $8,000</div>
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">1. Company Formation</span>
+            <span class="price-section__range">$6,000 – $8,000</span>
         </div>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Included</th><th>Details</th></tr></thead>
-                <tbody>
-                    <tr><td>S.A. de C.V. incorporation</td><td>Notarized deed, Commercial Registry, NIT, business license</td></tr>
-                    <tr><td>Share capital deposit</td><td>$2,000 minimum (5% = $100 at inception)</td></tr>
-                    <tr><td>Registered address</td><td>Fiscal domicile for 1 year (virtual office acceptable)</td></tr>
-                    <tr><td>Government fees</td><td>Registration $11–125, business license $125, balance sheet $17</td></tr>
-                    <tr><td>Timeline</td><td>2–4 weeks</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="note">Range reflects different service providers. Lower end = basic incorporation; upper end = includes notary, seal, apostille, and first-year address.</p>
+        <table class="tbl">
+            <thead><tr><th>Included</th><th>Details</th></tr></thead>
+            <tbody>
+                <tr><td>S.A. de C.V. incorporation</td><td>Notarized deed, Registry, NIT, business license</td></tr>
+                <tr><td>Share capital</td><td>$2,000 minimum (5% = $100 at inception)</td></tr>
+                <tr><td>Registered address (1 year)</td><td>Virtual office acceptable for CNAD</td></tr>
+                <tr><td>Government fees</td><td>$150–$300 total (registration, license, balance sheet)</td></tr>
+            </tbody>
+        </table>
+        <p class="tbl-note">Timeline: 2–4 weeks. Upper range includes notary, seal, apostille.</p>
     </div>
 
     <!-- 2. Compliance Department -->
-    <div class="price-cat">
-        <div class="price-cat__head">
-            <div class="price-cat__icon">🛡️</div>
-            <div class="price-cat__title">2. Compliance Department</div>
-            <div class="price-cat__range">$700 – $2,000 /mo</div>
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">2. Compliance Department</span>
+            <span class="price-section__range">$700 – $2,000 /mo</span>
         </div>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Included</th><th>Details</th></tr></thead>
-                <tbody>
-                    <tr><td>Principal Compliance Officer (nominal)</td><td>AML/CFT certified, UIF-registered</td></tr>
-                    <tr><td>Substitute Compliance Officer (nominal)</td><td>Mandatory by law, same certifications</td></tr>
-                    <tr><td>UIF / FIU registration</td><td>~$2,000 one-time (may be included or separate)</td></tr>
-                    <tr><td>AML policy update / maintenance</td><td>$460 – $2,000 per update</td></tr>
-                    <tr><td>Annual CO work plan & training plan</td><td>Typically included in monthly retainer</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="note">Lower end: annual packages (~$700/yr for AML approvals only). Upper end: full monthly retainer including nominal COs with employment contracts, no direct employment obligations for the client. The 3-person structure (CO + substitute + local agent) covers all CNAD mandatory requirements.</p>
+        <table class="tbl">
+            <thead><tr><th>Included</th><th>Details</th></tr></thead>
+            <tbody>
+                <tr><td>Principal Compliance Officer (nominal)</td><td>AML/CFT certified, UIF-registered</td></tr>
+                <tr><td>Substitute Compliance Officer (nominal)</td><td>Mandatory by law, same certifications</td></tr>
+                <tr><td>UIF / FIU registration</td><td>~$2,000 one-time (often separate)</td></tr>
+                <tr><td>AML policy updates</td><td>$460 – $2,000 per update</td></tr>
+            </tbody>
+        </table>
+        <p class="tbl-note">Lower end: annual packages. Upper end: full monthly retainer with nominal COs.</p>
     </div>
 
     <!-- 3. Local Representation -->
-    <div class="price-cat">
-        <div class="price-cat__head">
-            <div class="price-cat__icon">⚖️</div>
-            <div class="price-cat__title">3. Local Representation</div>
-            <div class="price-cat__range">$300 – $1,500 /mo</div>
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">3. Local Representation</span>
+            <span class="price-section__range">$300 – $1,500 /mo</span>
         </div>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Service</th><th>Range</th></tr></thead>
-                <tbody>
-                    <tr><td>Legal representative + fiscal address only</td><td class="price">$300 – $600 /mo</td></tr>
-                    <tr><td>Full Legal-as-a-Service (legal + accounting + tax domicile)</td><td class="price">$1,200 – $1,700 /mo</td></tr>
-                    <tr><td>Ongoing legal support (hourly)</td><td class="price">$80 – $200 /hr</td></tr>
-                    <tr><td>Local bank account opening</td><td class="price">$1,000 – $3,300 (one-time)</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="note">Full LaaS typically includes: legal representation, tax domicile, corporate obligations, regulatory advisory, contract drafting, accounting (up to ~100 invoices/mo), tax submissions, annual audit, and notarial services.</p>
+        <table class="tbl">
+            <thead><tr><th>Service</th><th>Range</th></tr></thead>
+            <tbody>
+                <tr><td>Legal representative + fiscal address</td><td class="price">$300 – $600 /mo</td></tr>
+                <tr><td>Full Legal-as-a-Service (legal + accounting + domicile)</td><td class="price">$1,200 – $1,700 /mo</td></tr>
+                <tr><td>Ongoing legal support (hourly)</td><td class="price">$80 – $250 /hr</td></tr>
+                <tr><td>Bank account opening</td><td class="price">$1,000 – $3,300 one-time</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <!-- 4. CNAD Registration Support -->
-    <div class="price-cat">
-        <div class="price-cat__head">
-            <div class="price-cat__icon">📋</div>
-            <div class="price-cat__title">4. CNAD Registration Support</div>
-            <div class="price-cat__range">$12,000 – $37,000</div>
+    <!-- 4. CNAD Registration Support (à la carte) -->
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">4. CNAD Registration Support</span>
+            <span class="price-section__range">$8,000 – $20,000</span>
         </div>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Package Level</th><th>Range</th><th>Typically Includes</th></tr></thead>
-                <tbody>
-                    <tr><td>Basic (BSP only or light DASP)</td><td class="price">$12,000 – $16,000</td><td>Company formation, standard AML/KYC, BSP registration, local agent</td></tr>
-                    <tr><td>Standard (full DASP)</td><td class="price">$25,000 – $30,000</td><td>+ Personalized AML/KYC, compliance officers (4 mo), DASP license, internal procedures, gov fees included</td></tr>
-                    <tr><td>Premium (fully operational)</td><td class="price">$35,000 – $48,000</td><td>+ Business plan review, FIU registration, bank account (local + EU), accounting, all docs apostilled</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="note">These are all-inclusive packages from international service providers. Includes preparation of full document package, regulator liaison, and typically 4 months of compliance officer employment during the licensing process.</p>
+        <table class="tbl">
+            <thead><tr><th>Service</th><th>Range</th></tr></thead>
+            <tbody>
+                <tr><td>Document preparation (~30 docs: AML/KYC/BCP/cybersecurity policies)</td><td class="price">$5,000 – $12,000</td></tr>
+                <tr><td>3-year Business Plan drafting</td><td class="price">$2,000 – $5,000</td></tr>
+                <tr><td>CNAD liaison & application management</td><td class="price">$1,500 – $3,000</td></tr>
+                <tr><td>Corrections & supplementary submissions (per round)</td><td class="price">$500 – $1,500</td></tr>
+            </tbody>
+        </table>
+        <p class="tbl-note">Standalone advisory — does not include company formation, COs, or local representation (priced separately above).</p>
     </div>
 
     <!-- 5. Government Fees -->
-    <div class="price-cat">
-        <div class="price-cat__head">
-            <div class="price-cat__icon">🏛️</div>
-            <div class="price-cat__title">5. Government / CNAD Fees</div>
-            <div class="price-cat__range"><span class="ref">LEAD Art. 12</span></div>
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">5. Government / CNAD Fees</span>
+            <span class="price-section__range"><span class="ref">LEAD Art. 12</span></span>
         </div>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Fee</th><th>Amount</th><th>Frequency</th></tr></thead>
-                <tbody>
-                    <tr><td>DASP initial registration (15 min. salaries)</td><td class="price">$5,475 – $6,270</td><td>One-time</td></tr>
-                    <tr><td>Annual renewal (10 min. salaries)</td><td class="price">$3,650 – $4,050</td><td>Annual, Q1</td></tr>
-                    <tr><td>Additional registration certificate</td><td class="price">$50</td><td>Per certificate</td></tr>
-                    <tr><td>Issuer — public offering authorization</td><td class="price">0.01% of offering</td><td>Per issuance</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <p class="note">Fee amounts are pegged to minimum monthly salaries (commerce/services sector) and adjust with wage changes. Range reflects current to near-term rates.</p>
+        <table class="tbl">
+            <thead><tr><th>Fee</th><th>Amount</th><th>Frequency</th></tr></thead>
+            <tbody>
+                <tr><td>DASP registration (15 min. salaries)</td><td class="price">$6,132</td><td>One-time</td></tr>
+                <tr><td>Annual renewal (10 min. salaries)</td><td class="price">$4,088</td><td>Annual, Q1</td></tr>
+                <tr><td>Additional certificate</td><td class="price">$50</td><td>Per copy</td></tr>
+                <tr><td>Issuer — public offering</td><td class="price">0.01% of offering</td><td>Per issuance</td></tr>
+            </tbody>
+        </table>
+        <p class="tbl-note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%). Previously $365/mo.</p>
     </div>
 
-    <!-- Annual Maintenance -->
-    <div style="margin-top:1.5rem;">
-        <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Annual Maintenance Budget</h4>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Category</th><th>Budget Range</th></tr></thead>
-                <tbody>
-                    <tr><td>DASP license renewal (gov fee)</td><td class="price">$3,650 – $4,050 /yr</td></tr>
-                    <tr><td>Compliance department</td><td class="price">$8,400 – $24,000 /yr</td></tr>
-                    <tr><td>Legal representation</td><td class="price">$3,600 – $18,000 /yr</td></tr>
-                    <tr><td>Accounting + audit</td><td class="price">$2,000 – $5,000 /yr</td></tr>
-                    <tr><td>Fiscal address</td><td class="price">$300 – $1,200 /yr</td></tr>
-                    <tr class="total"><td><strong>Total Annual</strong></td><td class="price"><strong>$18,000 – $52,000 /yr</strong></td></tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- ═══ SECTION B: BUNDLED PACKAGES ═══ -->
+    <div style="margin-top:3rem;padding-top:2rem;border-top:2px solid var(--border);">
+        <h3 class="serif" style="font-size:1.15rem;color:var(--navy);margin-bottom:0.5rem;">B. Bundled packages — all-inclusive</h3>
+        <p class="section__desc">Turnkey solutions from international providers. Each package includes all services needed for that tier — no need to combine with à la carte pricing above.</p>
 
-        <h4 style="font-size:1rem;font-weight:700;margin:1.5rem 0 0.75rem;">Total First-Year Budget (Licensing + Operations)</h4>
-        <div class="tbl-wrap">
-            <table>
-                <thead><tr><th>Scenario</th><th>Estimated Total</th></tr></thead>
-                <tbody>
-                    <tr><td>Budget (basic support, minimal services)</td><td class="price">$25,000 – $35,000</td></tr>
-                    <tr><td>Standard (full DASP with compliance)</td><td class="price">$45,000 – $65,000</td></tr>
-                    <tr><td>Premium (fully operational, all-inclusive)</td><td class="price">$70,000 – $100,000</td></tr>
-                </tbody>
-            </table>
+        <div class="grid grid--3">
+            <div class="card" style="border-top:3px solid var(--border);">
+                <h3>Basic</h3>
+                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);margin:0.5rem 0;">$12,000 – $16,000</p>
+                <ul>
+                    <li>Company incorporation (S.A. de C.V.)</li>
+                    <li>Standard AML/KYC policies</li>
+                    <li>BSP registration</li>
+                    <li>Government fees included</li>
+                </ul>
+                <p style="font-size:0.72rem;color:var(--text-3);margin-top:0.75rem;">COs and local representation not included — client provides own or adds à la carte.</p>
+            </div>
+            <div class="card" style="border-top:3px solid var(--accent);">
+                <h3>Standard</h3>
+                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--accent);margin:0.5rem 0;">$25,000 – $30,000</p>
+                <ul>
+                    <li>Everything in Basic</li>
+                    <li>Custom AML/KYC/BCP policies</li>
+                    <li>CO employment (4 months)</li>
+                    <li>Full DASP license application</li>
+                    <li>CNAD liaison & corrections</li>
+                </ul>
+            </div>
+            <div class="card" style="border-top:3px solid var(--emerald);">
+                <h3>Premium</h3>
+                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--emerald);margin:0.5rem 0;">$35,000 – $48,000</p>
+                <ul>
+                    <li>Everything in Standard</li>
+                    <li>3-year Business Plan</li>
+                    <li>UIF/FIU registration</li>
+                    <li>Bank account opening</li>
+                    <li>Accounting setup</li>
+                    <li>Apostille & notarization</li>
+                </ul>
+            </div>
         </div>
+        <p class="tbl-note">Packages typically include 4 months of CO employment during the licensing phase. Annual maintenance (COs, local rep, accounting) billed separately after registration.</p>
     </div>
+
+    <!-- Summary -->
+    <h3 class="serif" style="margin:2.5rem 0 0.75rem;font-size:1.05rem;color:var(--navy);">Total Budget Summary (first year + ongoing)</h3>
+    <table class="tbl">
+        <thead><tr><th>Scenario</th><th>First Year (incl. registration)</th><th>Annual Maintenance</th></tr></thead>
+        <tbody>
+            <tr><td>À la carte, minimal setup</td><td class="price">$25,000 – $40,000</td><td class="price">$15,000 – $25,000</td></tr>
+            <tr><td>Bundled Standard</td><td class="price">$45,000 – $55,000</td><td class="price">$20,000 – $35,000</td></tr>
+            <tr><td>Bundled Premium</td><td class="price">$60,000 – $80,000</td><td class="price">$30,000 – $45,000</td></tr>
+        </tbody>
+    </table>
+    <p class="tbl-note">Annual maintenance includes: CO retainer, local representation, accounting, annual CNAD renewal ($4,088), quarterly reporting support.</p>
 </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════ -->
-<!-- SANCTIONS                                           -->
-<!-- ════════════════════════════════════════════════════ -->
+<!-- ══ SANCTIONS ══ -->
 <section class="section" id="sanctions">
-<div class="container">
+<div class="container fade-in">
     <p class="section__label">Enforcement</p>
     <h2 class="section__title">Sanctions & Penalties</h2>
 
-    <h4 style="margin-bottom:0.75rem;">CNAD Sanctions <span class="ref">LEAD Art. 38</span></h4>
-    <div class="tbl-wrap">
-        <table>
-            <thead><tr><th>Level</th><th>Examples</th><th>Penalty</th></tr></thead>
-            <tbody>
-                <tr><td><span class="tag tag--amber">Minor</span></td><td>Failure to register; omitting info; conduct standard breach</td><td class="price">Up to 114 min. salaries</td></tr>
-                <tr><td><span class="tag tag--red">Moderate</span></td><td>Trading unenabled assets; market manipulation; refusing CNAD</td><td class="price">115–305 min. salaries</td></tr>
-                <tr><td><span class="tag tag--red">Serious</span></td><td>Material non-compliance with RID</td><td class="price">306–1,200 min. salaries</td></tr>
-                <tr><td><span class="tag tag--red">Issuer</span></td><td>Unauthorized issuance; concealing material info</td><td class="price">Up to 1% of offering</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="tbl">
+        <thead><tr><th>Level</th><th>Examples</th><th>CNAD Penalty <span class="ref">LEAD Art. 38</span></th></tr></thead>
+        <tbody>
+            <tr><td><span class="tag tag--amber">Minor</span></td><td>Failure to register, omitting info</td><td class="price">Up to 114 min. salaries</td></tr>
+            <tr><td><span class="tag tag--red">Moderate</span></td><td>Trading unenabled assets, market manipulation</td><td class="price">115–305 min. salaries</td></tr>
+            <tr><td><span class="tag tag--red">Serious</span></td><td>Material RID non-compliance</td><td class="price">306–1,200 min. salaries</td></tr>
+            <tr><td><span class="tag tag--red">Issuer</span></td><td>Unauthorized issuance, concealing info</td><td class="price">Up to 1% of offering</td></tr>
+        </tbody>
+    </table>
 
-    <h4 style="margin:1.5rem 0 0.75rem;">AML Sanctions <span class="ref">AML Law Arts. 34–35</span></h4>
-    <div class="tbl-wrap">
-        <table>
-            <thead><tr><th>Level</th><th>Legal Persons</th><th>Natural Persons</th><th>Officers</th></tr></thead>
-            <tbody>
-                <tr><td><span class="tag tag--amber">Grave</span></td><td class="price">50–500 min. salaries</td><td class="price">Up to 200</td><td>Up to 100 + disqualification 5 yrs</td></tr>
-                <tr><td><span class="tag tag--red">Very Grave</span></td><td class="price">501–1,000 min. salaries</td><td class="price">201–400</td><td>101–200 + disqualification 10 yrs</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="tbl" style="margin-top:1rem;">
+        <thead><tr><th>AML Level <span class="ref">AML Law Arts. 34–35</span></th><th>Legal Persons</th><th>Natural Persons</th><th>Officers</th></tr></thead>
+        <tbody>
+            <tr><td><span class="tag tag--amber">Grave</span></td><td class="price">50–500 min. salaries</td><td class="price">Up to 200</td><td>Up to 100 + disqualification 5 yr</td></tr>
+            <tr><td><span class="tag tag--red">Very Grave</span></td><td class="price">501–1,000</td><td class="price">201–400</td><td>101–200 + disqualification 10 yr</td></tr>
+        </tbody>
+    </table>
 
-    <div class="cards cards--3" style="margin-top:1.25rem;">
-        <div class="card" style="border-left:3px solid var(--red);"><h4 style="color:var(--red)">Late Payment</h4><p>20% surcharge if not paid within 5 bus. days <span class="ref">Art. 38(b)</span></p></div>
-        <div class="card" style="border-left:3px solid var(--red);"><h4 style="color:var(--red)">Recidivism</h4><p>50% increase, no mitigation <span class="ref">Art. 40</span></p></div>
-        <div class="card" style="border-left:3px solid var(--green);"><h4 style="color:var(--green)">Early Remedy</h4><p>75% reduction if fixed within 5 days <span class="ref">Art. 40</span></p></div>
+    <div class="grid grid--3" style="margin-top:1.25rem;">
+        <div class="card" style="border-left:3px solid var(--red);"><h3 style="color:var(--red);">Late Payment</h3><p>20% surcharge if unpaid within 5 days <span class="ref">Art. 38(b)</span></p></div>
+        <div class="card" style="border-left:3px solid var(--red);"><h3 style="color:var(--red);">Recidivism</h3><p>50% increase, no mitigation <span class="ref">Art. 40</span></p></div>
+        <div class="card" style="border-left:3px solid var(--emerald);"><h3 style="color:var(--emerald);">Early Remedy</h3><p>75% reduction if fixed within 5 days <span class="ref">Art. 40</span></p></div>
     </div>
 </div>
 </section>
 
-<!-- ════ FOOTER ════ -->
+<!-- ══ FOOTER ══ -->
 <footer class="footer">
     <p><strong>El Salvador DASP & Issuer Registration Framework</strong></p>
-    <p>LEAD (Decree 643, 2023) · RPSAD (CNAD-035-2023) · Issuer Reg. (CNAD-017-2023) · AML Law 2025 (Decreto 426) · UIF Instructivo · CNAD AML Guide</p>
-    <p style="margin-top:0.6rem;">Regulator: <a href="https://cnad.gob.sv/" target="_blank">CNAD — cnad.gob.sv</a> · +503 2224 0942 · <a href="mailto:[email protected]">[email protected]</a></p>
-    <p style="margin-top:1rem;font-size:0.7rem;">For informational purposes only. Does not constitute legal advice. Last updated: April 2026.</p>
+    <p>LEAD (Decree 643) · RPSAD (CNAD-035-2023) · Issuer Reg. (CNAD-017-2023) · AML Law 2025 · UIF Instructivo · CNAD AML Guide</p>
+    <p style="margin-top:0.5rem;">Regulator: <a href="https://cnad.gob.sv/" target="_blank">CNAD — cnad.gob.sv</a> · +503 2224 0942 · <a href="mailto:[email protected]">[email protected]</a></p>
+    <p style="margin-top:0.75rem;">Prepared by <strong>SBLC Law Firm</strong> · <a href="mailto:[email protected]">[email protected]</a></p>
+    <p style="margin-top:0.5rem;font-size:0.65rem;opacity:0.6;">For informational purposes only. Not legal advice. April 2026.</p>
 </footer>
 
 <script>
-document.querySelectorAll('[data-phase-toggle]').forEach(b=>b.addEventListener('click',()=>b.closest('[data-phase]').classList.toggle('open')));
-document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{const g=b.closest('.tabs').parentElement;g.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));g.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');g.querySelector('#tab-'+b.dataset.tab).classList.add('active')}));
-document.querySelectorAll('.topnav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}));
-const secs=document.querySelectorAll('.section[id]'),links=document.querySelectorAll('.topnav a');
-new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-80px 0px -60%'}).observe&&secs.forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-80px 0px -60%'}).observe(s));
+// Accordion toggles
+document.querySelectorAll('[data-step-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.closest('[data-step]').classList.toggle('open');
+    });
+});
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const parent = btn.closest('.tabs').parentElement;
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        parent.querySelector('#tab-' + btn.dataset.tab).classList.add('active');
+    });
+});
+
+// Smooth scroll nav
+document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Active nav on scroll
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+        }
+    });
+}, { rootMargin: '-80px 0px -60%' });
+sections.forEach(s => observer.observe(s));
+
+// Fade-in on scroll
+const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 </script>
 </body>
 </html>
