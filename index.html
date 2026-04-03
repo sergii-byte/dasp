@@ -435,7 +435,8 @@
     <div class="nav__inner">
         <span class="nav__brand">SBLC</span>
         <a href="#dasp">DASP Flow</a>
-        <a href="#issuer">Issuer Flow</a>
+        <a href="#activities">Activities</a>
+        <a href="#legislation">Legislation</a>
         <a href="#personnel">Personnel</a>
         <a href="#entity">Entity</a>
         <a href="#aml">AML</a>
@@ -728,6 +729,22 @@
 
     </div><!-- /flow -->
 
+    <!-- TOTAL TIMELINE SUMMARY -->
+    <div style="margin-top:2rem; padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:10px;">
+        <h3 class="serif" style="font-size:1.05rem;color:var(--navy);margin-bottom:1rem;">Total Timeline: 8–12 months</h3>
+        <table class="tbl" style="margin-bottom:0;">
+            <thead><tr><th>Phase</th><th>Steps</th><th>Duration</th><th>Cumulative</th></tr></thead>
+            <tbody>
+                <tr><td>Entity + Personnel</td><td>1–2 (parallel)</td><td class="price">4–6 wk</td><td>Month 1–2</td></tr>
+                <tr><td>Pre-Registration + CNAD response</td><td>3</td><td class="price">20 bd (~4 wk)</td><td>Month 2–3</td></tr>
+                <tr><td>Documentation preparation</td><td>4</td><td class="price">8–16 wk</td><td>Month 3–6</td></tr>
+                <tr><td>CNAD Review (2–3 rounds × 30 bd)</td><td>5–6</td><td class="price">12–18 wk</td><td>Month 6–10</td></tr>
+                <tr><td>Payment & registration</td><td>7</td><td class="price">10+3 bd (~3 wk)</td><td>Month 10–12</td></tr>
+            </tbody>
+        </table>
+        <p class="tbl-note" style="margin-bottom:0;">Each CNAD review round = 20 bd (regulator) + 10 bd (applicant) ≈ 6 calendar weeks. Document preparation (Step 4) can partially overlap with Steps 1–3. Real-world case: ~11 months from incorporation to registration.</p>
+    </div>
+
     <div class="callout callout--amber" style="margin-top:1.5rem;">
         <p><strong>Note on cure periods:</strong> LEAD Art. 20 grants <strong>5 business days</strong> to cure; RPSAD Art. 8 grants <strong>10 working days</strong>. RPSAD is the more recent and specific regulation — in practice, 10 days applies. CNAD may also request additional info before the 20-day deadline expires, specifying a custom term <span class="ref">RPSAD Art. 8</span>. Any term can be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
     </div>
@@ -738,151 +755,72 @@
 </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
-<!--  ISSUER REGISTRATION FLOW                 -->
-<!-- ══════════════════════════════════════════ -->
-<section class="section section--alt" id="issuer">
+<!-- ══ DASP ACTIVITIES ══ -->
+<section class="section section--alt" id="activities">
 <div class="container fade-in">
-    <p class="section__label">Track 2</p>
-    <h2 class="section__title">Issuer Registration Flow</h2>
-    <p class="section__desc">Separate track for entities issuing digital assets. LEAD Arts.&nbsp;22–32 and Issuer Regulation (CNAD-017-2023).</p>
+    <p class="section__label">Scope</p>
+    <h2 class="section__title">DASP Activities Under LEAD</h2>
+    <p class="section__desc">Article 19 defines which activities require DASP registration. Each carries its own AML risk classification.</p>
 
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="public">Public Issuance</button>
-        <button class="tab-btn" data-tab="private">Private Issuance</button>
-        <button class="tab-btn" data-tab="stablecoin">Stablecoin</button>
+    <table class="tbl">
+        <thead><tr><th>Activity</th><th>LEAD Art.</th><th>AML Risk <span class="ref">CNAD Guide §5.a</span></th></tr></thead>
+        <tbody>
+            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Exchange platform</strong> — operate a matching/trading venue</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Transfer</strong> — transfer digital assets for third parties</td><td>19(f.1)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Custody & administration</strong> — hold/manage digital assets on behalf of clients</td><td>19(f.2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order reception/transmission</strong> — receive and transmit client orders</td><td>19(f.3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order execution</strong> — execute orders on behalf of clients</td><td>19(f.4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Risk assessment & subscriptions</strong> — evaluate risks, manage subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td><strong>Investment management</strong> — manage digital asset investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout--blue" style="margin-top:1rem;">
+        <p><strong>Important:</strong> A single DASP can register for multiple activities. The AML risk classification of the <strong>highest-risk activity</strong> determines the overall compliance burden. Activities not listed in Art. 19 do not require DASP registration.</p>
     </div>
+</div>
+</section>
 
-    <!-- PUBLIC -->
-    <div class="tab-panel active" id="tab-public">
-        <div class="flow">
-            <div class="flow-step open" data-step>
-                <div class="flow-step__num">1</div>
-                <div class="flow-step__head" data-step-toggle>
-                    <div>
-                        <p class="flow-step__title">Issuer Registration</p>
-                        <p class="flow-step__sub">Register the entity with CNAD. May be simultaneous with issuance.</p>
-                    </div>
-                    <div class="flow-step__toggle">▾</div>
-                </div>
-                <div class="flow-step__body"><div class="flow-step__content">
-                    <h5>Documents <span class="ref">Issuer Reg. Art. 4</span></h5>
-                    <ul>
-                        <li>Sworn statement (notarized) <span class="ref">Art. 4(a)</span></li>
-                        <li>Articles of incorporation, amendments, bylaws <span class="ref">Art. 4(b)</span></li>
-                        <li>Shareholders: 10%+ with ID/TIN + UBO for corporates <span class="ref">Art. 4(c)</span></li>
-                        <li>Directors: ID, TIN, credentials, <strong>CV with experience</strong> <span class="ref">Art. 4(d)</span></li>
-                        <li><strong>3-year audited financials</strong> <span class="ref">Art. 4(g)</span></li>
-                        <li>TIN, website, jurisdictions, previous issuances <span class="ref">Art. 4(h)–(k)</span></li>
-                    </ul>
-                </div></div>
-            </div>
+<!-- ══ APPLICABLE LEGISLATION ══ -->
+<section class="section" id="legislation">
+<div class="container fade-in">
+    <p class="section__label">Legal Framework</p>
+    <h2 class="section__title">Applicable Legislation</h2>
+    <p class="section__desc">The regulatory framework consists of one primary law, five implementing regulations, and two supervisory guidelines.</p>
 
-            <div class="flow-step" data-step>
-                <div class="flow-step__num">2</div>
-                <div class="flow-step__head" data-step-toggle>
-                    <div>
-                        <p class="flow-step__title">Prepare RID</p>
-                        <p class="flow-step__sub">Relevant Information Document per Annex A. Fair, clear, not misleading.</p>
-                    </div>
-                    <div class="flow-step__toggle">▾</div>
-                </div>
-                <div class="flow-step__body"><div class="flow-step__content">
-                    <ul>
-                        <li>&lt; $1M → <strong>Spanish</strong> only; ≥ $1M → <strong>Spanish + English</strong> <span class="ref">Art. 10</span></li>
-                        <li>Summary/Cover: issuer info, platforms, amount, trading label <span class="ref">Annex A</span></li>
-                        <li>Body: 3-year IFRS financials, 21 offering sub-items (Debt/Equity/Income), fund destination, DLT technology, risk description & management, dispute resolution, tax regime</li>
-                    </ul>
-                </div></div>
-            </div>
-
-            <div class="flow-step" data-step>
-                <div class="flow-step__num">3</div>
-                <div class="flow-step__head" data-step-toggle>
-                    <div>
-                        <p class="flow-step__title">Certifier Report & CNAD Decision</p>
-                        <p class="flow-step__sub">Certifier evaluates RID → report to CNAD → decision within 5 business days.</p>
-                    </div>
-                    <div class="flow-step__toggle">▾</div>
-                </div>
-                <div class="flow-step__body"><div class="flow-step__content">
-                    <ul>
-                        <li>Certifier reviews RID, issues report with risk assessment <span class="ref">Art. 14</span></li>
-                        <li>Report to CNAD within <strong>5 business days</strong> <span class="ref">Art. 15(6)</span></li>
-                        <li>CNAD decision: <strong>5 business days</strong> <span class="ref">Art. 16</span></li>
-                        <li>If incomplete: <strong>20 business days</strong> to cure <span class="ref">Art. 16</span></li>
-                        <li>Use qualification within <strong>3 months</strong> <span class="ref">Art. 17(a)</span></li>
-                        <li>If no certifiers: CNAD certifies <span class="ref">LEAD Art. 45</span></li>
-                    </ul>
-                    <h5>Issuance Documents <span class="ref">Art. 5</span></h5>
-                    <ul>
-                        <li>Sworn statement + Board certification <span class="ref">Art. 5(a)–(b)</span></li>
-                        <li>Certifier's report, platforms, contracts, smart contract addresses + audit <span class="ref">Art. 5(c)–(i)</span></li>
-                        <li>Draft RID per Annex A <span class="ref">Art. 5(j)</span></li>
-                        <li>All relevant persons' identity info <span class="ref">Art. 5(l)</span></li>
-                    </ul>
-                    <p class="tbl-note"><strong>Fee:</strong> 0.01% of offering amount + $50/certification <span class="ref">LEAD Art. 12(2)</span></p>
-                </div></div>
-            </div>
+    <div class="grid grid--2">
+        <div class="card" style="border-left:3px solid var(--navy);">
+            <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
+            <p>Decreto No. 643, 2023. Primary law governing digital asset service providers, issuers, and certifiers. Establishes CNAD authority, registration requirements, tax benefits, and sanctions framework.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--blue">Primary Law</span></div>
         </div>
-    </div>
-
-    <!-- PRIVATE -->
-    <div class="tab-panel" id="tab-private">
-        <div class="grid grid--2">
-            <div class="card">
-                <div class="card__icon card__icon--blue">🔒</div>
-                <h3>Private Issuance Rules</h3>
-                <ul>
-                    <li>Max <strong>50 qualified investors</strong> <span class="ref">Art. 24</span></li>
-                    <li>No public appeal / advertising <span class="ref">Arts. 24, 28</span></li>
-                    <li>Cannot be sold in public offerings <span class="ref">Art. 24</span></li>
-                    <li>Quarterly acquirer register to CNAD <span class="ref">Art. 28</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card__icon card__icon--green">👤</div>
-                <h3>Qualified Investor</h3>
-                <ul>
-                    <li><strong>$500,000</strong> investible assets (excl. domicile) <span class="ref">Qualified Investors Reg.</span></li>
-                    <li>FSS institutions, international banks, DASPs</li>
-                    <li>SPV with net worth &gt; $500,000</li>
-                </ul>
-            </div>
+        <div class="card" style="border-left:3px solid var(--accent);">
+            <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
+            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service, and operational rules. 48 articles.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--blue">DASP Regulation</span></div>
         </div>
-        <div class="callout callout--blue" style="margin-top:1rem;">
-            <p><strong>Process</strong> <span class="ref">Art. 25</span>: CNAD has <strong>20 business days</strong> for non-objection. Positive administrative silence if no response. Requires 3-year audited financials and CDD files from DASP Compliance Office.</p>
+        <div class="card" style="border-left:3px solid var(--emerald);">
+            <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
+            <p>Decreto No. 426, 2025. Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements, sanctions.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--green">AML/CFT</span></div>
         </div>
-    </div>
-
-    <!-- STABLECOIN -->
-    <div class="tab-panel" id="tab-stablecoin">
-        <div class="grid grid--2">
-            <div class="card">
-                <div class="card__icon card__icon--green">💵</div>
-                <h3>Issuer Registration</h3>
-                <ul>
-                    <li>Shareholders 10%+ with UBO <span class="ref">Stablecoin Issuer Req.</span></li>
-                    <li>Administrator CVs with experience</li>
-                    <li><strong>3-year audited financials</strong> (or attestations)</li>
-                    <li>Privileged information policies <span class="ref">Stablecoin Reg. Art. 15</span></li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card__icon card__icon--green">🪙</div>
-                <h3>Issuance Info <span class="ref">Art. 6</span></h3>
-                <ul>
-                    <li>Quantity, reserve asset type, reserve amount</li>
-                    <li>Creation/destruction procedures</li>
-                    <li>Website, DLT protocols</li>
-                </ul>
-                <div class="flow-step__tags" style="margin-top:0.75rem;">
-                    <span class="tag tag--green">No Objection: 5 bus. days</span>
-                    <span class="tag tag--amber">Cure: 15 bus. days</span>
-                </div>
-            </div>
+        <div class="card" style="border-left:3px solid var(--emerald);">
+            <h3>UIF Instructivo</h3>
+            <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--green">UIF Guidelines</span></div>
         </div>
-        <p class="tbl-note" style="margin-top:0.75rem;">Foreign stablecoins also need CNAD "No Objection". CNAD may object if systemic risk. <span class="ref">Stablecoin Procedure</span></p>
+        <div class="card" style="border-left:3px solid var(--amber);">
+            <h3>CNAD AML Guide for DASPs</h3>
+            <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--amber">Compliance Guide</span></div>
+        </div>
+        <div class="card" style="border-left:3px solid var(--text-3);">
+            <h3>Issuer & Stablecoin Regulations</h3>
+            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public/private issuances, RID requirements, certifier process, stablecoin reserve rules. Separate registration track from DASP.</p>
+            <div style="margin-top:0.5rem;"><span class="tag tag--blue">Issuance Framework</span></div>
+        </div>
     </div>
 </div>
 </section>
@@ -980,7 +918,7 @@
             <div class="card__icon card__icon--green">🏦</div>
             <h3>Banking & Accounting</h3>
             <ul>
-                <li>Local bank account</li>
+                <li>Local bank account (operational only — local banks do not support international crypto activity)</li>
                 <li>Spanish + USD accounting</li>
                 <li>IFRS for SMEs, annual audit</li>
                 <li>Records: 15 years <span class="ref">AML Law Art. 26</span></li>
@@ -1005,21 +943,7 @@
         <div class="card"><div class="card__icon card__icon--blue">📚</div><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
     </div>
 
-    <h3 class="serif" style="margin-top:2.5rem;margin-bottom:1rem;font-size:1.05rem;color:var(--navy);">Risk Classification <span class="ref">CNAD Guide §5.a</span></h3>
-    <table class="tbl">
-        <thead><tr><th>Activity</th><th>LEAD</th><th>Risk Level</th></tr></thead>
-        <tbody>
-            <tr><td>Exchange for fiat / other assets</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td>Operate exchange platform</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td>Transfer for third parties</td><td>19(f.1)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td>Custody / administration</td><td>19(f.2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td>Receive/transmit orders</td><td>19(f.3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td>Execute orders</td><td>19(f.4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td>Risk assessment, subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-            <tr><td>Place on platforms/wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-            <tr><td>Manage investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-        </tbody>
-    </table>
+    <p class="tbl-note" style="margin-top:1.5rem;">See <a href="#activities" style="color:var(--accent);">DASP Activities</a> section for full AML risk classification per activity type.</p>
 </div>
 </section>
 
