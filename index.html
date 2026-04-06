@@ -451,8 +451,8 @@
 <section class="hero">
     <div class="hero__inner">
         <div class="hero__label">🇸🇻 El Salvador · Digital Assets Framework</div>
-        <h1>DASP & Issuer<br>Registration Guide</h1>
-        <p class="hero__desc">A practitioner's guide to obtaining Digital Asset Service Provider registration and token issuance authorization under the LEAD (Decree No.&nbsp;643, 2023). Based on hands-on experience navigating the CNAD process.</p>
+        <h1>DASP Registration<br>Guide</h1>
+        <p class="hero__desc">A practitioner's guide to obtaining Digital Asset Service Provider registration under the LEAD (Decree No.&nbsp;643, 2023). Based on hands-on experience navigating the CNAD process.</p>
         <div class="metrics">
             <div class="metric"><span class="metric__val">$6,132</span><span class="metric__label">Registration Fee</span></div>
             <div class="metric"><span class="metric__val">0%</span><span class="metric__label">Tax Rate</span></div>
@@ -469,123 +469,153 @@
 <div class="container fade-in">
     <p class="section__label">Track 1</p>
     <h2 class="section__title">DASP Registration Flow</h2>
-    <p class="section__desc">Two-phase process administered by CNAD. Estimated <strong>8–12 months</strong> end-to-end. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>. Expect 2–3 rounds of corrections.</p>
+    <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
 
-    <div class="gantt">
-        <div class="gantt__seg" style="flex:4;background:#1d4ed8;">Entity + Personnel<br>4–6 wk</div>
-        <div class="gantt__seg" style="flex:4;background:#3b82f6;">Pre-Reg + CNAD Response<br>4–6 wk (20 bd)</div>
-        <div class="gantt__seg" style="flex:8;background:#0f172a;">Docs & Policies<br>8–16 wk</div>
-        <div class="gantt__seg" style="flex:12;background:#059669;">CNAD Review × 2–3 rounds<br>12–18 wk (20+10 bd/round)</div>
-        <div class="gantt__seg" style="flex:2;background:#10b981;">Payment<br>10 bd</div>
+    <!-- UNIFIED TIMELINE: gantt + total duration -->
+    <div style="background:var(--navy);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem;color:#fff;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-family:'Instrument Serif',serif;font-size:1.15rem;">Total: 8–12 months</span>
+            <span style="font-size:0.7rem;opacity:0.6;">Real-world case: ~11 months from incorporation to registration</span>
+        </div>
+        <div class="gantt" style="border:none;margin-bottom:0.75rem;">
+            <div class="gantt__seg" style="flex:5;background:#3b82f6;">Preparation<br><small>Entity + Personnel + Pre-Reg</small><br>Mo 1–3</div>
+            <div class="gantt__seg" style="flex:8;background:#1d4ed8;">Documentation<br><small>~30 docs preparation</small><br>Mo 3–6</div>
+            <div class="gantt__seg" style="flex:12;background:#059669;">CNAD Review<br><small>2–3 rounds × (20+10 bd)</small><br>Mo 6–10</div>
+            <div class="gantt__seg" style="flex:3;background:#10b981;">Final<br><small>Payment + Registration</small><br>Mo 10–12</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;font-size:0.68rem;opacity:0.7;">
+            <div>Steps 0–4 · 4–10 wk</div>
+            <div>Step 5 · 8–16 wk</div>
+            <div>Steps 6–8 · 12–18 wk</div>
+            <div>Steps 9–10 · 10+3 bd</div>
+        </div>
     </div>
-    <p class="tbl-note">1 round = 20 bd (CNAD review) + 10 bd (applicant cure) ≈ 6 weeks. Significant changes add +5 bd each <span class="ref">RPSAD Art. 9</span>. Extensions up to 50% of established term <span class="ref">RPSAD Art. 44</span>.</p>
 
     <div class="flow">
 
-        <!-- Step 1 -->
+        <!-- ═══ PREPARATION (before CNAD) ═══ -->
         <div class="flow-step open" data-step>
-            <div class="flow-step__num">1</div>
+            <div class="flow-step__num">0</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
-                    <p class="flow-step__title">Entity Formation & Incorporation</p>
-                    <p class="flow-step__sub">Incorporate S.A. de C.V. or register a branch. Min. share capital $2,000.</p>
+                    <p class="flow-step__phase">Preparation — Before CNAD</p>
+                    <p class="flow-step__title">Entity Formation & Personnel Onboarding</p>
+                    <p class="flow-step__sub">Incorporate S.A. de C.V., appoint COs and CISO, register with UIF. Done in parallel.</p>
                 </div>
-                <span class="flow-step__duration">2–4 wk (parallel with Step 2)</span>
+                <span class="flow-step__duration">4–6 wk</span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
-                <h5>Legal Requirements</h5>
+                <h5>Entity</h5>
                 <ul>
-                    <li>Natural persons: DUI or resident card, domicile in El Salvador <span class="ref">LEAD Art. 18(c)</span></li>
-                    <li>Foreign entities: corporation or branch <strong>domiciled in El Salvador</strong>, registered with CNR <span class="ref">LEAD Art. 18(d)</span></li>
-                    <li>Obtain Tax Identification Number (NIT) <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                    <li>Register Board / Sole Administrator with Commercial Registry <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
+                    <li>S.A. de C.V. or foreign branch domiciled in El Salvador <span class="ref">LEAD Art. 18(d)</span></li>
+                    <li>Notarized deed + CNR registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                    <li>NIT, Board credentials, company registration certificate <span class="ref">RPSAD Art. 7(b)(ii)–(d)</span></li>
+                    <li>Share capital: $2,000 minimum (5% at inception) </li>
                 </ul>
-                <h5>Documents</h5>
+                <h5>Personnel</h5>
                 <ul>
-                    <li>Notarized public deed of incorporation <span class="ref">RPSAD Art. 7(b)(i)</span></li>
-                    <li>Board of Directors credentials or general POA <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
-                    <li>NIT card copy <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                    <li>Company registration certificate <span class="ref">RPSAD Art. 7(d)</span></li>
+                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">AML Law Art. 20</span> <span class="ref">UIF Instr. Art. 64</span></li>
+                    <li><strong>Substitute Compliance Officer</strong> — mandatory <span class="ref">AML Law Art. 20</span></li>
+                    <li><strong>No residency requirement for DASP COs</strong> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
+                    <li><strong>CISO</strong> — Board member/manager with authority <span class="ref">RPSAD Art. 25(a)</span></li>
+                    <li>UIF registration within 5 days from appointment <span class="ref">UIF Instr. Art. 64</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">CO residency exempt</span>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ PRE-REGISTRATION PHASE (CNAD stages 1–4) ═══ -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">1</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Pre-Registration — Stage 1</p>
+                    <p class="flow-step__title">Pre-Registration Form Submission</p>
+                    <p class="flow-step__sub">Complete the CNAD pre-registration form with applicant details and desired operating area.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Complete CNAD electronic pre-registration form <span class="ref">CNAD Procedure</span></li>
+                    <li>Applicant details, operating area, services description <span class="ref">LEAD Art. 18</span></li>
+                    <li>List of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
+                    <li>Documentation of service capacity <span class="ref">RPSAD Art. 7(g)</span></li>
                 </ul>
             </div></div>
         </div>
 
-        <!-- Step 2 -->
         <div class="flow-step" data-step>
             <div class="flow-step__num">2</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
-                    <p class="flow-step__title">Mandatory Personnel Onboarding</p>
-                    <p class="flow-step__sub">Appoint COs and CISO. Register with UIF before application.</p>
+                    <p class="flow-step__phase">Pre-Registration — Stage 2</p>
+                    <p class="flow-step__title">CNAD Initial Evaluation</p>
+                    <p class="flow-step__sub">Commission analyzes submitted information, may request additional documentation.</p>
                 </div>
-                <span class="flow-step__duration">2–4 wk (parallel with Step 1)</span>
+                <span class="flow-step__duration">20 bd</span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
-                <h5>Required Appointments</h5>
                 <ul>
-                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">LEAD Art. 21</span> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                    <li><strong>Substitute Compliance Officer</strong> — mandatory, same qualifications <span class="ref">AML Law Art. 20</span></li>
-                    <li><strong>CISO</strong> — Board member/manager with authority and direct Board access <span class="ref">RPSAD Art. 25(a)</span></li>
+                    <li>CNAD evaluates application completeness <span class="ref">RPSAD Art. 8</span></li>
+                    <li>May request additional documentation from applicant</li>
+                    <li>Applicant has <strong>10 business days</strong> to provide missing items <span class="ref">RPSAD Art. 8</span></li>
                 </ul>
-                <h5>CO Qualifications</h5>
-                <ul>
-                    <li>AML/CFT/FPADM training + regulatory framework knowledge <span class="ref">UIF Instr. Art. 72</span></li>
-                    <li>Experience in the entity's economic activity <span class="ref">UIF Instr. Art. 72(2)</span></li>
-                    <li><strong>No residency requirement for DASP COs</strong> — explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                    <li>Must maintain employment relationship with entity <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                </ul>
-                <h5>Documents</h5>
-                <ul>
-                    <li>Board resolution appointing COs <span class="ref">AML Law Art. 20</span></li>
-                    <li>AML/CFT certifications <span class="ref">UIF Instr. Art. 64</span></li>
-                    <li>UIF registration confirmation <span class="ref">UIF Instr. Art. 3</span></li>
-                    <li>Org chart showing CO independence <span class="ref">RPSAD Art. 7(e)</span></li>
-                </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--green">CO residency exempt</span>
-                    <span class="tag tag--blue">UIF reg: 5 days from appointment</span>
-                </div>
             </div></div>
         </div>
 
-        <!-- Step 3 -->
         <div class="flow-step" data-step>
             <div class="flow-step__num">3</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Phase 1 — Pre-Registration</p>
-                    <p class="flow-step__title">Pre-Registration & First Presentation</p>
-                    <p class="flow-step__sub">Submit form to CNAD, present the product. CNAD issues "Objection" or "No Objection".</p>
+                    <p class="flow-step__phase">Pre-Registration — Stage 3</p>
+                    <p class="flow-step__title">Additional Information Submission</p>
+                    <p class="flow-step__sub">Applicant provides any requested supplementary materials.</p>
                 </div>
-                <span class="flow-step__duration">20 bd CNAD response</span>
+                <span class="flow-step__duration">10 bd</span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
                 <ul>
-                    <li>Complete CNAD pre-registration form (electronic) <span class="ref">CNAD Procedure</span></li>
-                    <li>Applicant details, operating area, services description <span class="ref">LEAD Art. 18</span></li>
-                    <li>CNAD reviews territorial/material competence <span class="ref">LEAD Arts. 2–4</span></li>
-                    <li>List of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
-                    <li>Documentation of service capacity <span class="ref">RPSAD Art. 7(g)</span></li>
+                    <li>Submit supplementary materials as requested by CNAD</li>
+                    <li>Deadline: <strong>10 business days</strong> from CNAD request <span class="ref">RPSAD Art. 8</span></li>
+                    <li>Failure to respond → unfavorable resolution; may resubmit <span class="ref">LEAD Art. 20</span></li>
                 </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--green">No Objection = proceed to Phase 2</span>
-                    <span class="tag tag--blue">CNAD response: 20 bd</span>
-                    <span class="tag tag--amber">If incomplete: 10 bd to cure</span>
-                </div>
             </div></div>
         </div>
 
-        <!-- Step 4 -->
         <div class="flow-step" data-step>
             <div class="flow-step__num">4</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
+                    <p class="flow-step__phase">Pre-Registration — Stage 4</p>
+                    <p class="flow-step__title">CNAD Decision: Objection / No Objection</p>
+                    <p class="flow-step__sub">CNAD issues reasoned decision. No Objection = specifies registration requirements and process.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li><strong>No Objection</strong>: CNAD specifies registration requirements and process → proceed to Phase 2</li>
+                    <li><strong>Objection</strong>: based on lack of territorial/material competence <span class="ref">LEAD Arts. 2–4</span></li>
+                    <li>CNAD considers market needs and applicant reputation <span class="ref">RPSAD Art. 8</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">No Objection = proceed to Definitive Registration</span>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ DEFINITIVE REGISTRATION PHASE (CNAD stages 1–6) ═══ -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">5</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Definitive Registration — Stage 1</p>
                     <p class="flow-step__title">Full Documentation Package</p>
                     <p class="flow-step__sub">Prepare and submit ~30 documents per LEAD Art. 20 and RPSAD Arts. 7, 17–35. The most time-intensive phase.</p>
                 </div>
@@ -620,14 +650,14 @@
                 <h5>E. Risk & Continuity</h5>
                 <ul>
                     <li>Risk factors and management cycle <span class="ref">RPSAD Art. 21</span></li>
-                    <li>Business Continuity Plan <span class="ref">LEAD Art. 21(p)</span></li>
+                    <li>Business Continuity Plan <span class="ref">CNAD Procedure §8</span></li>
                     <li>Contingency Plan <span class="ref">RPSAD Art. 25(d)(vii)</span></li>
                 </ul>
                 <h5>F. Security & Custody</h5>
                 <ul>
                     <li>Asset custody policy, fund segregation <span class="ref">LEAD Art. 21(j)</span></li>
                     <li>Cybersecurity policies, ICT remediation plan <span class="ref">RPSAD Arts. 25–26</span></li>
-                    <li>Geofencing implementation <span class="ref">RPSAD Art. 20</span></li>
+                    <li>Geofencing implementation <span class="ref">CNAD Procedure §9</span></li>
                 </ul>
                 <h5>G. Operations</h5>
                 <ul>
@@ -635,88 +665,91 @@
                     <li>Internal/external audit framework <span class="ref">LEAD Art. 21</span></li>
                 </ul>
                 <div class="flow-step__tags">
-                    <span class="tag tag--amber">Digital + physical copies</span>
+                    <span class="tag tag--amber">Digital + physical copies at CNAD offices</span>
                 </div>
             </div></div>
         </div>
 
-        <!-- Step 5 -->
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">5</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
-                    <p class="flow-step__title">Technical Presentation</p>
-                    <p class="flow-step__sub">Detailed platform walkthrough for CNAD — architecture, security, custody, KYC integration.</p>
-                </div>
-                <span class="flow-step__duration">during CNAD review</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Platform architecture and DLT protocols <span class="ref">RPSAD Art. 20</span></li>
-                    <li>Settlement accuracy, electronic ledger, monitoring <span class="ref">RPSAD Art. 20(a)–(d)</span></li>
-                    <li>Security measures, penetration testing <span class="ref">RPSAD Art. 26</span></li>
-                    <li>KYC/KYB technical integration <span class="ref">RPSAD Art. 19</span></li>
-                    <li>Custody solutions, asset segregation <span class="ref">LEAD Art. 21(j)</span></li>
-                    <li>Geofencing enforcement <span class="ref">RPSAD Art. 20</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <!-- Step 6 -->
         <div class="flow-step" data-step>
             <div class="flow-step__num">6</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Phase 2 — Definitive Registration</p>
-                    <p class="flow-step__title">CNAD Review, Corrections & Final Meeting</p>
-                    <p class="flow-step__sub">Each round: 20 bd (CNAD) + 10 bd (applicant). Expect 2–3 rounds of feedback and supplementary submissions.</p>
+                    <p class="flow-step__phase">Definitive Registration — Stage 2</p>
+                    <p class="flow-step__title">Application Evaluation</p>
+                    <p class="flow-step__sub">CNAD reviews within 20 bd. If incomplete — 10 bd to cure. Expect 2–3 rounds.</p>
                 </div>
-                <span class="flow-step__duration">12–18 wk (2–3 rounds)</span>
+                <span class="flow-step__duration">20 bd per round</span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
                 <ul>
                     <li>CNAD review: <strong>20 business days</strong> <span class="ref">RPSAD Art. 8</span> <span class="ref">LEAD Art. 20</span></li>
-                    <li>Cure period if incomplete: <strong>10 business days</strong> <span class="ref">RPSAD Art. 8</span></li>
-                    <li>Additional info requests before deadline, CNAD specifies term <span class="ref">RPSAD Art. 8</span></li>
-                    <li>CNAD considers market needs and applicant reputation <span class="ref">RPSAD Art. 8</span></li>
+                    <li>If incomplete: applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span></li>
                     <li>Each significant change: <strong>+5 business days</strong> <span class="ref">RPSAD Art. 9</span></li>
+                    <li>CNAD may extend any term by up to 50% <span class="ref">RPSAD Art. 44</span></li>
+                    <li>Technical presentation during review: platform, DLT, security, KYC <span class="ref">CNAD Procedure</span></li>
                     <li>Final meeting: CNAD verifies CDD, Travel Rule, PEPs, UBO, training <span class="ref">CNAD Guide §6.b</span></li>
                 </ul>
                 <div class="callout callout--amber" style="margin-top:0.75rem;">
-                    <p><strong>Timeline math:</strong> 1 round = 20 bd (CNAD review) + 10 bd (applicant cure) ≈ 6 calendar weeks. With 2–3 rounds: <strong>12–18 weeks</strong>. Significant changes add +5 bd each <span class="ref">RPSAD Art. 9</span>. CNAD may extend any term by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
-                </div>
-                <div class="flow-step__tags" style="margin-top:0.5rem;">
-                    <span class="tag tag--blue">Per round: 20 bd CNAD</span>
-                    <span class="tag tag--amber">Per round: 10 bd applicant</span>
-                    <span class="tag tag--amber">Per change: +5 bd</span>
-                    <span class="tag tag--blue">Extension: up to +50%</span>
+                    <p><strong>Timeline math:</strong> 1 round = 20 bd (CNAD) + 10 bd (applicant) ≈ 6 calendar weeks. With 2–3 rounds: <strong>12–18 weeks</strong>.</p>
                 </div>
             </div></div>
         </div>
 
-        <!-- Step 7 -->
         <div class="flow-step" data-step>
             <div class="flow-step__num">7</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Completion</p>
-                    <p class="flow-step__title">Payment, Registration & Tax Benefits</p>
-                    <p class="flow-step__sub">Pay fee, receive registration number, activate full tax exemptions.</p>
+                    <p class="flow-step__phase">Definitive Registration — Stage 3</p>
+                    <p class="flow-step__title">Favorable / Unfavorable Resolution</p>
+                    <p class="flow-step__sub">CNAD issues final decision. Unfavorable = may resubmit. Favorable = proceed to payment.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li><strong>Favorable</strong>: proceed to payment within 10 bd <span class="ref">RPSAD Art. 10</span></li>
+                    <li><strong>Unfavorable</strong>: may resubmit request <span class="ref">LEAD Art. 20</span></li>
+                    <li>Registration fee: <strong>$6,132</strong> (15 × $408.80) <span class="ref">LEAD Art. 12(1)(a)</span></li>
+                    <li>If not paid in time → <strong>not considered registered</strong> <span class="ref">RPSAD Art. 10</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">8</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Definitive Registration — Stage 4</p>
+                    <p class="flow-step__title">Registration Seat & Authorization</p>
+                    <p class="flow-step__sub">CNAD issues registration certificate and authorization to operate.</p>
                 </div>
                 <span class="flow-step__duration">10 bd payment + 3 bd CNAD→MoF</span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
                 <ul>
-                    <li>Registration fee: <strong>$6,132</strong> (15 × $408.80 min. salary) within <strong>10 business days</strong> from favorable resolution notification <span class="ref">RPSAD Art. 10</span> <span class="ref">LEAD Art. 12(1)(a)</span></li>
-                    <li>If not paid in time → <strong>not considered registered</strong> <span class="ref">RPSAD Art. 10</span></li>
                     <li>Definitive registration number assigned after payment verification <span class="ref">RPSAD Art. 11</span></li>
-                    <li>CNAD → Ministry of Finance within <strong>3 business days</strong> after payment verification <span class="ref">RPSAD Art. 11</span></li>
-                    <li>Tax exemption qualification issued <span class="ref">RPSAD Art. 11</span></li>
+                    <li>CNAD → Ministry of Finance within <strong>3 business days</strong> <span class="ref">RPSAD Art. 11</span></li>
                     <li>Code of Ethics: <strong>6 months</strong> from registration <span class="ref">RPSAD Art. 18</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">9</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Definitive Registration — Stage 5</p>
+                    <p class="flow-step__title">Tax Benefits Activation</p>
+                    <p class="flow-step__sub">Tax exemptions under Art. 36 LEAD effective from provisional registration number notification.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Tax exemption qualification issued by Ministry of Finance <span class="ref">RPSAD Art. 11</span></li>
+                    <li>Benefits apply from date of <strong>provisional registration number</strong> notification <span class="ref">RPSAD Art. 11</span></li>
                 </ul>
                 <div class="flow-step__tags">
                     <span class="tag tag--green">0% Income Tax</span>
@@ -727,23 +760,25 @@
             </div></div>
         </div>
 
-    </div><!-- /flow -->
+        <div class="flow-step" data-step>
+            <div class="flow-step__num">10</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Definitive Registration — Stage 6</p>
+                    <p class="flow-step__title">UIF Notification</p>
+                    <p class="flow-step__sub">CNAD notifies the Financial Investigation Unit of the new DASP registration.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Commission notifies UIF of new registered DASP <span class="ref">CNAD Procedure</span></li>
+                    <li>DASP now subject to ongoing UIF supervision and reporting obligations</li>
+                </ul>
+            </div></div>
+        </div>
 
-    <!-- TOTAL TIMELINE SUMMARY -->
-    <div style="margin-top:2rem; padding:1.5rem; background:var(--bg); border:1px solid var(--border); border-radius:10px;">
-        <h3 class="serif" style="font-size:1.05rem;color:var(--navy);margin-bottom:1rem;">Total Timeline: 8–12 months</h3>
-        <table class="tbl" style="margin-bottom:0;">
-            <thead><tr><th>Phase</th><th>Steps</th><th>Duration</th><th>Cumulative</th></tr></thead>
-            <tbody>
-                <tr><td>Entity + Personnel</td><td>1–2 (parallel)</td><td class="price">4–6 wk</td><td>Month 1–2</td></tr>
-                <tr><td>Pre-Registration + CNAD response</td><td>3</td><td class="price">20 bd (~4 wk)</td><td>Month 2–3</td></tr>
-                <tr><td>Documentation preparation</td><td>4</td><td class="price">8–16 wk</td><td>Month 3–6</td></tr>
-                <tr><td>CNAD Review (2–3 rounds × 30 bd)</td><td>5–6</td><td class="price">12–18 wk</td><td>Month 6–10</td></tr>
-                <tr><td>Payment & registration</td><td>7</td><td class="price">10+3 bd (~3 wk)</td><td>Month 10–12</td></tr>
-            </tbody>
-        </table>
-        <p class="tbl-note" style="margin-bottom:0;">Each CNAD review round = 20 bd (regulator) + 10 bd (applicant) ≈ 6 calendar weeks. Document preparation (Step 4) can partially overlap with Steps 1–3. Real-world case: ~11 months from incorporation to registration.</p>
-    </div>
+    </div><!-- /flow -->
 
     <div class="callout callout--amber" style="margin-top:1.5rem;">
         <p><strong>Note on cure periods:</strong> LEAD Art. 20 grants <strong>5 business days</strong> to cure; RPSAD Art. 8 grants <strong>10 working days</strong>. RPSAD is the more recent and specific regulation — in practice, 10 days applies. CNAD may also request additional info before the 20-day deadline expires, specifying a custom term <span class="ref">RPSAD Art. 8</span>. Any term can be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
@@ -788,7 +823,7 @@
 <div class="container fade-in">
     <p class="section__label">Legal Framework</p>
     <h2 class="section__title">Applicable Legislation</h2>
-    <p class="section__desc">The regulatory framework consists of one primary law, five implementing regulations, and two supervisory guidelines.</p>
+    <p class="section__desc">The regulatory framework consists of a primary law, DASP-specific regulations, AML legislation, and supervisory guidelines.</p>
 
     <div class="grid grid--2">
         <div class="card" style="border-left:3px solid var(--navy);">
@@ -938,7 +973,7 @@
         <div class="card"><div class="card__icon card__icon--blue">🔍</div><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
         <div class="card"><div class="card__icon card__icon--blue">👥</div><h3>Beneficial Ownership</h3><ul><li>≥ 25% <span class="ref">AML Law Art. 15</span> / ≥ 10% <span class="ref">UIF Instr. Art. 20(b)</span></li><li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li><li>Trusts: all parties <span class="ref">UIF Instr. Art. 21</span></li></ul></div>
         <div class="card"><div class="card__icon card__icon--red">✈️</div><h3>Travel Rule</h3><ul><li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li><li>Full sender/receiver data <span class="ref">CNAD Guide §2</span></li><li>"Under no circumstances" skip</li></ul></div>
-        <div class="card"><div class="card__icon card__icon--red">🚨</div><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">UIF Instr. Art. 46</span></li></ul></div>
+        <div class="card"><div class="card__icon card__icon--red">🚨</div><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">LCLDA Art. 17</span></li></ul></div>
         <div class="card"><div class="card__icon card__icon--amber">📊</div><h3>Reporting Thresholds</h3><ul><li>Cash &gt; $10,000 <span class="ref">UIF Instr. Art. 51</span></li><li>Other &gt; $25,000 <span class="ref">UIF Instr. Art. 51</span></li><li>E-transfers ≥ $1,000 <span class="ref">UIF Instr. Art. 52</span></li></ul></div>
         <div class="card"><div class="card__icon card__icon--blue">📚</div><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
     </div>
@@ -989,87 +1024,68 @@
 <section class="section section--alt" id="costs">
 <div class="container fade-in">
     <p class="section__label">Budget</p>
-    <h2 class="section__title">Costs & Service Pricing</h2>
-    <p class="section__desc">Market rates Q1 2026, based on multiple international and local service providers.</p>
+    <h2 class="section__title">Cost Structure</h2>
+    <p class="section__desc">Market rates Q1 2026. Ranges based on proposals from local and international service providers in El Salvador.</p>
 
-    <!-- ═══ SECTION A: À LA CARTE ═══ -->
-    <h3 class="serif" style="font-size:1.15rem;color:var(--navy);margin-bottom:1.5rem;">A. À la carte — individual services</h3>
-
-    <!-- 1. Company Formation -->
+    <!-- ═══ ONE-TIME SETUP ═══ -->
     <div class="price-section">
         <div class="price-section__head">
-            <span class="price-section__title">1. Company Formation</span>
-            <span class="price-section__range">$6,000 – $8,000</span>
+            <span class="price-section__title">One-Time Setup Costs</span>
         </div>
         <table class="tbl">
-            <thead><tr><th>Included</th><th>Details</th></tr></thead>
+            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
             <tbody>
-                <tr><td>S.A. de C.V. incorporation</td><td>Notarized deed, Registry, NIT, business license</td></tr>
-                <tr><td>Share capital</td><td>$2,000 minimum (5% = $100 at inception)</td></tr>
-                <tr><td>Registered address (1 year)</td><td>Virtual office acceptable for CNAD</td></tr>
-                <tr><td>Government fees</td><td>$150–$300 total (registration, license, balance sheet)</td></tr>
-            </tbody>
-        </table>
-        <p class="tbl-note">Timeline: 2–4 weeks. Upper range includes notary, seal, apostille.</p>
-    </div>
-
-    <!-- 2. Compliance Department -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">2. Compliance Department</span>
-            <span class="price-section__range">$700 – $2,000 /mo</span>
-        </div>
-        <table class="tbl">
-            <thead><tr><th>Included</th><th>Details</th></tr></thead>
-            <tbody>
-                <tr><td>Principal Compliance Officer (nominal)</td><td>AML/CFT certified, UIF-registered</td></tr>
-                <tr><td>Substitute Compliance Officer (nominal)</td><td>Mandatory by law, same certifications</td></tr>
-                <tr><td>UIF / FIU registration</td><td>~$2,000 one-time (often separate)</td></tr>
-                <tr><td>AML policy updates</td><td>$460 – $2,000 per update</td></tr>
-            </tbody>
-        </table>
-        <p class="tbl-note">Lower end: annual packages. Upper end: full monthly retainer with nominal COs.</p>
-    </div>
-
-    <!-- 3. Local Representation -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">3. Local Representation</span>
-            <span class="price-section__range">$300 – $1,500 /mo</span>
-        </div>
-        <table class="tbl">
-            <thead><tr><th>Service</th><th>Range</th></tr></thead>
-            <tbody>
-                <tr><td>Legal representative + fiscal address</td><td class="price">$300 – $600 /mo</td></tr>
-                <tr><td>Full Legal-as-a-Service (legal + accounting + domicile)</td><td class="price">$1,200 – $1,700 /mo</td></tr>
-                <tr><td>Ongoing legal support (hourly)</td><td class="price">$80 – $250 /hr</td></tr>
-                <tr><td>Bank account opening</td><td class="price">$1,000 – $3,300 one-time</td></tr>
+                <tr><td>S.A. de C.V. incorporation</td><td class="price">$6,000 – $8,000</td><td>Notarized deed, CNR, NIT, business license, registered address (1 yr)</td></tr>
+                <tr><td>Bank account opening</td><td class="price">$1,000 – $1,300</td><td>Includes mandatory $200 initial deposit. Operational only</td></tr>
+                <tr><td>UIF / FIU registration</td><td class="price">~$2,000</td><td>Entity + CO registration on UIF platform</td></tr>
+                <tr><td>UBO registration / update</td><td class="price">~$800</td><td>Beneficial ownership filing</td></tr>
+                <tr><td>CNAD registration fee</td><td class="price">$6,132</td><td>15 min. salaries <span class="ref">LEAD Art. 12</span></td></tr>
             </tbody>
         </table>
     </div>
 
-    <!-- 4. CNAD Registration Support (à la carte) -->
+    <!-- ═══ DOCUMENTATION ═══ -->
     <div class="price-section">
         <div class="price-section__head">
-            <span class="price-section__title">4. CNAD Registration Support</span>
-            <span class="price-section__range">$8,000 – $20,000</span>
+            <span class="price-section__title">CNAD Registration Documentation</span>
         </div>
         <table class="tbl">
-            <thead><tr><th>Service</th><th>Range</th></tr></thead>
+            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
             <tbody>
-                <tr><td>Document preparation (~30 docs: AML/KYC/BCP/cybersecurity policies)</td><td class="price">$5,000 – $12,000</td></tr>
-                <tr><td>3-year Business Plan drafting</td><td class="price">$2,000 – $5,000</td></tr>
-                <tr><td>CNAD liaison & application management</td><td class="price">$1,500 – $3,000</td></tr>
-                <tr><td>Corrections & supplementary submissions (per round)</td><td class="price">$500 – $1,500</td></tr>
+                <tr><td>Document package (~30 docs)</td><td class="price">$5,000 – $12,000</td><td>AML/KYC/BCP/cybersecurity policies, procedures, risk frameworks</td></tr>
+                <tr><td>3-year Business Plan</td><td class="price">$2,000 – $5,000</td><td>Market strategy, financials, KPIs, risks</td></tr>
+                <tr><td>CNAD liaison & application management</td><td class="price">$1,500 – $3,000</td><td>Submission, communication with regulator</td></tr>
+                <tr><td>Corrections per round</td><td class="price">$500 – $1,500</td><td>Supplementary submissions after CNAD review</td></tr>
             </tbody>
         </table>
-        <p class="tbl-note">Standalone advisory — does not include company formation, COs, or local representation (priced separately above).</p>
     </div>
 
-    <!-- 5. Government Fees -->
+    <!-- ═══ ONGOING ═══ -->
     <div class="price-section">
         <div class="price-section__head">
-            <span class="price-section__title">5. Government / CNAD Fees</span>
+            <span class="price-section__title">Ongoing Monthly / Annual Costs</span>
+        </div>
+        <table class="tbl">
+            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr><td>Compliance Officers (Principal + Substitute)</td><td class="price">$700 – $2,000 /mo</td><td>Nominal COs, AML/CFT certified, UIF-registered</td></tr>
+                <tr><td>Legal representative + fiscal address</td><td class="price">$300 – $600 /mo</td><td>Standalone local representation</td></tr>
+                <tr><td>Full Legal-as-a-Service</td><td class="price">$1,500 – $1,700 /mo</td><td>Legal rep + accounting + tax domicile + regulatory support</td></tr>
+                <tr><td>Accounting (standalone)</td><td class="price">$150 – $550 /mo</td><td>IFRS for SMEs, Spanish, USD. Tiered by document volume</td></tr>
+                <tr><td>External audit</td><td class="price">$125 – $200 /mo</td><td>Internal controls, management letters, annual report</td></tr>
+                <tr><td>Regulatory hourly support</td><td class="price">$80 – $250 /hr</td><td>Paralegal $80 / Associate $150 / Partner $200–250</td></tr>
+                <tr><td>AML policy updates</td><td class="price">$460 – $2,000</td><td>Per update, as needed</td></tr>
+                <tr><td>DASP annual renewal</td><td class="price">$4,088 /yr</td><td>10 min. salaries, Q1 each year <span class="ref">LEAD Art. 12</span></td></tr>
+                <tr><td>DASP renewal service fee</td><td class="price">$350 /yr</td><td>Administrative handling of renewal submission</td></tr>
+                <tr><td>Municipal management</td><td class="price">$300 /yr</td><td>Annual financial statement filing to municipality</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ═══ GOVERNMENT FEES ═══ -->
+    <div class="price-section">
+        <div class="price-section__head">
+            <span class="price-section__title">Government / CNAD Fees</span>
             <span class="price-section__range"><span class="ref">LEAD Art. 12</span></span>
         </div>
         <table class="tbl">
@@ -1078,67 +1094,22 @@
                 <tr><td>DASP registration (15 min. salaries)</td><td class="price">$6,132</td><td>One-time</td></tr>
                 <tr><td>Annual renewal (10 min. salaries)</td><td class="price">$4,088</td><td>Annual, Q1</td></tr>
                 <tr><td>Additional certificate</td><td class="price">$50</td><td>Per copy</td></tr>
-                <tr><td>Issuer — public offering</td><td class="price">0.01% of offering</td><td>Per issuance</td></tr>
+                <tr><td>Company registration fees</td><td class="price">$150 – $300</td><td>One-time (registration, license, balance sheet)</td></tr>
             </tbody>
         </table>
         <p class="tbl-note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%). Previously $365/mo.</p>
     </div>
 
-    <!-- ═══ SECTION B: BUNDLED PACKAGES ═══ -->
-    <div style="margin-top:3rem;padding-top:2rem;border-top:2px solid var(--border);">
-        <h3 class="serif" style="font-size:1.15rem;color:var(--navy);margin-bottom:0.5rem;">B. Bundled packages — all-inclusive</h3>
-        <p class="section__desc">Turnkey solutions from international providers. Each package includes all services needed for that tier — no need to combine with à la carte pricing above.</p>
-
-        <div class="grid grid--3">
-            <div class="card" style="border-top:3px solid var(--border);">
-                <h3>Basic</h3>
-                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);margin:0.5rem 0;">$12,000 – $16,000</p>
-                <ul>
-                    <li>Company incorporation (S.A. de C.V.)</li>
-                    <li>Standard AML/KYC policies</li>
-                    <li>BSP registration</li>
-                    <li>Government fees included</li>
-                </ul>
-                <p style="font-size:0.72rem;color:var(--text-3);margin-top:0.75rem;">COs and local representation not included — client provides own or adds à la carte.</p>
-            </div>
-            <div class="card" style="border-top:3px solid var(--accent);">
-                <h3>Standard</h3>
-                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--accent);margin:0.5rem 0;">$25,000 – $30,000</p>
-                <ul>
-                    <li>Everything in Basic</li>
-                    <li>Custom AML/KYC/BCP policies</li>
-                    <li>CO employment (4 months)</li>
-                    <li>Full DASP license application</li>
-                    <li>CNAD liaison & corrections</li>
-                </ul>
-            </div>
-            <div class="card" style="border-top:3px solid var(--emerald);">
-                <h3>Premium</h3>
-                <p style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--emerald);margin:0.5rem 0;">$35,000 – $48,000</p>
-                <ul>
-                    <li>Everything in Standard</li>
-                    <li>3-year Business Plan</li>
-                    <li>UIF/FIU registration</li>
-                    <li>Bank account opening</li>
-                    <li>Accounting setup</li>
-                    <li>Apostille & notarization</li>
-                </ul>
-            </div>
-        </div>
-        <p class="tbl-note">Packages typically include 4 months of CO employment during the licensing phase. Annual maintenance (COs, local rep, accounting) billed separately after registration.</p>
-    </div>
-
-    <!-- Summary -->
-    <h3 class="serif" style="margin:2.5rem 0 0.75rem;font-size:1.05rem;color:var(--navy);">Total Budget Summary (first year + ongoing)</h3>
+    <!-- ═══ BUDGET SUMMARY ═══ -->
+    <h3 class="serif" style="margin:2.5rem 0 0.75rem;font-size:1.05rem;color:var(--navy);">Total Budget Estimate</h3>
     <table class="tbl">
-        <thead><tr><th>Scenario</th><th>First Year (incl. registration)</th><th>Annual Maintenance</th></tr></thead>
+        <thead><tr><th>Phase</th><th>Range</th><th>Includes</th></tr></thead>
         <tbody>
-            <tr><td>À la carte, minimal setup</td><td class="price">$25,000 – $40,000</td><td class="price">$15,000 – $25,000</td></tr>
-            <tr><td>Bundled Standard</td><td class="price">$45,000 – $55,000</td><td class="price">$20,000 – $35,000</td></tr>
-            <tr><td>Bundled Premium</td><td class="price">$60,000 – $80,000</td><td class="price">$30,000 – $45,000</td></tr>
+            <tr><td>Setup + Registration</td><td class="price">$25,000 – $45,000</td><td>Incorporation, documentation, CNAD fee, bank, UIF</td></tr>
+            <tr><td>Annual Maintenance</td><td class="price">$15,000 – $35,000 /yr</td><td>COs, legal rep, accounting, audit, CNAD renewal</td></tr>
         </tbody>
     </table>
-    <p class="tbl-note">Annual maintenance includes: CO retainer, local representation, accounting, annual CNAD renewal ($4,088), quarterly reporting support.</p>
+    <p class="tbl-note">Ranges depend on whether services are sourced individually or as LaaS bundle. LaaS packages ($1,500+/mo) consolidate legal, accounting, and domicile into a single retainer.</p>
 </div>
 </section>
 
@@ -1174,14 +1145,6 @@
 </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-<footer class="footer">
-    <p><strong>El Salvador DASP & Issuer Registration Framework</strong></p>
-    <p>LEAD (Decree 643) · RPSAD (CNAD-035-2023) · Issuer Reg. (CNAD-017-2023) · AML Law 2025 · UIF Instructivo · CNAD AML Guide</p>
-    <p style="margin-top:0.5rem;">Regulator: <a href="https://cnad.gob.sv/" target="_blank">CNAD — cnad.gob.sv</a> · +503 2224 0942 · <a href="mailto:[email protected]">[email protected]</a></p>
-    <p style="margin-top:0.75rem;">Prepared by <strong>SBLC Law Firm</strong> · <a href="mailto:[email protected]">[email protected]</a></p>
-    <p style="margin-top:0.5rem;font-size:0.65rem;opacity:0.6;">For informational purposes only. Not legal advice. April 2026.</p>
-</footer>
 
 <script>
 // Accordion toggles
