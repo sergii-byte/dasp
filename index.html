@@ -471,23 +471,37 @@
     <h2 class="section__title">DASP Registration Flow</h2>
     <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
 
-    <!-- UNIFIED TIMELINE: gantt + total duration -->
-    <div style="background:var(--navy);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:2rem;color:#fff;">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
-            <span style="font-family:'Instrument Serif',serif;font-size:1.15rem;">Total: 8–12 months</span>
-            <span style="font-size:0.7rem;opacity:0.6;">Real-world case: ~11 months from incorporation to registration</span>
+    <!-- TIMELINE -->
+    <div style="background:var(--navy);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2rem;color:#fff;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-family:'Instrument Serif',serif;font-size:1.25rem;">Total: 8–12 months</span>
+            <span style="font-size:0.72rem;opacity:0.5;">Real-world case: ~11 months</span>
         </div>
-        <div class="gantt" style="border:none;margin-bottom:0.75rem;">
-            <div class="gantt__seg" style="flex:5;background:#3b82f6;">Preparation<br><small>Entity + Personnel + Pre-Reg</small><br>Mo 1–3</div>
-            <div class="gantt__seg" style="flex:8;background:#1d4ed8;">Documentation<br><small>~30 docs preparation</small><br>Mo 3–6</div>
-            <div class="gantt__seg" style="flex:12;background:#059669;">CNAD Review<br><small>2–3 rounds × (20+10 bd)</small><br>Mo 6–10</div>
-            <div class="gantt__seg" style="flex:3;background:#10b981;">Final<br><small>Payment + Registration</small><br>Mo 10–12</div>
+        <!-- Bar -->
+        <div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:1rem;">
+            <div style="flex:3;background:#3b82f6;"></div>
+            <div style="flex:3;background:#2563eb;"></div>
+            <div style="flex:4;background:#059669;"></div>
+            <div style="flex:2;background:#10b981;"></div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;font-size:0.68rem;opacity:0.7;">
-            <div>Steps 0–4 · 4–10 wk</div>
-            <div>Step 5 · 8–16 wk</div>
-            <div>Steps 6–8 · 12–18 wk</div>
-            <div>Steps 9–10 · 10+3 bd</div>
+        <!-- Legend -->
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem 1.5rem;font-size:0.78rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="width:10px;height:10px;border-radius:3px;background:#3b82f6;flex-shrink:0;"></span>
+                <span><strong>Preparation</strong> — Mo 1–3 · Entity + Pre-Registration</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="width:10px;height:10px;border-radius:3px;background:#2563eb;flex-shrink:0;"></span>
+                <span><strong>Documentation</strong> — Mo 3–6 · ~30 docs package</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="width:10px;height:10px;border-radius:3px;background:#059669;flex-shrink:0;"></span>
+                <span><strong>CNAD Review</strong> — Mo 6–10 · 2–3 rounds × (20+10 bd)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="width:10px;height:10px;border-radius:3px;background:#10b981;flex-shrink:0;"></span>
+                <span><strong>Final</strong> — Mo 10–12 · Payment + Registration</span>
+            </div>
         </div>
     </div>
 
@@ -532,7 +546,7 @@
             <div class="flow-step__num">1</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration — Stage 1</p>
+                    <p class="flow-step__phase">Pre-Registration</p>
                     <p class="flow-step__title">Pre-Registration Form Submission</p>
                     <p class="flow-step__sub">Complete the CNAD pre-registration form with applicant details and desired operating area.</p>
                 </div>
@@ -552,7 +566,7 @@
             <div class="flow-step__num">2</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration — Stage 2</p>
+                    <p class="flow-step__phase">Pre-Registration</p>
                     <p class="flow-step__title">CNAD Initial Evaluation</p>
                     <p class="flow-step__sub">Commission analyzes submitted information, may request additional documentation.</p>
                 </div>
@@ -572,7 +586,7 @@
             <div class="flow-step__num">3</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration — Stage 3</p>
+                    <p class="flow-step__phase">Pre-Registration</p>
                     <p class="flow-step__title">Additional Information Submission</p>
                     <p class="flow-step__sub">Applicant provides any requested supplementary materials.</p>
                 </div>
@@ -592,7 +606,7 @@
             <div class="flow-step__num">4</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration — Stage 4</p>
+                    <p class="flow-step__phase">Pre-Registration</p>
                     <p class="flow-step__title">CNAD Decision: Objection / No Objection</p>
                     <p class="flow-step__sub">CNAD issues reasoned decision. No Objection = specifies registration requirements and process.</p>
                 </div>
@@ -615,7 +629,7 @@
             <div class="flow-step__num">5</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 1</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Full Documentation Package</p>
                     <p class="flow-step__sub">Prepare and submit ~30 documents per LEAD Art. 20 and RPSAD Arts. 7, 17–35. The most time-intensive phase.</p>
                 </div>
@@ -674,7 +688,7 @@
             <div class="flow-step__num">6</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 2</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Application Evaluation</p>
                     <p class="flow-step__sub">CNAD reviews within 20 bd. If incomplete — 10 bd to cure. Expect 2–3 rounds.</p>
                 </div>
@@ -700,7 +714,7 @@
             <div class="flow-step__num">7</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 3</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Favorable / Unfavorable Resolution</p>
                     <p class="flow-step__sub">CNAD issues final decision. Unfavorable = may resubmit. Favorable = proceed to payment.</p>
                 </div>
@@ -720,7 +734,7 @@
             <div class="flow-step__num">8</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 4</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Registration Seat & Authorization</p>
                     <p class="flow-step__sub">CNAD issues registration certificate and authorization to operate.</p>
                 </div>
@@ -740,7 +754,7 @@
             <div class="flow-step__num">9</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 5</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Tax Benefits Activation</p>
                     <p class="flow-step__sub">Tax exemptions under Art. 36 LEAD effective from provisional registration number notification.</p>
                 </div>
@@ -764,7 +778,7 @@
             <div class="flow-step__num">10</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Definitive Registration — Stage 6</p>
+                    <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">UIF Notification</p>
                     <p class="flow-step__sub">CNAD notifies the Financial Investigation Unit of the new DASP registration.</p>
                 </div>
@@ -869,7 +883,7 @@
 
     <div class="grid grid--2">
         <div class="card">
-            <div class="card__icon card__icon--blue">👔</div>
+
             <h3>Director / Legal Representative</h3>
             <ul>
                 <li>Board or Sole Administrator <span class="ref">RPSAD Art. 7(b)(ii)</span></li>
@@ -880,7 +894,7 @@
         </div>
 
         <div class="card">
-            <div class="card__icon card__icon--green">🛡️</div>
+
             <h3>Principal Compliance Officer</h3>
             <ul>
                 <li>Board-appointed <span class="ref">AML Law Art. 20</span></li>
@@ -893,7 +907,7 @@
         </div>
 
         <div class="card">
-            <div class="card__icon card__icon--green">🛡️</div>
+
             <h3>Substitute Compliance Officer</h3>
             <ul>
                 <li><strong>Mandatory</strong> by law <span class="ref">AML Law Art. 20</span></li>
@@ -904,7 +918,7 @@
         </div>
 
         <div class="card">
-            <div class="card__icon card__icon--blue">💻</div>
+
             <h3>CISO</h3>
             <ul>
                 <li>Board member or manager <span class="ref">RPSAD Art. 25(a)</span></li>
@@ -929,7 +943,7 @@
 
     <div class="grid grid--3">
         <div class="card">
-            <div class="card__icon card__icon--blue">🏛️</div>
+
             <h3>Incorporation</h3>
             <ul>
                 <li>S.A. de C.V. or branch <span class="ref">LEAD Art. 18(d)</span></li>
@@ -940,7 +954,7 @@
             </ul>
         </div>
         <div class="card">
-            <div class="card__icon card__icon--blue">🔎</div>
+
             <h3>UIF Registration</h3>
             <ul>
                 <li>Entity on UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
@@ -950,7 +964,7 @@
             </ul>
         </div>
         <div class="card">
-            <div class="card__icon card__icon--green">🏦</div>
+
             <h3>Banking & Accounting</h3>
             <ul>
                 <li>Local bank account (operational only — local banks do not support international crypto activity)</li>
@@ -970,12 +984,12 @@
     <h2 class="section__title">AML & Compliance Framework</h2>
 
     <div class="grid grid--3">
-        <div class="card"><div class="card__icon card__icon--blue">🔍</div><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
-        <div class="card"><div class="card__icon card__icon--blue">👥</div><h3>Beneficial Ownership</h3><ul><li>≥ 25% <span class="ref">AML Law Art. 15</span> / ≥ 10% <span class="ref">UIF Instr. Art. 20(b)</span></li><li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li><li>Trusts: all parties <span class="ref">UIF Instr. Art. 21</span></li></ul></div>
-        <div class="card"><div class="card__icon card__icon--red">✈️</div><h3>Travel Rule</h3><ul><li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li><li>Full sender/receiver data <span class="ref">CNAD Guide §2</span></li><li>"Under no circumstances" skip</li></ul></div>
-        <div class="card"><div class="card__icon card__icon--red">🚨</div><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">LCLDA Art. 17</span></li></ul></div>
-        <div class="card"><div class="card__icon card__icon--amber">📊</div><h3>Reporting Thresholds</h3><ul><li>Cash &gt; $10,000 <span class="ref">UIF Instr. Art. 51</span></li><li>Other &gt; $25,000 <span class="ref">UIF Instr. Art. 51</span></li><li>E-transfers ≥ $1,000 <span class="ref">UIF Instr. Art. 52</span></li></ul></div>
-        <div class="card"><div class="card__icon card__icon--blue">📚</div><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
+        <div class="card"><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
+        <div class="card"><h3>Beneficial Ownership</h3><ul><li>≥ 25% <span class="ref">AML Law Art. 15</span> / ≥ 10% <span class="ref">UIF Instr. Art. 20(b)</span></li><li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li><li>Trusts: all parties <span class="ref">UIF Instr. Art. 21</span></li></ul></div>
+        <div class="card"><h3>Travel Rule</h3><ul><li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li><li>Full sender/receiver data <span class="ref">CNAD Guide §2</span></li><li>"Under no circumstances" skip</li></ul></div>
+        <div class="card"><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">LCLDA Art. 17</span></li></ul></div>
+        <div class="card"><h3>Reporting Thresholds</h3><ul><li>Cash &gt; $10,000 <span class="ref">UIF Instr. Art. 51</span></li><li>Other &gt; $25,000 <span class="ref">UIF Instr. Art. 51</span></li><li>E-transfers ≥ $1,000 <span class="ref">UIF Instr. Art. 52</span></li></ul></div>
+        <div class="card"><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
     </div>
 
     <p class="tbl-note" style="margin-top:1.5rem;">See <a href="#activities" style="color:var(--accent);">DASP Activities</a> section for full AML risk classification per activity type.</p>
@@ -1025,91 +1039,98 @@
 <div class="container fade-in">
     <p class="section__label">Budget</p>
     <h2 class="section__title">Cost Structure</h2>
-    <p class="section__desc">Market rates Q1 2026. Ranges based on proposals from local and international service providers in El Salvador.</p>
+    <p class="section__desc">What you'll need and what it costs. Market rates Q1 2026, USD, exclusive of 13% VAT.</p>
 
-    <!-- ═══ ONE-TIME SETUP ═══ -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">One-Time Setup Costs</span>
+    <div class="grid grid--2" style="gap:1.25rem;">
+
+        <!-- 1. COMPANY FORMATION -->
+        <div class="card" style="border-top:3px solid var(--accent);">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+                <h3 style="margin:0;">Company Formation</h3>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">One-time</span>
+            </div>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>S.A. de C.V. incorporation</td><td class="price" style="text-align:right;">$2,500 – $3,000</td></tr>
+                <tr><td style="padding-top:0.35rem;">Local operational bank account opening</td><td class="price" style="text-align:right;padding-top:0.35rem;">$1,000 – $1,300</td></tr>
+            </table>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Notarized deed, CNR, NIT, business license, fiscal address (1 yr), $200 bank deposit. Timeline: 2–4 weeks.</p>
         </div>
-        <table class="tbl">
-            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
-            <tbody>
-                <tr><td>S.A. de C.V. incorporation</td><td class="price">$6,000 – $8,000</td><td>Notarized deed, CNR, NIT, business license, registered address (1 yr)</td></tr>
-                <tr><td>Bank account opening</td><td class="price">$1,000 – $1,300</td><td>Includes mandatory $200 initial deposit. Operational only</td></tr>
-                <tr><td>UIF / FIU registration</td><td class="price">~$2,000</td><td>Entity + CO registration on UIF platform</td></tr>
-                <tr><td>UBO registration / update</td><td class="price">~$800</td><td>Beneficial ownership filing</td></tr>
-                <tr><td>CNAD registration fee</td><td class="price">$6,132</td><td>15 min. salaries <span class="ref">LEAD Art. 12</span></td></tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!-- ═══ DOCUMENTATION ═══ -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">CNAD Registration Documentation</span>
+        <!-- 2. COMPANY MAINTENANCE -->
+        <div class="card" style="border-top:3px solid var(--accent);">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+                <h3 style="margin:0;">Company Maintenance</h3>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Recurring</span>
+            </div>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>Legal representative + fiscal address</td><td class="price" style="text-align:right;">$450 – $600 /mo</td></tr>
+                <tr><td style="padding-top:0.35rem;">Accounting (IFRS for SMEs)</td><td class="price" style="text-align:right;padding-top:0.35rem;">$150 – $550 /mo</td></tr>
+                <tr><td style="padding-top:0.35rem;">External audit</td><td class="price" style="text-align:right;padding-top:0.35rem;">$125 – $200 /mo</td></tr>
+                <tr><td style="padding-top:0.35rem;">Municipal filing</td><td class="price" style="text-align:right;padding-top:0.35rem;">$300 /yr</td></tr>
+            </table>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Alternative: <strong>LaaS bundle $1,500–$1,700/mo</strong> — legal rep + accounting + audit in one retainer.</p>
         </div>
-        <table class="tbl">
-            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
-            <tbody>
-                <tr><td>Document package (~30 docs)</td><td class="price">$5,000 – $12,000</td><td>AML/KYC/BCP/cybersecurity policies, procedures, risk frameworks</td></tr>
-                <tr><td>3-year Business Plan</td><td class="price">$2,000 – $5,000</td><td>Market strategy, financials, KPIs, risks</td></tr>
-                <tr><td>CNAD liaison & application management</td><td class="price">$1,500 – $3,000</td><td>Submission, communication with regulator</td></tr>
-                <tr><td>Corrections per round</td><td class="price">$500 – $1,500</td><td>Supplementary submissions after CNAD review</td></tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!-- ═══ ONGOING ═══ -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">Ongoing Monthly / Annual Costs</span>
+        <!-- 3. COMPLIANCE -->
+        <div class="card" style="border-top:3px solid var(--emerald);">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+                <h3 style="margin:0;">Compliance</h3>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Setup + Recurring</span>
+            </div>
+            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">One-time setup</p>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>UIF / FIU registration (incl. UBO)</td><td class="price" style="text-align:right;">~$2,000</td></tr>
+            </table>
+            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin:0.75rem 0 0.4rem;">Monthly retainer</p>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>Principal + Substitute CO</td><td class="price" style="text-align:right;">~$2,000 /mo</td></tr>
+            </table>
+            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin:0.75rem 0 0.4rem;">As needed</p>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>AML policy updates</td><td class="price" style="text-align:right;">from $460 per update</td></tr>
+            </table>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">COs: AML/CFT certified, UIF-registered. No residency requirement for DASP COs.</p>
         </div>
-        <table class="tbl">
-            <thead><tr><th>Item</th><th>Range</th><th>Notes</th></tr></thead>
-            <tbody>
-                <tr><td>Compliance Officers (Principal + Substitute)</td><td class="price">$700 – $2,000 /mo</td><td>Nominal COs, AML/CFT certified, UIF-registered</td></tr>
-                <tr><td>Legal representative + fiscal address</td><td class="price">$300 – $600 /mo</td><td>Standalone local representation</td></tr>
-                <tr><td>Full Legal-as-a-Service</td><td class="price">$1,500 – $1,700 /mo</td><td>Legal rep + accounting + tax domicile + regulatory support</td></tr>
-                <tr><td>Accounting (standalone)</td><td class="price">$150 – $550 /mo</td><td>IFRS for SMEs, Spanish, USD. Tiered by document volume</td></tr>
-                <tr><td>External audit</td><td class="price">$125 – $200 /mo</td><td>Internal controls, management letters, annual report</td></tr>
-                <tr><td>Regulatory hourly support</td><td class="price">$80 – $250 /hr</td><td>Paralegal $80 / Associate $150 / Partner $200–250</td></tr>
-                <tr><td>AML policy updates</td><td class="price">$460 – $2,000</td><td>Per update, as needed</td></tr>
-                <tr><td>DASP annual renewal</td><td class="price">$4,088 /yr</td><td>10 min. salaries, Q1 each year <span class="ref">LEAD Art. 12</span></td></tr>
-                <tr><td>DASP renewal service fee</td><td class="price">$350 /yr</td><td>Administrative handling of renewal submission</td></tr>
-                <tr><td>Municipal management</td><td class="price">$300 /yr</td><td>Annual financial statement filing to municipality</td></tr>
-            </tbody>
-        </table>
-    </div>
 
-    <!-- ═══ GOVERNMENT FEES ═══ -->
-    <div class="price-section">
-        <div class="price-section__head">
-            <span class="price-section__title">Government / CNAD Fees</span>
-            <span class="price-section__range"><span class="ref">LEAD Art. 12</span></span>
+        <!-- 4. CNAD APPLICATION -->
+        <div class="card" style="border-top:3px solid var(--emerald);">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+                <h3 style="margin:0;">CNAD Application</h3>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">One-time</span>
+            </div>
+            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
+                <tr><td>DASP registration support</td><td class="price" style="text-align:right;">~$5,085</td></tr>
+                <tr><td style="padding-top:0.35rem;">BSP registration support</td><td class="price" style="text-align:right;padding-top:0.35rem;">~$5,085</td></tr>
+            </table>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Includes document package (~30 docs), 3-year business plan, CNAD liaison, and review-round corrections. Prices incl. 13% VAT, based on Torres Legal 2024 engagement. BSP registration applies only if also registering as Bitcoin Service Provider.</p>
         </div>
-        <table class="tbl">
-            <thead><tr><th>Fee</th><th>Amount</th><th>Frequency</th></tr></thead>
-            <tbody>
-                <tr><td>DASP registration (15 min. salaries)</td><td class="price">$6,132</td><td>One-time</td></tr>
-                <tr><td>Annual renewal (10 min. salaries)</td><td class="price">$4,088</td><td>Annual, Q1</td></tr>
-                <tr><td>Additional certificate</td><td class="price">$50</td><td>Per copy</td></tr>
-                <tr><td>Company registration fees</td><td class="price">$150 – $300</td><td>One-time (registration, license, balance sheet)</td></tr>
-            </tbody>
-        </table>
-        <p class="tbl-note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%). Previously $365/mo.</p>
-    </div>
 
-    <!-- ═══ BUDGET SUMMARY ═══ -->
-    <h3 class="serif" style="margin:2.5rem 0 0.75rem;font-size:1.05rem;color:var(--navy);">Total Budget Estimate</h3>
-    <table class="tbl">
-        <thead><tr><th>Phase</th><th>Range</th><th>Includes</th></tr></thead>
-        <tbody>
-            <tr><td>Setup + Registration</td><td class="price">$25,000 – $45,000</td><td>Incorporation, documentation, CNAD fee, bank, UIF</td></tr>
-            <tr><td>Annual Maintenance</td><td class="price">$15,000 – $35,000 /yr</td><td>COs, legal rep, accounting, audit, CNAD renewal</td></tr>
-        </tbody>
-    </table>
-    <p class="tbl-note">Ranges depend on whether services are sourced individually or as LaaS bundle. LaaS packages ($1,500+/mo) consolidate legal, accounting, and domicile into a single retainer.</p>
+        <!-- 5. GOVERNMENT FEES -->
+        <div class="card" style="border-top:3px solid var(--navy);grid-column:1/-1;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+                <h3 style="margin:0;">Government Fees <span class="ref">LEAD Art. 12</span></h3>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Fixed by law</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
+                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$6,132</span>
+                    <span style="font-size:0.75rem;color:var(--text-2);">DASP Registration</span>
+                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">15 min. salaries · one-time</span>
+                </div>
+                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
+                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$4,088</span>
+                    <span style="font-size:0.75rem;color:var(--text-2);">Annual Renewal</span>
+                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">10 min. salaries · Q1 each year</span>
+                </div>
+                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
+                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$50</span>
+                    <span style="font-size:0.75rem;color:var(--text-2);">Additional Certificate</span>
+                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">per copy</span>
+                </div>
+            </div>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%).</p>
+        </div>
+    </div>
 </div>
 </section>
 
