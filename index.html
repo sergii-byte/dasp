@@ -153,6 +153,9 @@
             background: var(--accent-light); padding: 1px 6px; border-radius: 4px;
             white-space: nowrap;
         }
+        .ref--practice {
+            color: var(--amber); background: var(--amber-light);
+        }
         .tag {
             display: inline-flex; align-items: center;
             font-size: 0.65rem; font-weight: 600;
@@ -162,6 +165,43 @@
         .tag--green { background: var(--emerald-light); color: var(--emerald); }
         .tag--amber { background: var(--amber-light); color: var(--amber); }
         .tag--red { background: var(--red-light); color: var(--red); }
+
+        /* ── ABBR TOOLTIP ── */
+        abbr[title] {
+            text-decoration: underline dotted var(--text-3);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            cursor: help;
+        }
+
+        /* ── GLOSSARY / FAQ ── */
+        .glossary {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.75rem 1.25rem;
+        }
+        .glossary dt {
+            font-weight: 600; color: var(--navy); font-size: 0.85rem;
+        }
+        .glossary dd {
+            margin: 0.1rem 0 0.6rem; font-size: 0.8rem; color: var(--text-2);
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .faq-item summary {
+            padding: 1rem 0; cursor: pointer; font-weight: 500;
+            color: var(--navy); font-size: 0.92rem; list-style: none;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+'; font-size: 1.3rem; color: var(--text-3);
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item div {
+            padding: 0 0 1rem; font-size: 0.85rem; color: var(--text-2);
+        }
 
         /* ── TIMELINE FLOW ── */
         .flow { position: relative; }
@@ -434,8 +474,9 @@
 <nav class="nav">
     <div class="nav__inner">
         <span class="nav__brand">DASP Guide</span>
-        <a href="#dasp">DASP Flow</a>
+        <a href="#dasp">Flow</a>
         <a href="#activities">Activities</a>
+        <a href="#assets">Assets</a>
         <a href="#legislation">Legislation</a>
         <a href="#personnel">Personnel</a>
         <a href="#entity">Entity</a>
@@ -444,21 +485,24 @@
         <a href="#tax">Tax</a>
         <a href="#costs">Costs</a>
         <a href="#sanctions">Sanctions</a>
+        <a href="#faq">FAQ</a>
+        <a href="#glossary">Glossary</a>
     </div>
 </nav>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
     <div class="hero__inner">
-        <div class="hero__label">🇸🇻 El Salvador · Digital Assets Framework</div>
+        <div class="hero__label">El Salvador · Digital Assets Framework</div>
         <h1>DASP Registration<br>Guide</h1>
-        <p class="hero__desc">A practitioner's guide to obtaining Digital Asset Service Provider registration under the LEAD (Decree No.&nbsp;643, 2023). Based on hands-on experience navigating the CNAD process.</p>
+        <p class="hero__desc">A practitioner's guide to Digital Asset Service Provider registration under the <abbr title="Ley de Emisión de Activos Digitales">LEAD</abbr> (Decree No.&nbsp;643 of 9&nbsp;January 2023). Based on hands-on work with the <abbr title="Comisión Nacional de Activos Digitales — the Salvadoran digital assets regulator">CNAD</abbr> process.</p>
         <div class="metrics">
             <div class="metric"><span class="metric__val">$6,132</span><span class="metric__label">Registration Fee</span></div>
             <div class="metric"><span class="metric__val">0%</span><span class="metric__label">Tax Rate</span></div>
             <div class="metric"><span class="metric__val">8–12 mo</span><span class="metric__label">Timeline</span></div>
             <div class="metric"><span class="metric__val">$4,088/yr</span><span class="metric__label">Annual Renewal</span></div>
         </div>
+        <p style="font-size:0.72rem;color:var(--text-3);margin-top:1.25rem;max-width:680px;">Abbreviations used throughout: <strong>bd</strong> = business days · <strong>CO</strong> = Compliance Officer · <strong>UBO</strong> = Ultimate Beneficial Owner · <strong>PEP</strong> = Politically Exposed Person · <strong>CDD</strong> = Customer Due Diligence · <strong>KYT</strong> = Know Your Transaction · <strong>DLT</strong> = Distributed Ledger Technology · <strong>BSP</strong> = Bitcoin Service Provider · <strong>DASP</strong> = Digital Asset Service Provider. See <a href="#glossary" style="color:var(--accent);">Glossary</a>.</p>
     </div>
 </section>
 
@@ -474,8 +518,8 @@
     <!-- TIMELINE -->
     <div style="background:var(--navy);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2rem;color:#fff;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem;">
-            <span style="font-family:'Instrument Serif',serif;font-size:1.25rem;">Total: 8–12 months</span>
-            <span style="font-size:0.72rem;opacity:0.5;">Real-world case: ~11 months</span>
+            <span style="font-family:'Instrument Serif',serif;font-size:1.25rem;">Total: 8–12 months <span style="font-size:0.62rem;font-weight:600;color:var(--amber);background:rgba(217,119,6,0.15);padding:1px 6px;border-radius:4px;vertical-align:middle;">practice</span></span>
+            <span style="font-size:0.72rem;opacity:0.5;">Real-world reference case (PSAD-0079): ~11 months</span>
         </div>
         <!-- Bar -->
         <div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:1rem;">
@@ -631,12 +675,13 @@
                 <div>
                     <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Full Documentation Package</p>
-                    <p class="flow-step__sub">Prepare and submit ~30 documents per LEAD Art. 20 and RPSAD Arts. 7, 17–35. The most time-intensive phase.</p>
+                    <p class="flow-step__sub">The applicant prepares and submits ~30 documents across seven categories per LEAD Art. 20 and RPSAD Arts. 7, 17–35.</p>
                 </div>
-                <span class="flow-step__duration">8–16 wk preparation</span>
+                <span class="flow-step__duration">8–16 wk preparation <span class="ref ref--practice">practice</span></span>
                 <div class="flow-step__toggle">▾</div>
             </div>
             <div class="flow-step__body"><div class="flow-step__content">
+                <p style="font-size:0.82rem;color:var(--text-2);margin-bottom:0.75rem;">The package is grouped into seven categories (A–G). In practice, the AML/CFT, KYC and security documents (C, D, F) consume most of the preparation time; business and operational documents (A, B, E, G) are comparatively straightforward.</p>
                 <h5>A. Business & Corporate</h5>
                 <ul>
                     <li><strong>3-Year Business Plan</strong> — market strategy, financials, KPIs, risks <span class="ref">CNAD Procedure §1</span></li>
@@ -690,7 +735,7 @@
                 <div>
                     <p class="flow-step__phase">Definitive Registration</p>
                     <p class="flow-step__title">Application Evaluation</p>
-                    <p class="flow-step__sub">CNAD reviews within 20 bd. If incomplete — 10 bd to cure. Expect 2–3 rounds.</p>
+                    <p class="flow-step__sub">CNAD reviews within 20 <abbr title="business days">bd</abbr>; if observations are raised, the applicant has 10 <abbr title="business days">bd</abbr> to respond. Most applications complete two to three review rounds before approval.</p>
                 </div>
                 <span class="flow-step__duration">20 bd per round</span>
                 <div class="flow-step__toggle">▾</div>
@@ -704,7 +749,7 @@
                     <li>Technical presentation during review: platform, DLT, security, KYC <span class="ref">CNAD Procedure</span></li>
                 </ul>
                 <div class="callout callout--amber" style="margin-top:0.75rem;">
-                    <p><strong>Timeline math:</strong> 1 round = 20 bd (CNAD) + 10 bd (applicant) ≈ 6 calendar weeks. With 2–3 rounds: <strong>12–18 weeks</strong>.</p>
+                    <p><strong>Timeline math:</strong> one round ≈ 20 <abbr title="business days">bd</abbr> (CNAD) + 10 <abbr title="business days">bd</abbr> (applicant) ≈ 6 calendar weeks. With two to three rounds: <strong>12–18 weeks</strong> <span class="ref ref--practice">practice</span>.</p>
                 </div>
             </div></div>
         </div>
@@ -757,8 +802,8 @@
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Tax Benefits Activation</p>
-                    <p class="flow-step__sub">Tax exemptions under Art. 36 LEAD effective from provisional registration number notification.</p>
+                    <p class="flow-step__title">Tax Exemption Effectiveness</p>
+                    <p class="flow-step__sub">Exemptions under LEAD Art. 36 take effect from the date of provisional registration notification.</p>
                 </div>
                 <div class="flow-step__toggle">▾</div>
             </div>
@@ -797,15 +842,56 @@
     </div><!-- /flow -->
 
     <div class="callout callout--amber" style="margin-top:1.5rem;">
-        <p><strong>Note on cure periods:</strong> LEAD Art. 20 grants <strong>5 business days</strong> to cure; RPSAD Art. 8 grants <strong>10 working days</strong>. RPSAD is the more recent and specific regulation — in practice, 10 days applies. CNAD may also request additional info before the 20-day deadline expires, specifying a custom term <span class="ref">RPSAD Art. 8</span>. Any term can be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
+        <p><strong>Cure periods — conflict of norms.</strong> LEAD Art. 20 grants 5 business days to cure; RPSAD Art. 8 grants 10 working days. RPSAD is the more recent and more specific rule — in practice, the 10-day period applies.</p>
+        <p style="margin-top:0.5rem;">CNAD may also request further information before the 20-day review deadline expires, setting a custom term <span class="ref">RPSAD Art. 8</span>. Any statutory term may be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
     </div>
 
-    <div class="callout callout--blue" style="margin-top:0.75rem;">
-        <p><strong>Post-Registration Obligations:</strong> Annual renewal <strong>$4,088</strong> (10 × $408.80), Q1 each year <span class="ref">RPSAD Art. 12</span>. Quarterly reports: first 20 days of Apr/Jul/Oct/Jan <span class="ref">RPSAD Arts. 15–16</span>. Non-payment = registration cancelled + tax benefits lost <span class="ref">RPSAD Art. 12</span>. Records retention: <strong>15 years</strong> <span class="ref">AML Law Art. 26</span>.</p>
-    </div>
+    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">Ongoing Obligations</h3>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">Recurring duties that survive registration. Non-compliance triggers sanctions and, in the case of unpaid renewal, automatic loss of registration and tax benefits.</p>
 
-    <div class="callout callout--blue" style="margin-top:0.75rem;">
-        <p><strong>Material Changes:</strong> Notify CNAD within <strong>5 business days</strong> of any significant change to registration documents <span class="ref">RPSAD Art. 9</span> — CEO, board members, organizational structure <span class="ref">RPSAD Art. 7(b)(ii), 7(e)</span>. Separately: CO or UBO changes require UIF update within <strong>15 business days</strong> <span class="ref">UIF Instr. Art. 3</span> <span class="ref">UIF Instr. Art. 64</span>.</p>
+    <div class="grid grid--2">
+        <div class="card" style="border-left:3px solid var(--accent);">
+            <h3>Annual Renewal</h3>
+            <ul>
+                <li>Fee: <strong>$4,088</strong> (10 × $408.80), due in Q1 each year <span class="ref">RPSAD Art. 12</span></li>
+                <li>Non-payment → registration cancelled and tax benefits lost <span class="ref">RPSAD Art. 12</span></li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--accent);">
+            <h3>Quarterly Reporting</h3>
+            <ul>
+                <li>Operational and financial report each quarter <span class="ref">RPSAD Arts. 15–16</span></li>
+                <li>Submission window: the first 20 days of April, July, October and January</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--emerald);">
+            <h3>Material Changes — CNAD</h3>
+            <ul>
+                <li>Notify CNAD within <strong>5 business days</strong> of any significant change to registration documents <span class="ref">RPSAD Art. 9</span></li>
+                <li>Covers CEO, board members and organisational structure <span class="ref">RPSAD Art. 7(b)(ii), 7(e)</span></li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--emerald);">
+            <h3>Material Changes — UIF</h3>
+            <ul>
+                <li>CO or UBO changes require UIF update within <strong>15 business days</strong> <span class="ref">UIF Instr. Art. 3</span> <span class="ref">UIF Instr. Art. 64</span></li>
+                <li>Other data (name, NIT, address) on the same 15-day cadence</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--amber);">
+            <h3>Records Retention</h3>
+            <ul>
+                <li>All AML records kept for <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
+                <li>Applies to CDD files, transaction records, STRs and training logs</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--amber);">
+            <h3>Code of Ethics</h3>
+            <ul>
+                <li>Must be adopted within <strong>6 months</strong> of registration <span class="ref">RPSAD Art. 18</span></li>
+                <li>Covers conflicts of interest, confidentiality and treatment of clients</li>
+            </ul>
+        </div>
     </div>
 </div>
 </section>
@@ -822,10 +908,10 @@
         <tbody>
             <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
             <tr><td><strong>Exchange platform</strong> — operate a matching/trading venue</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td><strong>Transfer</strong> — transfer digital assets for third parties</td><td>19(f.1)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td><strong>Custody & administration</strong> — hold/manage digital assets on behalf of clients</td><td>19(f.2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td><strong>Order reception/transmission</strong> — receive and transmit client orders</td><td>19(f.3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td><strong>Order execution</strong> — execute orders on behalf of clients</td><td>19(f.4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Transfer</strong> — transfer digital assets for third parties</td><td>19(f)(1)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Custody & administration</strong> — hold or manage digital assets on behalf of clients</td><td>19(f)(2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order reception &amp; transmission</strong> — receive and transmit client orders</td><td>19(f)(3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order execution</strong> — execute orders on behalf of clients</td><td>19(f)(4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
             <tr><td><strong>Risk assessment & subscriptions</strong> — evaluate risks, manage subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
             <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
             <tr><td><strong>Investment management</strong> — manage digital asset investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
@@ -836,13 +922,42 @@
         <p><strong>Important:</strong> A single DASP can register for multiple activities. The AML risk classification of the <strong>highest-risk activity</strong> determines the overall compliance burden. Activities not listed in Art. 19 do not require DASP registration.</p>
     </div>
 
-    <div class="callout callout--amber" style="margin-top:0.75rem;">
-        <p><strong>Regulatory Conditions on Digital Assets:</strong></p>
-        <ul style="margin:0.5rem 0 0 1.25rem;font-size:0.85rem;">
-            <li><strong>Privacy coins prohibited</strong> — assets with limited or non-existent traceability (e.g. Monero XMR, ZCash ZEC) cannot be marketed under any circumstances</li>
-            <li><strong>Additional stablecoins</strong> — require express prior CNAD authorization; algorithm-backed stablecoins are excluded entirely</li>
-            <li><strong>Tokens from issuances</strong> — must be submitted to CNAD for analysis before marketing</li>
-        </ul>
+</div>
+</section>
+
+<!-- ══ ASSET RESTRICTIONS ══ -->
+<section class="section" id="assets">
+<div class="container fade-in">
+    <p class="section__label">Asset Perimeter</p>
+    <h2 class="section__title">Permitted &amp; Restricted Digital Assets</h2>
+    <p class="section__desc">Not every digital asset is marketable under a DASP licence. Restrictions are set at registration and reinforced in every registration resolution <span class="ref">LEAD Arts. 9(k)(l), 21(e)</span> <span class="ref">RPSAD Art. 41</span>.</p>
+
+    <div class="grid grid--2">
+        <div class="card" style="border-left:3px solid var(--emerald);">
+            <h3>Permitted by default</h3>
+            <ul>
+                <li>Major transparent-ledger assets (BTC, ETH, SOL, TRX and similar)</li>
+                <li>Regulated stablecoins expressly authorised by CNAD (e.g. USDT, USDC)</li>
+                <li>Assets declared in the DASP registration file and accepted by CNAD</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--red);">
+            <h3>Prohibited or restricted</h3>
+            <ul>
+                <li><strong>Privacy coins — prohibited.</strong> Assets with limited or non-existent traceability (Monero XMR, ZCash ZEC and similar) may not be marketed under any circumstances</li>
+                <li><strong>Algorithmic stablecoins — excluded entirely</strong></li>
+                <li><strong>Additional stablecoins</strong> — require express prior CNAD authorisation</li>
+                <li><strong>Tokens from issuances</strong> — must be submitted to CNAD for analysis before marketing</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:1rem;">
+        <p><strong>How restrictions are imposed.</strong> The list of permitted assets is locked at registration. Any addition requires a <em>material change</em> notification and, for stablecoins and issued tokens, a separate CNAD analysis. Operating outside the authorised perimeter is a sanctionable breach under LEAD Arts. 38–40.</p>
+    </div>
+
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>Cross-border reach.</strong> The pre-registration form requires the applicant to declare its intended <em>operating area</em> <span class="ref">LEAD Art. 18</span>. Serving clients outside the declared perimeter — or marketing to jurisdictions where digital-asset services are prohibited — is a compliance breach. DASPs must maintain a list of restricted jurisdictions and apply geofencing and KYC filters accordingly <span class="ref">UIF Instr. Art. 54</span> <span class="ref">CNAD Procedure §9</span>.</p>
     </div>
 </div>
 </section>
@@ -852,22 +967,22 @@
 <div class="container fade-in">
     <p class="section__label">Legal Framework</p>
     <h2 class="section__title">Applicable Legislation</h2>
-    <p class="section__desc">The regulatory framework consists of a primary law, DASP-specific regulations, AML legislation, and supervisory guidelines.</p>
+    <p class="section__desc">Six instruments govern DASPs in El Salvador. LEAD sets the mandate, RPSAD the procedure, the AML Law and UIF Instructivo the compliance floor, and the CNAD AML Guide the supervisory expectations.</p>
 
     <div class="grid grid--2">
         <div class="card" style="border-left:3px solid var(--navy);">
             <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
-            <p>Decreto No. 643, 2023. Primary law governing digital asset service providers, issuers, and certifiers. Establishes CNAD authority, registration requirements, tax benefits, and sanctions framework.</p>
+            <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
             <div style="margin-top:0.5rem;"><span class="tag tag--blue">Primary Law</span></div>
         </div>
         <div class="card" style="border-left:3px solid var(--accent);">
             <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
-            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service, and operational rules. 48 articles.</p>
+            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
             <div style="margin-top:0.5rem;"><span class="tag tag--blue">DASP Regulation</span></div>
         </div>
         <div class="card" style="border-left:3px solid var(--emerald);">
             <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
-            <p>Decreto No. 426, 2025. Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements, sanctions.</p>
+            <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
             <div style="margin-top:0.5rem;"><span class="tag tag--green">AML/CFT</span></div>
         </div>
         <div class="card" style="border-left:3px solid var(--emerald);">
@@ -882,10 +997,26 @@
         </div>
         <div class="card" style="border-left:3px solid var(--text-3);">
             <h3>Issuer & Stablecoin Regulations</h3>
-            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public/private issuances, RID requirements, certifier process, stablecoin reserve rules. Separate registration track from DASP.</p>
+            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
             <div style="margin-top:0.5rem;"><span class="tag tag--blue">Issuance Framework</span></div>
         </div>
     </div>
+
+    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">BSP vs DASP — Two Registrations, One Entity</h3>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
+
+    <table class="tbl">
+        <thead><tr><th>Feature</th><th>BSP <span class="ref">Bitcoin Law</span></th><th>DASP <span class="ref">LEAD</span></th></tr></thead>
+        <tbody>
+            <tr><td>Assets covered</td><td>Bitcoin (BTC) only</td><td>All digital assets other than BTC</td></tr>
+            <tr><td>Supervisor</td><td>BCR (Banco Central de Reserva)</td><td>CNAD</td></tr>
+            <tr><td>AML supervisor</td><td>UIF via BCR channel</td><td>UIF via CNAD channel</td></tr>
+            <tr><td>Primary law</td><td>Bitcoin Law (Decree 57/2021)</td><td>LEAD (Decree 643/2023)</td></tr>
+            <tr><td>Registration fee</td><td>Set by BCR</td><td>$6,132 (15 min. salaries)</td></tr>
+            <tr><td>Tax benefits</td><td>Separate BTC-specific regime</td><td>LEAD Art. 36 — income, capital gains, VAT, municipal</td></tr>
+        </tbody>
+    </table>
+    <p class="tbl-note">Most exchanges and custodians in El Salvador hold both licences. Market rate for BSP registration support is comparable to DASP (~$5,085 incl. VAT).</p>
 </div>
 </section>
 
@@ -893,8 +1024,8 @@
 <section class="section" id="personnel">
 <div class="container fade-in">
     <p class="section__label">Team Structure</p>
-    <h2 class="section__title">Personnel & Residency Requirements</h2>
-    <p class="section__desc">No nationality requirements for any position. Key selling point: DASP Compliance Officers are exempt from residency.</p>
+    <h2 class="section__title">Personnel &amp; Residency Requirements</h2>
+    <p class="section__desc">El Salvador imposes no nationality requirement on any DASP role. For compliance officers, the Salvadoran framework is unusually permissive — residency is not required, which removes a common bottleneck for foreign-controlled applicants.</p>
 
     <div class="grid grid--2">
         <div class="card">
@@ -949,7 +1080,7 @@
     </div>
 
     <div class="card" style="margin-top:1.25rem;border-top:3px solid var(--accent);">
-        <h3 style="margin:0 0 0.75rem;">Corporate Roles in El Salvador — Who Is Who</h3>
+        <h3 style="margin:0 0 0.75rem;">Corporate &amp; Compliance Roles in El Salvador</h3>
         <table style="width:100%;font-size:0.82rem;color:var(--text-2);border-collapse:collapse;">
             <thead><tr style="border-bottom:2px solid var(--border);text-align:left;">
                 <th style="padding:0.5rem 0.5rem 0.5rem 0;">Role</th>
@@ -999,40 +1130,46 @@
 <div class="container fade-in">
     <p class="section__label">Entity</p>
     <h2 class="section__title">Local Company Requirements</h2>
+    <p class="section__desc">Two corporate forms qualify: a Salvadoran S.A. de C.V. or a registered branch of a foreign company <span class="ref">LEAD Art. 18(d)</span>. Simplified forms (S.A.S.) and limited liability companies are excluded.</p>
 
     <div class="grid grid--3">
         <div class="card">
-
             <h3>Incorporation</h3>
             <ul>
                 <li>S.A. de C.V. or foreign branch only <span class="ref">LEAD Art. 18(d)</span></li>
-                <li>Minimum 2 shareholders <span class="ref">Cód. Com.</span> — S.A.S. excluded</li>
-                <li>Notarized deed + CNR <span class="ref">RPSAD Art. 7(b)(i)</span></li>
-                <li>NIT required <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                <li>Fiscal domicile (virtual OK)</li>
-                <li>Capital: $2,000 (5% at start)</li>
+                <li>Minimum 2 shareholders <span class="ref">Cód. Com. Art. 192</span> — S.A.S. excluded for DASPs</li>
+                <li>Notarised deed + <abbr title="Centro Nacional de Registros">CNR</abbr> registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                <li><abbr title="Número de Identificación Tributaria — tax ID">NIT</abbr> required <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
+                <li>Fiscal domicile in El Salvador (virtual office accepted)</li>
+                <li>Share capital: $2,000 nominal, 5% paid at inception</li>
             </ul>
         </div>
         <div class="card">
-
             <h3>UIF Registration</h3>
             <ul>
-                <li>Entity on UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
-                <li>CNAD for non-BTC; BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
-                <li>UBO info required <span class="ref">UIF Instr. Art. 3(2)</span></li>
-                <li>Changes: 15 bus. days <span class="ref">UIF Instr. Art. 3</span></li>
+                <li>Entity registered on the UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
+                <li>Supervisor assignment: CNAD for non-BTC DASPs, BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
+                <li>UBO information required <span class="ref">UIF Instr. Art. 3(2)</span></li>
+                <li>Registered data kept current — changes notified within 15 <abbr title="business days">bd</abbr> <span class="ref">UIF Instr. Art. 3</span></li>
             </ul>
         </div>
         <div class="card">
-
-            <h3>Banking & Accounting</h3>
+            <h3>Banking &amp; Accounting</h3>
             <ul>
-                <li>Local bank account (operational only — local banks do not support international crypto activity)</li>
-                <li>Spanish + USD accounting</li>
-                <li>IFRS for SMEs, annual audit</li>
-                <li>Records: 15 years <span class="ref">AML Law Art. 26</span></li>
+                <li>Local bank account for operational needs (government fees, payroll, rent)</li>
+                <li>Accounting in Spanish, USD as functional currency</li>
+                <li>IFRS for SMEs, annual external audit</li>
+                <li>Records retained 15 years <span class="ref">AML Law Art. 26</span></li>
             </ul>
         </div>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:1.25rem;">
+        <p><strong>Banking reality check.</strong> Salvadoran retail banks do not, in practice, service international digital-asset flows. The local account covers operating expenses only; client-fund custody, fiat on/off-ramps and settlement are typically routed through foreign correspondent banks, EMIs or stablecoin rails <span class="ref ref--practice">practice</span>. A realistic banking strategy is part of the business plan reviewed by CNAD.</p>
+    </div>
+
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>No "registered agent" concept for S.A. de C.V.</strong> El Salvador uses a civil-law corporate model: the company is represented by its <em>Administrador Único</em> or <em>Junta Directiva</em> and a separate <em>Representante Legal</em> (local resident). There is no US-style registered-agent service. Foreign branches must appoint a Salvadoran-resident legal representative via notarised power of attorney <span class="ref">LEAD Art. 18(d)</span>.</p>
     </div>
 </div>
 </section>
@@ -1041,7 +1178,8 @@
 <section class="section" id="aml">
 <div class="container fade-in">
     <p class="section__label">Compliance</p>
-    <h2 class="section__title">AML & Compliance Framework</h2>
+    <h2 class="section__title">AML &amp; Compliance Framework</h2>
+    <p class="section__desc">The AML regime rests on three layers: the AML Law (Decree 426/2025) sets obligations, the UIF Instructivo operationalises them, and the CNAD AML Guide adapts them to DASP realities — Travel Rule, KYT and the $1,000 CDD trigger.</p>
 
     <div class="grid grid--3">
         <div class="card"><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
@@ -1079,6 +1217,7 @@
 <div class="container fade-in">
     <p class="section__label">Incentives</p>
     <h2 class="section__title">Tax Benefits <span class="ref">LEAD Art. 36</span></h2>
+    <p class="section__desc">LEAD Art. 36 grants a zero-tax regime for DASP activities listed in Art. 19. Benefits are conditional on active registration and apply from provisional registration onward.</p>
 
     <div class="benefits">
         <div class="benefit"><span class="benefit__val">0%</span><span class="benefit__label">Income Tax <span class="ref">Art. 36(b)(c)</span></span></div>
@@ -1088,8 +1227,14 @@
         <div class="benefit"><span class="benefit__val">✓</span><span class="benefit__label">Shareholder Pass-Through <span class="ref">Art. 36(d)</span></span></div>
         <div class="benefit"><span class="benefit__val">Day 1</span><span class="benefit__label">From Registration <span class="ref">RPSAD Art. 11</span></span></div>
     </div>
-    <div class="callout callout--amber" style="margin-top:1rem;">
-        <p><strong>Exception</strong> <span class="ref">Art. 36(e)</span>: Does not apply to exchange for goods/services outside Art. 19. Non-renewal = automatic loss of benefits <span class="ref">RPSAD Art. 12</span>.</p>
+
+    <div class="grid grid--2" style="margin-top:1.25rem;">
+        <div class="callout callout--amber" style="margin-top:0;">
+            <p><strong>Scope limits.</strong> Exemptions apply only to income and supplies tied to Art. 19 DASP activities. Ancillary income outside Art. 19 — including exchange for goods and services — falls under the ordinary tax regime <span class="ref">Art. 36(e)</span>.</p>
+        </div>
+        <div class="callout callout--amber" style="margin-top:0;">
+            <p><strong>Conditionality.</strong> Benefits are tied to a live registration. Non-renewal or cancellation results in automatic loss of benefits <span class="ref">RPSAD Art. 12</span>. There is no grandfathering for past periods.</p>
+        </div>
     </div>
 </div>
 </section>
@@ -1099,7 +1244,7 @@
 <div class="container fade-in">
     <p class="section__label">Budget</p>
     <h2 class="section__title">Cost Structure</h2>
-    <p class="section__desc">What you'll need and what it costs. Market rates Q1 2026, USD, exclusive of 13% VAT.</p>
+    <p class="section__desc">Private-sector figures reflect El Salvador market quotes in Q1 2026 <span class="ref ref--practice">practice</span>; government fees are set by LEAD Art. 12. All amounts in USD; VAT (13%) noted where applicable.</p>
 
     <div class="grid grid--2" style="gap:1.25rem;">
 
@@ -1163,7 +1308,7 @@
                 <tr><td>DASP registration support</td><td class="price" style="text-align:right;">~$5,085</td></tr>
                 <tr><td style="padding-top:0.35rem;">BSP registration support</td><td class="price" style="text-align:right;padding-top:0.35rem;">~$5,085</td></tr>
             </table>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">CNAD liaison, application management, and review-round corrections. Document preparation (~30 docs, business plan, AML/KYC/BCP policies) is not included — prepared in-house. Prices incl. 13% VAT. BSP registration applies only if also registering as Bitcoin Service Provider.</p>
+            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">CNAD liaison, application management, and response to CNAD observations during review rounds. Document preparation — ~30 artefacts including the business plan and AML/KYC/BCP policies — is handled in-house and is <em>not</em> included in this fee. Prices incl. 13% VAT. BSP registration applies only if the entity also seeks Bitcoin Service Provider status.</p>
         </div>
 
         <!-- 5. GOVERNMENT FEES -->
@@ -1242,8 +1387,134 @@
         <div class="card" style="border-left:3px solid var(--red);"><h3 style="color:var(--red);">Recidivism</h3><p>50% increase, no mitigation <span class="ref">Art. 40</span></p></div>
         <div class="card" style="border-left:3px solid var(--emerald);"><h3 style="color:var(--emerald);">Early Remedy</h3><p>75% reduction if fixed within 5 days <span class="ref">Art. 40</span></p></div>
     </div>
+
+    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">Grounds for Cancellation of Registration</h3>
+    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">Registration is not permanent. CNAD may cancel a DASP's registration on any of the grounds below. Cancellation triggers immediate loss of tax benefits <span class="ref">RPSAD Art. 12</span> and the obligation to wind down regulated activity.</p>
+
+    <div class="grid grid--2">
+        <div class="card" style="border-left:3px solid var(--red);">
+            <h3>Automatic grounds</h3>
+            <ul>
+                <li>Non-payment of annual renewal fee <span class="ref">RPSAD Art. 12</span></li>
+                <li>Failure to pay the $6,132 registration fee within 10 <abbr title="business days">bd</abbr> of favourable resolution <span class="ref">RPSAD Art. 10</span></li>
+                <li>Dissolution or liquidation of the DASP entity</li>
+                <li>Voluntary surrender of registration</li>
+            </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--red);">
+            <h3>Sanction-based grounds</h3>
+            <ul>
+                <li>Repeated serious breaches of LEAD or RPSAD <span class="ref">LEAD Arts. 38–40</span></li>
+                <li>Operating outside the authorised asset perimeter or activity scope</li>
+                <li>Very grave AML breaches <span class="ref">AML Law Arts. 34–35</span></li>
+                <li>Providing false information at registration or in quarterly reports</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:1rem;">
+        <p><strong>Wind-down obligations.</strong> A cancelled DASP must protect client funds and data, honour pending orders and cooperate with CNAD on an orderly exit. Client assets in custody must be returned or transferred to another licensed DASP. Records remain subject to the 15-year retention rule <span class="ref">AML Law Art. 26</span>.</p>
+    </div>
 </div>
 </section>
+
+<!-- ══ FAQ ══ -->
+<section class="section" id="faq">
+<div class="container fade-in">
+    <p class="section__label">Frequently Asked</p>
+    <h2 class="section__title">FAQ</h2>
+    <p class="section__desc">The questions foreign founders ask most often during intake. Each answer links to the relevant section or regulation.</p>
+
+    <div style="border-top:1px solid var(--border-light);">
+        <details class="faq-item">
+            <summary>Do shareholders, directors or COs need to be Salvadoran residents?</summary>
+            <div>No residency is required for shareholders, directors (Administrador/Board) or DASP Compliance Officers <span class="ref">UIF Instr. Art. 84-B(2)</span>. Only the Representante Legal must be a Salvadoran resident, and this role can be held by a local lawyer under a notarised power of attorney. See <a href="#personnel" style="color:var(--accent);">Personnel</a>.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Can a single shareholder incorporate the DASP entity?</summary>
+            <div>No. LEAD requires an S.A. de C.V. or a foreign branch <span class="ref">LEAD Art. 18(d)</span>, and an S.A. de C.V. requires a minimum of two shareholders <span class="ref">Cód. Com. Art. 192</span>. Single-shareholder forms (S.A.S.) are excluded. Typical structures use a holding company plus a nominal second shareholder with 1% for quorum purposes.</div>
+        </details>
+        <details class="faq-item">
+            <summary>How long does the full process take in practice?</summary>
+            <div>Eight to twelve months end-to-end <span class="ref ref--practice">practice</span>: 4–6 weeks entity setup, 8–16 weeks documentation, 12–18 weeks CNAD review (two to three rounds), plus payment and registration seat. See the <a href="#dasp" style="color:var(--accent);">Flow</a> timeline.</div>
+        </details>
+        <details class="faq-item">
+            <summary>What does registration actually cost, all-in?</summary>
+            <div>Government fee is fixed at $6,132 <span class="ref">LEAD Art. 12</span> plus $4,088 annual renewal. Private-sector support (incorporation, CNAD liaison, compliance, CO/CISO retainers) ranges from $16,700–$17,500 one-time and $4,725–$6,850 per month thereafter <span class="ref ref--practice">practice</span>. Full breakdown in <a href="#costs" style="color:var(--accent);">Costs</a>.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Which digital assets may a DASP offer?</summary>
+            <div>Major transparent-ledger assets (BTC, ETH, SOL, TRX and similar) and CNAD-authorised stablecoins (USDT, USDC). Privacy coins are prohibited; algorithmic stablecoins are excluded; additional stablecoins and issued tokens require a separate CNAD analysis <span class="ref">RPSAD Art. 41</span>. See <a href="#assets" style="color:var(--accent);">Asset Perimeter</a>.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Can Salvadoran banks service a DASP?</summary>
+            <div>Local retail banks cover operational expenses (rent, payroll, government fees) but do not, in practice, service international digital-asset flows <span class="ref ref--practice">practice</span>. Client fiat flows typically route through foreign correspondent banks, EMIs or stablecoin rails. A realistic banking strategy is part of the business plan reviewed by CNAD.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Is a DASP licence portable — can it be passported to the EU or the US?</summary>
+            <div>No. The DASP registration is national. Passporting regimes such as MiCA (EU) and state-by-state MTLs (US) are independent frameworks. Clients served in other jurisdictions must be supported under those jurisdictions' rules or through local partners.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Do I need a separate BSP registration if I also handle Bitcoin?</summary>
+            <div>Yes. BSP (Bitcoin Service Provider) is a distinct registration supervised by the BCR under the Bitcoin Law (Decree 57/2021). Entities that handle BTC in addition to other digital assets hold both licences in parallel. See <a href="#legislation" style="color:var(--accent);">BSP vs DASP</a>.</div>
+        </details>
+        <details class="faq-item">
+            <summary>What happens if the CEO, a director or the board changes post-registration?</summary>
+            <div>Notify CNAD within 5 business days <span class="ref">RPSAD Art. 9</span>. Separately, if the Compliance Officer or a UBO changes, update the UIF within 15 business days <span class="ref">UIF Instr. Art. 3</span>. See <a href="#dasp" style="color:var(--accent);">Ongoing Obligations</a>.</div>
+        </details>
+        <details class="faq-item">
+            <summary>Does CNAD meet the applicant in person at any stage?</summary>
+            <div>A technical presentation may be scheduled during the documentation review <span class="ref">CNAD Procedure</span>. In addition, after registration is granted, CNAD holds a virtual meeting with senior management, shareholders and the Board of Commissioners to align on commencement of operations <span class="ref">CNAD Guide §6.b</span>.</div>
+        </details>
+    </div>
+</div>
+</section>
+
+<!-- ══ GLOSSARY ══ -->
+<section class="section section--alt" id="glossary">
+<div class="container fade-in">
+    <p class="section__label">Reference</p>
+    <h2 class="section__title">Glossary</h2>
+    <p class="section__desc">Abbreviations, Spanish terms and recurring concepts used throughout the guide.</p>
+
+    <dl class="glossary">
+        <div><dt>AML / CFT</dt><dd>Anti-money laundering / counter-financing of terrorism.</dd></div>
+        <div><dt>bd</dt><dd>Business day. Working days under Salvadoran public administration calendar.</dd></div>
+        <div><dt>BCR</dt><dd>Banco Central de Reserva de El Salvador. Supervises BSPs.</dd></div>
+        <div><dt>BSP</dt><dd>Bitcoin Service Provider. Registration under the Bitcoin Law (Decree 57/2021).</dd></div>
+        <div><dt>CDD</dt><dd>Customer Due Diligence. Three tiers: simplified, standard, enhanced.</dd></div>
+        <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales. The digital-asset regulator.</dd></div>
+        <div><dt>CNR</dt><dd>Centro Nacional de Registros. Corporate and commercial registry.</dd></div>
+        <div><dt>CO</dt><dd>Compliance Officer. Principal and Alternate COs are mandatory for DASPs.</dd></div>
+        <div><dt>Cód. Com.</dt><dd>Código de Comercio — Salvadoran Commercial Code.</dd></div>
+        <div><dt>DASP</dt><dd>Digital Asset Service Provider. Registration under LEAD (Decree 643/2023).</dd></div>
+        <div><dt>DLT</dt><dd>Distributed Ledger Technology.</dd></div>
+        <div><dt>IVA</dt><dd>Impuesto al Valor Agregado — value-added tax (13%).</dd></div>
+        <div><dt>KYB</dt><dd>Know Your Business. CDD applied to corporate clients.</dd></div>
+        <div><dt>KYC</dt><dd>Know Your Customer.</dd></div>
+        <div><dt>KYT</dt><dd>Know Your Transaction. Ongoing transaction-level monitoring.</dd></div>
+        <div><dt>LaaS</dt><dd>Legal-as-a-Service. Retainer bundling legal rep, accounting and audit.</dd></div>
+        <div><dt>LEAD</dt><dd>Ley de Emisión de Activos Digitales. The primary DASP statute.</dd></div>
+        <div><dt>NIT</dt><dd>Número de Identificación Tributaria — Salvadoran tax ID.</dd></div>
+        <div><dt>PEP</dt><dd>Politically Exposed Person. Triggers enhanced due diligence.</dd></div>
+        <div><dt>RID</dt><dd>Registry of Issuers of Digital Assets — issuer-side registration.</dd></div>
+        <div><dt>RPSAD</dt><dd>Reglamento para Proveedores de Servicios de Activos Digitales — CNAD-035-2023.</dd></div>
+        <div><dt>S.A. de C.V.</dt><dd>Sociedad Anónima de Capital Variable. The permitted DASP corporate form.</dd></div>
+        <div><dt>S.A.S.</dt><dd>Sociedad por Acciones Simplificada — simplified form, excluded for DASPs.</dd></div>
+        <div><dt>STR</dt><dd>Suspicious Transaction Report. Filed with UIF within 24 hours.</dd></div>
+        <div><dt>UBO</dt><dd>Ultimate Beneficial Owner. Thresholds: ≥25% AML Law / ≥10% UIF Instr.</dd></div>
+        <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — Financial Investigation Unit.</dd></div>
+    </dl>
+</div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <p><strong>El Salvador DASP Registration Guide</strong></p>
+    <p>A practitioner's reference based on hands-on work with the CNAD registration process.</p>
+    <p style="margin-top:0.75rem;">Updated April 2026 · Reflects LEAD, RPSAD, AML Law (Decree 426/2025) and UIF Instructivo as consolidated at that date · PSAD-0079 reference case (Novawave, April 2026)</p>
+    <p style="margin-top:0.75rem;opacity:0.6;font-size:0.7rem;">This guide is informational and does not constitute legal advice. Figures marked <span style="color:var(--amber);background:rgba(217,119,6,0.2);padding:1px 5px;border-radius:3px;font-weight:600;">practice</span> reflect market observations rather than statutory requirements.</p>
+</footer>
 
 
 <script>
