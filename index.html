@@ -3,62 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practitioner's guide to Digital Asset Service Provider (DASP) registration in El Salvador under LEAD, RPSAD, AML Law and the CNAD process. Timeline, costs, personnel, AML, sanctions.">
+    <meta name="theme-color" content="#faf9f5">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="El Salvador DASP Registration Guide">
+    <meta property="og:description" content="Full practitioner's guide to DASP registration in El Salvador: flow, costs, compliance, tax benefits, sanctions. Updated April 2026.">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="El Salvador DASP Registration Guide">
+    <meta name="twitter:description" content="Full practitioner's guide to DASP registration under LEAD in El Salvador. 8–12 months, $6,132 fee, 0% tax.">
     <title>El Salvador DASP Registration Guide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "El Salvador DASP Registration Guide",
+        "description": "Practitioner's guide to Digital Asset Service Provider registration under LEAD (Decree 643/2023) and the CNAD process.",
+        "inLanguage": "en",
+        "dateModified": "2026-04-22",
+        "about": ["DASP", "LEAD", "CNAD", "El Salvador", "Digital Assets Regulation"]
+    }
+    </script>
     <style>
         :root {
+            /* Anthropic / Claude brand palette */
             --white: #ffffff;
-            --bg: #fafbfc;
-            --bg-alt: #f1f4f8;
-            --border: #e3e7ee;
-            --border-light: #eef1f6;
-            --text: #111827;
-            --text-2: #4b5563;
-            --text-3: #9ca3af;
-            --accent: #1d4ed8;
-            --accent-light: #eff6ff;
-            --accent-border: #bfdbfe;
-            --emerald: #059669;
-            --emerald-light: #ecfdf5;
-            --emerald-border: #a7f3d0;
-            --amber: #d97706;
-            --amber-light: #fffbeb;
-            --amber-border: #fde68a;
-            --red: #dc2626;
-            --red-light: #fef2f2;
-            --red-border: #fecaca;
-            --navy: #0f172a;
+            --bg: #faf9f5;              /* ivory — claude.ai body */
+            --bg-alt: #f2f0e8;          /* warm cream for alt sections */
+            --border: #e4e1d4;          /* warm border */
+            --border-light: #eeece2;
+            --text: #141413;            /* Dark ink */
+            --text-2: #3d3929;          /* warm secondary */
+            --text-3: #6b6758;          /* WCAG AA warm muted */
+            --text-muted: #b0aea5;      /* Mid Gray — spec */
+            --accent: #d97757;          /* Orange — spec primary */
+            --accent-2: #c26a49;        /* darker coral for hover */
+            --accent-light: #fbf0eb;
+            --accent-border: #ecc8b8;
+            --emerald: #788c5d;         /* Green — spec tertiary (sage) */
+            --emerald-2: #6a7c51;
+            --emerald-light: #f1f3ea;
+            --emerald-border: #cdd5b8;
+            --amber: #b8893a;           /* warm ochre */
+            --amber-light: #f7f0e0;
+            --amber-border: #e6d4a8;
+            --red: #b84a3a;             /* terracotta — warmer than pure red */
+            --red-light: #f5e8e5;
+            --red-border: #e3beb5;
+            --navy: #141413;            /* ink, not blue */
+            --blue: #6a9bcc;            /* Blue — spec secondary (for accents only) */
+
+            /* spacing tokens */
+            --gap-xs: 0.5rem;
+            --gap-sm: 0.75rem;
+            --gap-md: 1rem;
+            --gap-lg: 1.5rem;
+            --gap-xl: 2.5rem;
+
+            /* radius tokens */
+            --r-sm: 6px;
+            --r-md: 10px;
+            --r-lg: 14px;
+
+            /* focus ring — warm coral */
+            --focus: 0 0 0 3px rgba(217,119,87,0.3);
+
+            /* warm editorial shadow */
+            --shadow-sm: 0 1px 2px rgba(20,20,19,0.04), 0 1px 3px rgba(20,20,19,0.03);
+            --shadow-md: 0 4px 12px rgba(20,20,19,0.06), 0 2px 4px rgba(20,20,19,0.04);
+            --shadow-lg: 0 12px 32px rgba(20,20,19,0.08), 0 4px 8px rgba(20,20,19,0.04);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --white: #1f1e1c;
+                --bg: #141413;              /* warm ink */
+                --bg-alt: #1a1917;
+                --border: #2a2824;
+                --border-light: #24221e;
+                --text: #faf9f5;            /* ivory on ink */
+                --text-2: #d6d3c4;
+                --text-3: #b0aea5;
+                --text-muted: #6b6758;
+                --accent: #e89075;          /* lighter coral */
+                --accent-2: #d97757;
+                --accent-light: rgba(217,119,87,0.14);
+                --accent-border: rgba(232,144,117,0.35);
+                --emerald: #9cb381;
+                --emerald-2: #788c5d;
+                --emerald-light: rgba(120,140,93,0.14);
+                --emerald-border: rgba(156,179,129,0.35);
+                --amber: #d9a862;
+                --amber-light: rgba(184,137,58,0.16);
+                --amber-border: rgba(217,168,98,0.35);
+                --red: #d97060;
+                --red-light: rgba(184,74,58,0.14);
+                --red-border: rgba(217,112,96,0.35);
+                --navy: #faf9f5;            /* inverted ink */
+                --blue: #8ab2d9;
+                --focus: 0 0 0 3px rgba(232,144,117,0.45);
+                --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+                --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+                --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+            }
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--white);
+            background: var(--bg);
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         .container { max-width: 980px; margin: 0 auto; padding: 0 2rem; }
         .serif { font-family: 'Instrument Serif', Georgia, serif; }
 
+        /* ── UTILITY CLASSES ── */
+        .row-between { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+        .stack-sm > * + * { margin-top: 0.5rem; }
+        .stack-md > * + * { margin-top: 0.75rem; }
+        .stack-lg > * + * { margin-top: 1.25rem; }
+        .mt-sm { margin-top: 0.75rem; }
+        .mt-md { margin-top: 1.25rem; }
+        .mt-lg { margin-top: 2.5rem; }
+        .kbd-label {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-muted);
+        }
+        .grid-3-equal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .price-pill {
+            text-align: center; padding: 1rem;
+            background: var(--bg); border-radius: var(--r-md);
+        }
+        .price-pill__val {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem; color: var(--navy); display: block; line-height: 1.2;
+        }
+        .price-pill__lbl { font-size: 0.75rem; color: var(--text-2); display: block; margin-top: 0.15rem; }
+        .price-pill__note { font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 0.15rem; }
+        .note-sm { font-size: 0.72rem; color: var(--text-3); }
+
+        /* ── FOCUS VISIBLE ── */
+        :focus { outline: none; }
+        :focus-visible {
+            outline: none; box-shadow: var(--focus);
+            border-radius: 4px;
+        }
+        a:focus-visible, summary:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+            outline: none; box-shadow: var(--focus);
+        }
+
+        /* ── SCROLL PROGRESS ── */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: 3px; background: transparent; z-index: 200;
+            pointer-events: none;
+        }
+        .scroll-progress__fill {
+            height: 100%; background: var(--accent);
+            width: 0%; transition: width 0.1s linear;
+        }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top {
+            position: fixed; bottom: 1.5rem; right: 1.5rem;
+            width: 42px; height: 42px; border-radius: 50%;
+            background: var(--navy); color: var(--white);
+            border: none; cursor: pointer; z-index: 90;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            font-size: 1.1rem; font-family: inherit;
+        }
+        .back-to-top.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top:hover { background: var(--accent); }
+
+        /* ── ANCHOR HIGHLIGHT ── */
+        .section:target > .container, section:target {
+            animation: targetHighlight 1.4s ease-out;
+        }
+        @keyframes targetHighlight {
+            0% { background: var(--accent-light); }
+            100% { background: transparent; }
+        }
+
         /* ── NAV ── */
         .nav {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(250,249,245,0.88);
+            backdrop-filter: blur(12px) saturate(1.1);
+            -webkit-backdrop-filter: blur(12px) saturate(1.1);
             border-bottom: 1px solid var(--border);
+        }
+        @media (prefers-color-scheme: dark) {
+            .nav { background: rgba(20,20,19,0.85); }
         }
         .nav__inner {
             max-width: 980px; margin: 0 auto; padding: 0 2rem;
             display: flex; align-items: center; gap: 0;
             overflow-x: auto; scrollbar-width: none;
+            -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+                    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
         }
         .nav__inner::-webkit-scrollbar { display: none; }
         .nav__brand {
@@ -68,70 +227,122 @@
             white-space: nowrap; flex-shrink: 0;
         }
         .nav a {
-            flex-shrink: 0; padding: 1rem 0.9rem;
+            flex-shrink: 0; padding: 1rem 0.75rem;
             font-size: 0.78rem; font-weight: 500; color: var(--text-3);
             text-decoration: none; position: relative;
             transition: color 0.2s;
         }
         .nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 0.9rem; right: 0.9rem;
+            content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem;
             height: 2px; background: var(--accent); transform: scaleX(0);
             transition: transform 0.2s;
         }
         .nav a:hover { color: var(--text); }
         .nav a.active { color: var(--accent); }
         .nav a.active::after { transform: scaleX(1); }
+        .nav__sep {
+            flex-shrink: 0; width: 1px; height: 14px; background: var(--border);
+            margin: 0 0.4rem; align-self: center;
+        }
 
         /* ── HERO ── */
         .hero {
-            padding: 6rem 2rem 5rem;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
+            position: relative;
+            padding: 7rem 2rem 5.5rem;
+            background: var(--bg);
             border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 900px 500px at 85% -10%, rgba(217,119,87,0.18) 0%, transparent 60%),
+                        radial-gradient(ellipse 600px 400px at 0% 100%, rgba(120,140,93,0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
         .hero__inner {
+            position: relative;
             max-width: 980px; margin: 0 auto;
         }
         .hero__label {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.78rem; font-weight: 600; color: var(--accent);
+            font-size: 0.76rem; font-weight: 600; color: var(--accent-2);
             background: var(--accent-light); border: 1px solid var(--accent-border);
             padding: 0.35rem 1rem; border-radius: 100px;
             margin-bottom: 1.5rem;
+            letter-spacing: 0.01em;
         }
         .hero h1 {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
-            font-weight: 400; line-height: 1.1;
-            letter-spacing: -0.02em; color: var(--navy);
-            max-width: 700px; margin-bottom: 1.25rem;
+            font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+            font-weight: 400; line-height: 1.05;
+            letter-spacing: -0.025em; color: var(--navy);
+            max-width: 780px; margin-bottom: 1.5rem;
         }
         .hero__desc {
-            font-size: 1.05rem; color: var(--text-2);
-            max-width: 560px; line-height: 1.7;
+            font-size: 1.1rem; color: var(--text-2);
+            max-width: 620px; line-height: 1.65;
+            margin-bottom: 2.25rem;
+        }
+        .hero__cta {
+            display: flex; gap: 0.75rem; flex-wrap: wrap;
             margin-bottom: 2.5rem;
         }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.85rem 1.4rem; border-radius: 999px;
+            font-size: 0.88rem; font-weight: 600;
+            text-decoration: none; cursor: pointer; border: 1px solid transparent;
+            transition: background 0.2s, border-color 0.2s, transform 0.1s, color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+            letter-spacing: 0.005em;
+        }
+        .btn--primary { background: var(--accent); color: var(--white); box-shadow: 0 1px 2px rgba(20,20,19,0.1); }
+        .btn--primary:hover { background: var(--accent-2); box-shadow: 0 4px 12px rgba(217,119,87,0.3); }
+        .btn--secondary {
+            background: transparent; color: var(--navy);
+            border-color: var(--border);
+        }
+        .btn--secondary:hover { border-color: var(--navy); background: var(--white); }
+        .btn--ghost {
+            background: transparent; color: var(--accent);
+            border-color: var(--accent-border);
+            padding: 0.5rem 1rem; font-size: 0.78rem;
+        }
+        .btn--ghost:hover { background: var(--accent-light); color: var(--accent-2); border-color: var(--accent); }
+        .flow-controls {
+            display: flex; justify-content: flex-end;
+            margin: 0 0 1rem; gap: 0.5rem;
+        }
+        .btn:active { transform: translateY(1px); }
+        .btn__arrow { transition: transform 0.2s; }
+        .btn:hover .btn__arrow { transform: translateX(3px); }
         .metrics {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-            background: var(--border); border-radius: 12px; overflow: hidden;
-            max-width: 680px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg); overflow: hidden;
+            max-width: 720px;
+            box-shadow: var(--shadow-sm);
         }
         .metric {
-            background: var(--white); padding: 1.25rem 1.5rem;
+            background: var(--white); padding: 1.35rem 1.5rem;
             text-align: center;
         }
         .metric__val {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.5rem; color: var(--navy);
-            display: block; line-height: 1.2;
+            font-size: 1.65rem; color: var(--navy);
+            display: block; line-height: 1.15;
+            letter-spacing: -0.01em;
         }
         .metric__label {
-            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.08em; color: var(--text-3); margin-top: 0.25rem;
+            font-size: 0.66rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--text-3); margin-top: 0.3rem;
         }
 
         /* ── SECTIONS ── */
         .section { padding: 4.5rem 0; }
-        .section--alt { background: var(--bg); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .section--alt { background: var(--bg-alt); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
         .section__label {
             font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.75rem;
@@ -151,11 +362,15 @@
         .ref {
             font-size: 0.62rem; font-weight: 600; color: var(--accent);
             background: var(--accent-light); padding: 1px 6px; border-radius: 4px;
-            white-space: nowrap;
+            white-space: nowrap; cursor: pointer; transition: background 0.15s, color 0.15s;
+            letter-spacing: 0.02em;
         }
+        .ref:hover { background: var(--accent); color: var(--white); }
+        .ref--copied { background: var(--emerald) !important; color: var(--white) !important; }
         .ref--practice {
-            color: var(--amber); background: var(--amber-light);
+            color: var(--amber); background: var(--amber-light); cursor: default;
         }
+        .ref--practice:hover { background: var(--amber-light); color: var(--amber); }
         .tag {
             display: inline-flex; align-items: center;
             font-size: 0.65rem; font-weight: 600;
@@ -201,6 +416,29 @@
         .faq-item[open] summary::after { transform: rotate(45deg); }
         .faq-item div {
             padding: 0 0 1rem; font-size: 0.85rem; color: var(--text-2);
+        }
+
+        /* ── GANTT TIMELINE ── */
+        .gantt {
+            background: linear-gradient(135deg, var(--navy) 0%, #2a2724 100%);
+            border-radius: var(--r-lg);
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 2rem;
+            color: var(--bg);
+            box-shadow: var(--shadow-md);
+        }
+        .gantt__head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.5rem; }
+        .gantt__title { font-size:1.4rem; font-weight:400; letter-spacing:-0.01em; }
+        .gantt__practice { font-size:0.62rem; font-weight:600; color:var(--amber); background:rgba(184,137,58,0.18); padding:2px 7px; border-radius:4px; vertical-align:middle; margin-left:4px; letter-spacing:0.04em; text-transform:uppercase; }
+        .gantt__sub { font-size:0.72rem; opacity:0.55; }
+        .gantt__bar { display:flex; height:12px; border-radius:6px; overflow:hidden; margin-bottom:1rem; box-shadow: inset 0 1px 2px rgba(0,0,0,0.2); }
+        .gantt__seg { transition: filter 0.2s; }
+        .gantt__seg:hover { filter: brightness(1.1); }
+        .gantt__legend { display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem 1.5rem; font-size:0.78rem; }
+        .gantt__leg { display:flex; align-items:center; gap:0.5rem; }
+        .gantt__dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+        @media (max-width: 640px) {
+            .gantt__legend { grid-template-columns:1fr; }
         }
 
         /* ── TIMELINE FLOW ── */
@@ -296,6 +534,18 @@
             letter-spacing: 0.01em;
         }
 
+        /* ── SECTION H3 (uniform mini-heading within a section) ── */
+        .section__h3 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-weight: 400; color: var(--navy);
+            font-size: 1.35rem; letter-spacing: -0.01em;
+            margin-top: 2.5rem; margin-bottom: 0.25rem;
+        }
+        .section__h3 + p.section__lead {
+            font-size: 0.9rem; color: var(--text-2);
+            margin-bottom: 1rem; max-width: 620px;
+        }
+
         /* ── GRID CARDS ── */
         .grid { display: grid; gap: 1rem; }
         .grid--2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
@@ -305,12 +555,29 @@
         .card {
             background: var(--white); border: 1px solid var(--border);
             border-radius: 10px; padding: 1.5rem;
-            transition: box-shadow 0.2s, border-color 0.2s;
+            transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
         }
         .card:hover {
-            border-color: #d1d5db;
+            border-color: var(--text-3);
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
+        /* Left-accent variants — semantic grouping */
+        .card--accent-blue    { border-left: 3px solid var(--accent); }
+        .card--accent-green   { border-left: 3px solid var(--emerald); }
+        .card--accent-amber   { border-left: 3px solid var(--amber); }
+        .card--accent-red     { border-left: 3px solid var(--red); }
+        .card--accent-navy    { border-left: 3px solid var(--navy); }
+        .card--accent-muted   { border-left: 3px solid var(--text-3); }
+        /* Top-accent variants (for Costs grid) */
+        .card--top-blue    { border-top: 3px solid var(--accent); }
+        .card--top-green   { border-top: 3px solid var(--emerald); }
+        .card--top-navy    { border-top: 3px solid var(--navy); }
+        /* Hero card (for Total Budget) */
+        .card--hero {
+            border-top: 3px solid var(--accent);
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--emerald-light) 100%);
+        }
+        .card--full { grid-column: 1 / -1; }
         .card__icon {
             width: 36px; height: 36px; border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
@@ -325,6 +592,9 @@
             font-size: 1rem; font-weight: 400; color: var(--navy);
             margin-bottom: 0.5rem;
         }
+        .card--sanction h3 { font-size: 0.95rem; }
+        .card--sanction.card--accent-red h3 { color: var(--red); }
+        .card--sanction.card--accent-green h3 { color: var(--emerald); }
         .card p, .card li { font-size: 0.82rem; color: var(--text-2); }
         .card ul { list-style: none; }
         .card li {
@@ -335,6 +605,16 @@
             width: 3px; height: 3px; border-radius: 50%;
             background: var(--text-3);
         }
+        .card__head {
+            display: flex; justify-content: space-between; align-items: baseline;
+            gap: 1rem; margin-bottom: 0.75rem;
+        }
+        .card__head h3 { margin: 0; }
+        .card__table { width: 100%; font-size: 0.82rem; color: var(--text-2); }
+        .card__table td { padding-top: 0.35rem; }
+        .card__table tr:first-child td { padding-top: 0; }
+        .card__table .price { text-align: right; }
+        .card__note { font-size: 0.72rem; color: var(--text-3); margin-top: 0.75rem; }
 
         /* ── TABS ── */
         .tabs {
@@ -440,69 +720,103 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .metrics { grid-template-columns: repeat(4, 1fr); }
+            .grid-3-equal { grid-template-columns: repeat(3, 1fr); }
+        }
         @media (max-width: 768px) {
-            .hero { padding: 4rem 1.5rem 3rem; }
+            .container { padding: 0 1rem; }
+            .nav__inner { padding: 0 1rem; }
+            .hero { padding: 4rem 1rem 3rem; }
             .metrics { grid-template-columns: repeat(2, 1fr); }
             .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+            .grid-3-equal { grid-template-columns: 1fr; }
             .benefits { grid-template-columns: repeat(2, 1fr); }
             .flow-step { padding-left: 52px; }
             .flow::before { left: 19px; }
             .flow-step__num { width: 40px; height: 40px; font-size: 1rem; }
+            .flow-step__head { flex-wrap: wrap; }
+            .flow-step__duration { order: 3; margin-top: 0.5rem; }
             .gantt { flex-wrap: wrap; }
             .gantt__seg { min-width: 33%; }
             .nav__brand { display: none; }
             .price-section__head { flex-direction: column; gap: 0.25rem; }
+            .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .tbl-wrap .tbl { min-width: 560px; }
+            .back-to-top { bottom: 1rem; right: 1rem; }
         }
 
         /* ── PRINT ── */
         @media print {
-            .nav { display: none; }
-            .hero { padding: 2rem; }
-            .section { padding: 2rem 0; }
+            .nav, .scroll-progress, .back-to-top { display: none !important; }
+            .hero { padding: 2rem 0; background: none; }
+            .section { padding: 1.5rem 0; page-break-inside: avoid; }
+            .section__title { page-break-after: avoid; }
             .flow-step__body { max-height: none !important; }
-            .flow-step__toggle { display: none; }
+            .flow-step__toggle, .faq-item summary::after { display: none; }
+            .faq-item[open] { break-inside: avoid; }
             .card, .tbl { box-shadow: none; break-inside: avoid; }
             .fade-in { opacity: 1; transform: none; }
-            .footer { background: #f5f5f5; color: #333; }
-            .footer strong { color: #111; }
+            .footer { background: var(--white); color: var(--text-2); border-top: 1px solid var(--border); }
+            .footer strong { color: var(--navy); }
+            /* print href after anchors inside refs */
+            .flow-step__content a[href^="http"]::after {
+                content: " (" attr(href) ")";
+                font-size: 0.7em; color: var(--text-3); font-weight: 400;
+            }
+            @page { margin: 2cm; }
+            details { break-inside: avoid; }
+            details > * { display: block !important; }
+            summary::after { content: none !important; }
         }
     </style>
 </head>
 <body>
 
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__fill"></div></div>
+
 <!-- ══ NAV ══ -->
-<nav class="nav">
+<nav class="nav" aria-label="Main">
     <div class="nav__inner">
         <span class="nav__brand">DASP Guide</span>
-        <a href="#dasp">Flow</a>
+        <a href="#legislation">Legislation</a>
+        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#activities">Activities</a>
         <a href="#assets">Assets</a>
-        <a href="#legislation">Legislation</a>
-        <a href="#personnel">Personnel</a>
+        <span class="nav__sep" aria-hidden="true"></span>
+        <a href="#dasp">Flow</a>
         <a href="#entity">Entity</a>
+        <a href="#personnel">Personnel</a>
+        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#aml">AML</a>
-        <a href="#cyber">Cybersecurity</a>
+        <a href="#cyber">Cyber</a>
+        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#tax">Tax</a>
         <a href="#costs">Costs</a>
+        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#sanctions">Sanctions</a>
+        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#faq">FAQ</a>
         <a href="#glossary">Glossary</a>
     </div>
 </nav>
 
 <!-- ══ HERO ══ -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-title">
     <div class="hero__inner">
-        <div class="hero__label">El Salvador · Digital Assets Framework</div>
-        <h1>DASP Registration<br>Guide</h1>
-        <p class="hero__desc">A practitioner's guide to Digital Asset Service Provider registration under the <abbr title="Ley de Emisión de Activos Digitales">LEAD</abbr> (Decree No.&nbsp;643 of 9&nbsp;January 2023). Based on hands-on work with the <abbr title="Comisión Nacional de Activos Digitales — the Salvadoran digital assets regulator">CNAD</abbr> process.</p>
-        <div class="metrics">
-            <div class="metric"><span class="metric__val">$6,132</span><span class="metric__label">Registration Fee</span></div>
+        <div class="hero__label">Practitioner's Guide · Updated April 2026</div>
+        <h1 id="hero-title">DASP Registration<br>in El Salvador</h1>
+        <p class="hero__desc">A hands-on walkthrough of Digital Asset Service Provider registration under <abbr title="Ley de Emisión de Activos Digitales">LEAD</abbr> (Decree No.&nbsp;643 of 9&nbsp;January 2023), end-to-end with <abbr title="Comisión Nacional de Activos Digitales">CNAD</abbr>.</p>
+        <div class="hero__cta">
+            <a href="#dasp" class="btn btn--primary">Start with the Flow <span class="btn__arrow">→</span></a>
+            <a href="#costs" class="btn btn--secondary">See the Costs</a>
+        </div>
+        <div class="metrics" role="group" aria-label="Key figures">
+            <div class="metric"><span class="metric__val" data-countup data-target="6132" data-prefix="$">$6,132</span><span class="metric__label">Registration Fee</span></div>
             <div class="metric"><span class="metric__val">0%</span><span class="metric__label">Tax Rate</span></div>
             <div class="metric"><span class="metric__val">8–12 mo</span><span class="metric__label">Timeline</span></div>
-            <div class="metric"><span class="metric__val">$4,088/yr</span><span class="metric__label">Annual Renewal</span></div>
+            <div class="metric"><span class="metric__val" data-countup data-target="4088" data-prefix="$" data-suffix="/yr">$4,088/yr</span><span class="metric__label">Annual Renewal</span></div>
         </div>
-        <p style="font-size:0.72rem;color:var(--text-3);margin-top:1.25rem;max-width:680px;">Abbreviations used throughout: <strong>bd</strong> = business days · <strong>CO</strong> = Compliance Officer · <strong>UBO</strong> = Ultimate Beneficial Owner · <strong>PEP</strong> = Politically Exposed Person · <strong>CDD</strong> = Customer Due Diligence · <strong>KYT</strong> = Know Your Transaction · <strong>DLT</strong> = Distributed Ledger Technology · <strong>BSP</strong> = Bitcoin Service Provider · <strong>DASP</strong> = Digital Asset Service Provider. See <a href="#glossary" style="color:var(--accent);">Glossary</a>.</p>
     </div>
 </section>
 
@@ -516,37 +830,27 @@
     <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
 
     <!-- TIMELINE -->
-    <div style="background:var(--navy);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2rem;color:#fff;">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem;">
-            <span style="font-family:'Instrument Serif',serif;font-size:1.25rem;">Total: 8–12 months <span style="font-size:0.62rem;font-weight:600;color:var(--amber);background:rgba(217,119,6,0.15);padding:1px 6px;border-radius:4px;vertical-align:middle;">practice</span></span>
-            <span style="font-size:0.72rem;opacity:0.5;">Typical end-to-end: ~11 months</span>
+    <div class="gantt">
+        <div class="gantt__head">
+            <span class="gantt__title serif">Total: 8–12 months <span class="gantt__practice">practice</span></span>
+            <span class="gantt__sub">Typical end-to-end: ~11 months</span>
         </div>
-        <!-- Bar -->
-        <div style="display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:1rem;">
-            <div style="flex:3;background:#3b82f6;"></div>
-            <div style="flex:3;background:#2563eb;"></div>
-            <div style="flex:4;background:#059669;"></div>
-            <div style="flex:2;background:#10b981;"></div>
+        <div class="gantt__bar">
+            <div class="gantt__seg" style="flex:3;background:var(--accent);"></div>
+            <div class="gantt__seg" style="flex:3;background:var(--accent-2);"></div>
+            <div class="gantt__seg" style="flex:4;background:var(--emerald);"></div>
+            <div class="gantt__seg" style="flex:2;background:var(--emerald-2);"></div>
         </div>
-        <!-- Legend -->
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.6rem 1.5rem;font-size:0.78rem;">
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span style="width:10px;height:10px;border-radius:3px;background:#3b82f6;flex-shrink:0;"></span>
-                <span><strong>Preparation</strong> — Mo 1–3 · Entity + Pre-Registration</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span style="width:10px;height:10px;border-radius:3px;background:#2563eb;flex-shrink:0;"></span>
-                <span><strong>Documentation</strong> — Mo 3–6 · ~30 docs package</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span style="width:10px;height:10px;border-radius:3px;background:#059669;flex-shrink:0;"></span>
-                <span><strong>CNAD Review</strong> — Mo 6–10 · 2–3 rounds × (20+10 bd)</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span style="width:10px;height:10px;border-radius:3px;background:#10b981;flex-shrink:0;"></span>
-                <span><strong>Final</strong> — Mo 10–12 · Payment + Registration</span>
-            </div>
+        <div class="gantt__legend">
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent);"></span><span><strong>Preparation</strong> — Mo 1–3 · Entity + Pre-Registration</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent-2);"></span><span><strong>Documentation</strong> — Mo 3–6 · ~30 docs package</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald);"></span><span><strong>CNAD Review</strong> — Mo 6–10 · 2–3 rounds × (20+10 bd)</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald-2);"></span><span><strong>Final</strong> — Mo 10–12 · Payment + Registration</span></div>
         </div>
+    </div>
+
+    <div class="flow-controls">
+        <button type="button" class="btn btn--ghost" data-expand-all aria-label="Expand or collapse all steps">Expand all</button>
     </div>
 
     <div class="flow">
@@ -846,46 +1150,46 @@
         <p style="margin-top:0.5rem;">CNAD may also request further information before the 20-day review deadline expires, setting a custom term <span class="ref">RPSAD Art. 8</span>. Any statutory term may be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
     </div>
 
-    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">Ongoing Obligations</h3>
-    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">Recurring duties that survive registration. Non-compliance triggers sanctions and, in the case of unpaid renewal, automatic loss of registration and tax benefits.</p>
+    <h3 class="section__h3">Ongoing Obligations</h3>
+    <p class="section__lead">Recurring duties that survive registration. Non-compliance triggers sanctions and, in the case of unpaid renewal, automatic loss of registration and tax benefits.</p>
 
     <div class="grid grid--2">
-        <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card card--accent-blue">
             <h3>Annual Renewal</h3>
             <ul>
                 <li>Fee: <strong>$4,088</strong> (10 × $408.80), due in Q1 each year <span class="ref">RPSAD Art. 12</span></li>
                 <li>Non-payment → registration cancelled and tax benefits lost <span class="ref">RPSAD Art. 12</span></li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card card--accent-blue">
             <h3>Quarterly Reporting</h3>
             <ul>
                 <li>Operational and financial report each quarter <span class="ref">RPSAD Arts. 15–16</span></li>
                 <li>Submission window: the first 20 days of April, July, October and January</li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--emerald);">
+        <div class="card card--accent-green">
             <h3>Material Changes — CNAD</h3>
             <ul>
                 <li>Notify CNAD within <strong>5 business days</strong> of any significant change to registration documents <span class="ref">RPSAD Art. 9</span></li>
                 <li>Covers CEO, board members and organisational structure <span class="ref">RPSAD Art. 7(b)(ii), 7(e)</span></li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--emerald);">
+        <div class="card card--accent-green">
             <h3>Material Changes — UIF</h3>
             <ul>
                 <li>CO or UBO changes require UIF update within <strong>15 business days</strong> <span class="ref">UIF Instr. Art. 3</span> <span class="ref">UIF Instr. Art. 64</span></li>
                 <li>Other data (name, NIT, address) on the same 15-day cadence</li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--amber);">
+        <div class="card card--accent-amber">
             <h3>Records Retention</h3>
             <ul>
                 <li>All AML records kept for <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
                 <li>Applies to CDD files, transaction records, STRs and training logs</li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--amber);">
+        <div class="card card--accent-amber">
             <h3>Code of Ethics</h3>
             <ul>
                 <li>Must be adopted within <strong>6 months</strong> of registration <span class="ref">RPSAD Art. 18</span></li>
@@ -903,6 +1207,7 @@
     <h2 class="section__title">DASP Activities Under LEAD</h2>
     <p class="section__desc">Article 19 defines which activities require DASP registration. Each carries its own AML risk classification.</p>
 
+    <div class="tbl-wrap">
     <table class="tbl">
         <thead><tr><th>Activity</th><th>LEAD Art.</th><th>AML Risk <span class="ref">CNAD Guide §5.a</span></th></tr></thead>
         <tbody>
@@ -917,6 +1222,7 @@
             <tr><td><strong>Investment management</strong> — manage digital asset investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
         </tbody>
     </table>
+    </div>
 
     <div class="callout callout--blue" style="margin-top:1rem;">
         <p><strong>Important:</strong> A single DASP can register for multiple activities. The AML risk classification of the <strong>highest-risk activity</strong> determines the overall compliance burden. Activities not listed in Art. 19 do not require DASP registration.</p>
@@ -933,7 +1239,7 @@
     <p class="section__desc">Not every digital asset is marketable under a DASP licence. Restrictions are set at registration and reinforced in every registration resolution <span class="ref">LEAD Arts. 9(k)(l), 21(e)</span> <span class="ref">RPSAD Art. 41</span>.</p>
 
     <div class="grid grid--2">
-        <div class="card" style="border-left:3px solid var(--emerald);">
+        <div class="card card--accent-green">
             <h3>Permitted by default</h3>
             <ul>
                 <li>Major transparent-ledger assets (BTC, ETH, SOL, TRX and similar)</li>
@@ -941,7 +1247,7 @@
                 <li>Assets declared in the DASP registration file and accepted by CNAD</li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--red);">
+        <div class="card card--accent-red">
             <h3>Prohibited or restricted</h3>
             <ul>
                 <li><strong>Privacy coins — prohibited.</strong> Assets with limited or non-existent traceability (Monero XMR, ZCash ZEC and similar) may not be marketed under any circumstances</li>
@@ -963,48 +1269,49 @@
 </section>
 
 <!-- ══ APPLICABLE LEGISLATION ══ -->
-<section class="section" id="legislation">
+<section class="section section--alt" id="legislation">
 <div class="container fade-in">
     <p class="section__label">Legal Framework</p>
     <h2 class="section__title">Applicable Legislation</h2>
     <p class="section__desc">Six instruments govern DASPs in El Salvador. LEAD sets the mandate, RPSAD the procedure, the AML Law and UIF Instructivo the compliance floor, and the CNAD AML Guide the supervisory expectations.</p>
 
     <div class="grid grid--2">
-        <div class="card" style="border-left:3px solid var(--navy);">
+        <div class="card card--accent-navy">
             <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
             <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--blue">Primary Law</span></div>
+            <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
         </div>
-        <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card card--accent-blue">
             <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
             <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--blue">DASP Regulation</span></div>
+            <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
         </div>
-        <div class="card" style="border-left:3px solid var(--emerald);">
+        <div class="card card--accent-green">
             <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
             <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--green">AML/CFT</span></div>
+            <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
         </div>
-        <div class="card" style="border-left:3px solid var(--emerald);">
+        <div class="card card--accent-green">
             <h3>UIF Instructivo</h3>
             <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--green">UIF Guidelines</span></div>
+            <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
         </div>
-        <div class="card" style="border-left:3px solid var(--amber);">
+        <div class="card card--accent-amber">
             <h3>CNAD AML Guide for DASPs</h3>
             <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--amber">Compliance Guide</span></div>
+            <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
         </div>
-        <div class="card" style="border-left:3px solid var(--text-3);">
+        <div class="card card--accent-muted">
             <h3>Issuer & Stablecoin Regulations</h3>
             <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
-            <div style="margin-top:0.5rem;"><span class="tag tag--blue">Issuance Framework</span></div>
+            <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
         </div>
     </div>
 
-    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">BSP vs DASP — Two Registrations, One Entity</h3>
-    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
+    <h3 class="section__h3">BSP vs DASP — Two Registrations, One Entity</h3>
+    <p class="section__lead">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
 
+    <div class="tbl-wrap">
     <table class="tbl">
         <thead><tr><th>Feature</th><th>BSP <span class="ref">Bitcoin Law</span></th><th>DASP <span class="ref">LEAD</span></th></tr></thead>
         <tbody>
@@ -1016,6 +1323,7 @@
             <tr><td>Tax benefits</td><td>Separate BTC-specific regime</td><td>LEAD Art. 36 — income, capital gains, VAT, municipal</td></tr>
         </tbody>
     </table>
+    </div>
     <p class="tbl-note">Most exchanges and custodians in El Salvador hold both licences. Market rate for BSP registration support is comparable to DASP (~$5,085 incl. VAT).</p>
 </div>
 </section>
@@ -1036,11 +1344,10 @@
                 <li>Credentials in Commercial Registry</li>
                 <li>Foreign: local representative via POA <span class="ref">LEAD Art. 18(d)</span></li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--blue">No residency required</span></div>
+            <div class="stack-md"><span class="tag tag--blue">No residency required</span></div>
         </div>
 
         <div class="card">
-
             <h3>Principal Compliance Officer</h3>
             <ul>
                 <li>Board-appointed <span class="ref">AML Law Art. 20</span></li>
@@ -1048,30 +1355,28 @@
                 <li>UIF registration within 5 days <span class="ref">UIF Instr. Art. 64</span></li>
                 <li>Independence, highest rank under CEO <span class="ref">AML Law Art. 20</span></li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--green">No residency for DASPs</span></div>
-            <p style="font-size:0.75rem;color:var(--text-3);margin-top:0.3rem;">Explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span>. Must have employment relationship.</p>
+            <div class="stack-md"><span class="tag tag--green">No residency for DASPs</span></div>
+            <p class="note-sm">Explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span>. Must have employment relationship.</p>
         </div>
 
         <div class="card">
-
             <h3>Alternate Compliance Officer</h3>
             <ul>
                 <li><strong>Mandatory</strong> by law <span class="ref">AML Law Art. 20</span></li>
                 <li>Same qualifications as Principal CO</li>
                 <li>AML/CFT cert + UIF registration <span class="ref">UIF Instr. Arts. 3, 64</span></li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--green">No residency for DASPs</span></div>
+            <div class="stack-md"><span class="tag tag--green">No residency for DASPs</span></div>
         </div>
 
         <div class="card">
-
             <h3>CISO</h3>
             <ul>
                 <li>Board member or manager <span class="ref">RPSAD Art. 25(a)</span></li>
                 <li>Authority, independence, direct Board access <span class="ref">RPSAD Art. 25(a)</span></li>
                 <li>Coordinates cybersecurity plan</li>
             </ul>
-            <div style="margin-top:0.75rem"><span class="tag tag--blue">No residency required</span></div>
+            <div class="stack-md"><span class="tag tag--blue">No residency required</span></div>
         </div>
     </div>
 
@@ -1079,54 +1384,56 @@
         <p><strong>Prevention Committee</strong> <span class="ref">AML Law Art. 23</span>: DASPs must form a Prevention Committee — 3+ members including one Board member and CO. Natural persons may opt out of CO designation — they assume all AML duties personally <span class="ref">AML Law Art. 22</span>.</p>
     </div>
 
-    <div class="card" style="margin-top:1.25rem;border-top:3px solid var(--accent);">
-        <h3 style="margin:0 0 0.75rem;">Corporate &amp; Compliance Roles in El Salvador</h3>
-        <table style="width:100%;font-size:0.82rem;color:var(--text-2);border-collapse:collapse;">
-            <thead><tr style="border-bottom:2px solid var(--border);text-align:left;">
-                <th style="padding:0.5rem 0.5rem 0.5rem 0;">Role</th>
-                <th style="padding:0.5rem;">Function</th>
-                <th style="padding:0.5rem;">Residency</th>
-                <th style="padding:0.5rem;">Registered at</th>
+    <div class="card card--top-blue card--full stack-lg">
+        <h3 class="card__head">Corporate &amp; Compliance Roles in El Salvador</h3>
+        <div class="tbl-wrap">
+        <table class="tbl">
+            <thead><tr>
+                <th>Role</th>
+                <th>Function</th>
+                <th>Residency</th>
+                <th>Registered at</th>
             </tr></thead>
             <tbody>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.5rem 0.5rem 0;font-weight:600;">Administrador Único /<br>Junta Directiva</td>
-                    <td style="padding:0.5rem;">Legal governance body — signs documents, represents company before authorities. Equivalent of Board / Sole Director in common law. Need not be a shareholder <span class="ref">Cód. Com. Art. 254</span>.</td>
-                    <td style="padding:0.5rem;">Not required</td>
-                    <td style="padding:0.5rem;">CNR</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.5rem 0.5rem 0;font-weight:600;">Representante Legal</td>
-                    <td style="padding:0.5rem;">May be the Administrador or a separate person via POA. Represents the company before tax authorities and government. Often combined with Administrador in practice.</td>
-                    <td style="padding:0.5rem;"><strong>Required</strong></td>
-                    <td style="padding:0.5rem;">CNR</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.5rem 0.5rem 0;font-weight:600;">CEO</td>
-                    <td style="padding:0.5rem;">Operational management. Internal role — not a statutory position under Código de Comercio. Visible to CNAD only through organizational structure in the registration file.</td>
-                    <td style="padding:0.5rem;">Not required</td>
-                    <td style="padding:0.5rem;">CNAD (org chart)</td>
-                </tr>
-                <tr style="border-bottom:1px solid var(--border);">
-                    <td style="padding:0.5rem 0.5rem 0.5rem 0;font-weight:600;">Compliance Officer</td>
-                    <td style="padding:0.5rem;">AML/CFT oversight. Board-appointed, highest managerial rank below CEO <span class="ref">AML Law Art. 20</span>. Principal + Alternate mandatory.</td>
-                    <td style="padding:0.5rem;">Not required for DASPs <span class="ref">UIF Instr. Art. 84-B(2)</span></td>
-                    <td style="padding:0.5rem;">CNAD + UIF</td>
+                <tr>
+                    <td><strong>Administrador Único /<br>Junta Directiva</strong></td>
+                    <td>Legal governance body — signs documents, represents company before authorities. Equivalent of Board / Sole Director in common law. Need not be a shareholder <span class="ref">Cód. Com. Art. 254</span>.</td>
+                    <td>Not required</td>
+                    <td>CNR</td>
                 </tr>
                 <tr>
-                    <td style="padding:0.5rem 0.5rem 0.5rem 0;font-weight:600;">CISO</td>
-                    <td style="padding:0.5rem;">Cybersecurity governance. Board member or manager with authority, independence and direct Board access <span class="ref">RPSAD Art. 25(a)</span>.</td>
-                    <td style="padding:0.5rem;">Not required</td>
-                    <td style="padding:0.5rem;">CNAD (org chart)</td>
+                    <td><strong>Representante Legal</strong></td>
+                    <td>May be the Administrador or a separate person via POA. Represents the company before tax authorities and government. Often combined with Administrador in practice.</td>
+                    <td><strong>Required</strong></td>
+                    <td>CNR</td>
+                </tr>
+                <tr>
+                    <td><strong>CEO</strong></td>
+                    <td>Operational management. Internal role — not a statutory position under Código de Comercio. Visible to CNAD only through organizational structure in the registration file.</td>
+                    <td>Not required</td>
+                    <td>CNAD (org chart)</td>
+                </tr>
+                <tr>
+                    <td><strong>Compliance Officer</strong></td>
+                    <td>AML/CFT oversight. Board-appointed, highest managerial rank below CEO <span class="ref">AML Law Art. 20</span>. Principal + Alternate mandatory.</td>
+                    <td>Not required for DASPs <span class="ref">UIF Instr. Art. 84-B(2)</span></td>
+                    <td>CNAD + UIF</td>
+                </tr>
+                <tr>
+                    <td><strong>CISO</strong></td>
+                    <td>Cybersecurity governance. Board member or manager with authority, independence and direct Board access <span class="ref">RPSAD Art. 25(a)</span>.</td>
+                    <td>Not required</td>
+                    <td>CNAD (org chart)</td>
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 </section>
 
 <!-- ══ ENTITY ══ -->
-<section class="section section--alt" id="entity">
+<section class="section" id="entity">
 <div class="container fade-in">
     <p class="section__label">Entity</p>
     <h2 class="section__title">Local Company Requirements</h2>
@@ -1246,114 +1553,114 @@
     <h2 class="section__title">Cost Structure</h2>
     <p class="section__desc">Private-sector figures reflect El Salvador market quotes in Q1 2026 <span class="ref ref--practice">practice</span>; government fees are set by LEAD Art. 12. All amounts in USD; VAT (13%) noted where applicable.</p>
 
-    <div class="grid grid--2" style="gap:1.25rem;">
+    <div class="grid grid--2">
 
         <!-- 1. COMPANY FORMATION -->
-        <div class="card" style="border-top:3px solid var(--accent);">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-                <h3 style="margin:0;">Company Formation</h3>
-                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">One-time</span>
+        <div class="card card--top-blue">
+            <div class="card__head">
+                <h3>Company Formation</h3>
+                <span class="kbd-label">One-time</span>
             </div>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>S.A. de C.V. incorporation</td><td class="price" style="text-align:right;">$2,500 – $3,000</td></tr>
-                <tr><td style="padding-top:0.35rem;">Local operational bank account opening</td><td class="price" style="text-align:right;padding-top:0.35rem;">$1,000 – $1,300</td></tr>
+            <table class="card__table">
+                <tr><td>S.A. de C.V. incorporation</td><td class="price">$2,500 – $3,000</td></tr>
+                <tr><td>Local operational bank account opening</td><td class="price">$1,000 – $1,300</td></tr>
             </table>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Notarized deed, CNR, NIT, business license, fiscal address (1 yr), $200 bank deposit. Timeline: 2–4 weeks.</p>
+            <p class="card__note">Notarized deed, CNR, NIT, business license, fiscal address (1 yr), $200 bank deposit. Timeline: 2–4 weeks.</p>
         </div>
 
         <!-- 2. COMPANY MAINTENANCE -->
-        <div class="card" style="border-top:3px solid var(--accent);">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-                <h3 style="margin:0;">Company Maintenance</h3>
-                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Recurring</span>
+        <div class="card card--top-blue">
+            <div class="card__head">
+                <h3>Company Maintenance</h3>
+                <span class="kbd-label">Recurring</span>
             </div>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>Legal representative + fiscal address</td><td class="price" style="text-align:right;">$450 – $600 /mo</td></tr>
-                <tr><td style="padding-top:0.35rem;">Accounting (IFRS for SMEs)</td><td class="price" style="text-align:right;padding-top:0.35rem;">$150 – $550 /mo</td></tr>
-                <tr><td style="padding-top:0.35rem;">External audit</td><td class="price" style="text-align:right;padding-top:0.35rem;">$125 – $200 /mo</td></tr>
-                <tr><td style="padding-top:0.35rem;">Municipal filing</td><td class="price" style="text-align:right;padding-top:0.35rem;">$300 /yr</td></tr>
+            <table class="card__table">
+                <tr><td>Legal representative + fiscal address</td><td class="price">$450 – $600 /mo</td></tr>
+                <tr><td>Accounting (IFRS for SMEs)</td><td class="price">$150 – $550 /mo</td></tr>
+                <tr><td>External audit</td><td class="price">$125 – $200 /mo</td></tr>
+                <tr><td>Municipal filing</td><td class="price">$300 /yr</td></tr>
             </table>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Alternative: <strong>LaaS bundle $1,500–$1,700/mo</strong> — legal rep + accounting + audit in one retainer.</p>
+            <p class="card__note">Alternative: <strong>LaaS bundle $1,500–$1,700/mo</strong> — legal rep + accounting + audit in one retainer.</p>
         </div>
 
         <!-- 3. COMPLIANCE -->
-        <div class="card" style="border-top:3px solid var(--emerald);">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-                <h3 style="margin:0;">Compliance</h3>
-                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Setup + Recurring</span>
+        <div class="card card--top-green">
+            <div class="card__head">
+                <h3>Compliance</h3>
+                <span class="kbd-label">Setup + Recurring</span>
             </div>
-            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">One-time setup</p>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>UIF / FIU registration (incl. UBO)</td><td class="price" style="text-align:right;">~$2,000</td></tr>
+            <p class="kbd-label" style="margin-bottom:0.4rem;">One-time setup</p>
+            <table class="card__table">
+                <tr><td>UIF / FIU registration (incl. UBO)</td><td class="price">~$2,000</td></tr>
             </table>
-            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin:0.75rem 0 0.4rem;">Local compliance officer</p>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>Principal + Alternate CO</td><td class="price" style="text-align:right;">$2,000 – $3,500 /mo</td></tr>
-                <tr><td style="padding-top:0.35rem;">CISO</td><td class="price" style="text-align:right;padding-top:0.35rem;">~$2,000 /mo</td></tr>
+            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Local compliance officer</p>
+            <table class="card__table">
+                <tr><td>Principal + Alternate CO</td><td class="price">$2,000 – $3,500 /mo</td></tr>
+                <tr><td>CISO</td><td class="price">~$2,000 /mo</td></tr>
             </table>
-            <p style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;margin:0.75rem 0 0.4rem;">As needed</p>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>AML policy updates</td><td class="price" style="text-align:right;">from $460 per update</td></tr>
+            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">As needed</p>
+            <table class="card__table">
+                <tr><td>AML policy updates</td><td class="price">from $460 per update</td></tr>
             </table>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">COs: AML/CFT certified, UIF-registered. No residency requirement for DASP COs.</p>
+            <p class="card__note">COs: AML/CFT certified, UIF-registered. No residency requirement for DASP COs.</p>
         </div>
 
         <!-- 4. CNAD APPLICATION -->
-        <div class="card" style="border-top:3px solid var(--emerald);">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-                <h3 style="margin:0;">CNAD Application</h3>
-                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">One-time</span>
+        <div class="card card--top-green">
+            <div class="card__head">
+                <h3>CNAD Application</h3>
+                <span class="kbd-label">One-time</span>
             </div>
-            <table style="width:100%;font-size:0.82rem;color:var(--text-2);">
-                <tr><td>DASP registration support</td><td class="price" style="text-align:right;">~$5,085</td></tr>
-                <tr><td style="padding-top:0.35rem;">BSP registration support</td><td class="price" style="text-align:right;padding-top:0.35rem;">~$5,085</td></tr>
+            <table class="card__table">
+                <tr><td>DASP registration support</td><td class="price">~$5,085</td></tr>
+                <tr><td>BSP registration support</td><td class="price">~$5,085</td></tr>
             </table>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">CNAD liaison, application management, and response to CNAD observations during review rounds. Document preparation — ~30 artefacts including the business plan and AML/KYC/BCP policies — is handled in-house and is <em>not</em> included in this fee. Prices incl. 13% VAT. BSP registration applies only if the entity also seeks Bitcoin Service Provider status.</p>
+            <p class="card__note">CNAD liaison, application management, and response to CNAD observations during review rounds. Document preparation — ~30 artefacts including the business plan and AML/KYC/BCP policies — is handled in-house and is <em>not</em> included in this fee. Prices incl. 13% VAT. BSP registration applies only if the entity also seeks Bitcoin Service Provider status.</p>
         </div>
 
         <!-- 5. GOVERNMENT FEES -->
-        <div class="card" style="border-top:3px solid var(--navy);grid-column:1/-1;">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
-                <h3 style="margin:0;">Government Fees <span class="ref">LEAD Art. 12</span></h3>
-                <span style="font-size:0.68rem;font-weight:700;color:var(--text-3);text-transform:uppercase;">Fixed by law</span>
+        <div class="card card--top-navy card--full">
+            <div class="card__head">
+                <h3>Government Fees <span class="ref">LEAD Art. 12</span></h3>
+                <span class="kbd-label">Fixed by law</span>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
-                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
-                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$6,132</span>
-                    <span style="font-size:0.75rem;color:var(--text-2);">DASP Registration</span>
-                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">15 min. salaries · one-time</span>
+            <div class="grid-3-equal">
+                <div class="price-pill">
+                    <span class="price-pill__val">$6,132</span>
+                    <span class="price-pill__lbl">DASP Registration</span>
+                    <span class="price-pill__note">15 min. salaries · one-time</span>
                 </div>
-                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
-                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$4,088</span>
-                    <span style="font-size:0.75rem;color:var(--text-2);">Annual Renewal</span>
-                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">10 min. salaries · Q1 each year</span>
+                <div class="price-pill">
+                    <span class="price-pill__val">$4,088</span>
+                    <span class="price-pill__lbl">Annual Renewal</span>
+                    <span class="price-pill__note">10 min. salaries · Q1 each year</span>
                 </div>
-                <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:8px;">
-                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;">$50</span>
-                    <span style="font-size:0.75rem;color:var(--text-2);">Additional Certificate</span>
-                    <span style="font-size:0.65rem;color:var(--text-3);display:block;">per copy</span>
+                <div class="price-pill">
+                    <span class="price-pill__val">$50</span>
+                    <span class="price-pill__lbl">Additional Certificate</span>
+                    <span class="price-pill__note">per copy</span>
                 </div>
             </div>
-            <p style="font-size:0.7rem;color:var(--text-3);margin-top:0.75rem;">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%).</p>
+            <p class="card__note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%).</p>
         </div>
     </div>
 
-        <!-- TOTAL SUMMARY -->
-        <div class="card" style="border-top:3px solid var(--accent);margin-top:1.25rem;background:linear-gradient(135deg,rgba(59,130,246,0.04),rgba(5,150,105,0.04));">
-            <h3 style="margin:0 0 0.75rem;">Total Estimated Budget</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
-                <div>
-                    <span style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;">One-time launch</span>
-                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;margin-top:0.25rem;">$16,700 – $17,500</span>
-                    <span style="font-size:0.7rem;color:var(--text-3);">DASP only · add ~$5,085 for BSP</span>
-                </div>
-                <div>
-                    <span style="font-size:0.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;">Monthly running costs</span>
-                    <span style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:var(--navy);display:block;margin-top:0.25rem;">$4,725 – $6,850 /mo</span>
-                    <span style="font-size:0.7rem;color:var(--text-3);">Company maintenance + CO + CISO</span>
-                </div>
+    <!-- TOTAL SUMMARY -->
+    <div class="card card--hero stack-md">
+        <h3 class="card__head">Total Estimated Budget</h3>
+        <div class="grid grid--2">
+            <div>
+                <span class="kbd-label">One-time launch</span>
+                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$16,700 – $17,500</span>
+                <span class="price-pill__note">DASP only · add ~$5,085 for BSP</span>
+            </div>
+            <div>
+                <span class="kbd-label">Monthly running costs</span>
+                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$4,725 – $6,850 /mo</span>
+                <span class="price-pill__note">Company maintenance + CO + CISO</span>
             </div>
         </div>
+    </div>
 
 </div>
 </section>
@@ -1364,6 +1671,7 @@
     <p class="section__label">Enforcement</p>
     <h2 class="section__title">Sanctions & Penalties</h2>
 
+    <div class="tbl-wrap">
     <table class="tbl">
         <thead><tr><th>Level</th><th>Examples</th><th>CNAD Penalty <span class="ref">LEAD Art. 38</span></th></tr></thead>
         <tbody>
@@ -1373,26 +1681,29 @@
             <tr><td><span class="tag tag--red">Issuer</span></td><td>Unauthorized issuance, concealing info</td><td class="price">Up to 1% of offering</td></tr>
         </tbody>
     </table>
+    </div>
 
-    <table class="tbl" style="margin-top:1rem;">
+    <div class="tbl-wrap" style="margin-top:1rem;">
+    <table class="tbl">
         <thead><tr><th>AML Level <span class="ref">AML Law Arts. 34–35</span></th><th>Legal Persons</th><th>Natural Persons</th><th>Officers</th></tr></thead>
         <tbody>
             <tr><td><span class="tag tag--amber">Grave</span></td><td class="price">50–500 min. salaries</td><td class="price">Up to 200</td><td>Up to 100 + disqualification 5 yr</td></tr>
             <tr><td><span class="tag tag--red">Very Grave</span></td><td class="price">501–1,000</td><td class="price">201–400</td><td>101–200 + disqualification 10 yr</td></tr>
         </tbody>
     </table>
-
-    <div class="grid grid--3" style="margin-top:1.25rem;">
-        <div class="card" style="border-left:3px solid var(--red);"><h3 style="color:var(--red);">Late Payment</h3><p>20% surcharge if unpaid within 5 days <span class="ref">Art. 38(b)</span></p></div>
-        <div class="card" style="border-left:3px solid var(--red);"><h3 style="color:var(--red);">Recidivism</h3><p>50% increase, no mitigation <span class="ref">Art. 40</span></p></div>
-        <div class="card" style="border-left:3px solid var(--emerald);"><h3 style="color:var(--emerald);">Early Remedy</h3><p>75% reduction if fixed within 5 days <span class="ref">Art. 40</span></p></div>
     </div>
 
-    <h3 style="font-family:'Instrument Serif',serif;font-weight:400;color:var(--navy);font-size:1.35rem;margin-top:2.5rem;margin-bottom:0.25rem;">Grounds for Cancellation of Registration</h3>
-    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:1rem;">Registration is not permanent. CNAD may cancel a DASP's registration on any of the grounds below. Cancellation triggers immediate loss of tax benefits <span class="ref">RPSAD Art. 12</span> and the obligation to wind down regulated activity.</p>
+    <div class="grid grid--3 mt-md">
+        <div class="card card--accent-red card--sanction"><h3>Late Payment</h3><p>20% surcharge if unpaid within 5 days <span class="ref">Art. 38(b)</span></p></div>
+        <div class="card card--accent-red card--sanction"><h3>Recidivism</h3><p>50% increase, no mitigation <span class="ref">Art. 40</span></p></div>
+        <div class="card card--accent-green card--sanction"><h3>Early Remedy</h3><p>75% reduction if fixed within 5 days <span class="ref">Art. 40</span></p></div>
+    </div>
+
+    <h3 class="section__h3">Grounds for Cancellation of Registration</h3>
+    <p class="section__lead">Registration is not permanent. CNAD may cancel a DASP's registration on any of the grounds below. Cancellation triggers immediate loss of tax benefits <span class="ref">RPSAD Art. 12</span> and the obligation to wind down regulated activity.</p>
 
     <div class="grid grid--2">
-        <div class="card" style="border-left:3px solid var(--red);">
+        <div class="card card--accent-red">
             <h3>Automatic grounds</h3>
             <ul>
                 <li>Non-payment of annual renewal fee <span class="ref">RPSAD Art. 12</span></li>
@@ -1401,7 +1712,7 @@
                 <li>Voluntary surrender of registration</li>
             </ul>
         </div>
-        <div class="card" style="border-left:3px solid var(--red);">
+        <div class="card card--accent-red">
             <h3>Sanction-based grounds</h3>
             <ul>
                 <li>Repeated serious breaches of LEAD or RPSAD <span class="ref">LEAD Arts. 38–40</span></li>
@@ -1419,7 +1730,7 @@
 </section>
 
 <!-- ══ FAQ ══ -->
-<section class="section" id="faq">
+<section class="section section--alt" id="faq">
 <div class="container fade-in">
     <p class="section__label">Frequently Asked</p>
     <h2 class="section__title">FAQ</h2>
@@ -1471,7 +1782,7 @@
 </section>
 
 <!-- ══ GLOSSARY ══ -->
-<section class="section section--alt" id="glossary">
+<section class="section" id="glossary">
 <div class="container fade-in">
     <p class="section__label">Reference</p>
     <h2 class="section__title">Glossary</h2>
@@ -1513,61 +1824,170 @@
     <p><strong>El Salvador DASP Registration Guide</strong></p>
     <p>A practitioner's reference based on hands-on work with the CNAD registration process.</p>
     <p style="margin-top:0.75rem;">Updated April 2026 · Reflects LEAD, RPSAD, AML Law (Decree 426/2025) and UIF Instructivo as consolidated at that date</p>
-    <p style="margin-top:0.75rem;opacity:0.6;font-size:0.7rem;">This guide is informational and does not constitute legal advice. Figures marked <span style="color:var(--amber);background:rgba(217,119,6,0.2);padding:1px 5px;border-radius:3px;font-weight:600;">practice</span> reflect market observations rather than statutory requirements.</p>
+    <p style="margin-top:0.75rem;opacity:0.6;font-size:0.7rem;">This guide is informational and does not constitute legal advice. Figures marked <span class="ref ref--practice">practice</span> reflect market observations rather than statutory requirements.</p>
 </footer>
 
+<button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
 <script>
-// Accordion toggles
-document.querySelectorAll('[data-step-toggle]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        btn.closest('[data-step]').classList.toggle('open');
-    });
-});
+(function(){
+    'use strict';
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Tabs
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const parent = btn.closest('.tabs').parentElement;
-        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        parent.querySelector('#tab-' + btn.dataset.tab).classList.add('active');
+    // ── Accordion toggles (flow steps) with aria ──
+    document.querySelectorAll('[data-step-toggle]').forEach(btn => {
+        const step = btn.closest('[data-step]');
+        const initiallyOpen = step.classList.contains('open');
+        btn.setAttribute('role', 'button');
+        btn.setAttribute('tabindex', '0');
+        btn.setAttribute('aria-expanded', initiallyOpen ? 'true' : 'false');
+        const toggle = () => {
+            const isOpen = step.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        };
+        btn.addEventListener('click', toggle);
+        btn.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
     });
-});
 
-// Smooth scroll nav
-document.querySelectorAll('.nav a').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Active nav on scroll
-const sections = document.querySelectorAll('.section[id]');
-const navLinks = document.querySelectorAll('.nav a');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+    // ── Expand all / collapse all ──
+    const expandAllBtn = document.querySelector('[data-expand-all]');
+    if (expandAllBtn) {
+        expandAllBtn.addEventListener('click', () => {
+            const steps = document.querySelectorAll('[data-step]');
+            const allOpen = [...steps].every(s => s.classList.contains('open'));
+            steps.forEach(s => {
+                s.classList.toggle('open', !allOpen);
+                const head = s.querySelector('[data-step-toggle]');
+                if (head) head.setAttribute('aria-expanded', (!allOpen).toString());
             });
-        }
-    });
-}, { rootMargin: '-80px 0px -60%' });
-sections.forEach(s => observer.observe(s));
+            expandAllBtn.textContent = allOpen ? 'Expand all' : 'Collapse all';
+        });
+    }
 
-// Fade-in on scroll
-const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+    // ── Tabs ──
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const parent = btn.closest('.tabs').parentElement;
+            parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            parent.querySelector('#tab-' + btn.dataset.tab).classList.add('active');
+        });
     });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // ── Smooth scroll nav ──
+    document.querySelectorAll('.nav a').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
+    });
+
+    // ── Active nav on scroll ──
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+                });
+            }
+        });
+    }, { rootMargin: '-80px 0px -60%' });
+    sections.forEach(s => obs.observe(s));
+
+    // ── Fade-in ──
+    const fadeObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+    // ── Scroll progress bar + back-to-top visibility ──
+    const fill = document.querySelector('.scroll-progress__fill');
+    const btt = document.querySelector('.back-to-top');
+    let rafId = null;
+    const updateScroll = () => {
+        rafId = null;
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        if (fill) fill.style.width = pct + '%';
+        if (btt) btt.classList.toggle('visible', h.scrollTop > 400);
+    };
+    window.addEventListener('scroll', () => {
+        if (rafId === null) rafId = requestAnimationFrame(updateScroll);
+    }, { passive: true });
+    updateScroll();
+
+    // Back-to-top click
+    if (btt) {
+        btt.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
+    }
+
+    // ── Count-up animation for hero metrics ──
+    const formatNum = (n, prefix, suffix) => {
+        const rounded = Math.round(n);
+        const str = rounded >= 1000 ? rounded.toLocaleString('en-US') : rounded.toString();
+        return (prefix || '') + str + (suffix || '');
+    };
+    const countObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            countObs.unobserve(el);
+            if (prefersReduced) {
+                el.textContent = formatNum(+el.dataset.target, el.dataset.prefix, el.dataset.suffix);
+                return;
+            }
+            const target = +el.dataset.target;
+            const duration = 1200;
+            const start = performance.now();
+            const tick = now => {
+                const p = Math.min(1, (now - start) / duration);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = formatNum(target * eased, el.dataset.prefix, el.dataset.suffix);
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-countup]').forEach(el => countObs.observe(el));
+
+    // ── Copy legal refs on click ──
+    document.querySelectorAll('.ref').forEach(ref => {
+        if (ref.classList.contains('ref--practice')) return;
+        ref.setAttribute('role', 'button');
+        ref.setAttribute('tabindex', '0');
+        ref.setAttribute('title', 'Click to copy');
+        const copy = async () => {
+            try {
+                await navigator.clipboard.writeText(ref.textContent.trim());
+                const prev = ref.textContent;
+                ref.textContent = '✓ copied';
+                ref.classList.add('ref--copied');
+                setTimeout(() => {
+                    ref.textContent = prev;
+                    ref.classList.remove('ref--copied');
+                }, 1100);
+            } catch (_) { /* ignore */ }
+        };
+        ref.addEventListener('click', copy);
+        ref.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(); }
+        });
+    });
+})();
 </script>
 </body>
 </html>
