@@ -462,16 +462,28 @@
             z-index: 1; transition: all 0.25s;
         }
         .flow-step.open .flow-step__num {
-            background: var(--accent); border-color: var(--accent);
+            background: var(--phase-color, var(--accent));
+            border-color: var(--phase-color, var(--accent));
             color: var(--white);
         }
+        .flow-step[data-phase="entity"]  { --phase-color: var(--accent); }
+        .flow-step[data-phase="prereg"]  { --phase-color: var(--accent-2); }
+        .flow-step[data-phase="docs"]    { --phase-color: var(--amber); }
+        .flow-step[data-phase="review"]  { --phase-color: var(--emerald); }
+        .flow-step[data-phase="final"]   { --phase-color: var(--emerald-2); }
         .flow-step__head {
             display: flex; align-items: flex-start; justify-content: space-between;
             padding: 1.5rem 0; cursor: pointer; user-select: none; gap: 1rem;
         }
         .flow-step__phase {
+            display: inline-flex; align-items: center; gap: 0.45rem;
             font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 0.15rem;
+        }
+        .flow-step__phase::before {
+            content: ''; display: inline-block;
+            width: 9px; height: 9px; border-radius: 2px;
+            background: var(--phase-color, var(--text-muted));
         }
         .flow-step__title {
             font-family: 'Instrument Serif', Georgia, serif;
@@ -522,6 +534,40 @@
             display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
         }
 
+        /* ── STEP-5 A..G SUB-TABS ── */
+        .step-tabs {
+            display: flex; flex-wrap: wrap; gap: 0.4rem;
+            margin: 0.75rem 0 1rem;
+            padding: 0.3rem; border-radius: 10px;
+            background: var(--bg-alt); border: 1px solid var(--border-light);
+        }
+        .step-tab {
+            appearance: none; background: transparent; border: 1px solid transparent;
+            padding: 0.45rem 0.8rem; border-radius: 7px;
+            font: 500 0.75rem/1.1 'Inter', -apple-system, sans-serif;
+            color: var(--text-2); cursor: pointer;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            white-space: nowrap;
+        }
+        .step-tab:hover { color: var(--accent); }
+        .step-tab[aria-selected="true"] {
+            background: var(--white); color: var(--text);
+            border-color: var(--border);
+            box-shadow: 0 1px 2px rgba(20,20,19,0.06);
+        }
+        .step-tab__letter {
+            display: inline-block; width: 1.1em;
+            font-weight: 700; color: var(--accent); margin-right: 0.2rem;
+        }
+        .step-tab[aria-selected="true"] .step-tab__letter { color: var(--accent-2); }
+        .step-tab-panels [role="tabpanel"] { display: none; }
+        .step-tab-panels [role="tabpanel"].is-active { display: block; }
+        .step-tab-panels [role="tabpanel"] > h5:first-child { margin-top: 0; border-bottom: none; padding-bottom: 0; }
+        @media (max-width: 640px) {
+            .step-tabs { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+            .step-tab { flex-shrink: 0; }
+        }
+
         /* ── GANTT BAR ── */
         .gantt {
             display: flex; border-radius: 8px; overflow: hidden;
@@ -544,6 +590,31 @@
         .section__h3 + p.section__lead {
             font-size: 0.9rem; color: var(--text-2);
             margin-bottom: 1rem; max-width: 620px;
+        }
+
+        /* ── ANCHOR COPY-LINKS ON H2/H3 ── */
+        .h-anchor {
+            opacity: 0;
+            display: inline-block;
+            margin-left: 0.35em;
+            padding: 0 0.25em;
+            color: var(--text-muted);
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-weight: 500; font-size: 0.5em;
+            line-height: 1; letter-spacing: 0;
+            vertical-align: middle;
+            text-decoration: none; cursor: pointer;
+            border-radius: 4px;
+            transition: opacity 0.15s, color 0.15s, background 0.15s;
+            user-select: none;
+        }
+        .section__title:hover .h-anchor,
+        .section__h3:hover .h-anchor,
+        .h-anchor:focus { opacity: 1; }
+        .h-anchor:hover { color: var(--accent); background: var(--accent-light); }
+        .h-anchor--copied { opacity: 1 !important; color: var(--white) !important; background: var(--emerald) !important; }
+        @media (hover: none) {
+            .h-anchor { opacity: 0.5; }
         }
 
         /* ── GRID CARDS ── */
@@ -822,381 +893,63 @@
 
 <!-- ══════════════════════════════════════════ -->
 <!--  DASP REGISTRATION FLOW                   -->
-<!-- ══════════════════════════════════════════ -->
-<section class="section" id="dasp">
+<!-- ══ APPLICABLE LEGISLATION ══ -->
+<section class="section" id="legislation">
 <div class="container fade-in">
-    <p class="section__label">Track 1</p>
-    <h2 class="section__title">DASP Registration Flow</h2>
-    <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
-
-    <!-- TIMELINE -->
-    <div class="gantt">
-        <div class="gantt__head">
-            <span class="gantt__title serif">Total: 8–12 months <span class="gantt__practice">practice</span></span>
-            <span class="gantt__sub">Typical end-to-end: ~11 months</span>
-        </div>
-        <div class="gantt__bar">
-            <div class="gantt__seg" style="flex:3;background:var(--accent);"></div>
-            <div class="gantt__seg" style="flex:3;background:var(--accent-2);"></div>
-            <div class="gantt__seg" style="flex:4;background:var(--emerald);"></div>
-            <div class="gantt__seg" style="flex:2;background:var(--emerald-2);"></div>
-        </div>
-        <div class="gantt__legend">
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent);"></span><span><strong>Preparation</strong> — Mo 1–3 · Entity + Pre-Registration</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent-2);"></span><span><strong>Documentation</strong> — Mo 3–6 · ~30 docs package</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald);"></span><span><strong>CNAD Review</strong> — Mo 6–10 · 2–3 rounds × (20+10 bd)</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald-2);"></span><span><strong>Final</strong> — Mo 10–12 · Payment + Registration</span></div>
-        </div>
-    </div>
-
-    <div class="flow-controls">
-        <button type="button" class="btn btn--ghost" data-expand-all aria-label="Expand or collapse all steps">Expand all</button>
-    </div>
-
-    <div class="flow">
-
-        <!-- ═══ PREPARATION (before CNAD) ═══ -->
-        <div class="flow-step open" data-step>
-            <div class="flow-step__num">0</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Preparation — Before CNAD</p>
-                    <p class="flow-step__title">Entity Formation & Personnel Onboarding</p>
-                    <p class="flow-step__sub">Incorporate S.A. de C.V., appoint COs and CISO, register with UIF. Done in parallel.</p>
-                </div>
-                <span class="flow-step__duration">4–6 wk</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <h5>Entity</h5>
-                <ul>
-                    <li>S.A. de C.V. or foreign branch domiciled in El Salvador <span class="ref">LEAD Art. 18(d)</span></li>
-                    <li>Notarized deed + CNR registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
-                    <li>NIT, Board credentials, company registration certificate <span class="ref">RPSAD Art. 7(b)(ii)–(d)</span></li>
-                    <li>Share capital: $2,000 minimum (5% at inception) </li>
-                </ul>
-                <h5>Personnel</h5>
-                <ul>
-                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">AML Law Art. 20</span> <span class="ref">UIF Instr. Art. 64</span></li>
-                    <li><strong>Alternate Compliance Officer</strong> — mandatory <span class="ref">AML Law Art. 20</span></li>
-                    <li><strong>No residency requirement for DASP COs</strong> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
-                    <li><strong>CISO</strong> — Board member/manager with authority <span class="ref">RPSAD Art. 25(a)</span></li>
-                    <li>UIF registration within 5 days from appointment <span class="ref">UIF Instr. Art. 64</span></li>
-                </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--green">CO residency exempt</span>
-                </div>
-            </div></div>
-        </div>
-
-        <!-- ═══ PRE-REGISTRATION PHASE (CNAD stages 1–4) ═══ -->
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">1</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
-                    <p class="flow-step__title">Pre-Registration Form Submission</p>
-                    <p class="flow-step__sub">Complete the CNAD pre-registration form with applicant details and desired operating area.</p>
-                </div>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Complete CNAD electronic pre-registration form <span class="ref">CNAD Procedure</span></li>
-                    <li>Applicant details, operating area, services description <span class="ref">LEAD Art. 18</span></li>
-                    <li>List of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
-                    <li>Documentation of service capacity <span class="ref">RPSAD Art. 7(g)</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">2</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
-                    <p class="flow-step__title">CNAD Initial Evaluation</p>
-                    <p class="flow-step__sub">Commission analyzes submitted information, may request additional documentation.</p>
-                </div>
-                <span class="flow-step__duration">20 bd</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>CNAD evaluates application completeness <span class="ref">RPSAD Art. 8</span></li>
-                    <li>May request additional documentation from applicant</li>
-                    <li>Applicant has <strong>10 business days</strong> to provide missing items <span class="ref">RPSAD Art. 8</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">3</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
-                    <p class="flow-step__title">Additional Information Submission</p>
-                    <p class="flow-step__sub">Applicant provides any requested supplementary materials.</p>
-                </div>
-                <span class="flow-step__duration">10 bd</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Submit supplementary materials as requested by CNAD</li>
-                    <li>Deadline: <strong>10 business days</strong> from CNAD request <span class="ref">RPSAD Art. 8</span></li>
-                    <li>Failure to respond → unfavorable resolution; may resubmit <span class="ref">LEAD Art. 20</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">4</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
-                    <p class="flow-step__title">CNAD Decision: Objection / No Objection</p>
-                    <p class="flow-step__sub">CNAD issues reasoned decision. No Objection = specifies registration requirements and process.</p>
-                </div>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li><strong>No Objection</strong>: CNAD specifies registration requirements and process → proceed to Phase 2</li>
-                    <li><strong>Objection</strong>: based on lack of territorial/material competence <span class="ref">LEAD Arts. 2–4</span></li>
-                    <li>CNAD considers market needs and applicant reputation <span class="ref">RPSAD Art. 8</span></li>
-                </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--green">No Objection = proceed to Definitive Registration</span>
-                </div>
-            </div></div>
-        </div>
-
-        <!-- ═══ DEFINITIVE REGISTRATION PHASE (CNAD stages 1–6) ═══ -->
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">5</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Full Documentation Package</p>
-                    <p class="flow-step__sub">The applicant prepares and submits ~30 documents across seven categories per LEAD Art. 20 and RPSAD Arts. 7, 17–35.</p>
-                </div>
-                <span class="flow-step__duration">8–16 wk preparation <span class="ref ref--practice">practice</span></span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <p style="font-size:0.82rem;color:var(--text-2);margin-bottom:0.75rem;">The package is grouped into seven categories (A–G). In practice, the AML/CFT, KYC and security documents (C, D, F) consume most of the preparation time; business and operational documents (A, B, E, G) are comparatively straightforward.</p>
-                <h5>A. Business & Corporate</h5>
-                <ul>
-                    <li><strong>3-Year Business Plan</strong> — market strategy, financials, KPIs, risks <span class="ref">CNAD Procedure §1</span></li>
-                    <li>Organizational structure (names, positions, functions) <span class="ref">RPSAD Art. 7(e)</span> <span class="ref">LEAD Art. 20(c)</span></li>
-                    <li>Corporate governance document <span class="ref">RPSAD Art. 7(e)</span></li>
-                </ul>
-                <h5>B. Customer Service</h5>
-                <ul>
-                    <li>Digital asset descriptions: characteristics, price, 12-mo history, volume <span class="ref">RPSAD Art. 22</span></li>
-                    <li>Trading mechanics, fees, complementary products <span class="ref">RPSAD Art. 7(f)</span></li>
-                    <li>Support & communication policy, complaints handling <span class="ref">LEAD Art. 21(d)(g)</span></li>
-                </ul>
-                <h5>C. AML/CFT Package</h5>
-                <ul>
-                    <li>Prevention Policy, Risk Management, CDD (standard + enhanced + PEPs) <span class="ref">RPSAD Art. 19</span> <span class="ref">AML Law Art. 15</span></li>
-                    <li>Transaction Limits, Monitoring, Suspicious Operations Procedures <span class="ref">AML Law Art. 24</span></li>
-                    <li>Reporting Procedures, Training Plan, Restricted Jurisdictions <span class="ref">UIF Instr. Arts. 52, 54</span></li>
-                </ul>
-                <h5>D. KYC / KYB / KYT</h5>
-                <ul>
-                    <li>KYC/KYB procedures with technical integration docs <span class="ref">RPSAD Art. 19</span></li>
-                    <li>KYT protocol <span class="ref">CNAD Guide §2</span></li>
-                    <li>Travel Rule — mandatory for ALL transfers, any amount <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li>
-                </ul>
-                <h5>E. Risk & Continuity</h5>
-                <ul>
-                    <li>Risk factors and management cycle <span class="ref">RPSAD Art. 21</span></li>
-                    <li>Business Continuity Plan <span class="ref">CNAD Procedure §8</span></li>
-                    <li>Contingency Plan <span class="ref">RPSAD Art. 25(d)(vii)</span></li>
-                </ul>
-                <h5>F. Security & Custody</h5>
-                <ul>
-                    <li>Asset custody policy, fund segregation <span class="ref">LEAD Art. 21(j)</span></li>
-                    <li>Cybersecurity policies, ICT remediation plan <span class="ref">RPSAD Arts. 25–26</span></li>
-                    <li>Geofencing implementation <span class="ref">CNAD Procedure §9</span></li>
-                </ul>
-                <h5>G. Operations</h5>
-                <ul>
-                    <li>Spot <span class="ref">Art. 28</span>, term <span class="ref">Art. 29</span>, optional <span class="ref">Art. 30</span>, settlement <span class="ref">Art. 31</span>, seizure <span class="ref">Art. 32</span>, arbitration <span class="ref">Art. 33</span>, buyer protection <span class="ref">Art. 34</span>, investments <span class="ref">Art. 35</span></li>
-                    <li>Internal/external audit framework <span class="ref">LEAD Art. 21</span></li>
-                </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--amber">Digital + physical copies at CNAD offices</span>
-                </div>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">6</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Application Evaluation</p>
-                    <p class="flow-step__sub">CNAD reviews within 20 <abbr title="business days">bd</abbr>; if observations are raised, the applicant has 10 <abbr title="business days">bd</abbr> to respond. Most applications complete two to three review rounds before approval.</p>
-                </div>
-                <span class="flow-step__duration">20 bd per round</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>CNAD review: <strong>20 business days</strong> <span class="ref">RPSAD Art. 8</span> <span class="ref">LEAD Art. 20</span></li>
-                    <li>If incomplete: applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span></li>
-                    <li>Each significant change: <strong>+5 business days</strong> <span class="ref">RPSAD Art. 9</span></li>
-                    <li>CNAD may extend any term by up to 50% <span class="ref">RPSAD Art. 44</span></li>
-                    <li>Technical presentation during review: platform, DLT, security, KYC <span class="ref">CNAD Procedure</span></li>
-                </ul>
-                <div class="callout callout--amber" style="margin-top:0.75rem;">
-                    <p><strong>Timeline math:</strong> one round ≈ 20 <abbr title="business days">bd</abbr> (CNAD) + 10 <abbr title="business days">bd</abbr> (applicant) ≈ 6 calendar weeks. With two to three rounds: <strong>12–18 weeks</strong> <span class="ref ref--practice">practice</span>.</p>
-                </div>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">7</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Favorable / Unfavorable Resolution</p>
-                    <p class="flow-step__sub">CNAD issues final decision. Unfavorable = may resubmit. Favorable = proceed to payment.</p>
-                </div>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li><strong>Favorable</strong>: proceed to payment within 10 bd <span class="ref">RPSAD Art. 10</span></li>
-                    <li><strong>Unfavorable</strong>: may resubmit request <span class="ref">LEAD Art. 20</span></li>
-                    <li>Registration fee: <strong>$6,132</strong> (15 × $408.80) <span class="ref">LEAD Art. 12(1)(a)</span></li>
-                    <li>If not paid in time → <strong>not considered registered</strong> <span class="ref">RPSAD Art. 10</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">8</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Registration Seat & Authorization</p>
-                    <p class="flow-step__sub">CNAD issues registration certificate and authorization to operate.</p>
-                </div>
-                <span class="flow-step__duration">10 bd payment + 3 bd CNAD→MoF</span>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Definitive registration number assigned after payment verification <span class="ref">RPSAD Art. 11</span></li>
-                    <li>CNAD → Ministry of Finance within <strong>3 business days</strong> <span class="ref">RPSAD Art. 11</span></li>
-                    <li>Must <strong>notify CNAD before commencing operations</strong> <span class="ref">LEAD Arts. 9(k)(l), 21(e)</span> <span class="ref">RPSAD Art. 41</span></li>
-                    <li>Virtual meeting with senior management, shareholders, and CNAD Board — scheduled post-registration <span class="ref">CNAD Guide §6.b</span></li>
-                    <li>AML/compliance documents must be signed by Administrador/Rep Legal or approved by Board resolution <span class="ref">RPSAD Art. 7</span></li>
-                    <li>Code of Ethics: <strong>6 months</strong> from registration <span class="ref">RPSAD Art. 18</span></li>
-                </ul>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">9</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">Tax Exemption Effectiveness</p>
-                    <p class="flow-step__sub">Exemptions under LEAD Art. 36 take effect from the date of provisional registration notification.</p>
-                </div>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Tax exemption qualification issued by Ministry of Finance <span class="ref">RPSAD Art. 11</span></li>
-                    <li>Benefits apply from date of <strong>provisional registration number</strong> notification <span class="ref">RPSAD Art. 11</span></li>
-                </ul>
-                <div class="flow-step__tags">
-                    <span class="tag tag--green">0% Income Tax</span>
-                    <span class="tag tag--green">0% VAT</span>
-                    <span class="tag tag--green">0% Capital Gains</span>
-                    <span class="tag tag--green">0% Municipal Tax</span>
-                </div>
-            </div></div>
-        </div>
-
-        <div class="flow-step" data-step>
-            <div class="flow-step__num">10</div>
-            <div class="flow-step__head" data-step-toggle>
-                <div>
-                    <p class="flow-step__phase">Definitive Registration</p>
-                    <p class="flow-step__title">UIF Notification</p>
-                    <p class="flow-step__sub">CNAD notifies the Financial Investigation Unit of the new DASP registration.</p>
-                </div>
-                <div class="flow-step__toggle">▾</div>
-            </div>
-            <div class="flow-step__body"><div class="flow-step__content">
-                <ul>
-                    <li>Commission notifies UIF of new registered DASP <span class="ref">CNAD Procedure</span></li>
-                    <li>DASP now subject to ongoing UIF supervision and reporting obligations</li>
-                </ul>
-            </div></div>
-        </div>
-
-    </div><!-- /flow -->
-
-    <div class="callout callout--amber" style="margin-top:1.5rem;">
-        <p><strong>Cure periods — conflict of norms.</strong> LEAD Art. 20 grants 5 business days to cure; RPSAD Art. 8 grants 10 working days. RPSAD is the more recent and more specific rule — in practice, the 10-day period applies.</p>
-        <p style="margin-top:0.5rem;">CNAD may also request further information before the 20-day review deadline expires, setting a custom term <span class="ref">RPSAD Art. 8</span>. Any statutory term may be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
-    </div>
-
-    <h3 class="section__h3">Ongoing Obligations</h3>
-    <p class="section__lead">Recurring duties that survive registration. Non-compliance triggers sanctions and, in the case of unpaid renewal, automatic loss of registration and tax benefits.</p>
+    <p class="section__label">Legal Framework</p>
+    <h2 class="section__title">Applicable Legislation</h2>
+    <p class="section__desc">Six instruments govern DASPs in El Salvador. LEAD sets the mandate, RPSAD the procedure, the AML Law and UIF Instructivo the compliance floor, and the CNAD AML Guide the supervisory expectations.</p>
 
     <div class="grid grid--2">
-        <div class="card card--accent-blue">
-            <h3>Annual Renewal</h3>
-            <ul>
-                <li>Fee: <strong>$4,088</strong> (10 × $408.80), due in Q1 each year <span class="ref">RPSAD Art. 12</span></li>
-                <li>Non-payment → registration cancelled and tax benefits lost <span class="ref">RPSAD Art. 12</span></li>
-            </ul>
+        <div class="card card--accent-navy">
+            <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
+            <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
+            <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
         </div>
         <div class="card card--accent-blue">
-            <h3>Quarterly Reporting</h3>
-            <ul>
-                <li>Operational and financial report each quarter <span class="ref">RPSAD Arts. 15–16</span></li>
-                <li>Submission window: the first 20 days of April, July, October and January</li>
-            </ul>
+            <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
+            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
+            <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
         </div>
         <div class="card card--accent-green">
-            <h3>Material Changes — CNAD</h3>
-            <ul>
-                <li>Notify CNAD within <strong>5 business days</strong> of any significant change to registration documents <span class="ref">RPSAD Art. 9</span></li>
-                <li>Covers CEO, board members and organisational structure <span class="ref">RPSAD Art. 7(b)(ii), 7(e)</span></li>
-            </ul>
+            <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
+            <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
+            <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
         </div>
         <div class="card card--accent-green">
-            <h3>Material Changes — UIF</h3>
-            <ul>
-                <li>CO or UBO changes require UIF update within <strong>15 business days</strong> <span class="ref">UIF Instr. Art. 3</span> <span class="ref">UIF Instr. Art. 64</span></li>
-                <li>Other data (name, NIT, address) on the same 15-day cadence</li>
-            </ul>
+            <h3>UIF Instructivo</h3>
+            <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
+            <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
         </div>
         <div class="card card--accent-amber">
-            <h3>Records Retention</h3>
-            <ul>
-                <li>All AML records kept for <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
-                <li>Applies to CDD files, transaction records, STRs and training logs</li>
-            </ul>
+            <h3>CNAD AML Guide for DASPs</h3>
+            <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
+            <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
         </div>
-        <div class="card card--accent-amber">
-            <h3>Code of Ethics</h3>
-            <ul>
-                <li>Must be adopted within <strong>6 months</strong> of registration <span class="ref">RPSAD Art. 18</span></li>
-                <li>Covers conflicts of interest, confidentiality and treatment of clients</li>
-            </ul>
+        <div class="card card--accent-muted">
+            <h3>Issuer & Stablecoin Regulations</h3>
+            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
+            <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
         </div>
     </div>
+
+    <h3 class="section__h3">BSP vs DASP — Two Registrations, One Entity</h3>
+    <p class="section__lead">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
+
+    <div class="tbl-wrap">
+    <table class="tbl">
+        <thead><tr><th>Feature</th><th>BSP <span class="ref">Bitcoin Law</span></th><th>DASP <span class="ref">LEAD</span></th></tr></thead>
+        <tbody>
+            <tr><td>Assets covered</td><td>Bitcoin (BTC) only</td><td>All digital assets other than BTC</td></tr>
+            <tr><td>Supervisor</td><td>BCR (Banco Central de Reserva)</td><td>CNAD</td></tr>
+            <tr><td>AML supervisor</td><td>UIF via BCR channel</td><td>UIF via CNAD channel</td></tr>
+            <tr><td>Primary law</td><td>Bitcoin Law (Decree 57/2021)</td><td>LEAD (Decree 643/2023)</td></tr>
+            <tr><td>Registration fee</td><td>Set by BCR</td><td>$6,132 (15 min. salaries)</td></tr>
+            <tr><td>Tax benefits</td><td>Separate BTC-specific regime</td><td>LEAD Art. 36 — income, capital gains, VAT, municipal</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p class="tbl-note">Most exchanges and custodians in El Salvador hold both licences. Market rate for BSP registration support is comparable to DASP (~$5,085 incl. VAT).</p>
 </div>
 </section>
 
@@ -1268,68 +1021,467 @@
 </div>
 </section>
 
-<!-- ══ APPLICABLE LEGISLATION ══ -->
-<section class="section section--alt" id="legislation">
+<!-- ══════════════════════════════════════════ -->
+<section class="section section--alt" id="dasp">
 <div class="container fade-in">
-    <p class="section__label">Legal Framework</p>
-    <h2 class="section__title">Applicable Legislation</h2>
-    <p class="section__desc">Six instruments govern DASPs in El Salvador. LEAD sets the mandate, RPSAD the procedure, the AML Law and UIF Instructivo the compliance floor, and the CNAD AML Guide the supervisory expectations.</p>
+    <p class="section__label">Track 1</p>
+    <h2 class="section__title">DASP Registration Flow</h2>
+    <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
+
+    <!-- TIMELINE -->
+    <div class="gantt">
+        <div class="gantt__head">
+            <span class="gantt__title serif">Total: 8–12 months <span class="gantt__practice">practice</span></span>
+            <span class="gantt__sub">Typical end-to-end: ~11 months</span>
+        </div>
+        <div class="gantt__bar" aria-label="Timeline bar showing five phases over 12 months">
+            <div class="gantt__seg" style="flex:1;background:var(--accent);"        title="Entity Setup — Mo 1"></div>
+            <div class="gantt__seg" style="flex:2;background:var(--accent-2);"      title="Pre-Registration — Mo 2–3"></div>
+            <div class="gantt__seg" style="flex:3;background:var(--amber);"         title="Documentation — Mo 3–6"></div>
+            <div class="gantt__seg" style="flex:4;background:var(--emerald);"       title="CNAD Review — Mo 6–10"></div>
+            <div class="gantt__seg" style="flex:2;background:var(--emerald-2);"     title="Final — Mo 10–12"></div>
+        </div>
+        <div class="gantt__legend">
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent);"></span><span><strong>Entity Setup</strong> — Mo 1 · Step 0 · 4–6 wk</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent-2);"></span><span><strong>Pre-Registration</strong> — Mo 2–3 · Steps 1–4</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--amber);"></span><span><strong>Documentation</strong> — Mo 3–6 · Step 5 · ~30 docs package</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald);"></span><span><strong>CNAD Review</strong> — Mo 6–10 · Step 6 · 2–3 rounds × (20+10 bd)</span></div>
+            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald-2);"></span><span><strong>Final</strong> — Mo 10–12 · Steps 7–10 · Payment + Seat</span></div>
+        </div>
+    </div>
+
+    <div class="flow-controls">
+        <button type="button" class="btn btn--ghost" data-expand-all aria-label="Expand or collapse all steps">Expand all</button>
+    </div>
+
+    <div class="flow">
+
+        <!-- ═══ ENTITY SETUP (before CNAD) ═══ -->
+        <div class="flow-step open" data-step data-phase="entity">
+            <div class="flow-step__num">0</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Entity Setup</p>
+                    <p class="flow-step__title">Entity Formation & Personnel Onboarding</p>
+                    <p class="flow-step__sub">Incorporate S.A. de C.V., appoint COs and CISO, register with UIF. Done in parallel.</p>
+                </div>
+                <span class="flow-step__duration">4–6 wk</span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <h5>Entity</h5>
+                <ul>
+                    <li>S.A. de C.V. or foreign branch domiciled in El Salvador <span class="ref">LEAD Art. 18(d)</span></li>
+                    <li>Notarized deed + CNR registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                    <li>NIT, Board credentials, company registration certificate <span class="ref">RPSAD Art. 7(b)(ii)–(d)</span></li>
+                    <li>Share capital: $2,000 minimum (5% at inception) </li>
+                </ul>
+                <h5>Personnel</h5>
+                <ul>
+                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">AML Law Art. 20</span> <span class="ref">UIF Instr. Art. 64</span></li>
+                    <li><strong>Alternate Compliance Officer</strong> — mandatory <span class="ref">AML Law Art. 20</span></li>
+                    <li><strong>No residency requirement for DASP COs</strong> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
+                    <li><strong>CISO</strong> — Board member/manager with authority <span class="ref">RPSAD Art. 25(a)</span></li>
+                    <li>UIF registration within 5 days from appointment <span class="ref">UIF Instr. Art. 64</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">CO residency exempt</span>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ PRE-REGISTRATION PHASE (CNAD stages 1–4) ═══ -->
+        <div class="flow-step" data-step data-phase="prereg">
+            <div class="flow-step__num">1</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__title">Pre-Registration Form Submission</p>
+                    <p class="flow-step__sub">Complete the CNAD pre-registration form with applicant details and desired operating area.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Complete CNAD electronic pre-registration form <span class="ref">CNAD Procedure</span></li>
+                    <li>Applicant details, operating area, services description <span class="ref">LEAD Art. 18</span></li>
+                    <li>List of digital assets with benefits, restrictions, limits <span class="ref">RPSAD Art. 7(h)</span></li>
+                    <li>Documentation of service capacity <span class="ref">RPSAD Art. 7(g)</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="prereg">
+            <div class="flow-step__num">2</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__title">CNAD Initial Evaluation</p>
+                    <p class="flow-step__sub">Commission analyzes submitted information, may request additional documentation.</p>
+                </div>
+                <span class="flow-step__duration">20 bd</span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>CNAD evaluates application completeness <span class="ref">RPSAD Art. 8</span></li>
+                    <li>May request additional documentation from applicant</li>
+                    <li>Applicant has <strong>10 business days</strong> to provide missing items <span class="ref">RPSAD Art. 8</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="prereg">
+            <div class="flow-step__num">3</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__title">Additional Information Submission</p>
+                    <p class="flow-step__sub">Applicant provides any requested supplementary materials.</p>
+                </div>
+                <span class="flow-step__duration">10 bd</span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Submit supplementary materials as requested by CNAD</li>
+                    <li>Deadline: <strong>10 business days</strong> from CNAD request <span class="ref">RPSAD Art. 8</span></li>
+                    <li>Failure to respond → unfavorable resolution; may resubmit <span class="ref">LEAD Art. 20</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="prereg">
+            <div class="flow-step__num">4</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__title">CNAD Decision: Objection / No Objection</p>
+                    <p class="flow-step__sub">CNAD issues reasoned decision. No Objection = specifies registration requirements and process.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li><strong>No Objection</strong>: CNAD specifies registration requirements and process → proceed to Phase 2</li>
+                    <li><strong>Objection</strong>: based on lack of territorial/material competence <span class="ref">LEAD Arts. 2–4</span></li>
+                    <li>CNAD considers market needs and applicant reputation <span class="ref">RPSAD Art. 8</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">No Objection = proceed to Definitive Registration</span>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ DOCUMENTATION PHASE ═══ -->
+        <div class="flow-step" data-step data-phase="docs">
+            <div class="flow-step__num">5</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Documentation</p>
+                    <p class="flow-step__title">Full Documentation Package</p>
+                    <p class="flow-step__sub">The applicant prepares and submits ~30 documents across seven categories per LEAD Art. 20 and RPSAD Arts. 7, 17–35.</p>
+                </div>
+                <span class="flow-step__duration">8–16 wk preparation <span class="ref ref--practice">practice</span></span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <p style="font-size:0.82rem;color:var(--text-2);margin-bottom:0.75rem;">The package is grouped into seven categories (A–G). In practice, the AML/CFT, KYC and security documents (C, D, F) consume most of the preparation time; business and operational documents (A, B, E, G) are comparatively straightforward.</p>
+
+                <div class="step-tabs" role="tablist" aria-label="Documentation categories A–G">
+                    <button type="button" role="tab" class="step-tab" aria-selected="true"  aria-controls="docs-A" id="docs-A-tab" data-step-tab><span class="step-tab__letter">A</span>Business &amp; Corporate</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-B" id="docs-B-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">B</span>Customer Service</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-C" id="docs-C-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">C</span>AML/CFT</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-D" id="docs-D-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">D</span>KYC / KYB / KYT</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-E" id="docs-E-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">E</span>Risk &amp; Continuity</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-F" id="docs-F-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">F</span>Security &amp; Custody</button>
+                    <button type="button" role="tab" class="step-tab" aria-selected="false" aria-controls="docs-G" id="docs-G-tab" data-step-tab tabindex="-1"><span class="step-tab__letter">G</span>Operations</button>
+                </div>
+
+                <div class="step-tab-panels">
+                    <div role="tabpanel" id="docs-A" aria-labelledby="docs-A-tab" class="is-active">
+                        <h5>A. Business &amp; Corporate</h5>
+                        <ul>
+                            <li><strong>3-Year Business Plan</strong> — market strategy, financials, KPIs, risks <span class="ref">CNAD Procedure §1</span></li>
+                            <li>Organizational structure (names, positions, functions) <span class="ref">RPSAD Art. 7(e)</span> <span class="ref">LEAD Art. 20(c)</span></li>
+                            <li>Corporate governance document <span class="ref">RPSAD Art. 7(e)</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-B" aria-labelledby="docs-B-tab" hidden>
+                        <h5>B. Customer Service</h5>
+                        <ul>
+                            <li>Digital asset descriptions: characteristics, price, 12-mo history, volume <span class="ref">RPSAD Art. 22</span></li>
+                            <li>Trading mechanics, fees, complementary products <span class="ref">RPSAD Art. 7(f)</span></li>
+                            <li>Support &amp; communication policy, complaints handling <span class="ref">LEAD Art. 21(d)(g)</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-C" aria-labelledby="docs-C-tab" hidden>
+                        <h5>C. AML/CFT Package</h5>
+                        <ul>
+                            <li>Prevention Policy, Risk Management, CDD (standard + enhanced + PEPs) <span class="ref">RPSAD Art. 19</span> <span class="ref">AML Law Art. 15</span></li>
+                            <li>Transaction Limits, Monitoring, Suspicious Operations Procedures <span class="ref">AML Law Art. 24</span></li>
+                            <li>Reporting Procedures, Training Plan, Restricted Jurisdictions <span class="ref">UIF Instr. Arts. 52, 54</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-D" aria-labelledby="docs-D-tab" hidden>
+                        <h5>D. KYC / KYB / KYT</h5>
+                        <ul>
+                            <li>KYC/KYB procedures with technical integration docs <span class="ref">RPSAD Art. 19</span></li>
+                            <li>KYT protocol <span class="ref">CNAD Guide §2</span></li>
+                            <li>Travel Rule — mandatory for ALL transfers, any amount <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-E" aria-labelledby="docs-E-tab" hidden>
+                        <h5>E. Risk &amp; Continuity</h5>
+                        <ul>
+                            <li>Risk factors and management cycle <span class="ref">RPSAD Art. 21</span></li>
+                            <li>Business Continuity Plan <span class="ref">CNAD Procedure §8</span></li>
+                            <li>Contingency Plan <span class="ref">RPSAD Art. 25(d)(vii)</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-F" aria-labelledby="docs-F-tab" hidden>
+                        <h5>F. Security &amp; Custody</h5>
+                        <ul>
+                            <li>Asset custody policy, fund segregation <span class="ref">LEAD Art. 21(j)</span></li>
+                            <li>Cybersecurity policies, ICT remediation plan <span class="ref">RPSAD Arts. 25–26</span></li>
+                            <li>Geofencing implementation <span class="ref">CNAD Procedure §9</span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="docs-G" aria-labelledby="docs-G-tab" hidden>
+                        <h5>G. Operations</h5>
+                        <ul>
+                            <li>Spot <span class="ref">Art. 28</span>, term <span class="ref">Art. 29</span>, optional <span class="ref">Art. 30</span>, settlement <span class="ref">Art. 31</span>, seizure <span class="ref">Art. 32</span>, arbitration <span class="ref">Art. 33</span>, buyer protection <span class="ref">Art. 34</span>, investments <span class="ref">Art. 35</span></li>
+                            <li>Internal/external audit framework <span class="ref">LEAD Art. 21</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flow-step__tags">
+                    <span class="tag tag--amber">Digital + physical copies at CNAD offices</span>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ CNAD REVIEW PHASE ═══ -->
+        <div class="flow-step" data-step data-phase="review">
+            <div class="flow-step__num">6</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">CNAD Review</p>
+                    <p class="flow-step__title">Application Evaluation</p>
+                    <p class="flow-step__sub">CNAD reviews within 20 <abbr title="business days">bd</abbr>; if observations are raised, the applicant has 10 <abbr title="business days">bd</abbr> to respond. Most applications complete two to three review rounds before approval.</p>
+                </div>
+                <span class="flow-step__duration">20 bd per round</span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>CNAD review: <strong>20 business days</strong> <span class="ref">RPSAD Art. 8</span> <span class="ref">LEAD Art. 20</span></li>
+                    <li>If incomplete: applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span></li>
+                    <li>Each significant change: <strong>+5 business days</strong> <span class="ref">RPSAD Art. 9</span></li>
+                    <li>CNAD may extend any term by up to 50% <span class="ref">RPSAD Art. 44</span></li>
+                    <li>Technical presentation during review: platform, DLT, security, KYC <span class="ref">CNAD Procedure</span></li>
+                </ul>
+                <div class="callout callout--amber" style="margin-top:0.75rem;">
+                    <p><strong>Timeline math:</strong> one round ≈ 20 <abbr title="business days">bd</abbr> (CNAD) + 10 <abbr title="business days">bd</abbr> (applicant) ≈ 6 calendar weeks. With two to three rounds: <strong>12–18 weeks</strong> <span class="ref ref--practice">practice</span>.</p>
+                </div>
+            </div></div>
+        </div>
+
+        <!-- ═══ FINAL PHASE — Payment + Seat ═══ -->
+        <div class="flow-step" data-step data-phase="final">
+            <div class="flow-step__num">7</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Final</p>
+                    <p class="flow-step__title">Favorable / Unfavorable Resolution</p>
+                    <p class="flow-step__sub">CNAD issues final decision. Unfavorable = may resubmit. Favorable = proceed to payment.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li><strong>Favorable</strong>: proceed to payment within 10 bd <span class="ref">RPSAD Art. 10</span></li>
+                    <li><strong>Unfavorable</strong>: may resubmit request <span class="ref">LEAD Art. 20</span></li>
+                    <li>Registration fee: <strong>$6,132</strong> (15 × $408.80) <span class="ref">LEAD Art. 12(1)(a)</span></li>
+                    <li>If not paid in time → <strong>not considered registered</strong> <span class="ref">RPSAD Art. 10</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="final">
+            <div class="flow-step__num">8</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Final</p>
+                    <p class="flow-step__title">Registration Seat & Authorization</p>
+                    <p class="flow-step__sub">CNAD issues registration certificate and authorization to operate.</p>
+                </div>
+                <span class="flow-step__duration">10 bd payment + 3 bd CNAD→MoF</span>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Definitive registration number assigned after payment verification <span class="ref">RPSAD Art. 11</span></li>
+                    <li>CNAD → Ministry of Finance within <strong>3 business days</strong> <span class="ref">RPSAD Art. 11</span></li>
+                    <li>Must <strong>notify CNAD before commencing operations</strong> <span class="ref">LEAD Arts. 9(k)(l), 21(e)</span> <span class="ref">RPSAD Art. 41</span></li>
+                    <li>Virtual meeting with senior management, shareholders, and CNAD Board — scheduled post-registration <span class="ref">CNAD Guide §6.b</span></li>
+                    <li>AML/compliance documents must be signed by Administrador/Rep Legal or approved by Board resolution <span class="ref">RPSAD Art. 7</span></li>
+                    <li>Code of Ethics: <strong>6 months</strong> from registration <span class="ref">RPSAD Art. 18</span></li>
+                </ul>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="final">
+            <div class="flow-step__num">9</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Final</p>
+                    <p class="flow-step__title">Tax Exemption Effectiveness</p>
+                    <p class="flow-step__sub">Exemptions under LEAD Art. 36 take effect from the date of provisional registration notification.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Tax exemption qualification issued by Ministry of Finance <span class="ref">RPSAD Art. 11</span></li>
+                    <li>Benefits apply from date of <strong>provisional registration number</strong> notification <span class="ref">RPSAD Art. 11</span></li>
+                </ul>
+                <div class="flow-step__tags">
+                    <span class="tag tag--green">0% Income Tax</span>
+                    <span class="tag tag--green">0% VAT</span>
+                    <span class="tag tag--green">0% Capital Gains</span>
+                    <span class="tag tag--green">0% Municipal Tax</span>
+                </div>
+            </div></div>
+        </div>
+
+        <div class="flow-step" data-step data-phase="final">
+            <div class="flow-step__num">10</div>
+            <div class="flow-step__head" data-step-toggle>
+                <div>
+                    <p class="flow-step__phase">Final</p>
+                    <p class="flow-step__title">UIF Notification</p>
+                    <p class="flow-step__sub">CNAD notifies the Financial Investigation Unit of the new DASP registration.</p>
+                </div>
+                <div class="flow-step__toggle">▾</div>
+            </div>
+            <div class="flow-step__body"><div class="flow-step__content">
+                <ul>
+                    <li>Commission notifies UIF of new registered DASP <span class="ref">CNAD Procedure</span></li>
+                    <li>DASP now subject to ongoing UIF supervision and reporting obligations</li>
+                </ul>
+            </div></div>
+        </div>
+
+    </div><!-- /flow -->
+
+    <div class="callout callout--amber" style="margin-top:1.5rem;">
+        <p><strong>Cure periods — conflict of norms.</strong> LEAD Art. 20 grants 5 business days to cure; RPSAD Art. 8 grants 10 working days. RPSAD is the more recent and more specific rule — in practice, the 10-day period applies.</p>
+        <p style="margin-top:0.5rem;">CNAD may also request further information before the 20-day review deadline expires, setting a custom term <span class="ref">RPSAD Art. 8</span>. Any statutory term may be extended by up to 50% <span class="ref">RPSAD Art. 44</span>.</p>
+    </div>
+
+    <h3 class="section__h3">Ongoing Obligations</h3>
+    <p class="section__lead">Recurring duties that survive registration. Non-compliance triggers sanctions and, in the case of unpaid renewal, automatic loss of registration and tax benefits.</p>
 
     <div class="grid grid--2">
-        <div class="card card--accent-navy">
-            <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
-            <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
-            <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
+        <div class="card card--accent-blue">
+            <h3>Annual Renewal</h3>
+            <ul>
+                <li>Fee: <strong>$4,088</strong> (10 × $408.80), due in Q1 each year <span class="ref">RPSAD Art. 12</span></li>
+                <li>Non-payment → registration cancelled and tax benefits lost <span class="ref">RPSAD Art. 12</span></li>
+            </ul>
         </div>
         <div class="card card--accent-blue">
-            <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
-            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
-            <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
+            <h3>Quarterly Reporting</h3>
+            <ul>
+                <li>Operational and financial report each quarter <span class="ref">RPSAD Arts. 15–16</span></li>
+                <li>Submission window: the first 20 days of April, July, October and January</li>
+            </ul>
         </div>
         <div class="card card--accent-green">
-            <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
-            <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
-            <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
+            <h3>Material Changes — CNAD</h3>
+            <ul>
+                <li>Notify CNAD within <strong>5 business days</strong> of any significant change to registration documents <span class="ref">RPSAD Art. 9</span></li>
+                <li>Covers CEO, board members and organisational structure <span class="ref">RPSAD Art. 7(b)(ii), 7(e)</span></li>
+            </ul>
         </div>
         <div class="card card--accent-green">
-            <h3>UIF Instructivo</h3>
-            <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
-            <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
+            <h3>Material Changes — UIF</h3>
+            <ul>
+                <li>CO or UBO changes require UIF update within <strong>15 business days</strong> <span class="ref">UIF Instr. Art. 3</span> <span class="ref">UIF Instr. Art. 64</span></li>
+                <li>Other data (name, NIT, address) on the same 15-day cadence</li>
+            </ul>
         </div>
         <div class="card card--accent-amber">
-            <h3>CNAD AML Guide for DASPs</h3>
-            <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
-            <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
+            <h3>Records Retention</h3>
+            <ul>
+                <li>All AML records kept for <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
+                <li>Applies to CDD files, transaction records, STRs and training logs</li>
+            </ul>
         </div>
-        <div class="card card--accent-muted">
-            <h3>Issuer & Stablecoin Regulations</h3>
-            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
-            <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
+        <div class="card card--accent-amber">
+            <h3>Code of Ethics</h3>
+            <ul>
+                <li>Must be adopted within <strong>6 months</strong> of registration <span class="ref">RPSAD Art. 18</span></li>
+                <li>Covers conflicts of interest, confidentiality and treatment of clients</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- ══ ENTITY ══ -->
+<section class="section" id="entity">
+<div class="container fade-in">
+    <p class="section__label">Entity</p>
+    <h2 class="section__title">Local Company Requirements</h2>
+    <p class="section__desc">Two corporate forms qualify: a Salvadoran S.A. de C.V. or a registered branch of a foreign company <span class="ref">LEAD Art. 18(d)</span>. Simplified forms (S.A.S.) and limited liability companies are excluded.</p>
+
+    <div class="grid grid--3">
+        <div class="card">
+            <h3>Incorporation</h3>
+            <ul>
+                <li>S.A. de C.V. or foreign branch only <span class="ref">LEAD Art. 18(d)</span></li>
+                <li>Minimum 2 shareholders <span class="ref">Cód. Com. Art. 192</span> — S.A.S. excluded for DASPs</li>
+                <li>Notarised deed + <abbr title="Centro Nacional de Registros">CNR</abbr> registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
+                <li><abbr title="Número de Identificación Tributaria — tax ID">NIT</abbr> required <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
+                <li>Fiscal domicile in El Salvador (virtual office accepted)</li>
+                <li>Share capital: $2,000 nominal, 5% paid at inception</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>UIF Registration</h3>
+            <ul>
+                <li>Entity registered on the UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
+                <li>Supervisor assignment: CNAD for non-BTC DASPs, BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
+                <li>UBO information required <span class="ref">UIF Instr. Art. 3(2)</span></li>
+                <li>Registered data kept current — changes notified within 15 <abbr title="business days">bd</abbr> <span class="ref">UIF Instr. Art. 3</span></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Banking &amp; Accounting</h3>
+            <ul>
+                <li>Local bank account for operational needs (government fees, payroll, rent)</li>
+                <li>Accounting in Spanish, USD as functional currency</li>
+                <li>IFRS for SMEs, annual external audit</li>
+                <li>Records retained 15 years <span class="ref">AML Law Art. 26</span></li>
+            </ul>
         </div>
     </div>
 
-    <h3 class="section__h3">BSP vs DASP — Two Registrations, One Entity</h3>
-    <p class="section__lead">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>Feature</th><th>BSP <span class="ref">Bitcoin Law</span></th><th>DASP <span class="ref">LEAD</span></th></tr></thead>
-        <tbody>
-            <tr><td>Assets covered</td><td>Bitcoin (BTC) only</td><td>All digital assets other than BTC</td></tr>
-            <tr><td>Supervisor</td><td>BCR (Banco Central de Reserva)</td><td>CNAD</td></tr>
-            <tr><td>AML supervisor</td><td>UIF via BCR channel</td><td>UIF via CNAD channel</td></tr>
-            <tr><td>Primary law</td><td>Bitcoin Law (Decree 57/2021)</td><td>LEAD (Decree 643/2023)</td></tr>
-            <tr><td>Registration fee</td><td>Set by BCR</td><td>$6,132 (15 min. salaries)</td></tr>
-            <tr><td>Tax benefits</td><td>Separate BTC-specific regime</td><td>LEAD Art. 36 — income, capital gains, VAT, municipal</td></tr>
-        </tbody>
-    </table>
+    <div class="callout callout--amber" style="margin-top:1.25rem;">
+        <p><strong>Banking reality check.</strong> Salvadoran retail banks do not, in practice, service international digital-asset flows. The local account covers operating expenses only; client-fund custody, fiat on/off-ramps and settlement are typically routed through foreign correspondent banks, EMIs or stablecoin rails <span class="ref ref--practice">practice</span>. A realistic banking strategy is part of the business plan reviewed by CNAD.</p>
     </div>
-    <p class="tbl-note">Most exchanges and custodians in El Salvador hold both licences. Market rate for BSP registration support is comparable to DASP (~$5,085 incl. VAT).</p>
+
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>No "registered agent" concept for S.A. de C.V.</strong> El Salvador uses a civil-law corporate model: the company is represented by its <em>Administrador Único</em> or <em>Junta Directiva</em> and a separate <em>Representante Legal</em> (local resident). There is no US-style registered-agent service. Foreign branches must appoint a Salvadoran-resident legal representative via notarised power of attorney <span class="ref">LEAD Art. 18(d)</span>.</p>
+    </div>
 </div>
 </section>
 
 <!-- ══ PERSONNEL ══ -->
-<section class="section" id="personnel">
+<section class="section section--alt" id="personnel">
 <div class="container fade-in">
     <p class="section__label">Team Structure</p>
     <h2 class="section__title">Personnel &amp; Residency Requirements</h2>
@@ -1428,55 +1580,6 @@
             </tbody>
         </table>
         </div>
-    </div>
-</div>
-</section>
-
-<!-- ══ ENTITY ══ -->
-<section class="section" id="entity">
-<div class="container fade-in">
-    <p class="section__label">Entity</p>
-    <h2 class="section__title">Local Company Requirements</h2>
-    <p class="section__desc">Two corporate forms qualify: a Salvadoran S.A. de C.V. or a registered branch of a foreign company <span class="ref">LEAD Art. 18(d)</span>. Simplified forms (S.A.S.) and limited liability companies are excluded.</p>
-
-    <div class="grid grid--3">
-        <div class="card">
-            <h3>Incorporation</h3>
-            <ul>
-                <li>S.A. de C.V. or foreign branch only <span class="ref">LEAD Art. 18(d)</span></li>
-                <li>Minimum 2 shareholders <span class="ref">Cód. Com. Art. 192</span> — S.A.S. excluded for DASPs</li>
-                <li>Notarised deed + <abbr title="Centro Nacional de Registros">CNR</abbr> registration <span class="ref">RPSAD Art. 7(b)(i)</span></li>
-                <li><abbr title="Número de Identificación Tributaria — tax ID">NIT</abbr> required <span class="ref">RPSAD Art. 7(b)(iii)</span></li>
-                <li>Fiscal domicile in El Salvador (virtual office accepted)</li>
-                <li>Share capital: $2,000 nominal, 5% paid at inception</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>UIF Registration</h3>
-            <ul>
-                <li>Entity registered on the UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
-                <li>Supervisor assignment: CNAD for non-BTC DASPs, BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
-                <li>UBO information required <span class="ref">UIF Instr. Art. 3(2)</span></li>
-                <li>Registered data kept current — changes notified within 15 <abbr title="business days">bd</abbr> <span class="ref">UIF Instr. Art. 3</span></li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Banking &amp; Accounting</h3>
-            <ul>
-                <li>Local bank account for operational needs (government fees, payroll, rent)</li>
-                <li>Accounting in Spanish, USD as functional currency</li>
-                <li>IFRS for SMEs, annual external audit</li>
-                <li>Records retained 15 years <span class="ref">AML Law Art. 26</span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="callout callout--amber" style="margin-top:1.25rem;">
-        <p><strong>Banking reality check.</strong> Salvadoran retail banks do not, in practice, service international digital-asset flows. The local account covers operating expenses only; client-fund custody, fiat on/off-ramps and settlement are typically routed through foreign correspondent banks, EMIs or stablecoin rails <span class="ref ref--practice">practice</span>. A realistic banking strategy is part of the business plan reviewed by CNAD.</p>
-    </div>
-
-    <div class="callout callout--blue" style="margin-top:0.75rem;">
-        <p><strong>No "registered agent" concept for S.A. de C.V.</strong> El Salvador uses a civil-law corporate model: the company is represented by its <em>Administrador Único</em> or <em>Junta Directiva</em> and a separate <em>Representante Legal</em> (local resident). There is no US-style registered-agent service. Foreign branches must appoint a Salvadoran-resident legal representative via notarised power of attorney <span class="ref">LEAD Art. 18(d)</span>.</p>
     </div>
 </div>
 </section>
@@ -1874,6 +1977,91 @@
             parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             parent.querySelector('#tab-' + btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // ── Anchor copy-links on section headings ──
+    (function initHeadingAnchors() {
+        const used = new Set();
+        const slugify = (s) => s.toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-')
+            .slice(0, 48) || 'section';
+        document.querySelectorAll('.section__title, .section__h3').forEach(h => {
+            if (h.querySelector('.h-anchor')) return; // idempotent
+            let anchor = h.id;
+            const sec = h.closest('section[id]');
+            const isMainTitle = h.classList.contains('section__title') && sec;
+            if (!anchor) {
+                if (isMainTitle) {
+                    anchor = sec.id; // reuse section id — don't duplicate on the h2
+                } else {
+                    const base = (sec ? sec.id + '-' : '') + slugify(h.textContent);
+                    let candidate = base;
+                    let n = 2;
+                    while (used.has(candidate) || document.getElementById(candidate)) {
+                        candidate = base + '-' + (n++);
+                    }
+                    anchor = candidate;
+                    h.id = anchor;
+                }
+            }
+            used.add(anchor);
+            const btn = document.createElement('a');
+            btn.className = 'h-anchor';
+            btn.href = '#' + anchor;
+            btn.setAttribute('aria-label', 'Copy link to section: ' + h.textContent.trim());
+            btn.title = 'Copy link to this section';
+            btn.textContent = '#';
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = location.origin + location.pathname + '#' + anchor;
+                const after = () => {
+                    btn.classList.add('h-anchor--copied');
+                    btn.textContent = '✓ copied';
+                    setTimeout(() => {
+                        btn.classList.remove('h-anchor--copied');
+                        btn.textContent = '#';
+                    }, 1400);
+                    history.replaceState(null, '', '#' + anchor);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(after).catch(after);
+                } else {
+                    after();
+                }
+            });
+            h.appendChild(btn);
+        });
+    })();
+
+    // ── Step-5 A..G sub-tabs (WAI-ARIA tablist with keyboard arrows) ──
+    document.querySelectorAll('[data-step-tab]').forEach(tab => {
+        const tablist = tab.closest('[role="tablist"]');
+        if (!tablist) return;
+        const allTabs = [...tablist.querySelectorAll('[data-step-tab]')];
+        const panels = allTabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+        const activate = (t) => {
+            allTabs.forEach((b, i) => {
+                const on = b === t;
+                b.setAttribute('aria-selected', on ? 'true' : 'false');
+                b.setAttribute('tabindex', on ? '0' : '-1');
+                const panel = panels[i];
+                if (panel) {
+                    panel.classList.toggle('is-active', on);
+                    if (on) panel.removeAttribute('hidden'); else panel.setAttribute('hidden', '');
+                }
+            });
+            t.focus();
+        };
+        tab.addEventListener('click', e => { e.stopPropagation(); activate(tab); });
+        tab.addEventListener('keydown', e => {
+            const idx = allTabs.indexOf(tab);
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); activate(allTabs[(idx + 1) % allTabs.length]); }
+            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); activate(allTabs[(idx - 1 + allTabs.length) % allTabs.length]); }
+            else if (e.key === 'Home') { e.preventDefault(); activate(allTabs[0]); }
+            else if (e.key === 'End') { e.preventDefault(); activate(allTabs[allTabs.length - 1]); }
         });
     });
 
