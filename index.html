@@ -13,6 +13,8 @@
     <meta name="twitter:title" content="El Salvador DASP Registration Guide">
     <meta name="twitter:description" content="Full practitioner's guide to DASP registration under LEAD in El Salvador. 8–12 months, $6,132 fee, 0% tax.">
     <title>El Salvador DASP Registration Guide</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d97757'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d97757'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -244,6 +246,14 @@
             flex-shrink: 0; width: 1px; height: 14px; background: var(--border);
             margin: 0 0.4rem; align-self: center;
         }
+        .nav__group-label {
+            flex-shrink: 0; font-size: 0.62rem; font-weight: 600;
+            color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0 0.5rem; align-self: center;
+        }
+        @media (max-width: 900px) {
+            .nav__group-label { display: none; }
+        }
 
         /* ── HERO ── */
         .hero {
@@ -353,6 +363,12 @@
             font-weight: 400; color: var(--navy);
             margin-bottom: 0.4rem; letter-spacing: -0.01em;
         }
+        .section__subh {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem; font-weight: 400; color: var(--navy);
+            margin-bottom: 0.3rem; letter-spacing: -0.005em;
+            padding-bottom: 0.35rem; border-bottom: 1px solid var(--border-light);
+        }
         .section__desc {
             color: var(--text-2); max-width: 560px;
             margin-bottom: 2.5rem; font-size: 0.92rem;
@@ -418,27 +434,264 @@
             padding: 0 0 1rem; font-size: 0.85rem; color: var(--text-2);
         }
 
-        /* ── GANTT TIMELINE ── */
-        .gantt {
-            background: linear-gradient(135deg, var(--navy) 0%, #2a2724 100%);
-            border-radius: var(--r-lg);
-            padding: 1.5rem 1.75rem;
-            margin-bottom: 2rem;
-            color: var(--bg);
-            box-shadow: var(--shadow-md);
+        /* ── TIMELINE V2 — MODERN PHASE CARDS ── */
+        .timeline {
+            margin: 1rem 0 2.5rem 0;
         }
-        .gantt__head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.5rem; }
-        .gantt__title { font-size:1.4rem; font-weight:400; letter-spacing:-0.01em; }
-        .gantt__practice { font-size:0.62rem; font-weight:600; color:var(--amber); background:rgba(184,137,58,0.18); padding:2px 7px; border-radius:4px; vertical-align:middle; margin-left:4px; letter-spacing:0.04em; text-transform:uppercase; }
-        .gantt__sub { font-size:0.72rem; opacity:0.55; }
-        .gantt__bar { display:flex; height:12px; border-radius:6px; overflow:hidden; margin-bottom:1rem; box-shadow: inset 0 1px 2px rgba(0,0,0,0.2); }
-        .gantt__seg { transition: filter 0.2s; }
-        .gantt__seg:hover { filter: brightness(1.1); }
-        .gantt__legend { display:grid; grid-template-columns:repeat(2,1fr); gap:0.6rem 1.5rem; font-size:0.78rem; }
-        .gantt__leg { display:flex; align-items:center; gap:0.5rem; }
-        .gantt__dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
-        @media (max-width: 640px) {
-            .gantt__legend { grid-template-columns:1fr; }
+        .timeline__head {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .timeline__kicker {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent);
+            display: block; margin-bottom: 0.35rem;
+        }
+        .timeline__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.55rem; font-weight: 400; color: var(--navy);
+            letter-spacing: -0.01em; margin: 0;
+        }
+        .timeline__meta {
+            display: flex; flex-direction: column; gap: 0.25rem;
+            font-size: 0.78rem; color: var(--text-3); text-align: right;
+        }
+        .timeline__meta strong { color: var(--text); font-weight: 600; }
+        @media (max-width: 640px) { .timeline__meta { text-align: left; } }
+
+        .timeline__track {
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 0; position: relative;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-lg); overflow: hidden;
+            box-shadow: 0 2px 6px rgba(20,20,19,0.03);
+        }
+        @media (max-width: 1100px) { .timeline__track { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 720px)  { .timeline__track { grid-template-columns: 1fr; } }
+
+        .phase-card {
+            position: relative;
+            padding: 1.6rem 1.3rem 1.3rem;
+            border-right: 1px solid var(--border-light);
+            background: var(--white);
+            transition: background 0.2s;
+        }
+        .phase-card:last-child { border-right: 0; }
+        @media (max-width: 1100px) {
+            .phase-card:nth-child(3n) { border-right: 0; }
+            .phase-card:nth-child(n+4) { border-top: 1px solid var(--border-light); }
+        }
+        @media (max-width: 720px) {
+            .phase-card { border-right: 0; }
+            .phase-card:not(:first-child) { border-top: 1px solid var(--border-light); }
+        }
+        .phase-card:hover { background: var(--bg); }
+        .phase-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--phase-c, var(--accent));
+        }
+        .phase-card[data-phase-color="accent"]    { --phase-c: var(--accent); }
+        .phase-card[data-phase-color="accent-2"]  { --phase-c: var(--accent-2); }
+        .phase-card[data-phase-color="amber"]     { --phase-c: var(--amber); }
+        .phase-card[data-phase-color="emerald"]   { --phase-c: var(--emerald); }
+        .phase-card[data-phase-color="emerald-2"] { --phase-c: var(--emerald-2); }
+        /* Chevron between cards on desktop */
+        .phase-card:not(:last-child)::after {
+            content: ''; position: absolute;
+            right: -7px; top: 50%; transform: translateY(-50%) rotate(45deg);
+            width: 12px; height: 12px;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            background: var(--white);
+            z-index: 2;
+        }
+        @media (max-width: 1100px) { .phase-card::after { display: none; } }
+
+        .phase-card__head {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin-bottom: 0.85rem;
+        }
+        .phase-card__num {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 2rem; line-height: 1; color: var(--phase-c, var(--accent));
+            font-weight: 400;
+        }
+        .phase-card__dur {
+            font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-3);
+            background: var(--bg); padding: 4px 8px; border-radius: 4px;
+            border: 1px solid var(--border-light);
+        }
+        .phase-card__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.05rem; font-weight: 400; color: var(--navy);
+            margin: 0 0 0.2rem 0; letter-spacing: -0.005em;
+        }
+        .phase-card__sub {
+            font-size: 0.7rem; color: var(--text-3);
+            margin: 0 0 0.85rem 0;
+        }
+        .phase-card__list {
+            list-style: none; padding: 0; margin: 0;
+        }
+        .phase-card__list li {
+            position: relative; padding: 0.25rem 0 0.25rem 0.85rem;
+            font-size: 0.78rem; color: var(--text-2); line-height: 1.4;
+        }
+        .phase-card__list li::before {
+            content: ''; position: absolute; left: 0; top: 0.55rem;
+            width: 4px; height: 4px; border-radius: 50%;
+            background: var(--phase-c, var(--accent));
+        }
+        .timeline__foot {
+            margin-top: 1rem; font-size: 0.76rem; color: var(--text-3);
+            padding: 0.85rem 1rem; background: var(--accent-light);
+            border: 1px solid var(--accent-border); border-radius: var(--r-md);
+            line-height: 1.5;
+        }
+        .timeline__foot strong { color: var(--navy); }
+
+        /* ── ADVANTAGES GRID ── */
+        .advantages { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+        .advantage {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-md); padding: 1.25rem 1.35rem;
+            position: relative; overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+            display: flex; flex-direction: column;
+        }
+        .advantage:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+        .advantage__icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            background: var(--accent-light);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.85rem;
+            color: var(--accent-2);
+        }
+        .advantage__icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+        .advantage h4 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.05rem; font-weight: 400; color: var(--navy);
+            margin: 0 0 0.3rem 0; letter-spacing: -0.005em;
+        }
+        .advantage p {
+            font-size: 0.82rem; color: var(--text-2);
+            line-height: 1.5; margin: 0;
+        }
+        .advantage__num {
+            position: absolute; top: 0.75rem; right: 1rem;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.6rem; color: var(--text-muted);
+            line-height: 1; opacity: 0.35; font-weight: 400;
+        }
+
+        /* ── BSP vs DASP visual comparison ── */
+        .vs-grid {
+            display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.25rem;
+            align-items: stretch; margin-top: 1.5rem;
+        }
+        @media (max-width: 720px) { .vs-grid { grid-template-columns: 1fr; } }
+        .vs-card {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-lg); padding: 1.5rem;
+            position: relative;
+        }
+        .vs-card--bsp { border-top: 3px solid var(--amber); }
+        .vs-card--dasp { border-top: 3px solid var(--emerald); }
+        .vs-card__badge {
+            display: inline-block; font-size: 0.66rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 100px;
+            margin-bottom: 0.5rem;
+        }
+        .vs-card--bsp .vs-card__badge { color: var(--amber); background: var(--amber-light); }
+        .vs-card--dasp .vs-card__badge { color: var(--emerald); background: var(--emerald-light); }
+        .vs-card h3 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem; font-weight: 400; color: var(--navy);
+            margin: 0 0 0.4rem 0;
+        }
+        .vs-card__tagline {
+            font-size: 0.82rem; color: var(--text-2);
+            margin: 0 0 1rem 0; line-height: 1.5;
+        }
+        .vs-card__list { list-style: none; padding: 0; margin: 0; }
+        .vs-card__list li {
+            position: relative; padding: 0.4rem 0 0.4rem 1.3rem;
+            font-size: 0.8rem; color: var(--text-2); line-height: 1.45;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .vs-card__list li:last-child { border-bottom: 0; }
+        .vs-card__list li::before {
+            content: '✓'; position: absolute; left: 0; top: 0.4rem;
+            font-size: 0.8rem; color: var(--emerald); font-weight: 700;
+        }
+        .vs-card--bsp .vs-card__list li::before { color: var(--amber); }
+        .vs-divider {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; color: var(--text-3);
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 2rem; font-weight: 400;
+            padding: 0 0.25rem;
+        }
+        @media (max-width: 720px) { .vs-divider { transform: rotate(90deg); padding: 0; } }
+
+        /* ── LEGISLATION EXPANDABLE ── */
+        .legis-details {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-lg); overflow: hidden;
+            margin-top: 1rem;
+        }
+        .legis-details > summary {
+            padding: 1.1rem 1.4rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: space-between;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.05rem; color: var(--navy); font-weight: 400;
+            list-style: none; transition: background 0.15s;
+        }
+        .legis-details > summary::-webkit-details-marker { display: none; }
+        .legis-details > summary::marker { content: ''; }
+        .legis-details > summary:hover { background: var(--bg); }
+        .legis-details__summary-text { flex: 1; }
+        .legis-details__chev {
+            transition: transform 0.2s; font-size: 0.9rem; color: var(--accent);
+        }
+        .legis-details[open] > summary .legis-details__chev { transform: rotate(180deg); }
+        .legis-details[open] > summary { border-bottom: 1px solid var(--border-light); }
+        .legis-details__body { padding: 1.25rem 1.4rem 1.5rem; }
+
+        /* ── PART DIVIDER — Section block labels ── */
+        .part-divider {
+            padding: 3rem 0 1rem 0;
+            border-top: 2px solid var(--border);
+            margin-top: 1rem;
+        }
+        .part-divider .container { text-align: center; }
+        .part-divider__kicker {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em;
+            text-transform: uppercase; color: var(--accent);
+            display: inline-block; padding: 0.35rem 1.1rem;
+            background: var(--accent-light); border: 1px solid var(--accent-border);
+            border-radius: 100px; margin-bottom: 1rem;
+        }
+        .part-divider__title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 400;
+            color: var(--navy); margin: 0 0 0.5rem 0; letter-spacing: -0.015em;
+        }
+        .part-divider__sub {
+            font-size: 0.95rem; color: var(--text-2);
+            max-width: 620px; margin: 0 auto; line-height: 1.55;
+        }
+        .part-divider__spine {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.6rem; margin-top: 1.25rem;
+            color: var(--text-3); font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .part-divider__dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent);
         }
 
         /* ── TIMELINE FLOW ── */
@@ -618,7 +871,7 @@
         }
 
         /* ── GRID CARDS ── */
-        .grid { display: grid; gap: 1rem; }
+        .grid { display: grid; gap: 1.25rem; align-items: stretch; }
         .grid--2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
         .grid--3 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
         .grid--4 { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
@@ -627,6 +880,7 @@
             background: var(--white); border: 1px solid var(--border);
             border-radius: 10px; padding: 1.5rem;
             transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+            display: flex; flex-direction: column;
         }
         .card:hover {
             border-color: var(--text-3);
@@ -643,6 +897,7 @@
         .card--top-blue    { border-top: 3px solid var(--accent); }
         .card--top-green   { border-top: 3px solid var(--emerald); }
         .card--top-navy    { border-top: 3px solid var(--navy); }
+        .card--top-amber   { border-top: 3px solid var(--amber); }
         /* Hero card (for Total Budget) */
         .card--hero {
             border-top: 3px solid var(--accent);
@@ -685,7 +940,7 @@
         .card__table td { padding-top: 0.35rem; }
         .card__table tr:first-child td { padding-top: 0; }
         .card__table .price { text-align: right; }
-        .card__note { font-size: 0.72rem; color: var(--text-3); margin-top: 0.75rem; }
+        .card__note { font-size: 0.72rem; color: var(--text-3); margin-top: auto; padding-top: 0.75rem; }
 
         /* ── TABS ── */
         .tabs {
@@ -839,7 +1094,140 @@
             details { break-inside: avoid; }
             details > * { display: block !important; }
             summary::after { content: none !important; }
+            .wizard__form, .wizard__output, .wiz-btn { display: none !important; }
+            .wizard__note-print { display: block !important; }
         }
+
+        /* ── AML WIZARD ── */
+        .wizard {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.5rem;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-lg); padding: 1.75rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 860px) { .wizard { grid-template-columns: 1fr; } }
+        .wizard__form { display: flex; flex-direction: column; gap: 1.1rem; }
+        .wizard__fieldset {
+            border: 1px solid var(--border-light); border-radius: var(--r-md);
+            padding: 0.9rem 1rem; margin: 0;
+        }
+        .wizard__legend {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--text-3);
+            padding: 0 0.5rem; margin-left: -0.25rem;
+        }
+        .wizard__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .wizard__chip {
+            position: relative; display: inline-flex; align-items: center;
+            padding: 0.45rem 0.85rem; border: 1px solid var(--border);
+            border-radius: 100px; background: var(--bg); color: var(--text-2);
+            font-size: 0.8rem; cursor: pointer; transition: all 0.15s;
+            user-select: none;
+        }
+        .wizard__chip input { position: absolute; opacity: 0; pointer-events: none; }
+        .wizard__chip:hover { border-color: var(--accent-border); color: var(--text); }
+        .wizard__chip:has(input:checked) {
+            background: var(--accent-light); border-color: var(--accent);
+            color: var(--accent-2); font-weight: 500;
+        }
+        .wizard__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; }
+        @media (max-width: 520px) { .wizard__row { grid-template-columns: 1fr; } }
+        .wizard__label {
+            display: block; font-size: 0.72rem; font-weight: 600;
+            color: var(--text-3); letter-spacing: 0.04em;
+            text-transform: uppercase; margin-bottom: 0.3rem;
+        }
+        .wizard__input, .wizard__select {
+            width: 100%; padding: 0.55rem 0.75rem;
+            border: 1px solid var(--border); border-radius: var(--r-sm);
+            background: var(--bg); color: var(--text);
+            font-family: inherit; font-size: 0.88rem;
+        }
+        .wizard__input:focus, .wizard__select:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        .wizard__checks { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
+        .wizard__check {
+            display: flex; align-items: flex-start; gap: 0.55rem;
+            font-size: 0.82rem; color: var(--text-2); cursor: pointer;
+            padding: 0.35rem 0.4rem; border-radius: var(--r-sm);
+            transition: background 0.15s;
+        }
+        .wizard__check:hover { background: var(--bg); }
+        .wizard__check input { margin-top: 0.15rem; accent-color: var(--accent); flex-shrink: 0; }
+        .wizard__check span { line-height: 1.35; }
+        .wiz-btn {
+            padding: 0.7rem 1rem; border-radius: var(--r-sm);
+            border: 1px solid var(--border); background: transparent;
+            color: var(--text-2); font-family: inherit; font-size: 0.82rem;
+            font-weight: 500; cursor: pointer; transition: all 0.15s;
+        }
+        .wiz-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .wizard__actions { display: flex; gap: 0.5rem; margin-top: 0.25rem; }
+
+        .wizard__output {
+            background: var(--bg); border: 1px solid var(--border-light);
+            border-radius: var(--r-md); padding: 1.25rem;
+            max-height: 780px; overflow-y: auto;
+        }
+        .wizard__verdict {
+            padding: 1rem 1.15rem; border-radius: var(--r-md);
+            margin-bottom: 1rem; border-left: 4px solid var(--accent);
+            background: var(--accent-light);
+        }
+        .wizard__verdict--sdd { border-left-color: var(--emerald); background: var(--emerald-light); }
+        .wizard__verdict--cdd { border-left-color: var(--accent); background: var(--accent-light); }
+        .wizard__verdict--edd { border-left-color: var(--amber); background: var(--amber-light); }
+        .wizard__verdict--reject { border-left-color: var(--red); background: var(--red-light); }
+        .wizard__verdict-label {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--text-3);
+            margin-bottom: 0.3rem;
+        }
+        .wizard__verdict-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.35rem; font-weight: 400; color: var(--text);
+            margin: 0 0 0.3rem 0; line-height: 1.2;
+        }
+        .wizard__verdict-sub { font-size: 0.82rem; color: var(--text-2); margin: 0; }
+
+        .wizard__block {
+            border-top: 1px solid var(--border-light);
+            padding: 0.85rem 0;
+        }
+        .wizard__block:first-of-type { border-top: 0; padding-top: 0; }
+        .wizard__block-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 0.95rem; font-weight: 400; color: var(--navy);
+            margin: 0 0 0.4rem 0;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .wizard__block-badge {
+            font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 2px 7px;
+            border-radius: 4px; background: var(--border);
+            color: var(--text-3);
+        }
+        .wizard__block-badge--req { background: var(--red-light); color: var(--red); }
+        .wizard__block-badge--cond { background: var(--amber-light); color: var(--amber); }
+        .wizard__block-badge--ok { background: var(--emerald-light); color: var(--emerald); }
+        .wizard__list { list-style: none; padding: 0; margin: 0; }
+        .wizard__list li {
+            position: relative; padding: 0.2rem 0 0.2rem 1rem;
+            font-size: 0.8rem; color: var(--text-2); line-height: 1.45;
+        }
+        .wizard__list li::before {
+            content: ""; position: absolute; left: 0.15rem; top: 0.55rem;
+            width: 4px; height: 4px; border-radius: 50%;
+            background: var(--accent);
+        }
+        .wizard__placeholder {
+            text-align: center; padding: 3rem 1rem;
+            color: var(--text-3); font-size: 0.88rem; line-height: 1.5;
+        }
+        .wizard__note-print { display: none; }
+        .wiz-hidden { display: none; }
     </style>
 </head>
 <body>
@@ -850,21 +1238,19 @@
 <nav class="nav" aria-label="Main">
     <div class="nav__inner">
         <span class="nav__brand">DASP Guide</span>
+        <span class="nav__group-label" aria-hidden="true">Part 1 · Licence</span>
+        <a href="#understanding">Understanding</a>
         <a href="#legislation">Legislation</a>
-        <span class="nav__sep" aria-hidden="true"></span>
         <a href="#activities">Activities</a>
         <a href="#assets">Assets</a>
-        <span class="nav__sep" aria-hidden="true"></span>
-        <a href="#dasp">Flow</a>
+        <a href="#dasp">Timeline</a>
         <a href="#entity">Entity</a>
         <a href="#personnel">Personnel</a>
-        <span class="nav__sep" aria-hidden="true"></span>
-        <a href="#aml">AML</a>
-        <a href="#cyber">Cyber</a>
-        <span class="nav__sep" aria-hidden="true"></span>
-        <a href="#tax">Tax</a>
         <a href="#costs">Costs</a>
         <span class="nav__sep" aria-hidden="true"></span>
+        <span class="nav__group-label" aria-hidden="true">Part 2 · Ops</span>
+        <a href="#aml">AML</a>
+        <a href="#aml-wizard">Wizard</a>
         <a href="#sanctions">Sanctions</a>
         <span class="nav__sep" aria-hidden="true"></span>
         <a href="#faq">FAQ</a>
@@ -891,6 +1277,119 @@
     </div>
 </section>
 
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  ▓▓▓  PART 1 — LICENSE & SETUP  ▓▓▓                          -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<div class="part-divider">
+    <div class="container">
+        <span class="part-divider__kicker">Part 1 · License &amp; Setup</span>
+        <h2 class="part-divider__title">Getting your DASP registration</h2>
+        <p class="part-divider__sub">From incorporation to CNAD certificate — the Salvadoran regime's advantages, the legal framework, the 5-phase timeline, and the total cost of setup.</p>
+        <div class="part-divider__spine" aria-hidden="true">
+            <span class="part-divider__dot"></span><span>Understanding</span>
+            <span class="part-divider__dot"></span><span>Activities</span>
+            <span class="part-divider__dot"></span><span>Assets</span>
+            <span class="part-divider__dot"></span><span>Legislation</span>
+            <span class="part-divider__dot"></span><span>Timeline</span>
+            <span class="part-divider__dot"></span><span>Costs</span>
+            <span class="part-divider__dot"></span>
+        </div>
+    </div>
+</div>
+
+<!-- ══ UNDERSTANDING EL SALVADOR DASP LICENSE ══ -->
+<section class="section" id="understanding">
+<div class="container fade-in">
+    <p class="section__label">Why El Salvador</p>
+    <h2 class="section__title">Understanding the El Salvador DASP License</h2>
+    <p class="section__desc">El Salvador was the first country to adopt a dedicated digital-asset statute (LEAD, 2023) alongside Bitcoin legal tender (2021). The regime is designed for serious operators — USD-denominated, low-tax, AML-aligned to FATF but lighter than the EU's MiCA, and explicitly open to stablecoins and foreign compliance staff. The combination is unique in the Americas.</p>
+
+    <div class="advantages">
+        <div class="advantage">
+            <span class="advantage__num">01</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <h4>Zero-tax regime</h4>
+            <p>0% income, 0% capital gains, 0% VAT, 0% municipal on DASP-scope activity — effective from day 1 of registration <span class="ref">LEAD Art. 36</span>.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">02</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+            <h4>Dollarized economy</h4>
+            <p>USD is legal tender since 2001. No currency conversion, no exchange-control risk, no FX mismatch with client operations.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">03</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><path d="M3 7h14l-3-3M21 17H7l3 3"/></svg></div>
+            <h4>Direct USDT on/off-ramp</h4>
+            <p>Stablecoin exchange to and from USD is explicitly legal under LEAD. No third-country routing, no correspondent-banking workaround.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">04</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/></svg></div>
+            <h4>Lighter AML than MiCA</h4>
+            <p>$1,000 CDD trigger for occasional transactions; senior-mgmt approval only at EDD; no licensing capital requirements. FATF-aligned but pragmatic.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">05</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <h4>8–12 months to licence</h4>
+            <p>Five clearly-defined CNAD phases with statutory clocks (20 bd + 10 bd per cycle). Compare to 18–24 months under MiCA or FINMA process.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">06</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/></svg></div>
+            <h4>No residency for key roles</h4>
+            <p>CO, Deputy CO, Directors can all be foreign-resident — explicit exemption for DASPs <span class="ref">Instr. Art. 84-B(2)</span>. Uncommon in LatAm.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">07</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <h4>Stablecoin-ready framework</h4>
+            <p>CNAD has a dedicated Stablecoin Regulation with reserve rules and issuer registry — first fully-articulated stablecoin regime in the Americas.</p>
+        </div>
+        <div class="advantage">
+            <span class="advantage__num">08</span>
+            <div class="advantage__icon"><svg viewBox="0 0 24 24"><path d="M12 3v6m0 6v6M3 12h6m6 0h6M6 6l3 3m6 6 3 3M6 18l3-3m6-6 3-3"/></svg></div>
+            <h4>BSP + DASP dual rail</h4>
+            <p>Bitcoin operations under the Bitcoin Law (BSP, BCR); everything else under LEAD (DASP, CNAD). One entity, two parallel licences.</p>
+        </div>
+    </div>
+
+    <h3 class="section__subh" style="margin-top:3rem;">BSP vs DASP — two registries, one entity</h3>
+    <p class="section__desc" style="margin-bottom:0;">El Salvador operates two parallel licensing rails. BSP covers Bitcoin, DASP covers everything else. Most serious operators hold both.</p>
+
+    <div class="vs-grid">
+        <div class="vs-card vs-card--bsp">
+            <span class="vs-card__badge">BSP · Bitcoin Rail</span>
+            <h3>Bitcoin Service Provider</h3>
+            <p class="vs-card__tagline">Supervisor: BCR · Primary law: Bitcoin Law (Decree 57/2021)</p>
+            <ul class="vs-card__list">
+                <li>Bitcoin (BTC) only</li>
+                <li>AML supervisor: UIF via BCR channel</li>
+                <li>Registration fee set by BCR</li>
+                <li>BTC-specific tax regime</li>
+                <li>Market rate for BSP support: ~$5,085 incl. VAT</li>
+            </ul>
+        </div>
+        <div class="vs-divider" aria-hidden="true">+</div>
+        <div class="vs-card vs-card--dasp">
+            <span class="vs-card__badge">DASP · Digital Assets Rail</span>
+            <h3>Digital Asset Service Provider</h3>
+            <p class="vs-card__tagline">Supervisor: CNAD · Primary law: LEAD (Decree 643/2023)</p>
+            <ul class="vs-card__list">
+                <li>All digital assets other than BTC</li>
+                <li>AML supervisor: UIF via CNAD channel</li>
+                <li>Registration fee: $6,132 (15 min. salaries)</li>
+                <li>LEAD Art. 36 — 0% income, CG, VAT, municipal</li>
+                <li>Market rate for DASP support: ~$5,085 incl. VAT</li>
+            </ul>
+        </div>
+    </div>
+    <p class="tbl-note" style="margin-top:1.25rem;">Exchanges and custodians handling both Bitcoin and other digital assets typically hold both licences in the same S.A. de C.V. entity. The two rails share a compliance team, AML manual and CO.</p>
+</div>
+</section>
+
 <!-- ══════════════════════════════════════════ -->
 <!--  DASP REGISTRATION FLOW                   -->
 <!-- ══ APPLICABLE LEGISLATION ══ -->
@@ -898,58 +1397,45 @@
 <div class="container fade-in">
     <p class="section__label">Legal Framework</p>
     <h2 class="section__title">Applicable Legislation</h2>
-    <p class="section__desc">Six instruments govern DASPs in El Salvador. LEAD sets the mandate, RPSAD the procedure, the AML Law and UIF Instructivo the compliance floor, and the CNAD AML Guide the supervisory expectations.</p>
+    <p class="section__desc">Six instruments govern DASPs in El Salvador. For operators, the practical stack is LEAD + RPSAD + D-426 AML Law + Instructivo UIF + CNAD AML Guide. The content below is legal-reference depth — expand only if you need the citation anchors.</p>
 
-    <div class="grid grid--2">
-        <div class="card card--accent-navy">
-            <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
-            <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
-            <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
+    <details class="legis-details">
+        <summary><span class="legis-details__summary-text">Open the full legal-framework breakdown</span> <span class="legis-details__chev" aria-hidden="true">▾</span></summary>
+        <div class="legis-details__body">
+            <div class="grid grid--2">
+                <div class="card card--accent-navy">
+                    <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
+                    <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
+                    <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
+                </div>
+                <div class="card card--accent-blue">
+                    <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
+                    <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
+                    <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
+                </div>
+                <div class="card card--accent-green">
+                    <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
+                    <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
+                    <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
+                </div>
+                <div class="card card--accent-green">
+                    <h3>UIF Instructivo</h3>
+                    <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
+                    <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
+                </div>
+                <div class="card card--accent-amber">
+                    <h3>CNAD AML Guide for DASPs</h3>
+                    <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
+                    <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
+                </div>
+                <div class="card card--accent-muted">
+                    <h3>Issuer &amp; Stablecoin Regulations</h3>
+                    <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
+                    <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
+                </div>
+            </div>
         </div>
-        <div class="card card--accent-blue">
-            <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
-            <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 48 articles.</p>
-            <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
-        </div>
-        <div class="card card--accent-green">
-            <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
-            <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
-            <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
-        </div>
-        <div class="card card--accent-green">
-            <h3>UIF Instructivo</h3>
-            <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Art. 84-B specifically addresses DASP requirements.</p>
-            <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
-        </div>
-        <div class="card card--accent-amber">
-            <h3>CNAD AML Guide for DASPs</h3>
-            <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
-            <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
-        </div>
-        <div class="card card--accent-muted">
-            <h3>Issuer & Stablecoin Regulations</h3>
-            <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
-            <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
-        </div>
-    </div>
-
-    <h3 class="section__h3">BSP vs DASP — Two Registrations, One Entity</h3>
-    <p class="section__lead">El Salvador operates two parallel registries. Each covers a different asset class and is supervised by a different authority. A platform that handles both Bitcoin and other digital assets needs both registrations.</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>Feature</th><th>BSP <span class="ref">Bitcoin Law</span></th><th>DASP <span class="ref">LEAD</span></th></tr></thead>
-        <tbody>
-            <tr><td>Assets covered</td><td>Bitcoin (BTC) only</td><td>All digital assets other than BTC</td></tr>
-            <tr><td>Supervisor</td><td>BCR (Banco Central de Reserva)</td><td>CNAD</td></tr>
-            <tr><td>AML supervisor</td><td>UIF via BCR channel</td><td>UIF via CNAD channel</td></tr>
-            <tr><td>Primary law</td><td>Bitcoin Law (Decree 57/2021)</td><td>LEAD (Decree 643/2023)</td></tr>
-            <tr><td>Registration fee</td><td>Set by BCR</td><td>$6,132 (15 min. salaries)</td></tr>
-            <tr><td>Tax benefits</td><td>Separate BTC-specific regime</td><td>LEAD Art. 36 — income, capital gains, VAT, municipal</td></tr>
-        </tbody>
-    </table>
-    </div>
-    <p class="tbl-note">Most exchanges and custodians in El Salvador hold both licences. Market rate for BSP registration support is comparable to DASP (~$5,085 incl. VAT).</p>
+    </details>
 </div>
 </section>
 
@@ -1028,26 +1514,97 @@
     <h2 class="section__title">DASP Registration Flow</h2>
     <p class="section__desc">Two-phase process per <a href="https://cnad.gob.sv/how-to-register/register-as-digital-assets-service-provider-dasp/" target="_blank" style="color:var(--accent);">CNAD official procedure</a>. Each interaction cycle: CNAD has <strong>20 business days</strong> to respond <span class="ref">RPSAD Art. 8</span>, applicant has <strong>10 business days</strong> to cure <span class="ref">RPSAD Art. 8</span>.</p>
 
-    <!-- TIMELINE -->
-    <div class="gantt">
-        <div class="gantt__head">
-            <span class="gantt__title serif">Total: 8–12 months <span class="gantt__practice">practice</span></span>
-            <span class="gantt__sub">Typical end-to-end: ~11 months</span>
+    <!-- ══ TIMELINE V2 ══ -->
+    <div class="timeline" aria-label="DASP registration timeline — 5 phases over 8–12 months">
+        <div class="timeline__head">
+            <div>
+                <span class="timeline__kicker">End-to-end registration</span>
+                <h3 class="timeline__title">Five phases · 8–12 months</h3>
+            </div>
+            <div class="timeline__meta">
+                <span><strong>~11 months</strong> typical end-to-end</span>
+                <span>CNAD: 20 bd response · Applicant: 10 bd cure <span class="ref">RPSAD Art. 8</span></span>
+            </div>
         </div>
-        <div class="gantt__bar" aria-label="Timeline bar showing five phases over 12 months">
-            <div class="gantt__seg" style="flex:1;background:var(--accent);"        title="Entity Setup — Mo 1"></div>
-            <div class="gantt__seg" style="flex:2;background:var(--accent-2);"      title="Pre-Registration — Mo 2–3"></div>
-            <div class="gantt__seg" style="flex:3;background:var(--amber);"         title="Documentation — Mo 3–6"></div>
-            <div class="gantt__seg" style="flex:4;background:var(--emerald);"       title="CNAD Review — Mo 6–10"></div>
-            <div class="gantt__seg" style="flex:2;background:var(--emerald-2);"     title="Final — Mo 10–12"></div>
+
+        <div class="timeline__track">
+            <div class="phase-card" data-phase-color="accent">
+                <div class="phase-card__head">
+                    <span class="phase-card__num">01</span>
+                    <span class="phase-card__dur">Month 1</span>
+                </div>
+                <h4 class="phase-card__title">Entity Setup</h4>
+                <p class="phase-card__sub">4–6 weeks · Step 0</p>
+                <ul class="phase-card__list">
+                    <li>S.A. de C.V. incorporation with CNR</li>
+                    <li>NIT / NRC fiscal registration</li>
+                    <li>Operational bank account</li>
+                    <li>Fiscal address + legal rep</li>
+                </ul>
+            </div>
+
+            <div class="phase-card" data-phase-color="accent-2">
+                <div class="phase-card__head">
+                    <span class="phase-card__num">02</span>
+                    <span class="phase-card__dur">Month 2–3</span>
+                </div>
+                <h4 class="phase-card__title">Pre-Registration</h4>
+                <p class="phase-card__sub">~2 months · Steps 1–4</p>
+                <ul class="phase-card__list">
+                    <li>CNAD kick-off meeting</li>
+                    <li>CO + Deputy CO appointed</li>
+                    <li>CISO appointed</li>
+                    <li>AML + cyber policy drafts</li>
+                </ul>
+            </div>
+
+            <div class="phase-card" data-phase-color="amber">
+                <div class="phase-card__head">
+                    <span class="phase-card__num">03</span>
+                    <span class="phase-card__dur">Month 3–6</span>
+                </div>
+                <h4 class="phase-card__title">Documentation</h4>
+                <p class="phase-card__sub">3 months · Step 5</p>
+                <ul class="phase-card__list">
+                    <li>~30-document registration pack</li>
+                    <li>Full AML manual</li>
+                    <li>Cyber plan + incident response</li>
+                    <li>Business plan + fin. projections</li>
+                </ul>
+            </div>
+
+            <div class="phase-card" data-phase-color="emerald">
+                <div class="phase-card__head">
+                    <span class="phase-card__num">04</span>
+                    <span class="phase-card__dur">Month 6–10</span>
+                </div>
+                <h4 class="phase-card__title">CNAD Review</h4>
+                <p class="phase-card__sub">4 months · Step 6</p>
+                <ul class="phase-card__list">
+                    <li>2–3 review rounds (20 + 10 bd)</li>
+                    <li>Observations → responses cycle</li>
+                    <li>Technical + legal deep-dive</li>
+                    <li>Provisional acceptance</li>
+                </ul>
+            </div>
+
+            <div class="phase-card" data-phase-color="emerald-2">
+                <div class="phase-card__head">
+                    <span class="phase-card__num">05</span>
+                    <span class="phase-card__dur">Month 10–12</span>
+                </div>
+                <h4 class="phase-card__title">Registration &amp; Go-Live</h4>
+                <p class="phase-card__sub">2 months · Steps 7–10</p>
+                <ul class="phase-card__list">
+                    <li>Government fee: $6,132</li>
+                    <li>DASP certificate issued</li>
+                    <li>Tax benefits effective day 1</li>
+                    <li>Client onboarding live</li>
+                </ul>
+            </div>
         </div>
-        <div class="gantt__legend">
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent);"></span><span><strong>Entity Setup</strong> — Mo 1 · Step 0 · 4–6 wk</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--accent-2);"></span><span><strong>Pre-Registration</strong> — Mo 2–3 · Steps 1–4</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--amber);"></span><span><strong>Documentation</strong> — Mo 3–6 · Step 5 · ~30 docs package</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald);"></span><span><strong>CNAD Review</strong> — Mo 6–10 · Step 6 · 2–3 rounds × (20+10 bd)</span></div>
-            <div class="gantt__leg"><span class="gantt__dot" style="background:var(--emerald-2);"></span><span><strong>Final</strong> — Mo 10–12 · Steps 7–10 · Payment + Seat</span></div>
-        </div>
+
+        <p class="timeline__foot"><strong>CNAD cycle rhythm:</strong> each round = 20 bd CNAD response + 10 bd applicant cure <span class="ref">RPSAD Art. 8</span>. Practice shows 2–3 cycles before provisional acceptance; well-prepared files close faster. Government fee of $6,132 (15 minimum monthly salaries, LEAD Art. 12) is paid before certificate issuance.</p>
     </div>
 
     <div class="flow-controls">
@@ -1584,26 +2141,6 @@
 </div>
 </section>
 
-<!-- ══ AML ══ -->
-<section class="section" id="aml">
-<div class="container fade-in">
-    <p class="section__label">Compliance</p>
-    <h2 class="section__title">AML &amp; Compliance Framework</h2>
-    <p class="section__desc">The AML regime rests on three layers: the AML Law (Decree 426/2025) sets obligations, the UIF Instructivo operationalises them, and the CNAD AML Guide adapts them to DASP realities — Travel Rule, KYT and the $1,000 CDD trigger.</p>
-
-    <div class="grid grid--3">
-        <div class="card"><h3>Customer Due Diligence</h3><ul><li><strong>$1,000</strong> occasional CDD threshold <span class="ref">CNAD Guide §2</span></li><li>Simplified / standard / enhanced <span class="ref">AML Law Art. 15</span></li><li>PEP policy required <span class="ref">RPSAD Art. 19</span></li></ul></div>
-        <div class="card"><h3>Beneficial Ownership</h3><ul><li>≥ 25% <span class="ref">AML Law Art. 15</span> / ≥ 10% <span class="ref">UIF Instr. Art. 20(b)</span></li><li>"Special care" for DASPs <span class="ref">CNAD Guide §3</span></li><li>Trusts: all parties <span class="ref">UIF Instr. Art. 21</span></li></ul></div>
-        <div class="card"><h3>Travel Rule</h3><ul><li><strong>ALL transfers, any amount</strong> <span class="ref">UIF Instr. Art. 84-B(1)(e)</span></li><li>Full sender/receiver data <span class="ref">CNAD Guide §2</span></li><li>"Under no circumstances" skip</li></ul></div>
-        <div class="card"><h3>Suspicious Operations</h3><ul><li>Report: <strong>24 hours</strong> <span class="ref">AML Law Art. 24</span></li><li>Analysis: 15 bus. days <span class="ref">AML Law Art. 24</span></li><li>Attempts must be reported</li><li>Tipping off prohibited <span class="ref">LCLDA Art. 17</span></li></ul></div>
-        <div class="card"><h3>Reporting Thresholds</h3><ul><li>Cash &gt; $10,000 <span class="ref">UIF Instr. Art. 51</span></li><li>Other &gt; $25,000 <span class="ref">UIF Instr. Art. 51</span></li><li>E-transfers ≥ $1,000 <span class="ref">UIF Instr. Art. 52</span></li></ul></div>
-        <div class="card"><h3>Training & Records</h3><ul><li>Annual training, all staff <span class="ref">UIF Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">UIF Instr. Art. 55</span></li><li>15-year retention <span class="ref">AML Law Art. 26</span></li></ul></div>
-    </div>
-
-    <p class="tbl-note" style="margin-top:1.5rem;">See <a href="#activities" style="color:var(--accent);">DASP Activities</a> section for full AML risk classification per activity type.</p>
-</div>
-</section>
-
 <!-- ══ CYBER ══ -->
 <section class="section section--alt" id="cyber">
 <div class="container fade-in">
@@ -1654,119 +2191,245 @@
 <div class="container fade-in">
     <p class="section__label">Budget</p>
     <h2 class="section__title">Cost Structure</h2>
-    <p class="section__desc">Private-sector figures reflect El Salvador market quotes in Q1 2026 <span class="ref ref--practice">practice</span>; government fees are set by LEAD Art. 12. All amounts in USD; VAT (13%) noted where applicable.</p>
+    <p class="section__desc">Private-sector figures reflect El Salvador market quotes in Q1 2026 <span class="ref ref--practice">practice</span>; government fees are set by LEAD Art. 12. All amounts in USD; VAT (13%) already included in legal/professional quotes where noted.</p>
+
+    <!-- ── GOVERNMENT FEES — anchored in law ── -->
+    <div class="card card--top-navy card--full stack-md">
+        <div class="card__head">
+            <h3>Government Fees <span class="ref">LEAD Art. 12</span></h3>
+            <span class="kbd-label">Fixed by law</span>
+        </div>
+        <div class="grid-3-equal">
+            <div class="price-pill">
+                <span class="price-pill__val">$6,132</span>
+                <span class="price-pill__lbl">DASP Registration</span>
+                <span class="price-pill__note">15 min. salaries · one-time</span>
+            </div>
+            <div class="price-pill">
+                <span class="price-pill__val">$4,088</span>
+                <span class="price-pill__lbl">Annual Renewal</span>
+                <span class="price-pill__note">10 min. salaries · Q1 each year</span>
+            </div>
+            <div class="price-pill">
+                <span class="price-pill__val">$50</span>
+                <span class="price-pill__lbl">Additional Certificate</span>
+                <span class="price-pill__note">per copy</span>
+            </div>
+        </div>
+        <p class="card__note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%). Add ~$5,085 if BSP registration is sought in parallel (same statutory formula).</p>
+    </div>
+
+    <!-- ── ONE-TIME LAUNCH ── -->
+    <h3 class="section__subh" style="margin-top:2.25rem;">One-time launch costs</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Everything the entity pays once before going live — from incorporation through CNAD registration and initial control infrastructure.</p>
 
     <div class="grid grid--2">
 
-        <!-- 1. COMPANY FORMATION -->
+        <!-- A. COMPANY FORMATION -->
         <div class="card card--top-blue">
             <div class="card__head">
-                <h3>Company Formation</h3>
-                <span class="kbd-label">One-time</span>
+                <h3>Entity &amp; banking</h3>
+                <span class="kbd-label">Legal setup</span>
             </div>
             <table class="card__table">
                 <tr><td>S.A. de C.V. incorporation</td><td class="price">$2,500 – $3,000</td></tr>
-                <tr><td>Local operational bank account opening</td><td class="price">$1,000 – $1,300</td></tr>
+                <tr><td>Operational bank account</td><td class="price">$1,000 – $1,300</td></tr>
+                <tr><td>Minimum capital deposit</td><td class="price">$2,000</td></tr>
+                <tr><td>NIT, registry, municipal licence</td><td class="price">$300 – $500</td></tr>
             </table>
-            <p class="card__note">Notarized deed, CNR, NIT, business license, fiscal address (1 yr), $200 bank deposit. Timeline: 2–4 weeks.</p>
+            <p class="card__note">Notarised deed, CNR registration, fiscal address (first year), Ministry of Finance NIT. Timeline: 2–4 weeks.</p>
         </div>
 
-        <!-- 2. COMPANY MAINTENANCE -->
+        <!-- B. POLICY DOCUMENTATION -->
         <div class="card card--top-blue">
             <div class="card__head">
-                <h3>Company Maintenance</h3>
-                <span class="kbd-label">Recurring</span>
+                <h3>Policy documentation</h3>
+                <span class="kbd-label">~30 artefacts</span>
             </div>
             <table class="card__table">
-                <tr><td>Legal representative + fiscal address</td><td class="price">$450 – $600 /mo</td></tr>
-                <tr><td>Accounting (IFRS for SMEs)</td><td class="price">$150 – $550 /mo</td></tr>
-                <tr><td>External audit</td><td class="price">$125 – $200 /mo</td></tr>
-                <tr><td>Municipal filing</td><td class="price">$300 /yr</td></tr>
+                <tr><td>Business plan + 3-yr financial model</td><td class="price">$3,000 – $6,000</td></tr>
+                <tr><td>AML / KYC / KYT / Travel Rule policy pack</td><td class="price">$4,000 – $8,000</td></tr>
+                <tr><td>BCP, cyber, risk &amp; governance policies</td><td class="price">$2,500 – $5,000</td></tr>
             </table>
-            <p class="card__note">Alternative: <strong>LaaS bundle $1,500–$1,700/mo</strong> — legal rep + accounting + audit in one retainer.</p>
+            <p class="card__note">Full CNAD filing pack. Can be handled in-house by internal legal/compliance; external counsel pricing shown for reference.</p>
         </div>
 
-        <!-- 3. COMPLIANCE -->
+        <!-- C. CNAD APPLICATION -->
         <div class="card card--top-green">
             <div class="card__head">
-                <h3>Compliance</h3>
-                <span class="kbd-label">Setup + Recurring</span>
-            </div>
-            <p class="kbd-label" style="margin-bottom:0.4rem;">One-time setup</p>
-            <table class="card__table">
-                <tr><td>UIF / FIU registration (incl. UBO)</td><td class="price">~$2,000</td></tr>
-            </table>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Local compliance officer</p>
-            <table class="card__table">
-                <tr><td>Principal + Alternate CO</td><td class="price">$2,000 – $3,500 /mo</td></tr>
-                <tr><td>CISO</td><td class="price">~$2,000 /mo</td></tr>
-            </table>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">As needed</p>
-            <table class="card__table">
-                <tr><td>AML policy updates</td><td class="price">from $460 per update</td></tr>
-            </table>
-            <p class="card__note">COs: AML/CFT certified, UIF-registered. No residency requirement for DASP COs.</p>
-        </div>
-
-        <!-- 4. CNAD APPLICATION -->
-        <div class="card card--top-green">
-            <div class="card__head">
-                <h3>CNAD Application</h3>
-                <span class="kbd-label">One-time</span>
+                <h3>CNAD application support</h3>
+                <span class="kbd-label">Filing + review</span>
             </div>
             <table class="card__table">
                 <tr><td>DASP registration support</td><td class="price">~$5,085</td></tr>
-                <tr><td>BSP registration support</td><td class="price">~$5,085</td></tr>
+                <tr><td>BSP registration support (optional)</td><td class="price">~$5,085</td></tr>
+                <tr><td>UIF / FIU registration (incl. UBO)</td><td class="price">~$2,000</td></tr>
             </table>
-            <p class="card__note">CNAD liaison, application management, and response to CNAD observations during review rounds. Document preparation — ~30 artefacts including the business plan and AML/KYC/BCP policies — is handled in-house and is <em>not</em> included in this fee. Prices incl. 13% VAT. BSP registration applies only if the entity also seeks Bitcoin Service Provider status.</p>
+            <p class="card__note">CNAD liaison, application management, and response to CNAD observations (20+10 bd cycle). Prices incl. 13% VAT.</p>
         </div>
 
-        <!-- 5. GOVERNMENT FEES -->
-        <div class="card card--top-navy card--full">
+        <!-- D. CONTROL INFRASTRUCTURE -->
+        <div class="card card--top-green">
             <div class="card__head">
-                <h3>Government Fees <span class="ref">LEAD Art. 12</span></h3>
-                <span class="kbd-label">Fixed by law</span>
+                <h3>Control infrastructure</h3>
+                <span class="kbd-label">Pre-launch</span>
             </div>
-            <div class="grid-3-equal">
-                <div class="price-pill">
-                    <span class="price-pill__val">$6,132</span>
-                    <span class="price-pill__lbl">DASP Registration</span>
-                    <span class="price-pill__note">15 min. salaries · one-time</span>
-                </div>
-                <div class="price-pill">
-                    <span class="price-pill__val">$4,088</span>
-                    <span class="price-pill__lbl">Annual Renewal</span>
-                    <span class="price-pill__note">10 min. salaries · Q1 each year</span>
-                </div>
-                <div class="price-pill">
-                    <span class="price-pill__val">$50</span>
-                    <span class="price-pill__lbl">Additional Certificate</span>
-                    <span class="price-pill__note">per copy</span>
-                </div>
-            </div>
-            <p class="card__note">Pegged to minimum monthly salary, commerce/services sector: <strong>$408.80/mo</strong> (since June 2025, +12%).</p>
+            <table class="card__table">
+                <tr><td>KYC/KYB vendor onboarding &amp; setup</td><td class="price">$2,000 – $5,000</td></tr>
+                <tr><td>KYT / blockchain-analytics integration <span class="ref">CNAD Guide §2</span></td><td class="price">$3,000 – $6,000</td></tr>
+                <tr><td>Sanctions &amp; adverse-media screening setup</td><td class="price">$1,500 – $3,000</td></tr>
+                <tr><td>Core banking / wallet-ops infrastructure</td><td class="price">$5,000 – $15,000</td></tr>
+                <tr><td>Initial penetration test &amp; cyber baseline <span class="ref">RPSAD Art. 26</span></td><td class="price">$4,000 – $8,000</td></tr>
+            </table>
+            <p class="card__note">Vendor dependencies: Sumsub/Onfido/Veriff (KYC), Chainalysis/TRM/Elliptic (KYT), Refinitiv/ComplyAdvantage (screening).</p>
         </div>
+
     </div>
 
-    <!-- TOTAL SUMMARY -->
-    <div class="card card--hero stack-md">
-        <h3 class="card__head">Total Estimated Budget</h3>
-        <div class="grid grid--2">
+    <!-- ── MONTHLY RUNNING ── -->
+    <h3 class="section__subh" style="margin-top:2.25rem;">Monthly running costs</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Fixed operating burden once the licence is live. Variable KYT / KYC usage fees scale with customer volume and are additional.</p>
+
+    <div class="grid grid--2">
+
+        <!-- E. CORPORATE MAINTENANCE -->
+        <div class="card card--top-blue">
+            <div class="card__head">
+                <h3>Corporate maintenance</h3>
+                <span class="kbd-label">Per month</span>
+            </div>
+            <table class="card__table">
+                <tr><td>Legal representative + fiscal address</td><td class="price">$450 – $600</td></tr>
+                <tr><td>Accounting (IFRS for SMEs)</td><td class="price">$150 – $550</td></tr>
+                <tr><td>Monthly bookkeeping review</td><td class="price">$125 – $200</td></tr>
+            </table>
+            <p class="card__note">Alternative: <strong>LaaS bundle $1,500–$1,700/mo</strong> — legal rep + accounting + bookkeeping in one retainer.</p>
+        </div>
+
+        <!-- F. COMPLIANCE TEAM -->
+        <div class="card card--top-green">
+            <div class="card__head">
+                <h3>Compliance team</h3>
+                <span class="kbd-label">Per month</span>
+            </div>
+            <table class="card__table">
+                <tr><td>Principal CO + Alternate CO</td><td class="price">$2,000 – $3,500</td></tr>
+                <tr><td>CISO (may be fractional)</td><td class="price">$1,500 – $2,500</td></tr>
+                <tr><td>Ad-hoc AML policy updates</td><td class="price">from $460 /update</td></tr>
+            </table>
+            <p class="card__note">COs: AML/CFT certified and UIF-registered. No residency requirement for DASP CO per Instructivo UIF.</p>
+        </div>
+
+        <!-- G. TECHNOLOGY STACK -->
+        <div class="card card--top-green card--full">
+            <div class="card__head">
+                <h3>Technology &amp; monitoring stack</h3>
+                <span class="kbd-label">Per month</span>
+            </div>
+            <div class="grid grid--2">
+                <table class="card__table">
+                    <tr><td>KYT / blockchain monitoring (subscription)</td><td class="price">$1,500 – $4,000</td></tr>
+                    <tr><td>KYC verification (per-check or bundle)</td><td class="price">$500 – $2,000</td></tr>
+                    <tr><td>Sanctions / PEP / adverse-media screening</td><td class="price">$300 – $1,000</td></tr>
+                </table>
+                <table class="card__table">
+                    <tr><td>Secured cloud hosting &amp; backups</td><td class="price">$500 – $1,500</td></tr>
+                    <tr><td>SOC / log management</td><td class="price">$400 – $1,200</td></tr>
+                    <tr><td>Case-management / ticketing</td><td class="price">$150 – $400</td></tr>
+                </table>
+            </div>
+            <p class="card__note">Variable usage fees (per KYC check, per KYT screening) scale with onboarding volume — budget an additional $0.5–$2 per customer per month for active user base.</p>
+        </div>
+
+    </div>
+
+    <!-- ── ANNUAL OBLIGATIONS ── -->
+    <h3 class="section__subh" style="margin-top:2.25rem;">Annual obligations</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Recurring annual deliverables required by CNAD, the UIF and prudent operation. Do not double-count: the CNAD renewal fee is listed under Government Fees above.</p>
+
+    <div class="grid grid--2">
+
+        <!-- H. MANDATORY AUDITS -->
+        <div class="card card--top-amber">
+            <div class="card__head">
+                <h3>Mandatory audits &amp; testing</h3>
+                <span class="kbd-label">Annual</span>
+            </div>
+            <table class="card__table">
+                <tr><td>External financial audit (IFRS)</td><td class="price">$3,000 – $8,000</td></tr>
+                <tr><td>Independent AML audit <span class="ref">Instr. Art. 26</span></td><td class="price">$4,000 – $8,000</td></tr>
+                <tr><td>Cybersecurity testing (3 scenarios) <span class="ref">RPSAD Art. 26</span></td><td class="price">$5,000 – $10,000</td></tr>
+            </table>
+            <p class="card__note">Cyber testing covers confidentiality, availability and integrity — performed by an external auditor. Results filed with CNAD.</p>
+        </div>
+
+        <!-- I. INSURANCE & TRAINING -->
+        <div class="card card--top-amber">
+            <div class="card__head">
+                <h3>Insurance, training &amp; filings</h3>
+                <span class="kbd-label">Annual</span>
+            </div>
+            <table class="card__table">
+                <tr><td>D&amp;O + cyber liability insurance</td><td class="price">$2,000 – $5,000</td></tr>
+                <tr><td>Annual AML training, all staff <span class="ref">Instr. Art. 54</span></td><td class="price">$500 – $2,000</td></tr>
+                <tr><td>CO recertification / CPD</td><td class="price">$500 – $1,500</td></tr>
+                <tr><td>Municipal &amp; chamber filings</td><td class="price">$300 – $500</td></tr>
+            </table>
+            <p class="card__note">D&amp;O is not strictly mandated but strongly recommended — CNAD reviews corporate governance during application.</p>
+        </div>
+
+    </div>
+
+    <!-- ── TOTAL SUMMARY ── -->
+    <div class="card card--hero stack-md" style="margin-top:2.25rem;">
+        <h3 class="card__head">Consolidated budget</h3>
+        <div class="grid-3-equal">
             <div>
                 <span class="kbd-label">One-time launch</span>
-                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$16,700 – $17,500</span>
-                <span class="price-pill__note">DASP only · add ~$5,085 for BSP</span>
+                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$36,000 – $73,000</span>
+                <span class="price-pill__note">DASP only · incl. $6,132 CNAD fee, ~$10k policy pack, control infra · add ~$5,085 for parallel BSP</span>
             </div>
             <div>
-                <span class="kbd-label">Monthly running costs</span>
-                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$4,725 – $6,850 /mo</span>
-                <span class="price-pill__note">Company maintenance + CO + CISO</span>
+                <span class="kbd-label">Monthly running</span>
+                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$7,425 – $17,250</span>
+                <span class="price-pill__note">Corporate + CO team + tech stack · excl. per-customer KYC/KYT usage fees</span>
             </div>
+            <div>
+                <span class="kbd-label">Annual obligations</span>
+                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$19,476 – $39,176</span>
+                <span class="price-pill__note">Incl. $4,088 CNAD renewal, audits, cyber testing, insurance, training</span>
+            </div>
+        </div>
+        <div class="card__divider" style="border-top:1px solid var(--border); margin:1rem 0 0.75rem;"></div>
+        <div>
+            <span class="kbd-label">Year-1 all-in (realistic mid-range)</span>
+            <span class="price-pill__val" style="display:block;margin-top:0.25rem;">≈ $145,000 – $190,000</span>
+            <span class="price-pill__note">Launch + 12 × monthly + annual deliverables. Year-2 onward drops to ≈ $110k–$245k/yr depending on headcount and transaction volume.</span>
         </div>
     </div>
 
 </div>
 </section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  ▓▓▓  PART 2 — OPERATIONS & COMPLIANCE  ▓▓▓                  -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+
+<div class="part-divider">
+    <div class="container">
+        <span class="part-divider__kicker">Part 2 · Operations &amp; Compliance</span>
+        <h2 class="part-divider__title">Running the DASP day-to-day</h2>
+        <p class="part-divider__sub">After the licence is issued: enforcement consequences, the AML framework, reporting deadlines, red flags and an interactive decision wizard for each transaction. This is the section your Compliance Officer lives in.</p>
+        <div class="part-divider__spine" aria-hidden="true">
+            <span class="part-divider__dot"></span><span>Sanctions</span>
+            <span class="part-divider__dot"></span><span>AML Framework</span>
+            <span class="part-divider__dot"></span><span>Deadlines</span>
+            <span class="part-divider__dot"></span><span>Red flags</span>
+            <span class="part-divider__dot"></span><span>AML Wizard</span>
+            <span class="part-divider__dot"></span>
+        </div>
+    </div>
+</div>
 
 <!-- ══ SANCTIONS ══ -->
 <section class="section" id="sanctions">
@@ -1832,6 +2495,183 @@
 </div>
 </section>
 
+<!-- ══ AML ══ -->
+<section class="section" id="aml">
+<div class="container fade-in">
+    <p class="section__label">Compliance</p>
+    <h2 class="section__title">AML &amp; Compliance Framework</h2>
+    <p class="section__desc">Four parallel obligations run on every DASP operation: (i) customer-level <strong>DD procedure</strong> — SDD / CDD / EDD, Instr. Arts. 12/13; (ii) per-transfer <strong>Travel Rule</strong> data on every DA transfer regardless of amount — Instr. Art. 84-B(1)(e) + CNAD Guide §2(b); (iii) threshold-based <strong>Operación Regulada reporting</strong> — Instr. Art. 51; (iv) suspicion-based <strong>STR</strong> — D-426 Art. 24. Each triggers independently; the interactive tool below (<a href="#aml-wizard" style="color:var(--accent);">AML Decision Wizard</a>) resolves the matrix per transaction.</p>
+
+    <div class="grid grid--3">
+        <div class="card"><h3>DD levels — when</h3><ul><li><strong>CDD trigger:</strong> occasional transaction ≥ US$1,000 <span class="ref">CNAD Guide §2(a)</span></li><li>Ongoing relationship → CDD always <span class="ref">Instr. Art. 12</span></li><li>Risk trigger → EDD regardless of amount <span class="ref">Instr. Art. 13</span></li><li>SDD = practice within Art. 12 for documented-low-risk occasional &lt; US$1,000</li></ul></div>
+        <div class="card"><h3>Beneficial ownership — stricter of three</h3><ul><li><strong>≥ 10%</strong> <span class="ref">Instr. Arts. 12, 20</span> — apply as floor</li><li>≥ 25% <span class="ref">D-426 Art. 2</span></li><li>"Mayoría" <span class="ref">CNAD Guide §3</span> — DASP-specific</li><li>Trusts: all parties <span class="ref">Instr. Art. 21</span></li></ul></div>
+        <div class="card"><h3>Travel Rule — per-transfer</h3><ul><li><strong>Every DA transfer, any amount</strong> <span class="ref">Instr. Art. 84-B(1)(e)</span></li><li>FATF R.16 imported to DASPs <span class="ref">CNAD Guide §2(b)</span></li><li>"Under no circumstances" skip <span class="ref">CNAD Guide §2 CAPS</span></li><li>8 data elements — date, asset, originator, beneficiary, accounts, references, identifiers (incl. sending/receiving addresses), exchange rates + source</li></ul></div>
+        <div class="card"><h3>Source of funds / Source of wealth</h3><ul><li><strong>SOF</strong> (origen de fondos) — declarative at CDD baseline; documentary under EDD <span class="ref">D-426 DD estándar / intensificada</span></li><li><strong>SOW</strong> (fuente de riqueza) — NOT required at CDD; documentary under EDD <span class="ref">Instr. Art. 13</span></li><li>PEP: full SOF + SOW mandatory <span class="ref">Instr. Art. 14</span></li><li>Legal entities: SOF of entity + SOF/SOW of each BO <span class="ref">Instr. Arts. 20, 21</span></li></ul></div>
+        <div class="card"><h3>Suspicious operations (STR)</h3><ul><li>Analysis: ≤ 15 business days <span class="ref">D-426 Art. 24</span></li><li>File: <strong>24 hours</strong> from determination <span class="ref">D-426 Art. 24</span></li><li>Attempted operations reportable <span class="ref">Instr. Art. 47</span></li><li>Tipping-off prohibited <span class="ref">LECAT Art. 17</span></li></ul></div>
+        <div class="card"><h3>Operación Regulada (threshold reports)</h3><ul><li>Cash &gt; US$10,000 single/monthly <span class="ref">Instr. Art. 51</span></li><li>Other means &gt; US$25,000 <span class="ref">Instr. Art. 51</span></li><li>Deadline: 5 business days</li><li>Independent from Travel Rule and from DD level</li></ul></div>
+        <div class="card"><h3>Sanctions screening</h3><ul><li>UNSC consolidated list — binding <span class="ref">LECAT Art. 37</span></li><li>UIF national list — binding <span class="ref">Instr. Arts. 27–35</span></li><li>Match → freeze + UIF report ≤ 3 bd</li><li>OFAC / EU / UK — commercial-risk only, not Salvadoran AML statute</li></ul></div>
+        <div class="card"><h3>PEP regime</h3><ul><li>Self + family ≤ 2nd degree + close associates <span class="ref">Instr. Arts. 14, 16–18</span></li><li>Still PEP for 5 years post-cease</li><li>Always EDD regardless of amount</li><li>Senior-management written approval required</li></ul></div>
+        <div class="card"><h3>Training &amp; records</h3><ul><li>Annual training, all staff <span class="ref">Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">Instr. Art. 55</span></li><li><strong>15-year retention</strong> <span class="ref">D-426 Art. 26</span></li></ul></div>
+    </div>
+
+    <!-- ── AML DEADLINES MATRIX ── -->
+    <h3 class="section__subh" style="margin-top:2.5rem;">AML deadlines — every statutory clock</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Business-day (bd) clocks stop on weekends and public holidays; wall-clock deadlines do not. Missing a window is a standalone administrative offence — supervisors audit dates before substance.</p>
+    <div class="tbl-wrap">
+    <table class="tbl">
+        <thead><tr><th>Event</th><th>Deadline</th><th>Clock</th><th>Source</th></tr></thead>
+        <tbody>
+            <tr><td><strong>STR filing</strong> after internal determination</td><td class="price">24 hours</td><td>Wall-clock (incl. weekends)</td><td><span class="ref">D-426 Art. 24</span></td></tr>
+            <tr><td>STR internal analysis</td><td class="price">≤ 15 bd</td><td>Business days</td><td><span class="ref">D-426 Art. 24</span></td></tr>
+            <tr><td><strong>Sanctions-list freeze report</strong> (UNSC / UIF national list match)</td><td class="price">3 bd</td><td>Business days</td><td><span class="ref">LECAT Art. 37 · Instr. Arts. 27–35</span></td></tr>
+            <tr><td><strong>Operación Regulada</strong> report (threshold)</td><td class="price">5 bd</td><td>Business days</td><td><span class="ref">Instr. Art. 51</span></td></tr>
+            <tr><td>CO / Deputy CO appointment notice → UIF</td><td class="price">15 bd</td><td>Business days</td><td><span class="ref">Instr. Arts. 7(m), 64</span></td></tr>
+            <tr><td>CO / Deputy CO removal notice → UIF</td><td class="price">5 bd</td><td>Business days</td><td><span class="ref">Instr. Art. 7(m)</span></td></tr>
+            <tr><td>Client data update (identity / BO change)</td><td class="price">On the next operation / annual review</td><td>Event-driven</td><td><span class="ref">Instr. Art. 12(g)</span></td></tr>
+            <tr><td>PEP re-assessment (annual)</td><td class="price">12 months</td><td>Calendar</td><td><span class="ref">Instr. Art. 14</span></td></tr>
+            <tr><td>Prevention Committee meeting</td><td class="price">Quarterly (min.)</td><td>Calendar</td><td><span class="ref">Instr. Art. 68</span></td></tr>
+            <tr><td>Annual staff AML training</td><td class="price">12 months rolling</td><td>Calendar</td><td><span class="ref">Instr. Art. 54</span></td></tr>
+            <tr><td><strong>Record retention</strong></td><td class="price">15 years</td><td>Calendar</td><td><span class="ref">D-426 Art. 26</span></td></tr>
+            <tr><td>Transitional: supervisor diagnosis of obligated entities</td><td class="price">6 months from D-426 entry</td><td>Calendar</td><td><span class="ref">D-426 Art. 58</span></td></tr>
+            <tr><td>Transitional: obligated-entity policy adjustment</td><td class="price">12 months from D-426 entry</td><td>Calendar</td><td><span class="ref">D-426 Art. 58</span></td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p class="tbl-note">STR 24h = wall-clock from the moment the CO signs the timestamped "determinación" line in the analysis file. Without a signed determination, the clock is ambiguous and UIF reads it against the entity.</p>
+
+    <!-- ── RED FLAGS — OPERATIONAL EDD TRIGGERS ── -->
+    <h3 class="section__subh" style="margin-top:2.5rem;">Red flags — operational EDD triggers</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Any single flag below forces EDD regardless of amount [Instr. Art. 13]. Use this catalogue as the input to the AML Wizard below or as an internal checklist at onboarding, relationship review, and KYT alert triage.</p>
+    <div class="grid grid--3">
+        <div class="card"><h3>Structuring patterns</h3><p>Split-dollar transactions, round-number deposits just under US$10K / US$25K / US$1K thresholds, multiple same-day operations from same source. → EDD + STR consideration.</p></div>
+        <div class="card"><h3>Profile deviation</h3><p>Amount, frequency, asset choice, geography inconsistent with declared activity / occupation / expected volume. → Profile refresh + EDD + documented rationale.</p></div>
+        <div class="card"><h3>Cash-intensive counterpart</h3><p>Money-service business, cash retail, import-export with cash legs, high-cash cash flow. → EDD + documentary SOF + enhanced monitoring.</p></div>
+        <div class="card"><h3>Opaque ownership</h3><p>Nominees, bearer shares, layered holdings, non-transparent trust, mailbox address, unexplained change of BO. → BO identified to natural person mandatory <span class="ref">Instr. Arts. 20, 21</span>.</p></div>
+        <div class="card"><h3>Flagged wallet</h3><p>Counterparty wallet linked to mixer, darknet marketplace, known exploit, sanctions-linked address, high-risk exchange. → EDD + blockchain trace retained in file + STR consideration.</p></div>
+        <div class="card"><h3>Third-party funder</h3><p>Payment comes from a party other than the client; client says "someone else pays for me". → Identify the third party; treat as parallel client or reject <span class="ref">Instr. Art. 12(e)</span>.</p></div>
+        <div class="card"><h3>Rapid in-out movement</h3><p>Funds deposited and transferred out within a short window with no economic rationale ("pass-through" pattern). → EDD + block pending explanation.</p></div>
+        <div class="card"><h3>Document inconsistency</h3><p>Name / date / signature discrepancy across ID, utility bill, bank statement, corporate certificate. → Re-verify via independent source; refusal by client → decline + STR.</p></div>
+        <div class="card"><h3>High-risk jurisdiction</h3><p>FATF grey / black list, non-cooperating territory, sanctioned state, jurisdiction listed in UIF / CNAD high-risk advisories. → EDD baseline for any counterparty touching the jurisdiction.</p></div>
+        <div class="card"><h3>PEP involvement</h3><p>Client is a PEP (self / family ≤ 2° / close associate) or becomes one during the relationship. → EDD + SOF + SOW + senior-management approval <span class="ref">Instr. Art. 14</span>. PEP status persists 5 years post-cease.</p></div>
+        <div class="card"><h3>Adverse media</h3><p>Credible press / law-enforcement / regulator reference to the client or a related party — investigation, sanctions mention, indictment, arrest. → Documented review + EDD + STR consideration.</p></div>
+        <div class="card"><h3>Client refusal</h3><p>Client declines to provide CDD data, to update BO, to produce SOF documents, or asks you to skip the Travel Rule fields. → Onboarding prohibited <span class="ref">Instr. Art. 12</span>; attempted operation reportable <span class="ref">Instr. Art. 47</span>.</p></div>
+    </div>
+
+    <p class="tbl-note" style="margin-top:1.5rem;">See <a href="#activities" style="color:var(--accent);">DASP Activities</a> for AML risk classification per Art. 19 activity; or jump to the <a href="#aml-wizard" style="color:var(--accent);">AML Decision Wizard</a> below to resolve a specific transaction.</p>
+</div>
+</section>
+
+<!-- ══ AML WIZARD ══ -->
+<section class="section" id="aml-wizard">
+<div class="container fade-in">
+    <p class="section__label">Interactive Tool</p>
+    <h2 class="section__title">AML Decision Wizard</h2>
+    <p class="section__desc">Resolve a concrete NOVAWAVE transaction against the four parallel obligations — DD level, Travel Rule, Operación Regulada, STR. Inputs drive a pure decision engine: client type × service × amount × risk factors → applicable procedures, required evidence, approvals and deadlines. <strong>Orientation only — the CO makes the final call and documents the file.</strong></p>
+
+    <div class="wizard" role="region" aria-label="AML decision wizard">
+        <!-- ── FORM ── -->
+        <form class="wizard__form" id="wiz-form" autocomplete="off" onsubmit="return false;">
+
+            <fieldset class="wizard__fieldset">
+                <legend class="wizard__legend">1 · Client type</legend>
+                <div class="wizard__chips" role="radiogroup">
+                    <label class="wizard__chip"><input type="radio" name="clientType" value="natural" checked> Natural person</label>
+                    <label class="wizard__chip"><input type="radio" name="clientType" value="legal"> Legal entity</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard__fieldset">
+                <legend class="wizard__legend">2 · Service line</legend>
+                <div class="wizard__chips" role="radiogroup">
+                    <label class="wizard__chip"><input type="radio" name="service" value="onramp" checked> On-ramp / off-ramp</label>
+                    <label class="wizard__chip"><input type="radio" name="service" value="otc"> OTC</label>
+                    <label class="wizard__chip"><input type="radio" name="service" value="payments"> Crypto payments</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard__fieldset">
+                <legend class="wizard__legend">3 · Relationship</legend>
+                <div class="wizard__chips" role="radiogroup">
+                    <label class="wizard__chip"><input type="radio" name="rel" value="occasional" checked> Occasional transaction</label>
+                    <label class="wizard__chip"><input type="radio" name="rel" value="ongoing"> Ongoing business relationship</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard__fieldset">
+                <legend class="wizard__legend">4 · Operation parameters</legend>
+                <div class="wizard__row">
+                    <div>
+                        <label class="wizard__label" for="wiz-amount">Amount (USD)</label>
+                        <input class="wizard__input" id="wiz-amount" type="number" min="0" step="100" value="1500" inputmode="decimal">
+                    </div>
+                    <div>
+                        <label class="wizard__label" for="wiz-channel">Payment channel</label>
+                        <select class="wizard__select" id="wiz-channel">
+                            <option value="other">Bank transfer / card / rail</option>
+                            <option value="cash">Cash</option>
+                            <option value="da">On-chain DA transfer only</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="wizard__row">
+                    <div>
+                        <label class="wizard__label" for="wiz-risk">Risk score</label>
+                        <select class="wizard__select" id="wiz-risk">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="wizard__label" for="wiz-jur">Counterparty jurisdiction</label>
+                        <select class="wizard__select" id="wiz-jur">
+                            <option value="sv">El Salvador</option>
+                            <option value="fatf-compliant">FATF-compliant</option>
+                            <option value="high-risk">FATF grey / high-risk</option>
+                            <option value="sanctioned">FATF black / sanctioned</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="wizard__fieldset">
+                <legend class="wizard__legend">5 · Risk factors (tick all that apply)</legend>
+                <div class="wizard__checks">
+                    <label class="wizard__check"><input type="checkbox" name="f" value="pep"><span>Client is PEP (incl. family ≤ 2nd degree or close associate) <span class="ref">Instr. Art. 14</span></span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="opaque"><span>Opaque ownership / nominee / non-transparent trust</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="cash"><span>Cash-intensive business or counterpart</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="structuring"><span>Structuring / smurfing signals (split-dollar, round-number patterns)</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="profile"><span>Unusual activity vs. client profile (deviation)</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="sanctions"><span>Sanctions match — UNSC / UIF national list <span class="ref">LECAT Art. 37</span></span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="refuses"><span>Client refuses or fails to provide CDD data</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="mixer"><span>Counterparty wallet flagged (mixer, darknet, known exploit)</span></label>
+                    <label class="wizard__check"><input type="checkbox" name="f" value="thirdparty"><span>Third-party funder (pays on behalf of)</span></label>
+                </div>
+            </fieldset>
+
+            <div class="wizard__actions">
+                <button class="wiz-btn" type="button" id="wiz-reset">Reset</button>
+                <button class="wiz-btn" type="button" id="wiz-example">Load example</button>
+            </div>
+        </form>
+
+        <!-- ── OUTPUT ── -->
+        <div class="wizard__output" id="wiz-output" aria-live="polite">
+            <div class="wizard__placeholder" id="wiz-placeholder">
+                Fill in the form to resolve the applicable AML procedures.<br>Results update live.
+            </div>
+            <div id="wiz-result" class="wiz-hidden"></div>
+        </div>
+
+        <p class="wizard__note-print">Printout: see playbook v3.1 §5–§11 for full decision trees and evidence lists.</p>
+    </div>
+
+    <p class="tbl-note" style="margin-top:1rem;">Matrix sources: D-426 Arts. 24, 26 · Instr. UIF Arts. 12, 13, 14, 20, 21, 47, 51, 52, 54, 84-B · LECAT Arts. 17, 37 · CNAD Guide §§2–3. Wizard reflects the stricter-of-three BO rule (10% floor) and the "Travel Rule is not a DD level" doctrine.</p>
+</div>
+</section>
+
+
 <!-- ══ FAQ ══ -->
 <section class="section section--alt" id="faq">
 <div class="container fade-in">
@@ -1854,7 +2694,7 @@
         </details>
         <details class="faq-item">
             <summary>What does registration actually cost, all-in?</summary>
-            <div>Government fee is fixed at $6,132 <span class="ref">LEAD Art. 12</span> plus $4,088 annual renewal. Private-sector support (incorporation, CNAD liaison, compliance, CO/CISO retainers) ranges from $16,700–$17,500 one-time and $4,725–$6,850 per month thereafter <span class="ref ref--practice">practice</span>. Full breakdown in <a href="#costs" style="color:var(--accent);">Costs</a>.</div>
+            <div>Government fee is fixed at $6,132 <span class="ref">LEAD Art. 12</span> plus $4,088 annual renewal. All-in realistic year-1 budget ≈ $145k–$190k <span class="ref ref--practice">practice</span>: one-time launch $36k–$73k (entity, policy pack, CNAD support, control infrastructure), monthly running $7.4k–$17.3k (corporate + CO team + KYC/KYT stack), plus annual obligations (external audit, independent AML audit, cyber testing, insurance, training). Full breakdown in <a href="#costs" style="color:var(--accent);">Costs</a>.</div>
         </details>
         <details class="faq-item">
             <summary>Which digital assets may a DASP offer?</summary>
@@ -1895,29 +2735,45 @@
         <div><dt>AML / CFT</dt><dd>Anti-money laundering / counter-financing of terrorism.</dd></div>
         <div><dt>bd</dt><dd>Business day. Working days under Salvadoran public administration calendar.</dd></div>
         <div><dt>BCR</dt><dd>Banco Central de Reserva de El Salvador. Supervises BSPs.</dd></div>
+        <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Stricter-of-three thresholds: ≥10% [Instr. Arts. 12, 20], ≥25% [D-426 Art. 2], "mayoría" [CNAD Guide §3]. Apply 10% as floor.</dd></div>
         <div><dt>BSP</dt><dd>Bitcoin Service Provider. Registration under the Bitcoin Law (Decree 57/2021).</dd></div>
-        <div><dt>CDD</dt><dd>Customer Due Diligence. Three tiers: simplified, standard, enhanced.</dd></div>
+        <div><dt>CDD</dt><dd>Customer Due Diligence — 9 lettered measures in Instr. Art. 12 (a–i). Triggered by ongoing relationship or occasional transaction ≥ US$1,000 [CNAD Guide §2(a)].</dd></div>
         <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales. The digital-asset regulator.</dd></div>
+        <div><dt>CNAD Guide</dt><dd>CNAD AML/CFT Risk Management Guide for the Digital Assets Industry (22.12.2023). Binding via LEAD Art. 21(o) + RPSAD Art. 19 — sets DASP-specific thresholds ($1,000 CDD, Travel Rule, "mayoría" BO).</dd></div>
         <div><dt>CNR</dt><dd>Centro Nacional de Registros. Corporate and commercial registry.</dd></div>
         <div><dt>CO</dt><dd>Compliance Officer. Principal and Alternate COs are mandatory for DASPs.</dd></div>
         <div><dt>Cód. Com.</dt><dd>Código de Comercio — Salvadoran Commercial Code.</dd></div>
+        <div><dt>CTR</dt><dd>Currency Transaction Report. Used internationally for threshold reports; the Salvadoran statutory equivalent is <em>Operación Regulada</em> [Instr. Art. 51].</dd></div>
+        <div><dt>D-426</dt><dd>Decreto Legislativo 426/2025 — the current AML Law, replaces D-498/1998. Promulgated 8 October 2025; vigencia 8 days after D.O. publication [Art. 62].</dd></div>
+        <div><dt>DA</dt><dd>Digital Asset. Defined in LEAD Art. 3.</dd></div>
         <div><dt>DASP</dt><dd>Digital Asset Service Provider. Registration under LEAD (Decree 643/2023).</dd></div>
         <div><dt>DLT</dt><dd>Distributed Ledger Technology.</dd></div>
+        <div><dt>EDD</dt><dd>Enhanced Due Diligence [Instr. Art. 13]. Triggered by PEP, high-risk jurisdiction, opaque ownership, structuring, profile deviation, flagged wallet, sanctions-adjacent risk. Adds documentary SOF + SOW + senior-management approval to CDD.</dd></div>
+        <div><dt>FATF</dt><dd>Financial Action Task Force. R.16 = Travel Rule; R.10 = customer due diligence; R.12 = PEPs.</dd></div>
+        <div><dt>FIU</dt><dd>Financial Intelligence Unit. The Salvadoran FIU is <strong>UIF</strong>, housed at the Fiscalía General de la República.</dd></div>
+        <div><dt>FGR</dt><dd>Fiscalía General de la República — Attorney General's Office; hosts the UIF.</dd></div>
+        <div><dt>Instr. UIF</dt><dd>Instructivo UIF — Acuerdo 380/2021. Operational AML instructions; still in force transitionally under D-426 Art. 61 "in what does not contradict the Law".</dd></div>
         <div><dt>IVA</dt><dd>Impuesto al Valor Agregado — value-added tax (13%).</dd></div>
         <div><dt>KYB</dt><dd>Know Your Business. CDD applied to corporate clients.</dd></div>
         <div><dt>KYC</dt><dd>Know Your Customer.</dd></div>
-        <div><dt>KYT</dt><dd>Know Your Transaction. Ongoing transaction-level monitoring.</dd></div>
+        <div><dt>KYT</dt><dd>Know Your Transaction. Ongoing transaction-level monitoring, blockchain-trace-based for DA operations.</dd></div>
         <div><dt>LaaS</dt><dd>Legal-as-a-Service. Retainer bundling legal rep, accounting and audit.</dd></div>
         <div><dt>LEAD</dt><dd>Ley de Emisión de Activos Digitales. The primary DASP statute.</dd></div>
+        <div><dt>LECAT</dt><dd>Ley Especial Contra Actos de Terrorismo. Source of UNSC + UIF-national-list freeze duties [Art. 37] and tipping-off prohibition [Art. 17].</dd></div>
         <div><dt>NIT</dt><dd>Número de Identificación Tributaria — Salvadoran tax ID.</dd></div>
-        <div><dt>PEP</dt><dd>Politically Exposed Person. Triggers enhanced due diligence.</dd></div>
+        <div><dt>Operación Regulada</dt><dd>Threshold report (Salvadoran equivalent of CTR): cash &gt; US$10,000 or other means &gt; US$25,000, single or monthly aggregate, filed with UIF within 5 bd [Instr. Art. 51]. Independent from DD level and from Travel Rule.</dd></div>
+        <div><dt>PEP</dt><dd>Politically Exposed Person — self, family ≤ 2nd degree and close associates [Instr. Arts. 14, 16–18]. PEP status persists 5 years post-cease. Always EDD + senior-management approval + documentary SOF + SOW.</dd></div>
         <div><dt>RID</dt><dd>Registry of Issuers of Digital Assets — issuer-side registration.</dd></div>
         <div><dt>RPSAD</dt><dd>Reglamento para Proveedores de Servicios de Activos Digitales — CNAD-035-2023.</dd></div>
         <div><dt>S.A. de C.V.</dt><dd>Sociedad Anónima de Capital Variable. The permitted DASP corporate form.</dd></div>
         <div><dt>S.A.S.</dt><dd>Sociedad por Acciones Simplificada — simplified form, excluded for DASPs.</dd></div>
-        <div><dt>STR</dt><dd>Suspicious Transaction Report. Filed with UIF within 24 hours.</dd></div>
-        <div><dt>UBO</dt><dd>Ultimate Beneficial Owner. Thresholds: ≥25% AML Law / ≥10% UIF Instr.</dd></div>
-        <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — Financial Investigation Unit.</dd></div>
+        <div><dt>SDD</dt><dd>Simplified Due Diligence — practice-level track within Instr. Art. 12 for documented-low-risk occasional transactions &lt; US$1,000. Still requires basic identification, sanctions screening and Travel Rule.</dd></div>
+        <div><dt>SOF</dt><dd>Source of Funds — origin of the specific monies used in the operation. Declarative at CDD baseline; documentary under EDD / PEP.</dd></div>
+        <div><dt>SOW</dt><dd>Source of Wealth — origin of the client's overall assets (lifetime narrative). NOT required at CDD; documentary under EDD, PEP or material profile deviation.</dd></div>
+        <div><dt>STR</dt><dd>Suspicious Transaction Report (sometimes SAR). Analysis ≤ 15 bd, filing 24 h after determination [D-426 Art. 24]. Attempted operations also reportable [Instr. Art. 47]. Tipping-off prohibited [LECAT Art. 17].</dd></div>
+        <div><dt>Travel Rule</dt><dd>Per-transfer originator + beneficiary data requirement for every DA transfer regardless of amount [Instr. Art. 84-B(1)(e) + CNAD Guide §2(b)]. 8 mandatory data elements. Imports FATF R.16 into the Salvadoran DASP regime.</dd></div>
+        <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — the Salvadoran FIU, at FGR.</dd></div>
+        <div><dt>UNSC</dt><dd>United Nations Security Council. The 1267 / 1373 sanctions consolidated list is directly binding via LECAT Art. 37.</dd></div>
     </dl>
 </div>
 </section>
@@ -2175,6 +3031,341 @@
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(); }
         });
     });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   AML DECISION WIZARD
+   Inputs: client type × service × relationship × amount × channel
+           × risk score × jurisdiction × risk factors
+   Output: DD verdict + identification docs + Travel Rule data
+           + SOF/SOW + Op. Regulada + STR + approvals + monitoring
+   Citations locked to: D-426 Arts. 24, 26 · Instr. UIF Arts. 12,
+   13, 14, 20, 21, 47, 51, 52, 84-B · LECAT Arts. 17, 37 ·
+   CNAD Guide §§2–3
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+    const form = document.getElementById('wiz-form');
+    if (!form) return;
+    const outPlaceholder = document.getElementById('wiz-placeholder');
+    const outResult      = document.getElementById('wiz-result');
+
+    function readState() {
+        const fd = new FormData(form);
+        const factors = fd.getAll('f');
+        return {
+            clientType: fd.get('clientType'),    // natural | legal
+            service:    fd.get('service'),       // onramp | otc | payments
+            rel:        fd.get('rel'),           // occasional | ongoing
+            amount:     parseFloat(document.getElementById('wiz-amount').value) || 0,
+            channel:    document.getElementById('wiz-channel').value,  // other | cash | da
+            risk:       document.getElementById('wiz-risk').value,
+            jur:        document.getElementById('wiz-jur').value,
+            f: {
+                pep:         factors.includes('pep'),
+                opaque:      factors.includes('opaque'),
+                cash:        factors.includes('cash'),
+                structuring: factors.includes('structuring'),
+                profile:     factors.includes('profile'),
+                sanctions:   factors.includes('sanctions'),
+                refuses:     factors.includes('refuses'),
+                mixer:       factors.includes('mixer'),
+                thirdparty:  factors.includes('thirdparty'),
+            }
+        };
+    }
+
+    function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+    function decide(s) {
+        // ── 1. TERMINAL CONDITIONS ────────────────────────────────
+        if (s.f.sanctions) {
+            return {
+                verdict: 'reject',
+                title: 'Freeze + UIF report ≤ 3 business days',
+                sub: 'UNSC / UIF national-list match is binding under LECAT Art. 37. Do NOT onboard, do NOT release funds; freeze and escalate.',
+                ddLabel: 'N/A — sanctions',
+            };
+        }
+        if (s.f.refuses) {
+            return {
+                verdict: 'reject',
+                title: 'Decline — file STR',
+                sub: 'Client refused / failed CDD. Instr. Art. 12 prohibits onboarding without required data; refusal itself is a STR indicator (D-426 Art. 24).',
+                ddLabel: 'N/A — CDD refused',
+            };
+        }
+
+        // ── 2. DD LEVEL ───────────────────────────────────────────
+        const eddTriggers = [];
+        if (s.f.pep)         eddTriggers.push('PEP [Instr. Art. 14]');
+        if (s.f.opaque)      eddTriggers.push('Opaque ownership');
+        if (s.f.cash)        eddTriggers.push('Cash-intensive');
+        if (s.f.structuring) eddTriggers.push('Structuring signals');
+        if (s.f.profile)     eddTriggers.push('Profile deviation');
+        if (s.f.mixer)       eddTriggers.push('Flagged wallet (mixer/darknet)');
+        if (s.f.thirdparty)  eddTriggers.push('Third-party funder');
+        if (s.jur === 'high-risk')  eddTriggers.push('High-risk jurisdiction');
+        if (s.jur === 'sanctioned') eddTriggers.push('Sanctioned jurisdiction');
+        if (s.risk === 'high')      eddTriggers.push('High risk score');
+        if (s.risk === 'critical')  eddTriggers.push('Critical risk score');
+
+        let dd;
+        if (eddTriggers.length) dd = 'edd';
+        else if (s.rel === 'ongoing') dd = 'cdd';
+        else if (s.amount >= 1000) dd = 'cdd';   // CNAD Guide §2(a)
+        else dd = 'sdd';
+
+        const verdictMap = {
+            sdd: { title: 'SDD — practice track',   sub: 'Occasional transaction < US$1,000 with documented low risk. Stays within Instr. Art. 12 envelope.' },
+            cdd: { title: 'CDD — full identification', sub: 'Ongoing relationship OR occasional ≥ US$1,000 [CNAD Guide §2(a)]. Apply all 9 Art. 12 measures.' },
+            edd: { title: 'EDD — enhanced + senior mgmt approval', sub: 'Triggered by: ' + eddTriggers.join(' · ') + '. Apply Instr. Art. 13 on top of Art. 12.' },
+        };
+
+        return {
+            verdict: dd,
+            title: verdictMap[dd].title,
+            sub: verdictMap[dd].sub,
+            ddLabel: dd.toUpperCase(),
+            eddTriggers,
+        };
+    }
+
+    function buildOutput(s, d) {
+        const parts = [];
+
+        // ── Verdict ──
+        parts.push(`
+            <div class="wizard__verdict wizard__verdict--${esc(d.verdict)}">
+                <div class="wizard__verdict-label">Verdict · ${esc(d.ddLabel)}</div>
+                <h3 class="wizard__verdict-title">${esc(d.title)}</h3>
+                <p class="wizard__verdict-sub">${esc(d.sub)}</p>
+            </div>
+        `);
+
+        if (d.verdict === 'reject') {
+            parts.push(block('STR filing', 'req',
+                ['Analysis window: ≤ 15 business days [D-426 Art. 24]',
+                 'Filing deadline: 24 hours from determination [D-426 Art. 24]',
+                 'Tipping-off to client prohibited [LECAT Art. 17]',
+                 'Retain all files — 15 years [D-426 Art. 26]']));
+            return parts.join('');
+        }
+
+        // ── Identification package (Instr. Art. 12 or 13) ──
+        const idDocs = identificationDocs(s, d);
+        parts.push(block('Identification package', d.verdict === 'edd' ? 'req' : 'req',
+            idDocs,
+            d.verdict === 'edd' ? 'Instr. Art. 13 (EDD) on top of Art. 12' : 'Instr. Art. 12 — 9 lettered measures (a–i)'));
+
+        // ── Travel Rule (always, per-transfer) ──
+        const tr = travelRuleItems(s);
+        parts.push(block('Travel Rule data (per transfer — any amount)', 'req', tr,
+            'Instr. Art. 84-B(1)(e) + CNAD Guide §2(b). "Under no circumstances should DASPs fail to collect and store this information regardless of amount" [CNAD Guide §2 CAPS].'));
+
+        // ── SOF / SOW ──
+        const sof = sofSowItems(s, d);
+        parts.push(block('Source of funds / Source of wealth', d.verdict === 'edd' ? 'req' : 'cond',
+            sof,
+            'D-426 "DD estándar" = declarative SOF; "DD intensificada" = documentary SOF + SOW [Instr. Art. 13]'));
+
+        // ── Operación Regulada ──
+        const op = operacionRegulada(s);
+        parts.push(block('Operación Regulada (threshold report)',
+            op.triggered ? 'req' : 'ok',
+            op.items,
+            'Instr. Art. 51 — deadline 5 business days · independent from DD level and Travel Rule'));
+
+        // ── Monitoring + approvals ──
+        parts.push(block('Approvals & monitoring',
+            d.verdict === 'edd' ? 'req' : 'ok',
+            approvalsMonitoring(s, d)));
+
+        // ── STR watch ──
+        const rosNeeded = d.verdict === 'edd' || s.f.structuring || s.f.profile || s.f.mixer;
+        parts.push(block('STR — continuous watch',
+            rosNeeded ? 'cond' : 'ok',
+            rosItems(s, d, rosNeeded),
+            'D-426 Art. 24 · Instr. Art. 47 (attempted operations also reportable)'));
+
+        // ── Retention ──
+        parts.push(block('Record retention', 'req',
+            ['All KYC, transaction and Travel Rule records',
+             '15 years from end of the relationship or transaction [D-426 Art. 26]',
+             'Instr. UIF Art. 84-B(1)(e) reiterates DA-specific records of origin / destination'],
+            'D-426 Art. 26 — binding minimum'));
+
+        return parts.join('');
+    }
+
+    function block(title, badge, items, footer) {
+        const badgeMap = { req: 'Required', cond: 'Conditional', ok: 'Standard' };
+        const lis = items.map(i => `<li>${i}</li>`).join('');
+        const ft = footer ? `<p class="wizard__verdict-sub" style="margin-top:0.5rem; font-size:0.72rem; color:var(--text-3);">${footer}</p>` : '';
+        return `
+            <div class="wizard__block">
+                <h4 class="wizard__block-title">
+                    ${esc(title)}
+                    <span class="wizard__block-badge wizard__block-badge--${esc(badge)}">${esc(badgeMap[badge])}</span>
+                </h4>
+                <ul class="wizard__list">${lis}</ul>
+                ${ft}
+            </div>
+        `;
+    }
+
+    function identificationDocs(s, d) {
+        const out = [];
+        if (s.clientType === 'natural') {
+            out.push('Full name, nationality, date of birth, sex');
+            out.push('Photo government ID (DUI for nationals; passport for foreigners) — copy on file');
+            out.push('Domicile address + residency proof (utility/bank ≤ 3 months)');
+            out.push('Profession / occupation + employer');
+            out.push('Identification of authorised representative, if any');
+            out.push('Purpose and nature of the relationship / transaction');
+            if (d.verdict === 'edd') {
+                out.push('<strong>EDD add-ons:</strong> documentary SOF + SOW; enhanced ID verification (biometric / video-KYC); independent data-source check [Instr. Art. 13(a)–(c)]');
+            }
+        } else {
+            out.push('Certificate of incorporation + current articles / estatutos');
+            out.push('NIT / NRC / tax registration');
+            out.push('Legal representative — ID + power of attorney / board resolution');
+            out.push('Beneficial owners — <strong>stricter-of-three</strong>: ≥ 10% [Instr. Arts. 12, 20] (floor), ≥ 25% [D-426 Art. 2], "mayoría" [CNAD Guide §3]; for trusts, all parties [Instr. Art. 21]');
+            out.push('Ownership chart + shareholder registry');
+            out.push('Purpose, nature and expected operating pattern');
+            out.push('Financial statements (last 2 years) — for EDD or high amounts');
+            if (d.verdict === 'edd') {
+                out.push('<strong>EDD add-ons:</strong> BO documentary verification; SOF of entity + SOF/SOW of each BO; enhanced on-site or video due-diligence [Instr. Art. 13(d)–(i)]');
+            }
+        }
+        return out;
+    }
+
+    function travelRuleItems(s) {
+        const onchain = s.service !== 'payments' || s.channel === 'da';
+        const out = [
+            'Operation date',
+            'Digital asset involved (ticker + network)',
+            'Originator: full name + ID/passport',
+            'Beneficiary: full name + ID/passport',
+            'Originator DASP account / wallet',
+            'Beneficiary DASP account / wallet',
+            'Transaction reference (tx hash) + internal reference',
+            'Sending address + receiving address (on-chain identifiers)',
+            'Exchange rate applied + source of the rate',
+        ];
+        if (!onchain) out.push('<em>(for fiat-only legs, Travel Rule applies to the DA leg of the same operation)</em>');
+        return out;
+    }
+
+    function sofSowItems(s, d) {
+        const out = [];
+        if (d.verdict === 'sdd') {
+            out.push('SOF: declarative only (client statement) — low-risk occasional');
+            out.push('SOW: not required');
+        } else if (d.verdict === 'cdd') {
+            out.push('SOF: declarative at baseline — "determinación del origen de los fondos" (D-426 DD estándar)');
+            out.push('SOW: not required unless risk shifts');
+            out.push('Corroborate SOF if amount or pattern deviates from profile [Instr. Art. 12(g)]');
+        } else {
+            out.push('<strong>SOF: documentary</strong> — payslips, tax returns, sale contracts, bank statements, corporate distributions');
+            out.push('<strong>SOW: documentary</strong> — life-time wealth narrative with supporting evidence');
+            if (s.f.pep) out.push('PEP: SOF + SOW mandatory — "determinar el origen del patrimonio y de los fondos" [Instr. Art. 14]');
+            if (s.clientType === 'legal') out.push('Legal entity: SOF of the entity + SOF/SOW of each BO [Instr. Arts. 20, 21]');
+        }
+        return out;
+    }
+
+    function operacionRegulada(s) {
+        let triggered = false;
+        const items = [];
+        if (s.channel === 'cash' && s.amount > 10000) {
+            triggered = true;
+            items.push(`<strong>TRIGGERED · Cash &gt; US$10,000</strong> — Operación Regulada report due in 5 business days [Instr. Art. 51]`);
+        } else if (s.channel !== 'cash' && s.amount > 25000) {
+            triggered = true;
+            items.push(`<strong>TRIGGERED · Non-cash &gt; US$25,000</strong> — Operación Regulada report due in 5 business days [Instr. Art. 51]`);
+        } else {
+            items.push(`Not triggered at US$${s.amount.toLocaleString()} via ${s.channel === 'cash' ? 'cash' : 'non-cash'} channel`);
+            items.push('Monitor aggregate monthly totals — cumulative &gt; threshold also triggers');
+        }
+        items.push('Form: as per UIF template; file via UIF portal');
+        items.push('Independent from DD level — threshold alone decides');
+        return { triggered, items };
+    }
+
+    function approvalsMonitoring(s, d) {
+        const out = [];
+        if (d.verdict === 'edd') {
+            out.push('<strong>Senior management written approval — required</strong> before onboarding and before each high-risk operation');
+            out.push('Continuous / real-time monitoring of the relationship');
+        } else if (d.verdict === 'cdd') {
+            out.push('Senior management approval — NOT mandatory; CO sign-off sufficient');
+            out.push('Enhanced periodic monitoring — at least annual review');
+        } else {
+            out.push('CO sign-off on file; periodic review on risk cycle');
+        }
+        if (s.f.pep) out.push('PEP: senior management approval + SOF/SOW + ongoing enhanced monitoring [Instr. Art. 14] — overrides lower DD');
+        if (d.verdict !== 'sdd') out.push('Sanctions re-screening: onboarding + continuous against UNSC + UIF lists [LECAT Art. 37]');
+        return out;
+    }
+
+    function rosItems(s, d, needed) {
+        const out = [];
+        if (needed) {
+            out.push('<strong>Elevated STR sensitivity</strong> — document rationale even if no filing');
+            const reasons = [];
+            if (s.f.structuring) reasons.push('structuring');
+            if (s.f.profile)     reasons.push('profile deviation');
+            if (s.f.mixer)       reasons.push('flagged wallet');
+            if (d.verdict === 'edd') reasons.push('EDD');
+            if (reasons.length) out.push('Indicator(s): ' + reasons.join(', '));
+            out.push('Analysis ≤ 15 bd · filing within 24h of determination [D-426 Art. 24]');
+            out.push('Tipping-off prohibited — do not inform client [LECAT Art. 17]');
+        } else {
+            out.push('No specific STR trigger identified in inputs');
+            out.push('Standard watch — any future red flag resets the 15 bd / 24h clock [D-426 Art. 24]');
+            out.push('Attempted operations are reportable even if not executed [Instr. Art. 47]');
+        }
+        return out;
+    }
+
+    function render() {
+        const s = readState();
+        const d = decide(s);
+        outResult.innerHTML = buildOutput(s, d);
+        outResult.classList.remove('wiz-hidden');
+        outPlaceholder.classList.add('wiz-hidden');
+    }
+
+    // Live recompute
+    form.addEventListener('input', render);
+    form.addEventListener('change', render);
+
+    // Reset
+    document.getElementById('wiz-reset').addEventListener('click', () => {
+        form.reset();
+        document.getElementById('wiz-amount').value = 1500;
+        render();
+    });
+
+    // Example
+    document.getElementById('wiz-example').addEventListener('click', () => {
+        form.querySelector('input[name="clientType"][value="legal"]').checked = true;
+        form.querySelector('input[name="service"][value="otc"]').checked = true;
+        form.querySelector('input[name="rel"][value="ongoing"]').checked = true;
+        document.getElementById('wiz-amount').value = 150000;
+        document.getElementById('wiz-channel').value = 'other';
+        document.getElementById('wiz-risk').value = 'high';
+        document.getElementById('wiz-jur').value = 'high-risk';
+        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
+        form.querySelector('input[name="f"][value="opaque"]').checked = true;
+        form.querySelector('input[name="f"][value="thirdparty"]').checked = true;
+        render();
+    });
+
+    // Initial render
+    render();
 })();
 </script>
 </body>
