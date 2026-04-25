@@ -122,7 +122,39 @@
         }
         @media (max-width: 920px) {
             .layout { grid-template-columns: 1fr; }
-            .sidebar { display: none; }
+            /* Convert sidebar to a sticky horizontal tab-bar on mobile */
+            .sidebar {
+                position: sticky; top: 56px; z-index: 50;
+                max-height: none; padding: 0.45rem 1rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                background: rgba(250,249,245,0.94);
+                backdrop-filter: blur(10px) saturate(1.1);
+                -webkit-backdrop-filter: blur(10px) saturate(1.1);
+                display: flex; gap: 0.15rem;
+                overflow-x: auto; scrollbar-width: none;
+            }
+            .sidebar::-webkit-scrollbar { display: none; }
+            .sidebar__title { display: none; }
+            .sidebar__group { margin: 0; display: contents; }
+            .sidebar__list { display: contents; }
+            .sidebar__list li { flex-shrink: 0; }
+            .sidebar a {
+                white-space: nowrap; padding: 0.35rem 0.65rem; font-size: 0.78rem;
+                border-left: none; border-bottom: 2px solid transparent;
+                border-radius: 0;
+            }
+            .sidebar a:hover { background: transparent; }
+            .sidebar a.is-active {
+                background: transparent;
+                border-left-color: transparent;
+                border-bottom-color: var(--emerald);
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            @media (max-width: 920px) {
+                .sidebar { background: rgba(20,20,19,0.92); }
+            }
         }
 
         /* ── SIDEBAR ── */
@@ -355,6 +387,10 @@
             border: 1px solid var(--border); border-radius: var(--r-md);
             margin-bottom: 0.75rem; background: var(--white);
             overflow: hidden;
+        }
+        @media (max-width: 640px) {
+            .stack-card { grid-template-columns: 1fr; }
+            .stack-card__name { border-right: none; border-bottom: 1px solid var(--border-light); padding: 0.6rem 1rem; font-size: 1rem; justify-content: flex-start; }
         }
         .stack-card__name {
             background: var(--bg-alt); padding: 1rem 1.1rem;
@@ -625,6 +661,73 @@
                     <p>Establishes CNAD authority, DASP registration regime (Arts.&nbsp;18–21), permitted activities (Art.&nbsp;19), tax exemption (Art.&nbsp;36), registration fee schedule (Art.&nbsp;12).</p>
                 </div>
             </div>
+
+            <h3>Blanket norms — how the articles cross-reference</h3>
+            <p>Several obligations on the site rest on a chain of articles across instruments. The matrix below shows the operationally relevant blanket-norm relationships — useful when a supervisor asks "where exactly does this requirement come from?".</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>Obligation on this site</th><th>Statutory anchor</th><th>Resolves through</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CDD trigger</strong> for occasional e-transfer ≥ $1,000</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span></td>
+                        <td>"applicable threshold for the reporting of cash transactions" → <span class="cite cite--instr">Instr. Art. 52(a)(b)</span> (electronic transfer reporting threshold $1,000) <em>via</em> <span class="cite cite--instr">Instr. Art. 51</span> (general regulated-transactions reporting)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CDD trigger</strong> for occasional cash &gt; $10,000</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span></td>
+                        <td><span class="cite cite--instr">Instr. Art. 51</span> §1 (single cash op &gt; $10,000) <em>references</em> <span class="cite cite--d426">D-426 Art. 25</span> (regulated transactions umbrella, incl. digital assets)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Travel Rule data</strong> for VA transfers — any amount</td>
+                        <td><span class="cite cite--instr">Instr. Art. 84-B(1)(e)</span> (Reform 1)</td>
+                        <td>"records of customers and operations to know origin and destination of VA transactions" — <em>operationalised by</em> <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> (7-field minimum, no threshold)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>STR filing</strong> within 24 h of determination</td>
+                        <td><span class="cite cite--d426">D-426 Art. 24</span></td>
+                        <td>Analysis period ≤ 15 wd extendable once <em>references</em> <span class="cite cite--instr">Instr. Arts. 41–43</span> (analysis procedure); attempted operations <em>under</em> <span class="cite cite--instr">Instr. Art. 47</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sanctions screening</strong> against UNSC + UIF national lists</td>
+                        <td><span class="cite cite--lecat">LECAT Art. 37</span></td>
+                        <td><span class="cite cite--instr">Instr. Art. 12(e)</span> requires consultation of "international lists binding on El Salvador, referred to in Article 37 of LECAT" <em>at every CDD step</em>; <span class="cite cite--instr">Instr. Arts. 27–35</span> set the national designation procedure</td>
+                    </tr>
+                    <tr>
+                        <td><strong>15-year record retention</strong></td>
+                        <td><span class="cite cite--d426">D-426 Art. 26</span></td>
+                        <td>Period <em>specified for</em> all transaction records, originator/beneficiary docs, customer files; <span class="cite cite--instr">Instr. Arts. 57–59</span> develop retention mechanics + electronic storage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tipping-off prohibition</strong></td>
+                        <td><span class="cite cite--d426">D-426 Art. 44</span></td>
+                        <td>"Improper Disclosure of Information" — independent provision; <em>operationalised at</em> CDD/STR file in <span class="cite cite--instr">Instr. Art. 60</span> (reserve and confidentiality of reports)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance Officer</strong> + Alternate</td>
+                        <td><span class="cite cite--d426">D-426 Art. 20</span></td>
+                        <td>Qualifications and registration in <span class="cite cite--instr">Instr. Arts. 64, 67</span>; VASP-specific exemption from residency in <span class="cite cite--instr">Instr. Art. 84-B (Reform 1)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identity verification</strong> before relationship</td>
+                        <td><span class="cite cite--instr">Instr. Art. 12(a) (Reform 2)</span></td>
+                        <td>If verification fails → <em>treated under</em> <span class="cite cite--instr">Instr. Title II Chapters VII–VIII</span> (suspicious-transaction analysis) and <span class="cite cite--instr">Instr. Art. 47</span> (attempted-operation report)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Beneficial owner</strong> ≥10% (operational floor)</td>
+                        <td><span class="cite cite--instr">Instr. Arts. 12(a), 20</span></td>
+                        <td>Statute uses 25% (<span class="cite cite--d426">D-426 Art. 15</span>); Instructivo lowers to 10% as operational rigor; UBO catch-all in <span class="cite cite--instr">Instr. Art. 21-A (Reform 2)</span> for majority/control by other means</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operación Regulada</strong> — 5 wd report</td>
+                        <td><span class="cite cite--d426">D-426 Art. 25</span></td>
+                        <td>Thresholds set in <span class="cite cite--instr">Instr. Art. 51</span> ($10K cash · $25K other means); explicitly extended to "transactions in digital assets" in D-426 Art. 25 itself (no separate VASP carve-out)</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note">When citing in CO files: cite both the statutory anchor and the implementing Instructivo article. Example: "CDD applied to e-transfer of $1,200 per D-426 Art. 15(b) → Instr. Art. 52(a)" — this preserves the chain-of-authority that supervisors expect to see.</p>
         </section>
 
         <!-- ══════════ CDD ══════════ -->

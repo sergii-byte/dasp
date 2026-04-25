@@ -306,6 +306,20 @@
         }
         .footer a { color: var(--accent); }
         .footer__nav { margin-top: 0.5rem; }
+    
+        @media print {
+            .topbar, .footer, .back-to-top, .scroll-progress, .nav, .sidebar, .topbar__pagenav { display: none !important; }
+            body { background: white; color: black; font-size: 10pt; line-height: 1.4; }
+            .container, .main { max-width: 100%; padding: 0; }
+            .section, .sec { page-break-inside: avoid; padding: 0.5rem 0; border-top: 1px solid #ddd; }
+            h1, h2, h3, h4 { page-break-after: avoid; }
+            .card, .stack-card, .reg-card, .guide-card, .qc { page-break-inside: avoid; box-shadow: none; }
+            a { color: #000; text-decoration: underline; }
+            .ref, .cite { background: #f4f4f4 !important; color: #333 !important; }
+            .wizard, .wiz, .panel, .panel--sticky { display: none; }
+            .hero { padding: 1rem 0; }
+            .hero__title, .sec__title, .reg__title, .guides__title { font-size: 18pt; margin-bottom: 0.4rem; }
+        }
     </style>
 </head>
 <body>
