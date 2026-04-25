@@ -2645,13 +2645,98 @@
     <div class="grid grid--3">
         <div class="card"><h3>DD levels — when</h3><ul><li><strong>CDD trigger:</strong> occasional transaction ≥ US$1,000 <span class="ref">CNAD Guide §2(a)</span></li><li>Ongoing relationship → CDD always <span class="ref">Instr. Art. 12</span></li><li>Risk trigger → EDD regardless of amount <span class="ref">Instr. Art. 13</span></li><li>SDD = practice within Art. 12 for documented-low-risk occasional &lt; US$1,000</li></ul></div>
         <div class="card"><h3>Beneficial ownership — stricter of three</h3><ul><li><strong>≥ 10%</strong> <span class="ref">Instr. Arts. 12, 20</span> — apply as floor</li><li>≥ 25% <span class="ref">D-426 Art. 2</span></li><li>"Mayoría" <span class="ref">CNAD Guide §3</span> — DASP-specific</li><li>Trusts: all parties <span class="ref">Instr. Art. 21</span></li></ul></div>
-        <div class="card"><h3>Travel Rule — per-transfer</h3><ul><li><strong>Every DA transfer, any amount</strong> <span class="ref">Instr. Art. 84-B(1)(e)</span></li><li>FATF R.16 imported to DASPs <span class="ref">CNAD Guide §2(b)</span></li><li>"Under no circumstances" skip <span class="ref">CNAD Guide §2 CAPS</span></li><li>8 data elements — date, asset, originator, beneficiary, accounts, references, identifiers (incl. sending/receiving addresses), exchange rates + source</li></ul></div>
+        <div class="card"><h3>Travel Rule — per-transfer</h3><ul><li><strong>Every DA transfer, any amount</strong> <span class="ref">Instr. Art. 84-B(1)(e)</span></li><li>FATF R.16 imported to DASPs <span class="ref">CNAD Guide §2(b)</span></li><li>"Under no circumstances" skip <span class="ref">CNAD Guide §2 CAPS</span></li><li>8 data elements + role-by-role obligations (originating / beneficiary / intermediary VASP) → <a href="#travel-rule" style="color:var(--accent);">full breakdown below</a></li></ul></div>
         <div class="card"><h3>Source of funds / Source of wealth</h3><ul><li><strong>SOF</strong> (origen de fondos) — declarative at CDD baseline; documentary under EDD <span class="ref">D-426 DD estándar / intensificada</span></li><li><strong>SOW</strong> (fuente de riqueza) — NOT required at CDD; documentary under EDD <span class="ref">Instr. Art. 13</span></li><li>PEP: full SOF + SOW mandatory <span class="ref">Instr. Art. 14</span></li><li>Legal entities: SOF of entity + SOF/SOW of each BO <span class="ref">Instr. Arts. 20, 21</span></li></ul></div>
         <div class="card"><h3>Suspicious operations (STR)</h3><ul><li>Analysis: ≤ 15 business days <span class="ref">D-426 Art. 24</span></li><li>File: <strong>24 hours</strong> from determination <span class="ref">D-426 Art. 24</span></li><li>Attempted operations reportable <span class="ref">Instr. Art. 47</span></li><li>Tipping-off prohibited <span class="ref">LECAT Art. 17</span></li></ul></div>
         <div class="card"><h3>Operación Regulada (threshold reports)</h3><ul><li>Cash &gt; US$10,000 single/monthly <span class="ref">Instr. Art. 51</span></li><li>Other means &gt; US$25,000 <span class="ref">Instr. Art. 51</span></li><li>Deadline: 5 business days</li><li>Independent from Travel Rule and from DD level</li></ul></div>
         <div class="card"><h3>Sanctions screening</h3><ul><li>UNSC consolidated list — binding <span class="ref">LECAT Art. 37</span></li><li>UIF national list — binding <span class="ref">Instr. Arts. 27–35</span></li><li>Match → freeze + UIF report ≤ 3 bd</li><li>OFAC / EU / UK — commercial-risk only, not Salvadoran AML statute</li></ul></div>
         <div class="card"><h3>PEP regime</h3><ul><li>Self + family ≤ 2nd degree + close associates <span class="ref">Instr. Arts. 14, 16–18</span></li><li>Still PEP for 5 years post-cease</li><li>Always EDD regardless of amount</li><li>Senior-management written approval required</li></ul></div>
         <div class="card"><h3>Training &amp; records</h3><ul><li>Annual training, all staff <span class="ref">Instr. Art. 54</span></li><li>AML induction for new hires <span class="ref">Instr. Art. 55</span></li><li><strong>15-year retention</strong> <span class="ref">D-426 Art. 26</span></li></ul></div>
+    </div>
+
+    <!-- ── TRAVEL RULE — DASP FRAMEWORK ── -->
+    <h3 class="section__subh" style="margin-top:2.5rem;" id="travel-rule">Travel Rule — DASP framework</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">El Salvador imports FATF Recommendation 16 directly into the DASP regime through two anchored sources: <strong>UIF Instructivo Art. 84-B(1)(e)</strong> (the binding legal obligation) and <strong>CNAD Guide §2(b)</strong> (the operational data set). Unlike most jurisdictions there is <strong>no de minimis threshold</strong> — every digital-asset transfer carries the full data set, "<em>bajo ninguna circunstancia</em>" (under no circumstances) may a DASP execute a transfer without it. No domestic / cross-border distinction. No batch-transfer carve-out.</p>
+
+    <div class="grid grid--2" style="margin-top:1.25rem;">
+        <div class="card card--top-blue">
+            <h3>Eight data elements — every transfer</h3>
+            <p class="card__sub" style="margin-bottom:0.5rem;"><span class="ref">CNAD Guide §2(b)</span> · imported FATF R.16 standard</p>
+            <ol style="padding-left:1.2rem;">
+                <li>Transaction <strong>date</strong></li>
+                <li>Virtual-asset <strong>type and quantity</strong></li>
+                <li>Originating institution <strong>name, address, activity, date of incorporation</strong></li>
+                <li>Beneficiary <strong>name and address</strong></li>
+                <li><strong>Account numbers, types, holders</strong> (originator and beneficiary)</li>
+                <li><strong>Reference numbers</strong> tying the transfer to internal records</li>
+                <li><strong>Transaction identifiers</strong> — including <strong>sending and receiving on-chain addresses</strong></li>
+                <li><strong>Exchange rates applied</strong> and the <strong>source</strong> of those rates</li>
+            </ol>
+            <p class="card__note" style="margin-top:auto;padding-top:0.75rem;">Missing any field = transfer cannot be executed. CNAD Guide is explicit and uses CAPITAL letters: "BAJO NINGUNA CIRCUNSTANCIA".</p>
+        </div>
+
+        <div class="card card--top-amber">
+            <h3>Legal stack &amp; scope</h3>
+            <ul>
+                <li><strong>UIF Instructivo Art. 84-B(1)(e)</strong> — binding obligation: maintain client and operation records to know the origin and destination of transactions</li>
+                <li><strong>CNAD Guide §2(b)</strong> — eight-element data set + the absolute "no skip" rule</li>
+                <li><strong>D-426 Art. 26</strong> — 15-year retention of every Travel Rule record</li>
+                <li><strong>Threshold:</strong> none. Every transfer, every amount</li>
+                <li><strong>Domestic vs cross-border:</strong> no distinction — same rule applies</li>
+                <li><strong>Unhosted wallets:</strong> no statutory carve-out; treat under risk-based EDD</li>
+                <li><strong>Counterparty VASP DD:</strong> no statutory pre-screen requirement; risk-based at DASP discretion</li>
+            </ul>
+            <p class="card__note" style="margin-top:auto;padding-top:0.75rem;">Refusal by client to provide Travel Rule fields = onboarding/operation prohibited <span class="ref">Instr. Art. 12</span>; attempted operation reportable <span class="ref">Instr. Art. 47</span>.</p>
+        </div>
+    </div>
+
+    <h4 class="section__subh" style="margin-top:2rem;font-size:1.1rem;">Operational obligations by VASP role</h4>
+    <p class="section__desc" style="margin-bottom:1rem;">A DASP can occupy three roles on a single transfer chain — sometimes simultaneously when intermediating. Each role triggers a distinct sequence of duties; the CO maps the role at the moment the transfer hits the order book.</p>
+
+    <div class="grid grid--3">
+        <div class="card card--accent-blue">
+            <h3>Originating VASP</h3>
+            <p class="card__sub" style="margin-bottom:0.5rem;">DASP initiating the transfer on behalf of an originator client</p>
+            <ol style="padding-left:1.2rem;">
+                <li><strong>Verify the originator</strong> via CDD/EDD before initiating the transfer</li>
+                <li><strong>Attribute the originating wallet</strong> to the verified client (proof of control)</li>
+                <li><strong>Screen the originator</strong> against UNSC + UIF national sanctions lists</li>
+                <li><strong>Collect beneficiary data</strong> from the originator (name, account/address, beneficiary VASP if known)</li>
+                <li><strong>Screen the beneficiary</strong> against the same sanctions lists</li>
+                <li><strong>Transmit the eight-element data set</strong> to the beneficiary VASP via secure channel</li>
+                <li><strong>Retain the full record 15 years</strong> <span class="ref">D-426 Art. 26</span></li>
+            </ol>
+        </div>
+
+        <div class="card card--accent-green">
+            <h3>Beneficiary VASP</h3>
+            <p class="card__sub" style="margin-bottom:0.5rem;">DASP receiving the transfer on behalf of a beneficiary client</p>
+            <ol style="padding-left:1.2rem;">
+                <li><strong>Verify the beneficiary</strong> via CDD/EDD before crediting the transfer</li>
+                <li><strong>Attribute the beneficiary wallet</strong> to the verified client</li>
+                <li><strong>Screen the beneficiary</strong> against UNSC + UIF national sanctions lists</li>
+                <li><strong>Receive and validate</strong> the eight-element data set from the originating VASP — flag missing fields</li>
+                <li><strong>Screen the originator</strong> against the same sanctions lists; freeze on match + report ≤ 3 bd</li>
+                <li><strong>Retain the full record 15 years</strong> + feed transaction monitoring; STR if pattern emerges</li>
+            </ol>
+        </div>
+
+        <div class="card card--accent-amber">
+            <h3>Intermediary VASP</h3>
+            <p class="card__sub" style="margin-bottom:0.5rem;">DASP routing a transfer between two other VASPs</p>
+            <ol style="padding-left:1.2rem;">
+                <li><strong>Pass through the eight-element data set</strong> unchanged to the next VASP</li>
+                <li><strong>Validate completeness</strong> on receipt — refuse to forward if fields missing</li>
+                <li><strong>Screen both originator and beneficiary</strong> against UNSC + UIF national lists</li>
+                <li><strong>Apply transaction monitoring</strong> at the routing point</li>
+                <li><strong>STR</strong> on suspicion regardless of the source/destination jurisdiction</li>
+                <li><strong>Retain the full record 15 years</strong> even though no client relationship exists</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:1.25rem;">
+        <p><strong>Wallet attribution is the operational pinch point.</strong> CNAD Guide §2(b) requires sending and receiving addresses in the data set, but does not specify a verification method. Industry practice (Satoshi test, micro-deposit, signed message, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale on file.</p>
     </div>
 
     <!-- ── AML DEADLINES MATRIX ── -->
