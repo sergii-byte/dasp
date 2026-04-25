@@ -2571,33 +2571,55 @@
 
     </div>
 
-    <!-- ── TOTAL SUMMARY ── -->
-    <div class="card card--hero stack-md" style="margin-top:2.25rem;">
-        <h3 class="card__head">Consolidated budget</h3>
-        <div class="grid-3-equal">
-            <div>
-                <span class="kbd-label">One-time launch</span>
-                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$36,000 – $73,000</span>
-                <span class="price-pill__note">DASP only · incl. $6,132 CNAD fee, ~$10k policy pack, control infra · add ~$5,085 for parallel BSP</span>
-            </div>
-            <div>
-                <span class="kbd-label">Monthly running</span>
-                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$7,425 – $17,250</span>
-                <span class="price-pill__note">Corporate + CO team + tech stack · excl. per-customer KYC/KYT usage fees</span>
-            </div>
-            <div>
-                <span class="kbd-label">Annual obligations</span>
-                <span class="price-pill__val" style="display:block;margin-top:0.25rem;">$19,476 – $39,176</span>
-                <span class="price-pill__note">Incl. $4,088 CNAD renewal, audits, cyber testing, insurance, training</span>
-            </div>
+    <!-- ── TOTAL SUMMARY (3 realistic scenarios) ── -->
+    <h3 class="section__subh" style="margin-top:2.25rem;">Three realistic scenarios — pick what matches your scale</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">Cost ranges depend on (a) whether the policy pack is built in-house or by external counsel, (b) whether the CO is full-time or fractional, (c) which KYT/KYC tier is selected, and (d) transaction volume. The scenarios below assume a small DASP at launch (≤ 1,000 active customers, ≤ $5M monthly volume).</p>
+
+    <div class="grid grid--3" style="margin-top:1.25rem;">
+        <div class="card card--top-blue">
+            <h3>Lean</h3>
+            <p class="card__sub">In-house legal + fractional CO + entry-tier KYT</p>
+            <table class="card__table" style="margin-top:0.5rem;">
+                <tr><td>One-time launch</td><td class="price">$18k – $30k</td></tr>
+                <tr><td>Monthly running</td><td class="price">$3.5k – $5.5k</td></tr>
+                <tr><td>Annual deliverables</td><td class="price">$11k – $18k</td></tr>
+                <tr><td><strong>Year 1 all-in</strong></td><td class="price"><strong>≈ $70k – $110k</strong></td></tr>
+                <tr><td>Year 2+ ongoing</td><td class="price">$55k – $85k/yr</td></tr>
+            </table>
+            <p class="card__note">Suitable when the founders include a Salvadoran lawyer + a part-time CO with prior AML experience.</p>
         </div>
-        <div class="card__divider" style="border-top:1px solid var(--border); margin:1rem 0 0.75rem;"></div>
-        <div>
-            <span class="kbd-label">Year-1 all-in (realistic mid-range)</span>
-            <span class="price-pill__val" style="display:block;margin-top:0.25rem;">≈ $145,000 – $190,000</span>
-            <span class="price-pill__note">Launch + 12 × monthly + annual deliverables. Year-2 onward drops to ≈ $110k–$245k/yr depending on headcount and transaction volume.</span>
+
+        <div class="card card--top-green">
+            <h3>Standard</h3>
+            <p class="card__sub">External counsel + full-time CO + mid-tier KYT (Chainalysis/TRM)</p>
+            <table class="card__table" style="margin-top:0.5rem;">
+                <tr><td>One-time launch</td><td class="price">$30k – $50k</td></tr>
+                <tr><td>Monthly running</td><td class="price">$5.5k – $9k</td></tr>
+                <tr><td>Annual deliverables</td><td class="price">$16k – $28k</td></tr>
+                <tr><td><strong>Year 1 all-in</strong></td><td class="price"><strong>≈ $115k – $185k</strong></td></tr>
+                <tr><td>Year 2+ ongoing</td><td class="price">$90k – $140k/yr</td></tr>
+            </table>
+            <p class="card__note">Realistic baseline for most foreign-founded DASPs. Includes external CNAD-application support.</p>
+        </div>
+
+        <div class="card card--top-amber">
+            <h3>Heavy</h3>
+            <p class="card__sub">Big-firm counsel + CO + Deputy CO + CISO + premium KYT tier</p>
+            <table class="card__table" style="margin-top:0.5rem;">
+                <tr><td>One-time launch</td><td class="price">$50k – $80k</td></tr>
+                <tr><td>Monthly running</td><td class="price">$9k – $15k</td></tr>
+                <tr><td>Annual deliverables</td><td class="price">$25k – $40k</td></tr>
+                <tr><td><strong>Year 1 all-in</strong></td><td class="price"><strong>≈ $185k – $280k</strong></td></tr>
+                <tr><td>Year 2+ ongoing</td><td class="price">$140k – $220k/yr</td></tr>
+            </table>
+            <p class="card__note">For multi-jurisdiction operations or when scaling past ~$25M monthly volume on day 1.</p>
         </div>
     </div>
+
+    <div class="callout callout--amber" style="margin-top:1.25rem;">
+        <p><strong>What drives the variance.</strong> The biggest swing factors are (i) <strong>compliance headcount</strong> — full-time CO ($2.5–4k/mo in El Salvador market) vs. fractional CO services ($1–1.8k/mo); (ii) <strong>KYT tier</strong> — entry-level ($500–1,200/mo) vs. enterprise ($2.5–5k/mo); (iii) <strong>policy pack origin</strong> — in-house template-driven ($0–3k one-time) vs. external counsel ($8–15k); (iv) <strong>independent AML audit firm tier</strong> ($3–6k Big-4 light vs. $8–15k full).</p>
+    </div>
+    <p class="tbl-note" style="margin-top:0.75rem;">Government fees ($6,132 + $4,088 annual) are statutory and do not vary. Capital deposit ($2,000 minimum) is balance-sheet capital, not a sunk cost — recovered on liquidation.</p>
 
 </div>
 </section>
@@ -2623,7 +2645,7 @@
         </details>
         <details class="faq-item">
             <summary>What does registration actually cost, all-in?</summary>
-            <div>Government fee is fixed at $6,132 <span class="ref">LEAD Art. 12</span> plus $4,088 annual renewal. All-in realistic year-1 budget ≈ $145k–$190k <span class="ref ref--practice">practice</span>: one-time launch $36k–$73k (entity, policy pack, CNAD support, control infrastructure), monthly running $7.4k–$17.3k (corporate + CO team + KYC/KYT stack), plus annual obligations (external audit, independent AML audit, cyber testing, insurance, training). Full breakdown in <a href="#costs" style="color:var(--accent);">Costs</a>.</div>
+            <div>Government fee is fixed at $6,132 <span class="ref">LEAD Art. 12</span> plus $4,088 annual renewal. Three realistic scenarios <span class="ref ref--practice">practice</span>: <strong>Lean</strong> ≈ $70–110k year 1 (in-house legal, fractional CO, entry-tier KYT); <strong>Standard</strong> ≈ $115–185k year 1 (external counsel, full-time CO, mid-tier KYT — most common); <strong>Heavy</strong> ≈ $185–280k year 1 (CO + Deputy + CISO + premium tools). Year 2+ ongoing drops 20–30% as launch costs roll off. Full breakdown in <a href="#costs" style="color:var(--accent);">Costs</a>.</div>
         </details>
         <details class="faq-item">
             <summary>Which digital assets may a DASP offer?</summary>
