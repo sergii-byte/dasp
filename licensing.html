@@ -562,7 +562,7 @@
         @media (max-width: 1100px) { .phase-card::after { display: none; } }
 
         .phase-card__head {
-            display: flex; justify-content: space-between; align-items: baseline;
+            display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start;
             margin-bottom: 0.85rem;
         }
         .phase-card__num {
@@ -571,11 +571,13 @@
             font-weight: 400;
         }
         .phase-card__dur {
-            font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: var(--text-3);
-            background: var(--bg); padding: 4px 8px; border-radius: 4px;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+            text-transform: none; color: var(--text-2);
+            background: var(--bg); padding: 0.25rem 0.55rem; border-radius: 4px;
             border: 1px solid var(--border-light);
+            white-space: normal; line-height: 1.3;
         }
+        .phase-card__dur strong { color: var(--navy); font-weight: 600; }
         .phase-card__title {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 1.05rem; font-weight: 400; color: var(--navy);
@@ -1581,7 +1583,7 @@
         <div class="timeline__track">
             <div class="phase-card" data-phase-color="accent">
                 <div class="phase-card__head">
-                    <span class="phase-card__num">00</span>
+                    <span class="phase-card__num">1</span>
                     <span class="phase-card__dur">4–6 wk · ~20 bd</span>
                 </div>
                 <h4 class="phase-card__title">Pre-flight setup</h4>
@@ -1596,7 +1598,7 @@
 
             <div class="phase-card" data-phase-color="accent-2">
                 <div class="phase-card__head">
-                    <span class="phase-card__num">01</span>
+                    <span class="phase-card__num">2</span>
                     <span class="phase-card__dur">6–10 wk · 30–50 bd</span>
                 </div>
                 <h4 class="phase-card__title">Pre-inscription · Phase 1</h4>
@@ -1612,7 +1614,7 @@
 
             <div class="phase-card" data-phase-color="amber">
                 <div class="phase-card__head">
-                    <span class="phase-card__num">02</span>
+                    <span class="phase-card__num">3</span>
                     <span class="phase-card__dur">12–20 wk · 60–100 bd</span>
                 </div>
                 <h4 class="phase-card__title">Pre-inscription · Phase 2</h4>
@@ -1622,13 +1624,14 @@
                     <li>UBO list (nómina) <span class="ref">Instr. Art. 20</span>, audited financials (3 yr)</li>
                     <li>AML pack: risk matrix, DD, Travel Rule, STR / Operación Regulada flowcharts</li>
                     <li>Risk factors manual <span class="ref">RPSAD Art. 21</span></li>
-                    <li>Tech pack: KYC/KYB/KYT, custodia, BCP <span class="ref">RPSAD Art. 25</span></li>
+                    <li>Tech pack: KYC/KYB/KYT, custody, BCP <span class="ref">RPSAD Art. 25</span></li>
+                    <li>Technical meeting with CNAD: confirm 5 bd / held within 10 bd</li>
                 </ul>
             </div>
 
             <div class="phase-card" data-phase-color="emerald">
                 <div class="phase-card__head">
-                    <span class="phase-card__num">03</span>
+                    <span class="phase-card__num">4</span>
                     <span class="phase-card__dur">6–10 wk · 30–50 bd</span>
                 </div>
                 <h4 class="phase-card__title">Inscription — final stage</h4>
@@ -1644,7 +1647,7 @@
 
             <div class="phase-card" data-phase-color="emerald-2">
                 <div class="phase-card__head">
-                    <span class="phase-card__num">04</span>
+                    <span class="phase-card__num">5</span>
                     <span class="phase-card__dur">2–4 wk · 10–20 bd</span>
                 </div>
                 <h4 class="phase-card__title">Certificate &amp; Go-Live</h4>
@@ -1669,7 +1672,7 @@
 
         <!-- ═══ PHASE 00 — PRE-FLIGHT SETUP ═══ -->
         <div class="flow-step open" data-step data-phase="entity">
-            <div class="flow-step__num">00</div>
+            <div class="flow-step__num">1</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Pre-flight</p>
@@ -1706,7 +1709,7 @@
 
         <!-- ═══ PHASE 01 — PRE-INSCRIPTION PHASE 1 ═══ -->
         <div class="flow-step" data-step data-phase="prereg">
-            <div class="flow-step__num">01</div>
+            <div class="flow-step__num">2</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Pre-inscription · Phase 1</p>
@@ -1739,7 +1742,7 @@
                 <h5>4 · Business plan + services</h5>
                 <ul>
                     <li>Executive summary ≤ 10 pp of the Business Plan</li>
-                    <li>Full Business Plan ≤ 15 pp <span class="ref">CNAD Procedure</span></li>
+                    
                     <li>Organisational chart (names, roles, functions)</li>
                     <li>Art. 19 LEAD services selected (verbatim)</li>
                     <li>Asset list with restrictions &amp; limits</li>
@@ -1766,7 +1769,7 @@
 
         <!-- ═══ PHASE 02 — PRE-INSCRIPTION PHASE 2 ═══ -->
         <div class="flow-step" data-step data-phase="docs">
-            <div class="flow-step__num">02</div>
+            <div class="flow-step__num">3</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Pre-inscription · Phase 2</p>
@@ -1790,15 +1793,15 @@
                     <li>Audited financial statements (last 3 years, or since inception)</li>
                     <li>Key personnel CVs + academic credentials (matches organisational chart)</li>
                     <li>Corporate governance document <span class="ref">RPSAD Art. 7(e)</span></li>
-                    <li>Customer service: digital-asset descriptions (12-mo price history, volume), trading mechanics, fees, complementary products <span class="ref">RPSAD Art. 22</span></li>
-                    <li>Support / communication / complaints policy <span class="ref">LEAD Art. 21(d)(g)</span></li>
+                    
+                    
                 </ul>
                 <h5>AML / CFT package (Category C)</h5>
                 <ul>
                     <li>Risk matrix methodology <span class="ref">Instr. Art. 4</span></li>
                     <li>Customer risk classification <span class="ref">Instr. Art. 10</span></li>
                     <li>DD policy — SDD / CDD / EDD <span class="ref">Instr. Ch. III</span> <span class="ref">D-426 Art. 15</span></li>
-                    <li><strong>Identity verification policy</strong> — verification BEFORE relationship begins <span class="ref">Instr. Art. 12 (Reform 2)</span></li>
+                    
                     <li>Transaction-limit policy <span class="ref">Instr. Art. 52 par. 2 reformed</span></li>
                     <li>Travel Rule policy <span class="ref">Instr. Art. 52 par. 2 reformed</span> <span class="ref">Instr. Art. 84-B(1)(e)</span></li>
                     <li>Unusual operations flowchart + blockchain-analytics tooling <span class="ref">Instr. Ch. VII</span></li>
@@ -1834,6 +1837,10 @@
                     <li>Spot, term, optional, settlement, seizure, arbitration, buyer protection, investments <span class="ref">RPSAD Arts. 28–35</span></li>
                     <li>Internal / external audit framework <span class="ref">LEAD Art. 21</span></li>
                 </ul>
+                <h5>Meetings</h5>
+                <ul>
+                    <li><strong>Technical meeting with CNAD</strong> — same archive risk as Phase 1: confirm within <strong>5 bd</strong>, held within <strong>10 bd</strong> of form submission. Phase 2 has its own technical meeting (separate from Phase 1) <span class="ref">CNAD Procedure</span></li>
+                </ul>
                 <h5>CNAD review cycle</h5>
                 <ul>
                     <li>CNAD review per round: <strong>20 bd</strong> <span class="ref">RPSAD Art. 8</span></li>
@@ -1850,7 +1857,7 @@
 
         <!-- ═══ PHASE 03 — INSCRIPTION (FINAL STAGE) ═══ -->
         <div class="flow-step" data-step data-phase="final">
-            <div class="flow-step__num">03</div>
+            <div class="flow-step__num">4</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Inscription · final stage</p>
@@ -1900,7 +1907,7 @@
 
         <!-- ═══ PHASE 04 — CERTIFICATE & GO-LIVE ═══ -->
         <div class="flow-step" data-step data-phase="final">
-            <div class="flow-step__num">04</div>
+            <div class="flow-step__num">5</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
                     <p class="flow-step__phase">Certificate &amp; go-live</p>
@@ -1930,7 +1937,6 @@
                 <h5>UIF notification + post-registration meeting</h5>
                 <ul>
                     <li>CNAD notifies UIF of new registered DASP <span class="ref">CNAD Procedure</span></li>
-                    <li><strong>Virtual meeting</strong> with senior management, shareholders and CNAD Board — scheduled post-registration</li>
                     <li>AML / compliance documents must be signed by Legal Representative or approved by Board resolution <span class="ref">RPSAD Art. 7</span></li>
                     <li><strong>Code of Ethics:</strong> 6 months from registration to formally adopt <span class="ref">RPSAD Art. 18</span></li>
                 </ul>
