@@ -1015,8 +1015,38 @@
                 </div>
             </div>
 
+            <h3>Wallet types — hosted vs unhosted (self-hosted)</h3>
+            <p>Salvadoran statute (D-426 / Instructivo / RPSAD / LEAD) does <strong>not</strong> define <em>hosted</em> vs <em>unhosted</em> wallets. The distinction comes from FATF R.16 operational guidance and is the global industry standard for Travel Rule implementation. Both wallet types fall under the same Art.&nbsp;52 par.&nbsp;2 obligation — but the operational handling differs.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">Hosted wallet (custodial)</div>
+                    <p class="card__sub">Counterparty is a regulated VASP holding keys on the client's behalf</p>
+                    <ul>
+                        <li>Counterparty data <strong>received from / transmitted to the counterparty VASP</strong> via secure channel (Travel Rule protocol)</li>
+                        <li>Counterparty VASP is identifiable; due-diligence on the VASP itself is operationally feasible</li>
+                        <li>Reciprocal Travel Rule data exchange expected on every transfer</li>
+                        <li>Standard CDD on the client; sanctions screen on both parties</li>
+                    </ul>
+                    <div class="card__foot">Use Travel Rule message protocols (TRP, OpenVASP, IVMS-101 standardised data structures) where the counterparty VASP supports them.</div>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Unhosted / self-hosted wallet</div>
+                    <p class="card__sub">Counterparty key is held by the end-user themselves (no intermediary VASP)</p>
+                    <ul>
+                        <li>No counterparty VASP exists to transmit Travel Rule data — the <strong>client self-attests</strong> beneficiary information</li>
+                        <li>Client must declare beneficiary name + identifier; receiving address is the wallet itself</li>
+                        <li><strong>No statutory exemption</strong> in El Salvador — the Art.&nbsp;52 par.&nbsp;2 obligation applies in full</li>
+                        <li><strong>Wallet attribution required</strong>: prove the client controls the receiving wallet (Satoshi test / micro-deposit / signed message / KYT-vendor attribution)</li>
+                        <li>Apply <strong>risk-based EDD</strong> with documented rationale on file (per FATF R.16 guidance)</li>
+                        <li>Repeated unhosted transfers → relationship review under risk-based approach</li>
+                    </ul>
+                    <div class="card__foot">Document the attribution method in the AML manual; apply consistently; produce an audit trail per transfer.</div>
+                </div>
+            </div>
+
             <div class="callout callout--warn">
-                <p><strong>Wallet attribution is the operational pinch point.</strong> Art. 52 par. 2 requires originator/beneficiary identity but does not specify a wallet-attribution method. Industry practice (Satoshi test, micro-deposit, signed message, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale.</p>
+                <p><strong>Wallet attribution is the operational pinch point.</strong> Art.&nbsp;52 par.&nbsp;2 requires originator and beneficiary identity but does not specify a wallet-attribution method. Industry practice (Satoshi test, micro-deposit, signed message, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale even if all other CDD factors are low-risk.</p>
             </div>
         </section>
 
@@ -1355,6 +1385,22 @@
                         <td class="num">Per UIF instructions</td>
                         <td>UIF channel</td>
                         <td><span class="cite cite--instr">Instr. Art. 23</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quarterly Report — Digital Asset Issuances</strong><br><em>(Reporte trimestral — Emisiones de Activos Digitales)</em></td>
+                        <td>All Digital Asset issuances marketed through the provider's wallets / platforms (confidential)</td>
+                        <td>CNAD</td>
+                        <td class="num">First 20 days<br><span style="font-size:0.7rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td>CNAD channel · confidential</td>
+                        <td><span class="cite cite--rpsad">RPSAD Art. 15</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quarterly Report — Stablecoins Admitted</strong><br><em>(Reporte trimestral — Stablecoins admitidas)</em></td>
+                        <td>Stablecoins admitted to commercialisation in the provider's wallets / platforms</td>
+                        <td>CNAD</td>
+                        <td class="num">First 20 days<br><span style="font-size:0.7rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td>CNAD channel</td>
+                        <td><span class="cite cite--rpsad">RPSAD Art. 16</span></td>
                     </tr>
                     <tr>
                         <td><strong>Material Registration Change — DASP</strong><br><em>(Cambio material — registro DASP)</em></td>
