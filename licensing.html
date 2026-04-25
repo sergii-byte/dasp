@@ -1450,10 +1450,7 @@
     <h2 class="section__title">Applicable Legislation</h2>
     <p class="section__desc">Six instruments govern DASPs in El Salvador. For operators, the practical stack is LEAD + RPSAD + D-426 AML Law + Instructivo UIF + CNAD AML Guide. The content below is legal-reference depth — expand only if you need the citation anchors.</p>
 
-    <details class="legis-details">
-        <summary><span class="legis-details__summary-text">Open the full legal-framework breakdown</span> <span class="legis-details__chev" aria-hidden="true">▾</span></summary>
-        <div class="legis-details__body">
-            <div class="grid grid--2">
+    <div class="grid grid--2">
                 <div class="card card--accent-navy">
                     <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
                     <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
@@ -1465,28 +1462,22 @@
                     <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
                 </div>
                 <div class="card card--accent-green">
-                    <h3>AML Law — Ley Contra el Lavado de Dinero y de Activos</h3>
-                    <p>Decree No. 426 of 2025 (current consolidated text). Anti-money laundering and counter-terrorism financing framework. Defines CO obligations, reporting requirements and sanctions.</p>
+                    <h3>AML Law — D-426</h3>
+                    <p>Decree No. 426 — Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction. Defines reporting entities (incl. DASPs via supervision by CNAD), CDD trigger (Art. 15), 24-hour STR (Art. 24), regulated transactions reporting (Art. 25), 15-year retention (Art. 26), tipping-off prohibition (Art. 44).</p>
                     <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
                 </div>
                 <div class="card card--accent-green">
-                    <h3>UIF Instructivo</h3>
-                    <p>Financial Investigation Unit instruction manual. Detailed operational rules for AML compliance: CO qualifications, UIF registration, reporting thresholds, Travel Rule, record-keeping. Several articles address DASP-specific requirements (incl. Art. 52 par.2 Travel Rule reformed, Art. 84-B(2) personnel residency exemption — verify against latest reformed text).</p>
+                    <h3>Instructivo UIF (Reform 1 + Reform 2)</h3>
+                    <p>Operational rulebook from the Financial Investigation Unit. CDD measures (Art. 12), EDD (Art. 13), SDD (Art. 14), PEP (Arts. 16–18), beneficial ownership 10% floor (Art. 20) + UBO majority/control (Art. 21-A), Operación Regulada thresholds (Art. 51), Travel Rule data (Art. 52 par. 2 reformed), VASP-specific obligations (Art. 84-A registration, Art. 84-B general obligations, Art. 84-C reports).</p>
                     <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
                 </div>
-                <div class="card card--accent-amber">
-                    <h3>CNAD AML Guide for DASPs</h3>
-                    <p>Practical compliance guide from CNAD. Risk classification per activity, CDD thresholds ($1,000 for occasional), KYT requirements, Travel Rule implementation, final meeting checklist.</p>
-                    <div class="stack-sm"><span class="tag tag--amber">Compliance Guide</span></div>
-                </div>
+                
                 <div class="card card--accent-muted">
                     <h3>Issuer &amp; Stablecoin Regulations</h3>
                     <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP.</p>
                     <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
                 </div>
             </div>
-        </div>
-    </details>
 </div>
 </section>
 
@@ -1499,17 +1490,17 @@
 
     <div class="tbl-wrap">
     <table class="tbl">
-        <thead><tr><th>Activity</th><th>LEAD Art.</th><th>AML Risk <span class="ref">internal · risk-based</span></th></tr></thead>
+        <thead><tr><th>Activity</th><th>Source</th><th>AML Risk <span class="ref">internal · risk-based</span></th></tr></thead>
         <tbody>
-            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets</td><td>19(a)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td><strong>Exchange platform</strong> — operate a matching/trading venue</td><td>19(b)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td><strong>Transfer</strong> — transfer digital assets for third parties</td><td>19(f)(1)</td><td><span class="tag tag--red">High</span></td></tr>
-            <tr><td><strong>Custody & administration</strong> — hold or manage digital assets on behalf of clients</td><td>19(f)(2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td><strong>Order reception &amp; transmission</strong> — receive and transmit client orders</td><td>19(f)(3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td><strong>Order execution</strong> — execute orders on behalf of clients</td><td>19(f)(4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
-            <tr><td><strong>Risk assessment & subscriptions</strong> — evaluate risks, manage subscriptions</td><td>19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-            <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
-            <tr><td><strong>Investment management</strong> — manage digital asset investment products</td><td>19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets</td><td>LEAD Art. 19(a)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Exchange platform</strong> — operate a matching/trading venue</td><td>LEAD Art. 19(b)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Transfer</strong> — transfer digital assets for third parties</td><td>LEAD Art. 19(f)(1)</td><td><span class="tag tag--red">High</span></td></tr>
+            <tr><td><strong>Custody & administration</strong> — hold or manage digital assets on behalf of clients</td><td>LEAD Art. 19(f)(2)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order reception &amp; transmission</strong> — receive and transmit client orders</td><td>LEAD Art. 19(f)(3)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Order execution</strong> — execute orders on behalf of clients</td><td>LEAD Art. 19(f)(4)</td><td><span class="tag tag--amber">Above Avg</span></td></tr>
+            <tr><td><strong>Risk assessment & subscriptions</strong> — evaluate risks, manage subscriptions</td><td>LEAD Art. 19(c)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>LEAD Art. 19(d)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
+            <tr><td><strong>Investment management</strong> — manage digital asset investment products</td><td>LEAD Art. 19(e)</td><td><span class="tag tag--blue">Moderate</span></td></tr>
         </tbody>
     </table>
     </div>
@@ -1563,7 +1554,7 @@
 <div class="container fade-in">
     <p class="section__label">Track 1</p>
     <h2 class="section__title">DASP Registration Flow</h2>
-    <p class="section__desc">Official CNAD procedure per the <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>: two consecutive stages — <strong>Pre-inscripción</strong> (Fase 1 + Fase 2) and <strong>Inscripción</strong>. Each observation round = <strong>10 business days</strong> to cure + up to <strong>5 bd prórroga</strong> <span class="ref">LPA Arts. 72, 97</span>. Failure to cure triggers archive of the file <span class="ref">LPA Art. 72</span>.</p>
+    <p class="section__desc">Official CNAD procedure per the <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>: two consecutive stages — <strong>Pre-inscription</strong> (Phase 1 + Phase 2) and <strong>Inscription (final stage)</strong>. Each observation round = <strong>10 business days</strong> to cure + up to <strong>5 bd extension</strong> <span class="ref">LPA Arts. 72, 97</span>. Failure to cure triggers archive of the file <span class="ref">LPA Art. 72</span>.</p>
 
     <!-- ══ TIMELINE V2 ══ -->
     <div class="timeline" aria-label="DASP registration timeline — 5 phases over 8–12 months">
@@ -1574,7 +1565,7 @@
             </div>
             <div class="timeline__meta">
                 <span><strong>~44–52 weeks</strong> end-to-end <span class="ref ref--practice">practice</span></span>
-                <span>Per round: 10 bd cure + 5 bd prórroga <span class="ref">LPA Art. 97</span></span>
+                <span>Per round: 10 bd cure + 5 bd extension <span class="ref">LPA Art. 97</span></span>
             </div>
         </div>
 
@@ -1588,7 +1579,7 @@
                 <p class="phase-card__sub">Before CNAD · internal</p>
                 <ul class="phase-card__list">
                     <li>S.A. de C.V. incorporation + CNR</li>
-                    <li>NIT, matrícula de empresa</li>
+                    <li>NIT, commercial registration (matrícula de empresa)</li>
                     <li>Operational bank account + capital</li>
                     <li>Fiscal address + Representante Legal</li>
                 </ul>
@@ -1599,14 +1590,14 @@
                     <span class="phase-card__num">01</span>
                     <span class="phase-card__dur">6–10 wk · 30–50 bd</span>
                 </div>
-                <h4 class="phase-card__title">Pre-inscripción · Fase 1</h4>
+                <h4 class="phase-card__title">Pre-inscription · Phase 1</h4>
                 <p class="phase-card__sub">Google Form · expedited review</p>
                 <ul class="phase-card__list">
                     <li>6-section online form <span class="ref">Guía §V.1.a</span></li>
-                    <li>Plan de Negocios (≤ 15 pp) + organigrama</li>
+                    <li>Business plan (≤ 15 pp) + organisational chart</li>
                     <li>Art. 19 LEAD services selected</li>
-                    <li>Reunión técnica: confirm 5 bd / held within 10 bd</li>
-                    <li><strong>Outcome:</strong> expediente number assigned</li>
+                    <li>Technical meeting: confirm 5 bd / held within 10 bd</li>
+                    <li><strong>Outcome:</strong> file number assigned</li>
                 </ul>
             </div>
 
@@ -1615,13 +1606,13 @@
                     <span class="phase-card__num">02</span>
                     <span class="phase-card__dur">12–20 wk · 60–100 bd</span>
                 </div>
-                <h4 class="phase-card__title">Pre-inscripción · Fase 2</h4>
+                <h4 class="phase-card__title">Pre-inscription · Phase 2</h4>
                 <p class="phase-card__sub">Detailed AML &amp; risk assessment</p>
                 <ul class="phase-card__list">
                     <li>Full 3-yr business plan + projections</li>
-                    <li>UBO nómina <span class="ref">UIF Instr. Art. 20</span>, audited financials (3 yr)</li>
-                    <li>AML pack: matriz, DD, Travel Rule, STR/OR flujogramas</li>
-                    <li>Factores de riesgo manual <span class="ref">RPSAD Art. 21</span></li>
+                    <li>UBO list (nómina) <span class="ref">UIF Instr. Art. 20</span>, audited financials (3 yr)</li>
+                    <li>AML pack: risk matrix, DD, Travel Rule, STR / Operación Regulada flowcharts</li>
+                    <li>Risk factors manual <span class="ref">RPSAD Art. 21</span></li>
                     <li>Tech pack: KYC/KYB/KYT, custodia, BCP <span class="ref">RPSAD Art. 25</span></li>
                 </ul>
             </div>
@@ -1631,12 +1622,12 @@
                     <span class="phase-card__num">03</span>
                     <span class="phase-card__dur">6–10 wk · 30–50 bd</span>
                 </div>
-                <h4 class="phase-card__title">Inscripción (Registration)</h4>
+                <h4 class="phase-card__title">Inscription — final stage</h4>
                 <p class="phase-card__sub">Operational validation</p>
                 <ul class="phase-card__list">
-                    <li>CO Titular + Suplente: acta, CV, contrato <span class="ref">UIF Art. 84-B</span></li>
-                    <li>CISO/OSI appointment acta (Board-level access)</li>
-                    <li>Client contract draft + Sistema de Atención <span class="ref">RPSAD Art. 22</span></li>
+                    <li>Compliance Officer (holder) + Alternate: acta, CV, contrato <span class="ref">Instr. Art. 84-B</span></li>
+                    <li>CISO / Information Security Officer appointment acta (Board-level access)</li>
+                    <li>Client contract draft + Customer attention system <span class="ref">RPSAD Art. 22</span></li>
                     <li>Tech vendor contracts + public wallet list</li>
                     <li>Google Meet: technical platform validation</li>
                 </ul>
@@ -1658,152 +1649,14 @@
             </div>
         </div>
 
-        <p class="timeline__foot"><strong>Cycle rhythm &amp; archive risk.</strong> Every observation (Fase 1, Fase 2 or Inscripción) opens a <strong>10 bd</strong> cure window + up to <strong>5 bd prórroga</strong> on request <span class="ref">LPA Art. 97</span>. Non-cure, blank fields, "in-development" statements, or failure to attend the technical meeting within 10 bd of form submission trigger archive of the file <span class="ref">LPA Art. 72</span> — the file can be refiled but the clock restarts. Government fee $6,132 (15 min. monthly salaries <span class="ref">LEAD Art. 12</span>) is paid only after favourable resolution, within 10 bd, or the registration is automatically revoked <span class="ref">RPSAD Art. 10</span>.</p>
+        <p class="timeline__foot"><strong>Cycle rhythm &amp; archive risk.</strong> Every observation (Phase 1, Phase 2 or Inscription) opens a <strong>10 bd</strong> cure window + up to <strong>5 bd extension</strong> on request <span class="ref">LPA Art. 97</span>. Non-cure, blank fields, "in-development" statements, or failure to attend the technical meeting within 10 bd of form submission trigger archive of the file <span class="ref">LPA Art. 72</span> — the file can be refiled but the clock restarts. Government fee $6,132 (15 min. monthly salaries <span class="ref">LEAD Art. 12</span>) is paid only after favourable resolution, within 10 bd, or the registration is automatically revoked <span class="ref">RPSAD Art. 10</span>.</p>
     </div>
 
-    <!-- ══ DOCUMENT REQUIREMENTS PER PHASE (CNAD PDF) ══ -->
-    <h3 class="section__subh" style="margin-top:2.25rem;">Document requirements per phase</h3>
-    <p class="section__desc" style="margin-bottom:1rem;">Sourced verbatim from the CNAD <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>. All documents in PDF; simple copies accepted unless otherwise noted; Google Drive folder recommended by CNAD for file organisation.</p>
-
-    <div class="grid grid--3">
-
-        <!-- Fase 1 -->
-        <div class="card card--top-blue">
-            <div class="card__head">
-                <h3>Fase 1 · Preinscripción</h3>
-                <span class="kbd-label">Google Form</span>
-            </div>
-            <p class="kbd-label" style="margin-bottom:0.4rem;">§1. Representante Legal</p>
-            <ul>
-                <li>Full name + ID (DUI / passport) in PDF</li>
-                <li>Power of attorney / acreditación</li>
-                <li>Phone, email for notifications, address</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">§2. Entity</p>
-            <ul>
-                <li>Denominación Social + Nombre Comercial</li>
-                <li>Physical address + website URL + platform URL</li>
-                <li>Group/conglomerate disclosure</li>
-                <li>Constitution type (S.A. de C.V. or foreign branch)</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">§3. Legal docs</p>
-            <ul>
-                <li>Escritura matriz de constitución (CNR-inscrita)</li>
-                <li>Credencial de Administración (CNR-inscrita)</li>
-                <li>NIT vigente + matrícula de empresa vigente</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">§5–6. Business &amp; services</p>
-            <ul>
-                <li>Executive summary ≤ 10 pp of Plan de Negocios</li>
-                <li>Full Plan de Negocios ≤ 15 pp <span class="ref">Guía Anexo 1–2</span></li>
-                <li>Organigrama (names, roles, functions)</li>
-                <li>Art. 19 LEAD services selected (verbatim)</li>
-                <li>Asset list with restrictions &amp; limits</li>
-                <li>Service flowchart + KYC/KYB/KYT/geofencing/custody declaration</li>
-                <li>Technology: own vs. third-party providers <span class="ref">LEAD Art. 20(b)</span></li>
-            </ul>
-        </div>
-
-        <!-- Fase 2 -->
-        <div class="card card--top-amber">
-            <div class="card__head">
-                <h3>Fase 2 · Preinscripción</h3>
-                <span class="kbd-label">Detailed pack</span>
-            </div>
-            <p class="kbd-label" style="margin-bottom:0.4rem;">Legal &amp; shareholders</p>
-            <ul>
-                <li>Shareholder nómina signed by RL/CPA — shareholding % + NIT</li>
-                <li>Shareholder ID docs (DUI/passport + NIT)</li>
-                <li>UBO nómina if shareholder is legal person <span class="ref">UIF Instr. Art. 20</span></li>
-                <li>UBO ID docs (DUI/passport + NIT)</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Business</p>
-            <ul>
-                <li>Full 3-year business plan with projections</li>
-                <li>Audited financial statements (last 3 yrs, or since inception)</li>
-                <li>Key personnel CVs + academic credentials (matches organigrama)</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">AML framework <span class="ref">UIF Art. 19</span></p>
-            <ul>
-                <li>Risk matrix methodology <span class="ref">UIF Art. 4</span></li>
-                <li>Customer risk classification <span class="ref">UIF Art. 10</span></li>
-                <li>DD policy — SDD / CDD / EDD <span class="ref">UIF Ch. III</span></li>
-                <li>Transaction-limit policy <span class="ref">Instr. Art. 52 par.2 reformed</span></li>
-                <li>Unusual-ops flowchart + blockchain analytics tooling <span class="ref">UIF Ch. VII</span></li>
-                <li>STR flowchart <span class="ref">UIF Ch. VIII</span></li>
-                <li>OR (Operación Regulada) flowchart <span class="ref">UIF Ch. IX</span></li>
-                <li>Travel Rule policy <span class="ref">Instr. Art. 52 par.2 reformed</span></li>
-                <li>Código de Ética <span class="ref">UIF Art. 6</span> + RPSAD Arts. 17, 23, 24</li>
-                <li>Training policy + plan <span class="ref">UIF Ch. X</span></li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Risk factors <span class="ref">RPSAD Art. 21</span></p>
-            <ul>
-                <li>Integral risk manual — financial, operational, legal, tech, reputation, AML, cyber</li>
-                <li>Risk cycle: ID → measure → monitor → mitigate → communicate</li>
-                <li>Governance responsibilities for each risk domain</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Technology <span class="ref">RPSAD Art. 25</span></p>
-            <ul>
-                <li>DA + FIAT custody &amp; operations policy</li>
-                <li>KYC/KYB manual (tech procedures)</li>
-                <li>KYT manual (deposit / transfer / withdrawal monitoring)</li>
-                <li>Tech audit manual (internal/external, frequency, scope)</li>
-                <li>Business Continuity Plan (critical functions, recovery)</li>
-            </ul>
-        </div>
-
-        <!-- Inscripción -->
-        <div class="card card--top-green">
-            <div class="card__head">
-                <h3>Inscripción</h3>
-                <span class="kbd-label">Final stage</span>
-            </div>
-            <p class="kbd-label" style="margin-bottom:0.4rem;">Client-facing legal</p>
-            <ul>
-                <li>Draft client contract / T&amp;C (service-specific)</li>
-                <li>Sale/purchase mechanics on platform or wallet</li>
-                <li>Fee schedule (transaction commissions)</li>
-                <li>List of complementary products + update cadence</li>
-                <li>User-attention policy (channels, protocols) <span class="ref">RPSAD Art. 7(f), 22</span></li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Oficialía de Cumplimiento <span class="ref">UIF Art. 84-B</span></p>
-            <ul>
-                <li>Board act creating the Oficialía</li>
-                <li>Appointment of CO Titular + CO Suplente (Board act)</li>
-                <li>CO CVs — experience, degree, AML certifications <span class="ref">UIF Arts. 64, 84-B</span></li>
-                <li>Direct employment contract with the entity</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">CISO / OSI</p>
-            <ul>
-                <li>Full name + role in organisation</li>
-                <li>Cybersecurity certifications + experience</li>
-                <li>Board appointment act confirming <strong>direct Board access</strong></li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Technology contracts <span class="ref">RPSAD Art. 25</span></p>
-            <ul>
-                <li>Contracts with key providers: KYC, KYB, KYT, custody, cybersecurity, geofencing</li>
-                <li>Public wallet list in editable format</li>
-            </ul>
-            <p class="kbd-label" style="margin:0.75rem 0 0.4rem;">Final validation</p>
-            <ul>
-                <li>Google Meet with CNAD — technical platform review</li>
-                <li>All communications via <strong>registro@cnad.gob.sv</strong> only</li>
-                <li>Carta RL: cover letter listing everything filed + dates + changes</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="callout callout--amber" style="margin-top:1rem;">
-        <p><strong>Archive triggers <span class="ref">LPA Arts. 72, 97</span>.</strong> CNAD archives the file — <em>without ruling on the merits</em> — if: (a) the form has blank sections without justification; (b) documents are incomplete or say "in development / to be submitted later"; (c) the platform is declared "under development"; (d) the applicant fails to confirm the technical meeting within 5 bd or fails to attend within 10 bd of form submission; (e) observations are not cured within 10 bd + 5 bd prórroga. Files can be re-submitted but the clock restarts.</p>
-    </div>
-
-    <div class="flow-controls">
-        <button type="button" class="btn btn--ghost" data-expand-all aria-label="Expand or collapse all steps">Expand all</button>
-    </div>
+    <!-- ══ DETAILED FLOW POINTER ══ -->
+    <h3 class="section__subh" style="margin-top:2.25rem;">Detailed step-by-step view</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">The 5-phase overview above maps to <strong>11 numbered steps</strong> below. Each step opens to show its statutory citations, deliverables, durations and outcome. Source: CNAD <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>, RPSAD Arts. 7–11, LEAD Arts. 18–21.</p>
 
     <div class="flow">
-
         <!-- ═══ ENTITY SETUP (before CNAD) ═══ -->
         <div class="flow-step open" data-step data-phase="entity">
             <div class="flow-step__num">0</div>
@@ -1826,8 +1679,8 @@
                 </ul>
                 <h5>Personnel</h5>
                 <ul>
-                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">AML Law Art. 20</span> <span class="ref">UIF Instr. Art. 64</span></li>
-                    <li><strong>Alternate Compliance Officer</strong> — mandatory <span class="ref">AML Law Art. 20</span></li>
+                    <li><strong>Principal Compliance Officer</strong> — Board-appointed, AML/CFT certified <span class="ref">D-426 Art. 20</span> <span class="ref">UIF Instr. Art. 64</span></li>
+                    <li><strong>Alternate Compliance Officer</strong> — mandatory <span class="ref">D-426 Art. 20</span></li>
                     <li><strong>No residency requirement for DASP COs</strong> <span class="ref">UIF Instr. Art. 84-B(2)</span></li>
                     <li><strong>CISO</strong> — Board member/manager with authority <span class="ref">RPSAD Art. 25(a)</span></li>
                     <li>UIF registration within 5 days from appointment <span class="ref">UIF Instr. Art. 64</span></li>
@@ -1843,8 +1696,8 @@
             <div class="flow-step__num">1</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
-                    <p class="flow-step__title">Pre-Registration Form Submission</p>
+                    <p class="flow-step__phase">Pre-inscription</p>
+                    <p class="flow-step__title">Pre-inscription Form Submission</p>
                     <p class="flow-step__sub">Complete the CNAD pre-registration form with applicant details and desired operating area.</p>
                 </div>
                 <div class="flow-step__toggle">▾</div>
@@ -1863,7 +1716,7 @@
             <div class="flow-step__num">2</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__phase">Pre-inscription</p>
                     <p class="flow-step__title">CNAD Initial Evaluation</p>
                     <p class="flow-step__sub">Commission analyzes submitted information, may request additional documentation.</p>
                 </div>
@@ -1883,7 +1736,7 @@
             <div class="flow-step__num">3</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__phase">Pre-inscription</p>
                     <p class="flow-step__title">Additional Information Submission</p>
                     <p class="flow-step__sub">Applicant provides any requested supplementary materials.</p>
                 </div>
@@ -1903,7 +1756,7 @@
             <div class="flow-step__num">4</div>
             <div class="flow-step__head" data-step-toggle>
                 <div>
-                    <p class="flow-step__phase">Pre-Registration</p>
+                    <p class="flow-step__phase">Pre-inscription</p>
                     <p class="flow-step__title">CNAD Decision: Objection / No Objection</p>
                     <p class="flow-step__sub">CNAD issues reasoned decision. No Objection = specifies registration requirements and process.</p>
                 </div>
@@ -1966,8 +1819,8 @@
                     <div role="tabpanel" id="docs-C" aria-labelledby="docs-C-tab" hidden>
                         <h5>C. AML/CFT Package</h5>
                         <ul>
-                            <li>Prevention Policy, Risk Management, CDD (standard + enhanced + PEPs) <span class="ref">RPSAD Art. 19</span> <span class="ref">AML Law Art. 15</span></li>
-                            <li>Transaction Limits, Monitoring, Suspicious Operations Procedures <span class="ref">AML Law Art. 24</span></li>
+                            <li>Prevention Policy, Risk Management, CDD (standard + enhanced + PEPs) <span class="ref">RPSAD Art. 19</span> <span class="ref">D-426 Art. 15</span></li>
+                            <li>Transaction Limits, Monitoring, Suspicious Operations Procedures <span class="ref">D-426 Art. 24</span></li>
                             <li>Reporting Procedures, Training Plan, Restricted Jurisdictions <span class="ref">UIF Instr. Arts. 52, 54</span></li>
                         </ul>
                     </div>
@@ -2164,7 +2017,7 @@
         <div class="card card--accent-amber">
             <h3>Records Retention</h3>
             <ul>
-                <li>All AML records kept for <strong>15 years</strong> <span class="ref">AML Law Art. 26</span></li>
+                <li>All AML records kept for <strong>15 years</strong> <span class="ref">D-426 Art. 26</span></li>
                 <li>Applies to CDD files, transaction records, STRs and training logs</li>
             </ul>
         </div>
@@ -2201,7 +2054,7 @@
         <div class="card">
             <h3>UIF Registration</h3>
             <ul>
-                <li>Entity registered on the UIF platform <span class="ref">AML Law Art. 9(1)</span></li>
+                <li>Entity registered on the UIF platform <span class="ref">D-426 Art. 9(1)</span></li>
                 <li>Supervisor assignment: CNAD for non-BTC DASPs, BCR for BTC <span class="ref">UIF Instr. Art. 84-A</span></li>
                 <li>UBO information required <span class="ref">UIF Instr. Art. 3(2)</span></li>
                 <li>Registered data kept current — changes notified within 15 <abbr title="business days">bd</abbr> <span class="ref">UIF Instr. Art. 3</span></li>
@@ -2213,7 +2066,7 @@
                 <li>Local bank account for operational needs (government fees, payroll, rent)</li>
                 <li>Accounting in Spanish, USD as functional currency</li>
                 <li>IFRS for SMEs, annual external audit</li>
-                <li>Records retained 15 years <span class="ref">AML Law Art. 26</span></li>
+                <li>Records retained 15 years <span class="ref">D-426 Art. 26</span></li>
             </ul>
         </div>
     </div>
@@ -2250,10 +2103,10 @@
         <div class="card">
             <h3>Principal Compliance Officer</h3>
             <ul>
-                <li>Board-appointed <span class="ref">AML Law Art. 20</span></li>
+                <li>Board-appointed <span class="ref">D-426 Art. 20</span></li>
                 <li>AML/CFT certification <span class="ref">UIF Instr. Art. 64</span></li>
                 <li>UIF registration within 5 days <span class="ref">UIF Instr. Art. 64</span></li>
-                <li>Independence, highest rank under CEO <span class="ref">AML Law Art. 20</span></li>
+                <li>Independence, highest rank under CEO <span class="ref">D-426 Art. 20</span></li>
             </ul>
             <div class="stack-md"><span class="tag tag--green">No residency for DASPs</span></div>
             <p class="note-sm">Explicit exemption <span class="ref">UIF Instr. Art. 84-B(2)</span>. Must have employment relationship.</p>
@@ -2262,7 +2115,7 @@
         <div class="card">
             <h3>Alternate Compliance Officer</h3>
             <ul>
-                <li><strong>Mandatory</strong> by law <span class="ref">AML Law Art. 20</span></li>
+                <li><strong>Mandatory</strong> by law <span class="ref">D-426 Art. 20</span></li>
                 <li>Same qualifications as Principal CO</li>
                 <li>AML/CFT cert + UIF registration <span class="ref">UIF Instr. Arts. 3, 64</span></li>
             </ul>
@@ -2281,7 +2134,7 @@
     </div>
 
     <div class="callout callout--blue" style="margin-top:1.25rem;">
-        <p><strong>Prevention Committee</strong> <span class="ref">AML Law Art. 23</span>: DASPs must form a Prevention Committee — 3+ members including one Board member and CO. Natural persons may opt out of CO designation — they assume all AML duties personally <span class="ref">AML Law Art. 22</span>.</p>
+        <p><strong>Prevention Committee</strong> <span class="ref">D-426 Art. 23</span>: DASPs must form a Prevention Committee — 3+ members including one Board member and CO. Natural persons may opt out of CO designation — they assume all AML duties personally <span class="ref">D-426 Art. 22</span>.</p>
     </div>
 
     <div class="card card--top-blue card--full stack-lg">
@@ -2315,7 +2168,7 @@
                 </tr>
                 <tr>
                     <td><strong>Compliance Officer</strong></td>
-                    <td>AML/CFT oversight. Board-appointed, highest managerial rank below CEO <span class="ref">AML Law Art. 20</span>. Principal + Alternate mandatory.</td>
+                    <td>AML/CFT oversight. Board-appointed, highest managerial rank below CEO <span class="ref">D-426 Art. 20</span>. Principal + Alternate mandatory.</td>
                     <td>Not required for DASPs <span class="ref">UIF Instr. Art. 84-B(2)</span></td>
                     <td>CNAD + UIF</td>
                 </tr>
@@ -2688,9 +2541,9 @@
         <div><dt>BCR</dt><dd>Banco Central de Reserva de El Salvador. Supervises BSPs.</dd></div>
         <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Statutory thresholds: ≥10% [Instr. Arts. 12, 20], ≥25% [D-426 Art. 2]. Apply 10% as floor (stricter rule). For trusts, identify all parties [Instr. Art. 21].</dd></div>
         <div><dt>BSP</dt><dd>Bitcoin Service Provider. Registration under the Bitcoin Law (Decree 57/2021).</dd></div>
-        <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12 (a–i). Triggered by ongoing relationship [AML Law Art. 15(a)] OR occasional transaction above the applicable reporting threshold for that transaction type [AML Law Art. 15(b) → Instr. Arts. 51, 52]. For DASPs handling e-transfers, the practical CDD trigger is US,000 (Art. 52(a)(b)).</dd></div>
+        <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12 (a–i). Triggered by ongoing relationship [D-426 Art. 15(a)] OR occasional transaction above the applicable reporting threshold for that transaction type [D-426 Art. 15(b) → Instr. Arts. 51, 52]. For DASPs handling e-transfers, the practical CDD trigger is US,000 (Art. 52(a)(b)).</dd></div>
         <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales. The digital-asset regulator.</dd></div>
-        <div><dt>CNAD Guide (deprecated)</dt><dd>The CNAD AML/CFT Risk Management Guide for the Digital Assets Industry (2023) cited Instructivo Art. 84-B(1)(e), which has been restructured by Reform (2) into Art. 52 par. 2. References to the Guide have been removed across this portal; binding sources are Instructivo Art. 52 reformed, AML Law Art. 15, D-426 and LECAT.</dd></div>
+        <div><dt>CNAD Guide (deprecated)</dt><dd>The CNAD AML/CFT Risk Management Guide for the Digital Assets Industry (2023) cited Instructivo Art. 84-B(1)(e), which has been restructured by Reform (2) into Art. 52 par. 2. References to the Guide have been removed across this portal; binding sources are Instructivo Art. 52 reformed, D-426 Art. 15, D-426 and LECAT.</dd></div>
         <div><dt>CNR</dt><dd>Centro Nacional de Registros. Corporate and commercial registry.</dd></div>
         <div><dt>CO</dt><dd>Compliance Officer. Principal and Alternate COs are mandatory for DASPs.</dd></div>
         <div><dt>Cód. Com.</dt><dd>Código de Comercio — Salvadoran Commercial Code.</dd></div>
