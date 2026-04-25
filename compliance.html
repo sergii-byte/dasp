@@ -790,10 +790,10 @@
                         <td><span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Below all thresholds AND no risk factor</strong></td>
+                        <td><strong>Below all thresholds AND no risk factor</strong> (low-risk)</td>
                         <td class="num">— </td>
-                        <td><span class="pill pill--no">No statutory CDD</span> — Travel Rule + sanctions screen only</td>
-                        <td><span class="cite cite--instr">Instr. Art. 52 par. 2</span> + <span class="cite cite--lecat">LECAT Art. 37</span></td>
+                        <td><span class="pill pill--no">Simplified DD</span> — Art. 14 measures (deferred verification, reduced monitoring) + Travel Rule + sanctions screen</td>
+                        <td><span class="cite cite--d426">D-426 Art. 17</span> + <span class="cite cite--instr">Instr. Art. 14</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -801,35 +801,36 @@
             <p class="tbl-note">Most DASP operations are e-transfers — the practical CDD trigger is therefore <strong>$1,000</strong> via the D-426 Art. 15(b) → Instr. Art. 52(a) chain. Internal AML policy may calibrate a lower threshold per FATF R.10 risk-based principles.</p>
 
             <h3>What you collect, store and verify — by DD level</h3>
-            <p>Three operational levels: a Travel-Rule baseline (no statutory CDD triggered), Standard CDD (Instr. Art.&nbsp;12 measures), and EDD (Instr. Art.&nbsp;13 measures with documentary verification of source).</p>
+            <p>Salvadoran statute defines three DD levels: <strong>Simplified DD</strong> (low-risk customers, Art. 14), <strong>Standard CDD</strong> (Art. 12 measures, full identification) and <strong>Enhanced DD</strong> (Art. 13, documentary verification of source). All three sit on top of a baseline of Travel Rule data + sanctions screening which applies to every transfer regardless of DD level.</p>
             <div class="tbl-wrap">
             <table class="tbl">
                 <thead>
                     <tr>
                         <th>Data / document</th>
-                        <th>Travel-Rule baseline<br><span style="font-weight:400;color:var(--text-3);">no CDD</span></th>
+                        <th>Simplified DD<br><span class="cite cite--instr" style="margin:0;">Instr. Art. 14</span></th>
                         <th>Standard CDD<br><span class="cite cite--instr" style="margin:0;">Instr. Art. 12</span></th>
                         <th>EDD<br><span class="cite cite--instr" style="margin:0;">Instr. Art. 13</span></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Government photo ID</td><td>Name + ID type/number only</td><td>Required · official document, copy on file</td><td>Required · two IDs preferred</td></tr>
-                    <tr><td>Address (utility ≤3m / bank statement / registry)</td><td>—</td><td>Documented</td><td>Documented · independently verified</td></tr>
-                    <tr><td>Occupation (natural person)</td><td>—</td><td>Self-declared</td><td>Documented · employer letter / payslip</td></tr>
-                    <tr><td>Date of birth (natural person)</td><td>—</td><td>Required</td><td>Required</td></tr>
-                    <tr><td>Nature of main activity (legal entity)</td><td>—</td><td>Documented · per registry</td><td>Documented + verified vs. counterparties</td></tr>
-                    <tr><td>Tax ID (NIT)</td><td>—</td><td>Required</td><td>Required</td></tr>
-                    <tr><td>Beneficial owner (legal entity, ≥10% floor)</td><td>—</td><td>Required · chain to natural person</td><td>Required · chain + supporting docs</td></tr>
+                    <tr><td>Government photo ID</td><td>Required · <em>verification may be deferred</em> until after relationship begins</td><td>Required · official document, verified BEFORE relationship</td><td>Required · two IDs preferred</td></tr>
+                    <tr><td>Address (utility ≤3m / bank statement / registry)</td><td>Self-declared</td><td>Documented</td><td>Documented · independently verified</td></tr>
+                    <tr><td>Occupation (natural person)</td><td>Self-declared</td><td>Self-declared</td><td>Documented · employer letter / payslip</td></tr>
+                    <tr><td>Date of birth (natural person)</td><td>Required</td><td>Required</td><td>Required</td></tr>
+                    <tr><td>Nature of main activity (legal entity)</td><td>Inferred from transaction pattern</td><td>Documented · per registry</td><td>Documented + verified vs. counterparties</td></tr>
+                    <tr><td>Tax ID (NIT)</td><td>Required</td><td>Required</td><td>Required</td></tr>
+                    <tr><td>Beneficial owner (legal entity, ≥10% floor)</td><td>Identification only · verification deferred</td><td>Required · chain to natural person · verified at onboarding</td><td>Required · chain + supporting docs</td></tr>
                     <tr><td>Source of funds for the transaction</td><td>—</td><td>Self-declared; documents on doubt</td><td>Documentary (payslip / contract / invoice / bank statement)</td></tr>
                     <tr><td>Source of wealth (overall patrimony)</td><td>—</td><td>—</td><td>Required · documented</td></tr>
-                    <tr><td>Expected activity profile (volume / frequency / counterparties)</td><td>—</td><td>Brief profile on file</td><td>Full + scenarios + monitoring baseline</td></tr>
-                    <tr><td>PEP self-declaration + screening</td><td>Sanctions screen only</td><td>Required + periodic re-check</td><td>Required + every-tx re-check</td></tr>
+                    <tr><td>Expected activity profile (volume / frequency / counterparties)</td><td>Inferred from transaction pattern (no separate collection)</td><td>Brief profile on file</td><td>Full + scenarios + monitoring baseline</td></tr>
+                    <tr><td>PEP self-declaration + screening</td><td>Required (low-risk by definition excludes PEPs)</td><td>Required + periodic re-check</td><td>Required + every-tx re-check</td></tr>
                     <tr><td>Senior-management written approval</td><td>—</td><td>—</td><td>Required (file dated)</td></tr>
-                    <tr><td>Enhanced ongoing monitoring</td><td>—</td><td>Standard cadence</td><td>Required · KYT on every transaction</td></tr>
+                    <tr><td>Ongoing monitoring frequency</td><td><strong>Reduced</strong> per reasonable monetary threshold</td><td>Standard cadence</td><td>Enhanced · KYT on every transaction</td></tr>
+                    <tr><td>Identification updates</td><td><strong>Reduced</strong> frequency</td><td>Standard cadence (every relationship review)</td><td>Annual + on every material change</td></tr>
                 </tbody>
             </table>
             </div>
-            <p class="tbl-note">"Travel-Rule baseline" = data required for transfers below all CDD thresholds with no risk factor. The Travel Rule itself never depends on amount or DD level (Instr. Art. 52 par. 2 reformed).</p>
+            <p class="tbl-note">SDD <strong>not acceptable</strong> if any suspicion arises or in higher-risk scenarios — escalates to Standard CDD or STR pipeline (Instr. Art. 14 final paragraph). Travel Rule data + sanctions / PEP screening apply at all DD levels — they are independent of the DD classification.</p>
         </section>
 
         <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
