@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Decision Wizard for El Salvador DASP transactions — instant CDD/EDD verdict, triggered obligations only, jurisdiction screen, statutory citations.">
+    <meta name="theme-color" content="#faf9f5">
+    <title>Decision Wizard — El Salvador DASP</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d97757'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --bg: #faf9f5;
+            --bg-alt: #f2f0e8;
+            --bg-deep: #ece9dd;
+            --border: #e4e1d4;
+            --border-light: #eeece2;
+            --text: #141413;
+            --text-2: #3d3929;
+            --text-3: #6b6758;
+            --text-muted: #b0aea5;
+            --accent: #d97757;
+            --accent-2: #c26a49;
+            --accent-light: #fbf0eb;
+            --emerald: #788c5d;
+            --emerald-2: #6a7c51;
+            --emerald-light: #f1f3ea;
+            --amber: #b8893a;
+            --amber-light: #f7f0e0;
+            --amber-border: #e6d4a8;
+            --red: #b84a3a;
+            --red-light: #f5e8e5;
+            --red-border: #e3beb5;
+            --navy: #141413;
+            --blue: #6a9bcc;
+            --blue-light: #ecf2f8;
+            --purple: #7a5b9c;
+            --purple-light: #efeaf6;
+            --r-sm: 6px;
+            --r-md: 10px;
+            --r-lg: 14px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141413; --bg-alt: #1a1917; --bg-deep: #232220; --border: #2a2824; --border-light: #24221e;
+                --text: #faf9f5; --text-2: #d6d3c4; --text-3: #b0aea5;
+                --accent: #e89075; --accent-light: rgba(217,119,87,0.14);
+                --emerald: #9cb381; --emerald-light: rgba(120,140,93,0.14);
+                --amber: #d9a862; --amber-light: rgba(184,137,58,0.16);
+                --red: #d97060; --red-light: rgba(184,74,58,0.14);
+                --blue: #8ab2d9; --blue-light: rgba(106,155,204,0.14);
+                --purple: #a48bc4; --purple-light: rgba(122,91,156,0.14);
+                --navy: #faf9f5; --white: #1f1e1c;
+            }
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+        }
+        .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(250,249,245,0.90);
+            backdrop-filter: blur(12px) saturate(1.1);
+            -webkit-backdrop-filter: blur(12px) saturate(1.1);
+            border-bottom: 1px solid var(--border);
+        }
+        @media (prefers-color-scheme: dark) {
+            .topbar { background: rgba(20,20,19,0.88); }
+        }
+        .topbar__inner {
+            max-width: 1320px; margin: 0 auto; padding: 0 1.5rem;
+            display: flex; align-items: center; gap: 1.5rem;
+            min-height: 56px;
+        }
+        .topbar__brand {
+            font-weight: 700; font-size: 0.85rem; letter-spacing: -0.01em;
+            color: var(--navy); text-decoration: none;
+            display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+        }
+        .topbar__brand::before {
+            content: ""; display: inline-block; width: 22px; height: 22px;
+            background: var(--accent); border-radius: 5px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E");
+            background-size: contain; background-repeat: no-repeat;
+        }
+        .topbar__nav { display: flex; gap: 0.25rem; align-items: center; margin-left: auto; }
+        .topbar__link {
+            font-size: 0.85rem; font-weight: 500; color: var(--text-2);
+            text-decoration: none; padding: 0.5rem 0.85rem; border-radius: 6px;
+            transition: background 0.15s, color 0.15s;
+        }
+        .topbar__link:hover { background: var(--accent-light); color: var(--accent); text-decoration: none; }
+        .topbar__link[aria-current="page"] { background: var(--accent); color: white; }
+
+        /* ── HERO ── */
+        .hero {
+            max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 1.25rem;
+        }
+        .hero__label {
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem;
+        }
+        .hero__title {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.05; letter-spacing: -0.015em;
+            color: var(--navy); margin-bottom: 0.85rem;
+        }
+        .hero__title em { font-style: italic; color: var(--accent); }
+        .hero__lead {
+            font-size: 1rem; line-height: 1.55; color: var(--text-2);
+            max-width: 740px;
+        }
+
+        /* ── WIZARD LAYOUT ── */
+        .wizard {
+            max-width: 1100px; margin: 1.5rem auto 3rem; padding: 0 1.5rem;
+            display: grid; grid-template-columns: minmax(320px, 380px) 1fr;
+            gap: 1.5rem; align-items: start;
+        }
+        @media (max-width: 880px) {
+            .wizard { grid-template-columns: 1fr; }
+        }
+
+        /* ── INPUT PANEL (sticky on desktop) ── */
+        .panel {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-lg); padding: 1.5rem;
+        }
+        .panel--sticky {
+            position: sticky; top: 76px;
+            max-height: calc(100vh - 96px);
+            overflow-y: auto;
+        }
+        @media (max-width: 880px) { .panel--sticky { position: static; max-height: none; } }
+        .panel__title {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1.15rem; color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        /* ── FIELDSETS ── */
+        .field {
+            border: none; padding: 0; margin: 0 0 1rem 0;
+        }
+        .field__legend {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.5rem;
+            display: block;
+        }
+        .field__hint { font-size: 0.78rem; color: var(--text-3); margin-top: 0.4rem; }
+
+        /* Chips for radio groups */
+        .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .chip {
+            font-size: 0.85rem; cursor: pointer; user-select: none;
+            background: var(--bg-alt); border: 1px solid var(--border-light);
+            padding: 0.4rem 0.75rem; border-radius: 6px; color: var(--text-2);
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+        .chip:hover { background: var(--bg-deep); }
+        .chip:has(input:checked) { background: var(--accent); color: white; border-color: var(--accent); }
+        .chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+        /* Inputs */
+        .input, .select {
+            width: 100%; padding: 0.55rem 0.75rem;
+            border: 1px solid var(--border); border-radius: 6px;
+            background: var(--white); color: var(--text); font: inherit; font-size: 0.9rem;
+        }
+        .input:focus, .select:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        /* Amount input with $ prefix */
+        .amount {
+            position: relative;
+        }
+        .amount::before {
+            content: "$"; position: absolute; left: 0.75rem; top: 50%;
+            transform: translateY(-50%); color: var(--text-3); font-size: 0.95rem;
+            pointer-events: none;
+        }
+        .amount .input { padding-left: 1.5rem; }
+
+        /* Risk-factor checks */
+        .check {
+            display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.88rem;
+            cursor: pointer; padding: 0.35rem 0.5rem; border-radius: 5px;
+            color: var(--text-2); margin: 0.1rem -0.5rem;
+        }
+        .check:hover { background: var(--bg-alt); }
+        .check input { margin-top: 0.18rem; accent-color: var(--accent); }
+        .check.danger:has(input:checked) { background: var(--red-light); color: var(--red); }
+
+        /* Action buttons */
+        .actions {
+            display: flex; gap: 0.5rem; padding-top: 0.75rem;
+            border-top: 1px solid var(--border-light); margin-top: 0.75rem;
+        }
+        .btn {
+            font: inherit; font-size: 0.82rem; padding: 0.55rem 0.95rem;
+            border-radius: 6px; cursor: pointer; border: 1px solid var(--border);
+            background: var(--white); color: var(--text-2);
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+        .btn:hover { background: var(--bg-alt); color: var(--accent); border-color: var(--accent-light); }
+        .btn--primary {
+            background: var(--accent); color: white; border-color: var(--accent);
+        }
+        .btn--primary:hover { background: var(--accent-2); color: white; }
+
+        /* ── OUTPUT PANEL ── */
+        .output {
+            display: flex; flex-direction: column; gap: 0.85rem;
+        }
+        .verdict {
+            border-radius: var(--r-lg); padding: 1.25rem 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .verdict__icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Instrument Serif', Georgia, serif; font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+        .verdict__title {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1.5rem; line-height: 1.15; color: var(--navy);
+        }
+        .verdict__reason { font-size: 0.88rem; color: var(--text-2); margin-top: 0.2rem; line-height: 1.45; }
+
+        .verdict--no { background: var(--bg-deep); border: 1px solid var(--border); }
+        .verdict--no .verdict__icon { background: var(--text-3); color: white; }
+        .verdict--cdd { background: var(--blue-light); border: 1px solid #c7d8ea; }
+        .verdict--cdd .verdict__icon { background: var(--blue); color: white; }
+        .verdict--edd { background: var(--amber-light); border: 1px solid var(--amber-border); }
+        .verdict--edd .verdict__icon { background: var(--amber); color: white; }
+        .verdict--reject { background: var(--red-light); border: 1px solid var(--red-border); }
+        .verdict--reject .verdict__icon { background: var(--red); color: white; }
+        .verdict--reject .verdict__title { color: var(--red); }
+
+        /* Output blocks */
+        .block {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-md); padding: 1rem 1.15rem;
+        }
+        .block__head {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .block__head::before {
+            content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+            background: var(--text-muted);
+        }
+        .block--green .block__head::before { background: var(--emerald); }
+        .block--blue  .block__head::before { background: var(--blue); }
+        .block--amber .block__head::before { background: var(--amber); }
+        .block--red   .block__head::before { background: var(--red); }
+        .block ul { padding-left: 1.15rem; font-size: 0.88rem; color: var(--text-2); line-height: 1.5; }
+        .block li { margin: 0.18rem 0; }
+        .block li strong { color: var(--navy); }
+
+        /* Citation chip inside outputs */
+        .cite {
+            display: inline-block; font-size: 0.68rem; font-weight: 600;
+            padding: 0.06rem 0.4rem; border-radius: 3px;
+            margin-left: 0.2rem; vertical-align: 1px; white-space: nowrap;
+            background: var(--bg-deep); color: var(--text-3);
+        }
+        .cite--d426  { background: var(--blue-light); color: #2c5780; }
+        .cite--instr { background: var(--emerald-light); color: var(--emerald-2); }
+        .cite--lecat { background: var(--purple-light); color: #5d4380; }
+        @media (prefers-color-scheme: dark) {
+            .cite--d426  { color: #9ec0e3; }
+            .cite--instr { color: #b9cea1; }
+            .cite--lecat { color: #c4a8e1; }
+        }
+
+        /* Placeholder */
+        .placeholder {
+            color: var(--text-3); font-style: italic; padding: 2.5rem 1.5rem;
+            text-align: center; border: 1px dashed var(--border); border-radius: var(--r-lg);
+            font-size: 0.95rem; background: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border); margin-top: 2rem; padding: 2rem 1.5rem;
+            font-size: 0.8rem; color: var(--text-3); text-align: center;
+        }
+        .footer a { color: var(--accent); }
+        .footer__nav { margin-top: 0.5rem; }
+    </style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══ -->
+<header class="topbar">
+    <div class="topbar__inner">
+        <a href="/" class="topbar__brand">El Salvador DASP</a>
+        <nav class="topbar__nav" aria-label="Main">
+            <a href="/" class="topbar__link">Overview</a>
+            <a href="/licensing.html" class="topbar__link">Licensing</a>
+            <a href="/compliance.html" class="topbar__link">Compliance</a>
+            <a href="/wizard.html" class="topbar__link" aria-current="page">Wizard</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero__label">Interactive Tool · Compliance Operations</div>
+    <h1 class="hero__title">Decision <em>Wizard</em></h1>
+    <p class="hero__lead">Enter the parameters of a transaction or onboarding scenario. The wizard returns <strong>only the obligations actually triggered</strong> — no SoF/SoW unless EDD applies, no senior-management approval unless EDD, no jurisdiction warnings unless the country matches the restricted list. Every output line cites its statutory anchor.</p>
+</section>
+
+<!-- ══ WIZARD ══ -->
+<div class="wizard" role="region" aria-label="AML decision wizard">
+
+    <form class="panel panel--sticky" id="wiz-form" autocomplete="off" onsubmit="return false;">
+        <h2 class="panel__title">Inputs</h2>
+
+        <fieldset class="field">
+            <legend class="field__legend">Client type</legend>
+            <div class="chips">
+                <label class="chip"><input type="radio" name="clientType" value="natural" checked> Natural person</label>
+                <label class="chip"><input type="radio" name="clientType" value="legal"> Legal entity</label>
+            </div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend class="field__legend">Relationship</legend>
+            <div class="chips">
+                <label class="chip"><input type="radio" name="rel" value="occasional" checked> Occasional</label>
+                <label class="chip"><input type="radio" name="rel" value="ongoing"> Ongoing</label>
+            </div>
+            <div class="field__hint">Ongoing = recurring service, account, custody. Occasional = one-off transaction.</div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend class="field__legend">Channel</legend>
+            <div class="chips">
+                <label class="chip"><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
+                <label class="chip"><input type="radio" name="channel" value="cash"> Cash</label>
+                <label class="chip"><input type="radio" name="channel" value="other"> Other means</label>
+                <label class="chip"><input type="radio" name="channel" value="remittance"> Family remittance</label>
+            </div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend class="field__legend">Amount (USD)</legend>
+            <div class="amount">
+                <input type="number" id="wiz-amount" class="input" value="500" min="0" step="100">
+            </div>
+            <div class="field__hint">Single transaction value (not aggregated).</div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend class="field__legend">Counterparty / client jurisdiction</legend>
+            <select id="wiz-jur" class="select">
+                <option value="standard" data-cat="">El Salvador / standard low-risk jurisdiction</option>
+                <option disabled>──── REJECT (geofence) ────</option>
+                <option value="reject" data-cat="FATF Call for Action">North Korea (DPRK)</option>
+                <option value="reject" data-cat="FATF Call for Action">Iran</option>
+                <option value="reject" data-cat="FATF Call for Action">Myanmar (Burma)</option>
+                <option value="reject" data-cat="UN Security Council">Central African Republic</option>
+                <option value="reject" data-cat="UN Security Council">DR Congo</option>
+                <option value="reject" data-cat="UN Security Council">Eritrea</option>
+                <option value="reject" data-cat="UN Security Council">Guinea-Bissau</option>
+                <option value="reject" data-cat="UN Security Council">Iraq</option>
+                <option value="reject" data-cat="UN Security Council">Lebanon</option>
+                <option value="reject" data-cat="UN Security Council">Libya</option>
+                <option value="reject" data-cat="UN Security Council">Mali</option>
+                <option value="reject" data-cat="UN Security Council">Somalia</option>
+                <option value="reject" data-cat="UN Security Council">South Sudan</option>
+                <option value="reject" data-cat="UN Security Council">Sudan</option>
+                <option value="reject" data-cat="UN Security Council">Yemen</option>
+                <option value="reject" data-cat="OFAC Comprehensive">Cuba</option>
+                <option value="reject" data-cat="OFAC Comprehensive">Crimea / Donetsk / Luhansk (UA)</option>
+                <option value="reject" data-cat="Crypto Ban">Algeria</option>
+                <option value="reject" data-cat="Crypto Ban">Bangladesh</option>
+                <option value="reject" data-cat="Crypto Ban">China</option>
+                <option value="reject" data-cat="Crypto Ban">Egypt</option>
+                <option value="reject" data-cat="Crypto Ban">Morocco</option>
+                <option value="reject" data-cat="Crypto Ban">Nepal</option>
+                <option value="reject" data-cat="Crypto Ban">Oman</option>
+                <option value="reject" data-cat="Crypto Ban">Qatar</option>
+                <option value="reject" data-cat="Crypto Ban">Tunisia</option>
+                <option disabled>──── EDD (senior approval) ────</option>
+                <option value="edd" data-cat="FATF Grey List">Angola</option>
+                <option value="edd" data-cat="FATF Grey List">Bolivia</option>
+                <option value="edd" data-cat="FATF Grey List">Bulgaria</option>
+                <option value="edd" data-cat="FATF Grey List">Cameroon</option>
+                <option value="edd" data-cat="FATF Grey List">Côte d'Ivoire</option>
+                <option value="edd" data-cat="FATF Grey List">Haiti</option>
+                <option value="edd" data-cat="FATF Grey List">Kenya</option>
+                <option value="edd" data-cat="FATF Grey List">Kuwait</option>
+                <option value="edd" data-cat="FATF Grey List">Laos</option>
+                <option value="edd" data-cat="FATF Grey List">Monaco</option>
+                <option value="edd" data-cat="FATF Grey List">Namibia</option>
+                <option value="edd" data-cat="FATF Grey List">Papua New Guinea</option>
+                <option value="edd" data-cat="FATF Grey List">Senegal</option>
+                <option value="edd" data-cat="FATF Grey List">Syria</option>
+                <option value="edd" data-cat="FATF Grey List">Venezuela</option>
+                <option value="edd" data-cat="FATF Grey List">Vietnam</option>
+                <option value="edd" data-cat="FATF Grey List">Virgin Islands (UK)</option>
+                <option value="edd" data-cat="Partial Sanctions">Belarus</option>
+                <option value="edd" data-cat="Partial Sanctions">Zimbabwe</option>
+            </select>
+            <div class="field__hint">Source: <a href="/compliance.html#sanctions">Restricted Jurisdictions list</a> · Risk Management Policy.</div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend class="field__legend">Risk factors (any → EDD)</legend>
+            <label class="check danger"><input type="checkbox" name="f" value="sanctions"> Sanctions hit confirmed (UNSC / UIF national)</label>
+            <label class="check"><input type="checkbox" name="f" value="pep"> PEP — self / family ≤2° / close associate</label>
+            <label class="check"><input type="checkbox" name="f" value="opaque"> Opaque / multi-layer / nominee ownership</label>
+            <label class="check"><input type="checkbox" name="f" value="cash"> Cash-intensive business / SoF unclear</label>
+            <label class="check"><input type="checkbox" name="f" value="structuring"> Structuring pattern detected</label>
+            <label class="check"><input type="checkbox" name="f" value="profile"> Material deviation from declared profile</label>
+            <label class="check"><input type="checkbox" name="f" value="mixer"> Counterparty wallet flagged (mixer / darknet)</label>
+            <label class="check"><input type="checkbox" name="f" value="thirdparty"> Third-party funder / beneficiary not contracting party</label>
+            <label class="check danger"><input type="checkbox" name="f" value="refuses"> Client refuses CDD / Travel Rule data</label>
+            <label class="check"><input type="checkbox" name="f" value="adverse"> Adverse media / law-enforcement reference</label>
+        </fieldset>
+
+        <div class="actions">
+            <button type="button" class="btn" id="wiz-reset">Reset</button>
+            <button type="button" class="btn" id="wiz-ex-low">Low-risk example</button>
+            <button type="button" class="btn btn--primary" id="wiz-ex-edd">EDD example</button>
+        </div>
+    </form>
+
+    <div class="output" id="wiz-output">
+        <div class="placeholder" id="wiz-placeholder">Adjust the form on the left — the obligations triggered for this transaction appear here in real time.</div>
+        <div id="wiz-result" hidden></div>
+    </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <div>Practitioner reference · Not legal advice · Consult licensed Salvadoran counsel.</div>
+    <div class="footer__nav">
+        <a href="/">Overview</a> · <a href="/licensing.html">Licensing</a> · <a href="/compliance.html">Compliance</a>
+    </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   AML DECISION WIZARD · v.3 — standalone page
+   Sources: D-426 · Instructivo (Reform 1 + Reform 2) · LECAT
+   Output: only obligations actually triggered.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+    'use strict';
+    const form = document.getElementById('wiz-form');
+    if (!form) return;
+    const placeholder = document.getElementById('wiz-placeholder');
+    const result = document.getElementById('wiz-result');
+    const amountEl = document.getElementById('wiz-amount');
+    const jurEl = document.getElementById('wiz-jur');
+
+    function readState() {
+        const fd = new FormData(form);
+        const factors = fd.getAll('f');
+        const jurOpt = jurEl.options[jurEl.selectedIndex];
+        return {
+            clientType: fd.get('clientType'),
+            rel: fd.get('rel'),
+            channel: fd.get('channel'),
+            amount: parseFloat(amountEl.value) || 0,
+            jur: jurEl.value,
+            jurName: jurOpt.text,
+            jurCat: jurOpt.dataset.cat || '',
+            f: {
+                sanctions: factors.includes('sanctions'),
+                pep: factors.includes('pep'),
+                opaque: factors.includes('opaque'),
+                cash: factors.includes('cash'),
+                structuring: factors.includes('structuring'),
+                profile: factors.includes('profile'),
+                mixer: factors.includes('mixer'),
+                thirdparty: factors.includes('thirdparty'),
+                refuses: factors.includes('refuses'),
+                adverse: factors.includes('adverse'),
+            }
+        };
+    }
+
+    function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+    function decide(s) {
+        // ── Hard stops ──
+        if (s.f.sanctions) return { v: 'reject', icon: '✕', title: 'Reject — sanctions match', reason: 'Confirmed match against UNSC or UIF national list. Freeze immediately, report to UIF, no tipping-off.' };
+        if (s.jur === 'reject') return { v: 'reject', icon: '✕', title: 'Reject — restricted jurisdiction', reason: esc(s.jurName) + ' (' + esc(s.jurCat) + ') is on the restricted-jurisdictions list. Geofence + reject; no account creation; no transactions.' };
+        if (s.f.refuses) return { v: 'reject', icon: '✕', title: 'Reject — client refuses CDD', reason: 'Client declines required CDD or Travel Rule data. Onboarding prohibited; the attempt itself is reportable.' };
+
+        // ── EDD path ──
+        const eddTriggers = [];
+        if (s.f.pep) eddTriggers.push('PEP');
+        if (s.f.opaque) eddTriggers.push('opaque ownership');
+        if (s.f.cash) eddTriggers.push('cash-intensive / SoF unclear');
+        if (s.f.structuring) eddTriggers.push('structuring pattern');
+        if (s.f.profile) eddTriggers.push('profile deviation');
+        if (s.f.mixer) eddTriggers.push('flagged counterparty wallet');
+        if (s.f.thirdparty) eddTriggers.push('third-party funder');
+        if (s.f.adverse) eddTriggers.push('adverse media');
+        if (s.jur === 'edd') eddTriggers.push('high-risk jurisdiction (' + esc(s.jurName) + ')');
+        if (eddTriggers.length) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence', reason: 'EDD trigger(s): ' + eddTriggers.join(', ') + '. Senior-management written approval required.', triggers: eddTriggers };
+
+        // ── CDD path (statutory triggers) ──
+        if (s.rel === 'ongoing') return { v: 'cdd', icon: '✓', title: 'Standard CDD', reason: 'Ongoing relationship — Standard CDD from day 1.' };
+        const ch = s.channel, amt = s.amount;
+        if (ch === 'etransfer' && amt >= 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD', reason: 'E-transfer ≥ $1,000 — Standard CDD triggered.' };
+        if (ch === 'remittance' && amt >= 200) return { v: 'cdd', icon: '✓', title: 'Standard CDD', reason: 'Family remittance ≥ $200 — Standard CDD triggered.' };
+        if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD + report', reason: 'Cash > $10,000 — Standard CDD + Operación Regulada triggered.' };
+        if (ch === 'other' && amt > 25000) return { v: 'cdd', icon: '✓', title: 'Standard CDD + report', reason: 'Other-means > $25,000 — Standard CDD + Operación Regulada triggered.' };
+
+        // ── Default ──
+        return { v: 'no', icon: '○', title: 'No statutory CDD', reason: 'Below all statutory CDD thresholds AND no risk factor — Travel Rule data + sanctions screen only.' };
+    }
+
+    function block(cls, head, items) {
+        if (!items || !items.length) return '';
+        return '<div class="block ' + cls + '"><div class="block__head">' + head + '</div><ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul></div>';
+    }
+
+    function buildOutput(s, d) {
+        const parts = [];
+
+        // Verdict
+        parts.push(
+            '<div class="verdict verdict--' + d.v + '">' +
+                '<div class="verdict__icon">' + d.icon + '</div>' +
+                '<div>' +
+                    '<div class="verdict__title">' + d.title + '</div>' +
+                    '<div class="verdict__reason">' + d.reason + '</div>' +
+                '</div>' +
+            '</div>'
+        );
+
+        // ── Travel Rule (always except reject) ──
+        if (d.v !== 'reject') {
+            const isLegal = s.clientType === 'legal';
+            const idLine = isLegal
+                ? 'Type and number of identification document — NIT or registration number'
+                : 'Type and number of identification document — DUI or passport';
+            parts.push(block('block--green', 'Travel Rule data — every transfer, any amount <span class="cite cite--instr">Instr. Art. 52 par.2</span>', [
+                '<strong>Originator:</strong> name, account number, ' + idLine,
+                '<strong>Beneficiary:</strong> name, account number, beneficiary bank name',
+                '<strong>Transaction:</strong> identifier (reference / hash / unique ID)',
+                'Batch processing: full data per transfer in any grouped file',
+            ]));
+        }
+
+        // ── Identity Verification ──
+        if (d.v !== 'reject' && (d.v === 'cdd' || d.v === 'edd')) {
+            parts.push(block('block--green', 'Identity verification — BEFORE relationship begins <span class="cite cite--instr">Instr. Art. 12 Reform 2</span>', [
+                'Verify identity via official document issued by competent public authority',
+                'Document must be current at the time of onboarding',
+                'For legal persons: verify articles of incorporation + powers + senior management names',
+                'If verification fails → relationship cannot start; analyse under suspicious-transaction framework',
+            ]));
+        }
+
+        // ── Sanctions / PEP screen (always except reject) ──
+        if (d.v !== 'reject') {
+            parts.push(block('block--blue', 'Sanctions &amp; PEP screening — at every transaction', [
+                'UNSC consolidated lists (1267, 1373, 1718, 1988, 2231) <span class="cite cite--lecat">LECAT Art. 37</span>',
+                'UIF national designated list',
+                'PEP database — Refinitiv / Dow Jones / ComplyAdvantage <span class="cite cite--instr">Instr. Arts. 16-18</span>',
+                'On hit: freeze + UIF report + tipping-off prohibited <span class="cite cite--d426">D-426 Art. 44</span>',
+            ]));
+        }
+
+        // ── CDD documentation (only if CDD or EDD) ──
+        if (d.v === 'cdd' || d.v === 'edd') {
+            const cdd = s.clientType === 'natural' ? [
+                'Government photo ID (DUI / passport / residence)',
+                'Address proof (utility ≤3m / bank statement)',
+                'Occupation declared (documented at EDD)',
+                'Date of birth',
+                'Tax ID (NIT) if applicable',
+                'PEP self-declaration + screening',
+                'Expected activity profile (volume, frequency)',
+            ] : [
+                'Articles of incorporation (escritura)',
+                'Commercial registry extract (≤3m)',
+                'NIT + operating licence',
+                'Board / assembly resolution authorising relationship',
+                'Shareholder register — chain to natural BO (≥10% floor)',
+                'Authorised signatories: IDs + powers',
+                'Business purpose + main counterparties + jurisdictions',
+                'Expected volume + frequency',
+            ];
+            parts.push(block('block--blue', 'Standard CDD documentation <span class="cite cite--instr">Instr. Art. 12</span>', cdd));
+        }
+
+        // ── EDD-only additions ──
+        if (d.v === 'edd') {
+            const edd = [
+                '<strong>Senior-management written approval</strong> to open / continue (dated, signed)',
+                '<strong>Source of Funds</strong> documentary (payslip / contract / invoice / bank statement)',
+                '<strong>Source of Wealth</strong> documentary (asset declaration, deeds, financial statements)',
+                'Two government IDs preferred (natural person)',
+                'Audited financials if size warrants (legal entity)',
+                'Enhanced ongoing monitoring — KYT on every transaction',
+                'Annual EDD refresh',
+            ];
+            parts.push(block('block--amber', 'EDD measures <span class="cite cite--instr">Instr. Art. 13 Reform 2</span>', edd));
+
+            if (s.f.pep) {
+                parts.push(block('block--amber', 'PEP-specific obligations <span class="cite cite--d426">D-426 Art. 19</span>', [
+                    'PEP file with category (national / foreign / international organisation)',
+                    'Family ≤ 2nd degree + spouses + close associates screened as PEP-related',
+                    'Status persists 5 years post-cease of public function',
+                    'Annual PEP re-check; senior-mgmt approval at each review',
+                ]));
+            }
+            if (s.jur === 'edd') {
+                parts.push(block('block--amber', 'Jurisdiction-specific (' + esc(s.jurName) + ')', [
+                    'Category: ' + esc(s.jurCat),
+                    'Per Risk Management Policy — EDD baseline + senior approval',
+                    'KYT on every transaction with this counterparty',
+                    'Periodic re-screen against jurisdiction-specific sanctions',
+                    'If risk appetite declines → neutral-ground termination (do not cite jurisdiction)',
+                ]));
+            }
+        }
+
+        // ── Reporting obligations ──
+        const reports = [];
+        const ch = s.channel, amt = s.amount;
+        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 working days to UIF <span class="cite cite--d426">D-426 Art. 25</span>');
+        if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 working days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
+        if (ch === 'etransfer' && amt >= 1000) reports.push('<strong>Monthly E-Transfer Report:</strong> first 5 wd of next month <span class="cite cite--instr">Instr. Art. 52(a)(b)</span>');
+        if (ch === 'remittance' && amt >= 200) reports.push('<strong>Monthly Remittance Report:</strong> first 5 wd of next month <span class="cite cite--instr">Instr. Art. 52(c)</span>');
+        if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
+        if (d.v === 'reject' && s.f.refuses) reports.push('<strong>Attempted operation:</strong> STR pipeline if suspicious <span class="cite cite--instr">Instr. Art. 47</span>');
+        if (reports.length) parts.push(block('block--blue', 'Reporting obligations triggered', reports));
+
+        // ── STR sensitivity (only when red flags suggest) ──
+        const strFlags = [];
+        if (s.f.structuring) strFlags.push('structuring pattern');
+        if (s.f.mixer) strFlags.push('flagged wallet / mixer exposure');
+        if (s.f.profile) strFlags.push('profile deviation');
+        if (s.f.thirdparty) strFlags.push('third-party funder');
+        if (s.f.adverse) strFlags.push('adverse media');
+        if (strFlags.length) {
+            parts.push(block('block--red', 'Elevated STR sensitivity — analyse', [
+                'Indicator(s): ' + strFlags.join(', '),
+                'Open analysis ticket; assign to CO',
+                'Internal analysis ≤ 15 working days <span class="cite cite--d426">D-426 Art. 24</span>',
+                'On determination: <strong>STR within 24 hours wall-clock</strong>',
+                'Tipping-off prohibited <span class="cite cite--d426">D-426 Art. 44</span>',
+            ]));
+        }
+
+        // ── Retention (always except reject) ──
+        if (d.v !== 'reject') {
+            parts.push(block('block--green', 'Retention &amp; records <span class="cite cite--d426">D-426 Art. 26</span>', [
+                '<strong>15 years</strong> from operation date or relationship termination',
+                'Format: physical / digital / electronic — equally valid',
+                'Per-client organised; chronological per transaction',
+                'Accessible to UIF on request without delay',
+            ]));
+        }
+
+        return parts.join('');
+    }
+
+    function render() {
+        const s = readState();
+        const d = decide(s);
+        result.innerHTML = buildOutput(s, d);
+        result.hidden = false;
+        placeholder.style.display = 'none';
+    }
+
+    form.addEventListener('input', render);
+    form.addEventListener('change', render);
+
+    document.getElementById('wiz-reset').addEventListener('click', () => {
+        form.reset();
+        amountEl.value = 500;
+        jurEl.selectedIndex = 0;
+        render();
+    });
+
+    document.getElementById('wiz-ex-low').addEventListener('click', () => {
+        form.querySelector('input[name="clientType"][value="natural"]').checked = true;
+        form.querySelector('input[name="rel"][value="occasional"]').checked = true;
+        form.querySelector('input[name="channel"][value="etransfer"]').checked = true;
+        amountEl.value = 500;
+        jurEl.selectedIndex = 0;
+        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
+        render();
+    });
+
+    document.getElementById('wiz-ex-edd').addEventListener('click', () => {
+        form.querySelector('input[name="clientType"][value="legal"]').checked = true;
+        form.querySelector('input[name="rel"][value="ongoing"]').checked = true;
+        form.querySelector('input[name="channel"][value="etransfer"]').checked = true;
+        amountEl.value = 50000;
+        // Pick first EDD jurisdiction (Angola)
+        for (let i = 0; i < jurEl.options.length; i++) {
+            if (jurEl.options[i].value === 'edd') { jurEl.selectedIndex = i; break; }
+        }
+        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
+        form.querySelector('input[name="f"][value="pep"]').checked = true;
+        form.querySelector('input[name="f"][value="opaque"]').checked = true;
+        render();
+    });
+
+    render();
+})();
+</script>
+
+</body>
+</html>

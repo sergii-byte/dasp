@@ -162,10 +162,15 @@
             max-width: 620px; margin: 0 auto 3rem;
         }
         .guides__grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
         }
-        @media (max-width: 720px) {
+        @media (max-width: 960px) {
+            .guides__grid { grid-template-columns: 1fr 1fr; }
+            .guide-card--wizard { grid-column: 1 / -1; }
+        }
+        @media (max-width: 640px) {
             .guides__grid { grid-template-columns: 1fr; }
+            .guide-card--wizard { grid-column: auto; }
         }
         .guide-card {
             background: var(--white); border: 1px solid var(--border);
@@ -180,17 +185,20 @@
             background: var(--accent);
         }
         .guide-card.guide-card--compliance::before { background: var(--emerald); }
+        .guide-card.guide-card--wizard::before { background: var(--amber); }
         .guide-card:hover {
             transform: translateY(-3px); box-shadow: var(--shadow-lg);
             border-color: var(--accent-border);
         }
         .guide-card.guide-card--compliance:hover { border-color: var(--emerald-border); }
+        .guide-card.guide-card--wizard:hover { border-color: var(--amber-border, #e6d4a8); }
         .guide-card__num {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 0.95rem; color: var(--accent); margin-bottom: -0.25rem;
             font-style: italic;
         }
         .guide-card--compliance .guide-card__num { color: var(--emerald); }
+        .guide-card--wizard .guide-card__num { color: var(--amber); }
         .guide-card__title {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 1.6rem; line-height: 1.15; font-weight: 400;
@@ -213,6 +221,7 @@
             align-items: center; gap: 0.4rem;
         }
         .guide-card--compliance .guide-card__cta { color: var(--emerald); }
+        .guide-card--wizard .guide-card__cta { color: var(--amber); }
         .guide-card__cta::after {
             content: "→"; transition: transform 0.2s;
         }
@@ -284,6 +293,7 @@
             <a href="/" class="topbar__link" aria-current="page">Overview</a>
             <a href="/licensing.html" class="topbar__link">Licensing</a>
             <a href="/compliance.html" class="topbar__link">Compliance</a>
+            <a href="/wizard.html" class="topbar__link" style="background:var(--accent);color:white;">Wizard ↗</a>
         </nav>
     </div>
 </header>
@@ -345,9 +355,10 @@
             <a href="/compliance.html" class="guide-card guide-card--compliance">
                 <span class="guide-card__num">Guide 02</span>
                 <h3 class="guide-card__title">AML &amp; Compliance Operations</h3>
-                <p class="guide-card__desc">For the Compliance Officer running day-to-day. CDD / EDD by trigger, Travel Rule under reformed Art. 52, complete reporting hub (STR · Operación Regulada · monthly), sanctions, PEP, suspicious-transaction framework, retention.</p>
+                <p class="guide-card__desc">For the Compliance Officer running day-to-day. CDD / EDD by trigger, identity verification, Travel Rule under reformed Art. 52, complete reporting hub (STR · Operación Regulada · monthly), sanctions, PEP, suspicious-transaction framework, retention.</p>
                 <div class="guide-card__topics">
                     <span>CDD &amp; EDD</span>
+                    <span>Identity verification</span>
                     <span>Travel Rule</span>
                     <span>Reporting Hub</span>
                     <span>STR</span>
@@ -355,10 +366,23 @@
                     <span>PEP</span>
                     <span>Suspicious &amp; Unusual Tx</span>
                     <span>Records · 15 yr</span>
-                    <span>Decision Wizard</span>
                     <span>Red Flags</span>
                 </div>
                 <span class="guide-card__cta">Open the Compliance Guide</span>
+            </a>
+
+            <a href="/wizard.html" class="guide-card guide-card--wizard">
+                <span class="guide-card__num">Tool</span>
+                <h3 class="guide-card__title">Decision Wizard</h3>
+                <p class="guide-card__desc">Real-time AML decision tool. Enter client type, channel, amount, jurisdiction and risk factors — get the verdict (No CDD · CDD · EDD · Reject), the triggered obligations only, and the statutory citations for each.</p>
+                <div class="guide-card__topics">
+                    <span>Live verdict</span>
+                    <span>Jurisdiction screen</span>
+                    <span>Triggered obligations only</span>
+                    <span>Statutory citations</span>
+                    <span>Print-ready output</span>
+                </div>
+                <span class="guide-card__cta">Open the Wizard</span>
             </a>
         </div>
     </div>
@@ -420,7 +444,8 @@
         </div>
         <div>
             <a href="/licensing.html">Licensing</a> &nbsp;·&nbsp;
-            <a href="/compliance.html">Compliance</a>
+            <a href="/compliance.html">Compliance</a> &nbsp;·&nbsp;
+            <a href="/wizard.html">Wizard</a>
         </div>
     </div>
 </footer>

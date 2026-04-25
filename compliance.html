@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="El Salvador DASP AML/CTF compliance operations guide for the Compliance Officer. CDD by trigger, Travel Rule under Art. 52 par.2, full reporting hub, STR, sanctions, PEP, decision wizard.">
+    <meta name="description" content="El Salvador DASP AML/CTF compliance operations guide for the Compliance Officer. CDD by trigger, identity verification, Travel Rule under reformed Art. 52 par.2, full reporting hub, STR, sanctions, PEP, retention.">
     <meta name="theme-color" content="#faf9f5">
     <title>Compliance Operations — El Salvador DASP</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23788c5d'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
@@ -15,6 +15,7 @@
             --white: #ffffff;
             --bg: #faf9f5;
             --bg-alt: #f2f0e8;
+            --bg-deep: #ece9dd;
             --border: #e4e1d4;
             --border-light: #eeece2;
             --text: #141413;
@@ -36,50 +37,56 @@
             --red-light: #f5e8e5;
             --red-border: #e3beb5;
             --navy: #141413;
+            --blue: #6a9bcc;
+            --blue-light: #ecf2f8;
+            --purple: #7a5b9c;
+            --purple-light: #efeaf6;
             --r-sm: 6px;
             --r-md: 10px;
             --r-lg: 14px;
             --shadow-sm: 0 1px 2px rgba(20,20,19,0.04), 0 1px 3px rgba(20,20,19,0.03);
             --shadow-md: 0 4px 12px rgba(20,20,19,0.06), 0 2px 4px rgba(20,20,19,0.04);
-            --shadow-lg: 0 12px 32px rgba(20,20,19,0.08), 0 4px 8px rgba(20,20,19,0.04);
         }
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #141413; --bg-alt: #1a1917; --border: #2a2824; --border-light: #24221e;
+                --bg: #141413; --bg-alt: #1a1917; --bg-deep: #232220; --border: #2a2824; --border-light: #24221e;
                 --text: #faf9f5; --text-2: #d6d3c4; --text-3: #b0aea5;
                 --accent: #e89075; --accent-light: rgba(217,119,87,0.14); --accent-border: rgba(232,144,117,0.35);
                 --emerald: #9cb381; --emerald-light: rgba(120,140,93,0.14); --emerald-border: rgba(156,179,129,0.35);
-                --amber: #d9a862; --amber-light: rgba(184,137,58,0.16);
+                --amber: #d9a862; --amber-light: rgba(184,137,58,0.16); --amber-border: rgba(217,168,98,0.35);
                 --red: #d97060; --red-light: rgba(184,74,58,0.14); --red-border: rgba(217,112,96,0.35);
+                --blue: #8ab2d9; --blue-light: rgba(106,155,204,0.14);
+                --purple: #a48bc4; --purple-light: rgba(122,91,156,0.14);
                 --navy: #faf9f5; --white: #1f1e1c;
             }
         }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 76px; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg); color: var(--text);
             line-height: 1.65; -webkit-font-smoothing: antialiased;
         }
-        .serif { font-family: 'Instrument Serif', Georgia, serif; }
-        .container { max-width: 980px; margin: 0 auto; padding: 0 2rem; }
-        a { color: var(--accent); }
+        .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
         /* ── TOPBAR ── */
         .topbar {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(250,249,245,0.88);
+            background: rgba(250,249,245,0.90);
             backdrop-filter: blur(12px) saturate(1.1);
             -webkit-backdrop-filter: blur(12px) saturate(1.1);
             border-bottom: 1px solid var(--border);
         }
         @media (prefers-color-scheme: dark) {
-            .topbar { background: rgba(20,20,19,0.85); }
+            .topbar { background: rgba(20,20,19,0.88); }
         }
         .topbar__inner {
-            max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+            max-width: 1320px; margin: 0 auto; padding: 0 1.5rem;
             display: flex; align-items: center; gap: 1.5rem;
-            min-height: 56px; flex-wrap: wrap;
+            min-height: 56px;
         }
         .topbar__brand {
             font-weight: 700; font-size: 0.85rem; letter-spacing: -0.01em;
@@ -92,307 +99,340 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E");
             background-size: contain; background-repeat: no-repeat;
         }
-        .topbar__nav { display: flex; gap: 0.25rem; align-items: center; padding-right: 1rem; border-right: 1px solid var(--border); }
+        .topbar__nav { display: flex; gap: 0.25rem; align-items: center; margin-left: auto; }
         .topbar__link {
             font-size: 0.85rem; font-weight: 500; color: var(--text-2);
             text-decoration: none; padding: 0.5rem 0.85rem; border-radius: 6px;
             transition: background 0.15s, color 0.15s;
         }
-        .topbar__link:hover { background: var(--emerald-light); color: var(--emerald); }
+        .topbar__link:hover { background: var(--emerald-light); color: var(--emerald); text-decoration: none; }
         .topbar__link[aria-current="page"] { background: var(--emerald); color: white; }
-        .topbar__pagenav {
-            display: flex; gap: 0.1rem; align-items: center; flex-wrap: wrap;
-            overflow-x: auto; scrollbar-width: none;
-            min-width: 0; flex: 1;
+        .topbar__link--wizard {
+            background: var(--accent); color: white;
         }
-        .topbar__pagenav::-webkit-scrollbar { display: none; }
-        .topbar__pagenav a {
-            font-size: 0.78rem; color: var(--text-3); text-decoration: none;
-            padding: 0.35rem 0.55rem; border-radius: 5px; white-space: nowrap;
-            transition: color 0.15s, background 0.15s;
+        .topbar__link--wizard:hover { background: var(--accent-2); color: white; }
+
+        /* ── LAYOUT (sidebar + main) ── */
+        .layout {
+            max-width: 1320px; margin: 0 auto;
+            display: grid; grid-template-columns: 240px 1fr;
+            gap: 0;
         }
-        .topbar__pagenav a:hover { color: var(--emerald); background: var(--emerald-light); }
-        @media (max-width: 760px) { .topbar__pagenav { display: none; } }
+        @media (max-width: 920px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            position: sticky; top: 56px; align-self: start;
+            max-height: calc(100vh - 56px); overflow-y: auto;
+            padding: 2rem 1rem 2rem 1.5rem;
+            border-right: 1px solid var(--border-light);
+            font-size: 0.85rem;
+        }
+        .sidebar__title {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 0.6rem;
+        }
+        .sidebar__group { margin-bottom: 1.25rem; }
+        .sidebar__list { list-style: none; }
+        .sidebar__list li { margin: 0.05rem 0; }
+        .sidebar a {
+            display: block; padding: 0.4rem 0.75rem; border-radius: 5px;
+            color: var(--text-2); font-size: 0.85rem;
+            border-left: 2px solid transparent;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+        .sidebar a:hover { background: var(--bg-alt); color: var(--accent); text-decoration: none; }
+        .sidebar a.is-active {
+            background: var(--emerald-light); color: var(--emerald);
+            border-left-color: var(--emerald); font-weight: 600;
+        }
+
+        /* ── MAIN ── */
+        .main {
+            padding: 2rem 2.25rem 4rem;
+            max-width: 880px;
+        }
+        @media (max-width: 920px) {
+            .main { padding: 1.5rem 1.25rem 3rem; }
+        }
 
         /* ── HERO ── */
-        .hero { padding: 4rem 0 2.5rem; }
+        .hero {
+            padding: 1rem 0 2rem;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 2.5rem;
+        }
         .hero__label {
             font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 1rem;
+            letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 0.75rem;
         }
         .hero__title {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2.25rem, 4.5vw, 3.4rem);
-            line-height: 1.05; letter-spacing: -0.02em;
-            color: var(--navy); margin-bottom: 1.25rem; font-weight: 400;
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: clamp(2.25rem, 4vw, 3.2rem);
+            line-height: 1.05; letter-spacing: -0.015em;
+            color: var(--navy); margin-bottom: 1rem;
         }
         .hero__title em { font-style: italic; color: var(--emerald); }
-        .hero__desc {
+        .hero__lead {
             font-size: 1.05rem; line-height: 1.6; color: var(--text-2);
-            max-width: 680px; margin-bottom: 1.5rem;
+            max-width: 680px;
         }
-
-        /* ── QUICK CARD ── */
-        .qc {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.5rem 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-        .qc__title {
-            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 1rem;
-        }
-        .qc__grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.25rem 1.5rem;
-        }
-        .qc__item {
-            display: flex; flex-direction: column; gap: 0.2rem;
-        }
-        .qc__item-label {
-            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.05em; color: var(--text-3);
-        }
-        .qc__item-val {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.15rem; line-height: 1.2; color: var(--navy); font-weight: 400;
-        }
-        .qc__item-meta { font-size: 0.78rem; color: var(--text-2); }
 
         /* ── SECTIONS ── */
-        .section { padding: 3.5rem 0; border-top: 1px solid var(--border); }
-        .section--alt { background: var(--bg-alt); }
-        .section__label {
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 0.5rem;
+        .sec { margin: 2.5rem 0 2rem; scroll-margin-top: 80px; }
+        .sec__label {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 0.4rem;
         }
-        .section__title {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(1.7rem, 3.5vw, 2.3rem);
-            line-height: 1.15; color: var(--navy); margin-bottom: 0.6rem; font-weight: 400;
+        .sec__title {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: clamp(1.65rem, 3vw, 2.1rem);
+            line-height: 1.15; color: var(--navy);
+            letter-spacing: -0.01em; margin-bottom: 0.75rem;
         }
-        .section__desc {
-            font-size: 1rem; line-height: 1.6; color: var(--text-2); max-width: 800px;
-            margin-bottom: 1.75rem;
+        .sec__lead {
+            font-size: 1rem; line-height: 1.6; color: var(--text-2);
+            border-left: 3px solid var(--accent); padding-left: 0.85rem;
+            margin: 1rem 0 1.5rem; max-width: 720px;
         }
-        .section__sub {
-            font-family: 'Instrument Serif', Georgia, serif;
+        .sec h3 {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
             font-size: 1.4rem; line-height: 1.2; color: var(--navy);
-            margin: 2rem 0 0.6rem; font-weight: 400;
+            margin: 2rem 0 0.6rem; letter-spacing: -0.005em;
         }
-        .section__sub-desc { font-size: 0.95rem; color: var(--text-2); margin-bottom: 1rem; }
+        .sec h4 {
+            font-size: 0.95rem; font-weight: 600; color: var(--navy);
+            margin: 1rem 0 0.4rem;
+        }
+        .sec p { margin: 0.55rem 0; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
+        .sec ul, .sec ol { margin: 0.55rem 0 0.75rem; padding-left: 1.3rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
+        .sec li { margin: 0.25rem 0; }
+        .sec strong { color: var(--navy); font-weight: 600; }
+        .sec em { font-style: italic; color: var(--text-3); }
 
-        /* ── CARDS / GRID ── */
-        .grid { display: grid; gap: 1rem; }
+        /* ── CITATION CHIPS (colored by source) ── */
+        .cite {
+            display: inline-block; font-size: 0.7rem; font-weight: 600;
+            padding: 0.1rem 0.5rem; border-radius: 3px;
+            margin-left: 0.25rem; vertical-align: 1px; white-space: nowrap;
+            font-family: 'Inter', sans-serif; letter-spacing: 0.01em;
+        }
+        .cite--d426    { background: var(--blue-light); color: #2c5780; }
+        .cite--instr   { background: var(--emerald-light); color: var(--emerald-2); }
+        .cite--lecat   { background: var(--purple-light); color: #5d4380; }
+        .cite--rpsad   { background: var(--accent-light); color: var(--accent-2); }
+        .cite--lead    { background: var(--amber-light); color: var(--amber); }
+        .cite--practice{ background: var(--bg-deep); color: var(--text-3); font-style: italic; }
+        @media (prefers-color-scheme: dark) {
+            .cite--d426    { color: #9ec0e3; }
+            .cite--instr   { color: #b9cea1; }
+            .cite--lecat   { color: #c4a8e1; }
+            .cite--rpsad   { color: #f0a883; }
+            .cite--lead    { color: #e9c388; }
+        }
+
+        /* ── CARDS ── */
+        .grid { display: grid; gap: 1rem; margin: 0.75rem 0 1.25rem; }
         .grid--2 { grid-template-columns: repeat(2, 1fr); }
         .grid--3 { grid-template-columns: repeat(3, 1fr); }
-        @media (max-width: 760px) {
-            .grid--2, .grid--3 { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 760px) { .grid--2, .grid--3 { grid-template-columns: 1fr; } }
+
         .card {
             background: var(--white); border: 1px solid var(--border);
-            border-radius: var(--r-md); padding: 1.25rem 1.4rem;
-            display: flex; flex-direction: column; gap: 0.5rem;
+            border-radius: var(--r-md); padding: 1.1rem 1.25rem;
+            display: flex; flex-direction: column;
         }
-        .card h3 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.2rem; font-weight: 400; line-height: 1.2;
-            color: var(--navy); margin-bottom: 0.25rem;
+        .card__title {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1.15rem; color: var(--navy); margin-bottom: 0.35rem;
+            line-height: 1.2;
         }
-        .card h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 0.25rem; }
-        .card p { font-size: 0.92rem; color: var(--text-2); line-height: 1.55; }
-        .card ul, .card ol { font-size: 0.92rem; color: var(--text-2); padding-left: 1.2rem; line-height: 1.55; }
-        .card li { margin: 0.2rem 0; }
-        .card--top-blue { border-top: 3px solid var(--accent); }
-        .card--top-green { border-top: 3px solid var(--emerald); }
-        .card--top-amber { border-top: 3px solid var(--amber); }
-        .card--top-red { border-top: 3px solid var(--red); }
-        .card--accent-blue { border-left: 3px solid var(--accent); }
-        .card--accent-green { border-left: 3px solid var(--emerald); }
-        .card--accent-amber { border-left: 3px solid var(--amber); }
-        .card--accent-red { border-left: 3px solid var(--red); }
         .card__sub {
-            font-size: 0.78rem; color: var(--text-3); font-style: italic;
+            font-size: 0.78rem; color: var(--text-3);
+            margin-bottom: 0.6rem; font-style: italic;
         }
-        .card__note {
-            font-size: 0.82rem; color: var(--text-3);
-            border-top: 1px dashed var(--border); padding-top: 0.6rem; margin-top: auto;
+        .card p, .card ul, .card ol { font-size: 0.88rem; line-height: 1.5; }
+        .card ul, .card ol { padding-left: 1.15rem; }
+        .card li { margin: 0.18rem 0; }
+        .card__foot {
+            margin-top: auto; padding-top: 0.6rem;
+            font-size: 0.78rem; color: var(--text-3);
+            border-top: 1px dashed var(--border);
         }
+        .card--blue   { border-top: 3px solid var(--blue); }
+        .card--green  { border-top: 3px solid var(--emerald); }
+        .card--amber  { border-top: 3px solid var(--amber); }
+        .card--red    { border-top: 3px solid var(--red); }
+        .card--accent { border-top: 3px solid var(--accent); }
+        .card--purple { border-top: 3px solid var(--purple); }
 
-        /* ── REF CHIPS ── */
-        .ref {
-            display: inline-block; font-size: 0.7rem; font-weight: 500;
-            background: var(--bg-alt); color: var(--text-3);
-            padding: 0.1rem 0.45rem; border-radius: 3px; margin-left: 0.3rem;
-            white-space: nowrap; vertical-align: 1px;
+        /* ── CALLOUTS ── */
+        .callout {
+            border: 1px solid var(--border); border-left: 4px solid var(--accent);
+            background: var(--white); padding: 0.9rem 1.15rem;
+            border-radius: var(--r-sm); margin: 1rem 0;
         }
-        .ref--practice { background: var(--accent-light); color: var(--accent); }
+        .callout p { font-size: 0.92rem; line-height: 1.55; }
+        .callout p + p { margin-top: 0.5rem; }
+        .callout--info  { border-left-color: var(--blue);    background: var(--blue-light); }
+        .callout--ok    { border-left-color: var(--emerald); background: var(--emerald-light); }
+        .callout--warn  { border-left-color: var(--amber);   background: var(--amber-light); }
+        .callout--crit  { border-left-color: var(--red);     background: var(--red-light); }
 
         /* ── TABLES ── */
-        .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--r-md); }
+        .tbl-wrap {
+            overflow-x: auto; border: 1px solid var(--border);
+            border-radius: var(--r-md); margin: 0.75rem 0 1rem;
+            background: var(--white);
+        }
         .tbl {
-            width: 100%; border-collapse: collapse; background: var(--white);
-            font-size: 0.88rem;
+            width: 100%; border-collapse: collapse; font-size: 0.88rem;
         }
         .tbl th, .tbl td {
-            padding: 0.7rem 0.85rem; text-align: left;
-            border-bottom: 1px solid var(--border-light); vertical-align: top;
+            padding: 0.65rem 0.85rem; text-align: left; vertical-align: top;
+            border-bottom: 1px solid var(--border-light);
         }
         .tbl th {
             background: var(--bg-alt); font-weight: 600; color: var(--navy);
-            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+            font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
         }
         .tbl tbody tr:last-child td { border-bottom: none; }
         .tbl tbody tr:hover { background: var(--bg-alt); }
-        .tbl .price, .tbl .num {
+        .tbl .num {
             font-family: 'Instrument Serif', Georgia, serif;
             font-weight: 400; color: var(--navy); white-space: nowrap;
             font-size: 1rem;
         }
         .tbl-note {
-            font-size: 0.78rem; color: var(--text-3); margin-top: 0.7rem; font-style: italic;
+            font-size: 0.78rem; color: var(--text-3); margin: 0.5rem 0 0;
+            font-style: italic;
         }
-
-        /* ── CALLOUTS ── */
-        .callout {
-            border: 1px solid var(--border); border-left: 4px solid var(--accent);
-            background: var(--white); padding: 1rem 1.25rem;
-            border-radius: var(--r-sm); margin: 1rem 0;
-        }
-        .callout p { font-size: 0.92rem; line-height: 1.55; color: var(--text-2); }
-        .callout--amber { border-left-color: var(--amber); background: var(--amber-light); }
-        .callout--red   { border-left-color: var(--red);   background: var(--red-light); }
-        .callout--green { border-left-color: var(--emerald); background: var(--emerald-light); }
 
         /* ── PILLS ── */
         .pill {
-            display: inline-block; padding: 0.18rem 0.55rem; border-radius: 4px;
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.04em;
+            display: inline-block; padding: 0.16rem 0.55rem; border-radius: 4px;
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.04em; white-space: nowrap;
         }
-        .pill--no-cdd { background: #e5e3d8; color: var(--text-2); }
-        .pill--cdd    { background: var(--accent-light); color: var(--accent); }
-        .pill--edd    { background: var(--amber-light); color: var(--amber); }
+        .pill--no { background: var(--bg-deep); color: var(--text-2); }
+        .pill--cdd { background: var(--blue-light); color: #2c5780; }
+        .pill--edd { background: var(--amber-light); color: var(--amber); }
         .pill--reject { background: var(--red-light); color: var(--red); }
-        .pill--ok     { background: var(--emerald-light); color: var(--emerald); }
 
-        /* ── WIZARD ── */
-        .wiz {
+        /* ── QUICK CARD ── */
+        .qc {
             background: var(--white); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.5rem;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+            border-radius: var(--r-md); padding: 1.25rem 1.5rem;
+            margin: 1rem 0 2rem;
         }
-        @media (max-width: 880px) { .wiz { grid-template-columns: 1fr; } }
-        .wiz__form { display: flex; flex-direction: column; gap: 1rem; }
-        .wiz__fieldset {
-            border: none; padding: 0;
-        }
-        .wiz__legend {
-            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.5rem;
-            display: block;
-        }
-        .wiz__chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .wiz__chip {
-            font-size: 0.85rem; cursor: pointer;
-            background: var(--bg-alt); border: 1px solid var(--border-light);
-            padding: 0.4rem 0.75rem; border-radius: 6px; color: var(--text-2);
-            transition: background 0.15s, color 0.15s, border-color 0.15s;
-        }
-        .wiz__chip:has(input:checked) { background: var(--emerald); color: white; border-color: var(--emerald); }
-        .wiz__chip input { position: absolute; opacity: 0; pointer-events: none; }
-        .wiz__input, .wiz__select {
-            width: 100%; padding: 0.55rem 0.75rem;
-            border: 1px solid var(--border); border-radius: 6px;
-            background: var(--white); color: var(--text); font: inherit; font-size: 0.9rem;
-        }
-        .wiz__input:focus, .wiz__select:focus {
-            outline: none; border-color: var(--emerald);
-            box-shadow: 0 0 0 3px var(--emerald-light);
-        }
-        .wiz__hint { font-size: 0.78rem; color: var(--text-3); margin-top: 0.3rem; }
-        .wiz__check {
-            display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.88rem;
-            cursor: pointer; padding: 0.35rem 0.5rem; border-radius: 5px;
-            color: var(--text-2);
-        }
-        .wiz__check:hover { background: var(--bg-alt); }
-        .wiz__check input { margin-top: 0.2rem; accent-color: var(--emerald); }
-        .wiz__actions { display: flex; gap: 0.5rem; padding-top: 0.5rem; }
-        .wiz__btn {
-            font: inherit; font-size: 0.82rem; padding: 0.5rem 0.85rem;
-            border-radius: 6px; cursor: pointer; border: 1px solid var(--border);
-            background: var(--white); color: var(--text-2);
-        }
-        .wiz__btn:hover { background: var(--bg-alt); }
-        .wiz__output {
-            border-left: 1px solid var(--border-light); padding-left: 1.5rem;
-            display: flex; flex-direction: column; gap: 0.75rem;
-            max-height: 700px; overflow-y: auto;
-        }
-        @media (max-width: 880px) { .wiz__output { border-left: none; padding-left: 0; border-top: 1px solid var(--border-light); padding-top: 1rem; } }
-        .wiz__verdict {
-            padding: 0.85rem 1.1rem; border-radius: 8px;
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.4rem; line-height: 1.2; color: var(--navy); font-weight: 400;
-            display: flex; align-items: center; gap: 0.6rem;
-        }
-        .wiz__verdict--no-cdd { background: #ece9dd; }
-        .wiz__verdict--cdd    { background: var(--accent-light); }
-        .wiz__verdict--edd    { background: var(--amber-light); }
-        .wiz__verdict--reject { background: var(--red-light); color: var(--red); }
-        .wiz__block {
-            border: 1px solid var(--border); border-radius: 8px;
-            padding: 0.85rem 1rem; background: var(--white);
-        }
-        .wiz__block-title {
+        .qc__title {
             font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.45rem;
+            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.75rem;
         }
-        .wiz__block ul { padding-left: 1.1rem; font-size: 0.88rem; color: var(--text-2); }
-        .wiz__block li { margin: 0.2rem 0; line-height: 1.45; }
-        .wiz__placeholder {
-            color: var(--text-3); font-style: italic; padding: 1.5rem 1rem;
-            text-align: center; border: 1px dashed var(--border); border-radius: 8px;
-            font-size: 0.92rem;
+        .qc__grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+            gap: 1rem 1.5rem;
+        }
+        .qc__item-label {
+            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; color: var(--text-3); display: block;
+        }
+        .qc__item-val {
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1.2rem; line-height: 1.15; color: var(--navy);
+            margin-top: 0.2rem; display: block;
+        }
+        .qc__item-meta { font-size: 0.76rem; color: var(--text-3); display: block; margin-top: 0.15rem; }
+
+        /* ── REGULATORY STACK ── */
+        .stack-card {
+            display: grid; grid-template-columns: 90px 1fr; gap: 0;
+            border: 1px solid var(--border); border-radius: var(--r-md);
+            margin-bottom: 0.75rem; background: var(--white);
+            overflow: hidden;
+        }
+        .stack-card__name {
+            background: var(--bg-alt); padding: 1rem 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1.15rem; color: var(--navy);
+            border-right: 1px solid var(--border-light);
+        }
+        .stack-card__body { padding: 0.85rem 1.15rem; }
+        .stack-card__body .label {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.2rem;
+        }
+        .stack-card__body p {
+            font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 0.2rem;
         }
 
         /* ── FAQ ── */
+        .faq-list { border-top: 1px solid var(--border-light); margin-top: 1rem; }
         .faq-item {
-            border-bottom: 1px solid var(--border-light); padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light); padding: 0.9rem 0;
         }
         .faq-item summary {
             cursor: pointer; font-weight: 600; color: var(--navy);
-            font-size: 1rem; padding: 0.25rem 0; list-style: none;
+            font-size: 1rem; list-style: none;
             display: flex; justify-content: space-between; align-items: center;
         }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after { content: "+"; color: var(--emerald); font-size: 1.2rem; transition: transform 0.2s; }
         .faq-item[open] summary::after { transform: rotate(45deg); }
-        .faq-item div { padding-top: 0.5rem; font-size: 0.95rem; line-height: 1.6; color: var(--text-2); }
+        .faq-item__body { padding-top: 0.55rem; font-size: 0.92rem; line-height: 1.6; color: var(--text-2); }
 
         /* ── GLOSSARY ── */
-        .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-        .gloss > div { padding: 0.6rem 0; border-bottom: 1px solid var(--border-light); }
-        .gloss dt { font-weight: 700; color: var(--navy); font-size: 0.95rem; }
-        .gloss dd { font-size: 0.88rem; color: var(--text-2); margin-top: 0.2rem; line-height: 1.5; }
+        .gloss {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.9rem 1.5rem; margin-top: 1rem;
+        }
+        .gloss > div { padding: 0.5rem 0; border-bottom: 1px solid var(--border-light); }
+        .gloss dt { font-weight: 700; color: var(--navy); font-size: 0.92rem; margin-bottom: 0.15rem; }
+        .gloss dd { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
+
+        /* ── FLOW (5-stage STR) ── */
+        .flow { display: grid; gap: 0.6rem; margin: 1rem 0 1.25rem; }
+        .flow-step {
+            display: grid; grid-template-columns: 32px 1fr; gap: 0.85rem;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-sm); padding: 0.75rem 0.95rem;
+            align-items: start;
+        }
+        .flow-step__num {
+            background: var(--emerald); color: white; border-radius: 4px;
+            font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+            font-size: 1rem; text-align: center; line-height: 1.6; min-height: 28px;
+            padding-top: 0.05rem;
+        }
+        .flow-step__title { font-weight: 600; color: var(--navy); margin-bottom: 0.15rem; font-size: 0.95rem; }
+        .flow-step__body { font-size: 0.88rem; color: var(--text-2); line-height: 1.5; }
 
         /* ── FOOTER ── */
         .footer {
-            border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 2rem;
+            border-top: 1px solid var(--border); margin-top: 3rem; padding: 2rem 2.25rem;
             font-size: 0.85rem; color: var(--text-3);
         }
-        .footer__inner {
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 1rem;
-        }
+        .footer__inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .footer a { color: var(--emerald); text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
         .footer__legal { font-size: 0.75rem; color: var(--text-muted); max-width: 540px; }
 
+        /* ── LEGEND for citation chips ── */
+        .legend {
+            display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem;
+            margin: 0.75rem 0 0; align-items: center;
+            font-size: 0.78rem; color: var(--text-3);
+        }
+        .legend__item { display: inline-flex; align-items: center; gap: 0.25rem; }
+
         @media print {
-            .topbar, .wiz, .footer { display: none; }
-            .section { padding: 1rem 0; border-top: 1px solid #ccc; }
+            .topbar, .sidebar, .footer { display: none; }
+            .layout { grid-template-columns: 1fr; }
+            .main { padding: 0; max-width: none; }
+            .sec { page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -406,1117 +446,991 @@
             <a href="/" class="topbar__link">Overview</a>
             <a href="/licensing.html" class="topbar__link">Licensing</a>
             <a href="/compliance.html" class="topbar__link" aria-current="page">Compliance</a>
-        </nav>
-        <nav class="topbar__pagenav" aria-label="On this page">
-            <a href="#cdd">CDD</a>
-            <a href="#travel-rule">Travel Rule</a>
-            <a href="#reporting">Reporting</a>
-            <a href="#str">STR</a>
-            <a href="#sanctions">Sanctions</a>
-            <a href="#pep">PEP</a>
-            <a href="#redflags">Red Flags</a>
-            <a href="#records">Records</a>
-            <a href="#wizard">Wizard</a>
-            <a href="#faq">FAQ</a>
+            <a href="/wizard.html" class="topbar__link topbar__link--wizard">Wizard ↗</a>
         </nav>
     </div>
 </header>
 
-<!-- ══ HERO ══ -->
-<section class="hero">
-    <div class="container">
-        <div class="hero__label">Guide 02 · Compliance Operations · Updated April 2026</div>
-        <h1 class="hero__title">AML &amp; <em>Compliance</em> for the DASP CO</h1>
-        <p class="hero__desc">A daily reference for the Compliance Officer of any Salvadoran DASP. Customer due diligence by trigger, the Travel Rule under reformed Art. 52 par.&nbsp;2, the full reporting hub, suspicious-transaction flow, sanctions and PEP screening, retention — plus a decision wizard that shows only the obligations a transaction actually triggers.</p>
+<div class="layout">
 
-        <div class="qc">
-            <div class="qc__title">Quick reference — every clock that matters</div>
-            <div class="qc__grid">
-                <div class="qc__item">
-                    <span class="qc__item-label">CDD trigger</span>
-                    <span class="qc__item-val">≥ $1,000 e-tx</span>
-                    <span class="qc__item-meta">AML Law Art. 15(b) → Instr. Art. 52(a)(b)</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">CDD trigger — cash</span>
-                    <span class="qc__item-val">&gt; $10,000</span>
-                    <span class="qc__item-meta">AML Law Art. 15(b) → Instr. Art. 51 / LCLDA Art. 9</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">Travel Rule fields</span>
-                    <span class="qc__item-val">7 + batch rule</span>
-                    <span class="qc__item-meta">Instr. Art. 52 par.2 reformed · any amount</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">STR filing</span>
-                    <span class="qc__item-val">24 hours</span>
-                    <span class="qc__item-meta">D-426 Art. 24 · wall-clock from determination</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">Operación Regulada</span>
-                    <span class="qc__item-val">5 bd</span>
-                    <span class="qc__item-meta">Instr. Art. 51 · cash &gt;$10K · other &gt;$25K</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">Sanctions freeze</span>
-                    <span class="qc__item-val">3 bd</span>
-                    <span class="qc__item-meta">LECAT Art. 37 · UNSC + UIF national</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">Record retention</span>
-                    <span class="qc__item-val">15 years</span>
-                    <span class="qc__item-meta">D-426 Art. 26 · all AML records</span>
-                </div>
-                <div class="qc__item">
-                    <span class="qc__item-label">Reporting portal</span>
-                    <span class="qc__item-val">goAML / UIF</span>
-                    <span class="qc__item-meta">Instr. Art. 51 · electronic platform</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ══ CDD FRAMEWORK ══ -->
-<section class="section" id="cdd">
-<div class="container">
-    <p class="section__label">Customer Due Diligence</p>
-    <h2 class="section__title">CDD by trigger — what activates, when</h2>
-    <p class="section__desc">El Salvador anchors the CDD trigger in <strong>AML Law Art. 15</strong>. Two paths trigger full CDD: (a) establishment of an ongoing relationship, or (b) an occasional transaction <strong>above the applicable reporting threshold</strong> for that transaction type. The reporting threshold cascades through the Instructivo (Art. 51 cash / Art. 52 e-transfers), so the CDD trigger differs by channel. EDD is a separate layer — triggered by risk factors, not amount.</p>
-
-    <h3 class="section__sub">The four parallel triggers</h3>
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>Trigger</th><th>Threshold</th><th>Result</th><th>Source</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><strong>Ongoing relationship</strong> (account, recurring service, custody)</td>
-                <td class="num">Any amount</td>
-                <td><span class="pill pill--cdd">Standard CDD</span> from day&nbsp;1</td>
-                <td><span class="ref">AML Law Art. 15(a)</span> + <span class="ref">Instr. Art. 12</span></td>
-            </tr>
-            <tr>
-                <td><strong>Occasional e-transfer</strong> (intl / local via app or device)</td>
-                <td class="num">≥ $1,000</td>
-                <td><span class="pill pill--cdd">Standard CDD</span></td>
-                <td><span class="ref">AML Law Art. 15(b)</span> → <span class="ref">Instr. Art. 52(a)(b)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Occasional family remittance</strong></td>
-                <td class="num">≥ $200</td>
-                <td><span class="pill pill--cdd">Standard CDD</span></td>
-                <td><span class="ref">AML Law Art. 15(b)</span> → <span class="ref">Instr. Art. 52(c)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Occasional cash</strong> transaction</td>
-                <td class="num">&gt; $10,000</td>
-                <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada report</td>
-                <td><span class="ref">AML Law Art. 15(b)</span> → <span class="ref">Instr. Art. 51</span></td>
-            </tr>
-            <tr>
-                <td><strong>Occasional other means</strong> (cheque, wire, card not under Art. 52)</td>
-                <td class="num">&gt; $25,000</td>
-                <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada report</td>
-                <td><span class="ref">AML Law Art. 15(b)</span> → <span class="ref">Instr. Art. 51</span></td>
-            </tr>
-            <tr>
-                <td><strong>Risk factor present</strong> (PEP, high-risk jurisdiction, opaque ownership, structuring, cash-intensive, etc.)</td>
-                <td class="num">Any amount</td>
-                <td><span class="pill pill--edd">EDD</span> + senior-management approval</td>
-                <td><span class="ref">Instr. Art. 13</span></td>
-            </tr>
-            <tr>
-                <td><strong>Below all thresholds AND no risk factor</strong></td>
-                <td class="num">— (only Travel Rule)</td>
-                <td><span class="pill pill--no-cdd">No statutory CDD</span> — collect Travel Rule data + sanctions screen only</td>
-                <td><span class="ref">Instr. Art. 52 par.2 reformed</span> + <span class="ref">LECAT Art. 37</span></td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    <p class="tbl-note">DASP-relevant note: most DASP operations are e-transfers — the operative CDD trigger is therefore <strong>$1,000</strong> per the Art. 15(b) → Art. 52(a) chain. Internal AML policy may calibrate a lower threshold per FATF R.10 risk-based principles, but $1,000 is the statutory floor.</p>
-
-    <h3 class="section__sub">What you collect, store and verify — by DD level</h3>
-    <p class="section__sub-desc">Three levels — minimum (Travel-Rule-only baseline), Standard CDD (Art. 12 measures, full identification), Enhanced CDD (Art. 13 measures, documentary verification of source).</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>Data / document</th><th>Travel-Rule baseline (no CDD)</th><th>Standard CDD<br><span class="ref">Instr. Art. 12</span></th><th>EDD<br><span class="ref">Instr. Art. 13</span></th></tr></thead>
-        <tbody>
-            <tr><td><strong>Government photo ID</strong> (DUI / passport / residence)</td><td>Name + ID type/number only</td><td>Required · copy on file</td><td>Required · two IDs preferred</td></tr>
-            <tr><td><strong>Address</strong> (utility ≤3m / bank statement / registry)</td><td>—</td><td>Documented</td><td>Documented · independently verified</td></tr>
-            <tr><td><strong>Occupation</strong> (natural person)</td><td>—</td><td>Self-declared</td><td>Documented · employer letter / payslip</td></tr>
-            <tr><td><strong>Date of birth</strong> (natural person)</td><td>—</td><td>Required</td><td>Required</td></tr>
-            <tr><td><strong>Nature of main activity</strong> (legal entity)</td><td>—</td><td>Documented · per registry</td><td>Documented + verified vs. counterparties</td></tr>
-            <tr><td><strong>Tax ID</strong> (NIT)</td><td>—</td><td>Required</td><td>Required</td></tr>
-            <tr><td><strong>Beneficial owner</strong> (legal entity, ≥10% floor)</td><td>—</td><td>Required · chain to natural person</td><td>Required · chain + supporting docs <span class="ref">Instr. Arts. 20, 21</span></td></tr>
-            <tr><td><strong>Source of funds</strong> for the transaction</td><td>—</td><td>Self-declared; documents on doubt</td><td>Documentary (payslip, contract, invoice, bank statement)</td></tr>
-            <tr><td><strong>Source of wealth</strong> (overall patrimony)</td><td>—</td><td>—</td><td>Required · documented</td></tr>
-            <tr><td><strong>Expected activity profile</strong> (volume, frequency, counterparties)</td><td>—</td><td>Brief profile on file</td><td>Full + scenarios + monitoring baseline</td></tr>
-            <tr><td><strong>PEP self-declaration + screening</strong></td><td>Sanctions screen only</td><td>Required + periodic re-check</td><td>Required + every-tx re-check</td></tr>
-            <tr><td><strong>Senior-management written approval</strong></td><td>—</td><td>—</td><td>Required (file dated)</td></tr>
-            <tr><td><strong>Enhanced ongoing monitoring</strong></td><td>—</td><td>Standard cadence</td><td>Required · KYT on every transaction</td></tr>
-        </tbody>
-    </table>
-    </div>
-    <p class="tbl-note">"Travel-Rule baseline" = the minimum data required for a transfer below all CDD thresholds and no risk factor. The 7 fields of Art. 52 par.2 still apply — full Travel Rule never depends on amount or DD level.</p>
-
-    <h3 class="section__sub">Beneficial owner — apply 10% as floor</h3>
-    <div class="grid grid--2">
-        <div class="card card--top-blue">
-            <h3>Statutory thresholds</h3>
-            <ul>
-                <li><strong>≥ 10%</strong> ownership or control <span class="ref">Instr. Arts. 12, 20</span> — the stricter rule, apply as floor</li>
-                <li><strong>≥ 25%</strong> ownership or control <span class="ref">D-426 Art. 2</span></li>
-                <li><strong>Trusts:</strong> identify all parties — settlor, trustee, beneficiaries, protector <span class="ref">Instr. Art. 21</span></li>
-                <li><strong>Resolve to natural person</strong> through every layer</li>
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar" aria-label="On this page">
+        <div class="sidebar__group">
+            <div class="sidebar__title">Quick</div>
+            <ul class="sidebar__list">
+                <li><a href="#quickref">Quick reference</a></li>
+                <li><a href="#stack">Regulatory stack</a></li>
             </ul>
         </div>
-        <div class="card card--top-amber">
+        <div class="sidebar__group">
+            <div class="sidebar__title">Customer</div>
+            <ul class="sidebar__list">
+                <li><a href="#cdd">Due diligence — by trigger</a></li>
+                <li><a href="#identity">Identity verification</a></li>
+                <li><a href="#bo">Beneficial owner</a></li>
+                <li><a href="#pep">PEP regime</a></li>
+            </ul>
+        </div>
+        <div class="sidebar__group">
+            <div class="sidebar__title">Transactions</div>
+            <ul class="sidebar__list">
+                <li><a href="#travel-rule">Travel Rule</a></li>
+                <li><a href="#sanctions">Sanctions screening</a></li>
+                <li><a href="#unusual">Unusual &amp; suspicious</a></li>
+                <li><a href="#str">STR pipeline</a></li>
+                <li><a href="#redflags">Red flags catalogue</a></li>
+            </ul>
+        </div>
+        <div class="sidebar__group">
+            <div class="sidebar__title">Reporting &amp; Records</div>
+            <ul class="sidebar__list">
+                <li><a href="#reporting">Reporting hub</a></li>
+                <li><a href="#records">Records &amp; retention</a></li>
+            </ul>
+        </div>
+        <div class="sidebar__group">
+            <div class="sidebar__title">Reference</div>
+            <ul class="sidebar__list">
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+            </ul>
+        </div>
+        <div class="sidebar__group">
+            <div class="sidebar__title">Tool</div>
+            <ul class="sidebar__list">
+                <li><a href="/wizard.html" style="color:var(--accent); font-weight:600;">→ Decision Wizard</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="main">
+
+        <!-- ── HERO ── -->
+        <section class="hero">
+            <div class="hero__label">Guide 02 · Compliance Operations</div>
+            <h1 class="hero__title">AML &amp; <em>Compliance</em><br>for the DASP CO</h1>
+            <p class="hero__lead">A daily reference for the Compliance Officer of any Salvadoran DASP. Customer due diligence by statutory trigger, identity verification, the Travel Rule under reformed Art.&nbsp;52 par.&nbsp;2, the full reporting hub, suspicious-transaction flow, sanctions and PEP screening, retention.</p>
+            <div class="legend" style="margin-top:1rem;">
+                <span style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);">Citation legend</span>
+                <span class="legend__item"><span class="cite cite--d426">D-426 Art.</span> AML Law (statute)</span>
+                <span class="legend__item"><span class="cite cite--instr">Instr. Art.</span> UIF Instructivo</span>
+                <span class="legend__item"><span class="cite cite--lecat">LECAT Art.</span> Counter-terrorism law</span>
+                <span class="legend__item"><span class="cite cite--rpsad">RPSAD Art.</span> DASP regulation</span>
+                <span class="legend__item"><span class="cite cite--lead">LEAD Art.</span> DASP statute</span>
+                <span class="legend__item"><span class="cite cite--practice">practice</span> Industry / risk-based</span>
+            </div>
+        </section>
+
+        <!-- ── QUICK REFERENCE ── -->
+        <section class="sec" id="quickref">
+            <p class="sec__label">Quick reference</p>
+            <h2 class="sec__title">Every clock that matters</h2>
+            <div class="qc">
+                <div class="qc__grid">
+                    <div>
+                        <span class="qc__item-label">CDD trigger — e-transfer</span>
+                        <span class="qc__item-val">≥ $1,000</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;15(b) → Instr. Art.&nbsp;52(a)(b)</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">CDD trigger — cash</span>
+                        <span class="qc__item-val">&gt; $10,000</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;15(b) → Instr. Art.&nbsp;51</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">Travel Rule</span>
+                        <span class="qc__item-val">Any amount</span>
+                        <span class="qc__item-meta">Instr. Art.&nbsp;52 par.&nbsp;2 reformed</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">STR filing</span>
+                        <span class="qc__item-val">24 hours</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;24 · wall-clock</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">STR analysis</span>
+                        <span class="qc__item-val">≤ 15 wd</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;24 · extendable once</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">Operación Regulada</span>
+                        <span class="qc__item-val">5 wd</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;25 · Instr. Art.&nbsp;51</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">Sanctions freeze</span>
+                        <span class="qc__item-val">Immediate</span>
+                        <span class="qc__item-meta">LECAT Art.&nbsp;37 + report to UIF</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">Record retention</span>
+                        <span class="qc__item-val">15 years</span>
+                        <span class="qc__item-meta">D-426 Art.&nbsp;26</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">UIF reporting channel</span>
+                        <span class="qc__item-val">goAML</span>
+                        <span class="qc__item-meta">UIF electronic platform</span>
+                    </div>
+                    <div>
+                        <span class="qc__item-label">DASP CO residency</span>
+                        <span class="qc__item-val">Not required</span>
+                        <span class="qc__item-meta">Instr. Art.&nbsp;84-B (Reform 1)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── REGULATORY STACK ── -->
+        <section class="sec" id="stack">
+            <p class="sec__label">Regulatory stack</p>
+            <h2 class="sec__title">Binding sources, in priority order</h2>
+            <p class="sec__lead">Every citation in this guide resolves to one of the five sources below. References that previously pointed to the CNAD AML Guide (deprecated) have been replaced with the underlying statute or the reformed Instructivo.</p>
+
+            <div class="stack-card">
+                <div class="stack-card__name serif">D-426</div>
+                <div class="stack-card__body">
+                    <div class="label">AML / CTF Law (statute)</div>
+                    <p><strong>Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction.</strong> Reporting entities (Art.&nbsp;7), CDD trigger (Art.&nbsp;15), PEP definitions (Art.&nbsp;19), CO and Prevention Committee (Arts.&nbsp;20, 23), STR 24h (Art.&nbsp;24), regulated transactions (Art.&nbsp;25), 15-yr retention (Art.&nbsp;26), tipping-off (Art.&nbsp;44).</p>
+                </div>
+            </div>
+            <div class="stack-card">
+                <div class="stack-card__name serif">Instr.</div>
+                <div class="stack-card__body">
+                    <div class="label">Instructivo UIF (Reform 1 + Reform 2)</div>
+                    <p><strong>Operational rulebook from the Financial Investigation Unit.</strong> Standard CDD with identity verification (Art.&nbsp;12 Reform 2), EDD (Art.&nbsp;13 Reform 2), SDD (Art.&nbsp;14), PEP enhanced measures (Arts.&nbsp;16–18), beneficial ownership 10% floor (Art.&nbsp;20) + UBO majority control (Art.&nbsp;21-A), Operación Regulada thresholds (Art.&nbsp;51), Travel Rule data (Art.&nbsp;52 par.&nbsp;2 Reform 2), VASP-specific obligations (Arts.&nbsp;84-A, 84-B, 84-C — Reform 1).</p>
+                </div>
+            </div>
+            <div class="stack-card">
+                <div class="stack-card__name serif">LECAT</div>
+                <div class="stack-card__body">
+                    <div class="label">D-108 — Counter-terrorism law</div>
+                    <p>UNSC sanctions freeze obligation (Art.&nbsp;37). Designation of terrorists before the UNSC (Art.&nbsp;34-B). Note: tipping-off is in <strong>D-426 Art.&nbsp;44</strong>, not in LECAT.</p>
+                </div>
+            </div>
+            <div class="stack-card">
+                <div class="stack-card__name serif">RPSAD</div>
+                <div class="stack-card__body">
+                    <div class="label">DASP Regulation (CNAD)</div>
+                    <p>CNAD-035-2023. Day-to-day DASP rules: registration (Arts.&nbsp;7–11), governance, customer service (Art.&nbsp;22), risk management (Art.&nbsp;21), cybersecurity (Arts.&nbsp;25–26).</p>
+                </div>
+            </div>
+            <div class="stack-card">
+                <div class="stack-card__name serif">LEAD</div>
+                <div class="stack-card__body">
+                    <div class="label">Decree 643/2023 — DASP statute</div>
+                    <p>Establishes CNAD authority, DASP registration regime (Arts.&nbsp;18–21), permitted activities (Art.&nbsp;19), tax exemption (Art.&nbsp;36), registration fee schedule (Art.&nbsp;12).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ CDD ══════════ -->
+        <section class="sec" id="cdd">
+            <p class="sec__label">Customer Due Diligence</p>
+            <h2 class="sec__title">CDD by trigger — what activates, when</h2>
+            <p class="sec__lead">El Salvador anchors the CDD trigger in <strong>D-426 Art.&nbsp;15</strong>. Two independent paths trigger full CDD: an ongoing relationship, or an occasional transaction above the applicable reporting threshold for that channel. EDD is a separate layer — triggered by risk factors regardless of amount.</p>
+
+            <h3>The four parallel triggers</h3>
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>Trigger</th><th>Threshold</th><th>Result</th><th>Source</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ongoing relationship</strong> (account, recurring service, custody)</td>
+                        <td class="num">Any amount</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span> from day&nbsp;1</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(a)</span> <span class="cite cite--instr">Instr. Art. 12</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occasional e-transfer</strong> (international or local, via app/device)</td>
+                        <td class="num">≥ $1,000</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span></td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 52(a)(b)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occasional family remittance</strong></td>
+                        <td class="num">≥ $200</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span></td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 52(c)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occasional cash</strong></td>
+                        <td class="num">&gt; $10,000</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 51</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Occasional other means</strong> (cheque, card not under Art. 52)</td>
+                        <td class="num">&gt; $25,000</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 51</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suspicion</strong> of laundering / terrorism / proliferation financing</td>
+                        <td class="num">Any amount</td>
+                        <td><span class="pill pill--cdd">CDD</span> + STR pipeline</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(c)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Doubt</strong> about veracity / adequacy of prior identification</td>
+                        <td class="num">Any amount</td>
+                        <td><span class="pill pill--cdd">Re-CDD</span></td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(d)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risk factor present</strong> (PEP, high-risk jurisdiction, opaque ownership, structuring, cash-intensive)</td>
+                        <td class="num">Any amount</td>
+                        <td><span class="pill pill--edd">EDD</span> + senior approval</td>
+                        <td><span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Below all thresholds AND no risk factor</strong></td>
+                        <td class="num">— </td>
+                        <td><span class="pill pill--no">No statutory CDD</span> — Travel Rule + sanctions screen only</td>
+                        <td><span class="cite cite--instr">Instr. Art. 52 par. 2</span> + <span class="cite cite--lecat">LECAT Art. 37</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note">Most DASP operations are e-transfers — the practical CDD trigger is therefore <strong>$1,000</strong> via the D-426 Art. 15(b) → Instr. Art. 52(a) chain. Internal AML policy may calibrate a lower threshold per FATF R.10 risk-based principles.</p>
+
+            <h3>What you collect, store and verify — by DD level</h3>
+            <p>Three operational levels: a Travel-Rule baseline (no statutory CDD triggered), Standard CDD (Instr. Art.&nbsp;12 measures), and EDD (Instr. Art.&nbsp;13 measures with documentary verification of source).</p>
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Data / document</th>
+                        <th>Travel-Rule baseline<br><span style="font-weight:400;color:var(--text-3);">no CDD</span></th>
+                        <th>Standard CDD<br><span class="cite cite--instr" style="margin:0;">Instr. Art. 12</span></th>
+                        <th>EDD<br><span class="cite cite--instr" style="margin:0;">Instr. Art. 13</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Government photo ID</td><td>Name + ID type/number only</td><td>Required · official document, copy on file</td><td>Required · two IDs preferred</td></tr>
+                    <tr><td>Address (utility ≤3m / bank statement / registry)</td><td>—</td><td>Documented</td><td>Documented · independently verified</td></tr>
+                    <tr><td>Occupation (natural person)</td><td>—</td><td>Self-declared</td><td>Documented · employer letter / payslip</td></tr>
+                    <tr><td>Date of birth (natural person)</td><td>—</td><td>Required</td><td>Required</td></tr>
+                    <tr><td>Nature of main activity (legal entity)</td><td>—</td><td>Documented · per registry</td><td>Documented + verified vs. counterparties</td></tr>
+                    <tr><td>Tax ID (NIT)</td><td>—</td><td>Required</td><td>Required</td></tr>
+                    <tr><td>Beneficial owner (legal entity, ≥10% floor)</td><td>—</td><td>Required · chain to natural person</td><td>Required · chain + supporting docs</td></tr>
+                    <tr><td>Source of funds for the transaction</td><td>—</td><td>Self-declared; documents on doubt</td><td>Documentary (payslip / contract / invoice / bank statement)</td></tr>
+                    <tr><td>Source of wealth (overall patrimony)</td><td>—</td><td>—</td><td>Required · documented</td></tr>
+                    <tr><td>Expected activity profile (volume / frequency / counterparties)</td><td>—</td><td>Brief profile on file</td><td>Full + scenarios + monitoring baseline</td></tr>
+                    <tr><td>PEP self-declaration + screening</td><td>Sanctions screen only</td><td>Required + periodic re-check</td><td>Required + every-tx re-check</td></tr>
+                    <tr><td>Senior-management written approval</td><td>—</td><td>—</td><td>Required (file dated)</td></tr>
+                    <tr><td>Enhanced ongoing monitoring</td><td>—</td><td>Standard cadence</td><td>Required · KYT on every transaction</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note">"Travel-Rule baseline" = data required for transfers below all CDD thresholds with no risk factor. The Travel Rule itself never depends on amount or DD level (Instr. Art. 52 par. 2 reformed).</p>
+        </section>
+
+        <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
+        <section class="sec" id="identity">
+            <p class="sec__label">Identification &amp; verification</p>
+            <h2 class="sec__title">Identity verification — the gating step</h2>
+            <p class="sec__lead">Reform 2 of the Instructivo added a binding sequence: <strong>identity must be verified BEFORE the commercial relationship begins</strong>, via official identification documents issued by competent public authorities. If verification cannot be completed, the relationship cannot start — and the failure is itself analyzed under the suspicious-transaction framework.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">Natural person — minimum data set</div>
+                    <p class="card__sub">Instr. Art. 12(a) + identity-verification clause (Reform 2)</p>
+                    <ul>
+                        <li><strong>Full name</strong> as on official document</li>
+                        <li><strong>Type and number of ID</strong> (DUI, passport, residence card)</li>
+                        <li><strong>Date of birth</strong></li>
+                        <li><strong>Address</strong> (utility ≤3 months / bank statement / registry)</li>
+                        <li><strong>Occupation</strong> (real economic activity, not just DUI/NIT data)</li>
+                        <li><strong>Tax ID (NIT)</strong> if applicable</li>
+                        <li><strong>PEP self-declaration</strong> + screening</li>
+                    </ul>
+                    <div class="card__foot">Verification before relationship: official document must be current at onboarding. <span class="cite cite--instr">Instr. Art. 12(a) Reform 2</span></div>
+                </div>
+                <div class="card card--green">
+                    <div class="card__title">Legal entity — minimum data set</div>
+                    <p class="card__sub">Instr. Art. 12 + Reform 2 identity clause + Art. 20 BO chain</p>
+                    <ul>
+                        <li><strong>Corporate name</strong> + commercial name</li>
+                        <li><strong>Principal address</strong> in country</li>
+                        <li><strong>Articles of incorporation</strong> + amendments — registered with the Commercial Register</li>
+                        <li><strong>Powers</strong> binding the legal person + senior management names</li>
+                        <li><strong>NIT</strong> + operating licence</li>
+                        <li><strong>Nature of main activity</strong> (real, beyond registry classification)</li>
+                        <li><strong>Beneficial owner chain</strong> to natural person (≥10% floor)</li>
+                        <li><strong>Authorised signatories</strong> with IDs and powers</li>
+                    </ul>
+                    <div class="card__foot">Identity must be verified BEFORE relationship begins. <span class="cite cite--instr">Instr. Art. 12(a) Reform 2</span></div>
+                </div>
+            </div>
+
+            <h3>Method &amp; channel</h3>
+            <ul>
+                <li>In person OR remote via <strong>digital / electronic channels</strong>, after a documented risk analysis of the chosen channel <span class="cite cite--instr">Instr. Art. 12(a)</span></li>
+                <li>The identification document must be <strong>current at the time of onboarding</strong></li>
+                <li>The economic activity declared on the DUI / NIT is <strong>not sufficient</strong> — further enquiry is required to determine the actual activity in the real economy</li>
+                <li>For legal persons: identification reaches the <strong>ownership structure and ultimate beneficial owner</strong>, not just the corporate counterparty</li>
+                <li><strong>Trustees</strong> must disclose their status when establishing a relationship; identification of all parties to the trust is required <span class="cite cite--instr">Instr. Arts. 21, 21-A</span></li>
+            </ul>
+
+            <div class="callout callout--crit">
+                <p><strong>If identity cannot be verified.</strong> The commercial relationship may not be commenced. The Reporting Entity must analyze the circumstances under the unusual / suspicious framework (Instructivo Title&nbsp;II Chapters VII–VIII) and consider filing an <strong>attempted suspicious-transaction report</strong>. <span class="cite cite--instr">Instr. Art. 12 Reform 2</span> · <span class="cite cite--instr">Instr. Art. 47</span></p>
+            </div>
+
+            <h3>Customer profile (post-identity)</h3>
+            <p>Once identity is verified, build a <strong>customer profile</strong> via interview sheet and a sworn statement, defining the economic activity. The sworn statement is per customer, not per product. <span class="cite cite--instr">Instr. Art. 12(b)</span></p>
+
+            <h3>List checks at identification</h3>
+            <ul>
+                <li>International lists binding on El Salvador (UNSC, etc.) — <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                <li>Lists of jurisdictions classified as zero / low taxation or havens — <span class="cite cite--instr">Instr. Art. 12(f)</span></li>
+                <li>PEP lists (national + foreign + international organisations) — <span class="cite cite--instr">Instr. Arts. 16–18</span></li>
+            </ul>
+        </section>
+
+        <!-- ══════════ BENEFICIAL OWNER ══════════ -->
+        <section class="sec" id="bo">
+            <p class="sec__label">Beneficial owner</p>
+            <h2 class="sec__title">Resolve to a natural person — apply 10% as floor</h2>
+            <p class="sec__lead">El Salvador uses a <strong>stricter-of-three</strong> approach for beneficial ownership. Always identify and verify the natural person at the top of the chain.</p>
+
+            <div class="grid grid--3">
+                <div class="card card--green">
+                    <div class="card__title">10% floor</div>
+                    <p class="card__sub">Apply this as operational baseline</p>
+                    <p>Natural person who directly or indirectly owns or controls <strong>≥10%</strong> of capital or voting rights of a legal person.</p>
+                    <div class="card__foot"><span class="cite cite--instr">Instr. Arts. 12(a), 20</span></div>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">25% (statute)</div>
+                    <p class="card__sub">D-426 statutory threshold</p>
+                    <p>Statute uses 25% as the participation threshold; the Instructivo lowers it to 10% for operational rigor. Apply the lower (10%) as floor.</p>
+                    <div class="card__foot"><span class="cite cite--d426">D-426 Art. 15</span></div>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Majority shareholding / control by other means</div>
+                    <p class="card__sub">UBO catch-all (Reform 2)</p>
+                    <p>Where no natural person reaches the threshold via shareholding, identify whoever exercises <strong>control by other means</strong>; failing that, the highest-ranking management officer.</p>
+                    <div class="card__foot"><span class="cite cite--instr">Instr. Art. 21-A (Reform 2)</span></div>
+                </div>
+            </div>
+
+            <div class="callout callout--info">
+                <p><strong>Trusts and other legal arrangements.</strong> Identify <em>all</em> parties: settlor and whoever controls the settlor; trustee(s); protector (if any); beneficiaries (or classes); any natural person exercising effective ultimate control over the trust through any control / ownership chain. Trustees retain this information for at least <strong>15 years</strong> after the cessation of the relationship. <span class="cite cite--instr">Instr. Arts. 21, 21-A</span></p>
+            </div>
+
             <h3>Refresh triggers — out of cycle</h3>
             <ul>
                 <li>Change in ownership ≥10%</li>
                 <li>Change in authorised signatories</li>
                 <li>Trust party change / nominee change</li>
-                <li>BO becomes PEP</li>
-                <li>Sanctions list update naming related party</li>
-                <li>Material deviation from declared profile</li>
+                <li>Beneficial owner becomes a PEP</li>
+                <li>Sanctions list update naming a related party</li>
+                <li>Material deviation from declared activity profile</li>
             </ul>
-            <p class="card__note">Scheduled refresh: Standard CDD every 3 yr · EDD every year · half-yearly if score very high.</p>
-        </div>
-    </div>
-</div>
-</section>
+            <p>Scheduled refresh: Standard CDD every 3 yr · EDD every year · half-yearly when score is very high (industry practice).</p>
+        </section>
 
-<!-- ══ TRAVEL RULE ══ -->
-<section class="section section--alt" id="travel-rule">
-<div class="container">
-    <p class="section__label">Travel Rule</p>
-    <h2 class="section__title">Per-transfer data — Art.&nbsp;52 par.&nbsp;2 reformed</h2>
-    <p class="section__desc">Reform&nbsp;(2) of Instructivo Art. 52 imports a Travel Rule into the binding statutory framework. <strong>Seven fields are mandatory on every electronic transfer regardless of amount</strong> — the Spanish text uses upper case to underscore that this applies even to transfers <em>below</em> the Art.&nbsp;52(a)(b) reporting thresholds. The institution must ensure transmission to the beneficiary's institution, and a batch-processing rule applies when grouping individual transfers.</p>
+        <!-- ══════════ TRAVEL RULE ══════════ -->
+        <section class="sec" id="travel-rule">
+            <p class="sec__label">Travel Rule</p>
+            <h2 class="sec__title">Per-transfer data — Art.&nbsp;52 par.&nbsp;2 reformed</h2>
+            <p class="sec__lead">Reform 2 of the Instructivo imports a binding Travel Rule into the statutory framework. The Spanish text uses upper case to underscore that this applies <em>even to transfers that do not exceed the established thresholds</em>. A separate batch-processing rule applies to grouped transfers from a single originator.</p>
 
-    <h3 class="section__sub">The seven mandatory fields</h3>
-    <div class="grid grid--2">
-        <div class="card card--top-green">
-            <h3>Originator (sender)</h3>
-            <ol>
-                <li><strong>Name</strong> of the originating customer</li>
-                <li><strong>Account number</strong> of the originator</li>
-                <li><strong>Type and number of identity document</strong> (DUI / NIT / passport)</li>
-            </ol>
-            <p class="card__note">For natural persons: DUI or passport. For legal entities: NIT or registration number.</p>
-        </div>
-        <div class="card card--top-green">
-            <h3>Beneficiary (recipient)</h3>
-            <ol start="4">
-                <li><strong>Name</strong> of the beneficiary</li>
-                <li><strong>Account number</strong> of the beneficiary</li>
-                <li><strong>Name of the beneficiary's bank</strong> (bank administering the account)</li>
-            </ol>
-            <p class="card__note">If the beneficiary VASP cannot supply the bank name (unhosted wallet), document the limitation and apply risk-based EDD.</p>
-        </div>
-        <div class="card card--top-green card--accent-green" style="grid-column:1 / -1;">
-            <h3>Transaction</h3>
-            <ol start="7">
-                <li><strong>Transaction identifier</strong> (transaction reference / hash / unique ID)</li>
-            </ol>
-            <p class="card__note">Source: <span class="ref">Instr. Art. 52 par.2 reformed</span>. Spanish text in CAPS: <em>"LAS INSTITUCIONES FINANCIERAS DEBEN GARANTIZAR QUE TODAS LAS TRANSFERENCIAS ELECTRÓNICAS … INCLUSO AQUELLAS QUE NO SUPEREN LOS UMBRALES ESTABLECIDOS, SEAN ACOMPAÑADAS MÍNIMAMENTE DE LA INFORMACIÓN REQUERIDA"</em>.</p>
-        </div>
-    </div>
-
-    <div class="callout callout--green">
-        <p><strong>Batch-processing rule.</strong> When several individual electronic transfers from a <em>single originator</em> are grouped into one batch file for transmission to multiple beneficiaries, the file must contain the required and accurate originator information and the complete beneficiary information for each transfer, under the systems the UIF determines. <span class="ref">Instr. Art. 52 par.2 final</span></p>
-    </div>
-
-    <h3 class="section__sub">Operational obligations by VASP role</h3>
-    <p class="section__sub-desc">A DASP can occupy three roles on the same transfer chain — sometimes simultaneously when intermediating. Each role triggers its own duties at the moment the transfer enters the order book.</p>
-
-    <div class="grid grid--3">
-        <div class="card card--accent-blue">
-            <h3>Originating DASP</h3>
-            <ol>
-                <li>Verify originator (CDD if triggered, sanctions screen always)</li>
-                <li>Attribute originating wallet to verified client</li>
-                <li>Collect 7 Travel Rule fields</li>
-                <li>Screen beneficiary against UNSC + UIF national</li>
-                <li>Transmit data set securely to beneficiary VASP</li>
-                <li>Retain full record 15 years</li>
-            </ol>
-        </div>
-        <div class="card card--accent-green">
-            <h3>Beneficiary DASP</h3>
-            <ol>
-                <li>Verify beneficiary (CDD if triggered)</li>
-                <li>Attribute beneficiary wallet to verified client</li>
-                <li>Receive + validate 7 Travel Rule fields</li>
-                <li>Flag missing fields; hold pending data</li>
-                <li>Screen originator against UNSC + UIF national</li>
-                <li>Retain + monitor; STR if pattern emerges</li>
-            </ol>
-        </div>
-        <div class="card card--accent-amber">
-            <h3>Intermediary DASP</h3>
-            <ol>
-                <li>Pass 7 Travel Rule fields unchanged forward</li>
-                <li>Validate completeness on receipt</li>
-                <li>Refuse to forward if fields missing</li>
-                <li>Screen both originator and beneficiary</li>
-                <li>Apply transaction monitoring at routing point</li>
-                <li>Retain 15 years even with no client relationship</li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="callout callout--amber">
-        <p><strong>Wallet attribution is the operational pinch point.</strong> Art. 52 par.2 requires originator/beneficiary identity but does not specify a wallet-attribution method. Industry practice (Satoshi test, micro-deposit, signed message, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale.</p>
-    </div>
-</div>
-</section>
-
-<!-- ══ REPORTING HUB ══ -->
-<section class="section" id="reporting">
-<div class="container">
-    <p class="section__label">Reporting Hub</p>
-    <h2 class="section__title">Every report — name, recipient, deadline, channel</h2>
-    <p class="section__desc">A consolidated map of every report a DASP files: the four mandatory transaction reports, sanctions and PEP-related notifications, internal governance filings to UIF and CNAD. Report names appear in English with the Spanish original in parentheses. The UIF channel is the <strong>goAML / UIF electronic platform</strong> unless noted otherwise.</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th>Report (EN · ES)</th>
-                <th>When</th>
-                <th>Recipient</th>
-                <th>Deadline</th>
-                <th>Channel</th>
-                <th>Source</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Suspicious Transaction Report — STR</strong><br><em>(Reporte de Operación Sospechosa — ROS)</em></td>
-                <td>Suspicion confirmed by CO determination — any amount</td>
-                <td>UIF</td>
-                <td class="num">24 h<br><span class="ref">wall-clock</span></td>
-                <td>goAML / UIF platform</td>
-                <td><span class="ref">D-426 Art. 24</span> · <span class="ref">Instr. Arts. 27–35, 47</span></td>
-            </tr>
-            <tr>
-                <td><strong>Attempted Suspicious Operation</strong><br><em>(Operación Intentada Sospechosa)</em></td>
-                <td>Client attempts but does not consummate a suspicious operation</td>
-                <td>UIF</td>
-                <td class="num">24 h<br><span class="ref">from determination</span></td>
-                <td>goAML / UIF platform</td>
-                <td><span class="ref">Instr. Art. 47</span></td>
-            </tr>
-            <tr>
-                <td><strong>Regulated Cash Operation Report</strong><br><em>(Reporte de Operación Regulada — efectivo)</em></td>
-                <td>Single cash op &gt; $10,000 OR monthly aggregate &gt; $10,000 same client</td>
-                <td>UIF</td>
-                <td class="num">5 bd<br><span class="ref">after op / month-end</span></td>
-                <td>UIF electronic platform (Art. 51)</td>
-                <td><span class="ref">Instr. Art. 51</span> · <span class="ref">LCLDA Art. 9</span></td>
-            </tr>
-            <tr>
-                <td><strong>Regulated Other-Means Operation Report</strong><br><em>(Reporte de Operación Regulada — otros medios)</em></td>
-                <td>Single other-means op &gt; $25,000 OR monthly aggregate &gt; $25,000 same client</td>
-                <td>UIF</td>
-                <td class="num">5 bd</td>
-                <td>UIF electronic platform</td>
-                <td><span class="ref">Instr. Art. 51</span></td>
-            </tr>
-            <tr>
-                <td><strong>Monthly E-Transfer Report — International</strong><br><em>(Reporte mensual de transferencias electrónicas internacionales)</em></td>
-                <td>International e-transfers ≥ $1,000 — month aggregate</td>
-                <td>UIF</td>
-                <td class="num">First 5 bd<br><span class="ref">of next month</span></td>
-                <td>UIF electronic platform</td>
-                <td><span class="ref">Instr. Art. 52(a)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Monthly E-Transfer Report — Local</strong><br><em>(Reporte mensual de transferencias electrónicas locales)</em></td>
-                <td>Local e-transfers via app/device ≥ $1,000 — month aggregate</td>
-                <td>UIF</td>
-                <td class="num">First 5 bd</td>
-                <td>UIF electronic platform</td>
-                <td><span class="ref">Instr. Art. 52(b)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Monthly Family Remittance Report</strong><br><em>(Reporte mensual de remesas familiares)</em></td>
-                <td>Family remittances ≥ $200 — month aggregate</td>
-                <td>UIF</td>
-                <td class="num">First 5 bd</td>
-                <td>UIF electronic platform</td>
-                <td><span class="ref">Instr. Art. 52(c)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Sanctions / UNSC List Freeze Report</strong><br><em>(Reporte de congelamiento — UNSC / lista nacional)</em></td>
-                <td>Match confirmed against UNSC or UIF national list</td>
-                <td>UIF (+ FGR copy)</td>
-                <td class="num">3 bd</td>
-                <td>UIF channel + freeze certificate</td>
-                <td><span class="ref">LECAT Art. 37</span> · <span class="ref">Instr. Arts. 27–35</span></td>
-            </tr>
-            <tr>
-                <td><strong>Compliance Officer Appointment Notice</strong><br><em>(Notificación de nombramiento del Oficial de Cumplimiento)</em></td>
-                <td>Principal CO or Deputy CO appointed</td>
-                <td>UIF</td>
-                <td class="num">15 bd</td>
-                <td>UIF channel + acta + CV + contract</td>
-                <td><span class="ref">Instr. Arts. 7(m), 64</span></td>
-            </tr>
-            <tr>
-                <td><strong>Compliance Officer Removal Notice</strong><br><em>(Notificación de remoción del OC)</em></td>
-                <td>CO or Deputy CO removed / resigns</td>
-                <td>UIF</td>
-                <td class="num">5 bd</td>
-                <td>UIF channel</td>
-                <td><span class="ref">Instr. Art. 7(m)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Annual Training Plan</strong><br><em>(Plan de formación anual)</em></td>
-                <td>Each calendar year — for following year</td>
-                <td>Internal (Board approval); on request to UIF</td>
-                <td class="num">By 31 Dec</td>
-                <td>Board minutes + plan</td>
-                <td><span class="ref">Instr. Art. 54</span></td>
-            </tr>
-            <tr>
-                <td><strong>Annual AML Self-Assessment / Audit</strong><br><em>(Auditoría AML interna anual)</em></td>
-                <td>Once per calendar year</td>
-                <td>Board · file accessible to UIF</td>
-                <td class="num">12 mo<br>rolling</td>
-                <td>Audit report + action plan</td>
-                <td><span class="ref">Instr. Art. 8</span></td>
-            </tr>
-            <tr>
-                <td><strong>BO / Registration Data Update</strong><br><em>(Actualización de datos del beneficiario final)</em></td>
-                <td>Material change in BO chain or registration data</td>
-                <td>UIF</td>
-                <td class="num">15 bd</td>
-                <td>UIF channel</td>
-                <td><span class="ref">Instr. Art. 3</span></td>
-            </tr>
-            <tr>
-                <td><strong>Material Registration Change — DASP</strong><br><em>(Cambio material — registro DASP)</em></td>
-                <td>Change to registration data, ownership, control, governance</td>
-                <td>CNAD</td>
-                <td class="num">5 bd</td>
-                <td>CNAD channel</td>
-                <td><span class="ref">RPSAD Art. 9</span></td>
-            </tr>
-            <tr>
-                <td><strong>Cybersecurity Incident</strong><br><em>(Incidente de ciberseguridad)</em></td>
-                <td>Confidentiality / availability / integrity event</td>
-                <td>CNAD</td>
-                <td class="num">Without delay</td>
-                <td>CNAD channel + incident log</td>
-                <td><span class="ref">RPSAD Art. 26</span></td>
-            </tr>
-            <tr>
-                <td><strong>Annual Cybersecurity Test</strong><br><em>(Pruebas anuales de ciberseguridad)</em></td>
-                <td>Once per year — 3 scenarios (confidentiality / availability / integrity)</td>
-                <td>CNAD (results filed)</td>
-                <td class="num">12 mo<br>rolling</td>
-                <td>External auditor report</td>
-                <td><span class="ref">RPSAD Art. 26</span></td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-
-    <div class="callout">
-        <p><strong>goAML.</strong> El Salvador's UIF receives reports via the goAML electronic platform (UNODC standard, deployed widely across LATAM FIUs). Each obligated subject is enrolled with credentials issued at registration. STR templates, threshold reports and freeze notifications all submit through goAML. CO and Deputy CO are the registered submitters — keep their credentials current and update UIF within the statutory windows on any role change.</p>
-    </div>
-
-    <div class="callout callout--amber">
-        <p><strong>Two clocks, never confuse them.</strong> The <strong>STR clock</strong> is wall-clock 24 hours from a CO's signed determination of suspicion — it does not stop on weekends. The <strong>Operación Regulada clock</strong> (and most other deadlines) is business-day. Missing either is a standalone administrative offence; supervisors audit dates before substance.</p>
-    </div>
-</div>
-</section>
-
-<!-- ══ STR FLOW ══ -->
-<section class="section section--alt" id="str">
-<div class="container">
-    <p class="section__label">Suspicious Transaction Reports</p>
-    <h2 class="section__title">From red flag to STR — the 5-stage flow</h2>
-    <p class="section__desc">Every STR follows the same five stages. The internal analysis runs up to 15 business days; the filing window is 24 hours from the CO's signed determination. No tipping-off at any stage.</p>
-
-    <div class="grid grid--2">
-        <div class="card card--top-blue">
-            <h3>Stage 1 · Alert opened</h3>
-            <p>KYT alert / staff escalation / pattern detected. Timestamped record created in the CO queue. Source, evidence, and trigger are logged immediately.</p>
-        </div>
-        <div class="card card--top-blue">
-            <h3>Stage 2 · Internal analysis</h3>
-            <p><strong>≤ 15 business days</strong> <span class="ref">D-426 Art. 24</span>. CO reviews facts, compares with profile, runs KYT and blockchain trace, checks counterparties, documents conclusions. Extension allowed once with documented reason.</p>
-        </div>
-        <div class="card card--top-amber">
-            <h3>Stage 3 · Determination</h3>
-            <p>CO records a <strong>signed, timestamped determination line</strong>: "Suspicion confirmed [or not] — at [ISO timestamp] — by [CO name]". This is the legal trigger for the 24-h clock. Without a recorded timestamp, the clock is ambiguous and UIF reads it against the entity.</p>
-        </div>
-        <div class="card card--top-red">
-            <h3>Stage 4 · STR filed</h3>
-            <p><strong>24 hours wall-clock</strong> from determination <span class="ref">D-426 Art. 24</span>. File via goAML / UIF platform with full Travel Rule data, KYT report, supporting docs.</p>
-        </div>
-        <div class="card card--top-green" style="grid-column: 1/-1;">
-            <h3>Stage 5 · Post-filing</h3>
-            <ul>
-                <li><strong>Relationship decision</strong>: enhanced monitoring, neutral-ground discontinuation — never cite STR as reason</li>
-                <li><strong>Tipping-off prohibited</strong> — no disclosure to client, family, third party, or media <span class="ref">LECAT Art. 17</span></li>
-                <li><strong>Cooperate</strong> with UIF / FGR information requests</li>
-                <li><strong>Retain full file 15 years</strong> <span class="ref">D-426 Art. 26</span></li>
-            </ul>
-        </div>
-    </div>
-
-    <h3 class="section__sub">Suspicious vs. unusual — distinguish in the file</h3>
-    <div class="grid grid--2">
-        <div class="card card--accent-amber">
-            <h3>Unusual operation <em>(operación inusual)</em></h3>
-            <p>Deviates from the client's declared profile or normal market practice but does not yet rise to suspicion. <strong>Triggers analysis</strong> — not necessarily an STR. Document the unusual flag, request explanation, refresh CDD, escalate if pattern persists.</p>
-            <p class="card__note">Analyst level; CO informed via daily/weekly ticket roll-up.</p>
-        </div>
-        <div class="card card--accent-red">
-            <h3>Suspicious operation <em>(operación sospechosa)</em></h3>
-            <p>Reasonable indicia that funds may relate to laundering, terrorism financing, weapons proliferation, or any predicate offence — irrespective of amount. <strong>Triggers STR pipeline</strong> (5 stages above).</p>
-            <p class="card__note">CO determination required; 24-h filing clock starts at signed determination.</p>
-        </div>
-    </div>
-
-    <div class="callout callout--red">
-        <p><strong>Tipping-off — operational red line.</strong> No disclosure to the client (or counterparty, family, third party) about: existence of analysis · filing or non-filing of STR · UIF requests · freezes · investigation · the AML reason for any account closure. Decline or delay with a neutral ground ("documentation pending") and never mention analysis or reporting. <span class="ref">LECAT Art. 17</span></p>
-    </div>
-</div>
-</section>
-
-<!-- ══ SANCTIONS ══ -->
-<section class="section" id="sanctions">
-<div class="container">
-    <p class="section__label">Sanctions Screening</p>
-    <h2 class="section__title">Three lists, three moments, three actions</h2>
-    <p class="section__desc">Three lists are statutorily binding; OFAC/EU/UK are commercial-risk only. Screen at three moments: onboarding, every transaction, periodic sweep on list updates.</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>List</th><th>Status in Salvadoran law</th><th>When to check</th><th>On hit</th><th>Source</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><strong>UNSC consolidated lists</strong> (1267, 1373, 1718, 1988, 2231 + successors)</td>
-                <td>Binding via LECAT</td>
-                <td>Onboarding · every transaction · on list update · periodic sweep (quarterly+)</td>
-                <td><span class="pill pill--reject">Freeze</span> + UIF report ≤ 3 bd + no tipping-off</td>
-                <td><span class="ref">LECAT Art. 37</span> · <span class="ref">Instr. Arts. 27–35</span></td>
-            </tr>
-            <tr>
-                <td><strong>UIF national designated lists</strong> (FGR/UIF publications)</td>
-                <td>Binding</td>
-                <td>Same as UNSC</td>
-                <td>Same as UNSC</td>
-                <td><span class="ref">Instr. Arts. 27–35</span></td>
-            </tr>
-            <tr>
-                <td><strong>OFAC / EU / UK</strong></td>
-                <td>Not Salvadoran law — <span class="pill pill--no-cdd">commercial</span></td>
-                <td>Per banking-partner contract; per USD-corridor exposure</td>
-                <td>Per internal risk policy; not a statutory freeze</td>
-                <td>Contract / risk management</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-
-    <h3 class="section__sub">Freeze procedure on UNSC / national hit</h3>
-    <div class="grid grid--2">
-        <div class="card card--top-red">
-            <h3>Steps 1–3 · Immediate</h3>
-            <ol>
-                <li><strong>Confirm match</strong> (not false positive after basic verification). Record source, timestamp, evidence.</li>
-                <li><strong>Freeze immediately</strong> — funds, wallets, pending operations.</li>
-                <li><strong>Report UIF within 3 business days</strong> via goAML with match record + frozen amount <span class="ref">LECAT Art. 37</span></li>
-            </ol>
-        </div>
-        <div class="card card--top-amber">
-            <h3>Steps 4–5 · Discipline</h3>
-            <ol start="4">
-                <li><strong>No tipping-off</strong> — do not explain the hold, do not return funds without UIF / judicial authorisation <span class="ref">LECAT Art. 17</span></li>
-                <li><strong>Cooperate</strong> with UIF / FGR information requests; retain full file 15 years</li>
-            </ol>
-            <p class="card__note">If the match is on a related party (not the direct client) — same procedure, plus immediate refresh of the BO chain to determine actual exposure.</p>
-        </div>
-    </div>
-
-    <div class="callout callout--amber">
-        <p><strong>Restricted jurisdictions list — internal.</strong> Each DASP maintains its own Restricted Jurisdictions list as part of its Risk Management Policy. The model used by the Wizard below combines: (i) FATF Call for Action (NK, Iran, Myanmar) and UNSC-sanctioned states → <strong>geofence + reject</strong>; (ii) OFAC-comprehensive countries (Cuba, Crimea/DNR/LNR Ukraine) → <strong>geofence + reject</strong>; (iii) Crypto-banned countries (China, Bangladesh, etc.) → <strong>geofence + reject</strong>; (iv) FATF Grey List + partial-sanctions countries → <strong>EDD + senior approval if accepted</strong>.</p>
-    </div>
-</div>
-</section>
-
-<!-- ══ PEP ══ -->
-<section class="section section--alt" id="pep">
-<div class="container">
-    <p class="section__label">Politically Exposed Persons</p>
-    <h2 class="section__title">PEP regime — always EDD, always senior approval</h2>
-    <p class="section__desc">PEP status forces the relationship into EDD regardless of amount or transaction profile. PEP screening covers self, family up to 2nd degree, and close associates. Status persists 5 years post-cease of public function.</p>
-
-    <div class="tbl-wrap">
-    <table class="tbl">
-        <thead><tr><th>Subject</th><th>Coverage</th><th>Action</th><th>Source</th></tr></thead>
-        <tbody>
-            <tr><td><strong>PEP self</strong></td><td>Domestic / foreign / international-organisation PEP</td><td>EDD · senior-mgmt written approval · SoF + SoW documented · enhanced monitoring</td><td><span class="ref">Instr. Arts. 16, 17</span></td></tr>
-            <tr><td><strong>Family members</strong></td><td>Up to 2nd-degree consanguinity / affinity (parents, children, spouse, siblings, in-laws, grandparents, grandchildren)</td><td>Same as PEP self</td><td><span class="ref">Instr. Art. 18</span></td></tr>
-            <tr><td><strong>Close associates</strong></td><td>Documented close business or personal associate of a PEP</td><td>Same as PEP self</td><td><span class="ref">Instr. Art. 18</span></td></tr>
-            <tr><td><strong>Post-cease &lt; 5 years</strong></td><td>Person ceased public function less than 5 years ago</td><td>Still PEP — full EDD</td><td><span class="ref">Instr. Arts. 16–18</span></td></tr>
-            <tr><td><strong>Post-cease &gt; 5 years</strong></td><td>Cease &gt; 5 years AND no residual risk</td><td>Standard CDD unless other EDD trigger</td><td><span class="ref">Instr. Arts. 16–18</span></td></tr>
-        </tbody>
-    </table>
-    </div>
-
-    <div class="callout">
-        <p><strong>Operationally.</strong> PEP self-declaration goes on every CDD form. Cross-check against a recognised PEP database (Refinitiv World-Check / Dow Jones / ComplyAdvantage / similar). Re-screen at every annual review and on any role change. If PEP status surfaces post-onboarding: refresh DD level immediately, document senior-management decision (continue with EDD or terminate with neutral ground), file decision memo to CO.</p>
-    </div>
-</div>
-</section>
-
-<!-- ══ RED FLAGS / UNUSUAL ══ -->
-<section class="section" id="redflags">
-<div class="container">
-    <p class="section__label">Red Flags &amp; Unusual Transactions</p>
-    <h2 class="section__title">EDD triggers — any single flag activates EDD</h2>
-    <p class="section__desc">Any single red flag below forces EDD regardless of amount <span class="ref">Instr. Art. 13</span>. Use this catalogue at onboarding, relationship review, and every KYT-alert triage.</p>
-
-    <div class="grid grid--3">
-        <div class="card card--accent-red"><h3>Structuring patterns</h3><p>Split transactions, round-numbers just under thresholds ($1,000 / $10,000 / $25,000), multiple same-day operations from same source. → <strong>EDD + STR consideration</strong>.</p></div>
-        <div class="card card--accent-red"><h3>Profile deviation</h3><p>Amount, frequency, asset choice, geography inconsistent with declared activity / occupation / expected volume. → <strong>Profile refresh + EDD + documented rationale</strong>.</p></div>
-        <div class="card card--accent-amber"><h3>Cash-intensive counterpart</h3><p>Money-service business, cash retail, import-export with cash legs, high-cash flow. → <strong>EDD + documentary SoF + enhanced monitoring</strong>.</p></div>
-        <div class="card card--accent-amber"><h3>Opaque ownership</h3><p>Nominees, bearer shares, layered holdings, opaque trust, mailbox address, unexplained BO change. → <strong>Resolve to natural person mandatory</strong> <span class="ref">Instr. Arts. 20, 21</span>.</p></div>
-        <div class="card card--accent-red"><h3>Flagged wallet</h3><p>Counterparty wallet linked to mixer, darknet marketplace, exploit, sanctions-linked address, high-risk exchange. → <strong>EDD + KYT trace retained + STR consideration</strong>.</p></div>
-        <div class="card card--accent-amber"><h3>Third-party funder</h3><p>Payment from a party other than the client; "someone else pays for me". → <strong>Identify the third party; treat as parallel client or reject</strong> <span class="ref">Instr. Art. 12(e)</span>.</p></div>
-        <div class="card card--accent-red"><h3>Rapid in-out</h3><p>Funds deposited and transferred out within a short window with no economic rationale (pass-through). → <strong>EDD + block pending explanation</strong>.</p></div>
-        <div class="card card--accent-amber"><h3>Document inconsistency</h3><p>Name / date / signature discrepancy across ID, utility bill, bank statement, corporate certificate. → <strong>Re-verify via independent source; refusal → decline + STR</strong>.</p></div>
-        <div class="card card--accent-amber"><h3>High-risk jurisdiction</h3><p>FATF Grey/Black list, non-cooperating territory, sanctioned state, jurisdiction in UIF / CNAD high-risk advisory. → <strong>EDD baseline for any counterparty touching the jurisdiction</strong>.</p></div>
-        <div class="card card--accent-red"><h3>PEP involvement</h3><p>Client is a PEP (self / family ≤ 2° / close associate) or becomes one during relationship. → <strong>EDD + SoF + SoW + senior-mgmt approval</strong> <span class="ref">Instr. Art. 14</span>. PEP status persists 5 years post-cease.</p></div>
-        <div class="card card--accent-amber"><h3>Adverse media</h3><p>Credible press / law-enforcement / regulator reference to client or related party — investigation, sanctions mention, indictment, arrest. → <strong>Documented review + EDD + STR consideration</strong>.</p></div>
-        <div class="card card--accent-red"><h3>Client refusal</h3><p>Client declines to provide CDD data, update BO, produce SoF documents, or asks you to skip Travel Rule fields. → <strong>Onboarding prohibited</strong> <span class="ref">Instr. Art. 12</span>; <strong>attempted operation reportable</strong> <span class="ref">Instr. Art. 47</span>.</p></div>
-    </div>
-
-    <h3 class="section__sub">Unusual ≠ Suspicious — handle differently</h3>
-    <div class="callout">
-        <p><strong>Unusual = analyse and document.</strong> A profile deviation triggers an unusual flag. Open a ticket, request client explanation, refresh CDD if needed. Document outcome — close with rationale or escalate to suspicious.</p>
-        <p style="margin-top:0.5rem;"><strong>Suspicious = STR pipeline.</strong> Once the CO determines suspicion, the 24-h filing clock starts. Tipping-off prohibited. Relationship decision separate from filing decision.</p>
-    </div>
-</div>
-</section>
-
-<!-- ══ RECORDS & RETENTION ══ -->
-<section class="section section--alt" id="records">
-<div class="container">
-    <p class="section__label">Records &amp; Retention</p>
-    <h2 class="section__title">15 years — every AML record, accessible to UIF</h2>
-    <p class="section__desc">All AML records — CDD files, transactions, analyses, STRs, sanctions hits, training, audits, committee minutes — retained 15 years from relationship end or operation date. Format: physical, digital or electronic, organised per client.</p>
-
-    <div class="grid grid--2">
-        <div class="card card--top-green">
-            <h3>What to retain</h3>
-            <ul>
-                <li><strong>CDD file per client</strong>: ID, address, occupation, BO chart, SoF, PEP screening, risk scoring</li>
-                <li><strong>Travel Rule records</strong>: 7 fields per transfer, batch files, transmission logs</li>
-                <li><strong>KYT logs</strong>: blockchain traces, alerts, dispositions</li>
-                <li><strong>Sanctions screening</strong>: every hit, match record, decision rationale</li>
-                <li><strong>STR analysis files</strong>: alert through determination through filing</li>
-                <li><strong>Reports filed</strong>: ROS, Operación Regulada, monthly Art. 52, freeze reports</li>
-                <li><strong>Training records</strong>: attendance, evaluation, dated materials, CO sign-off</li>
-                <li><strong>Audits</strong>: internal + external AML, cyber, financial</li>
-                <li><strong>Committee minutes</strong>: Prevention Committee quarterly + Board AML</li>
-            </ul>
-        </div>
-        <div class="card card--top-amber">
-            <h3>How to retain</h3>
-            <ul>
-                <li><strong>Format</strong>: physical, digital, or electronic — equally valid <span class="ref">Instr. Art. 12(d)</span></li>
-                <li><strong>Organisation</strong>: per client; per transaction within client; chronological within type</li>
-                <li><strong>Accessibility</strong>: must be retrievable on UIF / CNAD request without delay</li>
-                <li><strong>Integrity</strong>: tamper-evident storage; version-control on policy documents</li>
-                <li><strong>Backups</strong>: secure, geo-redundant, encryption at rest</li>
-                <li><strong>Access control</strong>: role-based, audit-logged, principle of least privilege</li>
-                <li><strong>Disposal</strong>: only after the 15-year period expires AND no live investigation; documented destruction</li>
-            </ul>
-            <p class="card__note">Wind-down: on relationship end, retention clock starts from last operation. On DASP wind-down, records remain subject to the 15-year rule independent of corporate dissolution <span class="ref">D-426 Art. 26</span>.</p>
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- ══ DECISION WIZARD ══ -->
-<section class="section" id="wizard">
-<div class="container">
-    <p class="section__label">Interactive Tool</p>
-    <h2 class="section__title">Decision wizard — only triggered obligations</h2>
-    <p class="section__desc">Enter the transaction parameters. The wizard returns <strong>only the obligations actually triggered</strong> — no SoF/SoW for low-risk transactions, no senior approval unless EDD, no jurisdiction warnings unless the country matches the restricted list. The output is a CO-ready checklist with statutory citations.</p>
-
-    <div class="wiz" role="region" aria-label="AML decision wizard">
-        <form class="wiz__form" id="wiz-form" autocomplete="off" onsubmit="return false;">
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">1 · Client type</legend>
-                <div class="wiz__chips">
-                    <label class="wiz__chip"><input type="radio" name="clientType" value="natural" checked> Natural person</label>
-                    <label class="wiz__chip"><input type="radio" name="clientType" value="legal"> Legal entity</label>
+            <h3>The data set</h3>
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">Originator (sender)</div>
+                    <ul>
+                        <li><strong>Name</strong> of the originating customer</li>
+                        <li><strong>Account number</strong> of the originator</li>
+                        <li><strong>Type and number of identification document</strong> (DUI / NIT / passport)</li>
+                    </ul>
+                    <div class="card__foot">Natural person → DUI or passport. Legal entity → NIT or registration number.</div>
                 </div>
-            </fieldset>
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">2 · Relationship</legend>
-                <div class="wiz__chips">
-                    <label class="wiz__chip"><input type="radio" name="rel" value="occasional" checked> Occasional</label>
-                    <label class="wiz__chip"><input type="radio" name="rel" value="ongoing"> Ongoing</label>
+                <div class="card card--green">
+                    <div class="card__title">Beneficiary (recipient)</div>
+                    <ul>
+                        <li><strong>Name</strong> of the beneficiary</li>
+                        <li><strong>Account number</strong> of the beneficiary</li>
+                        <li><strong>Name of the beneficiary's bank</strong> (administering the account)</li>
+                    </ul>
+                    <div class="card__foot">For unhosted-wallet beneficiaries the bank field cannot be populated — document the limitation and apply risk-based EDD.</div>
                 </div>
-            </fieldset>
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">3 · Channel</legend>
-                <div class="wiz__chips">
-                    <label class="wiz__chip"><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
-                    <label class="wiz__chip"><input type="radio" name="channel" value="cash"> Cash</label>
-                    <label class="wiz__chip"><input type="radio" name="channel" value="other"> Other means</label>
-                    <label class="wiz__chip"><input type="radio" name="channel" value="remittance"> Family remittance</label>
+                <div class="card card--green" style="grid-column:1 / -1;">
+                    <div class="card__title">Transaction</div>
+                    <ul>
+                        <li><strong>Transaction identifier</strong> — reference / hash / unique ID</li>
+                    </ul>
+                    <div class="card__foot">Source: <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>. Verbatim: "FINANCIAL INSTITUTIONS MUST GUARANTEE THAT ALL ELECTRONIC TRANSFERS … EVEN THOSE THAT DO NOT EXCEED THE ESTABLISHED THRESHOLDS, ARE ACCOMPANIED AT A MINIMUM BY THE INFORMATION REQUIRED BY THE UIF FORMS." Statutory anchor for VASPs: <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> — "maintenance of customer and operation records that allow knowledge of the origin and destination of virtual-asset transactions".</div>
                 </div>
-            </fieldset>
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">4 · Amount (USD)</legend>
-                <input type="number" id="wiz-amount" class="wiz__input" value="500" min="0" step="100">
-                <p class="wiz__hint">Single-transaction value — not aggregated.</p>
-            </fieldset>
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">5 · Counterparty / client jurisdiction</legend>
-                <select id="wiz-jur" class="wiz__select">
-                    <option value="es">El Salvador</option>
-                    <option value="standard">Other standard jurisdiction (US, EU, UK, LATAM low-risk)</option>
-                    <option disabled>──────────</option>
-                    <option value="reject" data-cat="FATF Call for Action">North Korea (DPRK)</option>
-                    <option value="reject" data-cat="FATF Call for Action">Iran</option>
-                    <option value="reject" data-cat="FATF Call for Action">Myanmar (Burma)</option>
-                    <option value="reject" data-cat="UN Security Council">Central African Republic</option>
-                    <option value="reject" data-cat="UN Security Council">DR Congo</option>
-                    <option value="reject" data-cat="UN Security Council">Eritrea</option>
-                    <option value="reject" data-cat="UN Security Council">Guinea-Bissau</option>
-                    <option value="reject" data-cat="UN Security Council">Iraq</option>
-                    <option value="reject" data-cat="UN Security Council">Lebanon</option>
-                    <option value="reject" data-cat="UN Security Council">Libya</option>
-                    <option value="reject" data-cat="UN Security Council">Mali</option>
-                    <option value="reject" data-cat="UN Security Council">Somalia</option>
-                    <option value="reject" data-cat="UN Security Council">South Sudan</option>
-                    <option value="reject" data-cat="UN Security Council">Sudan</option>
-                    <option value="reject" data-cat="UN Security Council">Yemen</option>
-                    <option value="reject" data-cat="OFAC Comprehensive">Cuba</option>
-                    <option value="reject" data-cat="OFAC Comprehensive">Crimea / Donetsk / Luhansk (UA)</option>
-                    <option value="reject" data-cat="Crypto Ban">Algeria</option>
-                    <option value="reject" data-cat="Crypto Ban">Bangladesh</option>
-                    <option value="reject" data-cat="Crypto Ban">China</option>
-                    <option value="reject" data-cat="Crypto Ban">Egypt</option>
-                    <option value="reject" data-cat="Crypto Ban">Morocco</option>
-                    <option value="reject" data-cat="Crypto Ban">Nepal</option>
-                    <option value="reject" data-cat="Crypto Ban">Oman</option>
-                    <option value="reject" data-cat="Crypto Ban">Qatar</option>
-                    <option value="reject" data-cat="Crypto Ban">Tunisia</option>
-                    <option disabled>──────────</option>
-                    <option value="edd" data-cat="FATF Grey List">Angola</option>
-                    <option value="edd" data-cat="FATF Grey List">Bolivia</option>
-                    <option value="edd" data-cat="FATF Grey List">Bulgaria</option>
-                    <option value="edd" data-cat="FATF Grey List">Cameroon</option>
-                    <option value="edd" data-cat="FATF Grey List">Côte d'Ivoire</option>
-                    <option value="edd" data-cat="FATF Grey List">Haiti</option>
-                    <option value="edd" data-cat="FATF Grey List">Kenya</option>
-                    <option value="edd" data-cat="FATF Grey List">Kuwait</option>
-                    <option value="edd" data-cat="FATF Grey List">Laos</option>
-                    <option value="edd" data-cat="FATF Grey List">Monaco</option>
-                    <option value="edd" data-cat="FATF Grey List">Namibia</option>
-                    <option value="edd" data-cat="FATF Grey List">Papua New Guinea</option>
-                    <option value="edd" data-cat="FATF Grey List">Senegal</option>
-                    <option value="edd" data-cat="FATF Grey List">Syria</option>
-                    <option value="edd" data-cat="FATF Grey List">Venezuela</option>
-                    <option value="edd" data-cat="FATF Grey List">Vietnam</option>
-                    <option value="edd" data-cat="FATF Grey List">Virgin Islands (UK)</option>
-                    <option value="edd" data-cat="Partial Sanctions">Belarus</option>
-                    <option value="edd" data-cat="Partial Sanctions">Zimbabwe</option>
-                </select>
-                <p class="wiz__hint">Restricted jurisdictions list — Risk Management Policy v.16.04.2026.</p>
-            </fieldset>
-
-            <fieldset class="wiz__fieldset">
-                <legend class="wiz__legend">6 · Risk factors (any → EDD)</legend>
-                <label class="wiz__check"><input type="checkbox" name="f" value="pep"> PEP — self / family ≤ 2° / close associate</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="sanctions"> Sanctions hit confirmed (UNSC / UIF national)</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="opaque"> Opaque / multi-layer / nominee ownership</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="cash"> Cash-intensive business / SoF unclear</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="structuring"> Structuring pattern detected</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="profile"> Material deviation from declared profile</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="mixer"> Counterparty wallet flagged (mixer / darknet / exploit)</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="thirdparty"> Third-party funder / beneficiary not the contracting party</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="refuses"> Client refuses CDD / Travel Rule data</label>
-                <label class="wiz__check"><input type="checkbox" name="f" value="adverse"> Adverse media / law-enforcement reference</label>
-            </fieldset>
-
-            <div class="wiz__actions">
-                <button type="button" class="wiz__btn" id="wiz-reset">Reset</button>
-                <button type="button" class="wiz__btn" id="wiz-example">Load EDD example</button>
             </div>
-        </form>
 
-        <div class="wiz__output" id="wiz-output">
-            <div class="wiz__placeholder" id="wiz-placeholder">Adjust the form on the left — the obligations triggered for this transaction will appear here in real time.</div>
-            <div id="wiz-result" hidden></div>
-        </div>
-    </div>
+            <div class="callout callout--ok">
+                <p><strong>Batch processing.</strong> When several individual electronic transfers from a <em>single originator</em> are grouped in one batch file for transmission to multiple beneficiaries, the file must contain the required and accurate originator information and the complete beneficiary information for each transfer, under the systems determined by UIF. <span class="cite cite--instr">Instr. Art. 52 par. 2 final</span></p>
+            </div>
+
+            <h3>Operational obligations by VASP role</h3>
+            <p>A DASP can occupy three roles on the same transfer chain — sometimes simultaneously. Each role triggers its own duties at the moment the transfer enters the order book.</p>
+            <div class="grid grid--3">
+                <div class="card card--blue">
+                    <div class="card__title">Originating DASP</div>
+                    <ol>
+                        <li>Verify originator (CDD if triggered, sanctions screen always)</li>
+                        <li>Attribute originating wallet to the verified client</li>
+                        <li>Collect Travel Rule data set</li>
+                        <li>Screen beneficiary against UNSC + UIF national lists</li>
+                        <li>Transmit data securely to beneficiary VASP</li>
+                        <li>Retain full record 15 years</li>
+                    </ol>
+                </div>
+                <div class="card card--green">
+                    <div class="card__title">Beneficiary DASP</div>
+                    <ol>
+                        <li>Verify beneficiary (CDD if triggered)</li>
+                        <li>Attribute beneficiary wallet to the verified client</li>
+                        <li>Receive and validate Travel Rule data</li>
+                        <li>Flag missing fields; hold transfer pending data</li>
+                        <li>Screen originator against UNSC + UIF national lists</li>
+                        <li>Retain and monitor; STR if pattern emerges</li>
+                    </ol>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Intermediary DASP</div>
+                    <ol>
+                        <li>Pass Travel Rule data unchanged forward</li>
+                        <li>Validate completeness on receipt</li>
+                        <li>Refuse to forward if fields missing</li>
+                        <li>Screen both originator and beneficiary</li>
+                        <li>Apply transaction monitoring at the routing point</li>
+                        <li>Retain 15 years even with no client relationship</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="callout callout--warn">
+                <p><strong>Wallet attribution is the operational pinch point.</strong> Art. 52 par. 2 requires originator/beneficiary identity but does not specify a wallet-attribution method. Industry practice (Satoshi test, micro-deposit, signed message, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PEP ══════════ -->
+        <section class="sec" id="pep">
+            <p class="sec__label">Politically exposed persons</p>
+            <h2 class="sec__title">PEP regime — always EDD, always senior approval</h2>
+            <p class="sec__lead">PEP status forces the relationship into EDD regardless of amount or transactional profile. Coverage extends to family up to 2nd degree and close associates. Status persists for <strong>5 years</strong> after the public function ceases.</p>
+
+            <h3>Coverage</h3>
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>Category</th><th>Examples</th><th>Source</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>National PEPs</strong></td>
+                        <td>President, Vice-President; Legislative Assembly; Ministers, Vice-Ministers; Supreme Court magistrates; mayors; Court of Accounts; Attorney General; Solicitor General; Human Rights Ombudsman; Supreme Electoral Tribunal; diplomatic representatives; heads of autonomous institutions; directors / legal representatives of state companies; political-party governing-body members and treasurers; National Civil Police Director / Deputy; Armed Forces generals.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Foreign PEPs</strong></td>
+                        <td>Heads of State / Government; high-level politicians; senior government / judicial / international-body officials; high-ranking military; senior executives of state corporations; senior political-party officials; ambassadors / consuls accredited in El Salvador.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>International-organisation PEPs</strong></td>
+                        <td>Persons performing or entrusted with prominent functions by an international organisation.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Family</strong></td>
+                        <td>Up to 2nd-degree consanguinity / affinity (parents, children, spouse, siblings, in-laws, grandparents, grandchildren) + spouses and domestic partners.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Close associates</strong></td>
+                        <td>Documented close business or personal associates.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 19</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="callout callout--info">
+                <p><strong>5-year persistence.</strong> A person remains classified as PEP for 5 years after the cease of the appointment. After that, return to standard CDD only if no other risk factor remains. <span class="cite cite--d426">D-426 Art. 19</span></p>
+            </div>
+
+            <h3>Operational requirements</h3>
+            <ul>
+                <li><strong>Self-declaration on every CDD form</strong> + cross-check against a recognised PEP database (Refinitiv World-Check / Dow Jones / ComplyAdvantage / similar)</li>
+                <li><strong>Senior-management written approval</strong> to establish or continue the relationship <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></li>
+                <li><strong>Source of funds + Source of wealth</strong> — both documented</li>
+                <li><strong>Enhanced ongoing monitoring</strong></li>
+                <li><strong>Re-screen at every annual review and on any role change</strong></li>
+                <li>UIF maintains and updates the national PEP-position list <span class="cite cite--d426">D-426 Art. 19</span></li>
+            </ul>
+
+            <p>If PEP status surfaces post-onboarding: refresh DD level immediately, document senior-management decision (continue with EDD or terminate with neutral ground), file decision memo to CO.</p>
+        </section>
+
+        <!-- ══════════ SANCTIONS ══════════ -->
+        <section class="sec" id="sanctions">
+            <p class="sec__label">Sanctions screening</p>
+            <h2 class="sec__title">Three lists, three moments, three actions</h2>
+            <p class="sec__lead">Three lists are statutorily binding. OFAC / EU / UK are commercial-risk only. Screen at three moments: onboarding, every transaction, and on every list update.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>List</th><th>Status under Salvadoran law</th><th>When to check</th><th>On hit</th><th>Source</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>UNSC consolidated lists</strong> (1267, 1373, 1718, 1988, 2231 + successors)</td>
+                        <td>Binding via LECAT</td>
+                        <td>Onboarding · every transaction · on list update · periodic sweep</td>
+                        <td><span class="pill pill--reject">Freeze</span> + UIF report + no tipping-off</td>
+                        <td><span class="cite cite--lecat">LECAT Art. 37</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>UIF national designated lists</strong></td>
+                        <td>Binding</td>
+                        <td>Same as UNSC</td>
+                        <td>Same as UNSC</td>
+                        <td><span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--instr">Instr. Art. 12(e)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>OFAC / EU / UK</strong></td>
+                        <td>Not Salvadoran law — <span class="pill pill--no">commercial</span></td>
+                        <td>Per banking-partner contract; per USD-corridor exposure</td>
+                        <td>Per internal risk policy (not a statutory freeze)</td>
+                        <td>Contract / risk management</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <h3>Freeze procedure on UNSC / national hit</h3>
+            <div class="grid grid--2">
+                <div class="card card--red">
+                    <div class="card__title">Steps 1–3 · Immediate</div>
+                    <ol>
+                        <li><strong>Confirm the match</strong> (not a false positive after basic verification). Record source, timestamp, evidence.</li>
+                        <li><strong>Freeze immediately</strong> — funds, wallets, pending operations.</li>
+                        <li><strong>Report to UIF</strong> via goAML with match record + frozen amount. <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                    </ol>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Steps 4–5 · Discipline</div>
+                    <ol start="4">
+                        <li><strong>No tipping-off</strong> — do not explain the hold; do not return funds without UIF / judicial authorisation. <span class="cite cite--d426">D-426 Art. 44</span></li>
+                        <li><strong>Cooperate</strong> with UIF / FGR information requests; retain full file 15 years.</li>
+                    </ol>
+                    <div class="card__foot">If the match is on a related party (not the direct client), apply same procedure plus immediate refresh of the BO chain to determine actual exposure.</div>
+                </div>
+            </div>
+
+            <div class="callout callout--info">
+                <p><strong>Restricted jurisdictions list.</strong> Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines: (i) FATF Call for Action (DPRK, Iran, Myanmar) and UNSC-sanctioned states → geofence + reject; (ii) OFAC-comprehensive countries (Cuba, Crimea / DNR / LNR Ukraine) → geofence + reject; (iii) crypto-banned countries (China, Bangladesh, Egypt, Morocco, Algeria, Nepal, Oman, Qatar, Tunisia) → geofence + reject; (iv) FATF Grey List + partial-sanctions countries → EDD + senior approval.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ UNUSUAL & SUSPICIOUS ══════════ -->
+        <section class="sec" id="unusual">
+            <p class="sec__label">Unusual &amp; suspicious transactions</p>
+            <h2 class="sec__title">Distinguish unusual from suspicious — the file shows the difference</h2>
+            <p class="sec__lead">Unusual operations are deviations from profile or market practice — they trigger <em>analysis</em>, not necessarily a report. Suspicious operations involve reasonable indicia of laundering, terrorism financing or weapons-proliferation financing — they trigger the STR pipeline. The CO is the gatekeeper; the file shows the path.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--amber">
+                    <div class="card__title">Unusual operation <em>(operación inusual)</em></div>
+                    <p>Deviates from the customer's declared profile or normal market practice but does not yet rise to suspicion.</p>
+                    <p><strong>Action:</strong> open analysis ticket, request explanation, refresh CDD. Document outcome — close with rationale or escalate to suspicious.</p>
+                    <div class="card__foot">Analyst level → CO informed via daily / weekly ticket roll-up. <span class="cite cite--instr">Instr. Arts. 36, 41, 42</span></div>
+                </div>
+                <div class="card card--red">
+                    <div class="card__title">Suspicious operation <em>(operación sospechosa)</em></div>
+                    <p>Reasonable indicia that funds may relate to laundering, terrorism financing, weapons-proliferation financing, or any predicate offence — irrespective of amount.</p>
+                    <p><strong>Action:</strong> CO determination triggers the 24-h STR pipeline (next section). Tipping-off prohibited at every stage.</p>
+                    <div class="card__foot">CO determines; clock starts at signed determination. <span class="cite cite--d426">D-426 Art. 24</span></div>
+                </div>
+            </div>
+
+            <div class="callout callout--crit">
+                <p><strong>Tipping-off — operational red line.</strong> No disclosure to the client, counterparty, family, third party, or media about: existence of analysis · filing or non-filing of an STR · UIF requests · freezes · investigation · the AML reason for any account closure. Decline or delay with a neutral ground ("documentation pending") and never mention analysis or reporting. <span class="cite cite--d426">D-426 Art. 44</span></p>
+            </div>
+        </section>
+
+        <!-- ══════════ STR PIPELINE ══════════ -->
+        <section class="sec" id="str">
+            <p class="sec__label">Suspicious transaction reports</p>
+            <h2 class="sec__title">From red flag to STR — the 5-stage flow</h2>
+            <p class="sec__lead">Every STR follows the same five stages. Internal analysis runs up to 15 working days, extendable once by request. The filing window is <strong>24 hours from the CO's signed determination</strong> — wall-clock, including weekends.</p>
+
+            <div class="flow">
+                <div class="flow-step">
+                    <div class="flow-step__num">1</div>
+                    <div>
+                        <div class="flow-step__title">Alert opened</div>
+                        <div class="flow-step__body">KYT alert / staff escalation / pattern detected. Timestamped record created in the CO queue. Source, evidence and trigger logged immediately.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">2</div>
+                    <div>
+                        <div class="flow-step__title">Internal analysis — ≤ 15 working days <span class="cite cite--d426">D-426 Art. 24</span></div>
+                        <div class="flow-step__body">CO reviews facts, compares with profile, runs KYT and blockchain trace, checks counterparties, documents conclusions. Extension allowed once for the same period upon prior request to UIF.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">3</div>
+                    <div>
+                        <div class="flow-step__title">Determination — signed and timestamped</div>
+                        <div class="flow-step__body">CO records: "Suspicion confirmed [or not] — at [ISO timestamp] — by [CO name]". This is the legal trigger for the 24-h clock. Without a recorded timestamp the clock is ambiguous and UIF reads it against the entity.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">4</div>
+                    <div>
+                        <div class="flow-step__title">STR filed — 24 hours wall-clock <span class="cite cite--d426">D-426 Art. 24</span></div>
+                        <div class="flow-step__body">File via goAML with the CDD file, Travel Rule data set, KYT report, supporting documents. Report must be timely, complete and concrete.</div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-step__num">5</div>
+                    <div>
+                        <div class="flow-step__title">Post-filing</div>
+                        <div class="flow-step__body">Relationship decision (enhanced monitoring or neutral-ground discontinuation — never cite STR as reason). Tipping-off prohibited. Cooperate with UIF / FGR information requests. Retain full file 15 years.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout callout--info">
+                <p><strong>Attempted operations.</strong> If a client attempts but does not consummate a suspicious operation, file an attempted-operation STR through the same pipeline. <span class="cite cite--instr">Instr. Art. 47</span></p>
+            </div>
+
+            <h3>STR confidentiality and use</h3>
+            <ul>
+                <li>The STR is <strong>confidential</strong>, has <strong>no probative value</strong>, is used exclusively for <strong>intelligence purposes</strong>, and is <strong>not incorporated into administrative or judicial files</strong> <span class="cite cite--d426">D-426 Art. 24</span></li>
+                <li>The amount of the operation is <strong>irrelevant</strong> for the purposes of STR <span class="cite cite--d426">D-426 Art. 24</span></li>
+                <li>STR + voluntary STR + STR for press-news-derived information all go through the same channel <span class="cite cite--instr">Instr. Arts. 48, 49, 50</span></li>
+            </ul>
+        </section>
+
+        <!-- ══════════ RED FLAGS ══════════ -->
+        <section class="sec" id="redflags">
+            <p class="sec__label">Red flags catalogue</p>
+            <h2 class="sec__title">EDD triggers — any single flag activates EDD</h2>
+            <p class="sec__lead">Any single red flag below forces EDD regardless of amount. Use this catalogue at onboarding, relationship review, and every KYT-alert triage. <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></p>
+
+            <div class="grid grid--3">
+                <div class="card card--red"><div class="card__title">Structuring patterns</div><p>Split transactions, round-numbers just under thresholds ($1,000 / $10,000 / $25,000), multiple same-day operations from same source.</p><div class="card__foot">→ EDD + STR consideration</div></div>
+                <div class="card card--red"><div class="card__title">Profile deviation</div><p>Amount, frequency, asset choice, geography inconsistent with declared activity / occupation / expected volume.</p><div class="card__foot">→ Profile refresh + EDD + documented rationale</div></div>
+                <div class="card card--amber"><div class="card__title">Cash-intensive counterpart</div><p>Money-service business, cash retail, import-export with cash legs, high-cash flow.</p><div class="card__foot">→ EDD + documentary SoF + enhanced monitoring</div></div>
+                <div class="card card--amber"><div class="card__title">Opaque ownership</div><p>Nominees, bearer shares, layered holdings, opaque trust, mailbox address, unexplained BO change.</p><div class="card__foot">→ Resolve to natural person mandatory</div></div>
+                <div class="card card--red"><div class="card__title">Flagged wallet</div><p>Counterparty wallet linked to mixer, darknet marketplace, exploit, sanctions-linked address, high-risk exchange.</p><div class="card__foot">→ EDD + KYT trace retained + STR consideration</div></div>
+                <div class="card card--amber"><div class="card__title">Third-party funder</div><p>Payment from a party other than the client; "someone else pays for me".</p><div class="card__foot">→ Identify the third party; treat as parallel client or reject</div></div>
+                <div class="card card--red"><div class="card__title">Rapid in-out</div><p>Funds deposited and transferred out within a short window with no economic rationale (pass-through pattern).</p><div class="card__foot">→ EDD + block pending explanation</div></div>
+                <div class="card card--amber"><div class="card__title">Document inconsistency</div><p>Name / date / signature discrepancy across ID, utility bill, bank statement, corporate certificate.</p><div class="card__foot">→ Re-verify via independent source; refusal → decline + STR</div></div>
+                <div class="card card--amber"><div class="card__title">High-risk jurisdiction</div><p>FATF Grey / Black list, non-cooperating territory, sanctioned state, jurisdiction in UIF / CNAD high-risk advisory.</p><div class="card__foot">→ EDD baseline for any counterparty touching the jurisdiction</div></div>
+                <div class="card card--red"><div class="card__title">PEP involvement</div><p>Client is a PEP (self / family ≤2° / close associate) or becomes one during the relationship.</p><div class="card__foot">→ EDD + SoF + SoW + senior approval; status persists 5 yr post-cease</div></div>
+                <div class="card card--amber"><div class="card__title">Adverse media</div><p>Credible press / law-enforcement / regulator reference to the client or related party — investigation, sanctions mention, indictment, arrest.</p><div class="card__foot">→ Documented review + EDD + STR consideration</div></div>
+                <div class="card card--red"><div class="card__title">Client refusal</div><p>Client declines CDD data, BO update, SoF documents, or asks to skip Travel Rule fields.</p><div class="card__foot">→ Onboarding prohibited; attempted operation reportable <span class="cite cite--instr">Instr. Art. 47</span></div></div>
+            </div>
+        </section>
+
+        <!-- ══════════ REPORTING HUB ══════════ -->
+        <section class="sec" id="reporting">
+            <p class="sec__label">Reporting hub</p>
+            <h2 class="sec__title">Every report — name, recipient, deadline, channel</h2>
+            <p class="sec__lead">A consolidated map of every report a DASP files. Report names appear in English with the Spanish original in parentheses. The default UIF channel is <strong>goAML</strong>.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Report</th>
+                        <th>When</th>
+                        <th>Recipient</th>
+                        <th>Deadline</th>
+                        <th>Channel</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Suspicious Transaction Report — STR</strong><br><em>(Reporte de Operación Sospechosa)</em></td>
+                        <td>Suspicion confirmed by CO determination — any amount</td>
+                        <td>UIF</td>
+                        <td class="num">24 h<br><span style="font-size:0.7rem;color:var(--text-3);">wall-clock</span></td>
+                        <td>goAML</td>
+                        <td><span class="cite cite--d426">D-426 Art. 24</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Attempted Suspicious Operation</strong><br><em>(Operación Intentada)</em></td>
+                        <td>Client attempts but does not consummate a suspicious operation</td>
+                        <td>UIF</td>
+                        <td class="num">24 h<br><span style="font-size:0.7rem;color:var(--text-3);">from determination</span></td>
+                        <td>goAML</td>
+                        <td><span class="cite cite--instr">Instr. Art. 47</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voluntary STR</strong><br><em>(Reporte Voluntario)</em></td>
+                        <td>External actor (non-obligated subject) reports a suspicion to UIF</td>
+                        <td>UIF</td>
+                        <td class="num">As filed</td>
+                        <td>UIF channel</td>
+                        <td><span class="cite cite--instr">Instr. Art. 49</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regulated Cash Operation</strong><br><em>(Operación Regulada — efectivo)</em></td>
+                        <td>Single op &gt; $10K OR monthly aggregate &gt; $10K (same client)</td>
+                        <td>UIF</td>
+                        <td class="num">5 wd<br><span style="font-size:0.7rem;color:var(--text-3);">after op / month-end</span></td>
+                        <td>UIF electronic platform</td>
+                        <td><span class="cite cite--d426">D-426 Art. 25</span> · <span class="cite cite--instr">Instr. Art. 51</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regulated Other-Means Operation</strong><br><em>(Operación Regulada — otros medios)</em></td>
+                        <td>Single op &gt; $25K OR monthly aggregate &gt; $25K (same client)</td>
+                        <td>UIF</td>
+                        <td class="num">5 wd</td>
+                        <td>UIF electronic platform</td>
+                        <td><span class="cite cite--instr">Instr. Art. 51</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly International E-Transfer Report</strong><br><em>(Reporte mensual — transferencias internacionales)</em></td>
+                        <td>International e-transfers ≥ $1,000 — month aggregate</td>
+                        <td>UIF</td>
+                        <td class="num">First 5 wd<br><span style="font-size:0.7rem;color:var(--text-3);">of next month</span></td>
+                        <td>UIF electronic platform</td>
+                        <td><span class="cite cite--instr">Instr. Art. 52(a)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Local E-Transfer Report</strong><br><em>(Reporte mensual — transferencias locales)</em></td>
+                        <td>Local e-transfers via app/device ≥ $1,000 — month aggregate</td>
+                        <td>UIF</td>
+                        <td class="num">First 5 wd</td>
+                        <td>UIF electronic platform</td>
+                        <td><span class="cite cite--instr">Instr. Art. 52(b)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Family Remittance Report</strong><br><em>(Reporte mensual — remesas familiares)</em></td>
+                        <td>Family remittances ≥ $200 — month aggregate</td>
+                        <td>UIF</td>
+                        <td class="num">First 5 wd</td>
+                        <td>UIF electronic platform</td>
+                        <td><span class="cite cite--instr">Instr. Art. 52(c)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sanctions / UNSC Freeze Report</strong><br><em>(Reporte de congelamiento)</em></td>
+                        <td>Match confirmed against UNSC or UIF national list</td>
+                        <td>UIF</td>
+                        <td class="num">Immediate</td>
+                        <td>UIF channel + freeze certificate</td>
+                        <td><span class="cite cite--lecat">LECAT Art. 37</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance Officer Appointment Notice</strong><br><em>(Notificación de nombramiento del OC)</em></td>
+                        <td>Principal CO or Alternate appointed</td>
+                        <td>UIF</td>
+                        <td class="num">Per UIF instructions</td>
+                        <td>UIF channel + Board minutes + CV + contract</td>
+                        <td><span class="cite cite--instr">Instr. Art. 64</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Training Plan</strong><br><em>(Plan de formación anual)</em></td>
+                        <td>Each calendar year — for following year</td>
+                        <td>Internal (Board approval); on UIF request</td>
+                        <td class="num">By 31 Dec</td>
+                        <td>Board minutes + plan document</td>
+                        <td><span class="cite cite--instr">Instr. Art. 54</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>BO / Registration Data Update</strong><br><em>(Actualización de beneficiario final)</em></td>
+                        <td>Material change in BO chain or registration data</td>
+                        <td>UIF</td>
+                        <td class="num">Per UIF instructions</td>
+                        <td>UIF channel</td>
+                        <td><span class="cite cite--instr">Instr. Art. 23</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Material Registration Change — DASP</strong><br><em>(Cambio material — registro DASP)</em></td>
+                        <td>Change to registration data, ownership, control, governance</td>
+                        <td>CNAD</td>
+                        <td class="num">5 bd</td>
+                        <td>CNAD channel</td>
+                        <td><span class="cite cite--rpsad">RPSAD Art. 9</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cybersecurity Incident</strong><br><em>(Incidente de ciberseguridad)</em></td>
+                        <td>Confidentiality / availability / integrity event</td>
+                        <td>CNAD</td>
+                        <td class="num">Without delay</td>
+                        <td>CNAD channel + incident log</td>
+                        <td><span class="cite cite--rpsad">RPSAD Art. 26</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="callout callout--info">
+                <p><strong>goAML.</strong> The UIF receives reports via the goAML electronic platform (UNODC standard, deployed widely across LATAM FIUs). Each obligated subject is enrolled with credentials issued at registration. STR templates, threshold reports and freeze notifications all submit through goAML. Keep CO and Alternate credentials current and update UIF on any role change.</p>
+            </div>
+
+            <div class="callout callout--warn">
+                <p><strong>Two clocks — never confuse them.</strong> The STR clock is wall-clock 24 hours from a CO's signed determination — it does not stop on weekends. The Operación Regulada clock (and most other deadlines) is business-day. Missing either is a standalone administrative offence.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ RECORDS ══════════ -->
+        <section class="sec" id="records">
+            <p class="sec__label">Records &amp; retention</p>
+            <h2 class="sec__title">15 years — every AML record, accessible to UIF</h2>
+            <p class="sec__lead">All AML records — CDD files, transactions, analyses, STRs, sanctions hits, training, audits, committee minutes — retained <strong>15 years</strong> from the operation date or from the termination of the commercial relationship. Format: physical, digital, or electronic.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">What to retain</div>
+                    <ul>
+                        <li><strong>CDD file per client</strong>: ID, address, occupation, BO chart, SoF, PEP screening, risk scoring</li>
+                        <li><strong>Travel Rule records</strong>: data per transfer, batch files, transmission logs</li>
+                        <li><strong>KYT logs</strong>: blockchain traces, alerts, dispositions</li>
+                        <li><strong>Sanctions screening</strong>: every hit, match record, decision rationale</li>
+                        <li><strong>STR analysis files</strong>: alert through determination through filing</li>
+                        <li><strong>Reports filed</strong>: STR, Operación Regulada, monthly Art. 52, freeze reports</li>
+                        <li><strong>Training records</strong>: attendance, evaluation, dated materials, CO sign-off</li>
+                        <li><strong>Audits</strong>: internal + external AML, cyber, financial</li>
+                        <li><strong>Committee minutes</strong>: Prevention Committee + Board AML</li>
+                    </ul>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">How to retain</div>
+                    <ul>
+                        <li><strong>Format:</strong> physical, digital or electronic — equally valid</li>
+                        <li><strong>Organisation:</strong> per client; per transaction within client; chronological within type</li>
+                        <li><strong>Accessibility:</strong> retrievable on UIF / CNAD request without delay</li>
+                        <li><strong>Integrity:</strong> tamper-evident storage; version-control on policy documents</li>
+                        <li><strong>Backups:</strong> secure, geo-redundant, encryption at rest</li>
+                        <li><strong>Access control:</strong> role-based, audit-logged, principle of least privilege</li>
+                        <li><strong>Disposal:</strong> only after the 15-year period expires AND no live investigation; documented destruction</li>
+                    </ul>
+                    <div class="card__foot">Wind-down: on relationship end, retention clock starts from last operation. On corporate dissolution, records remain subject to the 15-year rule via custodian. <span class="cite cite--d426">D-426 Art. 26</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ FAQ ══════════ -->
+        <section class="sec" id="faq">
+            <p class="sec__label">Frequently asked</p>
+            <h2 class="sec__title">Compliance FAQ</h2>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
+                    <div class="faq-item__body">Yes. D-426 Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers the reporting threshold is $1,000 per Instructivo Art. 52(a)(b). Therefore CDD is statutorily required for any occasional e-transfer ≥ $1,000. Internal AML policy may calibrate a lower threshold per FATF R.10 — that is internal practice, not statute.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why does the Travel Rule apply at any amount but CDD only above $1,000?</summary>
+                    <div class="faq-item__body">Two different obligations. <strong>Travel Rule</strong> (Instructivo Art. 52 par. 2 reformed) requires originator + beneficiary fields on every electronic transfer regardless of amount — the Spanish CAPS text explicitly says "even those that do not exceed the established thresholds". <strong>CDD</strong> (D-426 Art. 15(b)) is triggered only when the amount crosses the relevant reporting threshold. Below $1,000 with no risk factor: collect Travel Rule data + sanctions screen, that's it.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Where is the Travel Rule statutory anchor for VASPs?</summary>
+                    <div class="faq-item__body">Two anchors layered together: (i) <strong>Instr. Art. 84-B(1)(e) — Reform 1</strong> establishes that VASPs must "maintain customer and operation records that allow knowledge of the origin and destination of virtual-asset transactions"; (ii) <strong>Instr. Art. 52 par. 2 — Reform 2</strong> sets out the actual data set and the no-threshold rule (financial institutions guarantee that all electronic transfers are accompanied by the required information, even those not exceeding the established thresholds).</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What is the difference between an STR clock (24h) and an Operación Regulada clock (5 wd)?</summary>
+                    <div class="faq-item__body">Different triggers, different clocks. STR fires on a CO determination of suspicion — 24 hours wall-clock from the signed determination, including weekends. Operación Regulada fires on amount thresholds (cash &gt; $10K or other means &gt; $25K) — 5 working days. Both can co-exist on the same transaction (large + suspicious): file both.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Where is tipping-off prohibited — LECAT or D-426?</summary>
+                    <div class="faq-item__body"><strong>D-426 Art. 44</strong> ("Improper Disclosure of Information") is the tipping-off provision. LECAT Art. 17 in the current text is about port and maritime security offences, not tipping-off. Internal AML manuals citing "LECAT Art. 17 tipping-off" are using outdated mapping — update to D-426 Art. 44.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Does OFAC sanctions screening apply to a Salvadoran DASP?</summary>
+                    <div class="faq-item__body">Not as Salvadoran AML statute — only UNSC and UIF national lists are binding under LECAT and the Instructivo. OFAC matters through (i) banking-partner contracts, (ii) USD-corridor exposure routed via US correspondents, (iii) general commercial-risk management. Manage OFAC in commercial risk policy, not the AML body. EU and UK sanctions are similarly out-of-scope for Salvadoran AML statute but matter under contracts and risk policy.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can a DASP serve a client from a country on the EDD jurisdictions list?</summary>
+                    <div class="faq-item__body">Yes, with EDD baseline + senior-management written approval. The Restricted Jurisdictions list places FATF Grey List + partial-sanctions countries in the EDD-eligible category. Apply enhanced monitoring, KYT on every transaction, full SoF/SoW, periodic re-screening. If risk appetite does not allow → decline with neutral ground (never cite jurisdiction).</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Who signs the determination?</summary>
+                    <div class="faq-item__body">The Compliance Officer (or Alternate, if delegated). Determination must be timestamped (ISO format) and signed (digital signature acceptable). Without a signed timestamp the 24-h clock is ambiguous and UIF reads it against the entity. Default operational discipline: file same business day as determination.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>How often must sanctions and PEP lists be refreshed?</summary>
+                    <div class="faq-item__body">Quarterly minimum + on every list update + per-transaction at execution. UNSC publishes updates regularly; subscribe to the official feeds. PEP databases (Refinitiv / Dow Jones / ComplyAdvantage / similar) update continuously — schedule daily re-screen against the active client base.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>What records survive a DASP wind-down?</summary>
+                    <div class="faq-item__body">All AML records — 15 years from the operation date or from the termination of the commercial relationship, regardless of corporate dissolution (D-426 Art. 26). The wind-down plan must transfer or escrow records to a designated custodian. Client assets in custody: returned or transferred to another licensed DASP. Records remain accessible to UIF on request through the entire 15-year period.</div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ══════════ GLOSSARY ══════════ -->
+        <section class="sec" id="glossary">
+            <p class="sec__label">Glossary</p>
+            <h2 class="sec__title">Acronyms &amp; key terms</h2>
+
+            <dl class="gloss">
+                <div><dt>AML / CTF</dt><dd>Anti-Money Laundering / Counter-Terrorism Financing.</dd></div>
+                <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Statutory thresholds: ≥10% (Instr. Arts. 12, 20 — apply as floor); ≥25% (D-426 Art. 15); majority shareholding / control by other means (Instr. Art. 21-A Reform 2). Trusts: identify all parties (Instr. Art. 21).</dd></div>
+                <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12. Triggered by ongoing relationship (D-426 Art. 15(a)) or occasional transaction above the applicable reporting threshold (D-426 Art. 15(b) → Instr. Arts. 51, 52). For DASP e-transfers: $1,000 statutory floor.</dd></div>
+                <div><dt>CO / Alternate CO</dt><dd>Compliance Officer / Alternate Compliance Officer. AML/CFT-certified, UIF-registered. No residency requirement for DASP COs (Instr. Art. 84-B Reform 1).</dd></div>
+                <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales — Salvadoran DASP supervisory authority. Issues PSAD registration; enforces RPSAD; receives DASP-specific filings.</dd></div>
+                <div><dt>D-426</dt><dd>Decree 426 — Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction. The current AML Law.</dd></div>
+                <div><dt>D-108</dt><dd>Decree 108 — Special Law against Acts of Terrorism (LECAT). Source of the UNSC sanctions freeze obligation (Art. 37).</dd></div>
+                <div><dt>DASP / PSAD</dt><dd>Digital Asset Service Provider / Proveedor de Servicios de Activos Digitales. Licensed by CNAD under LEAD. In the Instructivo, called "Provider of Virtual Asset Services" (Arts. 84-A/84-B/84-C Reform 1).</dd></div>
+                <div><dt>EDD</dt><dd>Enhanced Due Diligence — Instr. Art. 13 (Reform 2) measures. Triggered by any risk factor regardless of amount. Requires senior-management written approval.</dd></div>
+                <div><dt>FATF R.16</dt><dd>FATF Recommendation 16 — wire-transfer / Travel Rule standard. Imported into Salvadoran statute via Instructivo Art. 52 par. 2 reformed and Art. 84-B(1)(e) Reform 1.</dd></div>
+                <div><dt>goAML</dt><dd>UNODC-developed FIU reporting platform — El Salvador's UIF uses goAML for STR, Operación Regulada, monthly Art. 52 reports, and freeze notifications.</dd></div>
+                <div><dt>Identity verification</dt><dd>Reform 2 obligation under Instr. Art. 12: customer / user identity must be verified BEFORE the commercial relationship begins, via official identification documents issued by competent public authorities. If not verified, the relationship cannot start.</dd></div>
+                <div><dt>Instructivo UIF</dt><dd>Operational rulebook from the Financial Investigation Unit. Reform 1 added VASP-specific provisions (Arts. 84-A, 84-B, 84-C); Reform 2 amended CDD (Art. 12), EDD (Art. 13) and Travel Rule (Art. 52 par. 2).</dd></div>
+                <div><dt>KYT</dt><dd>Know-Your-Transaction — blockchain analytics for transaction monitoring. Tools: Chainalysis, TRM Labs, Elliptic, Crystal, Merkle Science. Operationally required for DASPs.</dd></div>
+                <div><dt>LECAT</dt><dd>Special Law against Acts of Terrorism (D-108). Source of UNSC sanctions freeze (Art. 37). Tipping-off is in <strong>D-426 Art. 44</strong>, not in LECAT.</dd></div>
+                <div><dt>Operación Regulada</dt><dd>Threshold report under D-426 Art. 25 + Instr. Art. 51: cash &gt; $10K or other means &gt; $25K (single op or monthly aggregate per client). Filed within 5 working days. Includes "transactions in digital assets" by name (D-426 Art. 25).</dd></div>
+                <div><dt>PEP</dt><dd>Politically Exposed Person — domestic / foreign / international-organisation public function. Coverage: self + family ≤ 2nd degree + close associates. Always EDD; status persists 5 yr post-cease (D-426 Art. 19).</dd></div>
+                <div><dt>SoF / SoW</dt><dd>Source of Funds (transaction-specific) / Source of Wealth (overall patrimony). SoF: declarative at CDD baseline, documentary at EDD. SoW: not required at CDD; documentary at EDD. PEP: both mandatory.</dd></div>
+                <div><dt>STR</dt><dd>Suspicious Transaction Report (Reporte de Operación Sospechosa). Filed to UIF within 24 hours of CO determination (D-426 Art. 24). Confidential; no probative value; intelligence purposes only; amount irrelevant.</dd></div>
+                <div><dt>Travel Rule</dt><dd>Per-transfer originator + beneficiary data requirement on every electronic transfer regardless of amount. Source: Instr. Art. 52 par. 2 (Reform 2) + Instr. Art. 84-B(1)(e) (Reform 1). Includes batch-processing rule for grouped transfers.</dd></div>
+                <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — Salvadoran Financial Intelligence Unit. Receives all AML reports via goAML.</dd></div>
+                <div><dt>UNSC sanctions</dt><dd>UN Security Council consolidated sanctions lists (1267, 1373, 1718, 1988, 2231 + successors). Binding via LECAT Art. 37.</dd></div>
+            </dl>
+        </section>
+
+    </main>
 </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section class="section section--alt" id="faq">
-<div class="container">
-    <p class="section__label">Frequently Asked</p>
-    <h2 class="section__title">Compliance FAQ</h2>
-
-    <div style="border-top: 1px solid var(--border-light);">
-        <details class="faq-item">
-            <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
-            <div>Yes. AML Law Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers, the reporting threshold is $1,000 per Instructivo Art. 52(a)(b). Therefore CDD is statutorily required for any occasional e-transfer ≥ $1,000. (Internal AML policy may calibrate a lower threshold per FATF R.10 — that is internal practice, not statute.)</div>
-        </details>
-        <details class="faq-item">
-            <summary>Why does the Travel Rule apply at any amount but CDD only above $1,000?</summary>
-            <div>Two different obligations. <strong>Travel Rule</strong> (Instructivo Art. 52 par. 2 reformed) requires 7 originator + beneficiary fields on every electronic transfer regardless of amount — the Spanish CAPS text explicitly says "even those that do not exceed the established thresholds". <strong>CDD</strong> (AML Law Art. 15(b)) is triggered only when the amount crosses the relevant reporting threshold ($1,000 for e-transfers). Below $1,000 with no risk factor: collect Travel Rule data + sanctions screen, that's it.</div>
-        </details>
-        <details class="faq-item">
-            <summary>Where does the 8-element Travel Rule list come from?</summary>
-            <div>It came from the CNAD AML/CFT Risk Management Guide for the Digital Assets Industry (2023), §2(b), which cited the now-restructured Instructivo Art. 84-B(1)(e). Reform (2) of the Instructivo relocated the binding Travel Rule into Art. 52 par. 2 with a different (7-field) data set. This portal cites only Art. 52 par. 2 — the current statutory source. See the <a href="#travel-rule">Travel Rule section</a>.</div>
-        </details>
-        <details class="faq-item">
-            <summary>What is the difference between an STR clock (24h) and an Operación Regulada clock (5 bd)?</summary>
-            <div>Different triggers, different clocks. STR fires on a CO determination of suspicion — 24 h wall-clock from determination, including weekends. Operación Regulada fires on amount threshold (cash &gt; $10K or other means &gt; $25K) — 5 business days. They can co-exist on the same transaction (large + suspicious): file both.</div>
-        </details>
-        <details class="faq-item">
-            <summary>Does OFAC sanctions screening apply to a Salvadoran DASP?</summary>
-            <div>Not as Salvadoran AML statute — only UNSC and UIF national lists are binding under LECAT and the Instructivo. OFAC matters through (i) banking-partner contracts, (ii) USD-corridor exposure routed via US correspondents, (iii) general commercial-risk management. Manage OFAC in commercial risk policy, not in AML body. EU and UK sanctions are similarly out-of-scope for Salvadoran AML statute but matter under contracts and risk policy.</div>
-        </details>
-        <details class="faq-item">
-            <summary>Can a DASP serve a client from a country on the "EDD" jurisdictions list?</summary>
-            <div>Yes, but with EDD baseline + senior-management written approval. The Restricted Jurisdictions list (Risk Management Policy v.16.04.2026) places FATF Grey List + partial-sanctions countries in Categories 5–6 → EDD-eligible. Apply enhanced monitoring, KYT on every transaction, full SoF/SoW, periodic re-screening. If risk appetite does not allow → decline with neutral ground (never cite jurisdiction).</div>
-        </details>
-        <details class="faq-item">
-            <summary>What goes into an STR file?</summary>
-            <div>The full client CDD file, the Travel Rule data set for the transaction, the KYT report (blockchain trace if applicable), the dated determination line, the analysis memo with facts, profile comparison, conclusion — and any supporting documents (correspondence, bank statements, etc.). File via goAML / UIF platform within 24 hours. Retain the full file 15 years.</div>
-        </details>
-        <details class="faq-item">
-            <summary>Who signs the determination?</summary>
-            <div>The Compliance Officer (or Deputy CO if delegated). Determination must be timestamped (ISO format) and signed (digital signature acceptable). Without a signed timestamp, the 24-h clock is ambiguous and UIF reads it against the entity. Default operational discipline: file same business day as determination.</div>
-        </details>
-        <details class="faq-item">
-            <summary>How often must sanctions and PEP lists be refreshed?</summary>
-            <div>Quarterly minimum + on every list update + per-transaction at execution. UNSC publishes updates regularly; subscribe to the official feeds. PEP databases (Refinitiv / Dow Jones / ComplyAdvantage / similar) update continuously — schedule daily re-screen against the active client base.</div>
-        </details>
-        <details class="faq-item">
-            <summary>What records survive a DASP wind-down?</summary>
-            <div>All AML records — 15 years from operation date, regardless of corporate dissolution <span class="ref">D-426 Art. 26</span>. Wind-down plan must transfer or escrow records to a designated custodian. Client assets in custody: returned or transferred to another licensed DASP. Records must remain accessible to UIF on request through the entire 15-year period.</div>
-        </details>
-    </div>
-</div>
-</section>
-
-<!-- ══ GLOSSARY ══ -->
-<section class="section" id="glossary">
-<div class="container">
-    <p class="section__label">Glossary</p>
-    <h2 class="section__title">Acronyms &amp; key terms</h2>
-
-    <dl class="gloss">
-        <div><dt>AML / CTF</dt><dd>Anti-Money Laundering / Counter-Terrorism Financing.</dd></div>
-        <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Statutory thresholds: ≥10% [Instr. Arts. 12, 20] (apply as floor), ≥25% [D-426 Art. 2]. Trusts: identify all parties [Instr. Art. 21].</dd></div>
-        <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12 (a–i). Triggered by ongoing relationship [AML Law Art. 15(a)] OR occasional transaction above the applicable reporting threshold for that channel [AML Law Art. 15(b) → Instr. Arts. 51, 52]. For DASP e-transfers: $1,000 statutory floor.</dd></div>
-        <div><dt>CO / Deputy CO</dt><dd>Compliance Officer / Deputy CO. AML/CFT-certified, UIF-registered. No residency requirement for DASP COs (per personnel exemption in Instructivo).</dd></div>
-        <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales — Salvadoran DASP supervisory authority. Issues PSAD registration; enforces RPSAD; receives DASP-specific filings.</dd></div>
-        <div><dt>D-426</dt><dd>AML reform decree (2025) extending the obligated-subject perimeter to DASPs, setting 24-h STR clock (Art. 24), 15-yr retention (Art. 26), 25% BO threshold (Art. 2).</dd></div>
-        <div><dt>DASP / PSAD</dt><dd>Digital Asset Service Provider / Proveedor de Servicios de Activos Digitales. Licensed by CNAD under LEAD.</dd></div>
-        <div><dt>EDD</dt><dd>Enhanced Due Diligence — Instr. Art. 13 measures. Triggered by any risk factor regardless of amount: PEP, high-risk jurisdiction, opaque ownership, cash-intensive, structuring. Requires senior-management written approval.</dd></div>
-        <div><dt>FATF R.16</dt><dd>FATF Recommendation 16 — wire-transfer / Travel Rule standard. Imported into Salvadoran statute via Instructivo Art. 52 par. 2 reformed.</dd></div>
-        <div><dt>goAML</dt><dd>UNODC-developed FIU reporting platform — El Salvador's UIF uses goAML for STR, Operación Regulada, Art. 52 monthly reports, sanctions freeze notifications.</dd></div>
-        <div><dt>Instructivo UIF</dt><dd>UIF Instructivo (operational rulebook). Reformed (2) version is current; the older 2021 numbering (incl. Art. 84-B) has been restructured — Travel Rule is now Art. 52 par. 2.</dd></div>
-        <div><dt>KYT</dt><dd>Know-Your-Transaction — blockchain analytics for transaction monitoring. Tools: Chainalysis, TRM Labs, Elliptic, Crystal, Merkle Science. Operationally required for DASPs; not statutorily named.</dd></div>
-        <div><dt>LECAT</dt><dd>Ley Especial contra Actos de Terrorismo — counter-terrorism statute. Art. 17 = tipping-off prohibition; Art. 37 = UNSC sanctions freeze obligation.</dd></div>
-        <div><dt>Operación Regulada</dt><dd>Threshold report under Instr. Art. 51: cash &gt; $10K or other means &gt; $25K (single op or monthly aggregate per client). Filed within 5 bd.</dd></div>
-        <div><dt>PEP</dt><dd>Politically Exposed Person — domestic / foreign / international-organisation public function. Coverage: self + family ≤ 2° + close associates. Always EDD; status persists 5 yr post-cease.</dd></div>
-        <div><dt>SoF / SoW</dt><dd>Source of Funds (transaction-specific) / Source of Wealth (overall patrimony). SoF: declarative at CDD baseline, documentary at EDD. SoW: not required at CDD; documentary at EDD. PEP: both mandatory.</dd></div>
-        <div><dt>STR / ROS</dt><dd>Suspicious Transaction Report / Reporte de Operación Sospechosa. Filed to UIF within 24 h of CO determination. D-426 Art. 24.</dd></div>
-        <div><dt>Travel Rule</dt><dd>Per-transfer 7-field data requirement on every electronic transfer regardless of amount. Source: Instr. Art. 52 par. 2 reformed. Includes batch-processing rule for grouped transfers.</dd></div>
-        <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — Salvadoran Financial Intelligence Unit. Receives all AML reports via goAML.</dd></div>
-        <div><dt>UNSC sanctions</dt><dd>UN Security Council consolidated sanctions lists (1267, 1373, 1718, 1988, 2231 + successors). Binding via LECAT Art. 37.</dd></div>
-    </dl>
-</div>
-</section>
 
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
-    <div class="container footer__inner">
+    <div class="footer__inner" style="max-width:1320px; margin:0 auto;">
         <div class="footer__legal">
             Practitioner reference for Salvadoran DASP Compliance Officers. Not legal advice — consult licensed Salvadoran counsel before acting on any guidance. Compliance Operations guide updated April 2026.
         </div>
         <div>
-            <a href="/">Overview</a> &nbsp;·&nbsp; <a href="/licensing.html">Licensing</a>
+            <a href="/">Overview</a> &nbsp;·&nbsp;
+            <a href="/licensing.html">Licensing</a> &nbsp;·&nbsp;
+            <a href="/wizard.html">Decision Wizard</a>
         </div>
     </div>
 </footer>
 
 <script>
-/* ══════════════════════════════════════════════════════════════
-   AML DECISION WIZARD · v.2 (post-CNAD-Guide)
-   Inputs: client type · relationship · channel · amount
-           · jurisdiction (Restricted Jurisdictions list)
-           · risk factors (any → EDD)
-   Outputs: only obligations actually triggered.
-   Sources: AML Law Arts. 15, 24 · D-426 Arts. 2, 24, 26
-            · Instr. UIF Arts. 12, 13, 14, 16-18, 20, 21,
-              27-35, 47, 51, 52 par.2 reformed, 54
-            · LECAT Arts. 17, 37
-   ══════════════════════════════════════════════════════════════ */
-(function () {
-    'use strict';
-    const form = document.getElementById('wiz-form');
-    if (!form) return;
-    const placeholder = document.getElementById('wiz-placeholder');
-    const result = document.getElementById('wiz-result');
-    const amountEl = document.getElementById('wiz-amount');
-    const jurEl = document.getElementById('wiz-jur');
-
-    function readState() {
-        const fd = new FormData(form);
-        const factors = fd.getAll('f');
-        const jurOpt = jurEl.options[jurEl.selectedIndex];
-        return {
-            clientType: fd.get('clientType'),
-            rel: fd.get('rel'),
-            channel: fd.get('channel'),
-            amount: parseFloat(amountEl.value) || 0,
-            jur: jurEl.value,
-            jurName: jurOpt.text,
-            jurCat: jurOpt.dataset.cat || null,
-            f: {
-                pep: factors.includes('pep'),
-                sanctions: factors.includes('sanctions'),
-                opaque: factors.includes('opaque'),
-                cash: factors.includes('cash'),
-                structuring: factors.includes('structuring'),
-                profile: factors.includes('profile'),
-                mixer: factors.includes('mixer'),
-                thirdparty: factors.includes('thirdparty'),
-                refuses: factors.includes('refuses'),
-                adverse: factors.includes('adverse'),
+// Sidebar active-section highlighting (IntersectionObserver)
+(function(){
+    const links = document.querySelectorAll('.sidebar a[href^="#"]');
+    if (!links.length) return;
+    const map = {};
+    links.forEach(a => { const id = a.getAttribute('href').slice(1); map[id] = a; });
+    const sections = document.querySelectorAll('.sec[id]');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const id = e.target.id;
+                links.forEach(l => l.classList.remove('is-active'));
+                if (map[id]) map[id].classList.add('is-active');
             }
-        };
-    }
-
-    function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-
-    function decide(s) {
-        // ─ Hard stops ─
-        if (s.f.sanctions) return { v: 'reject', reason: 'Confirmed sanctions match (UNSC / UIF national) — REJECT + freeze + UIF report ≤ 3 bd' };
-        if (s.jur === 'reject') return { v: 'reject', reason: `Restricted jurisdiction (${esc(s.jurName)} · ${esc(s.jurCat)}) — geofence + reject per Risk Management Policy` };
-        if (s.f.refuses) return { v: 'reject', reason: 'Client refuses CDD / Travel Rule data — onboarding prohibited [Instr. Art. 12]; attempted operation reportable [Instr. Art. 47]' };
-
-        // ─ EDD path ─
-        const eddTriggers = [];
-        if (s.f.pep) eddTriggers.push('PEP');
-        if (s.f.opaque) eddTriggers.push('opaque ownership');
-        if (s.f.cash) eddTriggers.push('cash-intensive / SoF unclear');
-        if (s.f.structuring) eddTriggers.push('structuring pattern');
-        if (s.f.profile) eddTriggers.push('profile deviation');
-        if (s.f.mixer) eddTriggers.push('flagged wallet (mixer/darknet)');
-        if (s.f.thirdparty) eddTriggers.push('third-party funder');
-        if (s.f.adverse) eddTriggers.push('adverse media');
-        if (s.jur === 'edd') eddTriggers.push(`high-risk jurisdiction (${esc(s.jurName)})`);
-        if (eddTriggers.length) return { v: 'edd', reason: 'EDD triggers: ' + eddTriggers.join(', '), triggers: eddTriggers };
-
-        // ─ CDD path (statutory triggers) ─
-        if (s.rel === 'ongoing') return { v: 'cdd', reason: 'Ongoing relationship — Standard CDD from day 1 [AML Law Art. 15(a)]' };
-        const ch = s.channel, amt = s.amount;
-        if (ch === 'etransfer' && amt >= 1000) return { v: 'cdd', reason: 'E-transfer ≥ $1,000 — Standard CDD [AML Law Art. 15(b) → Instr. Art. 52(a)(b)]' };
-        if (ch === 'remittance' && amt >= 200) return { v: 'cdd', reason: 'Family remittance ≥ $200 — Standard CDD [AML Law Art. 15(b) → Instr. Art. 52(c)]' };
-        if (ch === 'cash' && amt > 10000) return { v: 'cdd', reason: 'Cash transaction > $10,000 — Standard CDD + Operación Regulada [AML Law Art. 15(b) → Instr. Art. 51]' };
-        if (ch === 'other' && amt > 25000) return { v: 'cdd', reason: 'Other-means transaction > $25,000 — Standard CDD + Operación Regulada [AML Law Art. 15(b) → Instr. Art. 51]' };
-
-        return { v: 'no-cdd', reason: 'Below all statutory CDD thresholds AND no risk factor — Travel Rule data + sanctions screen only' };
-    }
-
-    function block(title, items) {
-        if (!items || !items.length) return '';
-        return `<div class="wiz__block"><div class="wiz__block-title">${title}</div><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
-    }
-
-    function buildOutput(s, d) {
-        const out = [];
-        // ── Verdict ──
-        const verdictText = {
-            'no-cdd': 'No CDD triggered',
-            'cdd': 'Standard CDD',
-            'edd': 'Enhanced Due Diligence',
-            'reject': 'Reject — do not proceed'
-        }[d.v];
-        out.push(`<div class="wiz__verdict wiz__verdict--${d.v}">${verdictText}</div>`);
-        out.push(`<div style="font-size:0.88rem;color:var(--text-2);">${d.reason}</div>`);
-
-        // ── Travel Rule (always, since any e-transfer) ──
-        if (d.v !== 'reject') {
-            const tr = [
-                '<strong>Always required, any amount</strong> [Instr. Art. 52 par. 2 reformed]',
-                'Originator: name · account number · ID type+number',
-                'Beneficiary: name · account number · beneficiary bank name',
-                'Transaction: identifier (transaction reference / hash)',
-                'Batch processing: full data per transfer in any grouped file'
-            ];
-            out.push(block('Travel Rule data — 7 fields + batch rule', tr));
-        }
-
-        // ── Sanctions / PEP screen (always) ──
-        if (d.v !== 'reject') {
-            const scr = [
-                'UNSC consolidated lists (1267, 1373, 1718, 1988, 2231) [LECAT Art. 37]',
-                'UIF national designated list [Instr. Arts. 27–35]',
-                'PEP database (Refinitiv / Dow Jones / ComplyAdvantage) [Instr. Arts. 16–18]',
-                'On hit: freeze + UIF report ≤ 3 bd + tipping-off prohibited'
-            ];
-            out.push(block('Sanctions &amp; PEP screening', scr));
-        }
-
-        // ── CDD documentation (only if CDD or EDD) ──
-        if (d.v === 'cdd' || d.v === 'edd') {
-            const cdd = s.clientType === 'natural' ? [
-                'Government photo ID (DUI / passport / residence)',
-                'Address proof (utility ≤3m / bank statement)',
-                'Occupation declared (documented at EDD)',
-                'Date of birth',
-                'NIT (tax ID) if applicable',
-                'PEP self-declaration + screening',
-                'Expected activity profile (volume, frequency)',
-            ] : [
-                'Deed of incorporation (escritura)',
-                'Commercial registry extract (≤3m)',
-                'NIT + operating licence',
-                'Board / assembly resolution authorising relationship',
-                'Shareholder register — chain to natural BO (≥10% floor)',
-                'Authorised signatories: IDs + powers',
-                'Business purpose + main counterparties + jurisdictions',
-                'Expected volume + frequency',
-            ];
-            out.push(block('CDD documentation [Instr. Art. 12]', cdd));
-        }
-
-        // ── EDD-only additions ──
-        if (d.v === 'edd') {
-            const edd = [
-                '<strong>Senior-management written approval</strong> to open / continue (dated, signed)',
-                '<strong>Source of Funds</strong> documentary (payslip / contract / invoice / bank statement)',
-                '<strong>Source of Wealth</strong> documentary (asset declaration, deeds, financial statements)',
-                'Two government IDs preferred (natural person)',
-                'Audited financials if size warrants (legal entity)',
-                'Enhanced ongoing monitoring — KYT on every transaction',
-                'Annual EDD refresh (half-yearly if very high risk)',
-            ];
-            out.push(block('EDD measures [Instr. Art. 13]', edd));
-
-            if (s.f.pep) {
-                out.push(block('PEP-specific [Instr. Arts. 14, 16–18]', [
-                    'PEP file with source list (domestic / foreign / int\'l org)',
-                    'Family ≤ 2nd degree + close associates screened as PEP-related',
-                    'Status persists 5 years post-cease of public function',
-                    'Annual PEP re-check; senior-mgmt approval at each review',
-                ]));
-            }
-            if (s.jur === 'edd') {
-                out.push(block(`Jurisdiction-specific (${esc(s.jurName)})`, [
-                    `Category: ${esc(s.jurCat)}`,
-                    'Per Risk Management Policy v.16.04.2026 — EDD baseline',
-                    'KYT on every transaction with this counterparty',
-                    'Periodic re-screen against jurisdiction-specific sanctions',
-                    'If risk appetite declines → neutral-ground termination (do not cite jurisdiction)',
-                ]));
-            }
-        }
-
-        // ── Reporting obligations ──
-        const reports = [];
-        const ch = s.channel, amt = s.amount;
-        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash</strong>: 5 bd to UIF [Instr. Art. 51]');
-        if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means</strong>: 5 bd to UIF [Instr. Art. 51]');
-        if (ch === 'etransfer' && amt >= 1000) reports.push('<strong>Monthly E-Transfer Report</strong>: 5 bd after month-end to UIF [Instr. Art. 52(a)(b)]');
-        if (ch === 'remittance' && amt >= 200) reports.push('<strong>Monthly Remittance Report</strong>: 5 bd after month-end to UIF [Instr. Art. 52(c)]');
-        if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report</strong>: 3 bd to UIF [LECAT Art. 37]');
-        if (d.v === 'reject' && s.f.refuses) reports.push('<strong>Attempted operation</strong>: STR pipeline if suspicious [Instr. Art. 47]');
-        if (reports.length) out.push(block('Reporting obligations triggered', reports));
-
-        // ── STR sensitivity (only when red flags suggest) ──
-        const strFlags = [];
-        if (s.f.structuring) strFlags.push('structuring pattern');
-        if (s.f.mixer) strFlags.push('flagged wallet / mixer exposure');
-        if (s.f.profile) strFlags.push('profile deviation');
-        if (s.f.thirdparty) strFlags.push('third-party funder');
-        if (s.f.adverse) strFlags.push('adverse media');
-        if (strFlags.length) {
-            out.push(block('Elevated STR sensitivity — analyse', [
-                'Indicator(s): ' + strFlags.join(', '),
-                'Open analysis ticket; assign to CO',
-                'Internal analysis ≤ 15 bd [D-426 Art. 24]',
-                'On determination: <strong>STR within 24 h wall-clock</strong> [D-426 Art. 24]',
-                'Tipping-off prohibited at every stage [LECAT Art. 17]',
-            ]));
-        }
-
-        // ── Retention (always) ──
-        if (d.v !== 'reject') {
-            out.push(block('Retention &amp; records', [
-                '<strong>15 years</strong> from operation date [D-426 Art. 26]',
-                'Format: physical / digital / electronic — equally valid',
-                'Per-client organised; chronological per transaction',
-                'Accessible to UIF on request without delay',
-            ]));
-        }
-
-        return out.join('');
-    }
-
-    function render() {
-        const s = readState();
-        const d = decide(s);
-        result.innerHTML = buildOutput(s, d);
-        result.hidden = false;
-        placeholder.style.display = 'none';
-    }
-
-    form.addEventListener('input', render);
-    form.addEventListener('change', render);
-
-    document.getElementById('wiz-reset').addEventListener('click', () => {
-        form.reset();
-        amountEl.value = 500;
-        jurEl.selectedIndex = 0;
-        render();
-    });
-
-    document.getElementById('wiz-example').addEventListener('click', () => {
-        form.querySelector('input[name="clientType"][value="legal"]').checked = true;
-        form.querySelector('input[name="rel"][value="ongoing"]').checked = true;
-        form.querySelector('input[name="channel"][value="etransfer"]').checked = true;
-        amountEl.value = 50000;
-        // Pick first EDD jurisdiction (Angola)
-        for (let i = 0; i < jurEl.options.length; i++) {
-            if (jurEl.options[i].value === 'edd') { jurEl.selectedIndex = i; break; }
-        }
-        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
-        form.querySelector('input[name="f"][value="pep"]').checked = true;
-        form.querySelector('input[name="f"][value="opaque"]').checked = true;
-        render();
-    });
-
-    render();
+        });
+    }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+    sections.forEach(s => obs.observe(s));
 })();
 </script>
 
