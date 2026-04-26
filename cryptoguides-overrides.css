@@ -827,7 +827,7 @@ strong, b {
 }
 .layout > * { min-width: 0; }   /* same fix for sidebar + any future grid children */
 
-/* Timeline track — vertical stack of phase cards (replaces the cramped horizontal grid) */
+/* Timeline track — vertical stack of collapsible phase cards (<details>) */
 .timeline__track {
   display: grid !important;
   grid-template-columns: 1fr !important;
@@ -839,32 +839,80 @@ strong, b {
   border: 1px solid var(--rule) !important;
   border-bottom: 0 !important;
   border-radius: 0 !important;
-  padding: 1.5rem 1.5rem 1.75rem !important;
-  display: grid !important;
-  grid-template-columns: 110px 1fr !important;
-  grid-template-rows: auto auto auto auto !important;
-  grid-template-areas:
-    "num title"
-    "num sub"
-    "num list"
-    "num list" !important;
-  gap: 0.25rem 1.5rem !important;
-  align-items: start !important;
   background: var(--paper) !important;
   transition: background 120ms ease;
+  /* Reset details styles */
+  display: block !important;
 }
 .timeline__track .phase-card:first-child { border-radius: var(--r) var(--r) 0 0 !important; }
 .timeline__track .phase-card:last-child  { border-bottom: 1px solid var(--rule) !important; border-radius: 0 0 var(--r) var(--r) !important; }
 .timeline__track .phase-card:hover { background: var(--paper-2) !important; }
+.timeline__track .phase-card[open] { background: var(--paper-2) !important; }
+
+/* Summary (clickable header) */
+.timeline__track .phase-card__summary {
+  display: grid !important;
+  grid-template-columns: 110px 1fr 32px !important;
+  grid-template-rows: auto auto !important;
+  grid-template-areas:
+    "num title chev"
+    "num sub   chev" !important;
+  gap: 0.25rem 1.5rem !important;
+  align-items: start !important;
+  padding: 1.5rem 1.5rem !important;
+  cursor: pointer !important;
+  list-style: none !important;
+  outline: none;
+}
+.timeline__track .phase-card__summary::-webkit-details-marker { display: none; }
+.timeline__track .phase-card__summary::marker { content: ''; }
+
+/* Chevron indicator */
+.timeline__track .phase-card__summary::after {
+  content: '▾';
+  grid-area: chev;
+  align-self: center;
+  justify-self: end;
+  font-size: 0.95rem;
+  color: var(--ink-3);
+  transition: transform 200ms ease, color 200ms ease;
+  margin-top: 0.4rem;
+}
+.timeline__track .phase-card[open] > .phase-card__summary::after {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.timeline__track .phase-card__summary:hover::after { color: var(--accent); }
+.timeline__track .phase-card__summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Body (collapsible content) */
+.timeline__track .phase-card > .phase-card__list {
+  padding: 0 1.5rem 1.75rem 1.5rem !important;
+  margin-left: calc(110px + 1.5rem) !important;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem !important;
+}
+@media (max-width: 700px) {
+  .timeline__track .phase-card > .phase-card__list {
+    margin-left: 0 !important;
+    padding: 1rem 1rem 1.25rem 1rem !important;
+  }
+  .timeline__track .phase-card__summary {
+    grid-template-columns: 1fr 32px !important;
+    grid-template-rows: auto auto auto !important;
+    grid-template-areas: "num chev" "title chev" "sub chev" !important;
+    padding: 1.25rem 1rem !important;
+  }
+}
 .timeline__track .phase-card__head {
   grid-area: num !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
   gap: 0.4rem !important;
-  position: sticky;
-  top: 80px;       /* keep the stage label visible while reading the long card */
-  align-self: start;
 }
 .timeline__track .phase-card__num {
   font-family: "JetBrains Mono", monospace;
