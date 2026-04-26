@@ -313,6 +313,16 @@ li > strong + br + strong { font-weight: 500; color: var(--ink-2); }
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
+/* Override the body-list rule for the timeline (.tl) — it has its own
+   absolute-positioned dots calibrated to 32px left padding. */
+ol.tl, ol.tl.tl {
+  padding-left: 32px !important;       /* matches the dot offset (left:-32px → centred on the line) */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+ol.tl > li.tl-item {
+  padding-left: 0 !important;
+}
 .section ul li, .sec ul li, .main ul li,
 .section ol li, .sec ol li, .main ol li {
   margin-bottom: 0.4rem;
