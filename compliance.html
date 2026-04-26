@@ -1039,44 +1039,78 @@
         <section class="sec" id="bo">
             <p class="sec__label">Beneficial owner</p>
             <h2 class="sec__title">Resolve to a natural person — apply 10% as floor</h2>
-            <p class="sec__lead">El Salvador uses a <strong>stricter-of-three</strong> approach for beneficial ownership. Always identify and verify the natural person at the top of the chain.</p>
+            <p class="sec__lead">El Salvador uses a <strong>stricter-of-three</strong> approach for beneficial ownership. Always identify and verify the natural person at the top of the chain. UBO must be identified <strong>before</strong> the relationship begins or any operation is executed.</p>
 
+            <h3>Three statutory UBO definitions</h3>
             <div class="grid grid--3">
                 <div class="card card--green">
-                    <div class="card__title">10% floor</div>
-                    <p class="card__sub">Apply this as operational baseline</p>
-                    <p>Natural person who directly or indirectly owns or controls <strong>≥10%</strong> of capital or voting rights of a legal person.</p>
-                    <div class="card__foot"><span class="cite cite--instr">Instr. Arts. 12(a), 20</span></div>
+                    <div class="card__title">10% participation floor</div>
+                    <p class="card__sub">Operational baseline (stricter rule)</p>
+                    <p>Natural person who directly or indirectly owns or controls <strong>≥10%</strong> of capital or voting rights of a legal person, OR exercises direct/indirect control by other means of management.</p>
+                    <div class="card__foot"><span class="cite cite--instr">Instr. Arts. 12(a), 20(b)</span></div>
                 </div>
                 <div class="card card--blue">
-                    <div class="card__title">25% (statute)</div>
-                    <p class="card__sub">D-426 statutory threshold</p>
-                    <p>Statute uses 25% as the participation threshold; the Instructivo lowers it to 10% for operational rigor. Apply the lower (10%) as floor.</p>
-                    <div class="card__foot"><span class="cite cite--d426">D-426 Art. 15</span></div>
+                    <div class="card__title">25% statutory threshold</div>
+                    <p class="card__sub">D-426 floor — Instructivo overrides stricter</p>
+                    <p>The AML Law uses 25% as the participation threshold for legal persons. The Instructivo lowers it to 10% for operational rigour. Apply the stricter (10%) per lex stricta.</p>
+                    <div class="card__foot"><span class="cite cite--d426">D-426 Art. 15 par. 5</span></div>
                 </div>
                 <div class="card card--amber">
-                    <div class="card__title">Majority shareholding / control by other means</div>
-                    <p class="card__sub">UBO catch-all (Reform 2)</p>
-                    <p>Where no natural person reaches the threshold via shareholding, identify whoever exercises <strong>control by other means</strong>; failing that, the highest-ranking management officer.</p>
-                    <div class="card__foot"><span class="cite cite--instr">Instr. Art. 21-A (Reform 2)</span></div>
+                    <div class="card__title">Majority + control catch-all</div>
+                    <p class="card__sub">Reform 2 cascade</p>
+                    <p>Identify natural person(s) holding <strong>majority shareholding</strong>. If doubt about majority being UBO, OR no natural person controls via shareholding → identify control by <strong>other means</strong>. If still impossible → identify <strong>highest-ranking management officer</strong>.</p>
+                    <div class="card__foot"><span class="cite cite--instr">Instr. Art. 21-A Reform 2</span></div>
                 </div>
             </div>
 
-            <div class="callout callout--info">
-                <p><strong>Trusts and other legal arrangements.</strong> Identify <em>all</em> parties: settlor and whoever controls the settlor; trustee(s); protector (if any); beneficiaries (or classes); any natural person exercising effective ultimate control over the trust through any control / ownership chain. Trustees retain this information for at least <strong>15 years</strong> after the cessation of the relationship. <span class="cite cite--instr">Instr. Arts. 21, 21-A</span></p>
+            <h3 style="margin-top:1.5rem;">UBO concept also covers nominee structures</h3>
+            <p>Independent of the % thresholds, <strong>Art. 20(a)</strong> defines as UBO the <em>natural person on whose behalf</em> the relationship is sought or the operation is conducted. This catches nominee / fronting structures where the legal customer is acting for an undisclosed beneficiary.</p>
+            <ul>
+                <li><strong>Acting-on-own-behalf duty.</strong> Reporting Entities must collect information from customers / counterparties to determine whether they act on their own behalf or on behalf of third parties. Where there are <strong>indications or certainty</strong> that they are not acting on their own behalf, the entity must collect precise information to identify the person on whose behalf they act. <span class="cite cite--instr">Instr. Art. 20</span></li>
+                <li><strong>Pre-relationship obligation.</strong> Customers must provide UBO information <strong>prior to</strong> establishing business relationships or executing any operation. <span class="cite cite--instr">Instr. Art. 20</span></li>
+            </ul>
+
+            <div class="callout callout--info" style="margin-top:1rem;">
+                <p><strong>Listed-company exception.</strong> When the customer (or the holder of ≥10% / ≥25% participation in the customer) is a commercial company listed on a stock exchange, subject to information-disclosure requirements <em>and adequate UBO transparency</em>, identification of UBO of those companies is <strong>not required</strong>. Document the exemption with proof of listing and disclosure-regime applicability. <span class="cite cite--instr">Instr. Art. 20(b)</span> · <span class="cite cite--d426">D-426 Art. 15 par. 6</span></p>
             </div>
 
-            <h3>Refresh triggers — out of cycle</h3>
-            <p>Salvadoran statute does not enumerate specific BO-refresh triggers, but Instr. Art. 23 requires that registered customer / counterparty data be kept updated and that update procedures be documented. The list below reflects FATF R.10 industry practice that operationally satisfies Art. 23.</p>
-            <ul>
-                <li>Change in ownership ≥10%</li>
-                <li>Change in authorised signatories</li>
-                <li>Trust party change / nominee change</li>
-                <li>Beneficial owner becomes a PEP</li>
-                <li>Sanctions list update naming a related party</li>
-                <li>Material deviation from declared activity profile</li>
-            </ul>
-            <p>Scheduled refresh cadence (industry practice — not statutory): Standard CDD every 3 years · EDD annually · half-yearly when residual risk is very high. <span class="cite cite--instr">Instr. Art. 23</span> requires updates "within 15 working days" of changes notified by the customer.</p>
+            <div class="callout callout--info" style="margin-top:0.75rem;">
+                <p><strong>Trusts and other legal arrangements.</strong> Identify <em>all</em> parties: settlor and whoever controls the settlor; trustee(s); protector (if any); beneficiaries (or classes of beneficiaries); any natural person exercising effective ultimate control over the trust through any control / ownership chain. Trustees must disclose their status when establishing a relationship or carrying out an occasional transaction, and must preserve information about regulated agents and service providers (advisors, managers, accountants, tax advisors) for at least <strong>15 years</strong> after the cessation of the relationship. <span class="cite cite--instr">Instr. Arts. 21, 21-A Reform 2</span></p>
+            </div>
+
+            <h3 style="margin-top:1.5rem;">Refresh policy — Art. 23 statutory framework</h3>
+            <p>Instr. Art. 23 sets the framework for periodic update of customer / counterparty data: items by their nature subject to change include address, telephone, economic activity, source of funds, shareholding composition. Update channels accepted: postal correspondence to last declared address, recorded phone call, validated information-technology means. The customer is independently obliged to inform the Reporting Entity of any change.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">Statutory deadlines per Art. 23</div>
+                    <ul>
+                        <li><strong>Standard customers:</strong> periodic update per Reporting Entity's own manual; customer may self-confirm "no change" via accepted channel</li>
+                        <li><strong>High-risk customers:</strong> updates required <strong>at any time</strong> — no fixed scheduled cadence; reactive to risk signals</li>
+                        <li><strong>Reclassification trigger:</strong> if a customer is newly classified as high-risk and their data have not been updated for <strong>more than 1 year</strong>, full update must be completed within <strong>60 calendar days</strong> of the reclassification</li>
+                        <li><strong>Profile inconsistency trigger:</strong> entities may require updates outside their scheduled cadence whenever an operation is inconsistent with the customer profile</li>
+                    </ul>
+                    <div class="card__foot"><span class="cite cite--instr">Instr. Art. 23</span></div>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">Out-of-cycle refresh triggers (industry practice)</div>
+                    <p class="card__sub">FATF R.10 baseline that operationally satisfies Art. 23</p>
+                    <ul>
+                        <li>Change in ownership ≥10%</li>
+                        <li>Change in authorised signatories</li>
+                        <li>Trust party change / nominee change</li>
+                        <li>Beneficial owner becomes a PEP</li>
+                        <li>Sanctions-list update naming a related party</li>
+                        <li>Material deviation from declared activity profile</li>
+                        <li>Cross-border counterparty in newly EDD-listed jurisdiction</li>
+                    </ul>
+                    <div class="card__foot">Scheduled cadence (industry practice, not statutory): Standard CDD every 3 yr · EDD annually · half-yearly when residual risk is very high.</div>
+                </div>
+            </div>
+
+            <div class="callout callout--amber" style="margin-top:1rem;">
+                <p><strong>Common citation error.</strong> The "15 working days" deadline that some manuals attach to BO updates is in fact <strong>Instr. Art. 3</strong> (the Reporting Entity's own UIF-registration data update — own corporate data, CO appointment, etc.), not Art. 23. Customer / BO data updates follow the Art. 23 framework above (60 calendar days for high-risk reclassification; "at any time" for ongoing high-risk; periodic per own manual for standard).</p>
+            </div>
         </section>
 
         <!-- ══════════ TRAVEL RULE ══════════ -->
@@ -1265,6 +1299,10 @@
                 <p><strong>5-year persistence.</strong> A person remains classified as PEP for 5 years after the cease of the appointment. After that, return to standard CDD only if no other risk factor remains. <span class="cite cite--d426">D-426 Art. 19</span></p>
             </div>
 
+            <div class="callout callout--info" style="margin-top:0.5rem;">
+                <p><strong>UIF-maintained PEP list.</strong> Per D-426 Art. 19 last paragraph (national PEPs section), the UIF is responsible for issuing and updating the official list of PEP offices. This list anchors the entity's PEP-screening obligation; commercial PEP databases (Refinitiv / Dow Jones / ComplyAdvantage) are operationally used but the binding reference is the UIF list.</p>
+            </div>
+
             <h3>Operational requirements</h3>
             <ul>
                 <li><strong>Self-declaration on every CDD form</strong> + cross-check against a recognised PEP database (Refinitiv World-Check / Dow Jones / ComplyAdvantage / similar)</li>
@@ -1335,6 +1373,14 @@
 
             <div class="callout callout--info">
                 <p><strong>Restricted jurisdictions list.</strong> Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines: (i) FATF Call for Action (DPRK, Iran, Myanmar) and UNSC-sanctioned states → geofence + reject; (ii) OFAC-comprehensive countries (Cuba, Crimea / DNR / LNR Ukraine) → geofence + reject; (iii) crypto-banned countries (China, Bangladesh, Egypt, Morocco, Algeria, Nepal, Oman, Qatar, Tunisia) → geofence + reject; (iv) FATF Grey List + partial-sanctions countries → EDD + senior approval.</p>
+            </div>
+
+            <div class="callout callout--amber" style="margin-top:0.75rem;">
+                <p><strong>Two LECAT Art. 37 reporting tracks — distinguish them.</strong></p>
+                <ul style="margin-top:0.4rem;">
+                    <li><strong>Freeze track (UNSC / national list match):</strong> inform UIF / FGR <em>without any delay</em> on detection; hold all related operations; FGR issues block / withhold / allow-flow instructions <strong>within max 24 hours</strong>; maintain freeze until FGR or judge orders otherwise.</li>
+                    <li><strong>Suspicion track (operations suspected of terrorism financing):</strong> separate written report to FGR via UIF <strong>within 3 days</strong>, including attempted operations. This is independent of the freeze track and runs in parallel where applicable.</li>
+                </ul>
             </div>
         </section>
 
@@ -1870,7 +1916,7 @@
 
             <dl class="gloss">
                 <div><dt>AML / CTF</dt><dd>Anti-Money Laundering / Counter-Terrorism Financing.</dd></div>
-                <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Statutory thresholds: ≥10% (Instr. Arts. 12, 20 — apply as floor); ≥25% (D-426 Art. 15); majority shareholding / control by other means (Instr. Art. 21-A Reform 2). Trusts: identify all parties (Instr. Art. 21).</dd></div>
+                <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Three statutory definitions: ≥10% capital / voting / control by other means (Instr. Arts. 12 last sentence, 20(b) — apply as floor); ≥25% (D-426 Art. 15 par. 5); majority shareholding + control catch-all + highest-ranking management fallback (Instr. Art. 21-A Reform 2). Independent of %, UBO also covers the natural person on whose behalf the relationship is sought (Art. 20(a) — nominee detection). Listed-company exception applies for stock-exchange-listed customers subject to disclosure regime. Trusts: identify all parties — settlor, trustee, protector, beneficiaries, controllers (Instr. Arts. 21, 21-A).</dd></div>
                 <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12. Triggered by ongoing relationship (D-426 Art. 15(a)) or occasional transaction at or above the applicable reporting threshold for the transaction type (D-426 Art. 15(b) → Instr. Arts. 51, 52): <strong>$1,000</strong> e-transfer (Art. 52(a)(b)) · <strong>$200</strong> remittance (Art. 52(c)) · <strong>$10K</strong> cash (Art. 51) · <strong>$25K</strong> other means (Art. 51). STR-related suspicion triggers full CDD irrespective of amount.</dd></div>
                 <div><dt>CO / Alternate CO</dt><dd>Compliance Officer / Alternate Compliance Officer. AML/CFT-certified, UIF-registered. Both may be foreign-resident with an employment relationship to the entity (Instr. Art. 84-B(2) Reform 1). <strong>Best practice:</strong> Salvadoran-resident Principal CO for smoother CNAD review.</dd></div>
                 <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales — Salvadoran DASP supervisory authority. Issues PSAD registration; enforces RPSAD; receives DASP-specific filings.</dd></div>
