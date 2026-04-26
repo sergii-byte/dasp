@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23788c5d'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
             --white: #ffffff;
@@ -521,6 +521,7 @@
             .sec { page-break-inside: avoid; }
         }
     </style>
+    <link rel="stylesheet" href="cryptoguides-overrides.css">
 </head>
 <body>
 
@@ -837,9 +838,9 @@
                 <thead><tr><th>Obligation on this site</th><th>Statutory anchor</th><th>Resolves through</th></tr></thead>
                 <tbody>
                     <tr>
-                        <td><strong>CDD trigger</strong> for occasional e-transfer ≥ $1,000</td>
+                        <td><strong>CDD trigger</strong> for occasional e-transfer ≥ $1,000 (PSAV)</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span></td>
-                        <td>"applicable threshold for the reporting of cash transactions" → <span class="cite cite--instr">Instr. Art. 52(a)(b)</span> (electronic transfer reporting threshold $1,000) <em>via</em> <span class="cite cite--instr">Instr. Art. 51</span> (general regulated-transactions reporting)</td>
+                        <td>For PSAVs, the operative threshold is set by <span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span> ($1,000–$4,000 = Standard CDD; &gt; $4,000 = EDD). <strong>Note:</strong> the FI-side Art. 52(a)(b)(c) thresholds do <em>not</em> apply to PSAVs.</td>
                     </tr>
                     <tr>
                         <td><strong>CDD trigger</strong> for occasional cash &gt; $10,000</td>
@@ -2136,7 +2137,8 @@
                     <ul>
                         <li>STR (24 h) and Attempted-Operation STR <span class="cite cite--d426">LCLDA Art. 24</span></li>
                         <li>Operación Regulada — cash &gt; $10K / other means &gt; $25K (5 wd) <span class="cite cite--instr">Instr. Art. 51</span></li>
-                        <li>Monthly Art. 52 reports — international / local e-transfers ≥ $1,000, family remittances ≥ $200</li>
+                        <li>Monthly Art. 52 reports — <strong>FI-only</strong>; PSAVs/DASPs do <strong>not</strong> file these <span class="cite cite--instr">Instr. Art. 52(a)(b)(c)</span></li>
+                        <li>PSAV Monthly Client Report + Individual Tx Report (≥ $1,000 / 5 wd) + Zero-Tx Notification <span class="cite cite--instr">Acuerdo 734 § Anexo IV</span></li>
                         <li>Sanctions / UNSC freeze reports (immediate, then FGR formally orders the freeze) <span class="cite cite--lecat">LECAT Art. 37</span></li>
                         <li>CO / Alternate appointment + removal notices</li>
                         <li>BO / registration-data updates <span class="cite cite--instr">Instr. Art. 23</span></li>

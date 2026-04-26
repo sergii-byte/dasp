@@ -1,0 +1,356 @@
+/* =========================================================
+   CryptoGuides Design System — Site Overrides
+   Maps existing site classes onto the editorial/archive palette,
+   typography, and component patterns from the imported design.
+   Loaded AFTER each page's inline <style> so it always wins.
+   ========================================================= */
+
+/* ---------- Re-bind global tokens to design-system values ---------- */
+:root {
+  /* Surface */
+  --bg:           #FAFAF7;
+  --bg-alt:       #F4F2EC;
+  --bg-3:         #ECE9E1;
+  --paper:        #FAFAF7;
+  --paper-2:      #F4F2EC;
+  --paper-3:      #ECE9E1;
+  --white:        #FAFAF7;
+  --rule:         #E2DED3;
+  --rule-2:       #D6D1C2;
+  --border:       #E2DED3;
+  --border-light: #ECE9E1;
+  --border-strong:#D6D1C2;
+  --accent-border:#D6D1C2;
+
+  /* Ink (text) */
+  --ink:          #0E1116;
+  --ink-2:        #2A2E36;
+  --ink-3:        #5B606B;
+  --ink-4:        #8B8F99;
+  --ink-5:        #B5B7BD;
+  --text:         #0E1116;
+  --text-2:       #2A2E36;
+  --text-3:       #5B606B;
+  --text-soft:    #8B8F99;
+  --navy:         #0E1116;
+
+  /* Accent — archive amber (single accent across the site) */
+  --accent:           #B8761F;
+  --accent-strong:    #8C5717;
+  --accent-soft:      #F5EFE3;
+  --accent-ink:       #FAFAF7;
+  --orange:           #B8761F;
+  --amber:            #B8761F;
+  --amber-border:     #D6D1C2;
+  --amber-strong:     #8C5717;
+
+  /* Status — regulatory taxonomy */
+  --green:            #2E6B4A;          /* regulated */
+  --emerald:          #2E6B4A;
+  --emerald-border:   #B5C8B8;
+  --green-bg:         #E5F0E8;
+  --emerald-soft:     #E5F0E8;
+
+  --red:              #A53321;          /* prohibited */
+  --red-bg:           #F4E1DD;
+  --red-border:       #D6B6AE;
+
+  --blue:             #2D4F86;          /* note / evolving */
+  --blue-bg:          #E0E8F4;
+  --blue-border:      #B5C2D6;
+
+  /* Radius */
+  --r:        4px;
+  --r-sm:     2px;
+  --r-md:     6px;
+  --r-lg:     8px;
+  --r-xl:     8px;
+
+  /* Shadow */
+  --shadow:        0 1px 2px rgba(14,17,22,0.04), 0 0 0 1px rgba(14,17,22,0.06);
+  --shadow-sm:     0 1px 2px rgba(14,17,22,0.04), 0 0 0 1px rgba(14,17,22,0.06);
+  --shadow-md:     0 2px 8px rgba(14,17,22,0.06), 0 0 0 1px rgba(14,17,22,0.06);
+  --shadow-lg:     0 8px 24px rgba(14,17,22,0.08), 0 0 0 1px rgba(14,17,22,0.06);
+}
+
+/* ---------- Typography globally ---------- */
+html, body, .container, .main, main {
+  font-family: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Long-form prose — serif for readability of guide bodies */
+.section__lead, .sec__lead, .section__desc, .hero__desc, .hero__lead, .hero-lede,
+.guide-card__desc, .reg-card__desc, .guides__sub,
+.callout p, .qrc-foot, .tbl-note, blockquote,
+.flow-step__sub, .phase-card__sub,
+.faq-item div, .faq-item summary + div p {
+  font-family: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+/* Headlines, UI, navigation — sans (Inter Tight) */
+h1, h2, h3, h4, h5, h6,
+.section__title, .sec__title, .section__h3, .section__subh,
+.hero__title, .hero h1,
+.guide-card__title, .reg-card__name, .nav-link,
+.btn, .tag, .card__title, .card__head {
+  font-family: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+h1, .hero__title { font-weight: 500; letter-spacing: -0.025em; }
+
+/* All statutory citations + meta data + jurisdiction codes — JetBrains Mono */
+.ref, .cite, .ref-cite, .citelist,
+.metric__lbl, .metric__label,
+.section__label, .sec__label, .reg__label, .guides__label, .hero__label,
+.legend__item, .qrc-box .qrc-foot strong,
+.flow-step__phase, .flow-step__duration,
+.phase-card__num, .phase-card__dur,
+code, pre, kbd, samp,
+.brand-sub, .step-meta, .tl-date,
+.timeline__title, .timeline__foot {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Eyebrow labels — uppercase, mono, small */
+.section__label, .sec__label, .reg__label, .guides__label, .hero__label,
+.flow-step__phase, .phase-card__num,
+.guide-card__num, .reg-card__head {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  font-weight: 700;
+}
+
+/* Body links — quiet underline (border-bottom), bolder on hover */
+a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-2);
+  transition: border-color 120ms ease, color 120ms ease;
+}
+a:hover { border-color: var(--ink); }
+a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a[class*="link"] {
+  border-bottom: none;
+}
+
+/* ---------- Cards — flat editorial style ---------- */
+.card, .reg-card, .guide-card, .qrc-box, .phase-card, .metric, .meta-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  box-shadow: none;
+}
+.card:hover, .reg-card:hover, .guide-card:hover, .phase-card:hover {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Accent / colour variants — keep colour but flatten */
+.card--accent-amber, .card--amber { border-left: 3px solid var(--accent); }
+.card--accent-green, .card--green { border-left: 3px solid var(--green); }
+.card--accent-red,   .card--red   { border-left: 3px solid var(--red); }
+.card--accent-blue,  .card--blue  { border-left: 3px solid var(--blue); }
+
+/* ---------- Buttons ---------- */
+.btn, .button, button.btn {
+  border-radius: var(--r-sm);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  transition: all 120ms ease;
+}
+.btn--primary, .btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn--primary:hover { background: var(--ink-2); }
+.btn--secondary, .btn-secondary {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--rule-2);
+}
+.btn--secondary:hover { background: var(--paper-3); border-color: var(--ink); }
+.btn--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn--accent:hover { background: var(--accent-strong); }
+
+/* ---------- Tags / chips — mono uppercase ---------- */
+.tag, .chip {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  padding: 2px 8px;
+  background: var(--paper-3);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+}
+.tag--green { background: #E5F0E8; color: #2E6B4A; border-color: transparent; }
+.tag--amber { background: #F5EFE3; color: #8C5717; border-color: transparent; }
+.tag--red   { background: #F4E1DD; color: #A53321; border-color: transparent; }
+.tag--blue  { background: #E0E8F4; color: #2D4F86; border-color: transparent; }
+
+/* ---------- Citations / refs — mono, subtle ---------- */
+.ref, .cite, .ref-cite {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  background: var(--paper-2);
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.cite--d426, .cite--lclda { color: #2D4F86; background: #E0E8F4; border-color: #B5C2D6; }
+.cite--instr              { color: #8C5717; background: #F5EFE3; border-color: #D6C8AE; }
+.cite--lecat              { color: #A53321; background: #F4E1DD; border-color: #D6B6AE; }
+.cite--rpsad              { color: #2E6B4A; background: #E5F0E8; border-color: #B5C8B8; }
+.cite--lead               { color: #2A2E36; background: var(--paper-3); border-color: var(--rule-2); }
+.cite--practice           { color: var(--ink-3); background: var(--paper-2); border-color: var(--rule); border-style: dashed; }
+
+/* ---------- Callouts — editorial style ---------- */
+.callout {
+  border-left: 2px solid var(--ink);
+  background: var(--paper-2);
+  padding: 16px 20px;
+  border-radius: 0 var(--r) var(--r) 0;
+  margin: 16px 0;
+}
+.callout--blue,   .callout-note    { border-left-color: var(--blue);   background: var(--blue-bg); }
+.callout--amber,  .callout-warning { border-left-color: var(--accent); background: var(--accent-soft); }
+.callout--red,    .callout-alert   { border-left-color: var(--red);    background: var(--red-bg); }
+.callout--green,  .callout-success { border-left-color: var(--green);  background: var(--green-bg); }
+
+.callout p { font-family: "Source Serif 4", Georgia, serif; font-size: 0.95rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 0.5rem 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---------- Tables ---------- */
+.tbl, .j-table, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background: var(--paper);
+}
+.tbl thead th, table thead th {
+  text-align: left;
+  padding: 12px 16px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--ink);
+}
+.tbl tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.tbl tbody tr:hover td, table tbody tr:hover td { background: var(--paper-2); }
+.tbl tbody tr:last-child td { border-bottom: 1px solid var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 4rem 0 3rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+.hero__title, .hero h1 {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+.hero__title em, .hero h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.hero__desc, .hero__lead, .hero-lede {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+/* ---------- Section dividers ---------- */
+.section, .sec {
+  padding: 4rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- Metrics row (under hero) ---------- */
+.metric {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 16px 20px;
+}
+.metric__val {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 500;
+  font-size: 1.75rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  display: block;
+}
+.metric__lbl, .metric__label {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* ---------- Sidebar / TOC ---------- */
+.sidebar, .toc, .side-nav {
+  background: var(--paper-2);
+  border-right: 1px solid var(--rule);
+}
+.toc-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  font-weight: 700;
+}
+
+/* ---------- Glossary ---------- */
+.glossary dt {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+.glossary dd {
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--ink-2);
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; color: black; }
+  .sidebar, .toc, .side-nav, nav { display: none; }
+  a { color: black; border-bottom: none; }
+  .ref, .cite { color: black; background: transparent; border: none; }
+}
