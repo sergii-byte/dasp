@@ -1491,6 +1491,54 @@
             <div class="callout callout--warn">
                 <p><strong>Two clocks — never confuse them.</strong> The STR clock is wall-clock 24 hours from a CO's signed determination — it does not stop on weekends. The Operación Regulada clock (and most other deadlines) is business-day. Missing either is a standalone administrative offence.</p>
             </div>
+
+            <h3>Where each report lands — recipients map</h3>
+            <p>The Reporting Hub above lists every recurring or event-driven report. Below is the underlying recipient map, because the four authorities have non-overlapping roles and the routing matters when filing.</p>
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">UIF (Financial Intelligence Unit)</div>
+                    <p>Receives <strong>all operational AML reports</strong> via goAML — from both DASPs and BSPs through the same pipeline:</p>
+                    <ul>
+                        <li>STR (24 h) and Attempted-Operation STR <span class="cite cite--d426">D-426 Art. 24</span></li>
+                        <li>Operación Regulada — cash &gt; $10K / other means &gt; $25K (5 wd) <span class="cite cite--instr">Instr. Art. 51</span></li>
+                        <li>Monthly Art. 52 reports — international / local e-transfers ≥ $1,000, family remittances ≥ $200</li>
+                        <li>Sanctions / UNSC freeze reports (immediate, then FGR formally orders the freeze) <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                        <li>CO / Alternate appointment + removal notices</li>
+                        <li>BO / registration-data updates <span class="cite cite--instr">Instr. Art. 23</span></li>
+                    </ul>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">CNAD (Digital Assets Commission)</div>
+                    <p>Receives <strong>DASP-specific licensing and supervisory reports</strong>:</p>
+                    <ul>
+                        <li>Quarterly — Digital Asset Issuances <span class="cite cite--rpsad">RPSAD Art. 15</span></li>
+                        <li>Quarterly — Stablecoins Admitted <span class="cite cite--rpsad">RPSAD Art. 16</span></li>
+                        <li>Quarterly — Pricing &amp; Commissions <span class="cite cite--lead">LEAD Art. 21(m)</span></li>
+                        <li>Material registration change (5 bd) <span class="cite cite--rpsad">RPSAD Art. 9</span></li>
+                        <li>Cybersecurity incident (without delay) <span class="cite cite--rpsad">RPSAD Art. 26</span></li>
+                        <li>Annual cybersecurity test results</li>
+                    </ul>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">BCR (Central Reserve Bank) — Bitcoin track only</div>
+                    <p>BCR's role for the digital-asset perimeter is <strong>narrow and registration-only</strong> — it does not receive ongoing operational AML reports. For DASPs that also operate with Bitcoin (per Instr. Art. 84-A Reform 1), BCR maintains the Bitcoin Service Provider Registry:</p>
+                    <ul>
+                        <li><strong>BSP registration application</strong> (one-time) — Bitcoin Law Regulations Art. 3</li>
+                        <li><strong>Pre-operations documentation</strong> within 20 bd before going live — Bitcoin Law Regulations Art. 4</li>
+                        <li><strong>Discontinuation notice</strong> — immediate, on cessation of BSP status</li>
+                        <li>Ongoing AML supervision is delegated to <strong>SSF</strong> (per Bitcoin Law Regulations Art. 5), not to BCR</li>
+                    </ul>
+                    <div class="card__foot">NRP-29 (CNBCR-12/2021) and NRP-36 are BCR Technical Rules for <em>banks and EMIs</em> — they explicitly do not apply to DASPs/BSPs. They matter only if a banking partner of the DASP handles Bitcoin flows.</div>
+                </div>
+                <div class="card card--purple">
+                    <div class="card__title">FGR (Office of the Attorney General)</div>
+                    <p>Receives sanctions-freeze reports <em>via UIF</em> (goAML routes them through). FGR is the body that <strong>formally orders the freeze</strong> on UNSC / national-list matches, within 24 hours of the entity's notification.</p>
+                    <ul>
+                        <li>Sanctions / UNSC list match — entity reports to FGR <em>via UIF</em>; FGR orders the freeze <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                        <li>Criminal referrals from STR follow-up</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <!-- ══════════ RECORDS ══════════ -->
