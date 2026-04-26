@@ -323,6 +323,20 @@ ol.tl, ol.tl.tl {
 ol.tl > li.tl-item {
   padding-left: 0 !important;
 }
+/* Mask the vertical line below the last item's dot so it does not
+   trail past the bottom of the timeline. Background colour is paper
+   (matches the .section--alt-killed background). */
+ol.tl > li.tl-item:last-child::after {
+  content: '';
+  position: absolute;
+  left: -26px;          /* covers the 1px line at .tl left:7 (item start at 32 → line at item-25) */
+  top: 22px;            /* just below the 14px dot (top:6 + h:14 = 20 → start mask at 22) */
+  bottom: -8px;
+  width: 3px;
+  background: var(--paper);
+  z-index: 1;
+  pointer-events: none;
+}
 .section ul li, .sec ul li, .main ul li,
 .section ol li, .sec ol li, .main ol li {
   margin-bottom: 0.4rem;
