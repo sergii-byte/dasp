@@ -839,12 +839,16 @@ strong, b {
   border: 1px solid var(--rule) !important;
   border-bottom: 0 !important;
   border-radius: 0 !important;
-  padding: 1.25rem 1.5rem !important;
+  padding: 1.5rem 1.5rem 1.75rem !important;
   display: grid !important;
-  grid-template-columns: 80px 1fr !important;
-  grid-template-rows: auto auto !important;
-  grid-template-areas: "num head" "num list" !important;
-  gap: 0.4rem 1.25rem !important;
+  grid-template-columns: 110px 1fr !important;
+  grid-template-rows: auto auto auto auto !important;
+  grid-template-areas:
+    "num title"
+    "num sub"
+    "num list"
+    "num list" !important;
+  gap: 0.25rem 1.5rem !important;
   align-items: start !important;
   background: var(--paper) !important;
   transition: background 120ms ease;
@@ -857,7 +861,10 @@ strong, b {
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
-  gap: 0.25rem !important;
+  gap: 0.4rem !important;
+  position: sticky;
+  top: 80px;       /* keep the stage label visible while reading the long card */
+  align-self: start;
 }
 .timeline__track .phase-card__num {
   font-family: "JetBrains Mono", monospace;
@@ -885,35 +892,76 @@ strong, b {
   display: block;
 }
 .timeline__track .phase-card__title {
-  grid-area: head !important;
+  grid-area: title !important;
   font-family: "Inter Tight", sans-serif !important;
-  font-size: 1.05rem !important;
+  font-size: 1.25rem !important;
   font-weight: 600 !important;
   color: var(--ink) !important;
   margin: 0 !important;
+  line-height: 1.25 !important;
 }
 .timeline__track .phase-card__sub {
-  grid-area: head !important;
-  align-self: end;
+  grid-area: sub !important;
   font-family: "Source Serif 4", Georgia, serif !important;
-  font-size: 0.85rem !important;
+  font-size: 0.95rem !important;
   color: var(--ink-3) !important;
-  margin: 0.15rem 0 0.5rem 0 !important;
+  margin: 0 0 0.75rem 0 !important;
+  line-height: 1.5 !important;
 }
 .timeline__track .phase-card__list {
   grid-area: list !important;
   margin: 0 !important;
-  padding-left: 1rem !important;
-  font-size: 0.875rem !important;
+  padding-left: 0 !important;
+  font-size: 0.92rem !important;
   line-height: 1.55 !important;
   color: var(--ink-2) !important;
+  list-style: none !important;
 }
-.timeline__track .phase-card__list li { margin-bottom: 0.25rem; }
-@media (max-width: 600px) {
+.timeline__track .phase-card__list h5 {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--accent) !important;
+  margin: 1.1rem 0 0.4rem 0 !important;
+}
+.timeline__track .phase-card__list h5:first-child { margin-top: 0 !important; }
+.timeline__track .phase-card__list ul {
+  list-style: none;
+  margin: 0 0 0.5rem 0;
+  padding-left: 0;
+}
+.timeline__track .phase-card__list ul li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.35rem;
+}
+.timeline__track .phase-card__list ul li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: -0.05rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+.timeline__track .phase-card__list p {
+  font-family: "Source Serif 4", Georgia, serif !important;
+  font-size: 0.92rem !important;
+  color: var(--ink-2) !important;
+  line-height: 1.55 !important;
+  margin: 0.5rem 0 0 0 !important;
+}
+@media (max-width: 700px) {
   .timeline__track .phase-card {
     grid-template-columns: 1fr !important;
-    grid-template-areas: "num" "head" "list" !important;
+    grid-template-rows: auto auto auto auto !important;
+    grid-template-areas: "num" "title" "sub" "list" !important;
+    padding: 1.25rem 1rem 1.5rem !important;
   }
+  .timeline__track .phase-card__head { position: static !important; flex-direction: row !important; gap: 0.6rem !important; }
 }
 @media (max-width: 900px) {
   .main, .layout > main { padding: 1.5rem 1rem 3rem; }
@@ -1140,6 +1188,7 @@ strong, b {
   padding: 1.25rem 1rem;
   /* 5 equal-width phase nodes interleaved with 4 fixed-width arrows */
   grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
+  align-items: stretch;     /* equal-height nodes — content boxes match the tallest */
 }
 .schema--clean .schema-node {
   border: 1px solid var(--rule-2);
@@ -1151,8 +1200,12 @@ strong, b {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
+  align-self: stretch;     /* fill the row height set by align-items: stretch */
+  height: 100%;
 }
+/* Push the duration to the bottom so taller nodes (with 2-line meta) align footers */
+.schema--clean .schema-node-dur { margin-top: auto; padding-top: 0.25rem; }
 .schema--clean .schema-node--final { border-color: var(--accent); }
 .schema--clean .schema-node-meta {
   font-family: "JetBrains Mono", monospace;
