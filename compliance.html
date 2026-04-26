@@ -381,6 +381,54 @@
         }
         .qc__item-meta { font-size: 0.76rem; color: var(--text-3); display: block; margin-top: 0.15rem; }
 
+        /* ── QRC (Quick Reference Card — playbook-style 8-box grid) ── */
+        .qrc-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 0.85rem; margin: 1rem 0 1.5rem;
+        }
+        .qrc-box {
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--r-md); padding: 0.9rem 1.1rem;
+            border-top: 3px solid var(--accent);
+        }
+        .qrc-box--blue { border-top-color: var(--blue); }
+        .qrc-box--green { border-top-color: var(--emerald); }
+        .qrc-box--amber { border-top-color: var(--amber); }
+        .qrc-box--red { border-top-color: var(--red); background: #fbf3f1; }
+        .qrc-box--wide { grid-column: 1 / -1; }
+        .qrc-box h3 {
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.04em; color: var(--text-1); margin: 0 0 0.55rem;
+        }
+        .qrc-box table {
+            width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 0;
+        }
+        .qrc-box td, .qrc-box th {
+            padding: 0.3rem 0.5rem; border-bottom: 1px dashed var(--border-light);
+            text-align: left; vertical-align: top;
+        }
+        .qrc-box tr:last-child td, .qrc-box tr:last-child th { border-bottom: none; }
+        .qrc-box th {
+            font-weight: 600; color: var(--text-3);
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em;
+        }
+        .qrc-box td.num { white-space: nowrap; font-weight: 600; color: var(--navy); }
+        .qrc-box ul { margin: 0; padding-left: 1.1rem; font-size: 0.78rem; }
+        .qrc-box li { margin: 0.18rem 0; }
+        .qrc-foot {
+            font-size: 0.68rem; color: var(--text-3); margin: 0.55rem 0 0;
+            padding-top: 0.45rem; border-top: 1px solid var(--border-light);
+        }
+        .qrc-redline { font-size: 0.78rem; line-height: 1.55; }
+        .qrc-redline strong { color: var(--red); margin-right: 0.25rem; }
+        @media print {
+            .topbar, .sidebar, .footer, button, .back-to-top { display: none !important; }
+            .qrc-grid { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
+            body { font-size: 8.5pt; background: white; }
+            .sec { padding: 0.5rem 0; }
+            .qrc-box { box-shadow: none; }
+        }
+
         /* ── REGULATORY STACK ── */
         .stack-card {
             display: grid; grid-template-columns: 90px 1fr; gap: 0;
@@ -563,63 +611,159 @@
             </div>
         </section>
 
-        <!-- ── QUICK REFERENCE ── -->
+        <!-- ── QUICK REFERENCE CARD (full 8-box) ── -->
         <section class="sec" id="quickref">
             <p class="sec__label">Quick reference</p>
-            <h2 class="sec__title">Every clock that matters</h2>
-            <div class="qc">
-                <div class="qc__grid">
-                    <div>
-                        <span class="qc__item-label">CDD trigger — e-transfer</span>
-                        <span class="qc__item-val">≥ $1,000</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;15(b) → Instr. Art.&nbsp;52(a)(b)</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">CDD trigger — cash</span>
-                        <span class="qc__item-val">&gt; $10,000</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;15(b) → Instr. Art.&nbsp;51</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">Travel Rule</span>
-                        <span class="qc__item-val">Any amount</span>
-                        <span class="qc__item-meta">Instr. Art.&nbsp;52 par.&nbsp;2 reformed</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">STR filing</span>
-                        <span class="qc__item-val">24 hours</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;24 · wall-clock</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">STR analysis</span>
-                        <span class="qc__item-val">≤ 15 wd</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;24 · extendable once</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">Operación Regulada</span>
-                        <span class="qc__item-val">5 wd</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;25 · Instr. Art.&nbsp;51</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">Sanctions freeze</span>
-                        <span class="qc__item-val">Immediate</span>
-                        <span class="qc__item-meta">LECAT Art.&nbsp;37 + report to UIF</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">Record retention</span>
-                        <span class="qc__item-val">15 years</span>
-                        <span class="qc__item-meta">D-426 Art.&nbsp;26</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">UIF reporting channel</span>
-                        <span class="qc__item-val">goAML</span>
-                        <span class="qc__item-meta">UIF electronic platform</span>
-                    </div>
-                    <div>
-                        <span class="qc__item-label">DASP CO residency</span>
-                        <span class="qc__item-val">Not required</span>
-                        <span class="qc__item-meta">Instr. Art.&nbsp;84-B (Reform 1)</span>
+            <h2 class="sec__title">One-page desk reference</h2>
+            <p class="sec__lead">Every key number on one screen. Click through any chip / cite for the full reasoning. <strong>Print-friendly</strong> — Ctrl/Cmd + P renders a clean 1–2 page desk card (sidebar + top nav hidden in print).</p>
+
+            <div class="qrc-grid">
+
+                <!-- 1. Reporting thresholds -->
+                <div class="qrc-box qrc-box--blue">
+                    <h3>Reporting thresholds — Operación Regulada</h3>
+                    <table>
+                        <thead><tr><th>Means</th><th>Single op</th><th>Monthly aggregate</th><th>Report</th></tr></thead>
+                        <tbody>
+                            <tr><td>Cash</td><td class="num">&gt; $10,000</td><td class="num">&gt; $10,000</td><td class="num">5 wd</td></tr>
+                            <tr><td>Other means</td><td class="num">&gt; $25,000</td><td class="num">&gt; $25,000</td><td class="num">5 wd</td></tr>
+                            <tr><td>E-transfer (FI monthly)</td><td class="num">≥ $1,000</td><td class="num">aggregate</td><td class="num">First 5 wd</td></tr>
+                            <tr><td>Family remittance</td><td class="num">≥ $200</td><td class="num">aggregate</td><td class="num">First 5 wd</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Art. 51, 52(a)(b)(c)</span> · <span class="cite cite--d426">D-426 Art. 25</span></p>
+                </div>
+
+                <!-- 2. Travel Rule -->
+                <div class="qrc-box qrc-box--green">
+                    <h3>Travel Rule — VASP data on every transfer</h3>
+                    <table>
+                        <thead><tr><th>Context</th><th>Amount floor</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>VASP</strong> — any digital-asset transfer</td><td class="num">$0 — any amount</td></tr>
+                            <tr><td>Traditional national / international wire</td><td class="num">≥ $1,000</td></tr>
+                            <tr><td>Traditional family remittance</td><td class="num">≥ $200</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.72rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
+                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Arts. 52 par. 2 (Reform 2), 84-B(1)(e) (Reform 1)</span></p>
+                </div>
+
+                <!-- 3. Statutory deadlines -->
+                <div class="qrc-box qrc-box--amber">
+                    <h3>Statutory deadlines</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>STR after determination</td><td class="num">24 h</td></tr>
+                            <tr><td>STR internal analysis (extendable 1×)</td><td class="num">≤ 15 wd</td></tr>
+                            <tr><td>UNSC / national list — FGR instructions</td><td class="num">max 24 h</td></tr>
+                            <tr><td>LECAT terrorism-suspect operations report</td><td class="num">3 days</td></tr>
+                            <tr><td>Operación Regulada filing</td><td class="num">5 wd</td></tr>
+                            <tr><td>UIF data update (entity registration)</td><td class="num">15 wd</td></tr>
+                            <tr><td>CO appointment notice → UIF</td><td class="num">15 wd</td></tr>
+                            <tr><td>CO removal / dismissal → UIF</td><td class="num">5 wd</td></tr>
+                            <tr><td>CNAD pre-resolution material change</td><td class="num">Immediate (+5 bd)</td></tr>
+                            <tr><td>CNAD review per round (Phase 1/2)</td><td class="num">20 bd</td></tr>
+                            <tr><td>Cure window per round</td><td class="num">10 bd</td></tr>
+                            <tr><td>Investment refund on force majeure</td><td class="num">48 h</td></tr>
+                            <tr><td>Annual training plan Board-approved</td><td class="num">by 31 Dec</td></tr>
+                            <tr><td>Code of Ethics after registration</td><td class="num">6 cal months</td></tr>
+                            <tr><td>Annual renewal fee</td><td class="num">Q1 each year</td></tr>
+                            <tr><td>Records retention (all AML files)</td><td class="num">15 years</td></tr>
+                            <tr><td>BSP discontinuation removal from BCR Registry</td><td class="num">72 hours</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 4. Beneficial owner thresholds -->
+                <div class="qrc-box qrc-box--blue">
+                    <h3>Beneficial owner — three definitions</h3>
+                    <table>
+                        <thead><tr><th>Source</th><th>Threshold</th><th>Posture</th></tr></thead>
+                        <tbody>
+                            <tr><td>Instr. Arts. 12 last sent., 20(b)</td><td class="num">≥ 10%</td><td><strong>Apply — stricter</strong></td></tr>
+                            <tr><td>D-426 Art. 15 par. 5</td><td class="num">≥ 25%</td><td>Statute floor</td></tr>
+                            <tr><td>Instr. Art. 21-A (Reform 2)</td><td>majority + control + mgmt fallback</td><td>VASP cascade</td></tr>
+                            <tr><td colspan="3" style="font-size:0.72rem; color:var(--text-2);"><strong>Plus:</strong> Art. 20(a) — natural person on whose behalf relationship is sought (nominee detection); listed-company exception applies for stock-exchange-listed customers under disclosure regime.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 5. DD levels — when -->
+                <div class="qrc-box qrc-box--green">
+                    <h3>DD level — when applies</h3>
+                    <table>
+                        <tbody>
+                            <tr><td><span class="pill pill--no">SDD</span></td><td>Documented low-risk · &lt; statutory floor + no risk factor + no PEP / HR jur</td></tr>
+                            <tr><td><span class="pill pill--cdd">Standard</span></td><td>Default for any ongoing relationship · occasional ≥ statutory floor</td></tr>
+                            <tr><td><span class="pill pill--edd">EDD</span></td><td>PEP (+ family ≤2nd, close assoc) · high-risk jur · opaque ownership · cash-intensive · structuring · profile deviation · flagged wallet · 3rd-party funder · adverse media</td></tr>
+                            <tr><td><span class="pill pill--reject">Reject</span></td><td>UNSC / UIF national list hit · client refuses CDD · prohibited asset (privacy coin / algorithmic stablecoin) · restricted jurisdiction</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="qrc-foot"><span class="cite cite--d426">D-426 Arts. 15-17</span> · <span class="cite cite--instr">Instr. Arts. 12, 13, 14, 14-A(III) Reform 2</span></p>
+                </div>
+
+                <!-- 6. Asset perimeter -->
+                <div class="qrc-box qrc-box--amber">
+                    <h3>Asset perimeter — pre-CDD gate</h3>
+                    <table>
+                        <thead><tr><th>Status</th><th>Asset class</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="pill pill--no">Allowed</span></td><td>Transparent-ledger DA listed at registration (BTC, ETH, SOL, TRX...) · CNAD-authorised stablecoins (USDT, USDC...)</td></tr>
+                            <tr><td><span class="pill pill--cdd">Prior CNAD analysis</span></td><td>Additional stablecoins · tokens from public DA issuances · new asset additions post-registration</td></tr>
+                            <tr><td><span class="pill pill--reject">Rejected</span></td><td>Privacy coins (XMR, ZEC, DASH) · algorithmic stablecoins · unvetted new tokens · sanctioned-protocol tokens</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="qrc-foot"><span class="cite cite--lead">LEAD Arts. 9(k)(l), 20(b), 21(e)(q)</span> · <span class="cite cite--rpsad">RPSAD Art. 9</span></p>
+                </div>
+
+                <!-- 7. Essential contacts & channels -->
+                <div class="qrc-box qrc-box--blue">
+                    <h3>Essential contacts &amp; channels</h3>
+                    <table>
+                        <thead><tr><th>Authority</th><th>Matter</th><th>Channel</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>UIF (FGR)</strong></td><td>STR · Operación Regulada · monthly e-tx · sanctions freeze · CO notification · entity data updates</td><td>goAML</td></tr>
+                            <tr><td><strong>CNAD</strong></td><td>DASP registration · material changes · quarterly reports · cessation · trade suspension</td><td>registro@cnad.gob.sv</td></tr>
+                            <tr><td><strong>BCR</strong></td><td>BSP Registry — registration · pre-ops docs · registry updates · discontinuation</td><td>BCR electronic procedure</td></tr>
+                            <tr><td><strong>FGR</strong></td><td>Criminal referrals (terrorism financing) · tipping-off prosecutions · UNSC freeze orders</td><td>via UIF / direct</td></tr>
+                            <tr><td><strong>SSF</strong></td><td>BSP supervision and sanctions · NRP-29/36 standards if banking partner</td><td>SSF channels</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 8. RBA risk criteria + $125K aggravator -->
+                <div class="qrc-box qrc-box--green">
+                    <h3>RBA — Customer inherent-risk criteria (Art. 10)</h3>
+                    <ul>
+                        <li><strong>(a)</strong> International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</li>
+                        <li><strong>(b)</strong> Entity's own risk analysis (cash-intensive, gambling, NGOs in HR jur)</li>
+                        <li><strong>(c)</strong> Product / service risk (privacy coins, custody, cross-border)</li>
+                        <li><strong>(d)</strong> Channel risk (non-face-to-face, unhosted wallet, API)</li>
+                        <li><strong>(e)</strong> Geographic risk (FATF lists, partial sanctions, transit jurisdictions)</li>
+                        <li><strong>(f)</strong> Caution / sanction list presence (UNSC, UIF national)</li>
+                        <li><strong>(g)</strong> Higher-risk-country transactions (KYT trace shows flow)</li>
+                    </ul>
+                    <p class="qrc-foot"><strong>$125K monthly aggravator</strong> — RPSAD Art. 22: any client with ≥ $125,000 cumulative monthly capital injection → increased surveillance + documentary SoF + electronic affidavit + DA-issuer ID, regardless of base DD level.</p>
+                </div>
+
+                <!-- 9. Red lines — full width -->
+                <div class="qrc-box qrc-box--red qrc-box--wide">
+                    <h3 style="color: var(--red);">Red lines — do not cross</h3>
+                    <div class="qrc-redline">
+                        <p style="margin:0.2rem 0;"><strong>1.</strong> No tipping-off — criminal offence (D-426 Art. 44). Decline / close uses neutral grounds only; never reveal STR, freeze, AML reason.</p>
+                        <p style="margin:0.2rem 0;"><strong>2.</strong> No STR later than 24 h from determination (D-426 Art. 24). 5 wd in Instructivo Art. 43 is the older outer envelope — statute prevails.</p>
+                        <p style="margin:0.2rem 0;"><strong>3.</strong> No UNSC / national list match without freeze + UIF report; FGR has max 24 h to issue instructions (LECAT Art. 37).</p>
+                        <p style="margin:0.2rem 0;"><strong>4.</strong> No VASP transfer without full Travel Rule 7-field data — even sub-$1,000 (Instr. Art. 52 par. 2 Reform 2).</p>
+                        <p style="margin:0.2rem 0;"><strong>5.</strong> No SDD on suspicion or higher-risk scenario (Instr. Art. 14 last par.). Suspicion overrides matrix.</p>
+                        <p style="margin:0.2rem 0;"><strong>6.</strong> No operation outside registered Art. 19 perimeter (LEAD Arts. 38-40).</p>
+                        <p style="margin:0.2rem 0;"><strong>7.</strong> No relationship without BO identified to a natural person — apply 10% as floor (Instr. Art. 20(b)).</p>
+                        <p style="margin:0.2rem 0;"><strong>8.</strong> No identity verification skipped — pre-relationship gate at $0 (Instr. Art. 12 last par. Reform 2). No verification → no relationship.</p>
+                        <p style="margin:0.2rem 0;"><strong>9.</strong> No file destroyed before 15 years from operation date / relationship termination (D-426 Art. 26).</p>
+                        <p style="margin:0.2rem 0;"><strong>10.</strong> No PEP relationship without senior-management written approval (D-426 Art. 16 + Instr. Art. 13(c) Reform 2).</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
