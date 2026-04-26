@@ -1520,6 +1520,78 @@
         <p><strong>Important:</strong> A single DASP can register for multiple activities. The AML risk classification of the <strong>highest-risk activity</strong> determines the overall compliance burden. Activities not listed in Art. 19 do not require DASP registration.</p>
     </div>
 
+    <h3 class="section__subh" style="margin-top:2rem;">Per-activity technology requirements</h3>
+    <p class="section__desc" style="margin-bottom:1rem;">CNAD <em>Guía Anexo 1</em> sets the minimum technical and operational requirements per Art. 19 service. The applicant must demonstrate that the chosen tech stack supports each requested activity.</p>
+
+    <div class="grid grid--2">
+        <div class="card card--accent-blue">
+            <h3>(a) Exchange / (b) Exchange platform / (d) Placement</h3>
+            <ul>
+                <li>Operational platform</li>
+                <li>KYC / KYB / KYT policies</li>
+                <li>Custody policies</li>
+                <li>Geofencing</li>
+                <li>Cybersecurity systems</li>
+                <li>Technology audit</li>
+                <li>Liquidity providers</li>
+                <li>Connection to the traditional FIAT system</li>
+                <li><strong>Add for derivatives (b):</strong> tools for derivatives execution</li>
+                <li><strong>Add for placement (d):</strong> token standard documentation</li>
+            </ul>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>(c) Risk &amp; price evaluation, subscription</h3>
+            <ul>
+                <li><strong>Without platform:</strong> personnel qualified in finance, risk management and technology</li>
+                <li><strong>With platform:</strong> all (a) requirements <em>plus</em> risk methodologies, calculation formulas, periodicity of publication, data sources</li>
+            </ul>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>(e) Promote, structure, manage investment products</h3>
+            <ul>
+                <li><strong>Promotion:</strong> identify / attract / channel investors; act as access point between investor and issuer</li>
+                <li><strong>Structuring:</strong> financial (viability, terms, yields, guarantees, collateral, contracts) + legal (regulatory framework, contracts, T&amp;Cs) + technological (token architecture, blockchain configuration, smart contracts, custody, traceability)</li>
+                <li><strong>Administration:</strong> portfolio management for clients via mandate / delegation; administration contract required</li>
+            </ul>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>(f.1) Transfer DA on behalf of third parties (no custody)</h3>
+            <ul>
+                <li>Operational platform</li>
+                <li>KYC / KYB / KYT policies</li>
+                <li>Geofencing policies</li>
+                <li>Cybersecurity systems</li>
+                <li>Tech audit</li>
+                <li>Liquidity providers</li>
+                <li>FIAT connection</li>
+                <li><strong>Self-custody wallet model</strong> — user holds private + public keys; entity is not custodian</li>
+            </ul>
+        </div>
+        <div class="card card--accent-green">
+            <h3>(f.2) Custody / safeguard / administer DA</h3>
+            <ul>
+                <li>All (f.1) requirements <em>plus</em>:</li>
+                <li><strong>Security &amp; custody policies and procedures:</strong> MPC, multisig, hot &amp; cold wallets</li>
+                <li><strong>Fund segregation</strong> (client assets segregated from entity assets)</li>
+                <li>Custodian responsibility for client private keys</li>
+            </ul>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>(f.3) Order reception / transmission &amp; (f.4) Execution of derivative orders</h3>
+            <ul>
+                <li>Operational platform</li>
+                <li>KYC / KYB / KYT policies</li>
+                <li>Geofencing</li>
+                <li>Cybersecurity systems</li>
+                <li>Tech audit</li>
+                <li>Liquidity providers</li>
+                <li>FIAT connection</li>
+                <li>Security and custody policies (intermediary acts on client orders in authorised markets)</li>
+            </ul>
+        </div>
+    </div>
+    <p class="tbl-note">Source: CNAD <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>, Anexo 1. Each application must show how the tech stack maps to each requested Art. 19 activity.</p>
+
 </div>
 </section>
 
@@ -2115,6 +2187,10 @@
         <p><strong>Prevention Committee</strong> <span class="ref">D-426 Art. 23</span>: Reporting Entities that must appoint a Compliance Office (incl. DASPs supervised by CNAD) must establish a Prevention Committee. Statutory minimum: <strong>3 members</strong> incl. one from the highest governing body and the CO. The Instructivo requires <strong>min 5 members</strong> for SSF-supervised entities and quarterly meetings <span class="ref">Instr. Art. 68</span> — DASPs apply this as practical baseline. Natural-person Reporting Entities may opt out of CO designation and assume AML duties personally <span class="ref">D-426 Art. 22</span> (does not apply to DASPs).</p>
     </div>
 
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>CO residency — best practice.</strong> Statutorily, both Principal and Alternate COs may be foreign-resident under <span class="ref">Instr. Art. 84-B Reform 1</span> (explicit VASP exemption — Instructivo prevails over the stricter wording in the CNAD Guía). <strong>Best practice for smooth registration: appoint a Salvadoran-resident Principal CO.</strong> The Alternate may be foreign-resident with an employment relationship to the entity.</p>
+    </div>
+
     <div class="card card--top-blue card--full stack-lg">
         <h3 class="card__head">Corporate &amp; Compliance Roles in El Salvador</h3>
         <div class="tbl-wrap">
@@ -2176,7 +2252,26 @@
         <div class="card"><h3>Protection <span class="ref">RPSAD Art. 27(c)</span></h3><p>SOC, IPS, access controls. Internal threat detection. Employee training.</p></div>
         <div class="card"><h3>Detection <span class="ref">RPSAD Art. 27(d)</span></h3><p>Continuous real-time monitoring. Multi-level security controls.</p></div>
         <div class="card"><h3>Response &amp; Recovery <span class="ref">RPSAD Art. 27(e)</span></h3><p>Critical processes: <strong>6 hours</strong>. Transaction settlement: <strong>24 hours</strong>.</p></div>
-        <div class="card"><h3>Tests &amp; Simulations <span class="ref">RPSAD Art. 28</span></h3><p>External auditor. 3 scenarios: confidentiality, availability, integrity.</p></div>
+        <div class="card"><h3>Tests &amp; Simulations <span class="ref">RPSAD Art. 28</span></h3><p>External cybersecurity auditor. 3 mandatory scenarios verbatim from Art. 28.</p></div>
+    </div>
+
+    <div class="callout callout--blue" style="margin-top:1rem;">
+        <p><strong>RPSAD Art. 28 — three mandatory cybersecurity test scenarios (verbatim).</strong></p>
+        <ul style="margin-top:0.4rem;">
+            <li><strong>Scenario 1 — Confidentiality breach</strong> (<em>Ruptura de Confidencialidad</em>): theft or attempted theft of customer information and relevant operations.</li>
+            <li><strong>Scenario 2 — Availability outage</strong> (<em>Ruptura de la Disponibilidad</em>): infrastructure services unavailable or communication between users / employees and infrastructure achieved only in a very limited form.</li>
+            <li><strong>Scenario 3 — Integrity breach</strong> (<em>Ruptura de la Integridad</em>): critical infrastructure services under attack and integrity of stored information very difficult to guarantee.</li>
+        </ul>
+        <p style="margin-top:0.4rem;">Each scenario test must include: (i) vulnerability assessment with remediation; (ii) scenario-based exercises evaluating response/resolution/recovery plans, contemplating extreme but possible scenarios with realistic attack models; (iii) invasion / intrusion testing. Reaction and contingency plans required for each scenario.</p>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:0.75rem;">
+        <p><strong>Sanctions — LEAD Arts. 38–40.</strong> CNAD imposes fines in minimum salaries (commerce/services sector — currently $408.80/month):</p>
+        <ul style="margin-top:0.4rem;">
+            <li><strong>Up to 114 minimum salaries (≈ $46,603) per infraction</strong> <span class="ref">LEAD Art. 38(a)</span>: failure to register; omitting required information / records / notices; providing incomplete reports without justification; breaching CNAD-set good-conduct / ethics standards.</li>
+            <li><strong>115 to 305 minimum salaries (≈ $47K–$124,684) per infraction</strong> <span class="ref">LEAD Art. 38(b)</span>: trading unauthorised digital assets; refusing to comply with CNAD resolutions; refusing to provide CNAD-requested information; providing wrong information without correction; market-manipulation actions.</li>
+            <li><strong>20% surcharge</strong> on unpaid fine 5 working days after firm status <span class="ref">LEAD Art. 38(b)(6)</span>.</li>
+        </ul>
     </div>
 </div>
 </section>
