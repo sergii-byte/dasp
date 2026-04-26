@@ -504,6 +504,7 @@
             <div class="sidebar__title">Customer</div>
             <ul class="sidebar__list">
                 <li><a href="#cdd">Due diligence — by trigger</a></li>
+                <li><a href="#vasp-cdd">VASP-specific CDD layers</a></li>
                 <li><a href="#identity">Identity verification</a></li>
                 <li><a href="#bo">Beneficial owner</a></li>
                 <li><a href="#pep">PEP regime</a></li>
@@ -832,6 +833,93 @@
             </table>
             </div>
             <p class="tbl-note">SDD <strong>not acceptable</strong> if any suspicion arises or in higher-risk scenarios — escalates to Standard CDD or STR pipeline (Instr. Art. 14 final paragraph). Travel Rule data + sanctions / PEP screening apply at all DD levels — they are independent of the DD classification.</p>
+        </section>
+
+        <!-- ══════════ VASP-SPECIFIC CDD FRAMEWORK ══════════ -->
+        <section class="sec" id="vasp-cdd">
+            <p class="sec__label">VASP-specific CDD framework</p>
+            <h2 class="sec__title">Chapter IV-B (Reform 1) layered onto the general regime</h2>
+            <p class="sec__lead">Chapter IV-B of the Instructivo (Arts. 84-A / 84-B / 84-C, added by Reform 1) does <strong>not</strong> set separate amount thresholds for VASPs. Instead it confirms that the general three-tier DD architecture (SDD / CDD / EDD) applies, and adds three VASP-specific obligations on top: <strong>own-platform transaction-limit policies</strong>, <strong>identity-verification gate before relationship</strong> (via Reform 2 of Art. 12), and the <strong>VASP Travel Rule anchor</strong> (Art. 84-B(1)(e)). Six layers stack together for any VASP transaction.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>What it requires</th>
+                        <th>Threshold</th>
+                        <th>Statutory anchor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Identity gate</strong></td>
+                        <td>ID verification via official documents <strong>before</strong> commercial relationship begins. If identity not verified → relationship cannot start; failure analysed under STR framework.</td>
+                        <td class="num">Any amount ($0)</td>
+                        <td><span class="cite cite--instr">Instr. Art. 12 last par. (Reform 2)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Statutory CDD floor</strong> (occasional tx)</td>
+                        <td>Standard CDD triggered when occasional transaction crosses the applicable reporting threshold for the channel.</td>
+                        <td class="num">$1,000 e-transfer<br>$200 remittance<br>$10K cash<br>$25K other</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> → <span class="cite cite--instr">Instr. Arts. 51, 52</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Ongoing-relationship CDD</strong></td>
+                        <td>Any account-holder triggers full CDD from day 1, regardless of amount.</td>
+                        <td class="num">Any amount ($0)</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(a)</span> <span class="cite cite--instr">Instr. Art. 12</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. VASP internal transaction-limit policies</strong></td>
+                        <td><strong>Mandatory</strong> for VASPs — own-platform transaction limits, calibrated to CDD, risk-management and ML-prevention measures. Statutory floor is the minimum; VASP must define stricter own-thresholds in the AML manual.</td>
+                        <td class="num">Set by VASP<br>(≤ statutory floor)</td>
+                        <td><span class="cite cite--instr">Instr. Art. 84-B(1)(b) — Reform 1</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. EDD escalation</strong></td>
+                        <td>Senior-management written approval required for high-risk customers, PEPs (national / foreign / IO) and their family members ≤ 2nd degree. Documentary SoF + SoW.</td>
+                        <td class="num">Any amount on risk factor</td>
+                        <td><span class="cite cite--d426">D-426 Art. 16</span> <span class="cite cite--instr">Instr. Art. 13(c) Reform 2</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Travel Rule data</strong></td>
+                        <td>Originator + beneficiary fields (7 verbatim items: a-g) on every electronic VA transfer. Records must allow knowledge of origin and destination of VA transactions.</td>
+                        <td class="num">Any amount ($0)</td>
+                        <td><span class="cite cite--instr">Instr. Art. 84-B(1)(e) Reform 1</span> + <span class="cite cite--instr">Art. 52 par. 2 Reform 2</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note"><strong>How to read the stack:</strong> Layer 1 gates account opening. Layer 2 is the statutory CDD trigger by amount. Layer 3 catches ongoing relationships from $0. Layer 4 is the VASP-specific obligation to set own internal limits stricter than the statutory floor — non-compliance is a registration-level violation. Layer 5 is risk-based override (PEP / high-risk → EDD regardless of amount). Layer 6 attaches identifying data to every transfer regardless of amount or DD level.</p>
+
+            <h3>What Chapter IV-B adds on top of the general regime</h3>
+            <div class="grid grid--2">
+                <div class="card card--blue">
+                    <div class="card__title">Art. 84-B(1)(a) — DD policies</div>
+                    <p>VASPs must run a risk-based AML program with all three DD tiers — Simplified, Standard and Intensified — calibrated to activities, nature, size, operations and customer/transactional risk profile.</p>
+                    <div class="card__foot">→ Confirms the three general DD tiers (Arts. 12 / 13 / 14 + D-426 Arts. 15-17) apply to VASPs. No VASP-specific amount thresholds. <span class="cite cite--instr">Instr. Art. 84-B(1)(a) Reform 1</span></div>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Art. 84-B(1)(b) — Transaction-limit policies</div>
+                    <p>VASPs must adopt own-platform transaction-limit policies tied to CDD, risk-management and ML-prevention measures. The platform itself must enforce these limits operationally.</p>
+                    <div class="card__foot">→ <strong>Lex specialis for VASPs.</strong> Each VASP publishes its own internal limits in the AML manual; they sit on top of the statutory floor. <span class="cite cite--instr">Instr. Art. 84-B(1)(b) Reform 1</span></div>
+                </div>
+                <div class="card card--green">
+                    <div class="card__title">Art. 84-B(1)(e) — Customer &amp; operation records</div>
+                    <p>VASPs must maintain customer and operation records sufficient to identify the origin and destination of virtual-asset transactions on the platform.</p>
+                    <div class="card__foot">→ VASP-specific Travel Rule anchor; the data set is specified in Art. 52 par. 2 (Reform 2). <span class="cite cite--instr">Instr. Art. 84-B(1)(e) Reform 1</span></div>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">Art. 12 last par. (Reform 2) — Identity gate</div>
+                    <p>Identity verification via official documents must be completed before the commercial relationship begins. If identity cannot be verified, the relationship cannot start, and the failure must be analysed under the suspicious-transaction framework.</p>
+                    <div class="card__foot">→ Pre-relationship gate at $0, independent of CDD amount triggers. Applies to all reporting entities (incl. VASPs). <span class="cite cite--instr">Instr. Art. 12 Reform 2</span></div>
+                </div>
+            </div>
+
+            <div class="callout callout--blue" style="margin-top:1rem;">
+                <p><strong>Practical implication for the AML manual.</strong> Because Art. 84-B(1)(b) <em>requires</em> internal transaction-limit policies, the VASP cannot simply quote the statutory floor and stop there. The AML manual must publish concrete VASP-specific limits — typically calibrated <strong>at or below</strong> the statutory floor (e.g., trigger Standard CDD at $500 e-transfer instead of $1,000) — and link each limit to the corresponding DD tier and monitoring intensity. CNAD reviews these internal limits as part of the AML manual sign-off during registration and ongoing supervision.</p>
+            </div>
         </section>
 
         <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
