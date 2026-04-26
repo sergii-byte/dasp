@@ -320,45 +320,12 @@ li > strong + br + strong { font-weight: 500; color: var(--ink-2); }
 }
 .section ul li:last-child, .sec ul li:last-child, .main ul li:last-child { margin-bottom: 0; }
 
-/* Replace harsh default disc bullets with softer typographic mark
-   — but ONLY for "loose" body lists. Cards / qrc / phase / stack / flow-step
-   already have their own marker pattern; injecting amber dots there
-   doubles the bullet. */
-.section ul, .sec ul, .main ul { list-style: none; }
-.section > .container > ul > li,
-.sec > .container > ul > li,
-.main > section > .container > ul > li,
-.main > section > ul > li {
-  position: relative;
-  padding-left: 0.65rem;
-}
-.section > .container > ul > li::before,
-.sec > .container > ul > li::before,
-.main > section > .container > ul > li::before,
-.main > section > ul > li::before {
-  content: "·";
-  position: absolute;
-  left: -0.25rem;
-  top: -0.05rem;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-/* Belt-and-braces: explicitly suppress my marker inside any element that has
-   its own ::before pattern (avoids the "two dots" double-marker bug). */
-.card ul > li::before,
-.reg-card ul > li::before,
-.qrc-box ul > li::before,
-.stack-card ul > li::before,
-.phase-card ul > li::before,
-.callout ul > li::before,
-.flow-step ul > li::before,
-.vs-card ul > li::before,
-.wizard ul > li::before,
-.timeline__track ul > li::before {
-  content: none !important;
-}
+/* No custom marker injection from the override layer — every page already
+   defines its own list-marker pattern (.card li::before, .phase-card__list
+   li::before, .vs-card__list li::before, .wizard__list li::before,
+   .flow-step__content li::before, etc.). Adding a global amber "·" via
+   ::before duplicates the existing markers ("две точки" bug).
+   Body lists keep whatever marker their page CSS already provides. */
 
 /* L8 — subtle resting depth on cards (not at hover only) */
 .card, .reg-card, .guide-card, .qrc-box, .stack-card, .phase-card, .meta-card, .dl-card {
