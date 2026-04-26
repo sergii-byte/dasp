@@ -479,7 +479,7 @@
 /* ══════════════════════════════════════════════════════════════
    AML DECISION WIZARD · v.4 — full-width layout, no internal scroll
    Verdict tiers: SDD · Standard CDD · EDD · Reject
-   Sources: D-426 · Reformed Instructivo (Reform 1 + Reform 2) · LECAT
+   Sources: LCLDA · Reformed Instructivo (Reform 1 + Reform 2) · LECAT
    ══════════════════════════════════════════════════════════════ */
 (function () {
     'use strict';
@@ -547,7 +547,7 @@
             reason: 'Ongoing relationship — Standard CDD from day 1.' };
         const ch = s.channel, amt = s.amount;
         if (ch === 'etransfer' && amt >= 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'E-transfer ≥ $1,000 — Standard CDD triggered (D-426 Art. 15(b) → Instr. Art. 52(a)).' };
+            reason: 'E-transfer ≥ $1,000 — Standard CDD triggered (LCLDA Art. 15(b) → Instr. Art. 52(a)).' };
         if (ch === 'remittance' && amt >= 200) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'Family remittance ≥ $200 — Standard CDD triggered.' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD + report',
@@ -557,8 +557,8 @@
 
         // ── Default: SDD (Simplified Due Diligence) ──
         const sddReason = s.rel === 'ongoing'
-            ? 'Ongoing low-risk customer below amount thresholds — Simplified DD per Instr. Art. 14 / D-426 Art. 17. Identification at onboarding with verification permitted to be deferred until after the relationship is established (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
-            : 'Occasional transaction below amount thresholds AND no risk factor — Simplified DD per Instr. Art. 14 / D-426 Art. 17, triggered by Art. 14-A(III) Reform 2 (any occasional e-transfer). No commercial relationship to defer verification into; SDD here means lighter scope (basic ID + sanctions + Travel Rule data) rather than deferred verification. SDD not acceptable on any suspicion or higher-risk scenario.';
+            ? 'Ongoing low-risk customer below amount thresholds — Simplified DD per Instr. Art. 14 / LCLDA Art. 17. Identification at onboarding with verification permitted to be deferred until after the relationship is established (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
+            : 'Occasional transaction below amount thresholds AND no risk factor — Simplified DD per Instr. Art. 14 / LCLDA Art. 17, triggered by Art. 14-A(III) Reform 2 (any occasional e-transfer). No commercial relationship to defer verification into; SDD here means lighter scope (basic ID + sanctions + Travel Rule data) rather than deferred verification. SDD not acceptable on any suspicion or higher-risk scenario.';
         return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence', reason: sddReason };
     }
 
@@ -608,7 +608,7 @@
                     'UNSC consolidated lists (1267, 1373, 1718, 1988, 2231) <span class="cite cite--lecat">LECAT Art. 37</span>',
                     'UIF national designated list',
                     'PEP database — Refinitiv / Dow Jones / ComplyAdvantage <span class="cite cite--instr">Instr. Arts. 16-18</span>',
-                    'On hit: freeze + UIF report + tipping-off prohibited <span class="cite cite--d426">D-426 Art. 44</span>',
+                    'On hit: freeze + UIF report + tipping-off prohibited <span class="cite cite--d426">LCLDA Art. 44</span>',
                 ]
             ));
         }
@@ -616,7 +616,7 @@
         // ── SDD measures (only when verdict = sdd) — differentiate ongoing vs occasional ──
         if (d.v === 'sdd' && s.rel === 'ongoing') {
             parts.push(block('block--green',
-                'Simplified DD — ongoing low-risk customer <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">D-426 Art. 17</span>',
+                'Simplified DD — ongoing low-risk customer <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">LCLDA Art. 17</span>',
                 [
                     'Identify the customer at onboarding (name + ID number captured)',
                     '<strong>Verification of identity may be deferred</strong> until after the relationship is established <span class="cite cite--instr">Instr. Art. 14(a)</span>',
@@ -700,7 +700,7 @@
 
             if (s.f.pep) {
                 parts.push(block('block--amber',
-                    'PEP-specific obligations <span class="cite cite--d426">D-426 Art. 19</span>',
+                    'PEP-specific obligations <span class="cite cite--d426">LCLDA Art. 19</span>',
                     [
                         'PEP file with category (national / foreign / international organisation)',
                         'Family ≤ 2nd degree + spouses + close associates screened as PEP-related',
@@ -726,7 +726,7 @@
         // ── Reporting obligations ──
         const reports = [];
         const ch = s.channel, amt = s.amount;
-        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 working days to UIF <span class="cite cite--d426">D-426 Art. 25</span>');
+        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 working days to UIF <span class="cite cite--d426">LCLDA Art. 25</span>');
         if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 working days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
         if (ch === 'etransfer' && amt >= 1000) reports.push('<strong>Monthly E-Transfer Report:</strong> first 5 wd of next month <span class="cite cite--instr">Instr. Art. 52(a)(b)</span>');
         if (ch === 'remittance' && amt >= 200) reports.push('<strong>Monthly Remittance Report:</strong> first 5 wd of next month <span class="cite cite--instr">Instr. Art. 52(c)</span>');
@@ -745,15 +745,15 @@
             parts.push(block('block--red', 'Elevated STR sensitivity — analyse', [
                 'Indicator(s): ' + strFlags.join(', '),
                 'Open analysis ticket; assign to CO',
-                'Internal analysis ≤ 15 working days <span class="cite cite--d426">D-426 Art. 24</span>',
+                'Internal analysis ≤ 15 working days <span class="cite cite--d426">LCLDA Art. 24</span>',
                 'On determination: <strong>STR within 24 hours wall-clock</strong>',
-                'Tipping-off prohibited <span class="cite cite--d426">D-426 Art. 44</span>',
+                'Tipping-off prohibited <span class="cite cite--d426">LCLDA Art. 44</span>',
             ]));
         }
 
         // ── Retention ──
         if (d.v !== 'reject') {
-            parts.push(block('block--green', 'Retention &amp; records <span class="cite cite--d426">D-426 Art. 26</span>', [
+            parts.push(block('block--green', 'Retention &amp; records <span class="cite cite--d426">LCLDA Art. 26</span>', [
                 '<strong>15 years</strong> from operation date or relationship termination',
                 'Format: physical / digital / electronic — equally valid',
                 'Per-client organised; chronological per transaction',
