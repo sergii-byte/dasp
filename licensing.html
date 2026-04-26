@@ -1489,6 +1489,61 @@
                     <div class="stack-sm"><span class="tag tag--amber">BSP Track</span></div>
                 </div>
             </div>
+
+            <h3 class="section__subh" style="margin-top:2.5rem;">Regulatory history — past, now, future</h3>
+            <p class="section__lead" style="margin-bottom:1rem;">How the El Salvador digital-asset and AML stack reached its current shape, and what is on the horizon.</p>
+            <ol class="tl">
+                <li class="tl-item">
+                    <div class="tl-date">Jun 2021</div>
+                    <h4 class="tl-h">Bitcoin Law — D-57/2021</h4>
+                    <p class="tl-d">Bitcoin granted legal-tender status. State-side acceptance (taxes, Chivo wallet) introduced.</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">Aug 2022</div>
+                    <h4 class="tl-h">UIF Acuerdo 734/2022 — PSAV Guide</h4>
+                    <p class="tl-d">UIF supervisory operational guide for digital-asset service providers — DDC cascade, Anexo IV reporting forms. Predates the LEAD framework but remains in force as the operational implementation for PSAVs.</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">Jan 2023</div>
+                    <h4 class="tl-h">LEAD — D-643/2023</h4>
+                    <p class="tl-d">Ley de Emisión de Activos Digitales. Establishes the DASP/PSAD legal status, perimeter of regulated activities, CNAD as competent authority and the tax exemption regime.</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">2023</div>
+                    <h4 class="tl-h">RPSAD — CNAD-035-2023</h4>
+                    <p class="tl-d">Reglamento de Proveedores de Servicios de Activos Digitales — operational rulebook for PSAD: registration, capital, governance, cybersecurity, ongoing reporting to CNAD.</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">Sep 2023</div>
+                    <h4 class="tl-h">Instructivo UIF — Reform 1 (Acuerdo 476/2023)</h4>
+                    <p class="tl-d">Capítulo IV-B added — VASP-specific obligations (Arts. 84-A registration, 84-B general obligations, 84-C reports).</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">2024–2025</div>
+                    <h4 class="tl-h">Instructivo UIF — Reform 2</h4>
+                    <p class="tl-d">Travel Rule operationalised: Art. 84-B(1)(e) restructured into Art. 52 par. 2 (7-field minimum, no threshold).</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">Jan 2025</div>
+                    <h4 class="tl-h">Bitcoin Law Reform — D-199/2025</h4>
+                    <p class="tl-d">BTC acceptance now voluntary (private actors only); State no longer accepts BTC for taxes; Chivo wallet wound down. Capital-gains exemption maintained. BSP track unaffected.</p>
+                </li>
+                <li class="tl-item">
+                    <div class="tl-date">2025</div>
+                    <h4 class="tl-h">LCLDA — D-426/2025</h4>
+                    <p class="tl-d">New AML statute replacing D-498/1998. Reporting entities (Art. 7) including DASPs, CDD trigger (Art. 15), 24-hour STR clock (Art. 24), 15-year retention (Art. 26), tipping-off prohibition (Art. 44).</p>
+                </li>
+                <li class="tl-item now">
+                    <div class="tl-date">Now · Apr 2026</div>
+                    <h4 class="tl-h">Application window</h4>
+                    <p class="tl-d">CNAD actively processing PSAV registration applications. First favourable resolutions issued (CNAD-CD-132-2026 confirms the post-resolution pre-operations meeting with the Consejo Directivo).</p>
+                </li>
+                <li class="tl-item future">
+                    <div class="tl-date">Anticipated</div>
+                    <h4 class="tl-h">Framework refinements</h4>
+                    <p class="tl-d">Further CNAD operational notes and UIF clarifications expected as the supervisory practice matures and the first cohort of PSAVs reaches steady-state operation.</p>
+                </li>
+            </ol>
 </div>
 </section>
 
@@ -1649,6 +1704,43 @@
             <div class="timeline__meta">
                 <span><strong>~44–52 weeks</strong> end-to-end <span class="ref ref--practice">practice</span></span>
                 <span>Per round: 20 bd CNAD review + 10 bd cure (+ 5 bd extension) <span class="ref">RPSAD Art. 8</span> <span class="ref">LPA Art. 97</span></span>
+            </div>
+        </div>
+
+        <!-- BPMN-like at-a-glance schema -->
+        <div class="schema" aria-label="DASP registration pipeline — BPMN summary" style="margin-bottom:2rem;">
+            <div class="schema-node start">
+                <div class="schema-node-label">Apply</div>
+                <div class="schema-node-meta">Start</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="schema-node">
+                <div class="schema-node-label">Pre-flight</div>
+                <div class="schema-node-meta">~20&nbsp;bd</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="schema-node">
+                <div class="schema-node-label">Pre-inscription · Phase 1</div>
+                <div class="schema-node-meta">30–50&nbsp;bd</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="schema-node gate" title="CNAD review gate — 20 bd"><span>?</span></div>
+            <div class="arrow"></div>
+            <div class="schema-node">
+                <div class="schema-node-label">Pre-inscription · Phase 2</div>
+                <div class="schema-node-meta">60–100&nbsp;bd</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="schema-node gate" title="CNAD review gate — 20 bd"><span>?</span></div>
+            <div class="arrow"></div>
+            <div class="schema-node">
+                <div class="schema-node-label">Inscription</div>
+                <div class="schema-node-meta">30–50&nbsp;bd</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="schema-node end">
+                <div class="schema-node-label">Go-live</div>
+                <div class="schema-node-meta">10–20&nbsp;bd</div>
             </div>
         </div>
 
