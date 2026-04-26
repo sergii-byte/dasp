@@ -542,12 +542,17 @@
         if (eddTriggers.length) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
             reason: 'EDD trigger(s): ' + eddTriggers.join(', ') + '. Senior-management written approval required.', triggers: eddTriggers };
 
+        const ch = s.channel, amt = s.amount;
+
+        // ── PSAV-specific automatic EDD by amount > $4,000 (Acuerdo 734 § V.2.b.II) ──
+        if (ch === 'etransfer' && amt > 4000) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
+            reason: 'PSAV operation > US$4,000 — automatic EDD (intensificada) per UIF Acuerdo 734/2022 § V.2.b.II. Senior-management approval + documentary SoF + SoW required regardless of risk factors.', triggers: ['amount > $4,000 (Acuerdo 734)'] };
+
         // ── Standard CDD path (statutory amount triggers) ──
         if (s.rel === 'ongoing') return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'Ongoing relationship — Standard CDD from day 1.' };
-        const ch = s.channel, amt = s.amount;
         if (ch === 'etransfer' && amt >= 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'E-transfer ≥ $1,000 — Standard CDD triggered (LCLDA Art. 15(b) → Instr. Art. 52(a)).' };
+            reason: 'PSAV operation US$1,000–$4,000 — Standard CDD (estándar) per UIF Acuerdo 734/2022 § V.2.b.II + LCLDA Art. 15(b) chain.' };
         if (ch === 'remittance' && amt >= 200) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'Family remittance ≥ $200 — Standard CDD triggered.' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD + report',
@@ -555,10 +560,10 @@
         if (ch === 'other' && amt > 25000) return { v: 'cdd', icon: '✓', title: 'Standard CDD + report',
             reason: 'Other-means > $25,000 — Standard CDD + Operación Regulada triggered.' };
 
-        // ── Default: SDD (Simplified Due Diligence) ──
+        // ── Default: SDD (Simplified Due Diligence) — only for amounts ≤ $1,000 per Acuerdo 734 § V.2.b.II ──
         const sddReason = s.rel === 'ongoing'
-            ? 'Ongoing low-risk customer below amount thresholds — Simplified DD per Instr. Art. 14 / LCLDA Art. 17. Identification at onboarding with verification permitted to be deferred until after the relationship is established (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
-            : 'Occasional transaction below amount thresholds AND no risk factor — Simplified DD per Instr. Art. 14 / LCLDA Art. 17, triggered by Art. 14-A(III) Reform 2 (any occasional e-transfer). No commercial relationship to defer verification into; SDD here means lighter scope (basic ID + sanctions + Travel Rule data) rather than deferred verification. SDD not acceptable on any suspicion or higher-risk scenario.';
+            ? 'Ongoing low-risk customer below US$1,000 PSAV threshold — Simplified DD per UIF Acuerdo 734/2022 § V.2.b.II + Instr. Art. 14 / LCLDA Art. 17. Identification at onboarding with verification permitted to be deferred (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
+            : 'Occasional transaction ≤ US$1,000 + no risk factor — Simplified DD (medida simplificada) per UIF Acuerdo 734/2022 § V.2.b.II. Lighter scope: basic ID + sanctions + Travel Rule data. No commercial relationship to defer verification into. SDD not acceptable on any suspicion or higher-risk scenario per Art. 14 last par.';
         return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence', reason: sddReason };
     }
 
@@ -728,8 +733,11 @@
         const ch = s.channel, amt = s.amount;
         if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 working days to UIF <span class="cite cite--d426">LCLDA Art. 25</span>');
         if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 working days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
-        // Note: Art. 52 monthly e-transfer / remittance reports apply to financial institutions only,
-        // not VASPs (UIF FAQ + Art. 84-C scope confirms). $1,000 is CDD trigger anchor only.
+        // PSAV-specific individual transaction report (≥ $1,000 within 5 wd) per UIF Acuerdo 734/2022.
+        // Distinct from FI-only Art. 52(a)(b)(c) monthly reports.
+        if (ch === 'etransfer' && amt >= 1000) reports.push('<strong>PSAV Individual Tx Report (≥ $1,000):</strong> 5 working days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+        // PSAV monthly client report — fired regardless (always due monthly)
+        reports.push('<strong>PSAV Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span>');
         if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
         if (d.v === 'reject' && s.f.refuses) reports.push('<strong>Attempted operation:</strong> STR pipeline if suspicious <span class="cite cite--instr">Instr. Art. 47</span>');
         if (reports.length) parts.push(block('block--blue', 'Reporting obligations triggered', reports));

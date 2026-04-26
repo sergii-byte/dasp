@@ -622,17 +622,20 @@
 
                 <!-- 1. Reporting thresholds -->
                 <div class="qrc-box qrc-box--blue">
-                    <h3>VASP report obligations — what to file to UIF</h3>
+                    <h3>PSAV report obligations — what to file to UIF</h3>
                     <table>
                         <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
                         <tbody>
                             <tr><td>STR (signed determination)</td><td class="num">Any amount</td><td class="num">24 h</td></tr>
                             <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 wd</td></tr>
                             <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 wd</td></tr>
+                            <tr><td><strong>Individual Tx Report (PSAV)</strong></td><td class="num">≥ $1,000</td><td class="num">5 wd</td></tr>
+                            <tr><td><strong>Monthly Client Report (PSAV)</strong></td><td class="num">All clients (active/inactive/disconnected)</td><td class="num">Monthly</td></tr>
+                            <tr><td><strong>Zero-Tx Notification (PSAV)</strong></td><td class="num">If no tx that month</td><td class="num">Monthly</td></tr>
                             <tr><td>Sanctions / UNSC freeze</td><td class="num">List match</td><td class="num">Without delay</td></tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Arts. 51, 84-C</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span> · Art. 52 monthly transfer/remittance reports apply to <strong>financial institutions only</strong>, not VASPs (see FAQ).</p>
+                    <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--instr">Instr. Arts. 51, 84-C</span> · <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span> · <span class="cite cite--lecat">LECAT Art. 37</span>. Art. 52(a)(b)(c) monthly e-transfer / remittance reports = financial institutions only (NOT PSAV).</p>
                 </div>
 
                 <!-- 2. Travel Rule -->
@@ -800,6 +803,13 @@
                 <div class="stack-card__body">
                     <div class="label">Decree 643/2023 — DASP statute</div>
                     <p>Establishes CNAD authority, DASP registration regime (Arts.&nbsp;18–21), permitted activities (Art.&nbsp;19), tax exemption (Art.&nbsp;36), registration fee schedule (Art.&nbsp;12).</p>
+                </div>
+            </div>
+            <div class="stack-card">
+                <div class="stack-card__name serif">Acuerdo 734</div>
+                <div class="stack-card__body">
+                    <div class="label">UIF Guide for VASPs (PSAV) — DO 2 Dec 2022</div>
+                    <p><em>Guía para Proveedores de Servicios de Activos Virtuales sobre el Cumplimiento de Obligaciones AML/CFT en El Salvador.</em> Issued by the Attorney General of the Republic via UIF. <strong>Imperative ("shall apply" / "must report")</strong>, in force from publication and confirmed active in 2025 (UIF Boletín Semestral 2025 + UIF "Instructivos y Guías" listing). Key PSAV-specific obligations: <strong>DDC threshold cascade</strong> (≤$1K simplified · $1K–$4K standard · &gt;$4K enhanced), <strong>monthly client report</strong> (active/inactive/delinked), <strong>individual transaction report ≥ $1,000 within 5 wd</strong>, <strong>monthly zero-transaction notification</strong>, 8 transaction-type forms, ROS submission with mandatory PDF + Excel attachments. Coexists with Reform 1 to Instructivo (Capítulo IV-B Arts. 84-A/B/C); not derogated. Source PDF + EN translation in worktree (<code>uif_acuerdo_734_psav_guia.pdf</code> / <code>uif_acuerdo_734_psav_guia_EN.docx</code>).</p>
                 </div>
             </div>
 
@@ -1289,6 +1299,83 @@
             <div class="callout callout--blue" style="margin-top:1rem;">
                 <p><strong>How $125K interacts with the CDD framework.</strong> The Art. 22 threshold operates <em>per calendar month</em> on a single client's cumulative inflows. It is <strong>not</strong> a CDD-level trigger — a high-volume client may already be on Standard CDD (ongoing relationship) or EDD (PEP / risk factor), but crossing $125K in a month adds the documentary obligations above. For the AML manual: include $125K as an automatic monthly review trigger in the KYT escalation matrix, distinct from the $1,000 / $200 / $10K / $25K reporting / CDD thresholds.</p>
             </div>
+
+            <h3 style="margin-top:1.75rem;">PSAV-specific DDC threshold cascade — UIF Acuerdo 734/2022</h3>
+            <p class="sec__lead">In addition to the general LCLDA Art. 15 framework, the UIF PSAV Guide (<em>Acuerdo No. 734</em>, in force since 2 December 2022) imposes a <strong>per-amount DDC level cascade</strong> specifically for VASP transactions. This cascade <strong>does not replace</strong> the risk-based selection — it sets a <strong>floor</strong> per amount that overlays the general framework.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>Operation amount</th><th>DDC level (PSAV mandatory)</th><th>What this means</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="num">≤ US$1,000</td>
+                        <td><span class="pill pill--no">Simplificada (SDD)</span></td>
+                        <td>Lighter scope — basic identification + sanctions / PEP screen + Travel Rule data. SDD <strong>not</strong> available on suspicion or higher-risk scenario.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">US$1,000 – US$4,000</td>
+                        <td><span class="pill pill--cdd">Estándar (Standard CDD)</span></td>
+                        <td>Full Art. 12 set: identification + verification + BO chain + risk profile + SoF declared.</td>
+                    </tr>
+                    <tr>
+                        <td class="num">&gt; US$4,000</td>
+                        <td><span class="pill pill--edd">Intensificada (EDD)</span></td>
+                        <td><strong>Automatic EDD by amount alone</strong> — no risk factor required. Senior-management written approval + documentary SoF + SoW + enhanced monitoring + KYT every transaction.</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <p class="tbl-note"><strong>Verbatim Acuerdo 734 § V.2.b.II:</strong> <em>"Operaciones iguales o menores al equivalente de mil dólares (US$1,000.00) — medida simplificada; equivalentes a mil dólares hasta cuatro mil dólares (US$4,000.00) — medida estándar; mayores a cuatro mil dólares (US$4,000.00) — medida intensificada."</em></p>
+
+            <div class="callout callout--amber" style="margin-top:1rem;">
+                <p><strong>Override rules — risk + suspicion always escalate.</strong> The amount-based cascade is a <strong>floor</strong>, not a ceiling. Any of the following overrides the cascade <em>upward</em> regardless of amount:</p>
+                <ul style="margin-top:0.4rem;">
+                    <li><strong>PEP / high-risk jurisdiction / opaque ownership / structuring / flagged wallet / 3rd-party funder / adverse media / cash-intensive</strong> → EDD per Art. 13 Reform 2 (regardless of amount, even if &lt; $1,000)</li>
+                    <li><strong>Any suspicion of ML/TF/FPWMD</strong> → full CDD + STR pipeline, SDD <strong>not</strong> acceptable per Art. 14 last par.</li>
+                    <li><strong>$125K cumulative monthly aggregator (RPSAD Art. 22)</strong> → adds documentary SoF + affidavit + DA-issuer ID on top of base DD level</li>
+                </ul>
+                <p style="margin-top:0.4rem;"><strong>Practical decision logic:</strong> apply the <em>stricter</em> of (i) Acuerdo 734 amount cascade, (ii) Art. 13 risk-factor escalation, (iii) Art. 22 aggravator. The wizard applies all three.</p>
+            </div>
+
+            <div class="callout callout--blue" style="margin-top:0.5rem;">
+                <p><strong>Why this matters operationally.</strong> A US$4,500 occasional e-transfer with a low-risk client and no risk factor → under the general Art. 15(b) chain alone, this would be Standard CDD. Under <strong>Acuerdo 734 § V.2.b.II</strong>, it is automatically <strong>EDD</strong> (intensificada). The PSAV-specific cascade is stricter than the general regime for amounts &gt; US$4,000. CNAD / UIF supervisors apply Acuerdo 734 during inspection.</p>
+            </div>
+
+            <h3 style="margin-top:1.75rem;">UIF transaction-type forms — 8 templates per PSAV operation</h3>
+            <p class="sec__lead">Per Acuerdo 734 § Anexo IV, individual transaction reports (≥ US$1,000 within 5 wd) and monthly client reports flow through one of <strong>eight transaction-type forms</strong> in the UIF Portal. Each form has its own field set per the verbatim Anexo. Which forms apply depends on the PSAV's service profile.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--blue">
+                    <div class="card__title">8 transaction-type forms (UIF Portal)</div>
+                    <ol style="margin-top:0.4rem;">
+                        <li><strong>Wallet ↔ Wallet</strong> — same provider</li>
+                        <li><strong>Wallets distintas</strong> — different providers (counterparty data optional)</li>
+                        <li><strong>Wallet → Cuenta bancaria</strong> — bank account beneficiary</li>
+                        <li><strong>Cajero electrónico → Wallet</strong> — ATM cash-in</li>
+                        <li><strong>Wallet → Cajero electrónico</strong> — ATM cash-out</li>
+                        <li><strong>Tarjeta → Wallet</strong> — card-funded wallet</li>
+                        <li><strong>Compraventa con Wallet</strong> — buy/sell + currency conversion</li>
+                        <li><strong>Intercambio de Moneda con Wallet</strong> — crypto-to-crypto swap</li>
+                    </ol>
+                </div>
+                <div class="card card--green">
+                    <div class="card__title">PSAV type → form coverage matrix</div>
+                    <table style="font-size:0.8rem; margin-top:0.4rem;">
+                        <thead><tr><th>PSAV type</th><th>Forms used</th></tr></thead>
+                        <tbody>
+                            <tr><td>Procesador / pasarela de pago</td><td>1, 2, 3</td></tr>
+                            <tr><td>Billetera digital</td><td><strong>ALL 8</strong></td></tr>
+                            <tr><td>Custodio de criptomoneda</td><td>1, 2</td></tr>
+                            <tr><td>Casa de intercambio digital</td><td>7, 8</td></tr>
+                            <tr><td>Cajero (ATM operator)</td><td>4, 5</td></tr>
+                            <tr><td>Other PSAV</td><td>per services</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="card__foot">Each PSAV must select forms applicable to its registered Art. 19 services. Filing the wrong form type → UIF rejection.</div>
+                </div>
+            </div>
+            <p class="tbl-note">Field-by-field requirements per form (originator data, counterparty data, transaction hash, blockchain identifier, USD amount conversion, etc.) are detailed in Acuerdo 734 § Anexo IV — see source PDF saved as <code>uif_acuerdo_734_psav_guia.pdf</code>.</p>
         </section>
 
         <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
@@ -1896,6 +1983,30 @@
                         <td><span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
+                        <td><strong>Monthly Client Report (PSAV)</strong><br><em>(Reporte mensual de clientes)</em></td>
+                        <td>All clients (active / inactive / disconnected) with which PSAV had any interaction during the month — repeated per product owned</td>
+                        <td>UIF</td>
+                        <td class="num">Monthly</td>
+                        <td>UIF Portal — PSAV-specific form</td>
+                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Individual Transaction Report (PSAV)</strong><br><em>(Reporte de transacciones individuales)</em></td>
+                        <td>Each client transaction <strong>≥ US$1,000</strong> at conversion rate on day of operation</td>
+                        <td>UIF</td>
+                        <td class="num">5 wd<br><span style="font-size:0.7rem;color:var(--text-3);">after the transaction</span></td>
+                        <td>UIF Portal — one of 8 transaction-type forms</td>
+                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero-Transaction Notification (PSAV)</strong><br><em>(Notificación de ausencia de operaciones)</em></td>
+                        <td>If no client transactions occurred during the month — must still notify UIF</td>
+                        <td>UIF</td>
+                        <td class="num">Monthly<br><span style="font-size:0.7rem;color:var(--text-3);">via CEP</span></td>
+                        <td>UIF Portal CEP channel</td>
+                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span></td>
+                    </tr>
+                    <tr>
                         <td><strong>Sanctions / UNSC Freeze Report</strong><br><em>(Reporte de congelamiento)</em></td>
                         <td>Match confirmed against UNSC or UIF national list</td>
                         <td>UIF</td>
@@ -2405,8 +2516,14 @@
 
             <div class="faq-list">
                 <details class="faq-item">
-                    <summary>Why don't VASPs file the Art. 52 monthly e-transfer / remittance reports?</summary>
-                    <div class="faq-item__body"><strong>Because Art. 52 binds "instituciones financieras" (financial institutions) only — not VASPs.</strong> Confirmed by the official UIF FAQ on Reportería de Operaciones Reguladas: <em>"Los reportes complementarios de transacciones... se encuentran normados en el Artículo 52... y son <strong>las instituciones financieras</strong> las que deberán reportar..."</em>. VASPs are CNAD-supervised under LEAD — separate Reporting Entity category from SSF-supervised Financial Institutions (banks, EMIs, brokers, etc.). Reform 1 placed VASPs in Instructivo <strong>Capítulo IV-B</strong> (Arts. 84-A/B/C); <strong>Art. 84-C</strong> scopes VASP reporting to <em>"operaciones sospechosas y operaciones reguladas"</em> only — i.e. STR (LCLDA Art. 24) + Operación Regulada (Art. 51 thresholds: cash &gt; $10K / other &gt; $25K). UIF has built a dedicated <strong>"ROS PSAV"</strong> form for VASP STR submission. The $1,000 figure remains relevant as a CDD trigger anchor (LCLDA Art. 15(b) chain) and as the Travel Rule data threshold, but is <strong>not</strong> a VASP report obligation. Sources: UIF FAQ Operaciones Reguladas · UIF Estudio Estratégico PSAV (2023) · Acuerdo 476/2023 Reforma 1 · EY/Lexology analyses.</div>
+                    <summary>What is the difference between Art. 52 monthly reports (FI-only) and Acuerdo 734 PSAV reports?</summary>
+                    <div class="faq-item__body"><strong>Two completely separate regimes — different subjects, different obligations.</strong>
+                    <ul style="margin-top:0.5rem;">
+                        <li><strong>Instructivo Art. 52(a)(b)(c)</strong> binds <em>"las instituciones financieras"</em> (banks, EMIs, brokers, SSF-supervised entities) only. Monthly e-transfer reports ≥ $1,000 / family remittances ≥ $200. <strong>Does NOT apply to PSAVs.</strong> Confirmed by UIF FAQ on Reportería de Operaciones Reguladas.</li>
+                        <li><strong>UIF Acuerdo 734/2022</strong> — separate UIF instrument, in force since 2 December 2022, binds PSAVs specifically. Establishes PSAV-only obligations: <strong>monthly client report</strong> (active/inactive/disconnected), <strong>individual transactions ≥ $1,000 within 5 wd</strong>, monthly zero-transaction notification, 8 transaction-type forms, plus the DDC threshold cascade ($1K/$4K).</li>
+                    </ul>
+                    <p>The two regimes coexist: Art. 52 = FI track; Acuerdo 734 = PSAV track. Reform 1 to the Instructivo (Sept 2023) added Capítulo IV-B (Arts. 84-A/B/C) with PSAV Reports scope (STR + Op. Regulada per Art. 84-C); Acuerdo 734 remains in force as the operational implementation guide and was <strong>not</strong> derogated by Reform 1.</p>
+                    <p>Sources: UIF Acuerdo 734/2022 (PDF saved as <code>uif_acuerdo_734_psav_guia.pdf</code> in worktree) · UIF FAQ Operaciones Reguladas · UIF Boletín Semestral 2025 · Acuerdo 476/2023 Reform 1 · EY/Lexology analyses confirming continued vigencia.</p></div>
                 </details>
                 <details class="faq-item">
                     <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
