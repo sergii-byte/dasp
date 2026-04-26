@@ -319,7 +319,9 @@ ol.tl, ol.tl.tl {
   padding-left: 32px !important;       /* matches the dot offset (left:-32px → centred on the line) */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  list-style: none !important;         /* kill the default browser counter (0./1./2.) — we use absolute-positioned dots */
 }
+ol.tl > li.tl-item::marker { content: '' !important; }
 ol.tl > li.tl-item {
   padding-left: 0 !important;
 }
