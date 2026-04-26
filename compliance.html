@@ -503,6 +503,7 @@
         <div class="sidebar__group">
             <div class="sidebar__title">Customer</div>
             <ul class="sidebar__list">
+                <li><a href="#risk">Risk-Based Approach &amp; matrix</a></li>
                 <li><a href="#cdd">Due diligence — by trigger</a></li>
                 <li><a href="#vasp-cdd">VASP-specific CDD layers</a></li>
                 <li><a href="#identity">Identity verification</a></li>
@@ -740,6 +741,144 @@
             </table>
             </div>
             <p class="tbl-note">When citing in CO files: cite both the statutory anchor and the implementing Instructivo article. Example: "CDD applied to e-transfer of $1,200 per D-426 Art. 15(b) → Instr. Art. 52(a)" — this preserves the chain-of-authority that supervisors expect to see.</p>
+        </section>
+
+        <!-- ══════════ RISK-BASED APPROACH & RISK MATRIX ══════════ -->
+        <section class="sec" id="risk">
+            <p class="sec__label">Risk-Based Approach</p>
+            <h2 class="sec__title">RBA &amp; Customer Risk Matrix — Instr. Arts. 4 &amp; 10</h2>
+            <p class="sec__lead">The Risk-Based Approach (RBA) is the foundation of every other AML obligation. Identify and understand ML/TF/FPWMD risks → allocate resources proportionally → document the rationale. The customer risk matrix operationalises the RBA: it weights inherent-risk criteria into a single classification (low / medium / high) that determines the DD level, the monitoring intensity and the refresh cadence.</p>
+
+            <h3>Five RBA principles — Instr. Art. 4</h3>
+            <div class="grid grid--2">
+                <div class="card card--blue">
+                    <div class="card__title">1. Identify · Assess · Understand</div>
+                    <p>Identify ML/TF/FPWMD risks; assess their materiality; understand how they manifest in the entity's business model. Resources allocated to ensure effective mitigation.</p>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">2. Proportionality</div>
+                    <p>Measures adopted must be <strong>proportionate to identified risks</strong>. Higher risk → enhanced measures; lower risk → simplified measures permitted.</p>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">3. Document &amp; justify</div>
+                    <p>All risk assessments and the resulting measures must be <strong>justified and documented</strong> — both higher-risk escalations and lower-risk simplifications. Without documentation, no measure is defensible to CNAD/UIF.</p>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">4. SDD prohibition on suspicion</div>
+                    <p>Simplified measures shall <strong>not be applied when there is a suspicion of ML/TF/FPWMD</strong> — regardless of the customer's general risk classification. Suspicion overrides the matrix.</p>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">5. Differentiated scope</div>
+                    <p>Reporting Entities may differentiate the scope of measures depending on the type and level of risk for various risk factors. Per-factor calibration is encouraged.</p>
+                </div>
+                <div class="card card--green">
+                    <div class="card__title">FPWMD scope clarification</div>
+                    <p>FPWMD risk per GAFI R.1 refers <strong>strictly and exclusively</strong> to possible non-compliance, failure to implement or evasion of <strong>targeted financial sanctions</strong> (GAFI R.7). Apply R.7 framework for FPWMD risk assessment.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top:1.5rem;">Customer inherent-risk criteria — Instr. Art. 10 (verbatim a–g)</h3>
+            <p class="sec__lead">The Reporting Entity must determine the inherent risk level of each customer / counterparty by <strong>weighting risk ratings</strong> across the criteria below. Any single criterion can elevate the customer to high risk; the entity defines the weighting in the AML manual.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>#</th><th>Risk criterion</th><th>What to assess</th><th>Common indicators</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>(a)</strong></td>
+                        <td>International high-risk classifications</td>
+                        <td>Activities or sectors classified by international bodies as high-risk</td>
+                        <td>FATF VASP guidance "high-risk" designations · Wolfsberg / Basel Index entries · GAFI typologies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(b)</strong></td>
+                        <td>Entity's own risk analysis</td>
+                        <td>Activities or sectors that the entity's risk analysis classifies as high inherent risk</td>
+                        <td>Cash-intensive businesses · gambling · arms · precious metals · NGOs in high-risk jurisdictions · politically sensitive sectors</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(c)</strong></td>
+                        <td>Product / service risk</td>
+                        <td>Risk of products / services offered to the customer</td>
+                        <td>Privacy coins (excluded operationally) · custody vs non-custody · cross-border transfer · derivative DA execution · investment products</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(d)</strong></td>
+                        <td>Channel risk</td>
+                        <td>Risk of the channel through which the relationship is established / operated</td>
+                        <td>Non-face-to-face onboarding · agent / broker channel · third-party introducer · API / programmatic access · unhosted-wallet channel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(e)</strong></td>
+                        <td>Geographic / jurisdictional risk</td>
+                        <td>Risk of the geographical areas or jurisdictions involved (residence, source/destination of funds, counterparties)</td>
+                        <td>FATF Grey List / Call for Action · UNSC sanctioned · partial-sanctions (OFAC / EU / UK) · weak FIU regimes · transit jurisdictions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(f)</strong></td>
+                        <td>Caution / sanction list presence</td>
+                        <td>Whether the customer / counterparty appears on caution lists issued by international bodies or local authorities adopted by the entity, OR is being investigated</td>
+                        <td>UNSC consolidated · UIF national · Interpol notices · open investigations · adverse media flagged</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(g)</strong></td>
+                        <td>Higher-risk-country transactions</td>
+                        <td>Whether the customer / counterparty carries out transactions with higher-risk countries</td>
+                        <td>KYT trace shows flows to/from FATF-listed jurisdictions · cross-border corridors with weak AML · sanctioned-state-linked exchanges</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="callout callout--blue" style="margin-top:1rem;">
+                <p><strong>Statutory consequence — Art. 10 last paragraph.</strong> When the determination yields <strong>high inherent risk</strong>, the Reporting Entity <strong>must apply EDD measures</strong> in addition to Standard CDD per Art. 12. The EDD measures must be calibrated "in line with the activities, nature, size, operations and risk level of the Reporting Entity" — risk-based proportionality applies even within the EDD layer.</p>
+            </div>
+
+            <div class="callout callout--green" style="margin-top:0.75rem;">
+                <p><strong>Safeguard — Instr. Art. 11.</strong> The mere request for information by UIF (without an accompanying operational unit of FGR) about a natural or legal person is <strong>NOT</strong> a criterion for determining high inherent risk. UIF inquiries are intelligence-gathering; they do not, by themselves, justify EDD escalation or relationship termination. Document the UIF request, cooperate, but do not auto-escalate the customer's risk profile on that basis alone.</p>
+            </div>
+
+            <h3 style="margin-top:1.5rem;">Risk classification → DD level mapping</h3>
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead><tr><th>Risk classification</th><th>DD level</th><th>Monitoring</th><th>Refresh cadence</th><th>Senior approval</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="pill pill--no">Low</span></td><td>Simplified DD (Art. 14)</td><td>Reduced (per reasonable monetary threshold)</td><td>Reduced frequency (industry: every 3 yr)</td><td>Not required</td></tr>
+                    <tr><td><span class="pill pill--cdd">Medium / Standard</span></td><td>Standard CDD (Art. 12)</td><td>Standard cadence</td><td>Standard (every relationship review; industry: every 3 yr)</td><td>Not required</td></tr>
+                    <tr><td><span class="pill pill--edd">High</span></td><td>Enhanced DD (Art. 13 Reform 2)</td><td>Enhanced — KYT every transaction</td><td>Annual + on every material change</td><td><strong>Required</strong> (D-426 Art. 16 + Instr. Art. 13(c))</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note"><strong>Override rule:</strong> any STR-relevant suspicion forces full CDD + STR pipeline regardless of classification (Art. 4 §4 + Art. 14 last par.). Risk classification is a <em>baseline</em>, not a ceiling — a Standard-classified customer with a high-risk transaction triggers enhanced measures for that specific transaction.</p>
+
+            <h3 style="margin-top:1.5rem;">Annual Risk Assessment refresh — practical cadence</h3>
+            <div class="grid grid--2">
+                <div class="card card--green">
+                    <div class="card__title">Entity-level risk assessment</div>
+                    <ul>
+                        <li><strong>Annual</strong> full review by CO + Prevention Committee</li>
+                        <li>Documented methodology (FATF-aligned + per Art. 4)</li>
+                        <li>Inputs: business mix, customer base, geographic footprint, product launches, regulatory updates</li>
+                        <li>Output: updated risk appetite + matrix calibration + control adequacy assessment</li>
+                        <li>Approved by highest governing body</li>
+                        <li>Filed with AML manual + made available to CNAD on supervision</li>
+                    </ul>
+                </div>
+                <div class="card card--blue">
+                    <div class="card__title">Customer-level risk classification refresh</div>
+                    <ul>
+                        <li><strong>High-risk:</strong> annual + on every material change + at any time per Art. 23</li>
+                        <li><strong>Standard:</strong> per entity's own manual cadence (industry: every 3 yr)</li>
+                        <li><strong>Low (SDD):</strong> reduced cadence per Art. 14(b)</li>
+                        <li><strong>Trigger-based out-of-cycle refresh</strong> on: BO change ≥10%, new PEP status, sanctions update, profile inconsistency, jurisdiction reclassification, adverse media</li>
+                        <li>Reclassification to high-risk → 60 calendar days to update if data &gt; 1 year stale (Art. 23)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout callout--info" style="margin-top:1rem;">
+                <p><strong>SSF-supervised entities — additional layer.</strong> Reporting Entities supervised by the SSF (banks, insurance, broker-dealers, also DASPs that registered under RPSAD Art. 47 path) must additionally comply with the BCR Standards Committee provisions for ML/TF/FPWMD risk management (per Art. 99 of the Law on Supervision and Regulation of the Financial System). DASPs registered directly under LEAD/RPSAD (CNAD-supervised) are not bound by BCR Standards Committee provisions but commonly use them as best-practice reference.</p>
+            </div>
         </section>
 
         <!-- ══════════ CDD ══════════ -->
