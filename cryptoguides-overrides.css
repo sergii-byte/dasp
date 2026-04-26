@@ -886,10 +886,27 @@ strong, b {
 }
 .timeline__track .phase-card__dur {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem;
-  color: var(--ink-4);
   letter-spacing: 0.04em;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  margin-top: 0.35rem;
+}
+.timeline__track .phase-card__dur .dur-bd {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+.timeline__track .phase-card__dur .dur-wk {
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+.timeline__track .phase-card__dur .dur-mo {
+  font-size: 0.65rem;
+  color: var(--ink-4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .timeline__track .phase-card__title {
   grid-area: title !important;
@@ -933,19 +950,8 @@ strong, b {
   padding-left: 0;
 }
 .timeline__track .phase-card__list ul li {
-  position: relative;
-  padding-left: 1rem;
+  /* marker comes from the inline .phase-card__list li::before rule (4x4 amber dot) — no override marker added here to avoid the "two dots" bug */
   margin-bottom: 0.35rem;
-}
-.timeline__track .phase-card__list ul li::before {
-  content: "·";
-  position: absolute;
-  left: 0;
-  top: -0.05rem;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 1.15rem;
-  line-height: 1.4;
 }
 .timeline__track .phase-card__list p {
   font-family: "Source Serif 4", Georgia, serif !important;
@@ -954,6 +960,48 @@ strong, b {
   line-height: 1.55 !important;
   margin: 0.5rem 0 0 0 !important;
 }
+
+/* Outcome block — replaces the bare paragraph after the "Outcome" h5 */
+.timeline__track .phase-outcome {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  background: var(--paper-2);
+  padding: 0.75rem 0.9rem 0.85rem 0.85rem;
+  border-radius: var(--r);
+  border-left: 3px solid var(--ink-3);
+}
+.timeline__track .phase-outcome > div {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 0.55rem;
+  align-items: start;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.timeline__track .phase-outcome strong {
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+}
+.timeline__track .phase-outcome__icon {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.timeline__track .phase-outcome__pos .phase-outcome__icon { color: #2E6B4A; background: #E5F0E8; }
+.timeline__track .phase-outcome__neg .phase-outcome__icon { color: #A53321; background: #F4E1DD; }
+.timeline__track .phase-outcome__neutral .phase-outcome__icon { color: var(--ink-3); background: var(--paper-3); }
+
+/* Single-path outcome: full accent bar */
+.timeline__track .phase-outcome.phase-outcome--single { border-left-color: #2E6B4A; }
 @media (max-width: 700px) {
   .timeline__track .phase-card {
     grid-template-columns: 1fr !important;
