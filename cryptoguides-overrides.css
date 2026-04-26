@@ -525,6 +525,17 @@ a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a
 }
 /* On hover surface the cite source */
 .ref:hover, .cite:hover { color: var(--ink); border-left-color: var(--accent); }
+
+/* In narrow cards (4-col grids), let long cite chips wrap to avoid horizontal overflow */
+.grid--4 .card .ref,
+.grid--4 .card .cite {
+  white-space: normal;
+  word-break: break-word;
+}
+.grid--4 .card li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 /* Soft colour-coded left rule (no background fill) */
 .cite--d426, .cite--lclda { border-left-color: #2D4F86; color: #2D4F86; }
 .cite--instr              { border-left-color: #8C5717; color: #8C5717; }
