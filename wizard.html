@@ -555,8 +555,10 @@
             reason: 'Other-means > $25,000 — Standard CDD + Operación Regulada triggered.' };
 
         // ── Default: SDD (Simplified Due Diligence) ──
-        return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence',
-            reason: 'Below all amount thresholds AND no risk factor — Simplified DD per Instr. Art. 14 / D-426 Art. 17 (low-risk customer): identification with deferred verification, reduced monitoring frequency. Travel Rule + sanctions screening still apply.' };
+        const sddReason = s.rel === 'ongoing'
+            ? 'Ongoing low-risk customer below amount thresholds — Simplified DD per Instr. Art. 14 / D-426 Art. 17. Identification at onboarding with verification permitted to be deferred until after the relationship is established (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
+            : 'Occasional transaction below amount thresholds AND no risk factor — Simplified DD per Instr. Art. 14 / D-426 Art. 17, triggered by Art. 14-A(III) Reform 2 (any occasional e-transfer). No commercial relationship to defer verification into; SDD here means lighter scope (basic ID + sanctions + Travel Rule data) rather than deferred verification. SDD not acceptable on any suspicion or higher-risk scenario.';
+        return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence', reason: sddReason };
     }
 
     function block(cls, head, items) {
@@ -610,17 +612,33 @@
             ));
         }
 
-        // ── SDD measures (only when verdict = sdd) ──
-        if (d.v === 'sdd') {
+        // ── SDD measures (only when verdict = sdd) — differentiate ongoing vs occasional ──
+        if (d.v === 'sdd' && s.rel === 'ongoing') {
             parts.push(block('block--green',
-                'Simplified DD measures <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">D-426 Art. 17</span>',
+                'Simplified DD — ongoing low-risk customer <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">D-426 Art. 17</span>',
                 [
-                    'Identify the customer (name + ID number captured)',
-                    '<strong>Verification of identity may be deferred</strong> until after the relationship is established',
-                    '<strong>Reduced frequency</strong> of identification updates',
-                    '<strong>Reduced ongoing monitoring</strong> based on a reasonable monetary threshold',
-                    'Purpose / nature of relationship may be inferred from transaction pattern (no separate collection)',
-                    'SDD <strong>not acceptable</strong> if any suspicion arises — escalates to Standard CDD or STR pipeline',
+                    'Identify the customer at onboarding (name + ID number captured)',
+                    '<strong>Verification of identity may be deferred</strong> until after the relationship is established <span class="cite cite--instr">Instr. Art. 14(a)</span>',
+                    '<strong>Reduced frequency</strong> of identification updates <span class="cite cite--instr">Instr. Art. 14(b)</span>',
+                    '<strong>Reduced ongoing monitoring</strong> based on a reasonable monetary threshold <span class="cite cite--instr">Instr. Art. 14(c)</span>',
+                    'Purpose / nature of relationship may be inferred from transaction pattern (no separate collection) <span class="cite cite--instr">Instr. Art. 14(d)</span>',
+                    'Documented risk-based assessment classifying customer as low-risk',
+                    'SDD <strong>not acceptable</strong> if any suspicion arises or higher-risk scenario — escalates to Standard CDD or STR pipeline <span class="cite cite--instr">Instr. Art. 14 last par.</span>',
+                ]
+            ));
+        }
+        if (d.v === 'sdd' && s.rel !== 'ongoing') {
+            parts.push(block('block--green',
+                'Simplified DD — occasional low-risk transaction <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--instr">Art. 14-A(III) Reform 2</span>',
+                [
+                    'DD is mandatory at $0 for any occasional e-transfer — Art. 14-A(III) Reform 2 (no amount threshold for the trigger; level is risk-based)',
+                    'Identify the customer at the operation (name + ID number captured)',
+                    'Verification scope reduced (no full document authentication / biometric match required at low risk)',
+                    'No full risk profile / SoF documentation required at SDD',
+                    'Travel Rule data still required on every transfer regardless of amount <span class="cite cite--instr">Instr. Art. 52 par. 2</span>',
+                    'Sanctions + PEP screening still required',
+                    'No deferred verification — there is no commercial relationship to defer into; verification is concurrent but lighter',
+                    'SDD <strong>not acceptable</strong> on any suspicion or higher-risk scenario — escalate to Standard CDD or STR <span class="cite cite--instr">Instr. Art. 14 last par.</span>',
                 ]
             ));
         }

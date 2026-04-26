@@ -924,6 +924,53 @@
             <div class="callout callout--blue" style="margin-top:1rem;">
                 <p><strong>Practical implication for the AML manual.</strong> Because Art. 84-B(1)(b) <em>requires</em> internal transaction-limit policies, the VASP cannot simply quote the statutory floor and stop there. The AML manual must publish concrete VASP-specific limits — typically calibrated <strong>at or below</strong> the statutory floor (e.g., trigger Standard CDD at $500 e-transfer instead of $1,000) — and link each limit to the corresponding DD tier and monitoring intensity. CNAD reviews these internal limits as part of the AML manual sign-off during registration and ongoing supervision.</p>
             </div>
+
+            <h3 style="margin-top:1.5rem;">DD level cascade for occasional VASP transactions</h3>
+            <p class="sec__lead">Reform 2 added <strong>Art. 14-A(III)</strong>, which makes DD measures mandatory on <strong>any occasional electronic transfer regardless of amount</strong> (no threshold in the trigger itself). The <em>level</em> of DD (SDD / Standard / EDD) is then determined by risk assessment + amount.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Scenario (occasional)</th>
+                        <th>DD level</th>
+                        <th>What's required</th>
+                        <th>Anchor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>E-tx &lt; $1,000 + low-risk + no PEP / high-risk jurisdiction / opaque ownership</td>
+                        <td><span class="pill pill--no">SDD</span></td>
+                        <td>Basic identification (name + ID + account) + sanctions / PEP screen + Travel Rule data fields. Verification scope reduced (no biometric match / full document authentication required). No full risk profile, no SoF documentation.</td>
+                        <td><span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">D-426 Art. 17</span></td>
+                    </tr>
+                    <tr>
+                        <td>E-tx ≥ $1,000 OR remittance ≥ $200 OR cash &gt; $10K OR other &gt; $25K</td>
+                        <td><span class="pill pill--cdd">Standard CDD</span></td>
+                        <td>Full identification + verification immediate (official document, not deferred) + BO chain (≥ 10% floor) + risk profile + SoF declared + report submission to UIF.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(b)</span> <span class="cite cite--instr">Instr. Arts. 12, 51, 52</span></td>
+                    </tr>
+                    <tr>
+                        <td>Any amount + risk factor (PEP, high-risk jurisdiction, opaque ownership, structuring, profile deviation, flagged wallet, third-party funder, adverse media)</td>
+                        <td><span class="pill pill--edd">EDD</span></td>
+                        <td>Standard CDD measures + senior-management written approval + documentary SoF + SoW + enhanced monitoring (KYT every transaction). Annual EDD refresh.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 16</span> <span class="cite cite--instr">Instr. Art. 13 Reform 2</span></td>
+                    </tr>
+                    <tr>
+                        <td>Any amount + suspicion of ML / TF / FPWMD</td>
+                        <td><span class="pill pill--cdd">CDD + STR</span></td>
+                        <td>Full CDD irrespective of amount + STR pipeline (analysis ≤ 15 wd, filing 24h after determination). SDD <strong>not acceptable</strong> on any suspicion.</td>
+                        <td><span class="cite cite--d426">D-426 Art. 15(c) + Art. 24</span> <span class="cite cite--instr">Instr. Art. 14 last par.</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note"><strong>Two-step decision:</strong> (1) Art. 14-A(III) → DD obligation kicks in on any occasional e-transfer regardless of amount; (2) risk assessment + amount → choose SDD / Standard / EDD level. Travel Rule data + sanctions screening apply at every level.</p>
+
+            <div class="callout callout--amber" style="margin-top:1rem;">
+                <p><strong>Important — SDD for occasional ≠ SDD for ongoing.</strong> The four SDD measures listed in Instr. Art. 14 (verification deferred, reduced update frequency, reduced monitoring, inferred purpose) are written around <em>commercial relationships</em>. For occasional transactions there is no relationship to defer verification into. "SDD for occasional" therefore means <strong>lighter scope</strong> (basic ID + screening + Travel Rule, no full profile / no SoF), with verification concurrent but not deferred.</p>
+            </div>
         </section>
 
         <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
