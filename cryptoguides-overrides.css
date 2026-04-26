@@ -1389,6 +1389,7 @@ strong, b {
   background: var(--rule-2);
   position: relative;
   min-width: 12px;
+  align-self: center;       /* vertical-centre the 1px line in the grid row */
 }
 .schema--clean .arrow::after {
   border-left-color: var(--rule-2);
