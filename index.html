@@ -164,15 +164,10 @@
             max-width: 620px; margin: 0 auto 3rem;
         }
         .guides__grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-        }
-        @media (max-width: 960px) {
-            .guides__grid { grid-template-columns: 1fr 1fr; }
-            .guide-card--wizard { grid-column: 1 / -1; }
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
         }
         @media (max-width: 640px) {
             .guides__grid { grid-template-columns: 1fr; }
-            .guide-card--wizard { grid-column: auto; }
         }
         .guide-card {
             background: var(--white); border: 1px solid var(--border);
@@ -188,12 +183,14 @@
         }
         .guide-card.guide-card--compliance::before { background: var(--emerald); }
         .guide-card.guide-card--wizard::before { background: var(--amber); }
+        .guide-card.guide-card--playbook::before { background: var(--navy, #2c3e50); }
         .guide-card:hover {
             transform: translateY(-3px); box-shadow: var(--shadow-lg);
             border-color: var(--accent-border);
         }
         .guide-card.guide-card--compliance:hover { border-color: var(--emerald-border); }
         .guide-card.guide-card--wizard:hover { border-color: var(--amber-border, #e6d4a8); }
+        .guide-card.guide-card--playbook:hover { border-color: var(--navy, #2c3e50); }
         .guide-card__num {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 0.95rem; color: var(--accent); margin-bottom: -0.25rem;
@@ -201,6 +198,7 @@
         }
         .guide-card--compliance .guide-card__num { color: var(--emerald); }
         .guide-card--wizard .guide-card__num { color: var(--amber); }
+        .guide-card--playbook .guide-card__num { color: var(--navy, #2c3e50); }
         .guide-card__title {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 1.6rem; line-height: 1.15; font-weight: 400;
@@ -224,6 +222,7 @@
         }
         .guide-card--compliance .guide-card__cta { color: var(--emerald); }
         .guide-card--wizard .guide-card__cta { color: var(--amber); }
+        .guide-card--playbook .guide-card__cta { color: var(--navy, #2c3e50); }
         .guide-card__cta::after {
             content: "→"; transition: transform 0.2s;
         }
@@ -399,6 +398,21 @@
                     <span>Print-ready output</span>
                 </div>
                 <span class="guide-card__cta">Open the Wizard</span>
+            </a>
+
+            <a href="aml-playbook-dasp-el-salvador.pdf" download class="guide-card guide-card--playbook">
+                <span class="guide-card__num">PDF · v3.4</span>
+                <h3 class="guide-card__title">AML Playbook (download)</h3>
+                <p class="guide-card__desc">Bilingual EN/ES standalone playbook for the DASP Compliance Officer — full statutory mapping, CDD / EDD cascades, SAR / Operación Regulada templates, reporting timelines, UIF Acuerdo 734 PSAV obligations and Travel Rule integration.</p>
+                <div class="guide-card__topics">
+                    <span>Bilingual EN / ES</span>
+                    <span>Statutory map</span>
+                    <span>SAR templates</span>
+                    <span>Acuerdo 734 PSAV</span>
+                    <span>Travel Rule</span>
+                    <span>0.6 MB</span>
+                </div>
+                <span class="guide-card__cta">↓ Download the Playbook (PDF)</span>
             </a>
         </div>
     </div>
