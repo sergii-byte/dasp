@@ -1707,40 +1707,36 @@
             </div>
         </div>
 
-        <!-- BPMN-like at-a-glance schema -->
-        <div class="schema" aria-label="DASP registration pipeline — BPMN summary" style="margin-bottom:2rem;">
-            <div class="schema-node start">
-                <div class="schema-node-label">Apply</div>
-                <div class="schema-node-meta">Start</div>
+        <!-- At-a-glance pipeline — 5 nodes, clean spacing, no gates -->
+        <div class="schema schema--clean" aria-label="DASP registration pipeline summary" style="margin-bottom:2rem;">
+            <div class="schema-node">
+                <div class="schema-node-meta">Pre-flight</div>
+                <div class="schema-node-label">Entity, COs, banking</div>
+                <div class="schema-node-dur">~20&nbsp;bd</div>
             </div>
             <div class="arrow"></div>
             <div class="schema-node">
-                <div class="schema-node-label">Pre-flight</div>
-                <div class="schema-node-meta">~20&nbsp;bd</div>
+                <div class="schema-node-meta">Phase 1</div>
+                <div class="schema-node-label">Pre-inscription · form</div>
+                <div class="schema-node-dur">30–50&nbsp;bd</div>
             </div>
             <div class="arrow"></div>
             <div class="schema-node">
-                <div class="schema-node-label">Pre-inscription · Phase 1</div>
-                <div class="schema-node-meta">30–50&nbsp;bd</div>
+                <div class="schema-node-meta">Phase 2</div>
+                <div class="schema-node-label">Pre-inscription · pack</div>
+                <div class="schema-node-dur">60–100&nbsp;bd</div>
             </div>
             <div class="arrow"></div>
-            <div class="schema-node gate" title="CNAD review gate — 20 bd"><span>?</span></div>
-            <div class="arrow"></div>
             <div class="schema-node">
-                <div class="schema-node-label">Pre-inscription · Phase 2</div>
-                <div class="schema-node-meta">60–100&nbsp;bd</div>
-            </div>
-            <div class="arrow"></div>
-            <div class="schema-node gate" title="CNAD review gate — 20 bd"><span>?</span></div>
-            <div class="arrow"></div>
-            <div class="schema-node">
+                <div class="schema-node-meta">Phase 3</div>
                 <div class="schema-node-label">Inscription</div>
-                <div class="schema-node-meta">30–50&nbsp;bd</div>
+                <div class="schema-node-dur">30–50&nbsp;bd</div>
             </div>
             <div class="arrow"></div>
-            <div class="schema-node end">
-                <div class="schema-node-label">Go-live</div>
-                <div class="schema-node-meta">10–20&nbsp;bd</div>
+            <div class="schema-node schema-node--final">
+                <div class="schema-node-meta">Go-live</div>
+                <div class="schema-node-label">Pay + register</div>
+                <div class="schema-node-dur">10–20&nbsp;bd</div>
             </div>
         </div>
 
