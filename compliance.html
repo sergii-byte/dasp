@@ -942,35 +942,65 @@
         <section class="sec" id="travel-rule">
             <p class="sec__label">Travel Rule</p>
             <h2 class="sec__title">Per-transfer data — Art.&nbsp;52 par.&nbsp;2 reformed</h2>
-            <p class="sec__lead">Reform 2 of the Instructivo imports a binding Travel Rule into the statutory framework. The Spanish text uses upper case to underscore that this applies <em>even to transfers that do not exceed the established thresholds</em>. A separate batch-processing rule applies to grouped transfers from a single originator.</p>
+            <p class="sec__lead">El Salvador's Travel Rule for DASPs rests on a <strong>two-article anchor</strong>: <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> sets the VASP-specific principle (records that allow knowledge of the origin and destination of virtual-asset transactions); <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> specifies the seven mandatory fields for every electronic transfer, even those that do not exceed the established thresholds, and adds a batch-processing rule.</p>
 
-            <h3>The data set</h3>
-            <div class="grid grid--2">
-                <div class="card card--green">
-                    <div class="card__title">Originator (sender)</div>
-                    <ul>
-                        <li><strong>Name</strong> of the originating customer</li>
-                        <li><strong>Account number</strong> of the originator</li>
-                        <li><strong>Type and number of identification document</strong> (DUI / NIT / passport)</li>
-                    </ul>
-                    <div class="card__foot">Natural person → DUI or passport. Legal entity → NIT or registration number.</div>
-                </div>
-                <div class="card card--green">
-                    <div class="card__title">Beneficiary (recipient)</div>
-                    <ul>
-                        <li><strong>Name</strong> of the beneficiary</li>
-                        <li><strong>Account number</strong> of the beneficiary</li>
-                        <li><strong>Name of the beneficiary's bank</strong> (administering the account)</li>
-                    </ul>
-                    <div class="card__foot">For unhosted-wallet beneficiaries the bank field cannot be populated — document the limitation and apply risk-based EDD.</div>
-                </div>
-                <div class="card card--green" style="grid-column:1 / -1;">
-                    <div class="card__title">Transaction</div>
-                    <ul>
-                        <li><strong>Transaction identifier</strong> — reference / hash / unique ID</li>
-                    </ul>
-                    <div class="card__foot">Source: <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>. Verbatim: "FINANCIAL INSTITUTIONS MUST GUARANTEE THAT ALL ELECTRONIC TRANSFERS … EVEN THOSE THAT DO NOT EXCEED THE ESTABLISHED THRESHOLDS, ARE ACCOMPANIED AT A MINIMUM BY THE INFORMATION REQUIRED BY THE UIF FORMS." Statutory anchor for VASPs: <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> — "maintenance of customer and operation records that allow knowledge of the origin and destination of virtual-asset transactions".</div>
-                </div>
+            <div class="callout callout--info">
+                <p><strong>Legal nuance — why the dual anchor matters.</strong> Art.&nbsp;52 par.&nbsp;2 is in Chapter IX ("Reporting of Cash and Other-Means Operations") and addresses "financial institutions". Art.&nbsp;84 (Chapter IV-B, Reform 1) is the dedicated VASP chapter. The operational rule is to apply Art.&nbsp;84-B(1)(e) <em>through</em> the Art.&nbsp;52 par.&nbsp;2 field set: VASPs collect the seven fields below as the baseline that satisfies "origin and destination knowledge". A supervisor reading both articles will expect to see this layered citation in the AML manual.</p>
+            </div>
+
+            <h3>The data set — verbatim per Art.&nbsp;52 par.&nbsp;2</h3>
+            <p>The statute lists exactly seven items. The text does <strong>not distinguish</strong> between natural persons and legal entities — the same fields apply to both, only the format of identifiers differs. The matrix below shows what each field looks like for each combination.</p>
+
+            <div class="tbl-wrap">
+            <table class="tbl">
+                <thead>
+                    <tr>
+                        <th>Statutory item</th>
+                        <th>Natural-person originator / beneficiary</th>
+                        <th>Legal-entity originator / beneficiary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>(a)</strong> Name of the originating customer</td>
+                        <td>Full legal name as on government ID</td>
+                        <td>Corporate name (denominación social) as registered</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(b)</strong> Account number of the originating customer</td>
+                        <td>Bank account number / wallet account ID</td>
+                        <td>Same — corporate bank account or platform account ID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(c)</strong> Type and number of identification document of the originating customer</td>
+                        <td>DUI · passport · residence card</td>
+                        <td>NIT · Mercantile Registry number (matrícula)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(d)</strong> Name of the beneficiary of the transfer</td>
+                        <td>Full legal name as declared by the originator</td>
+                        <td>Corporate name as declared by the originator</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(e)</strong> Account number of the beneficiary of the transfer</td>
+                        <td>Beneficiary's bank account / wallet ID</td>
+                        <td>Same — corporate bank account or platform account ID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(f)</strong> Name of the bank administering the beneficiary's account</td>
+                        <td colspan="2">Bank or VASP holding the beneficiary's account. <em>Cannot be populated for an unhosted (self-hosted) wallet</em> — document the limitation and apply risk-based EDD.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>(g)</strong> Transaction identification number</td>
+                        <td colspan="2">Internal reference number, on-chain transaction hash, or unique platform identifier</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <p class="tbl-note">Note what the statute does <strong>not</strong> require: beneficiary's identification document, beneficiary's address, originator's address, transaction date, asset type / quantity, exchange rate, sending or receiving on-chain addresses. These are operationally collected by most DASPs (for KYT, sanctions screening, accounting), but they are <em>not</em> Travel Rule fields under Art.&nbsp;52 par.&nbsp;2. Adding fields beyond the statutory minimum is a risk-based decision documented in the AML manual.</p>
+
+            <div class="callout callout--info">
+                <p><strong>Source verbatim.</strong> <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>: <em>"FINANCIAL INSTITUTIONS MUST GUARANTEE THAT ALL ELECTRONIC TRANSFERS THEY CARRY OUT UNDER THE PARAMETERS OF SUBPARAGRAPHS a) AND b) OF THIS ARTICLE, AND EVEN THOSE THAT DO NOT EXCEED THE ESTABLISHED THRESHOLDS, ARE ACCOMPANIED AT A MINIMUM BY THE INFORMATION REQUIRED BY THE UIF FORMS, INCLUDING THE FOLLOWING: a) NAME OF THE CUSTOMER ORIGINATOR OF THE TRANSFER; b) ACCOUNT NUMBER OF THE ORIGINATING CUSTOMER; c) NUMBER AND TYPE OF IDENTIFICATION DOCUMENT OF THE ORIGINATING CUSTOMER; d) NAME OF THE BENEFICIARY OF THE TRANSFER; e) ACCOUNT NUMBER OF THE BENEFICIARY OF THE TRANSFER; f) NAME OF THE BANK ADMINISTERING THE BENEFICIARY'S ACCOUNT; g) TRANSACTION IDENTIFICATION NUMBER."</em> VASP-specific anchor: <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span>.</p>
             </div>
 
             <div class="callout callout--ok">
@@ -1148,8 +1178,8 @@
                     <div class="card__title">Steps 1–3 · Immediate</div>
                     <ol>
                         <li><strong>Confirm the match</strong> (not a false positive after basic verification). Record source, timestamp, evidence.</li>
-                        <li><strong>Freeze immediately</strong> — funds, wallets, pending operations.</li>
-                        <li><strong>Report to UIF</strong> via goAML with match record + frozen amount. <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                        <li><strong>Hold all transactions</strong> involving the matched person — funds, wallets, pending operations. Do not execute until FGR (Office of the Attorney General) issues instructions. <span class="cite cite--lecat">LECAT Art. 37</span></li>
+                        <li><strong>Report to FGR via UIF</strong> (goAML) <em>without any delay</em>. FGR has up to <strong>24 hours</strong> to respond with the formal block / unblock order; the freeze itself is ordered by FGR.</li>
                     </ol>
                 </div>
                 <div class="card card--amber">
