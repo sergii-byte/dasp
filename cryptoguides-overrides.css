@@ -1482,6 +1482,59 @@ strong, b {
   border-bottom: 4px solid transparent;
 }
 
+/* ---------- vs-block (highlighted comparison container, e.g. BSP vs DASP) ---------- */
+.vs-block {
+  position: relative;
+  margin: 2.5rem 0 1.5rem 0;
+  padding: 1.5rem 1.75rem 1.75rem 1.75rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--r);
+  border-left-width: 4px;
+}
+.vs-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--accent-soft) 0%, var(--paper) 80%);
+  border-radius: var(--r);
+  z-index: 0;
+  pointer-events: none;
+}
+.vs-block > * { position: relative; z-index: 1; }
+.vs-block__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.vs-block__eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.vs-block__title {
+  font-family: "Inter Tight", sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+}
+.vs-block__lead {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 1.25rem 0;
+}
+.vs-block .tbl {
+  background: var(--paper);
+}
+
 /* ---------- Legislation pill bar (currently-binding sources at-a-glance) ---------- */
 .law-pills {
   display: flex;
