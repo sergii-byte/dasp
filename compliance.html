@@ -971,6 +971,37 @@
             <div class="callout callout--amber" style="margin-top:1rem;">
                 <p><strong>Important — SDD for occasional ≠ SDD for ongoing.</strong> The four SDD measures listed in Instr. Art. 14 (verification deferred, reduced update frequency, reduced monitoring, inferred purpose) are written around <em>commercial relationships</em>. For occasional transactions there is no relationship to defer verification into. "SDD for occasional" therefore means <strong>lighter scope</strong> (basic ID + screening + Travel Rule, no full profile / no SoF), with verification concurrent but not deferred.</p>
             </div>
+
+            <h3 style="margin-top:1.5rem;">RPSAD Art. 22 — $125K monthly aggravator (VASP-specific)</h3>
+            <p class="sec__lead">Independent of the CDD/EDD trigger ladder, RPSAD imposes a <strong>VASP-specific aggravating-risk threshold</strong> on monthly capital / fund injections. Once a client crosses the threshold in a calendar month, increased surveillance and additional documentation are mandatory.</p>
+
+            <div class="grid grid--2">
+                <div class="card card--amber">
+                    <div class="card__title">Trigger</div>
+                    <ul>
+                        <li><strong>≥ US$125,000</strong> in new capital / fund injections by a single client</li>
+                        <li><strong>Per cumulative calendar month</strong> (aggregate, not single transaction)</li>
+                        <li>USD or equivalent in any other currency</li>
+                        <li>Threshold may be reviewed by CNAD annually, or when client's operations change in nature / volume</li>
+                    </ul>
+                    <div class="card__foot"><span class="cite cite--rpsad">RPSAD Art. 22</span></div>
+                </div>
+                <div class="card card--amber">
+                    <div class="card__title">Mandatory measures on trigger</div>
+                    <ul>
+                        <li><strong>Increased surveillance</strong> by the VASP — KYT intensified, monitoring cadence reduced</li>
+                        <li><strong>Client explanation</strong> of the origin of funds — supported by documents (not declarative)</li>
+                        <li><strong>Electronic affidavit</strong> by client on the lawful origin of funds</li>
+                        <li><strong>Issuer identification</strong> for any DA involved — name, LRU address, contact</li>
+                        <li>Document the trigger and the response in the client file (CDD case)</li>
+                    </ul>
+                    <div class="card__foot">Operates as an aggravator on top of the existing DD level — does not replace SDD/CDD/EDD selection but adds documentary requirements for that month's flow.</div>
+                </div>
+            </div>
+
+            <div class="callout callout--blue" style="margin-top:1rem;">
+                <p><strong>How $125K interacts with the CDD framework.</strong> The Art. 22 threshold operates <em>per calendar month</em> on a single client's cumulative inflows. It is <strong>not</strong> a CDD-level trigger — a high-volume client may already be on Standard CDD (ongoing relationship) or EDD (PEP / risk factor), but crossing $125K in a month adds the documentary obligations above. For the AML manual: include $125K as an automatic monthly review trigger in the KYT escalation matrix, distinct from the $1,000 / $200 / $10K / $25K reporting / CDD thresholds.</p>
+            </div>
         </section>
 
         <!-- ══════════ IDENTITY VERIFICATION ══════════ -->
@@ -1478,14 +1509,14 @@
         <section class="sec" id="redflags">
             <p class="sec__label">Red flags catalogue</p>
             <h2 class="sec__title">EDD triggers — any single flag activates EDD</h2>
-            <p class="sec__lead">Any single red flag below forces EDD regardless of amount. Use this catalogue at onboarding, relationship review, and every KYT-alert triage. <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></p>
+            <p class="sec__lead">Reporting Entities must establish <strong>their own particular red flags for the business and economic sector in which they operate</strong> <span class="cite cite--instr">Instr. Art. 38</span> and adopt procedures for their identification <span class="cite cite--instr">Instr. Art. 39</span>. The catalogue below is the FATF-VASP baseline most CNAD-supervised DASPs adopt as a starting point — calibrate, expand and re-test annually. Any single red flag here forces EDD regardless of amount <span class="cite cite--instr">Instr. Art. 13 Reform 2</span>.</p>
 
+            <h3>General AML red flags (cross-sector)</h3>
             <div class="grid grid--3">
                 <div class="card card--red"><div class="card__title">Structuring patterns</div><p>Split transactions, round-numbers just under thresholds ($1,000 / $10,000 / $25,000), multiple same-day operations from same source.</p><div class="card__foot">→ EDD + STR consideration</div></div>
                 <div class="card card--red"><div class="card__title">Profile deviation</div><p>Amount, frequency, asset choice, geography inconsistent with declared activity / occupation / expected volume.</p><div class="card__foot">→ Profile refresh + EDD + documented rationale</div></div>
                 <div class="card card--amber"><div class="card__title">Cash-intensive counterpart</div><p>Money-service business, cash retail, import-export with cash legs, high-cash flow.</p><div class="card__foot">→ EDD + documentary SoF + enhanced monitoring</div></div>
                 <div class="card card--amber"><div class="card__title">Opaque ownership</div><p>Nominees, bearer shares, layered holdings, opaque trust, mailbox address, unexplained BO change.</p><div class="card__foot">→ Resolve to natural person mandatory</div></div>
-                <div class="card card--red"><div class="card__title">Flagged wallet</div><p>Counterparty wallet linked to mixer, darknet marketplace, exploit, sanctions-linked address, high-risk exchange.</p><div class="card__foot">→ EDD + KYT trace retained + STR consideration</div></div>
                 <div class="card card--amber"><div class="card__title">Third-party funder</div><p>Payment from a party other than the client; "someone else pays for me".</p><div class="card__foot">→ Identify the third party; treat as parallel client or reject</div></div>
                 <div class="card card--red"><div class="card__title">Rapid in-out</div><p>Funds deposited and transferred out within a short window with no economic rationale (pass-through pattern).</p><div class="card__foot">→ EDD + block pending explanation</div></div>
                 <div class="card card--amber"><div class="card__title">Document inconsistency</div><p>Name / date / signature discrepancy across ID, utility bill, bank statement, corporate certificate.</p><div class="card__foot">→ Re-verify via independent source; refusal → decline + STR</div></div>
@@ -1493,6 +1524,28 @@
                 <div class="card card--red"><div class="card__title">PEP involvement</div><p>Client is a PEP (self / family ≤2° / close associate) or becomes one during the relationship.</p><div class="card__foot">→ EDD + SoF + SoW + senior approval; status persists 5 yr post-cease</div></div>
                 <div class="card card--amber"><div class="card__title">Adverse media</div><p>Credible press / law-enforcement / regulator reference to the client or related party — investigation, sanctions mention, indictment, arrest.</p><div class="card__foot">→ Documented review + EDD + STR consideration</div></div>
                 <div class="card card--red"><div class="card__title">Client refusal</div><p>Client declines CDD data, BO update, SoF documents, or asks to skip Travel Rule fields.</p><div class="card__foot">→ Onboarding prohibited; attempted operation reportable <span class="cite cite--instr">Instr. Art. 47</span></div></div>
+                <div class="card card--amber"><div class="card__title">$125K monthly aggravator</div><p>Client crosses RPSAD Art. 22 threshold ($125K cumulative monthly capital injection) — increased surveillance + documentary SoF + electronic affidavit + DA-issuer identification mandatory.</p><div class="card__foot">→ Documentary SoF + affidavit + KYT intensification <span class="cite cite--rpsad">RPSAD Art. 22</span></div></div>
+            </div>
+
+            <h3 style="margin-top:1.5rem;">VASP-specific red flags (FATF Guidance for VASPs, 2020/2021)</h3>
+            <div class="grid grid--3">
+                <div class="card card--red"><div class="card__title">Flagged wallet / blockchain exposure</div><p>Counterparty wallet linked to mixer / tumbler / coinjoin, darknet marketplace, ransomware address, sanctions-linked cluster, exchange exit-scam, exploit / hack proceeds.</p><div class="card__foot">→ EDD + KYT trace retained + STR consideration</div></div>
+                <div class="card card--red"><div class="card__title">Privacy coins / obfuscation tech</div><p>Transactions involving Monero (XMR), Zcash shielded transactions, Dash mixing, or chain-hopping immediately after deposit. Use of CoinJoin / privacy mixer / cross-chain bridge to obfuscate origin.</p><div class="card__foot">→ Decline (privacy coins prohibited per CNAD operational position) or escalate to EDD + STR</div></div>
+                <div class="card card--amber"><div class="card__title">Non-compliant counterparty VASP</div><p>Counterparty is a VASP not registered with any FATF-aligned jurisdiction; refuses Travel Rule data exchange; appears on industry no-Travel-Rule list; has no AML programme disclosed.</p><div class="card__foot">→ EDD on the counterparty VASP + risk-based decision; document pre-relationship review</div></div>
+                <div class="card card--amber"><div class="card__title">Unhosted-wallet pattern</div><p>Repeated transfers to/from unhosted wallets without economic rationale; receiving unhosted wallet immediately consolidates into mixer / exchange. Wallet-attribution test fails.</p><div class="card__foot">→ EDD + documented attribution method + KYT trace</div></div>
+                <div class="card card--amber"><div class="card__title">Multi-account / identity layering</div><p>Same IP / device / KYC document linked to multiple accounts; rapid creation of new accounts that immediately receive large funds; nominee KYC patterns.</p><div class="card__foot">→ Account linkage analysis + consolidation review + EDD</div></div>
+                <div class="card card--red"><div class="card__title">Test-then-load pattern</div><p>Small initial transaction (taint test) immediately followed by a large deposit; "fee testing" behaviour typical of mule recruitment or sanctions evasion.</p><div class="card__foot">→ Block + EDD + STR consideration</div></div>
+                <div class="card card--amber"><div class="card__title">Geographic / IP mismatch</div><p>VPN / Tor / proxy signatures; declared residence inconsistent with consistent IP geolocation; logins from sanctioned jurisdiction; IP cluster shared across many accounts.</p><div class="card__foot">→ Geofence enforcement check + EDD if persistent</div></div>
+                <div class="card card--amber"><div class="card__title">Order-book manipulation</div><p>Wash trading on own platform; spoofing; layering of orders; coordinated activity across multiple accounts to create false price signal.</p><div class="card__foot">→ Block accounts + market-integrity review <span class="cite cite--lead">LEAD Art. 21(k)</span></div></div>
+                <div class="card card--red"><div class="card__title">Funds from gambling / dark-market</div><p>Inbound transfers traced (via KYT) to online gambling addresses, dark-market clusters, or sanctioned-state-linked exchanges.</p><div class="card__foot">→ EDD + documentary SoF + STR consideration</div></div>
+            </div>
+
+            <div class="callout callout--info" style="margin-top:1rem;">
+                <p><strong>Calibration obligation — Instr. Art. 38 + 39.</strong> The Reporting Entity must <strong>define and maintain its own red-flag set</strong> tailored to its specific business model, products, customer segments and geographic footprint. The catalogue above is a baseline; the AML manual must include the entity's <em>particular</em> red flags, the alert thresholds, the analyst routing, and the periodic effectiveness review (Art. 38 last paragraph: computer systems must <em>automatically and timely</em> generate alerts on profile deviations). Document the calibration rationale; CNAD reviews this matrix during ongoing supervision.</p>
+            </div>
+
+            <div class="callout callout--amber" style="margin-top:0.75rem;">
+                <p><strong>"Not every unusual transaction is suspicious"</strong> <span class="cite cite--instr">Instr. Art. 41 last sentence</span>. Red flags trigger <strong>analysis</strong>, not automatic STR. The CO has <strong>15 working days</strong> to analyze each unusual transaction (extendable once via UIF request through CEP) <span class="cite cite--instr">Instr. Art. 42</span>. Only confirmed suspicion → STR pipeline (24-h clock per D-426 Art. 24).</p>
             </div>
         </section>
 
