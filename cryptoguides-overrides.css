@@ -961,6 +961,20 @@ strong, b {
   margin: 0.5rem 0 0 0 !important;
 }
 
+/* Section-header rows inside scenario cost tables */
+.card__table .price-section-head {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-4);
+  font-weight: 700;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.2rem !important;
+  border-bottom: 1px solid var(--rule);
+  background: transparent !important;
+}
+
 /* Outcome block — replaces the bare paragraph after the "Outcome" h5 */
 .timeline__track .phase-outcome {
   display: grid;
