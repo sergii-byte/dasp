@@ -229,6 +229,79 @@ td.num, th.num, .num {
   letter-spacing: 0.01em;
 }
 
+/* Universal Instrument Serif kill-switch — any element still inheriting the legacy font flips to Inter Tight */
+*[style*="Instrument Serif"], .legacy-serif, .display-serif {
+  font-family: "Inter Tight", sans-serif !important;
+}
+
+/* ---------- Card row alignment — uniform heights across ALL rows ---------- */
+.guides__grid, .reg__grid {
+  align-items: stretch;
+  grid-auto-rows: 1fr;   /* every row matches the tallest cell — all cards same height across the grid */
+}
+.grid--2, .grid--3, .grid--4 {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+.guide-card, .reg-card, .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.guide-card__cta, .reg-card__chip {
+  margin-top: auto; /* pin CTA / chip to the bottom so cards visually align */
+}
+
+/* ---------- Section padding — symmetrical, design-system rhythm ---------- */
+.section, .sec, .guides, .reg, .hero { padding-top: 4rem; padding-bottom: 4rem; }
+.main .section, .main .sec { padding-top: 2rem; padding-bottom: 2rem; }
+.hero, .hero--ds { padding-top: 4.5rem; padding-bottom: 3.5rem; }
+
+/* ---------- Hero scaling consistency (non-index pages) ---------- */
+/* Hero h1 on long-form guides — uses display scale but a notch smaller than the homepage hero */
+body:not(:has(.hero--ds)) .hero h1,
+.hero:not(.hero--ds) h1,
+.hero:not(.hero--ds) .hero__title {
+  font-size: clamp(40px, 5vw, 64px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* ---------- Wizard verdict colors — bind to design-system semantic palette ---------- */
+.verdict, .block, .panel--result, .verdict--sdd, .verdict--cdd, .verdict--edd, .verdict--reject {
+  border-radius: var(--r);
+  border: 1px solid var(--rule);
+}
+.verdict--sdd, [class*="verdict"][class*="sdd"] {
+  background: #E5F0E8 !important;   /* design-system green-soft */
+  border-color: #B5C8B8 !important;
+  color: var(--ink) !important;
+}
+.verdict--cdd, [class*="verdict"][class*="cdd"] {
+  background: var(--accent-soft) !important;
+  border-color: #D6C8AE !important;
+  color: var(--ink) !important;
+}
+.verdict--edd, [class*="verdict"][class*="edd"] {
+  background: #FBF1E5 !important;
+  border-color: #E8C896 !important;
+  color: var(--ink) !important;
+}
+.verdict--reject, [class*="verdict"][class*="reject"] {
+  background: #F4E1DD !important;
+  border-color: #D6B6AE !important;
+  color: var(--ink) !important;
+}
+
+/* ---------- Quieter density of <strong> in long body prose ---------- */
+.section p strong, .sec p strong, .main p strong,
+.section li strong, .sec li strong, .main li strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+/* When two strongs sit side-by-side in a list (key:value pattern), only the first reads as label */
+li > strong + br + strong { font-weight: 500; color: var(--ink-2); }
+
 /* All statutory citations + meta data + jurisdiction codes — JetBrains Mono */
 .ref, .cite, .ref-cite, .citelist,
 .metric__lbl, .metric__label,
@@ -509,12 +582,17 @@ strong, b {
   border-bottom: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  position: relative;
+  padding-left: 38px;        /* room for the absolutely-positioned ES mark */
+  min-height: 28px;
 }
-/* Brand-mark — black square + amber dot per design system */
+/* Brand-mark ES square — anchored absolutely so the amber dot can overlay its bottom-right corner */
 .topbar__brand::before {
   content: "ES";
-  display: inline-grid;
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  display: grid;
   place-items: center;
   width: 28px; height: 28px;
   background: var(--paper);
@@ -523,17 +601,19 @@ strong, b {
   font-weight: 700;
   font-size: 11px;
   border-radius: 2px;
-  position: relative;
 }
+/* Amber accent dot — positioned at the bottom-right corner of the ES square */
 .topbar__brand::after {
   content: "";
-  width: 6px; height: 6px;
+  position: absolute;
+  left: 23px;
+  top: calc(50% + 7px);
+  width: 7px; height: 7px;
   background: var(--accent);
   border-radius: 50%;
-  margin-left: -8px;
-  margin-top: 18px;
-  display: inline-block;
   border: 1.5px solid rgba(14,17,22,0.92);
+  box-sizing: content-box;
+  margin: 0;
 }
 .topbar__nav { display: flex; gap: 0.25rem; align-items: center; margin-left: auto; }
 .topbar__link {
