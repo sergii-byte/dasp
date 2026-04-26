@@ -1484,109 +1484,81 @@
 <div class="container fade-in">
     <p class="section__label">Legal Framework</p>
     <h2 class="section__title">Applicable Legislation</h2>
-    <p class="section__desc">Five instruments govern DASPs in El Salvador. The binding DASP stack is <strong>LEAD + RPSAD + LCLDA + Instructivo UIF + LECAT</strong>. The Bitcoin Law (D-57/2021 as reformed by D-199/2025) governs the parallel BSP track — included for completeness if the entity also handles Bitcoin. </p>
+    <p class="section__desc">The currently-binding DASP stack at a glance, and the chronology of how it reached its current shape.</p>
 
-    <div class="grid grid--2">
-                <div class="card card--accent-navy">
-                    <h3>LEAD — Ley de Emisión de Activos Digitales</h3>
-                    <p>Decree No. 643 of 9 January 2023. Primary statute for digital asset service providers, issuers and certifiers. Establishes CNAD authority, registration requirements, tax benefits and the sanctions framework.</p>
-                    <div class="stack-sm"><span class="tag tag--blue">Primary Law</span></div>
-                </div>
-                <div class="card card--accent-blue">
-                    <h3>RPSAD — Reglamento para Proveedores de Servicios de Activos Digitales</h3>
-                    <p>CNAD-035-2023. Detailed regulation for DASP registration, ongoing obligations, cybersecurity, customer service and operational rules. 49 articles.</p>
-                    <div class="stack-sm"><span class="tag tag--blue">DASP Regulation</span></div>
-                </div>
-                <div class="card card--accent-green">
-                    <h3>LCLDA (Decree 426/2025) — AML Law</h3>
-                    <p>Decree No. 426 — Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction. Defines reporting entities (incl. DASPs via supervision by CNAD), CDD trigger (Art. 15), 24-hour STR (Art. 24), regulated transactions reporting (Art. 25), 15-year retention (Art. 26), confidentiality / tipping-off prohibition (Art. 28 operational; Art. 44 criminal).</p>
-                    <div class="stack-sm"><span class="tag tag--green">AML/CFT</span></div>
-                </div>
-                <div class="card card--accent-green">
-                    <h3>Instructivo UIF (Reform 1 + Reform 2)</h3>
-                    <p>Operational rulebook from the Financial Investigation Unit. CDD measures (Art. 12), EDD (Art. 13), SDD (Art. 14), PEP (Arts. 16–18), beneficial ownership 10% floor (Art. 20) + UBO majority/control (Art. 21-A), Operación Regulada thresholds (Art. 51), Travel Rule data (Art. 52 par. 2 reformed), VASP-specific obligations (Art. 84-A registration, Art. 84-B general obligations, Art. 84-C reports).</p>
-                    <div class="stack-sm"><span class="tag tag--green">UIF Guidelines</span></div>
-                </div>
+    <ul class="law-pills" aria-label="Currently-binding sources">
+        <li><a href="#tl-lead"><strong>LEAD</strong> <code>D-643/2023</code></a></li>
+        <li><a href="#tl-rpsad"><strong>RPSAD</strong> <code>CNAD-035-2023</code></a></li>
+        <li><a href="#tl-lclda"><strong>LCLDA</strong> <code>D-426/2025</code></a></li>
+        <li><a href="#tl-instr"><strong>Instructivo UIF</strong> <code>Reform 1 + 2</code></a></li>
+        <li><a href="#tl-acuerdo734"><strong>Acuerdo 734</strong> <code>UIF PSAV</code></a></li>
+        <li><a href="#tl-lecat"><strong>LECAT</strong> <code>D-108</code></a></li>
+        <li><a href="#tl-bitcoin"><strong>Bitcoin Law</strong> <code>D-57 · D-199</code></a></li>
+        <li><a href="#tl-issuer"><strong>Issuer / Stablecoin</strong> <code>CNAD-017</code></a></li>
+    </ul>
 
-                <div class="card card--accent-green">
-                    <h3>UIF Acuerdo 734/2022 — PSAV Guide</h3>
-                    <p><em>Guía PSAD-LDA-FT-ADM</em>. UIF supervisory operational guide for Digital Asset Service Providers. Imperative DDC cascade (≤ $1K SDD / $1K–$4K Standard / &gt; $4K EDD per § V.2.b.II — supersedes general FI thresholds), monthly client report, individual transaction report ≥ $1,000 within 5 wd, zero-transaction notification, eight transaction-type reporting forms (Anexo IV).</p>
-                    <div class="stack-sm"><span class="tag tag--green">UIF · PSAV Operational</span></div>
-                </div>
-
-                <div class="card card--accent-green">
-                    <h3>LECAT — D-108</h3>
-                    <p>Special Law against Acts of Terrorism. UNSC sanctions freeze obligation (Art. 37), terrorist designation before UNSC (Art. 34-B). Note: confidentiality / tipping-off prohibition is in <strong>LCLDA Arts. 28 (operational) and 44 (criminal)</strong>, not in LECAT.</p>
-                    <div class="stack-sm"><span class="tag tag--green">CFT</span></div>
-                </div>
-
-                <div class="card card--accent-muted">
-                    <h3>Issuer &amp; Stablecoin Regulations</h3>
-                    <p>CNAD-017-2023 (Issuer Regulation) and Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP — included for completeness.</p>
-                    <div class="stack-sm"><span class="tag tag--blue">Issuance Framework</span></div>
-                </div>
-
-                <div class="card card--accent-amber">
-                    <h3>Bitcoin Law — D-57/2021 (reformed by D-199/2025)</h3>
-                    <p>Bitcoin as legal tender; <strong>D-199/2025</strong> made acceptance voluntary (private actors only) and unwound the State-side regime (no BTC for taxes, Chivo wound down). Capital-gains exemption maintained. <strong>BSP track</strong> (BCR Registry, SSF supervision) lives in Reglamento <strong>D-27/2021</strong> — unaffected by the Reform.</p>
-                    <div class="stack-sm"><span class="tag tag--amber">BSP Track</span></div>
-                </div>
-            </div>
-
-            <h3 class="section__subh" style="margin-top:2.5rem;">Regulatory history — past, now, future</h3>
-            <p class="section__lead" style="margin-bottom:1rem;">How the El Salvador digital-asset and AML stack reached its current shape, and what is on the horizon.</p>
-            <ol class="tl">
-                <li class="tl-item">
-                    <div class="tl-date">Jun 2021</div>
-                    <h4 class="tl-h">Bitcoin Law — D-57/2021</h4>
-                    <p class="tl-d">Bitcoin granted legal-tender status. State-side acceptance (taxes, Chivo wallet) introduced.</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">Aug 2022</div>
-                    <h4 class="tl-h">UIF Acuerdo 734/2022 — PSAV Guide</h4>
-                    <p class="tl-d">UIF supervisory operational guide for digital-asset service providers — DDC cascade, Anexo IV reporting forms. Predates the LEAD framework but remains in force as the operational implementation for PSAVs.</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">Jan 2023</div>
-                    <h4 class="tl-h">LEAD — D-643/2023</h4>
-                    <p class="tl-d">Ley de Emisión de Activos Digitales. Establishes the DASP/PSAD legal status, perimeter of regulated activities, CNAD as competent authority and the tax exemption regime.</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">2023</div>
-                    <h4 class="tl-h">RPSAD — CNAD-035-2023</h4>
-                    <p class="tl-d">Reglamento de Proveedores de Servicios de Activos Digitales — operational rulebook for PSAD: registration, capital, governance, cybersecurity, ongoing reporting to CNAD.</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">Sep 2023</div>
-                    <h4 class="tl-h">Instructivo UIF — Reform 1 (Acuerdo 476/2023)</h4>
-                    <p class="tl-d">Capítulo IV-B added — VASP-specific obligations (Arts. 84-A registration, 84-B general obligations, 84-C reports).</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">2024–2025</div>
-                    <h4 class="tl-h">Instructivo UIF — Reform 2</h4>
-                    <p class="tl-d">Travel Rule operationalised: Art. 84-B(1)(e) restructured into Art. 52 par. 2 (7-field minimum, no threshold).</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">Jan 2025</div>
-                    <h4 class="tl-h">Bitcoin Law Reform — D-199/2025</h4>
-                    <p class="tl-d">BTC acceptance now voluntary (private actors only); State no longer accepts BTC for taxes; Chivo wallet wound down. Capital-gains exemption maintained.</p>
-                </li>
-                <li class="tl-item">
-                    <div class="tl-date">2025</div>
-                    <h4 class="tl-h">LCLDA — D-426/2025</h4>
-                    <p class="tl-d">New AML statute replacing D-498/1998. Reporting entities (Art. 7) including DASPs, CDD trigger (Art. 15), 24-hour STR clock (Art. 24), 15-year retention (Art. 26), confidentiality / tipping-off prohibition (Art. 28 operational; Art. 44 criminal).</p>
-                </li>
-                <li class="tl-item now">
-                    <div class="tl-date">Now · Apr 2026</div>
-                    <h4 class="tl-h">Application window</h4>
-                    <p class="tl-d">CNAD actively processing PSAV registration applications. First favourable resolutions issued (CNAD-CD-132-2026 confirms the post-resolution pre-operations meeting with the Consejo Directivo).</p>
-                </li>
-                <li class="tl-item future">
-                    <div class="tl-date">Anticipated</div>
-                    <h4 class="tl-h">Framework refinements</h4>
-                    <p class="tl-d">Further CNAD operational notes and UIF clarifications expected as the supervisory practice matures and the first cohort of PSAVs reaches steady-state operation.</p>
-                </li>
-            </ol>
+    <ol class="tl">
+        <li class="tl-item" id="tl-lecat">
+            <div class="tl-date">Oct 2006</div>
+            <h4 class="tl-h">LECAT — D-108 <span class="tl-status tl-status--in-force">In force</span></h4>
+            <p class="tl-d">Special Law against Acts of Terrorism. UNSC sanctions freeze obligation (Art. 37); terrorist designation before UNSC (Art. 34-B). Confidentiality / tipping-off prohibition lives in LCLDA Arts. 28 (operational) and 44 (criminal), not LECAT. <span class="ref">D-108</span></p>
+        </li>
+        <li class="tl-item" id="tl-bitcoin">
+            <div class="tl-date">Jun 2021</div>
+            <h4 class="tl-h">Bitcoin Law — D-57/2021 <span class="tl-status tl-status--in-force">In force (as reformed)</span></h4>
+            <p class="tl-d">Bitcoin granted legal-tender status. Reformed by <strong>D-199/2025</strong> (Jan 2025): acceptance now voluntary, private actors only; State no longer accepts BTC for taxes; Chivo wound down. Capital-gains exemption maintained. <strong>BSP track</strong> (BCR Registry, SSF supervision) lives in Reglamento <strong>D-27/2021</strong> — unaffected by the reform. <span class="ref">D-57/2021</span> <span class="ref">D-199/2025</span> <span class="ref">D-27/2021</span></p>
+        </li>
+        <li class="tl-item" id="tl-acuerdo734">
+            <div class="tl-date">Aug 2022</div>
+            <h4 class="tl-h">UIF Acuerdo 734/2022 — PSAV Guide <span class="tl-status tl-status--in-force">In force</span></h4>
+            <p class="tl-d"><em>Guía PSAD-LDA-FT-ADM</em>. UIF supervisory operational guide for digital-asset service providers. Imperative DDC cascade (≤ $1K SDD / $1K–$4K Standard / &gt; $4K EDD per § V.2.b.II — supersedes general FI thresholds), monthly client report, individual transaction report ≥ $1,000 within 5 wd, zero-transaction notification, eight transaction-type reporting forms (Anexo IV). Predates the LEAD framework but remains in force as the operational implementation for PSAVs. <span class="ref">Acuerdo 734/2022</span></p>
+        </li>
+        <li class="tl-item" id="tl-lead">
+            <div class="tl-date">Jan 2023</div>
+            <h4 class="tl-h">LEAD — D-643/2023 <span class="tl-status tl-status--in-force">In force</span></h4>
+            <p class="tl-d">Ley de Emisión de Activos Digitales. Primary statute for digital-asset service providers, issuers and certifiers. Establishes DASP/PSAD legal status, perimeter of regulated activities (Art. 19), CNAD as competent authority, registration requirements, tax exemption regime (Art. 36) and the sanctions framework. <span class="ref">D-643/2023</span></p>
+        </li>
+        <li class="tl-item" id="tl-issuer">
+            <div class="tl-date">2023</div>
+            <h4 class="tl-h">Issuer &amp; Stablecoin Regulations <span class="tl-status tl-status--in-force">In force · separate track</span></h4>
+            <p class="tl-d">CNAD-017-2023 (Issuer Regulation) + Stablecoin Regulation. Govern public and private issuances, RID requirements, certifier process and stablecoin reserve rules. Separate registration track from DASP — included for completeness if the entity also issues digital assets. <span class="ref">CNAD-017-2023</span></p>
+        </li>
+        <li class="tl-item" id="tl-rpsad">
+            <div class="tl-date">2023</div>
+            <h4 class="tl-h">RPSAD — CNAD-035-2023 <span class="tl-status tl-status--in-force">In force</span></h4>
+            <p class="tl-d">Reglamento para Proveedores de Servicios de Activos Digitales. 49 articles. Detailed operational rulebook for PSAD: registration mechanics (Arts. 7–11), capital, governance, customer attention (Art. 7(f), 23), risk management (Art. 21), cybersecurity (Arts. 27–28), ongoing reporting (Arts. 15–16), annual renewal (Art. 12), term-extension rule (Art. 45). <span class="ref">CNAD-035-2023</span></p>
+        </li>
+        <li class="tl-item" id="tl-instr">
+            <div class="tl-date">Sep 2023</div>
+            <h4 class="tl-h">Instructivo UIF — Reform 1 (Acuerdo 476/2023) <span class="tl-status tl-status--reform">Reform in force</span></h4>
+            <p class="tl-d">Capítulo IV-B added — VASP-specific obligations: Art. 84-A (registration), 84-B (general obligations including transaction-limit and Travel Rule policy hooks), 84-C (reports). Layered onto the underlying Instructivo UIF: CDD measures (Art. 12), EDD (Art. 13), SDD (Art. 14), PEP (Art. 19 LCLDA + Arts. 16–18 Instr.), 10% UBO floor (Art. 20) + majority-control (Art. 21-A), Operación Regulada (Art. 51). <span class="ref">Acuerdo 476/2023</span></p>
+        </li>
+        <li class="tl-item" id="tl-instr-r2">
+            <div class="tl-date">2024–2025</div>
+            <h4 class="tl-h">Instructivo UIF — Reform 2 <span class="tl-status tl-status--reform">Reform in force</span></h4>
+            <p class="tl-d">Travel Rule operationalised: Art. 84-B(1)(e) restructured into <strong>Art. 52 par. 2</strong> (7-field minimum, no threshold; applies to every electronic transfer of digital assets regardless of amount). <span class="ref">Instr. Art. 52 par. 2</span></p>
+        </li>
+        <li class="tl-item" id="tl-d199">
+            <div class="tl-date">Jan 2025</div>
+            <h4 class="tl-h">Bitcoin Law Reform — D-199/2025 <span class="tl-status tl-status--reform">Reform in force</span></h4>
+            <p class="tl-d">BTC acceptance now voluntary (private actors only); State no longer accepts BTC for taxes; Chivo wallet wound down. Capital-gains exemption maintained. BSP framework itself unchanged. <span class="ref">D-199/2025</span></p>
+        </li>
+        <li class="tl-item" id="tl-lclda">
+            <div class="tl-date">2025</div>
+            <h4 class="tl-h">LCLDA — D-426/2025 <span class="tl-status tl-status--in-force">In force</span></h4>
+            <p class="tl-d">Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction. Replaces D-498/1998. Reporting entities (Art. 7) include DASPs (via CNAD supervision); CDD trigger (Art. 15); 24-hour STR clock (Art. 24); 15-year retention (Art. 26); confidentiality (Art. 28) / criminal tipping-off (Art. 44); PEP (Art. 19); CO + Prevention Committee (Arts. 20, 23). <span class="ref">D-426/2025</span></p>
+        </li>
+        <li class="tl-item now">
+            <div class="tl-date">Now · Apr 2026</div>
+            <h4 class="tl-h">Application window <span class="tl-status tl-status--now">Now</span></h4>
+            <p class="tl-d">CNAD actively processing PSAV registration applications. First favourable resolutions issued (CNAD-CD-132-2026 confirms the post-resolution pre-operations meeting with the Consejo Directivo).</p>
+        </li>
+        <li class="tl-item future">
+            <div class="tl-date">Anticipated</div>
+            <h4 class="tl-h">Framework refinements <span class="tl-status tl-status--upcoming">Anticipated</span></h4>
+            <p class="tl-d">Further CNAD operational notes and UIF clarifications expected as the supervisory practice matures and the first cohort of PSAVs reaches steady-state operation.</p>
+        </li>
+    </ol>
 </div>
 </section>
 

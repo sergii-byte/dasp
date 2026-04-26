@@ -1448,6 +1448,65 @@ strong, b {
   border-bottom: 4px solid transparent;
 }
 
+/* ---------- Legislation pill bar (currently-binding sources at-a-glance) ---------- */
+.law-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+.law-pills a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r-pill, 999px);
+  font-family: "Inter Tight", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-2);
+  transition: all 120ms ease;
+}
+.law-pills a:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.law-pills a code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--ink-3);
+  background: transparent;
+  padding: 0;
+}
+
+/* ---------- Timeline status badges ---------- */
+.tl-status {
+  display: inline-block;
+  padding: 1px 7px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--r-pill, 999px);
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.tl-status--in-force { background: #E5F0E8; color: #2E6B4A; }
+.tl-status--reform   { background: #E0E8F4; color: #2D4F86; }
+.tl-status--now      { background: #F5EFE3; color: #8C5717; }
+.tl-status--past     { background: var(--paper-3); color: var(--ink-4); }
+.tl-status--upcoming { background: transparent; color: var(--ink-4); border: 1px dashed var(--rule-2); }
+
+/* Citation chip inline in timeline body */
+.tl-d .ref { vertical-align: baseline; }
+
 /* ---------- Timeline with past/now/future markers ---------- */
 .tl {
   position: relative;
