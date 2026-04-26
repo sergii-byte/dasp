@@ -622,30 +622,23 @@
 
                 <!-- 1. Reporting thresholds -->
                 <div class="qrc-box qrc-box--blue">
-                    <h3>Reporting thresholds — Operación Regulada</h3>
+                    <h3>VASP report obligations — what to file to UIF</h3>
                     <table>
-                        <thead><tr><th>Means</th><th>Single op</th><th>Monthly aggregate</th><th>Report</th></tr></thead>
+                        <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
                         <tbody>
-                            <tr><td>Cash</td><td class="num">&gt; $10,000</td><td class="num">&gt; $10,000</td><td class="num">5 wd</td></tr>
-                            <tr><td>Other means</td><td class="num">&gt; $25,000</td><td class="num">&gt; $25,000</td><td class="num">5 wd</td></tr>
-                            <tr><td>E-transfer (FI monthly)</td><td class="num">≥ $1,000</td><td class="num">aggregate</td><td class="num">First 5 wd</td></tr>
-                            <tr><td>Family remittance</td><td class="num">≥ $200</td><td class="num">aggregate</td><td class="num">First 5 wd</td></tr>
+                            <tr><td>STR (signed determination)</td><td class="num">Any amount</td><td class="num">24 h</td></tr>
+                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 wd</td></tr>
+                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 wd</td></tr>
+                            <tr><td>Sanctions / UNSC freeze</td><td class="num">List match</td><td class="num">Without delay</td></tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Art. 51, 52(a)(b)(c)</span> · <span class="cite cite--d426">LCLDA Art. 25</span></p>
+                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Arts. 51, 84-C</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span> · Art. 52 monthly transfer/remittance reports apply to <strong>financial institutions only</strong>, not VASPs (see FAQ).</p>
                 </div>
 
                 <!-- 2. Travel Rule -->
                 <div class="qrc-box qrc-box--green">
                     <h3>Travel Rule — VASP data on every transfer</h3>
-                    <table>
-                        <thead><tr><th>Context</th><th>Amount floor</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>VASP</strong> — any digital-asset transfer</td><td class="num">$0 — any amount</td></tr>
-                            <tr><td>Traditional national / international wire</td><td class="num">≥ $1,000</td></tr>
-                            <tr><td>Traditional family remittance</td><td class="num">≥ $200</td></tr>
-                        </tbody>
-                    </table>
+                    <p style="font-size:0.78rem; margin:0 0 0.4rem;"><strong>VASP scope: any digital-asset transfer · any amount ($0 floor).</strong> Even sub-$1,000 transfers carry the full data set; the article verbatim CAPS says "even those that do not exceed the established thresholds".</p>
                     <p style="font-size:0.72rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
                     <p class="qrc-foot"><span class="cite cite--instr">Instr. Arts. 52 par. 2 (Reform 2), 84-B(1)(e) (Reform 1)</span></p>
                 </div>
@@ -1903,30 +1896,6 @@
                         <td><span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Monthly International E-Transfer Report</strong><br><em>(Reporte mensual — transferencias internacionales)</em></td>
-                        <td>International e-transfers ≥ $1,000 — month aggregate</td>
-                        <td>UIF</td>
-                        <td class="num">First 5 wd<br><span style="font-size:0.7rem;color:var(--text-3);">of next month</span></td>
-                        <td>UIF electronic platform</td>
-                        <td><span class="cite cite--instr">Instr. Art. 52(a)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Monthly Local E-Transfer Report</strong><br><em>(Reporte mensual — transferencias locales)</em></td>
-                        <td>Local e-transfers via app/device ≥ $1,000 — month aggregate</td>
-                        <td>UIF</td>
-                        <td class="num">First 5 wd</td>
-                        <td>UIF electronic platform</td>
-                        <td><span class="cite cite--instr">Instr. Art. 52(b)</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Monthly Family Remittance Report</strong><br><em>(Reporte mensual — remesas familiares)</em></td>
-                        <td>Family remittances ≥ $200 — month aggregate</td>
-                        <td>UIF</td>
-                        <td class="num">First 5 wd</td>
-                        <td>UIF electronic platform</td>
-                        <td><span class="cite cite--instr">Instr. Art. 52(c)</span></td>
-                    </tr>
-                    <tr>
                         <td><strong>Sanctions / UNSC Freeze Report</strong><br><em>(Reporte de congelamiento)</em></td>
                         <td>Match confirmed against UNSC or UIF national list</td>
                         <td>UIF</td>
@@ -2435,6 +2404,10 @@
             <h2 class="sec__title">Compliance FAQ</h2>
 
             <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Why don't VASPs file the Art. 52 monthly e-transfer / remittance reports?</summary>
+                    <div class="faq-item__body"><strong>Because Art. 52 binds "instituciones financieras" (financial institutions) only — not VASPs.</strong> Confirmed by the official UIF FAQ on Reportería de Operaciones Reguladas: <em>"Los reportes complementarios de transacciones... se encuentran normados en el Artículo 52... y son <strong>las instituciones financieras</strong> las que deberán reportar..."</em>. VASPs are CNAD-supervised under LEAD — separate Reporting Entity category from SSF-supervised Financial Institutions (banks, EMIs, brokers, etc.). Reform 1 placed VASPs in Instructivo <strong>Capítulo IV-B</strong> (Arts. 84-A/B/C); <strong>Art. 84-C</strong> scopes VASP reporting to <em>"operaciones sospechosas y operaciones reguladas"</em> only — i.e. STR (LCLDA Art. 24) + Operación Regulada (Art. 51 thresholds: cash &gt; $10K / other &gt; $25K). UIF has built a dedicated <strong>"ROS PSAV"</strong> form for VASP STR submission. The $1,000 figure remains relevant as a CDD trigger anchor (LCLDA Art. 15(b) chain) and as the Travel Rule data threshold, but is <strong>not</strong> a VASP report obligation. Sources: UIF FAQ Operaciones Reguladas · UIF Estudio Estratégico PSAV (2023) · Acuerdo 476/2023 Reforma 1 · EY/Lexology analyses.</div>
+                </details>
                 <details class="faq-item">
                     <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
                     <div class="faq-item__body">Yes — by both statutory chain and operational necessity. <strong>Statutory chain:</strong> LCLDA Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers that threshold is <strong>$1,000</strong> per Instr. Art. 52(a)(b); for family remittances <strong>$200</strong> per Art. 52(c); for cash <strong>$10K</strong> per Art. 51; for other means <strong>$25K</strong> per Art. 51. <strong>Operational necessity:</strong> the $1,000 e-transfer report itself requires originator name / ID / account + beneficiary name / account / bank + transaction ID — fields that cannot be populated without CDD on the customer. So even setting the statutory chain aside, the $1,000 reporting obligation mechanically requires CDD at the same amount. Internal AML policy may calibrate stricter thresholds under FATF R.10. STR-related suspicion triggers full CDD irrespective of amount.</div>
