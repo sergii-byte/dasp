@@ -1136,13 +1136,19 @@ strong, b {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-.schema--clean { padding: 1.25rem 1rem; }
+.schema--clean {
+  padding: 1.25rem 1rem;
+  /* 5 equal-width phase nodes interleaved with 4 fixed-width arrows */
+  grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
+}
 .schema--clean .schema-node {
   border: 1px solid var(--rule-2);
   background: var(--paper);
   padding: 0.75rem 0.85rem;
   text-align: left;
-  min-width: 130px;
+  min-width: 0;            /* let 1fr columns shrink/grow uniformly */
+  width: 100%;             /* every node fills its column */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
