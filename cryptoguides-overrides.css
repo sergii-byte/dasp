@@ -874,7 +874,7 @@ strong, b {
   display: inline;
 }
 .timeline__track .phase-card__num::before {
-  content: "Phase ";
+  content: "Stage ";
   color: var(--ink-4);
 }
 .timeline__track .phase-card__dur {
