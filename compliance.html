@@ -800,7 +800,7 @@
                 </tbody>
             </table>
             </div>
-            <p class="tbl-note">Most DASP operations are e-transfers — the practical CDD trigger is therefore <strong>$1,000</strong> via the D-426 Art. 15(b) → Instr. Art. 52(a) chain. Internal AML policy may calibrate a lower threshold per FATF R.10 risk-based principles.</p>
+            <p class="tbl-note">Most DASP operations are e-transfers — the practical CDD trigger is therefore <strong>$1,000</strong> via the D-426 Art. 15(b) → Instr. Art. 52(a) chain. <strong>Operational logic:</strong> the $1,000 e-transfer report itself requires originator name / ID / account + beneficiary name / account / bank + transaction ID — fields that cannot be populated without CDD on the customer. Reporting obligation = CDD obligation at the same amount. Internal AML policy may calibrate a stricter threshold per FATF R.10 risk-based principles.</p>
 
             <h3>What you collect, store and verify — by DD level</h3>
             <p>Salvadoran statute defines three DD levels: <strong>Simplified DD</strong> (low-risk customers, Art. 14), <strong>Standard CDD</strong> (Art. 12 measures, full identification) and <strong>Enhanced DD</strong> (Art. 13, documentary verification of source). All three sit on top of a baseline of Travel Rule data + sanctions screening which applies to every transfer regardless of DD level.</p>
@@ -892,6 +892,10 @@
             </table>
             </div>
             <p class="tbl-note"><strong>How to read the stack:</strong> Layer 1 gates account opening. Layer 2 is the statutory CDD trigger by amount. Layer 3 catches ongoing relationships from $0. Layer 4 is the VASP-specific obligation to set own internal limits stricter than the statutory floor — non-compliance is a registration-level violation. Layer 5 is risk-based override (PEP / high-risk → EDD regardless of amount). Layer 6 attaches identifying data to every transfer regardless of amount or DD level.</p>
+
+            <div class="callout callout--green" style="margin-top:1rem;">
+                <p><strong>Operational logic — why $1,000 is necessarily a CDD trigger.</strong> The mandatory $1,000 e-transfer report (Instr. Art. 52(a)(b)) is not an abstract reporting duty — it requires populating concrete fields: originator name + ID type/number + account, beneficiary name + account + bank, transaction ID. These fields cannot be filled without first identifying and verifying the customer. <strong>Therefore the reporting obligation at $1,000 mechanically requires CDD at $1,000.</strong> The same logic applies to the $200 family-remittance report and the $10K cash / $25K other-means Operación Regulada — every reporting threshold is, in operational terms, a CDD threshold.</p>
+            </div>
 
             <h3>What Chapter IV-B adds on top of the general regime</h3>
             <div class="grid grid--2">
@@ -1771,7 +1775,7 @@
             <div class="faq-list">
                 <details class="faq-item">
                     <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
-                    <div class="faq-item__body">Yes. <strong>D-426 Art. 15(b)</strong> anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers the reporting threshold is <strong>$1,000</strong> per <strong>Instr. Art. 52(a)(b)</strong>; for family remittances <strong>$200</strong> per Art. 52(c); for cash <strong>$10,000</strong> per Art. 51; for other means <strong>$25,000</strong> per Art. 51. Therefore CDD is statutorily required for any occasional e-transfer ≥ $1,000. Internal AML policy may calibrate a stricter threshold under FATF R.10 — that is internal practice, not statute. STR-related suspicion triggers full CDD irrespective of amount.</div>
+                    <div class="faq-item__body">Yes — by both statutory chain and operational necessity. <strong>Statutory chain:</strong> D-426 Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers that threshold is <strong>$1,000</strong> per Instr. Art. 52(a)(b); for family remittances <strong>$200</strong> per Art. 52(c); for cash <strong>$10K</strong> per Art. 51; for other means <strong>$25K</strong> per Art. 51. <strong>Operational necessity:</strong> the $1,000 e-transfer report itself requires originator name / ID / account + beneficiary name / account / bank + transaction ID — fields that cannot be populated without CDD on the customer. So even setting the statutory chain aside, the $1,000 reporting obligation mechanically requires CDD at the same amount. Internal AML policy may calibrate stricter thresholds under FATF R.10. STR-related suspicion triggers full CDD irrespective of amount.</div>
                 </details>
                 <details class="faq-item">
                     <summary>Why does the Travel Rule apply at any amount but Standard CDD only above $1,000?</summary>
