@@ -655,7 +655,7 @@
                     <h3>Travel Rule — VASP data on every transfer</h3>
                     <p style="font-size:0.78rem; margin:0 0 0.4rem;"><strong>VASP scope: any digital-asset transfer · any amount ($0 floor).</strong> The data set applies even to transfers that do not exceed the established thresholds.</p>
                     <p style="font-size:0.72rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
-                    <p class="qrc-foot"><span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span></p>
+                    <p class="qrc-foot"><span class="cite cite--instr">UIF Acuerdo 734/2022 § V</span> → <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> + <span class="cite cite--instr">Art. 84-B(1)(e) (Reform 1)</span></p>
                 </div>
 
                 <!-- 3. Statutory deadlines -->
@@ -1171,7 +1171,7 @@
                         <td><strong>6. Travel Rule data</strong></td>
                         <td>Originator + beneficiary fields (7 items: a-g) on every electronic VA transfer. Records must allow knowledge of origin and destination of VA transactions.</td>
                         <td class="num">Any amount ($0)</td>
-                        <td><span class="cite cite--instr">Instr. Art. 84-B(1)(e) Reform 1</span> + <span class="cite cite--instr">Art. 52 par. 2 Reform 2</span></td>
+                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § V</span> → <span class="cite cite--instr">Art. 52 par. 2 (Reform 2)</span> + <span class="cite cite--instr">Art. 84-B(1)(e) (Reform 1)</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -1505,8 +1505,8 @@
         <!-- ══════════ TRAVEL RULE ══════════ -->
         <section class="sec" id="travel-rule">
             <p class="sec__label">Travel Rule</p>
-            <h2 class="sec__title">Per-transfer data — Art.&nbsp;52 par.&nbsp;2 + Art.&nbsp;84-B(1)(e)</h2>
-            <p class="sec__lead">The DASP Travel Rule rests on two statutory anchors that complete each other. <strong><span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span></strong> — the VASP-specific records obligation requiring DASPs to maintain customer and operation records sufficient to identify the origin and destination of virtual-asset transactions — provides the records foundation. <strong><span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span></strong> sets out the operational data-set (7 mandatory fields + batch-processing rule, $0 floor); its text formally addresses financial institutions for transfers under subparagraphs (a)/(b), so for DASPs the data-set applies by parallel design — the only way the 84-B(1)(e) records obligation can be fulfilled in practice for a Travel Rule data exchange.</p>
+            <h2 class="sec__title">Per-transfer data — Travel Rule for DASPs</h2>
+            <p class="sec__lead">UIF <strong><span class="cite cite--instr">Acuerdo 734/2022 § V «Obligations of VASPs»</span></strong> explicitly imports the Travel Rule into the DASP regime, citing the chain: <span class="cite cite--d426">LCLDA Art. 13</span> rel. Art. 72 no. 7 LOFGR rel. <span class="cite cite--instr">Instr. Art. 52</span> · FATF R.16. The operational data-set (7 mandatory fields + batch-processing rule + $0 floor) lives in <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>; the records foundation for DASPs is in <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> (origin and destination of virtual-asset transactions). Acuerdo 734 § V is the bridge that makes Art. 52 par. 2 directly applicable to DASPs — no analogy needed.</p>
 
             <h3>The data set — 7 mandatory fields</h3>
             <p>The statute lists exactly seven items. The text does not distinguish between natural persons and legal entities — the same fields apply to both, only the format of identifiers differs. The matrix below shows what each field looks like for each combination.</p>
@@ -1600,7 +1600,7 @@
             </div>
 
             <h3>Wallet types — hosted vs unhosted (self-hosted)</h3>
-            <p>Salvadoran statute (LCLDA / Instructivo / RPSAD / LEAD) does <strong>not</strong> define <em>hosted</em> vs <em>unhosted</em> wallets. The distinction comes from FATF R.16 operational guidance and is the global industry standard for Travel Rule implementation. Both wallet types fall under the same composite obligation (<span class="cite cite--instr">Art. 84-B(1)(e)</span> records foundation + <span class="cite cite--instr">Art. 52 par. 2</span> data-set by parallel design) — but the operational handling differs.</p>
+            <p>Salvadoran statute (LCLDA / Instructivo / RPSAD / LEAD) does <strong>not</strong> define <em>hosted</em> vs <em>unhosted</em> wallets. The distinction comes from FATF R.16 operational guidance and is the global industry standard for Travel Rule implementation. Both wallet types fall under the same Travel Rule (Acuerdo 734 § V → Instr. Art. 52 par. 2 + Art. 84-B(1)(e)) — but the operational handling differs.</p>
 
             <div class="grid grid--2">
                 <div class="card card--green">
@@ -1620,7 +1620,7 @@
                     <ul>
                         <li>No counterparty VASP exists to transmit Travel Rule data — the client self-attests beneficiary information</li>
                         <li>Client must declare beneficiary name + identifier; receiving address is the wallet itself</li>
-                        <li>No statutory exemption in El Salvador — the composite Art.&nbsp;52 par.&nbsp;2 + Art.&nbsp;84-B(1)(e) obligation applies in full</li>
+                        <li>No statutory exemption in El Salvador — the Travel Rule applies in full (Acuerdo 734 § V → Art.&nbsp;52 par.&nbsp;2 + Art.&nbsp;84-B(1)(e))</li>
                         <li>Wallet attribution required: prove the client controls the receiving wallet (specific method — signed-message / micro-deposit / chain-analytics attribution — at entity's discretion)</li>
                         <li>Apply <strong>risk-based EDD</strong> with documented rationale on file (per FATF R.16 guidance)</li>
                         <li>Repeated unhosted transfers → relationship review under risk-based approach</li>
@@ -1630,7 +1630,7 @@
             </div>
 
             <div class="callout callout--warn">
-                <p>Wallet attribution is the operational pinch point. The composite obligation (Art.&nbsp;52 par.&nbsp;2 data-set + Art.&nbsp;84-B(1)(e) records) requires originator and beneficiary identity but does not specify a wallet-attribution method. Industry practice (signed-message attestation, micro-deposit, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale even if all other CDD factors are low-risk.</p>
+                <p>Wallet attribution is the operational pinch point. The Travel Rule (Acuerdo 734 § V → Art.&nbsp;52 par.&nbsp;2 + Art.&nbsp;84-B(1)(e)) requires originator and beneficiary identity but does not specify a wallet-attribution method. Industry practice (signed-message attestation, micro-deposit, KYT-vendor probabilistic attribution) is acceptable provided the method is documented in the AML manual, applied consistently, and produces an audit trail. Unhosted-wallet transfers are not exempted — they trigger risk-based EDD with documented rationale even if all other CDD factors are low-risk.</p>
             </div>
         </section>
 
@@ -2557,7 +2557,7 @@
                 <div><dt>PEP</dt><dd>Politically Exposed Person — domestic / foreign / international-organisation public function. Coverage: self + family ≤ 2nd degree + close associates. Always EDD; status persists 5 yr post-cease (LCLDA Art. 19).</dd></div>
                 <div><dt>SoF / SoW</dt><dd>Source of Funds (transaction-specific) / Source of Wealth (overall patrimony). SoF: declarative at CDD baseline, documentary at EDD. SoW: not required at CDD; documentary at EDD. PEP: both mandatory.</dd></div>
                 <div><dt>STR</dt><dd>Suspicious Transaction Report (Reporte de Operación Sospechosa). Filed to UIF within 24 hours of CO determination (LCLDA Art. 24). Confidential; no probative value; intelligence purposes only; amount irrelevant.</dd></div>
-                <div><dt>Travel Rule</dt><dd>Per-transfer originator + beneficiary data requirement on every electronic transfer regardless of amount. <strong>Composite anchor for DASPs</strong>: Instr. Art. 84-B(1)(e) Reform 1 (VASP-specific records foundation — origin and destination of virtual-asset transactions) + Instr. Art. 52 par. 2 Reform 2 (operational data-set: 7 mandatory fields + batch rule + $0 floor; the article's text addresses financial institutions, the data-set applies to DASPs by parallel design). FATF R.16 informs the framework.</dd></div>
+                <div><dt>Travel Rule</dt><dd>Per-transfer originator + beneficiary data requirement on every electronic transfer regardless of amount. <strong>Anchor for DASPs</strong>: UIF Acuerdo 734/2022 § V «Obligations of VASPs» imports the Travel Rule into the DASP regime via the chain LCLDA Art. 13 rel. Art. 72 no. 7 LOFGR rel. Instr. Art. 52 · FATF R.16. Operational data-set (7 fields + batch rule + $0 floor) — Instr. Art. 52 par. 2 (Reform 2). VASP-specific records foundation — Instr. Art. 84-B(1)(e) (Reform 1).</dd></div>
                 <div><dt>UIF</dt><dd>Unidad de Investigación Financiera — Salvadoran Financial Intelligence Unit. Receives all AML reports via goAML.</dd></div>
                 <div><dt>UNSC sanctions</dt><dd>UN Security Council consolidated sanctions lists (1267, 1373, 1718, 1988, 2231 + successors). Binding via LECAT Art. 37.</dd></div>
             </dl>
