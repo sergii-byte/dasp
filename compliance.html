@@ -337,9 +337,7 @@
         .tbl tbody tr:last-child td { border-bottom: none; }
         .tbl tbody tr:hover { background: var(--bg-alt); }
         .tbl .num {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-weight: 400; color: var(--navy); white-space: nowrap;
-            font-size: 1rem;
+            font-weight: 500; color: var(--navy); white-space: nowrap;
         }
         .tbl-note {
             font-size: 0.78rem; color: var(--text-3); margin: 0.5rem 0 0;
@@ -1352,7 +1350,7 @@
                 </div>
                 <div class="card card--green">
                     <div class="card__title">DASP type → form coverage matrix</div>
-                    <table style="font-size:0.8rem; margin-top:0.4rem;">
+                    <table style="margin-top:0.4rem;">
                         <thead><tr><th>DASP type</th><th>Forms used</th></tr></thead>
                         <tbody>
                             <tr><td>Procesador / pasarela de pago</td><td>1, 2, 3</td></tr>
@@ -1513,10 +1511,10 @@
         <!-- ══════════ TRAVEL RULE ══════════ -->
         <section class="sec" id="travel-rule">
             <p class="sec__label">Travel Rule</p>
-            <h2 class="sec__title">Per-transfer data — Art.&nbsp;52 par.&nbsp;2 reformed</h2>
-            <p class="sec__lead">El Salvador's Travel Rule for electronic transfers is set out in <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>, which specifies the seven mandatory fields for every electronic transfer (even those that do not exceed the established thresholds) and adds a batch-processing rule. <strong>Important addressee note:</strong> Art. 52 par. 2 textually addresses <em>«financial institutions»</em> for transfers under subparagraphs (a)/(b). For DASPs, the Travel Rule applies via <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> — the VASP-specific record-keeping obligation requiring «knowledge of the origin and destination of virtual-asset transactions» — operationalised through the same 7-field data set by parallel design.</p>
+            <h2 class="sec__title">Per-transfer data — VASP origin / destination records</h2>
+            <p class="sec__lead">The Travel Rule for DASPs is anchored in <span class="cite cite--instr">Instr. Art. 84-B(1)(e) (Reform 1)</span> — the VASP-specific record-keeping obligation requiring «knowledge of the <strong>origin and destination</strong> of virtual-asset transactions». The data-set itself (the 7 mandatory fields + batch-processing rule, applicable to every electronic transfer regardless of amount) is set out in <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>. Art. 52 par. 2 textually addresses «financial institutions» for transfers under subparagraphs (a)/(b); for DASPs the same data-set applies operationally by parallel design under Art. 84-B(1)(e).</p>
 
-            <h3>The data set — verbatim per Art.&nbsp;52 par.&nbsp;2</h3>
+            <h3>The data set — 7 mandatory fields</h3>
             <p>The statute lists exactly seven items. The text does not distinguish between natural persons and legal entities — the same fields apply to both, only the format of identifiers differs. The matrix below shows what each field looks like for each combination.</p>
 
             <div class="tbl-wrap">
