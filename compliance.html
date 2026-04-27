@@ -304,6 +304,11 @@
         .card--accent { border-left: 1px solid var(--accent); }
         .card--purple { border-left: 1px solid var(--purple); }
 
+        /* Red Flags — colored bottom border for visual separation between cards */
+        #redflags .card { border-bottom-width: 2px; }
+        #redflags .card--red   { border-bottom-color: var(--red); }
+        #redflags .card--amber { border-bottom-color: var(--amber); }
+
         /* ── CALLOUTS ── */
         .callout {
             border: 1px solid var(--border); border-left: 1px solid var(--accent);
@@ -337,8 +342,11 @@
         .tbl tbody tr:last-child td { border-bottom: none; }
         .tbl tbody tr:hover { background: var(--bg-alt); }
         .tbl .num {
-            font-weight: 500; color: var(--navy); white-space: nowrap;
+            font-weight: 500; color: var(--navy);
         }
+        .tbl .num br + span { display: inline-block; white-space: normal; }
+        /* Allow long citation chips to wrap inside narrow table cells */
+        .tbl td .cite { white-space: normal; word-break: break-word; }
         .tbl-note {
             font-size: 0.78rem; color: var(--text-3); margin: 0.5rem 0 0;
             font-style: italic;
@@ -2024,7 +2032,7 @@
             </div>
 
             <div class="callout callout--info">
-                <p>Restricted jurisdictions list. Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines: (i) FATF Call for Action (DPRK, Iran, Myanmar) and UNSC-sanctioned states → geofence + reject; Beyond UNSC + UIF national lists (which are statutorily binding under LECAT Art. 37), the following are commonly added by the entity's risk-management policy as commercial-risk exclusions: (ii) OFAC-comprehensive countries (Cuba, Crimea / DNR / LNR Ukraine) → geofence + reject; (iii) crypto-banned countries (China, Bangladesh, Egypt, Morocco, Algeria, Nepal, Oman, Qatar, Tunisia) → geofence + reject; (iv) FATF Grey List + partial-sanctions countries → EDD + senior approval.</p>
+                <p>Restricted jurisdictions list. Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines four buckets: (i) <strong>FATF Call for Action + UNSC-sanctioned states</strong> → geofence + reject (statutorily binding via LECAT Art. 37 for UNSC matches). Beyond UNSC + UIF national lists, the following are commonly added by the entity's risk-management policy as commercial-risk exclusions: (ii) <strong>OFAC-comprehensive sanctions territories</strong> → geofence + reject; (iii) <strong>jurisdictions with general or partial cryptocurrency bans</strong> → geofence + reject; (iv) <strong>FATF Grey List + partial-sanctions countries</strong> → EDD + senior approval. Country composition of each bucket is calibrated against the latest authoritative sources (UN Security Council, OFAC SDN, FATF plenary decisions, UIF advisories) and refreshed each FATF plenary cycle (Feb / Jun / Oct).</p>
             </div>
 
             <div class="callout callout--amber" style="margin-top:0.75rem;">
