@@ -703,7 +703,7 @@
                             <tr><td><span class="pill pill--no">SDD</span></td><td>Documented low-risk · &lt; statutory floor + no risk factor + no PEP / HR jur</td></tr>
                             <tr><td><span class="pill pill--cdd">Standard</span></td><td>Default for any ongoing relationship · occasional ≥ statutory floor</td></tr>
                             <tr><td><span class="pill pill--edd">EDD</span></td><td>PEP (+ family ≤2nd, close assoc) · high-risk jur · opaque ownership · cash-intensive · structuring · profile deviation · flagged wallet · 3rd-party funder · adverse media</td></tr>
-                            <tr><td><span class="pill pill--reject">Reject</span></td><td>UNSC / UIF national list hit · client refuses CDD · prohibited asset (privacy coin / algorithmic stablecoin) · restricted jurisdiction</td></tr>
+                            <tr><td><span class="pill pill--reject">Reject</span></td><td>UNSC / UIF national list hit · client refuses CDD · restricted jurisdiction · asset not within the DASP's CNAD-authorised perimeter</td></tr>
                         </tbody>
                     </table>
                     <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 15-17</span> · <span class="cite cite--instr">Instr. Arts. 12, 13, 14, 14-A(III) Reform 2</span></p>
@@ -717,7 +717,7 @@
                         <tbody>
                             <tr><td><span class="pill pill--no">Allowed</span></td><td>Transparent-ledger DA listed at registration (BTC, ETH, SOL, TRX...) · CNAD-authorised stablecoins (USDT, USDC...)</td></tr>
                             <tr><td><span class="pill pill--cdd">Prior CNAD analysis</span></td><td>Additional stablecoins · tokens from public DA issuances · new asset additions post-registration</td></tr>
-                            <tr><td><span class="pill pill--reject">Rejected</span></td><td>Privacy coins (XMR, ZEC, DASH) · algorithmic stablecoins · unvetted new tokens · sanctioned-protocol tokens</td></tr>
+                            <tr><td><span class="pill pill--reject">Outside scope</span></td><td>Assets not declared on the DASP's CNAD-approved asset list (RPSAD Art. 7(h)) · sanctioned-protocol tokens · stablecoins without CNAD authorisation under the Stablecoin Regulation</td></tr>
                         </tbody>
                     </table>
                     <p class="qrc-foot"><span class="cite cite--lead">LEAD Arts. 9(k)(l), 20(b), 21(e)(q)</span> · <span class="cite cite--rpsad">RPSAD Art. 9</span></p>
@@ -744,7 +744,7 @@
                     <ul>
                         <li>International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</li>
                         <li>Entity's own risk analysis (cash-intensive, gambling, NGOs in HR jur)</li>
-                        <li>Product / service risk (privacy coins, custody, cross-border)</li>
+                        <li>Product / service risk (per the DASP's own assessment under Instr. Art. 10(c))</li>
                         <li>Channel risk (non-face-to-face, unhosted wallet, API)</li>
                         <li>Geographic risk (FATF lists, partial sanctions, transit jurisdictions)</li>
                         <li>Caution / sanction list presence (UNSC, UIF national)</li>
@@ -947,7 +947,7 @@
                         <td><strong>(c)</strong></td>
                         <td>Product / service risk</td>
                         <td>Risk of products / services offered to the customer</td>
-                        <td>Privacy coins (excluded operationally) · custody vs non-custody · cross-border transfer · derivative DA execution · investment products</td>
+                        <td>Examples a DASP typically weighs: custody vs non-custody · cross-border transfer · derivative DA execution · investment products · low-traceability assets · novel / unvetted tokens. Each DASP defines its own list in its AML methodology under Art. 10(c).</td>
                     </tr>
                     <tr>
                         <td><strong>(d)</strong></td>
@@ -1046,10 +1046,10 @@
                         <td><span class="cite cite--d426">LCLDA Art. 15(a)</span> <span class="cite cite--instr">Instr. Art. 12</span></td>
                     </tr>
                     <tr>
-                        <td>Occasional e-transfer (international or local, via app/device)</td>
+                        <td>Occasional e-transfer (crypto on-chain or bank wire)</td>
                         <td class="num">≥ $1,000</td>
                         <td><span class="pill pill--cdd">Standard CDD</span></td>
-                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 52(a)(b)</span></td>
+                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">UIF Acuerdo 734/2022 § V.2.b.II</span></td>
                     </tr>
                     <tr>
                         <td>Occasional cash</td>
@@ -1152,7 +1152,7 @@
                         <td><strong>2. Statutory CDD floor</strong> (occasional tx)</td>
                         <td>Standard CDD triggered when occasional transaction crosses the applicable reporting threshold for the channel.</td>
                         <td class="num">$1,000 e-transfer<br>$10K cash<br>$25K other</td>
-                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Arts. 51, 52</span></td>
+                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">UIF Acuerdo 734/2022 § V.2.b.II</span> (DASP cascade) · <span class="cite cite--instr">Instr. Art. 51</span> (Operación Regulada)</td>
                     </tr>
                     <tr>
                         <td><strong>3. Ongoing-relationship CDD</strong></td>
@@ -1630,7 +1630,7 @@
                         <li>Reciprocal Travel Rule data exchange expected on every transfer</li>
                         <li>Standard CDD on the client; sanctions screen on both parties</li>
                     </ul>
-                    <div class="card__foot">Use Travel Rule message protocols (TRP, OpenVASP, IVMS-101 standardised data structures) where the counterparty VASP supports them.</div>
+                    <div class="card__foot">Specific message-protocol implementation (TRP, OpenVASP, IVMS-101, etc.) is at the entity's discretion — statute prescribes the data set, not the transport.</div>
                 </div>
                 <div class="card card--amber">
                     <div class="card__title">Unhosted / self-hosted wallet</div>
@@ -1639,7 +1639,7 @@
                         <li>No counterparty VASP exists to transmit Travel Rule data — the client self-attests beneficiary information</li>
                         <li>Client must declare beneficiary name + identifier; receiving address is the wallet itself</li>
                         <li>No statutory exemption in El Salvador — the Art.&nbsp;52 par.&nbsp;2 obligation applies in full</li>
-                        <li>Wallet attribution required: prove the client controls the receiving wallet (Satoshi test / micro-deposit / signed message / KYT-vendor attribution)</li>
+                        <li>Wallet attribution required: prove the client controls the receiving wallet (specific method — signed-message / micro-deposit / chain-analytics attribution — at entity's discretion)</li>
                         <li>Apply <strong>risk-based EDD</strong> with documented rationale on file (per FATF R.16 guidance)</li>
                         <li>Repeated unhosted transfers → relationship review under risk-based approach</li>
                     </ul>
@@ -1697,12 +1697,12 @@
             </div>
 
             <div class="callout callout--info" style="margin-top:0.5rem;">
-                <p>UIF-maintained PEP list. Per LCLDA Art. 19 last paragraph (national PEPs section), the UIF is responsible for issuing and updating the official list of PEP offices. This list anchors the entity's PEP-screening obligation; commercial PEP databases (Refinitiv / Dow Jones / ComplyAdvantage) are operationally used but the binding reference is the UIF list.</p>
+                <p>UIF-maintained PEP list. Per LCLDA Art. 19 last paragraph (national PEPs section), the UIF is responsible for issuing and updating the official list of PEP offices. This list anchors the entity's PEP-screening obligation; commercial PEP databases may be used as supplementary source, but the binding reference is the UIF list.</p>
             </div>
 
             <h3>Operational requirements</h3>
             <ul>
-                <li>Self-declaration on every CDD form + cross-check against a recognised PEP database (Refinitiv World-Check / Dow Jones / ComplyAdvantage / similar)</li>
+                <li>Self-declaration on every CDD form + cross-check against the UIF PEP list (commercial PEP databases may be used as supplementary source)</li>
                 <li>Senior-management written approval to establish or continue the relationship <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></li>
                 <li>Source of funds + Source of wealth — both documented</li>
                 <li>Enhanced ongoing monitoring</li>
@@ -1895,7 +1895,7 @@
             <h3 style="margin-top:1.5rem;">VASP-specific red flags (FATF Guidance for VASPs, 2020/2021)</h3>
             <div class="grid grid--3">
                 <div class="card card--red"><div class="card__title">Flagged wallet / blockchain exposure</div><p>Counterparty wallet linked to mixer / tumbler / coinjoin, darknet marketplace, ransomware address, sanctions-linked cluster, exchange exit-scam, exploit / hack proceeds.</p><div class="card__foot"><em>EDD + KYT trace retained + STR consideration</div></div>
-                <div class="card card--red"><div class="card__title">Privacy coins / obfuscation tech</div><p>Transactions involving Monero (XMR), Zcash shielded transactions, Dash mixing, or chain-hopping immediately after deposit. Use of CoinJoin / privacy mixer / cross-chain bridge to obfuscate origin.</p><div class="card__foot"><em>Decline (privacy coins prohibited per CNAD operational position) or escalate to EDD + STR</div></div>
+                <div class="card card--red"><div class="card__title">Low-traceability assets / obfuscation tech</div><p>Transactions involving low-traceability assets (Monero shielded TXs, Zcash shielded TXs, Dash mixing) or chain-hopping immediately after deposit. Use of CoinJoin / mixer / cross-chain bridge to obfuscate origin.</p><div class="card__foot"><em>If the asset is outside the DASP's CNAD-approved asset list — decline. Otherwise — escalate to EDD + STR pipeline.</em></div></div>
                 <div class="card card--amber"><div class="card__title">Non-compliant counterparty VASP</div><p>Counterparty is a VASP not registered with any FATF-aligned jurisdiction; refuses Travel Rule data exchange; appears on industry no-Travel-Rule list; has no AML programme disclosed.</p><div class="card__foot"><em>EDD on the counterparty VASP + risk-based decision; document pre-relationship review</div></div>
                 <div class="card card--amber"><div class="card__title">Unhosted-wallet pattern</div><p>Repeated transfers to/from unhosted wallets without economic rationale; receiving unhosted wallet immediately consolidates into mixer / exchange. Wallet-attribution test fails.</p><div class="card__foot"><em>EDD + documented attribution method + KYT trace</div></div>
                 <div class="card card--amber"><div class="card__title">Multi-account / identity layering</div><p>Same IP / device / KYC document linked to multiple accounts; rapid creation of new accounts that immediately receive large funds; nominee KYC patterns.</p><div class="card__foot"><em>Account linkage analysis + consolidation review + EDD</div></div>
@@ -2352,7 +2352,7 @@
                 <tbody>
                     <tr>
                         <td>Wallet attribution for unhosted-wallet counterparty</td>
-                        <td>Attribution method record (Satoshi test / micro-deposit / signed message / KYT-vendor probabilistic) + outcome + audit trail per transfer</td>
+                        <td>Wallet-attribution method record + outcome + audit trail per transfer (specific method at entity's discretion)</td>
                         <td class="num">Per transfer</td>
                         <td>Practice baseline (FATF VASP guidance + Art. 84-B(1)(e) origin/destination knowledge)</td>
                     </tr>
@@ -2364,7 +2364,7 @@
                     </tr>
                     <tr>
                         <td>Counterparty VASP DD — Travel Rule reciprocity assessment</td>
-                        <td>Counterparty VASP profile: registration jurisdiction + AML disclosure + Travel Rule compatibility (TRP / IVMS-101) + risk rating</td>
+                        <td>Counterparty VASP profile: registration jurisdiction + AML disclosure + Travel Rule transport-protocol compatibility + risk rating</td>
                         <td class="num">Pre-relationship + on review</td>
                         <td>Practice (Art. 84-B(1)(e) records obligation)</td>
                     </tr>
@@ -2541,7 +2541,7 @@
                 </details>
                 <details class="faq-item">
                     <summary>How often must sanctions and PEP lists be refreshed?</summary>
-                    <div class="faq-item__body">Quarterly minimum + on every list update + per-transaction at execution. UNSC publishes updates regularly; subscribe to the official feeds. PEP databases (Refinitiv / Dow Jones / ComplyAdvantage / similar) update continuously — schedule daily re-screen against the active client base.</div>
+                    <div class="faq-item__body">Statute does not fix a re-screen frequency for sanctions / PEP — Instr. Art. 23 obliges periodic update of customer data and re-screen on any material change (sanctions list update, PEP status, jurisdiction reclassification, adverse media). Operationally: subscribe to UNSC + UIF list feeds and run per-transaction screening at execution. Internal cadence (e.g., daily/weekly automated re-screen) is fixed in the entity's AML Policy under RBA, not in statute.</div>
                 </details>
                 <details class="faq-item">
                     <summary>What records survive a DASP wind-down?</summary>
@@ -2569,7 +2569,7 @@
                 <div><dt>goAML</dt><dd>UNODC-developed FIU reporting platform — El Salvador's UIF uses goAML for STR, Operación Regulada, monthly Art. 52 reports, and freeze notifications.</dd></div>
                 <div><dt>Identity verification</dt><dd>Reform 2 obligation under Instr. Art. 12: customer / user identity must be verified BEFORE the commercial relationship begins, via official identification documents issued by competent public authorities. If not verified, the relationship cannot start.</dd></div>
                 <div><dt>Instructivo UIF</dt><dd>Operational rulebook from the Financial Investigation Unit. Reform 1 added VASP-specific provisions (Arts. 84-A, 84-B, 84-C); Reform 2 amended CDD (Art. 12), EDD (Art. 13) and Travel Rule (Art. 52 par. 2).</dd></div>
-                <div><dt>KYT</dt><dd>Know-Your-Transaction — blockchain analytics for transaction monitoring. Tools: Chainalysis, TRM Labs, Elliptic, Crystal, Merkle Science. Operationally required for DASPs.</dd></div>
+                <div><dt>KYT</dt><dd>Know-Your-Transaction — blockchain analytics for transaction monitoring (sanctions / mixer / darknet exposure on counterparty addresses). Statutorily implied via the sanctions duty (LCLDA Art. 9, LECAT Art. 37) and origin/destination record-keeping (Instr. Art. 84-B(1)(e) — Reform 1) for any operation involving an external chain address. Specific vendor / methodology at the entity's discretion.</dd></div>
                 <div><dt>LECAT</dt><dd>Special Law against Acts of Terrorism (D-108). Source of UNSC sanctions freeze (Art. 37). Tipping-off is in <strong>LCLDA Art. 44</strong>, not in LECAT.</dd></div>
                 <div><dt>Operación Regulada</dt><dd>Threshold report under LCLDA Art. 25 + Instr. Art. 51: cash &gt; $10K or other means &gt; $25K (single op or monthly aggregate per client). Filed within 5 working days. Includes "transactions in digital assets" by name (LCLDA Art. 25).</dd></div>
                 <div><dt>PEP</dt><dd>Politically Exposed Person — domestic / foreign / international-organisation public function. Coverage: self + family ≤ 2nd degree + close associates. Always EDD; status persists 5 yr post-cease (LCLDA Art. 19).</dd></div>
