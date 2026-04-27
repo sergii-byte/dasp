@@ -644,11 +644,12 @@
                         <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
                         <tbody>
                             <tr><td>STR (signed determination)</td><td>Any amount</td><td class="num">24 h</td></tr>
-                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">(monthly batch)</span></td></tr>
-                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">(monthly batch)</span></td></tr>
-                            <tr><td>Individual Tx Report (per-tx)</td><td class="num">≥ $1,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">after each tx</span></td></tr>
-                            <tr><td>Monthly Client Report</td><td>Active/inactive/disconnected</td><td><span class="deadline">Monthly</span></td></tr>
-                            <tr><td>Zero-Tx Notification</td><td>If no tx that month</td><td><span class="deadline">Monthly</span></td></tr>
+                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd</td></tr>
+                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd</td></tr>
+                            <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size:0.72rem;color:var(--text-2);padding-top:0.45rem;">DASP Transactional Reporting (Acuerdo 734 § Anexo IV)</td></tr>
+                            <tr><td>(a) Monthly Client Report</td><td>Active/inactive/disconnected</td><td><span class="deadline">Monthly</span></td></tr>
+                            <tr><td>(b) Individual Tx Report (single file, 8 forms)</td><td class="num">each tx ≥ $1,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">per-tx ceiling</span></td></tr>
+                            <tr><td>(c) Zero-Tx Notification (via PEA)</td><td>If no tx that month</td><td><span class="deadline">Monthly</span></td></tr>
                             <tr><td>Sanctions / UNSC freeze</td><td>List match</td><td><span class="deadline">Without delay</span></td></tr>
                         </tbody>
                     </table>
@@ -718,7 +719,7 @@
                         <tbody>
                             <tr><td><span class="pill pill--no">Allowed</span></td><td>Only assets (including stablecoins) that CNAD approved at license issuance via the asset list submitted under RPSAD Art. 7(h) + LEAD Art. 20(b).</td></tr>
                             <tr><td><span class="pill pill--cdd">Registration modification</span></td><td>Adding a new asset post-registration requires a modification request to CNAD (RPSAD Art. 13).</td></tr>
-                            <tr><td><span class="pill pill--cdd">Stablecoin add-ons (DASP-side)</span></td><td>For each stablecoin admitted to the platform, the DASP additionally: (i) immediately notifies CNAD per LEAD Art. 21(q); (ii) includes it in the quarterly Stablecoin Registry report to CNAD per RPSAD Art. 16.</td></tr>
+                            <tr><td><span class="pill pill--cdd">Stablecoin add-ons (DASP-side)</span></td><td>For each stablecoin <strong>admitted to trading</strong> on the DASP's platform / wallets, the DASP additionally: (i) immediately notifies CNAD per LEAD Art. 21(q); (ii) includes it in the quarterly Stablecoin Registry report to CNAD per RPSAD Art. 16. «Admitted to trading» = made available for clients to buy / sell / swap on the DASP's platform.</td></tr>
                             <tr><td><span class="pill pill--reject">Outside this DASP's scope</span></td><td>Any asset not on this DASP's CNAD-approved list — DASP cannot trade it until a modification request is approved.</td></tr>
                             <tr><td><span class="pill pill--reject">Sanctions reject</span></td><td>Sanctioned-protocol tokens or wallets on UNSC / UIF national lists — universal reject under sanctions duty, regardless of DASP perimeter.</td></tr>
                         </tbody>
@@ -1964,28 +1965,20 @@
                         <td><span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
-                        <td>Monthly Client Report (DASP)<br><em>(Reporte mensual de clientes)</em></td>
-                        <td>All clients (active / inactive / disconnected) with which DASP had any interaction during the month — repeated per product owned</td>
+                        <td>DASP Transactional Reporting<br><em>(Reportes transaccionales del PSAV)</em><br><span style="font-size:0.7rem;color:var(--text-3);">Three sub-reports under one regime</span></td>
+                        <td>
+                            <strong>(a) Monthly Client Report</strong> — all clients (active / inactive / disconnected) with which DASP had any interaction during the month, repeated per product owned.<br><br>
+                            <strong>(b) Individual Transaction Report</strong> — each client transaction <strong>≥ US$1,000</strong> at conversion rate on day of operation. Submitted as a <strong>single batched file</strong> via one of <strong>8 transaction-type forms</strong> (Wallet-to-Wallet · Tx between Different Wallets · Wallet-to-Account · ATM-to-Wallet · Wallet-to-ATM · Card-to-Wallet · Buy/Sell · Currency Exchange). Operationally batched daily / weekly so no transaction exceeds the per-tx ceiling.<br><br>
+                            <strong>(c) Zero-Tx Notification</strong> — if no client transactions occurred during a month, DASP must notify UIF via PEA of the absence of operations.
+                        </td>
                         <td>UIF</td>
-                        <td class="num">Monthly</td>
-                        <td>UIF Portal — DASP-specific form</td>
-                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span></td>
-                    </tr>
-                    <tr>
-                        <td>Individual Transaction Report (DASP)<br><em>(Reporte de transacciones individuales)</em></td>
-                        <td>Each client transaction <strong>≥ US$1,000</strong> at conversion rate on day of operation</td>
-                        <td>UIF</td>
-                        <td class="num">5 bd<br><span style="font-size:0.7rem;color:var(--text-3);">after the transaction</span></td>
-                        <td>UIF Portal — one of 8 transaction-type forms</td>
-                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span></td>
-                    </tr>
-                    <tr>
-                        <td>Zero-Transaction Notification (DASP)<br><em>(Notificación de ausencia de operaciones)</em></td>
-                        <td>If no client transactions occurred during the month — must still notify UIF</td>
-                        <td>UIF</td>
-                        <td class="num">Monthly<br><span style="font-size:0.7rem;color:var(--text-3);">via CEP</span></td>
-                        <td>UIF Portal CEP channel</td>
-                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span></td>
+                        <td class="num">
+                            <strong>(a)</strong> Monthly<br>
+                            <strong>(b)</strong> 5 bd <span style="font-size:0.7rem;color:var(--text-3);">per-tx ceiling</span><br>
+                            <strong>(c)</strong> Monthly
+                        </td>
+                        <td>UIF Portal via PEA (Private Email Account) — single-file format, one of 8 transaction-type forms</td>
+                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span> (parts IV.1 / IV.2)</td>
                     </tr>
                     <tr>
                         <td>Sanctions / UNSC Freeze Report<br><em>(Reporte de congelamiento)</em></td>
@@ -2053,7 +2046,7 @@
                     </tr>
                     <tr>
                         <td>Quarterly Report — Stablecoins Admitted<br><em>(Reporte trimestral — Stablecoins admitidas)</em></td>
-                        <td>Stablecoins admitted to commercialisation in the provider's wallets / platforms</td>
+                        <td>Stablecoins <strong>admitted to trading</strong> on the provider's platform / wallets — i.e., available for clients to buy, sell or swap (issuer name, asset name, project, commercialisation start date, technical/commercial characteristics, risk evolution)</td>
                         <td>CNAD</td>
                         <td class="num">First 20 days<br><span style="font-size:0.7rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
                         <td>CNAD channel</td>
@@ -2112,8 +2105,7 @@
                     <ul>
                         <li>STR (24 h) and Attempted-Operation STR <span class="cite cite--d426">LCLDA Art. 24</span></li>
                         <li>Operación Regulada — cash &gt; $10K / other means &gt; $25K (5 bd) <span class="cite cite--instr">Instr. Art. 51</span></li>
-                        <li>Monthly Art. 52 reports — <strong>FI-only</strong>; DASPs do <strong>not</strong> file these <span class="cite cite--instr">Instr. Art. 52(a)(b)(c)</span></li>
-                        <li>DASP Monthly Client Report + Individual Tx Report (≥ $1,000 / 5 bd) + Zero-Tx Notification <span class="cite cite--instr">Acuerdo 734 § Anexo IV</span></li>
+                        <li><strong>DASP Transactional Reporting</strong> (Acuerdo 734 § Anexo IV) — single regime with three sub-reports: (a) Monthly Client Report; (b) Individual Tx Report (each ≥ US$1,000, single batched file via 8 transaction-type forms, per-tx 5 bd ceiling); (c) Zero-Tx Notification (monthly fallback if no transactions, via PEA). <span class="cite cite--instr">Acuerdo 734 § Anexo IV</span></li>
                         <li>Sanctions / UNSC freeze reports (immediate, then FGR formally orders the freeze) <span class="cite cite--lecat">LECAT Art. 37</span></li>
                         <li>CO / Alternate appointment + removal notices</li>
                         <li>BO / registration-data updates <span class="cite cite--instr">Instr. Art. 23</span></li>
@@ -2124,7 +2116,7 @@
                     <p>Receives DASP-specific licensing and supervisory reports:</p>
                     <ul>
                         <li>Quarterly — Digital Asset Issuances <span class="cite cite--rpsad">RPSAD Art. 15</span></li>
-                        <li>Quarterly — Stablecoins Admitted <span class="cite cite--rpsad">RPSAD Art. 16</span></li>
+                        <li>Quarterly — Stablecoins admitted to trading on the platform <span class="cite cite--rpsad">RPSAD Art. 16</span></li>
                         <li>Quarterly — Pricing &amp; Commissions <span class="cite cite--lead">LEAD Art. 21(m)</span></li>
                         <li>Material registration change (5 bd) <span class="cite cite--rpsad">RPSAD Art. 9</span></li>
                         <li>Cybersecurity incident (without delay) <span class="cite cite--rpsad">RPSAD Art. 27</span></li>
