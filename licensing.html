@@ -470,23 +470,44 @@
         .glossary dd {
             margin: 0.1rem 0 0.6rem; font-size: 0.8rem; color: var(--text-2);
         }
+        .faq-list {
+            display: grid; gap: 0.55rem; margin-top: 1.1rem;
+        }
         .faq-item {
-            border-bottom: 1px solid var(--border-light);
+            background: var(--white); border: 1px solid var(--border-light);
+            border-left: 1px solid var(--emerald);
+            border-radius: var(--r-sm, 8px);
+            padding: 0.85rem 1rem; transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .faq-item:hover { border-color: var(--border); }
+        .faq-item[open] {
+            border-left-color: var(--accent);
+            box-shadow: 0 1px 2px rgba(20, 20, 19, 0.04);
         }
         .faq-item summary {
-            padding: 1rem 0; cursor: pointer; font-weight: 500;
-            color: var(--navy); font-size: 0.92rem; list-style: none;
-            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; font-weight: 600; color: var(--navy);
+            font-size: 0.95rem; list-style: none; line-height: 1.45;
+            padding-right: 1.75rem; position: relative;
         }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after {
-            content: '+'; font-size: 1.3rem; color: var(--text-3);
-            transition: transform 0.2s;
+            content: '+'; color: var(--emerald); font-size: 1.25rem;
+            font-weight: 400; line-height: 1;
+            position: absolute; right: 0; top: 0.1rem;
+            transition: transform 0.2s, color 0.2s;
         }
-        .faq-item[open] summary::after { transform: rotate(45deg); }
-        .faq-item div {
-            padding: 0 0 1rem; font-size: 0.85rem; color: var(--text-2);
+        .faq-item[open] summary::after {
+            transform: rotate(45deg); color: var(--accent);
+            transform-origin: 50% 45%;
         }
+        .faq-item div, .faq-item__body {
+            padding: 0.65rem 0 0.1rem; margin-top: 0.55rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.88rem; line-height: 1.6; color: var(--text-2);
+        }
+        .faq-item div p:first-child, .faq-item__body p:first-child { margin-top: 0.4rem; }
+        .faq-item div ul, .faq-item__body ul { margin: 0.45rem 0 0.6rem; padding-left: 1.1rem; }
+        .faq-item div li, .faq-item__body li { margin-bottom: 0.3rem; }
 
         /* ── TIMELINE V2 — MODERN PHASE CARDS ── */
         .timeline {
@@ -2800,7 +2821,7 @@
     <h2 class="section__title">FAQ</h2>
     <p class="section__desc">The questions foreign founders ask most often during intake. Each answer links to the relevant section or regulation.</p>
 
-    <div style="border-top:1px solid var(--border-light);">
+    <div class="faq-list">
         <details class="faq-item">
             <summary>Do shareholders, directors or COs need to be Salvadoran residents?</summary>
             <div>Statutorily, the Compliance Officer and Alternate CO may be foreign-resident — explicit DASP exemption <span class="ref">Instr. Art. 84-B(2) Reform 1</span>. Shareholders are not subject to residency requirements under Cód. Com. Directors (Administrador/Junta Directiva) may also be foreign-resident under Salvadoran corporate law. The <strong>Representante Legal</strong> must be domiciled in El Salvador and is typically a local lawyer under a notarised power of attorney. See <a href="#personnel" style="color:var(--accent);">Personnel</a> for best-practice guidance on CO appointment.</div>
