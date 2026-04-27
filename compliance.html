@@ -1052,12 +1052,6 @@
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 52(a)(b)</span></td>
                     </tr>
                     <tr>
-                        <td>Occasional family remittance</td>
-                        <td class="num">≥ $200</td>
-                        <td><span class="pill pill--cdd">Standard CDD</span></td>
-                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 52(c)</span></td>
-                    </tr>
-                    <tr>
                         <td>Occasional cash</td>
                         <td class="num">&gt; $10,000</td>
                         <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada</td>
@@ -1157,7 +1151,7 @@
                     <tr>
                         <td><strong>2. Statutory CDD floor</strong> (occasional tx)</td>
                         <td>Standard CDD triggered when occasional transaction crosses the applicable reporting threshold for the channel.</td>
-                        <td class="num">$1,000 e-transfer<br>$200 remittance<br>$10K cash<br>$25K other</td>
+                        <td class="num">$1,000 e-transfer<br>$10K cash<br>$25K other</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Arts. 51, 52</span></td>
                     </tr>
                     <tr>
@@ -1190,7 +1184,7 @@
             <p class="tbl-note"><strong>How to read the stack:</strong> Layer 1 gates account opening. Layer 2 is the statutory CDD trigger by amount. Layer 3 catches ongoing relationships from $0. Layer 4 is the VASP-specific obligation to set own internal limits stricter than the statutory floor — non-compliance is a registration-level violation. Layer 5 is risk-based override (PEP / high-risk → EDD regardless of amount). Layer 6 attaches identifying data to every transfer regardless of amount or DD level.</p>
 
             <div class="callout callout--green" style="margin-top:1rem;">
-                <p><strong>Operational logic — why $1,000 is necessarily a CDD trigger.</strong> The mandatory $1,000 e-transfer report (Instr. Art. 52(a)(b)) is not an abstract reporting duty — it requires populating concrete fields: originator name + ID type/number + account, beneficiary name + account + bank, transaction ID. These fields cannot be filled without first identifying and verifying the customer. <strong>Therefore the reporting obligation at $1,000 mechanically requires CDD at $1,000.</strong> The same logic applies to the $200 family-remittance report and the $10K cash / $25K other-means Operación Regulada — every reporting threshold is, in operational terms, a CDD threshold.</p>
+                <p><strong>Operational logic — why $1,000 is necessarily a CDD trigger.</strong> The mandatory $1,000 e-transfer report (Instr. Art. 52(a)(b)) is not an abstract reporting duty — it requires populating concrete fields: originator name + ID type/number + account, beneficiary name + account + bank, transaction ID. These fields cannot be filled without first identifying and verifying the customer. <strong>Therefore the reporting obligation at $1,000 mechanically requires CDD at $1,000.</strong> The same logic applies to the $10K cash / $25K other-means Operación Regulada — every reporting threshold is, in operational terms, a CDD threshold.</p>
             </div>
 
             <h3>What Chapter IV-B adds on top of the general regime</h3>
@@ -1242,7 +1236,7 @@
                         <td><span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">LCLDA Art. 17</span></td>
                     </tr>
                     <tr>
-                        <td>E-tx ≥ $1,000 OR remittance ≥ $200 OR cash &gt; $10K OR other &gt; $25K</td>
+                        <td>E-tx ≥ $1,000 OR cash &gt; $10K OR other &gt; $25K</td>
                         <td><span class="pill pill--cdd">Standard CDD</span></td>
                         <td>Full identification + verification immediate (official document, not deferred) + BO chain (≥ 10% floor) + risk profile + SoF declared + report submission to UIF.</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> <span class="cite cite--instr">Instr. Arts. 12, 51, 52</span></td>
@@ -1296,7 +1290,7 @@
             </div>
 
             <div class="callout callout--blue" style="margin-top:1rem;">
-                <p><strong>How $125K interacts with the CDD framework.</strong> The Art. 22 threshold operates <em>per calendar month</em> on a single client's cumulative inflows. It is <strong>not</strong> a CDD-level trigger — a high-volume client may already be on Standard CDD (ongoing relationship) or EDD (PEP / risk factor), but crossing $125K in a month adds the documentary obligations above. For the AML manual: include $125K as an automatic monthly review trigger in the KYT escalation matrix, distinct from the $1,000 / $200 / $10K / $25K reporting / CDD thresholds.</p>
+                <p><strong>How $125K interacts with the CDD framework.</strong> The Art. 22 threshold operates <em>per calendar month</em> on a single client's cumulative inflows. It is <strong>not</strong> a CDD-level trigger — a high-volume client may already be on Standard CDD (ongoing relationship) or EDD (PEP / risk factor), but crossing $125K in a month adds the documentary obligations above. For the AML manual: include $125K as an automatic monthly review trigger in the KYT escalation matrix, distinct from the $1,000 / $10K / $25K reporting / CDD thresholds.</p>
             </div>
 
             <h3 style="margin-top:1.75rem;">DASP-specific DDC threshold cascade — UIF Acuerdo 734/2022</h3>
@@ -2515,11 +2509,11 @@
                 </details>
                 <details class="faq-item">
                     <summary>Is the $1,000 CDD trigger for DASPs binding?</summary>
-                    <div class="faq-item__body">Yes — by both statutory chain and operational necessity. <strong>Statutory chain:</strong> LCLDA Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers that threshold is <strong>$1,000</strong> per Instr. Art. 52(a)(b); for family remittances <strong>$200</strong> per Art. 52(c); for cash <strong>$10K</strong> per Art. 51; for other means <strong>$25K</strong> per Art. 51. <strong>Operational necessity:</strong> the $1,000 e-transfer report itself requires originator name / ID / account + beneficiary name / account / bank + transaction ID — fields that cannot be populated without CDD on the customer. So even setting the statutory chain aside, the $1,000 reporting obligation mechanically requires CDD at the same amount. Internal AML policy may calibrate stricter thresholds under FATF R.10. STR-related suspicion triggers full CDD irrespective of amount.</div>
+                    <div class="faq-item__body">Yes — by both statutory chain and operational necessity. <strong>Statutory chain:</strong> LCLDA Art. 15(b) anchors the CDD trigger to the applicable reporting threshold for the relevant transaction type. For e-transfers that threshold is <strong>$1,000</strong> per Instr. Art. 52(a)(b); for cash <strong>$10K</strong> per Art. 51; for other means <strong>$25K</strong> per Art. 51. <strong>Operational necessity:</strong> the $1,000 e-transfer report itself requires originator name / ID / account + beneficiary name / account / bank + transaction ID — fields that cannot be populated without CDD on the customer. So even setting the statutory chain aside, the $1,000 reporting obligation mechanically requires CDD at the same amount. Internal AML policy may calibrate stricter thresholds under FATF R.10. STR-related suspicion triggers full CDD irrespective of amount.</div>
                 </details>
                 <details class="faq-item">
                     <summary>Why does the Travel Rule apply at any amount but Standard CDD only above $1,000?</summary>
-                    <div class="faq-item__body">Two different obligations. <strong>Travel Rule</strong> (Instr. Art. 52 par. 2 Reform 2) requires originator + beneficiary fields on every electronic transfer regardless of amount — the Spanish CAPS text explicitly says "<em>even those that do not exceed the established thresholds</em>". <strong>Standard CDD</strong> (LCLDA Art. 15(b)) is triggered when the amount crosses the relevant reporting threshold for the transaction type ($1,000 e-transfer / $200 remittance / $10K cash / $25K other). Below $1,000 e-transfer with no risk factor: Simplified DD applies (LCLDA Art. 17 / Instr. Art. 14) — identification with deferred verification, reduced monitoring — plus Travel Rule data + sanctions screen on every transfer regardless.</div>
+                    <div class="faq-item__body">Two different obligations. <strong>Travel Rule</strong> (Instr. Art. 52 par. 2 Reform 2) requires originator + beneficiary fields on every electronic transfer regardless of amount — the Spanish CAPS text explicitly says "<em>even those that do not exceed the established thresholds</em>". <strong>Standard CDD</strong> (LCLDA Art. 15(b)) is triggered when the amount crosses the relevant reporting threshold for the transaction type ($1,000 e-transfer / $10K cash / $25K other). Below $1,000 e-transfer with no risk factor: Simplified DD applies (LCLDA Art. 17 / Instr. Art. 14) — identification with deferred verification, reduced monitoring — plus Travel Rule data + sanctions screen on every transfer regardless.</div>
                 </details>
                 <details class="faq-item">
                     <summary>Where is the Travel Rule statutory anchor for VASPs?</summary>
@@ -2564,7 +2558,7 @@
             <dl class="gloss">
                 <div><dt>AML / CTF</dt><dd>Anti-Money Laundering / Counter-Terrorism Financing.</dd></div>
                 <div><dt>BO / UBO</dt><dd>Beneficial Owner / Ultimate Beneficial Owner — the natural person who ultimately owns or controls the client. Three statutory definitions: ≥10% capital / voting / control by other means (Instr. Arts. 12 last sentence, 20(b) — apply as floor); ≥25% (LCLDA Art. 15 par. 5); majority shareholding + control catch-all + highest-ranking management fallback (Instr. Art. 21-A Reform 2). Independent of %, UBO also covers the natural person on whose behalf the relationship is sought (Art. 20(a) — nominee detection). Listed-company exception applies for stock-exchange-listed customers subject to disclosure regime. Trusts: identify all parties — settlor, trustee, protector, beneficiaries, controllers (Instr. Arts. 21, 21-A).</dd></div>
-                <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12. Triggered by ongoing relationship (LCLDA Art. 15(a)) or occasional transaction at or above the applicable reporting threshold for the transaction type (LCLDA Art. 15(b) → Instr. Arts. 51, 52): <strong>$1,000</strong> e-transfer (Art. 52(a)(b)) · <strong>$200</strong> remittance (Art. 52(c)) · <strong>$10K</strong> cash (Art. 51) · <strong>$25K</strong> other means (Art. 51). STR-related suspicion triggers full CDD irrespective of amount.</dd></div>
+                <div><dt>CDD</dt><dd>Customer Due Diligence — measures in Instr. Art. 12. Triggered by ongoing relationship (LCLDA Art. 15(a)) or occasional transaction at or above the applicable reporting threshold for the transaction type (LCLDA Art. 15(b) → Instr. Arts. 51, 52): <strong>$1,000</strong> e-transfer (Art. 52(a)(b)) · <strong>$10K</strong> cash (Art. 51) · <strong>$25K</strong> other means (Art. 51). STR-related suspicion triggers full CDD irrespective of amount.</dd></div>
                 <div><dt>CO / Alternate CO</dt><dd>Compliance Officer / Alternate Compliance Officer. AML/CFT-certified, UIF-registered. Both may be foreign-resident with an employment relationship to the entity (Instr. Art. 84-B(2) Reform 1). <strong>Best practice:</strong> Salvadoran-resident Principal CO for smoother CNAD review.</dd></div>
                 <div><dt>CNAD</dt><dd>Comisión Nacional de Activos Digitales — Salvadoran DASP supervisory authority. Issues PSAD registration; enforces RPSAD; receives DASP-specific filings.</dd></div>
                 <div><dt>LCLDA</dt><dd><em>Ley Contra el Lavado de Dinero y Activos</em> — Decree 426/2025. Special Law for the Prevention, Control and Punishment of Asset Laundering, Financing of Terrorism, and Financing of the Proliferation of Weapons of Mass Destruction. The current AML/CFT/CFP Law (replaces D-498/1998).</dd></div>

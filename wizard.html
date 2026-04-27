@@ -377,7 +377,7 @@
                     <label class="chip" title="Physical cash in/out at point-of-service (kiosk, branch, OTC desk). Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
                     <label class="chip" title="Voucher, gift-card, money order, cashier's check or other non-electronic non-cash instrument. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
                 </div>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. Crypto↔fiat via card / bank wire = E-transfer. Cash leg at kiosk = Cash. Voucher / gift-card = Other. For family remittances, also tick the purpose flag below.</p>
+                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. Crypto↔fiat via card / bank wire = E-transfer. Cash leg at kiosk = Cash. Voucher / gift-card = Other.</p>
             </fieldset>
 
             <fieldset class="form__field form__field--span-3">
@@ -385,10 +385,6 @@
                 <div class="amount-wrap">
                     <input type="number" id="wiz-amount" class="input" value="500" min="0" step="100">
                 </div>
-                <fieldset style="margin-top:0.65rem; padding:0; border:none;">
-                    <legend class="field__legend" style="margin-bottom:0.35rem;">Transaction purpose</legend>
-                    <label class="chip" title="Tick if this is a cross-border family remittance (diaspora → ES). Applies regardless of channel — Standard CDD triggered from $200 per Instructivo UIF."><input type="checkbox" name="purpose" value="remittance"> Family remittance</label>
-                </fieldset>
             </fieldset>
 
             <fieldset class="form__field form__field--span-6">
@@ -453,7 +449,6 @@
     function readState() {
         const fd = new FormData(form);
         const factors = fd.getAll('f');
-        const purposes = fd.getAll('purpose');
         const jurOpt = jurEl.options[jurEl.selectedIndex];
         return {
             clientType: fd.get('clientType'),
@@ -463,9 +458,6 @@
             jur: jurEl.value,
             jurName: jurOpt.text,
             jurCat: jurOpt.dataset.cat || '',
-            purpose: {
-                remittance: purposes.includes('remittance'),
-            },
             f: {
                 sanctions: factors.includes('sanctions'),
                 pep: factors.includes('pep'),
@@ -513,9 +505,6 @@
             reason: 'DASP operation > US$4,000 — automatic EDD (intensificada) per UIF Acuerdo 734/2022 § V.2.b.II. Senior-management approval + documentary SoF + SoW required regardless of risk factors.', triggers: ['amount > $4,000 (Acuerdo 734)'] };
 
         // ── Standard CDD path — DASP cascade $1K–$4K + Operación Regulada thresholds ──
-        // Purpose flag: family remittance triggers Standard CDD from $200 regardless of rail (Instructivo UIF).
-        if (s.purpose.remittance && amt >= 200) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'Family remittance ≥ $200 — Standard CDD triggered (Instructivo UIF). Applies regardless of channel.' };
         if (ch === 'etransfer' && amt > 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'DASP operation US$1,000–$4,000 — Standard CDD (estándar) per UIF Acuerdo 734/2022 § V.2.b.II.' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
@@ -688,20 +677,6 @@
                     ]
                 ));
             }
-            // Family remittance — purpose-flag obligations (independent of channel)
-            if (s.purpose.remittance) {
-                parts.push(block('block--blue',
-                    'Family remittance — purpose-specific',
-                    [
-                        'Sender + receiver paired identity verification (full name, DUI / passport / ID, relationship)',
-                        'Source-of-funds declaration from sender (employment / business / sale / etc.)',
-                        'Purpose-of-payment captured (family support / education / medical / housing / other)',
-                        'Cross-border KYT — sender-jurisdiction sanctions screen + corridor-specific monitoring',
-                        'Paired-account behaviour monitoring (smurfing / informal-network detection across receivers)',
-                        'CDD threshold floor: <strong>$200</strong> per Instructivo UIF (lower than standard $1,000)',
-                    ]
-                ));
-            }
         }
 
         // ── Reporting obligations ──
@@ -773,7 +748,6 @@
         amountEl.value = 500;
         jurEl.selectedIndex = 0;
         form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
-        form.querySelectorAll('input[name="purpose"]').forEach(i => i.checked = false);
         render();
     });
 
@@ -786,7 +760,6 @@
             if (jurEl.options[i].value === 'edd') { jurEl.selectedIndex = i; break; }
         }
         form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
-        form.querySelectorAll('input[name="purpose"]').forEach(i => i.checked = false);
         form.querySelector('input[name="f"][value="pep"]').checked = true;
         form.querySelector('input[name="f"][value="opaque"]').checked = true;
         render();
