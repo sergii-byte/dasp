@@ -514,6 +514,10 @@
             font-size: 0.78rem; color: var(--text-3);
         }
         .legend__item { display: inline-flex; align-items: center; gap: 0.25rem; }
+        .legend__title {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3);
+        }
 
         @media print {
             .topbar, .sidebar, .footer { display: none; }
@@ -604,7 +608,7 @@
             <h1 class="hero__title">AML &amp; <em>Compliance</em><br>for the DASP</h1>
             <p class="hero__lead">A daily reference for the Compliance Officer of any Salvadoran DASP. Customer due diligence by statutory trigger, identity verification, the Travel Rule, the full reporting hub, suspicious-transaction flow, sanctions, and PEP screening, records retention, etc.</p>
             <div class="legend" style="margin-top:1rem;">
-                <span style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);">Citation legend</span>
+                <span class="legend__title">Citation legend</span>
                 <span class="legend__item"><span class="cite cite--d426">LCLDA Art.</span> AML Law (statute)</span>
                 <span class="legend__item"><span class="cite cite--instr">Instr. Art.</span> UIF Instructivo</span>
                 <span class="legend__item"><span class="cite cite--lecat">LECAT Art.</span> Counter-terrorism law</span>
