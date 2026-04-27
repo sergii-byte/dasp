@@ -990,20 +990,20 @@
             <table class="tbl">
                 <thead><tr><th>Risk classification</th><th>DD level</th><th>Monitoring</th><th>Refresh cadence</th><th>Senior approval</th></tr></thead>
                 <tbody>
-                    <tr><td><span class="pill pill--no">Low</span></td><td>Simplified DD (Art. 14)</td><td>Reduced (per reasonable monetary threshold)</td><td>Reduced frequency (industry: every 3 yr)</td><td>Not required</td></tr>
-                    <tr><td><span class="pill pill--cdd">Medium / Standard</span></td><td>Standard CDD (Art. 12)</td><td>Standard cadence</td><td>Standard (every relationship review; industry: every 3 yr)</td><td>Not required</td></tr>
+                    <tr><td><span class="pill pill--no">Low</span></td><td>Simplified DD (Art. 14)</td><td>Reduced (per reasonable monetary threshold)</td><td>Reduced frequency (per AML Policy under Instr. Art. 23)</td><td>Not required</td></tr>
+                    <tr><td><span class="pill pill--cdd">Medium / Standard</span></td><td>Standard CDD (Art. 12)</td><td>Standard cadence</td><td>Standard (every relationship review; per AML Policy)</td><td>Not required</td></tr>
                     <tr><td><span class="pill pill--edd">High</span></td><td>Enhanced DD (Art. 13 Reform 2)</td><td>Enhanced — KYT every transaction</td><td>Annual + on every material change</td><td><strong>Required</strong> (LCLDA Art. 19 + Instr. Art. 13(c))</td></tr>
                 </tbody>
             </table>
             </div>
             <p class="tbl-note"><strong>Override rule:</strong> any STR-relevant suspicion forces full CDD + STR pipeline regardless of classification (Art. 4 §4 + Art. 14 last par.). Risk classification is a <em>baseline</em>, not a ceiling — a Standard-classified customer with a high-risk transaction triggers enhanced measures for that specific transaction.</p>
 
-            <h3 style="margin-top:1.5rem;">Annual Risk Assessment refresh — practical cadence</h3>
+            <h3 style="margin-top:1.5rem;">Risk Assessment refresh — practical cadence</h3>
             <div class="grid grid--2">
                 <div class="card card--green">
                     <div class="card__title">Entity-level risk assessment</div>
                     <ul>
-                        <li><strong>Annual</strong> full review by CO + Prevention Committee</li>
+                        <li><strong>Periodic</strong> full review by CO (cadence per AML Policy under Instr. Art. 23)</li>
                         <li>Documented methodology (FATF-aligned + per Art. 4)</li>
                         <li>Inputs: business mix, customer base, geographic footprint, product launches, regulatory updates</li>
                         <li>Output: updated risk appetite + matrix calibration + control adequacy assessment</li>
@@ -1015,7 +1015,7 @@
                     <div class="card__title">Customer-level risk classification refresh</div>
                     <ul>
                         <li><strong>High-risk:</strong> annual + on every material change + at any time per Art. 23</li>
-                        <li><strong>Standard:</strong> per entity's own manual cadence (industry: every 3 yr)</li>
+                        <li><strong>Standard:</strong> per entity's own manual cadence (per AML Policy under Instr. Art. 23)</li>
                         <li><strong>Low (SDD):</strong> reduced cadence per Art. 14(b)</li>
                         <li>Trigger-based out-of-cycle refresh on: BO change ≥10%, new PEP status, sanctions update, profile inconsistency, jurisdiction reclassification, adverse media</li>
                         <li>Reclassification to high-risk → 60 calendar days to update if data &gt; 1 year stale (Art. 23)</li>
@@ -1106,7 +1106,7 @@
                 </thead>
                 <tbody>
                     <tr><td>Government photo ID</td><td>Required · <em>verification may be deferred</em> until after relationship begins</td><td>Required · official document, verified BEFORE relationship</td><td>Required · two IDs preferred</td></tr>
-                    <tr><td>Address (utility ≤3m / bank statement / registry)</td><td>Self-declared</td><td>Documented</td><td>Documented · independently verified</td></tr>
+                    <tr><td>Address (utility bill (recent) / bank statement / registry)</td><td>Self-declared</td><td>Documented</td><td>Documented · independently verified</td></tr>
                     <tr><td>Occupation (natural person)</td><td>Self-declared</td><td>Self-declared</td><td>Documented · employer letter / payslip</td></tr>
                     <tr><td>Date of birth (natural person)</td><td>Required</td><td>Required</td><td>Required</td></tr>
                     <tr><td>Nature of main activity (legal entity)</td><td>Inferred from transaction pattern</td><td>Documented · per registry</td><td>Documented + verified vs. counterparties</td></tr>
@@ -1212,7 +1212,7 @@
             </div>
 
             <div class="callout callout--blue" style="margin-top:1rem;">
-                <p>Practical implication for the AML manual. Because Art. 84-B(1)(b) <em>requires</em> internal transaction-limit policies, the VASP cannot simply quote the statutory floor and stop there. The AML manual must publish concrete VASP-specific limits — typically calibrated <strong>at or below</strong> the statutory floor (e.g., trigger Standard CDD at $500 e-transfer instead of $1,000) — and link each limit to the corresponding DD tier and monitoring intensity. CNAD reviews these internal limits as part of the AML manual sign-off during registration and ongoing supervision.</p>
+                <p>Practical implication for the AML manual. Because Art. 84-B(1)(b) <em>requires</em> internal transaction-limit policies, the VASP cannot simply quote the statutory floor and stop there. The AML manual must publish concrete VASP-specific limits — typically calibrated <strong>at or below</strong> the statutory floor (internal trigger thresholds set per the entity's risk-based assessment) — and link each limit to the corresponding DD tier and monitoring intensity. CNAD reviews these internal limits as part of the AML manual sign-off during registration and ongoing supervision.</p>
             </div>
 
             <h3 style="margin-top:1.5rem;">DD level cascade for occasional VASP transactions</h3>
@@ -1244,7 +1244,7 @@
                     <tr>
                         <td>Any amount + risk factor (PEP, high-risk jurisdiction, opaque ownership, structuring, profile deviation, flagged wallet, third-party funder, adverse media)</td>
                         <td><span class="pill pill--edd">EDD</span></td>
-                        <td>Standard CDD measures + senior-management written approval + documentary SoF + SoW + enhanced monitoring (KYT every transaction). Annual EDD refresh.</td>
+                        <td>Standard CDD measures + senior-management written approval + documentary SoF + SoW + enhanced monitoring. Periodic EDD refresh per <span class="cite cite--instr">Instr. Art. 23</span>.</td>
                         <td><span class="cite cite--d426">LCLDA Art. 19</span> <span class="cite cite--instr">Instr. Art. 13 Reform 2</span></td>
                     </tr>
                     <tr>
@@ -1390,7 +1390,7 @@
                         <li><strong>Full name</strong> as on official document</li>
                         <li>Type and number of ID (DUI, passport, residence card)</li>
                         <li><strong>Date of birth</strong></li>
-                        <li><strong>Address</strong> (utility ≤3 months / bank statement / registry)</li>
+                        <li><strong>Address</strong> (utility bill (recent) / bank statement / registry)</li>
                         <li><strong>Occupation</strong> (real economic activity, not just DUI/NIT data)</li>
                         <li><strong>Tax ID (NIT)</strong> if applicable</li>
                         <li>PEP self-declaration + screening</li>
@@ -1497,7 +1497,7 @@
                 </div>
                 <div class="card card--blue">
                     <div class="card__title">Out-of-cycle refresh triggers (industry practice)</div>
-                    <p class="card__sub">FATF R.10 baseline that operationally satisfies Art. 23</p>
+                    <p class="card__sub">FATF R.10 informs the risk-based approach reflected in Instr. Arts. 10, 14 and 23 (statute does not import FATF directly; alignment is by parallel design)</p>
                     <ul>
                         <li>Change in ownership ≥10%</li>
                         <li>Change in authorised signatories</li>
@@ -1507,7 +1507,7 @@
                         <li>Material deviation from declared activity profile</li>
                         <li>Cross-border counterparty in newly EDD-listed jurisdiction</li>
                     </ul>
-                    <div class="card__foot">Scheduled cadence (industry practice, not statutory): Standard CDD every 3 yr · EDD annually · half-yearly when residual risk is very high.</div>
+                    <div class="card__foot">Scheduled refresh cadence is set in the entity's AML Policy under the risk-based approach (Instr. Art. 23 — periodic update + immediate update on reclassification to high-risk within 60 calendar days).</div>
                 </div>
             </div>
 
@@ -1706,7 +1706,7 @@
                 <li>Senior-management written approval to establish or continue the relationship <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></li>
                 <li>Source of funds + Source of wealth — both documented</li>
                 <li>Enhanced ongoing monitoring</li>
-                <li>Re-screen at every annual review and on any role change</li>
+                <li>Re-screen on any material change (role change, new appointment, persistence-period expiry); cadence per AML Policy under <span class="cite cite--instr">Instr. Art. 23</span></li>
                 <li>UIF maintains and updates the national PEP-position list <span class="cite cite--d426">LCLDA Art. 19</span></li>
             </ul>
 
@@ -1769,7 +1769,7 @@
             </div>
 
             <div class="callout callout--info">
-                <p>Restricted jurisdictions list. Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines: (i) FATF Call for Action (DPRK, Iran, Myanmar) and UNSC-sanctioned states → geofence + reject; (ii) OFAC-comprehensive countries (Cuba, Crimea / DNR / LNR Ukraine) → geofence + reject; (iii) crypto-banned countries (China, Bangladesh, Egypt, Morocco, Algeria, Nepal, Oman, Qatar, Tunisia) → geofence + reject; (iv) FATF Grey List + partial-sanctions countries → EDD + senior approval.</p>
+                <p>Restricted jurisdictions list. Maintain an internal Restricted Jurisdictions list as part of the Risk Management Policy. The model used by the <a href="/wizard.html">Decision Wizard</a> combines: (i) FATF Call for Action (DPRK, Iran, Myanmar) and UNSC-sanctioned states → geofence + reject; Beyond UNSC + UIF national lists (which are statutorily binding under LECAT Art. 37), the following are commonly added by the entity's risk-management policy as commercial-risk exclusions: (ii) OFAC-comprehensive countries (Cuba, Crimea / DNR / LNR Ukraine) → geofence + reject; (iii) crypto-banned countries (China, Bangladesh, Egypt, Morocco, Algeria, Nepal, Oman, Qatar, Tunisia) → geofence + reject; (iv) FATF Grey List + partial-sanctions countries → EDD + senior approval.</p>
             </div>
 
             <div class="callout callout--amber" style="margin-top:0.75rem;">
@@ -2033,17 +2033,17 @@
                         <td>Prevention Committee Meeting<br><em>(Comité de Prevención LDA/FT/FPADM)</em></td>
                         <td>Min 3 members (one from highest governing body + the CO); meet on regular cadence to support the Compliance Office</td>
                         <td>Internal (minutes book); members notified to UIF</td>
-                        <td class="num">Quarterly<br><span style="font-size:0.7rem;color:var(--text-3);">industry standard / Instr. Art. 68 for SSF</span></td>
+                        <td class="num">Quarterly applies to SSF-supervised entities (Instr. Art. 68)<br><span style="font-size:0.7rem;color:var(--text-3);">For CNAD-supervised DASPs, the AML Policy sets cadence under RBA</span></td>
                         <td>Committee minutes + agreements</td>
-                        <td><span class="cite cite--d426">LCLDA Art. 23</span> · <span class="cite cite--instr">Instr. Art. 68</span></td>
+                        <td><span class="cite cite--d426">LCLDA Art. 23</span> · <span class="cite cite--instr">Instr. Art. 68</span> <em>(SSF only)</em></td>
                     </tr>
                     <tr>
                         <td>CO Report to Governing Body<br><em>(Informe del Oficial de Cumplimiento)</em></td>
                         <td>Written report on AML management, STR forwarding, control effectiveness, regulatory pronouncements</td>
                         <td>Highest governing body (Board)</td>
-                        <td class="num">Semi-annual<br><span style="font-size:0.7rem;color:var(--text-3);">at minimum</span></td>
+                        <td class="num">Semi-annual minimum (SSF only)<br><span style="font-size:0.7rem;color:var(--text-3);">CNAD-supervised DASPs: cadence per AML Policy</span></td>
                         <td>Written report (in person or remote)</td>
-                        <td><span class="cite cite--instr">Instr. Art. 67(b)</span></td>
+                        <td><span class="cite cite--instr">Instr. Art. 67(b)</span> <em>(SSF-supervised entities)</em></td>
                     </tr>
                     <tr>
                         <td>BO / Registration Data Update<br><em>(Actualización de beneficiario final)</em></td>
@@ -2234,16 +2234,16 @@
                         <td><span class="cite cite--d426">LCLDA Art. 20</span> · <span class="cite cite--instr">Instr. Art. 84-B(2) Reform 1</span></td>
                     </tr>
                     <tr>
-                        <td>Prevention Committee quarterly meeting</td>
+                        <td>Prevention Committee meeting</td>
                         <td>Signed minutes + attendance log + agreements / decisions; CO attendance evidenced</td>
-                        <td class="num">Quarterly cadence</td>
-                        <td><span class="cite cite--d426">LCLDA Art. 23</span> · <span class="cite cite--instr">Instr. Art. 68</span></td>
+                        <td class="num">Quarterly applies to SSF-supervised entities (Instr. Art. 68); for CNAD-supervised DASPs, the AML Policy sets cadence under RBA</td>
+                        <td><span class="cite cite--d426">LCLDA Art. 23</span> · <span class="cite cite--instr">Instr. Art. 68</span> <em>(SSF only)</em></td>
                     </tr>
                     <tr>
                         <td>CO semi-annual report to Board</td>
                         <td>Written report on AML management, STR forwarding, control effectiveness, regulatory pronouncements; Board acknowledgement / decisions captured</td>
-                        <td class="num">Semi-annual minimum</td>
-                        <td><span class="cite cite--instr">Instr. Art. 67(b)</span></td>
+                        <td class="num">Semi-annual minimum (SSF-supervised); CNAD DASPs: per AML Policy</td>
+                        <td><span class="cite cite--instr">Instr. Art. 67(b)</span> <em>(SSF only; for CNAD DASPs internal cadence is set in AML Policy)</em></td>
                     </tr>
                     <tr>
                         <td>Annual Internal AML Audit</td>
@@ -2285,9 +2285,9 @@
                 <thead><tr><th>Event / trigger</th><th>Document type</th><th>Internal SLA</th><th>Anchor</th></tr></thead>
                 <tbody>
                     <tr>
-                        <td>Annual entity-level risk assessment</td>
-                        <td>Methodology + inputs (business mix, customer base, geographic footprint, product launches, regulatory updates); risk appetite update; matrix calibration; control adequacy review; Board approval</td>
-                        <td class="num">Annual</td>
+                        <td>Periodic entity-level risk assessment</td>
+                        <td>Methodology + inputs (business mix, customer base, geographic footprint, product launches, regulatory updates); risk appetite update; matrix calibration; control adequacy review; Board approval. Specific cadence is set in the AML Policy.</td>
+                        <td class="num">Periodic per AML Policy</td>
                         <td><span class="cite cite--instr">Instr. Art. 4</span></td>
                     </tr>
                     <tr>
@@ -2305,7 +2305,7 @@
                     <tr>
                         <td>Resolution Plan</td>
                         <td>Plan providing for orderly + solvent liquidation; covers BSP + DASP rails if both held; reviewed during CNAD ongoing supervision</td>
-                        <td class="num">Maintained at all times; reviewed annually</td>
+                        <td class="num">Maintained at all times; reviewed periodically per AML Policy</td>
                         <td><span class="cite cite--lead">LEAD Art. 21(p)</span> · <span class="cite cite--instr">Instr. Art. 84-B(9) Reform 1</span></td>
                     </tr>
                     <tr>
@@ -2565,7 +2565,7 @@
                 <div><dt>D-108</dt><dd>Decree 108 — Special Law against Acts of Terrorism (LECAT). Source of the UNSC sanctions freeze obligation (Art. 37).</dd></div>
                 <div><dt>DASP / PSAD</dt><dd>Digital Asset Service Provider / Proveedor de Servicios de Activos Digitales. Licensed by CNAD under LEAD. In the Instructivo, called "Provider of Virtual Asset Services" (Arts. 84-A/84-B/84-C Reform 1).</dd></div>
                 <div><dt>EDD</dt><dd>Enhanced Due Diligence — Instr. Art. 13 (Reform 2) measures. Triggered by any risk factor regardless of amount. Requires senior-management written approval.</dd></div>
-                <div><dt>FATF R.16</dt><dd>FATF Recommendation 16 — wire-transfer / Travel Rule standard. Imported into Salvadoran statute via Instructivo Art. 52 par. 2 reformed and Art. 84-B(1)(e) Reform 1.</dd></div>
+                <div><dt>FATF R.16</dt><dd>FATF Recommendation 16 — wire-transfer / Travel Rule standard. Reflected in Salvadoran statute via Instructivo Art. 52 par. 2 (Reform 2) by parallel design and Art. 84-B(1)(e) Reform 1.</dd></div>
                 <div><dt>goAML</dt><dd>UNODC-developed FIU reporting platform — El Salvador's UIF uses goAML for STR, Operación Regulada, monthly Art. 52 reports, and freeze notifications.</dd></div>
                 <div><dt>Identity verification</dt><dd>Reform 2 obligation under Instr. Art. 12: customer / user identity must be verified BEFORE the commercial relationship begins, via official identification documents issued by competent public authorities. If not verified, the relationship cannot start.</dd></div>
                 <div><dt>Instructivo UIF</dt><dd>Operational rulebook from the Financial Investigation Unit. Reform 1 added VASP-specific provisions (Arts. 84-A, 84-B, 84-C); Reform 2 amended CDD (Art. 12), EDD (Art. 13) and Travel Rule (Art. 52 par. 2).</dd></div>

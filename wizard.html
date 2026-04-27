@@ -420,7 +420,7 @@
                 <select id="wiz-jur" class="select">
                     <option value="standard" data-cat="">Approved — El Salvador or FATF-compliant jurisdiction (standard CDD)</option>
                     <option value="edd" data-cat="FATF Grey List / partial sanctions">High-risk — FATF Grey List or partial sanctions (EDD required)</option>
-                    <option value="reject" data-cat="UN sanctions / OFAC comprehensive / crypto-ban / FATF Call for Action">Restricted — UN / OFAC / crypto-ban / FATF Call for Action (geofence → Reject)</option>
+                    <option value="reject" data-cat="UN sanctions / OFAC comprehensive / crypto-ban / FATF Call for Action">Restricted — UN sanctions (statutory) + OFAC / crypto-ban / FATF Call for Action (entity policy) → Reject</option>
                 </select>
                 <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;">Three working buckets — pick the one the counterparty falls into. <strong>High-risk</strong> = FATF Grey List + partial sanctions regimes. <strong>Restricted</strong> = UN Security Council lists, OFAC comprehensive, national crypto-bans and FATF Call for Action. Lists verified Q1 2026 — <strong>refresh after each FATF plenary</strong> (Feb / Jun / Oct). Salvadoran statute binds UNSC + UIF national lists only; OFAC / EU / UK enter through banking-partner contracts and USD-corridor exposure.</p>
             </fieldset>
@@ -649,7 +649,7 @@
         if (d.v === 'cdd' || d.v === 'edd') {
             const cdd = s.clientType === 'natural' ? [
                 'Government photo ID (DUI / passport / residence)',
-                'Address proof (utility ≤3m / bank statement)',
+                'Address proof (utility bill (recent) / bank statement)',
                 'Occupation declared (documented at EDD)',
                 'Date of birth',
                 'Tax ID (NIT) if applicable',
@@ -657,7 +657,7 @@
                 'Expected activity profile (volume, frequency)',
             ] : [
                 'Articles of incorporation (escritura)',
-                'Commercial registry extract (≤3m)',
+                'Commercial registry extract (recent)',
                 'NIT + operating licence',
                 'Board / assembly resolution authorising relationship',
                 'Shareholder register — chain to natural BO (≥10% floor)',
@@ -679,10 +679,10 @@
                     '<strong>Senior-management written approval</strong> to open / continue (dated, signed)',
                     '<strong>Source of Funds</strong> documentary (payslip / contract / invoice / bank statement)',
                     '<strong>Source of Wealth</strong> documentary (asset declaration, deeds, financial statements)',
-                    'Two government IDs preferred (natural person)',
+                    'Reinforced identity verification (specific document set at entity discretion under risk-based approach)',
                     'Audited financials if size warrants (legal entity)',
                     'Enhanced ongoing monitoring — KYT on every transaction',
-                    'Annual EDD refresh',
+                    'Periodic EDD refresh on any material change <span class="cite cite--instr">Instr. Art. 23</span>',
                 ]
             ));
 
@@ -693,7 +693,7 @@
                         'PEP file with category (national / foreign / international organisation)',
                         'Family ≤ 2nd degree + spouses + close associates screened as PEP-related',
                         'Status persists 5 years post-cease of public function',
-                        'Annual PEP re-check; senior-mgmt approval at each review',
+                        'PEP status persists 5 years post-cease of public function; re-screen on any material change <span class="cite cite--d426">LCLDA Art. 19</span>',
                     ]
                 ));
             }
