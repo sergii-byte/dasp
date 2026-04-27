@@ -95,9 +95,54 @@
     updates.forEach(function (n) { n.nodeValue = curlyQuote(n.nodeValue); });
   };
 
+  /* ----- Deadline highlighter — wraps "10 bd" / "24 h" / "6 months" etc. ----- */
+  // Matches:  <number><opt-decimal/range><opt-spaces><unit>
+  //   units: bd | wd | h(ours?) | wk(s)? / week(s)? | mo(s)? / month(s)? | yr(s)? / year(s)? | day(s)?
+  // Examples covered: 10 bd · 5wd · 24 h · 24 hours · 5 wd · 6 months · 15 yr · 8–12 months · 2–3 weeks
+  const DEADLINE_RX = /(\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?)(\s|&nbsp;| )?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b/gi;
+
+  const initDeadlines = function () {
+    const root = document.body;
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !DEADLINE_RX.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+        DEADLINE_RX.lastIndex = 0; // reset stateful regex
+        let p = node.parentNode;
+        while (p && p !== root) {
+          if (SKIP_TAGS.has(p.nodeName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('deadline') || SKIP_CLASS_RX.test(p.className || ''))) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const targets = [];
+    let n;
+    while ((n = walker.nextNode())) targets.push(n);
+    targets.forEach(function (textNode) {
+      const text = textNode.nodeValue;
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      let m;
+      DEADLINE_RX.lastIndex = 0;
+      while ((m = DEADLINE_RX.exec(text)) !== null) {
+        const start = m.index;
+        if (start > lastIndex) fragment.appendChild(document.createTextNode(text.slice(lastIndex, start)));
+        const span = document.createElement('span');
+        span.className = 'deadline';
+        span.textContent = m[0];
+        fragment.appendChild(span);
+        lastIndex = start + m[0].length;
+      }
+      if (lastIndex < text.length) fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+      if (fragment.childNodes.length) textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  };
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { initSpy(); initQuotes(); });
+    document.addEventListener('DOMContentLoaded', function () { initSpy(); initQuotes(); initDeadlines(); });
   } else {
-    initSpy(); initQuotes();
+    initSpy(); initQuotes(); initDeadlines();
   }
 })();

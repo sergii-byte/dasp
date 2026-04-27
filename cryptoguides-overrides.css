@@ -510,6 +510,28 @@ a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a
 .tag--red   { background: #F4E1DD; color: #A53321; border-color: transparent; }
 .tag--blue  { background: #E0E8F4; color: #2D4F86; border-color: transparent; }
 
+/* ---------- Deadlines — auto-highlighted by scrollspy.js ---------- */
+.deadline {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.92em;
+  letter-spacing: 0.01em;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  padding: 0 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+/* Inside callouts / strong / dark contexts, keep the highlight subtle */
+.callout--blue .deadline,
+.callout--amber .deadline,
+.callout--red .deadline,
+.callout--green .deadline {
+  background: rgba(255, 255, 255, 0.55);
+}
+strong .deadline { font-weight: 700; }
+
 /* ---------- Citations / refs — quiet typographic chip ---------- */
 .ref, .cite, .ref-cite {
   font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
