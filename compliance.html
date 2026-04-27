@@ -646,9 +646,9 @@
                             <tr><td>STR (signed determination)</td><td>Any amount</td><td class="num">24 h</td></tr>
                             <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd</td></tr>
                             <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd</td></tr>
-                            <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size:0.72rem;color:var(--text-2);padding-top:0.45rem;">DASP Transactional Reporting (Acuerdo 734 § Anexo IV)</td></tr>
+                            <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size:0.7rem;color:var(--text-2);padding-top:0.45rem;text-transform:uppercase;letter-spacing:0.04em;">DASP Transactional Reporting (Acuerdo 734 § Anexo IV)</td></tr>
                             <tr><td>(a) Monthly Client Report</td><td>Active/inactive/disconnected</td><td><span class="deadline">Monthly</span></td></tr>
-                            <tr><td>(b) Individual Tx Report (single file, 8 forms)</td><td class="num">each tx ≥ $1,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">per-tx ceiling</span></td></tr>
+                            <tr><td>(b) Individual Tx Report (single file, 8 forms)</td><td class="num">each tx ≥ $1,000</td><td class="num">5 bd</td></tr>
                             <tr><td>(c) Zero-Tx Notification (via PEA)</td><td>If no tx that month</td><td><span class="deadline">Monthly</span></td></tr>
                             <tr><td>Sanctions / UNSC freeze</td><td>List match</td><td><span class="deadline">Without delay</span></td></tr>
                         </tbody>
@@ -660,7 +660,7 @@
                 <div class="qrc-box qrc-box--green">
                     <h3>Travel Rule — VASP data on every transfer</h3>
                     <p style="font-size:0.78rem; margin:0 0 0.4rem;"><strong>VASP scope: any digital-asset transfer · any amount ($0 floor).</strong> The data set applies even to transfers that do not exceed the established thresholds.</p>
-                    <p style="font-size:0.72rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
+                    <p style="font-size:0.78rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
                     <p class="qrc-foot"><span class="cite cite--instr">UIF Acuerdo 734/2022 § V</span> → <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> + <span class="cite cite--instr">Art. 84-B(1)(e) (Reform 1)</span></p>
                 </div>
 
@@ -714,17 +714,17 @@
                 <div class="qrc-box qrc-box--amber">
                     <h3>Asset perimeter — pre-CDD gate</h3>
                     <table style="table-layout:fixed; width:100%;">
-                        <colgroup><col style="width:32%;"><col style="width:68%;"></colgroup>
+                        <colgroup><col style="width:26%;"><col style="width:74%;"></colgroup>
                         <thead><tr><th>Status</th><th>Asset class</th></tr></thead>
                         <tbody>
-                            <tr><td><span class="pill pill--no">Allowed</span></td><td>Only assets (including stablecoins) that CNAD approved at license issuance via the asset list submitted under RPSAD Art. 7(h) + LEAD Art. 20(b).</td></tr>
-                            <tr><td><span class="pill pill--cdd">Registration modification</span></td><td>Adding a new asset post-registration requires a modification request to CNAD (RPSAD Art. 13).</td></tr>
-                            <tr><td><span class="pill pill--cdd">Stablecoin add-ons (DASP-side)</span></td><td>For each stablecoin <strong>admitted to trading</strong> on the DASP's platform / wallets, the DASP additionally: (i) immediately notifies CNAD per LEAD Art. 21(q); (ii) includes it in the quarterly Stablecoin Registry report to CNAD per RPSAD Art. 16. «Admitted to trading» = made available for clients to buy / sell / swap on the DASP's platform.</td></tr>
-                            <tr><td><span class="pill pill--reject">Outside this DASP's scope</span></td><td>Any asset not on this DASP's CNAD-approved list — DASP cannot trade it until a modification request is approved.</td></tr>
-                            <tr><td><span class="pill pill--reject">Sanctions reject</span></td><td>Sanctioned-protocol tokens or wallets on UNSC / UIF national lists — universal reject under sanctions duty, regardless of DASP perimeter.</td></tr>
+                            <tr><td><span class="pill pill--no">Allowed</span></td><td>Only assets (including stablecoins) CNAD approved at license issuance via the asset list (RPSAD Art. 7(h) + LEAD Art. 20(b)).</td></tr>
+                            <tr><td><span class="pill pill--cdd">Add new</span></td><td>New asset post-registration requires modification request to CNAD (RPSAD Art. 13).</td></tr>
+                            <tr><td><span class="pill pill--cdd">Stablecoin</span></td><td>For each stablecoin <strong>admitted to trading</strong> on platform: (i) immediate CNAD notification (LEAD Art. 21(q)); (ii) inclusion in quarterly Stablecoin Registry report (RPSAD Art. 16). «Admitted to trading» = available for clients to buy / sell / swap.</td></tr>
+                            <tr><td><span class="pill pill--reject">Out of scope</span></td><td>Asset not on this DASP's approved list — cannot trade until modification approved.</td></tr>
+                            <tr><td><span class="pill pill--reject">Sanctions</span></td><td>Sanctioned tokens or wallets on UNSC / UIF national lists — universal reject regardless of DASP perimeter.</td></tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--rpsad">RPSAD Arts. 7(h), 13, 16</span> · <span class="cite cite--lead">LEAD Arts. 18(a), 20(b), 21(q)</span> · <span class="cite cite--d426">LCLDA Art. 9</span> + <span class="cite cite--lecat">LECAT Art. 37</span> (sanctions). Stablecoin <em>issuance</em> (issuer-side) is governed separately by REOPME.</p>
+                    <p class="qrc-foot"><span class="cite cite--rpsad">RPSAD Arts. 7(h), 13, 16</span> · <span class="cite cite--lead">LEAD Arts. 18(a), 20(b), 21(q)</span> · <span class="cite cite--d426">LCLDA Art. 9</span> + <span class="cite cite--lecat">LECAT Art. 37</span></p>
                 </div>
 
                 <!-- 7. Essential contacts & channels -->
@@ -742,7 +742,7 @@
                     </table>
                 </div>
 
-                <!-- 8. RBA risk criteria + $125K aggravator -->
+                <!-- 8. RBA risk criteria -->
                 <div class="qrc-box qrc-box--green">
                     <h3>RBA — Customer inherent-risk criteria (Art. 10)</h3>
                     <ul>
@@ -753,8 +753,8 @@
                         <li>Geographic risk (FATF lists, partial sanctions, transit jurisdictions)</li>
                         <li>Caution / sanction list presence (UNSC, UIF national)</li>
                         <li>Higher-risk-country transactions (KYT trace shows flow)</li>
+                        <li><strong>$125K monthly aggravator</strong> — cumulative monthly capital injections by single client → documentary SoF + affidavit + DA-issuer ID on top of base DD level (<a href="#vasp-cdd" style="color:var(--accent);">full mechanism</a>) <span class="cite cite--rpsad">RPSAD Art. 22</span></li>
                     </ul>
-                    <p class="qrc-foot"><strong>$125K monthly aggravator (RPSAD Art. 22)</strong> — see <a href="#vasp-cdd" style="color:var(--accent);">VASP-specific CDD</a> for the full mechanism.</p>
                 </div>
 
                 <!-- 9. Red lines — full width -->

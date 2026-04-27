@@ -61,7 +61,7 @@
     'CODE', 'PRE', 'KBD', 'SAMP', 'SCRIPT', 'STYLE', 'TEXTAREA',
     'INPUT', 'OPTION', 'SELECT'
   ]);
-  const SKIP_CLASS_RX = /\b(cite|ref|tag|mono|t-mono|num)\b/i;
+  const SKIP_CLASS_RX = /\b(cite|ref|tag|mono|t-mono)\b/i;
 
   const curlyQuote = function (str) {
     // Double quotes: opening if preceded by start/space/punct, closing otherwise
