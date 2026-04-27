@@ -461,11 +461,17 @@ a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a
   transform: translateY(-1px);
 }
 
-/* Accent / colour variants — keep colour but flatten */
-.card--accent-amber, .card--amber { border-left: 3px solid var(--accent); }
-.card--accent-green, .card--green { border-left: 3px solid var(--green); }
-.card--accent-red,   .card--red   { border-left: 3px solid var(--red); }
-.card--accent-blue,  .card--blue  { border-left: 3px solid var(--blue); }
+/* Accent / colour variants — visible 4px left rule keyed to the variant accent.
+   Use !important to override the global `.card { border-color: transparent !important }`
+   ring-only rule earlier in this file (the ring still draws via box-shadow; only the
+   left edge is replaced by the colored accent). */
+.card--accent-amber, .card--amber  { border-left: 4px solid var(--accent) !important; }
+.card--accent-green, .card--green  { border-left: 4px solid var(--green) !important; }
+.card--accent-red,   .card--red    { border-left: 4px solid var(--red) !important; }
+.card--accent-blue,  .card--blue   { border-left: 4px solid var(--blue) !important; }
+.card--accent-navy                 { border-left: 4px solid var(--navy) !important; }
+.card--accent-muted                { border-left: 4px solid var(--text-3) !important; }
+.card--purple                      { border-left: 4px solid #6B5BD2 !important; }
 
 /* ---------- Buttons ---------- */
 .btn, .button, button.btn {

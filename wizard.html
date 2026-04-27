@@ -539,9 +539,9 @@
         if (isElectronic && amt > 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'DASP operation US$1,000–$4,000 — Standard CDD (estándar) per UIF Acuerdo 734/2022 § V.2.b.II.' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'Cash > $10,000 — Standard CDD; Operación Regulada report due (5 wd to UIF).' };
+            reason: 'Cash > $10,000 — Standard CDD; Operación Regulada report due (5 bd to UIF).' };
         if (ch === 'other' && amt > 25000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'Other-means > $25,000 — Standard CDD; Operación Regulada report due (5 wd to UIF).' };
+            reason: 'Other-means > $25,000 — Standard CDD; Operación Regulada report due (5 bd to UIF).' };
 
         // ── Default: SDD (Simplified Due Diligence) — amounts ≤ $1,000 per Acuerdo 734 § V.2.b.II ──
         const sddReason = s.rel === 'ongoing'
@@ -713,11 +713,11 @@
         // ── Reporting obligations ──
         const reports = [];
         const ch = s.channel, amt = s.amount;
-        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 working days to UIF <span class="cite cite--d426">LCLDA Art. 25</span>');
-        if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 working days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
-        // DASP-specific individual transaction report (≥ $1,000 within 5 wd) per UIF Acuerdo 734/2022.
+        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 business days to UIF <span class="cite cite--d426">LCLDA Art. 25</span>');
+        if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 business days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
+        // DASP-specific individual transaction report (≥ $1,000 within 5 bd) per UIF Acuerdo 734/2022.
         // Distinct from FI-only Art. 52(a)(b)(c) monthly reports.
-        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 working days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 business days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
         // DASP monthly client report — fired regardless (always due monthly)
         reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span>');
         if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
@@ -735,7 +735,7 @@
             parts.push(block('block--red', 'Elevated STR sensitivity — analyse', [
                 'Indicator(s): ' + strFlags.join(', '),
                 'Open analysis ticket; assign to CO',
-                'Internal analysis ≤ 15 working days <span class="cite cite--d426">LCLDA Art. 24</span>',
+                'Internal analysis ≤ 15 business days <span class="cite cite--d426">LCLDA Art. 24</span>',
                 'On determination: <strong>STR within 24 hours wall-clock</strong>',
                 'Tipping-off prohibited <span class="cite cite--d426">LCLDA Art. 44</span>',
             ]));
