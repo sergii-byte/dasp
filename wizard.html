@@ -354,6 +354,33 @@
 
         <div class="form__grid">
 
+            <fieldset class="form__field form__field--span-12">
+                <legend class="field__legend">Operation type <span style="font-weight:400;color:var(--text-3);">— LEAD Art. 19 statutory categories</span></legend>
+                <div class="chips" id="wiz-op-chips">
+                    <label class="chip" title="Inside: On-ramp · Off-ramp · OTC (over-the-counter exchange). LEAD Art. 19(a) — fiat ↔ crypto or crypto ↔ crypto exchange."><input type="radio" name="operation" value="exchange" checked> Exchange</label>
+                    <label class="chip" title="Inside: Internal P2P · External in · External out. LEAD Art. 19(f.1) — moving digital assets between persons, wallets or accounts on behalf of clients."><input type="radio" name="operation" value="transfer"> Transfer</label>
+                    <label class="chip" title="Inside: Payment receipt · Settlement · Payment outgoing. Composite — merchant acquiring (payer + merchant flow) combining (f.1) Transfer + (a) Exchange + (f.2) Custody."><input type="radio" name="operation" value="payments"> Payments</label>
+                    <label class="chip" title="Inside: Deposit · Withdrawal. LEAD Art. 19(f.2) — safekeep, custody or manage digital assets on behalf of clients."><input type="radio" name="operation" value="custody"> Custody</label>
+                </div>
+                <div class="chips" id="wiz-subop-chips" style="margin-top:0.5rem;">
+                    <!-- Exchange -->
+                    <label class="chip subop-exchange" title="Fiat → crypto purchase via electronic rail or cash."><input type="radio" name="subop" value="onramp" checked> On-ramp</label>
+                    <label class="chip subop-exchange" title="Crypto → fiat sale + settlement to bank or cash."><input type="radio" name="subop" value="offramp"> Off-ramp</label>
+                    <label class="chip subop-exchange" title="Bilateral block trade (over-the-counter exchange) — large-ticket, off-platform negotiation."><input type="radio" name="subop" value="otc"> OTC (over-the-counter exchange)</label>
+                    <!-- Transfer -->
+                    <label class="chip subop-transfer" style="display:none;" title="Book transfer between two clients of the same DASP — no chain involvement."><input type="radio" name="subop" value="p2p"> Internal P2P</label>
+                    <label class="chip subop-transfer" style="display:none;" title="Inbound from an external wallet or another VASP into the DASP."><input type="radio" name="subop" value="extin"> External in</label>
+                    <label class="chip subop-transfer" style="display:none;" title="Outbound to an external wallet or another VASP. Travel Rule + KYT critical."><input type="radio" name="subop" value="extout"> External out</label>
+                    <!-- Payments -->
+                    <label class="chip subop-payments" style="display:none;" title="Payer sends crypto to DASP for the merchant — DASP is beneficiary."><input type="radio" name="subop" value="payreceipt"> Payment receipt</label>
+                    <label class="chip subop-payments" style="display:none;" title="DASP transfers funds (crypto or fiat) to merchant."><input type="radio" name="subop" value="settlement"> Settlement</label>
+                    <label class="chip subop-payments" style="display:none;" title="DASP-initiated outbound payment (refund, payout, etc.)."><input type="radio" name="subop" value="payoutgoing"> Payment outgoing</label>
+                    <!-- Custody -->
+                    <label class="chip subop-custody" style="display:none;" title="Client deposits crypto onto DASP for safekeeping. KYT on inbound chain."><input type="radio" name="subop" value="deposit"> Deposit</label>
+                    <label class="chip subop-custody" style="display:none;" title="Client withdraws crypto from DASP custody to external wallet. Travel Rule + KYT on destination."><input type="radio" name="subop" value="withdrawal"> Withdrawal</label>
+                </div>
+            </fieldset>
+
             <fieldset class="form__field form__field--span-3">
                 <legend class="field__legend">Client type</legend>
                 <div class="chips">
@@ -373,11 +400,12 @@
             <fieldset class="form__field form__field--span-3">
                 <legend class="field__legend">Channel (settlement rail)</legend>
                 <div class="chips">
-                    <label class="chip" title="Any electronic rail: crypto↔fiat exchange (on-ramp/off-ramp via SPEI/ACH/SEPA/SWIFT/card), crypto↔crypto, wallet↔wallet on-chain, internal book transfer. Default DASP operation."><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
+                    <label class="chip" title="Crypto on-chain transfer (BTC / ETH / USDT / etc.). KYT chain analysis on source / destination addresses; VASP-to-VASP Travel Rule."><input type="radio" name="channel" value="crypto" checked> Crypto on-chain</label>
+                    <label class="chip" title="Banking electronic transfer — SWIFT, SEPA, ACH, SPEI, Fedwire. Banking-style Travel Rule (MT103-style fields), bank-corridor risk."><input type="radio" name="channel" value="bankwire"> Bank wire (E-transfer)</label>
                     <label class="chip" title="Physical cash in/out at point-of-service (kiosk, branch, OTC desk). Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
                     <label class="chip" title="Voucher, gift-card, money order, cashier's check or other non-electronic non-cash instrument. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
                 </div>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. Crypto↔fiat via card / bank wire = E-transfer. Cash leg at kiosk = Cash. Voucher / gift-card = Other.</p>
+                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. <strong>Crypto on-chain</strong> for any BTC/ETH/USDT etc. transfer. <strong>Bank wire (E-transfer)</strong> for fiat electronic rails. <strong>Cash</strong> for physical money. <strong>Other</strong> for vouchers / gift-cards / money orders.</p>
             </fieldset>
 
             <fieldset class="form__field form__field--span-3">
@@ -451,6 +479,8 @@
         const factors = fd.getAll('f');
         const jurOpt = jurEl.options[jurEl.selectedIndex];
         return {
+            operation: fd.get('operation'),
+            subop: fd.get('subop'),
             clientType: fd.get('clientType'),
             rel: fd.get('rel'),
             channel: fd.get('channel'),
@@ -499,13 +529,14 @@
             reason: 'EDD trigger(s): ' + eddTriggers.join(', ') + '. Senior-management written approval required.', triggers: eddTriggers };
 
         const ch = s.channel, amt = s.amount;
+        const isElectronic = (ch === 'crypto' || ch === 'bankwire');
 
         // ── DASP-specific automatic EDD by amount > $4,000 (Acuerdo 734 § V.2.b.II) ──
-        if (ch === 'etransfer' && amt > 4000) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
+        if (isElectronic && amt > 4000) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
             reason: 'DASP operation > US$4,000 — automatic EDD (intensificada) per UIF Acuerdo 734/2022 § V.2.b.II. Senior-management approval + documentary SoF + SoW required regardless of risk factors.', triggers: ['amount > $4,000 (Acuerdo 734)'] };
 
         // ── Standard CDD path — DASP cascade $1K–$4K + Operación Regulada thresholds ──
-        if (ch === 'etransfer' && amt > 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
+        if (isElectronic && amt > 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'DASP operation US$1,000–$4,000 — Standard CDD (estándar) per UIF Acuerdo 734/2022 § V.2.b.II.' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'Cash > $10,000 — Standard CDD; Operación Regulada report due (5 wd to UIF).' };
@@ -686,7 +717,7 @@
         if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 working days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
         // DASP-specific individual transaction report (≥ $1,000 within 5 wd) per UIF Acuerdo 734/2022.
         // Distinct from FI-only Art. 52(a)(b)(c) monthly reports.
-        if (ch === 'etransfer' && amt >= 1000) reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 working days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 working days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
         // DASP monthly client report — fired regardless (always due monthly)
         reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span>');
         if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
@@ -720,6 +751,19 @@
             ]));
         }
 
+        // ── Footer: scope disclaimer ──
+        parts.push(
+            '<div style="grid-column:1 / -1; margin-top:1.25rem; padding:0.75rem 1rem; border:1px dashed var(--text-3); border-radius:8px; background:var(--paper); font-size:0.72rem; color:var(--text-2); line-height:1.55;">' +
+                '<strong>ⓘ Scope.</strong> This wizard reflects strict statutory baseline ' +
+                '(<span class="cite cite--d426">LCLDA</span> · <span class="cite cite--instr">Instructivo</span> · ' +
+                '<span class="cite cite--lecat">LECAT</span> · LEAD · UIF Acuerdo 734). ' +
+                'Per <span class="cite cite--instr">Instr. Arts. 5, 7(d), 10</span>, your internal AML ' +
+                'risk-management methodology determines the inherent ML/TF/FPWMD risk of customers and ' +
+                'counterparties — weighing among other criteria the risk of products / services, channels ' +
+                'and jurisdictions. Internal AML Policy may layer additional measures on this output.' +
+            '</div>'
+        );
+
         return parts.join('');
     }
 
@@ -742,9 +786,12 @@
     });
 
     document.getElementById('wiz-ex-low').addEventListener('click', () => {
+        form.querySelector('input[name="operation"][value="exchange"]').checked = true;
+        form.querySelector('input[name="subop"][value="onramp"]').checked = true;
+        syncSubops();
         form.querySelector('input[name="clientType"][value="natural"]').checked = true;
         form.querySelector('input[name="rel"][value="occasional"]').checked = true;
-        form.querySelector('input[name="channel"][value="etransfer"]').checked = true;
+        form.querySelector('input[name="channel"][value="crypto"]').checked = true;
         amountEl.value = 500;
         jurEl.selectedIndex = 0;
         form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
@@ -752,9 +799,12 @@
     });
 
     document.getElementById('wiz-ex-edd').addEventListener('click', () => {
+        form.querySelector('input[name="operation"][value="exchange"]').checked = true;
+        form.querySelector('input[name="subop"][value="otc"]').checked = true;
+        syncSubops();
         form.querySelector('input[name="clientType"][value="legal"]').checked = true;
         form.querySelector('input[name="rel"][value="ongoing"]').checked = true;
-        form.querySelector('input[name="channel"][value="etransfer"]').checked = true;
+        form.querySelector('input[name="channel"][value="bankwire"]').checked = true;
         amountEl.value = 50000;
         for (let i = 0; i < jurEl.options.length; i++) {
             if (jurEl.options[i].value === 'edd') { jurEl.selectedIndex = i; break; }
@@ -764,6 +814,34 @@
         form.querySelector('input[name="f"][value="opaque"]').checked = true;
         render();
     });
+
+    /* ── Sub-operation chip-set toggle by operation ───────────────── */
+    const subopMap = {
+        exchange: ['onramp', 'offramp', 'otc'],
+        transfer: ['p2p', 'extin', 'extout'],
+        payments: ['payreceipt', 'settlement', 'payoutgoing'],
+        custody: ['deposit', 'withdrawal'],
+    };
+    function syncSubops() {
+        const op = form.querySelector('input[name="operation"]:checked');
+        if (!op) return;
+        const cls = 'subop-' + op.value;
+        const allChips = form.querySelectorAll('#wiz-subop-chips .chip');
+        let firstVisible = null;
+        allChips.forEach(chip => {
+            const show = chip.classList.contains(cls);
+            chip.style.display = show ? '' : 'none';
+            if (show && !firstVisible) firstVisible = chip.querySelector('input[name="subop"]');
+        });
+        // If currently checked subop is not visible, auto-select the first visible one
+        const checked = form.querySelector('input[name="subop"]:checked');
+        const checkedVisible = checked && checked.closest('.chip').style.display !== 'none';
+        if (!checkedVisible && firstVisible) firstVisible.checked = true;
+    }
+    form.querySelectorAll('input[name="operation"]').forEach(input => {
+        input.addEventListener('change', () => { syncSubops(); render(); });
+    });
+    syncSubops();
 
     render();
 })();
