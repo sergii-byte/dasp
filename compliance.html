@@ -635,19 +635,24 @@
                 <!-- 1. Reporting thresholds -->
                 <div class="qrc-box qrc-box--blue">
                     <h3>DASP report obligations — what to file to UIF</h3>
-                    <table>
+                    <table style="table-layout:fixed; width:100%;">
+                        <colgroup>
+                            <col style="width:46%;">
+                            <col style="width:30%;">
+                            <col style="width:24%;">
+                        </colgroup>
                         <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
                         <tbody>
-                            <tr><td>STR (signed determination)</td><td class="num">Any amount</td><td class="num">24 h</td></tr>
-                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd</td></tr>
-                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd</td></tr>
-                            <tr><td>Individual Tx Report</td><td class="num">≥ $1,000</td><td class="num">5 bd</td></tr>
-                            <tr><td>Monthly Client Report</td><td class="num">All clients (active/inactive/disconnected)</td><td class="num">Monthly</td></tr>
-                            <tr><td>Zero-Tx Notification</td><td class="num">If no tx that month</td><td class="num">Monthly</td></tr>
-                            <tr><td>Sanctions / UNSC freeze</td><td class="num">List match</td><td class="num">Without delay</td></tr>
+                            <tr><td>STR (signed determination)</td><td>Any amount</td><td class="num">24 h</td></tr>
+                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">(monthly batch)</span></td></tr>
+                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">(monthly batch)</span></td></tr>
+                            <tr><td>Individual Tx Report (per-tx)</td><td class="num">≥ $1,000</td><td class="num">5 bd <span style="font-size:0.65rem;color:var(--text-3);">after each tx</span></td></tr>
+                            <tr><td>Monthly Client Report</td><td>Active/inactive/disconnected</td><td><span class="deadline">Monthly</span></td></tr>
+                            <tr><td>Zero-Tx Notification</td><td>If no tx that month</td><td><span class="deadline">Monthly</span></td></tr>
+                            <tr><td>Sanctions / UNSC freeze</td><td>List match</td><td><span class="deadline">Without delay</span></td></tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--instr">Instr. Arts. 51, 84-C</span> · <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span> · <span class="cite cite--lecat">LECAT Art. 37</span>. Art. 52(a)(b)(c) monthly e-transfer / remittance reports = financial institutions only (NOT DASP).</p>
+                    <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--instr">Instr. Arts. 51, 84-C</span> · <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span> · <span class="cite cite--lecat">LECAT Art. 37</span></p>
                 </div>
 
                 <!-- 2. Travel Rule -->
@@ -707,16 +712,18 @@
                 <!-- 6. Asset perimeter -->
                 <div class="qrc-box qrc-box--amber">
                     <h3>Asset perimeter — pre-CDD gate</h3>
-                    <table>
+                    <table style="table-layout:fixed; width:100%;">
+                        <colgroup><col style="width:32%;"><col style="width:68%;"></colgroup>
                         <thead><tr><th>Status</th><th>Asset class</th></tr></thead>
                         <tbody>
-                            <tr><td><span class="pill pill--no">Allowed</span></td><td>Assets on this DASP's declared asset list (per RPSAD Art. 7(h) at registration) — typically transparent-ledger DA (BTC, ETH, SOL, TRX...) and stablecoins admitted to the platform with CNAD notification (LEAD Art. 21(q)).</td></tr>
-                            <tr><td><span class="pill pill--cdd">Registration modification</span></td><td>Adding a new asset post-registration requires amending the registered asset list (RPSAD Art. 16). For stablecoins specifically, admission to the trading platform requires CNAD notification under LEAD Art. 21(q); the issuer itself must comply with the Stablecoin Issuance Regulation (REOPME).</td></tr>
-                            <tr><td><span class="pill pill--reject">Outside this DASP's scope</span></td><td>Any asset not on this DASP's declared list — DASP cannot trade it until the registration is amended.</td></tr>
+                            <tr><td><span class="pill pill--no">Allowed</span></td><td>Only assets (including stablecoins) that CNAD approved at license issuance via the asset list submitted under RPSAD Art. 7(h) + LEAD Art. 20(b).</td></tr>
+                            <tr><td><span class="pill pill--cdd">Registration modification</span></td><td>Adding a new asset post-registration requires a modification request to CNAD (RPSAD Art. 13).</td></tr>
+                            <tr><td><span class="pill pill--cdd">Stablecoin add-ons (DASP-side)</span></td><td>For each stablecoin admitted to the platform, the DASP additionally: (i) immediately notifies CNAD per LEAD Art. 21(q); (ii) includes it in the quarterly Stablecoin Registry report to CNAD per RPSAD Art. 16.</td></tr>
+                            <tr><td><span class="pill pill--reject">Outside this DASP's scope</span></td><td>Any asset not on this DASP's CNAD-approved list — DASP cannot trade it until a modification request is approved.</td></tr>
                             <tr><td><span class="pill pill--reject">Sanctions reject</span></td><td>Sanctioned-protocol tokens or wallets on UNSC / UIF national lists — universal reject under sanctions duty, regardless of DASP perimeter.</td></tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--rpsad">RPSAD Arts. 7(h), 16</span> · <span class="cite cite--lead">LEAD Art. 21(q)</span> (DASP stablecoin notification) · REOPME (stablecoin issuance, issuer-side) · <span class="cite cite--d426">LCLDA Art. 9</span> + <span class="cite cite--lecat">LECAT Art. 37</span> (sanctions)</p>
+                    <p class="qrc-foot"><span class="cite cite--rpsad">RPSAD Arts. 7(h), 13, 16</span> · <span class="cite cite--lead">LEAD Arts. 18(a), 20(b), 21(q)</span> · <span class="cite cite--d426">LCLDA Art. 9</span> + <span class="cite cite--lecat">LECAT Art. 37</span> (sanctions). Stablecoin <em>issuance</em> (issuer-side) is governed separately by REOPME.</p>
                 </div>
 
                 <!-- 7. Essential contacts & channels -->
