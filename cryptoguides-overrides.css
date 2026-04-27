@@ -155,13 +155,22 @@ h5 {
   font-weight: 700 !important;
   margin-bottom: 0.25rem !important;
 }
-/* Numeric eyebrows like advantage card "01", flow-step "1" — mono not serif */
-.advantage__num, .phase-card__num, .flow-step__num {
+/* Numeric eyebrows like advantage card "01" — mono not serif */
+.advantage__num, .phase-card__num {
   font-family: "JetBrains Mono", monospace !important;
   font-size: 0.85rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.04em !important;
   color: var(--accent) !important;
+  font-style: normal !important;
+}
+/* Flow-step numbers sit ON a colored background — white text on green */
+.flow-step__num {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  color: #fff !important;
   font-style: normal !important;
 }
 /* Flow step body — title + sub */
