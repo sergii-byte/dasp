@@ -2009,10 +2009,18 @@
         <section class="sec" id="reporting">
             <p class="sec__label">Reporting hub</p>
             <h2 class="sec__title">Every report — name, recipient, deadline, channel</h2>
-            <p class="sec__lead">A consolidated map of every report a DASP files. Report names appear in English with the Spanish original in parentheses. The default UIF channel is <strong>goAML</strong>.</p>
+            <p class="sec__lead">A consolidated map of every report a DASP files. Report names appear in English with the Spanish original in parentheses. UIF channels: <strong>goAML</strong> for STR and threshold reports; <strong>PEA</strong> (Private Email Account) for DASP-specific Acuerdo 734 transactional reports and ad-hoc UIF requests.</p>
 
             <div class="tbl-wrap">
-            <table class="tbl">
+            <table class="tbl" style="table-layout:fixed; width:100%;">
+                <colgroup>
+                    <col style="width:18%;">
+                    <col style="width:24%;">
+                    <col style="width:11%;">
+                    <col style="width:13%;">
+                    <col style="width:18%;">
+                    <col style="width:16%;">
+                </colgroup>
                 <thead>
                     <tr>
                         <th>Report</th>
@@ -2028,7 +2036,7 @@
                         <td>Suspicious Transaction Report — STR<br><em>(Reporte de Operación Sospechosa)</em></td>
                         <td>Suspicion confirmed by CO determination — any amount</td>
                         <td>UIF</td>
-                        <td class="num">24 h<br><span style="font-size:0.7rem;color:var(--text-3);">wall-clock</span></td>
+                        <td class="num">24 h<br><span style="font-size:0.72rem;color:var(--text-3);">wall-clock</span></td>
                         <td>goAML</td>
                         <td><span class="cite cite--d426">LCLDA Art. 24</span></td>
                     </tr>
@@ -2036,7 +2044,7 @@
                         <td>Attempted Suspicious Operation<br><em>(Operación Intentada)</em></td>
                         <td>Client attempts but does not consummate a suspicious operation</td>
                         <td>UIF</td>
-                        <td class="num">24 h<br><span style="font-size:0.7rem;color:var(--text-3);">from determination</span></td>
+                        <td class="num">24 h<br><span style="font-size:0.72rem;color:var(--text-3);">from determination</span></td>
                         <td>goAML</td>
                         <td><span class="cite cite--instr">Instr. Art. 47</span></td>
                     </tr>
@@ -2052,7 +2060,7 @@
                         <td>Regulated Cash Operation<br><em>(Operación Regulada — efectivo)</em></td>
                         <td>Single op &gt; $10K OR monthly aggregate &gt; $10K (same client)</td>
                         <td>UIF</td>
-                        <td class="num">5 bd<br><span style="font-size:0.7rem;color:var(--text-3);">after op / month-end</span></td>
+                        <td class="num">5 bd<br><span style="font-size:0.72rem;color:var(--text-3);">after op / month-end</span></td>
                         <td>UIF electronic platform</td>
                         <td><span class="cite cite--d426">LCLDA Art. 25</span> · <span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
@@ -2065,20 +2073,12 @@
                         <td><span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
-                        <td>DASP Transactional Reporting<br><em>(Reportes transaccionales del PSAV)</em><br><span style="font-size:0.7rem;color:var(--text-3);">Three sub-reports under one regime</span></td>
-                        <td>
-                            <strong>(a) Monthly Client Report</strong> — all clients (active / inactive / disconnected) with which DASP had any interaction during the month, repeated per product owned.<br><br>
-                            <strong>(b) Individual Transaction Report</strong> — each client transaction <strong>≥ US$1,000</strong> at conversion rate on day of operation. Submitted as a <strong>single batched file</strong> via one of <strong>8 transaction-type forms</strong> (Wallet-to-Wallet · Tx between Different Wallets · Wallet-to-Account · ATM-to-Wallet · Wallet-to-ATM · Card-to-Wallet · Buy/Sell · Currency Exchange). Operationally batched daily / weekly so no transaction exceeds the per-tx ceiling.<br><br>
-                            <strong>(c) Zero-Tx Notification</strong> — if no client transactions occurred during a month, DASP must notify UIF via PEA of the absence of operations.
-                        </td>
+                        <td>DASP Transactional Reporting<br><em>(Reportes transaccionales del PSAV)</em><br><span style="font-size:0.72rem;color:var(--text-3);">3 sub-reports under one regime — see <a href="#reports-anexo" style="color:var(--accent);">8 forms</a></span></td>
+                        <td>(a) Monthly client list (active / inactive / disconnected)<br>(b) Each tx ≥ $1,000 (8 transaction-type forms)<br>(c) Zero-tx month → notification</td>
                         <td>UIF</td>
-                        <td class="num">
-                            <strong>(a)</strong> Monthly<br>
-                            <strong>(b)</strong> 5 bd <span style="font-size:0.7rem;color:var(--text-3);">per-tx ceiling</span><br>
-                            <strong>(c)</strong> Monthly
-                        </td>
-                        <td>UIF Portal via PEA (Private Email Account) — single-file format, one of 8 transaction-type forms</td>
-                        <td><span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV</span> (parts IV.1 / IV.2)</td>
+                        <td class="num">(a) Monthly<br>(b) 5 bd per tx<br>(c) Monthly</td>
+                        <td>PEA — single batched file</td>
+                        <td><span class="cite cite--instr">Acuerdo 734 § Anexo IV.1 / IV.2</span></td>
                     </tr>
                     <tr>
                         <td>Sanctions / UNSC Freeze Report<br><em>(Reporte de congelamiento)</em></td>
@@ -2116,7 +2116,7 @@
                         <td>Prevention Committee Meeting<br><em>(Comité de Prevención LDA/FT/FPADM)</em></td>
                         <td>Min 3 members (one from highest governing body + the CO); meet on regular cadence to support the Compliance Office</td>
                         <td>Internal (minutes book); members notified to UIF</td>
-                        <td>Quarterly applies to SSF-supervised entities (Instr. Art. 68)<br><span style="font-size:0.7rem;color:var(--text-3);">For CNAD-supervised DASPs, the AML Policy sets cadence under RBA</span></td>
+                        <td>Quarterly applies to SSF-supervised entities (Instr. Art. 68)<br><span style="font-size:0.72rem;color:var(--text-3);">For CNAD-supervised DASPs, the AML Policy sets cadence under RBA</span></td>
                         <td>Committee minutes + agreements</td>
                         <td><span class="cite cite--instr">Instr. Art. 68</span> <em>(SSF only)</em></td>
                     </tr>
@@ -2124,7 +2124,7 @@
                         <td>CO Report to Governing Body<br><em>(Informe del Oficial de Cumplimiento)</em></td>
                         <td>Written report on AML management, STR forwarding, control effectiveness, regulatory pronouncements</td>
                         <td>Highest governing body (Board)</td>
-                        <td>Semi-annual minimum (SSF only)<br><span style="font-size:0.7rem;color:var(--text-3);">CNAD-supervised DASPs: cadence per AML Policy</span></td>
+                        <td>Semi-annual minimum (SSF only)<br><span style="font-size:0.72rem;color:var(--text-3);">CNAD-supervised DASPs: cadence per AML Policy</span></td>
                         <td>Written report (in person or remote)</td>
                         <td><span class="cite cite--instr">Instr. Art. 67(b)</span> <em>(SSF-supervised entities)</em></td>
                     </tr>
@@ -2140,7 +2140,7 @@
                         <td>Quarterly Report — Digital Asset Issuances<br><em>(Reporte trimestral — Emisiones de Activos Digitales)</em></td>
                         <td>All Digital Asset issuances marketed through the provider's wallets / platforms (confidential)</td>
                         <td>CNAD</td>
-                        <td class="num">First 20 days<br><span style="font-size:0.7rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td class="num">First 20 days<br><span style="font-size:0.72rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
                         <td>CNAD channel · confidential</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 15</span></td>
                     </tr>
@@ -2148,7 +2148,7 @@
                         <td>Quarterly Report — Stablecoins Admitted<br><em>(Reporte trimestral — Stablecoins admitidas)</em></td>
                         <td>Stablecoins <strong>admitted to trading</strong> on the provider's platform / wallets — i.e., available for clients to buy, sell or swap (issuer name, asset name, project, commercialisation start date, technical/commercial characteristics, risk evolution)</td>
                         <td>CNAD</td>
-                        <td class="num">First 20 days<br><span style="font-size:0.7rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td class="num">First 20 days<br><span style="font-size:0.72rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
                         <td>CNAD channel</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 16</span></td>
                     </tr>
@@ -2164,7 +2164,7 @@
                         <td>Pre-resolution material change<br><em>(Cambio significativo durante el trámite)</em></td>
                         <td>Significant change to information submitted in registration application <em>before</em> CNAD issues its resolution</td>
                         <td>CNAD</td>
-                        <td class="num">Immediate<br><span style="font-size:0.7rem;color:var(--text-3);">(adds +5 bd to CNAD's resolution time per RPSAD Art. 9)</span></td>
+                        <td class="num">Immediate<br><span style="font-size:0.72rem;color:var(--text-3);">(adds +5 bd to CNAD's resolution time per RPSAD Art. 9)</span></td>
                         <td>CNAD channel</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 9</span></td>
                     </tr>
@@ -2172,7 +2172,7 @@
                         <td>Post-registration modification<br><em>(Modificación del Registro)</em></td>
                         <td>Expansion of services, change of registered data, ownership, governance after registration is granted</td>
                         <td>CNAD</td>
-                        <td class="num">No fixed entity deadline<br><span style="font-size:0.7rem;color:var(--text-3);">CNAD responds in 20 bd</span></td>
+                        <td class="num">No fixed entity deadline<br><span style="font-size:0.72rem;color:var(--text-3);">CNAD responds in 20 bd</span></td>
                         <td>CNAD channel · modification application</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 13</span></td>
                     </tr>
