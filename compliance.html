@@ -420,6 +420,39 @@
         }
         .qrc-redline { font-size: 0.78rem; line-height: 1.55; }
         .qrc-redline strong { color: var(--red); margin-right: 0.25rem; }
+        /* Red-lines redesign — grid of rule cards */
+        .redline-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem 0.85rem; margin-top: 0.6rem;
+        }
+        @media (max-width: 720px) {
+            .redline-grid { grid-template-columns: 1fr; }
+        }
+        .redline-item {
+            display: flex; gap: 0.65rem;
+            padding: 0.55rem 0.7rem;
+            background: rgba(184,74,58,0.04);
+            border: 1px solid rgba(184,74,58,0.14);
+            border-left: 2px solid var(--red);
+            border-radius: 4px;
+        }
+        .redline-num {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.2rem; font-weight: 400;
+            color: var(--red); line-height: 1; padding-top: 0.1rem;
+            flex-shrink: 0; min-width: 1.4rem;
+        }
+        .redline-body { flex: 1; }
+        .redline-title {
+            font-size: 0.78rem; font-weight: 700;
+            color: var(--text); line-height: 1.3;
+            margin-bottom: 0.18rem;
+        }
+        .redline-explain {
+            font-size: 0.72rem; line-height: 1.45;
+            color: var(--text-2);
+        }
+        .redline-explain .cite { margin-right: 0.2rem; }
         @media print {
             .topbar, .sidebar, .footer, button, .back-to-top { display: none !important; }
             .qrc-grid { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
@@ -643,12 +676,12 @@
                         </colgroup>
                         <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
                         <tbody>
-                            <tr><td>STR (signed determination)</td><td>Any amount</td><td class="num">24 h</td></tr>
-                            <tr><td>Operación Regulada — cash</td><td class="num">&gt; $10,000</td><td class="num">5 bd</td></tr>
-                            <tr><td>Operación Regulada — other means</td><td class="num">&gt; $25,000</td><td class="num">5 bd</td></tr>
+                            <tr><td>STR (signed determination)</td><td><span class="deadline">Any amount</span></td><td><span class="deadline">24 h</span></td></tr>
+                            <tr><td>Operación Regulada — cash</td><td><span class="deadline">&gt; $10,000</span></td><td><span class="deadline">5 bd</span></td></tr>
+                            <tr><td>Operación Regulada — other means</td><td><span class="deadline">&gt; $25,000</span></td><td><span class="deadline">5 bd</span></td></tr>
                             <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size:0.7rem;color:var(--text-2);padding-top:0.45rem;text-transform:uppercase;letter-spacing:0.04em;">DASP Transactional Reporting (Acuerdo 734 § Anexo IV)</td></tr>
                             <tr><td>(a) Monthly Client Report</td><td>Active/inactive/disconnected</td><td><span class="deadline">Monthly</span></td></tr>
-                            <tr><td>(b) Individual Tx Report (single file, 8 forms)</td><td class="num">each tx ≥ $1,000</td><td class="num">5 bd</td></tr>
+                            <tr><td>(b) Individual Tx Report (single file, 8 forms)</td><td>each tx <span class="deadline">≥ $1,000</span></td><td><span class="deadline">5 bd</span></td></tr>
                             <tr><td>(c) Zero-Tx Notification (via PEA)</td><td>If no tx that month</td><td><span class="deadline">Monthly</span></td></tr>
                             <tr><td>Sanctions / UNSC freeze</td><td>List match</td><td><span class="deadline">Without delay</span></td></tr>
                         </tbody>
@@ -669,15 +702,15 @@
                     <h3>Statutory deadlines</h3>
                     <table>
                         <tbody>
-                            <tr><td>STR after determination</td><td class="num">24 h</td></tr>
-                            <tr><td>STR internal analysis (extendable 1×)</td><td class="num">≤ 15 bd</td></tr>
-                            <tr><td>UNSC / national list — FGR instructions</td><td class="num">max 24 h</td></tr>
-                            <tr><td>LECAT terrorism-suspect operations report</td><td class="num">3 days</td></tr>
-                            <tr><td>Operación Regulada filing</td><td class="num">5 bd</td></tr>
-                            <tr><td>UIF data update (entity registration)</td><td class="num">15 bd</td></tr>
-                            <tr><td>CO + Alternate CO registration → UIF</td><td class="num">5 bd</td></tr>
-                            <tr><td>Annual training plan Board-approved</td><td class="num">by 31 Dec</td></tr>
-                            <tr><td>Records retention (all AML files)</td><td class="num">15 years</td></tr>
+                            <tr><td>STR after determination</td><td><span class="deadline">24 h</span></td></tr>
+                            <tr><td>STR internal analysis (extendable 1×)</td><td><span class="deadline">≤ 15 bd</span></td></tr>
+                            <tr><td>UNSC / national list — FGR instructions</td><td><span class="deadline">max 24 h</span></td></tr>
+                            <tr><td>LECAT terrorism-suspect operations report</td><td><span class="deadline">3 days</span></td></tr>
+                            <tr><td>Operación Regulada filing</td><td><span class="deadline">5 bd</span></td></tr>
+                            <tr><td>UIF data update (entity registration)</td><td><span class="deadline">15 bd</span></td></tr>
+                            <tr><td>CO + Alternate CO registration → UIF</td><td><span class="deadline">5 bd</span></td></tr>
+                            <tr><td>Annual training plan Board-approved</td><td><span class="deadline">by 31 Dec</span></td></tr>
+                            <tr><td>Records retention (all AML files)</td><td><span class="deadline">15 years</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -760,17 +793,77 @@
                 <!-- 9. Red lines — full width -->
                 <div class="qrc-box qrc-box--red qrc-box--wide">
                     <h3 style="color: var(--red);">Red lines — do not cross</h3>
-                    <div class="qrc-redline">
-                        <p style="margin:0.2rem 0;">1. <strong>No tipping-off</strong> — criminal offence (LCLDA Art. 44). Decline / close uses neutral grounds only; never reveal STR, freeze, AML reason.</p>
-                        <p style="margin:0.2rem 0;">2. <strong>No STR later than 24 h</strong> from determination (LCLDA Art. 24). 5 bd in Instructivo Art. 43 is the older outer envelope — statute prevails.</p>
-                        <p style="margin:0.2rem 0;">3. <strong>No UNSC / national list match without freeze + UIF report</strong> — FGR has max 24 h to issue instructions (LECAT Art. 37).</p>
-                        <p style="margin:0.2rem 0;">4. <strong>No VASP transfer without full Travel Rule 7-field data</strong> — even sub-$1,000 (Instr. Art. 52 par. 2 Reform 2).</p>
-                        <p style="margin:0.2rem 0;">5. <strong>No SDD on suspicion or higher-risk scenario</strong> (Instr. Art. 14 last par.). Suspicion overrides matrix.</p>
-                        <p style="margin:0.2rem 0;">6. <strong>No operation outside registered Art. 19 perimeter</strong> (LEAD Arts. 38-40).</p>
-                        <p style="margin:0.2rem 0;">7. <strong>No relationship without BO identified to a natural person</strong> — apply 10% as floor (Instr. Art. 20(b)).</p>
-                        <p style="margin:0.2rem 0;">8. <strong>No identity verification skipped</strong> — pre-relationship gate at $0 (Instr. Art. 12 last par. Reform 2). No verification → no relationship.</p>
-                        <p style="margin:0.2rem 0;">9. <strong>No file destroyed before 15 years</strong> from operation date / relationship termination (LCLDA Art. 26).</p>
-                        <p style="margin:0.2rem 0;">10. <strong>No PEP relationship without senior-management written approval</strong> (Instr. Art. 13(c) Reform 2). PEP definition + 5-year persistence: LCLDA Art. 19.</p>
+                    <div class="redline-grid">
+                        <div class="redline-item">
+                            <div class="redline-num">01</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No tipping-off</div>
+                                <div class="redline-explain"><span class="cite cite--d426">LCLDA Art. 44</span> · criminal offence. Decline / close on neutral grounds only; never reveal STR, freeze, AML reason.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">02</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No STR later than <span class="deadline">24 h</span></div>
+                                <div class="redline-explain"><span class="cite cite--d426">LCLDA Art. 24</span> · from CO determination. <span class="deadline">5 bd</span> in Instr. Art. 43 is the older outer envelope — statute prevails.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">03</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No list match without freeze + UIF report</div>
+                                <div class="redline-explain"><span class="cite cite--lecat">LECAT Art. 37</span> · UNSC / UIF national list match. FGR has max <span class="deadline">24 h</span> to issue instructions.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">04</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No transfer without full Travel Rule 7-field data</div>
+                                <div class="redline-explain"><span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> · even sub-<span class="deadline">$1,000</span>.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">05</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No SDD on suspicion or higher-risk scenario</div>
+                                <div class="redline-explain"><span class="cite cite--instr">Instr. Art. 14 last par.</span> · suspicion overrides matrix.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">06</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No operation outside registered Art. 19 perimeter</div>
+                                <div class="redline-explain"><span class="cite cite--lead">LEAD Arts. 38–40</span> · sanctionable breach.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">07</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No relationship without BO identified to a natural person</div>
+                                <div class="redline-explain"><span class="cite cite--instr">Instr. Art. 20(b)</span> · apply <span class="deadline">10%</span> as floor.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">08</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No identity verification skipped</div>
+                                <div class="redline-explain"><span class="cite cite--instr">Instr. Art. 12 last par. (Reform 2)</span> · pre-relationship gate at <span class="deadline">$0</span>. No verification → no relationship.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">09</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No file destroyed before <span class="deadline">15 years</span></div>
+                                <div class="redline-explain"><span class="cite cite--d426">LCLDA Art. 26</span> · from operation date / relationship termination.</div>
+                            </div>
+                        </div>
+                        <div class="redline-item">
+                            <div class="redline-num">10</div>
+                            <div class="redline-body">
+                                <div class="redline-title">No PEP relationship without senior-mgmt written approval</div>
+                                <div class="redline-explain"><span class="cite cite--instr">Instr. Art. 13(c) Reform 2</span> · PEP definition + <span class="deadline">5-year persistence</span>: <span class="cite cite--d426">LCLDA Art. 19</span>.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
