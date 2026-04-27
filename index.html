@@ -182,38 +182,20 @@
         }
         .guide-card.guide-card--compliance::before { background: var(--emerald); }
         .guide-card.guide-card--wizard::before { background: var(--amber); }
-        .guide-card.guide-card--playbook {
-            background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg) 60%);
-            border-color: var(--accent-border);
-            box-shadow: 0 6px 20px rgba(217,119,87,0.10), var(--shadow-sm);
-        }
-        .guide-card.guide-card--playbook::before { background: var(--accent); height: 6px; }
-        .guide-card.guide-card--playbook::after {
-            content: "Free PDF";
-            position: absolute; top: 0.85rem; right: 0.85rem;
-            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em;
-            text-transform: uppercase;
-            background: var(--accent); color: var(--white, #fff);
-            padding: 0.25rem 0.55rem; border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(217,119,87,0.25);
-        }
+        .guide-card.guide-card--playbook::before { background: var(--navy, #2c3e50); }
         .guide-card:hover {
             transform: translateY(-3px); box-shadow: var(--shadow-lg);
             border-color: var(--accent-border);
         }
         .guide-card.guide-card--compliance:hover { border-color: var(--emerald-border); }
         .guide-card.guide-card--wizard:hover { border-color: var(--amber-border, #e6d4a8); }
-        .guide-card.guide-card--playbook:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 32px rgba(217,119,87,0.18), 0 4px 8px rgba(217,119,87,0.10);
-        }
+        .guide-card.guide-card--playbook:hover { border-color: var(--navy, #2c3e50); }
         .guide-card__num {
             color: var(--accent); margin-bottom: -0.25rem;
         }
         .guide-card--compliance .guide-card__num { color: var(--emerald); }
         .guide-card--wizard .guide-card__num { color: var(--amber); }
-        .guide-card--playbook .guide-card__num { color: var(--accent); }
+        .guide-card--playbook .guide-card__num { color: var(--navy, #2c3e50); }
         .guide-card__title {
             font-family: 'Instrument Serif', Georgia, serif;
             font-size: 1.6rem; line-height: 1.15; font-weight: 400;
@@ -237,7 +219,7 @@
         }
         .guide-card--compliance .guide-card__cta { color: var(--emerald); }
         .guide-card--wizard .guide-card__cta { color: var(--amber); }
-        .guide-card--playbook .guide-card__cta { color: var(--accent); font-weight: 700; }
+        .guide-card--playbook .guide-card__cta { color: var(--navy, #2c3e50); }
         .guide-card__cta::after {
             content: "→"; transition: transform 0.2s;
         }

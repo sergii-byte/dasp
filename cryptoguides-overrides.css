@@ -1216,25 +1216,37 @@ strong, b {
 }
 .reg-quote-cite strong, .reg-quote cite strong { color: var(--ink); font-weight: 600; }
 
-/* ---------- Download Card — neutral supplementary style ---------- */
+/* ---------- Download Card — accented playbook style ---------- */
 .dl-card {
   display: grid;
   grid-template-columns: 56px 1fr auto;
   gap: 16px;
   align-items: center;
   padding: 18px 20px;
-  background: var(--paper);
-  border: 1px solid var(--rule);
+  background: linear-gradient(135deg, var(--accent-light, #fbf0eb) 0%, var(--paper) 70%);
+  border: 1px solid var(--accent-border, #ecc8b8);
+  border-left: 4px solid var(--accent, #d97757);
   border-radius: var(--r);
   text-decoration: none;
   color: inherit;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(217,119,87,0.10), var(--shadow-sm);
   transition: all 150ms ease;
 }
+.dl-card::before {
+  content: "Free PDF";
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--accent, #d97757); color: #fff;
+  padding: 0.22rem 0.5rem; border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(217,119,87,0.25);
+}
 .dl-card:hover {
-  border-color: var(--ink);
-  background: var(--paper);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  border-color: var(--accent, #d97757);
+  border-left-color: var(--accent, #d97757);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(217,119,87,0.18), 0 4px 8px rgba(217,119,87,0.10);
 }
 .dl-icon {
   width: 56px;
@@ -1291,10 +1303,17 @@ strong, b {
   transition: all 150ms ease;
   flex-shrink: 0;
 }
+.dl-card .dl-arrow {
+  background: var(--accent, #d97757);
+  color: #fff;
+  border-color: var(--accent, #d97757);
+  font-weight: 700;
+}
 .dl-card:hover .dl-arrow {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--accent-2, #c26a49);
+  color: #fff;
+  border-color: var(--accent-2, #c26a49);
+  transform: translateY(2px);
 }
 
 /* ---------- Design-system Hero (full apply) ---------- */
