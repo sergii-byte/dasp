@@ -721,8 +721,8 @@
                     <table>
                         <thead><tr><th>Source</th><th>Threshold</th><th>Posture</th></tr></thead>
                         <tbody>
-                            <tr><td>Instr. Arts. 12 last sent., 20(b)</td><td class="num">≥ 10%</td><td>Apply — stricter</td></tr>
-                            <tr><td>LCLDA Art. 15 par. 5</td><td class="num">≥ 25%</td><td>Statute floor</td></tr>
+                            <tr><td>Instr. Arts. 12 last sent., 20(b)</td><td><span class="deadline">≥ 10%</span></td><td>Apply — stricter</td></tr>
+                            <tr><td>LCLDA Art. 15 par. 5</td><td><span class="deadline">≥ 25%</span></td><td>Statute floor</td></tr>
                             <tr><td>Instr. Art. 21-A (Reform 2)</td><td>majority + control + mgmt fallback</td><td>VASP cascade</td></tr>
                             <tr><td colspan="3" style="font-size:0.72rem; color:var(--text-2);"><strong>Plus:</strong> Art. 20(a) — natural person on whose behalf relationship is sought (nominee detection); listed-company exception applies for stock-exchange-listed customers under disclosure regime.</td></tr>
                         </tbody>
@@ -1115,7 +1115,7 @@
                         <li><strong>Standard:</strong> per entity's own manual cadence (per AML Policy under Instr. Art. 23)</li>
                         <li><strong>Low (SDD):</strong> reduced cadence per Art. 14(b)</li>
                         <li>Trigger-based out-of-cycle refresh on: BO change ≥10%, new PEP status, sanctions update, profile inconsistency, jurisdiction reclassification, adverse media</li>
-                        <li>Reclassification to high-risk → 60 calendar days to update if data &gt; 1 year stale (Art. 23)</li>
+                        <li>Reclassification to high-risk → <span class="deadline">60 calendar days</span> to update if data &gt; 1 year stale (Art. 23)</li>
                     </ul>
                 </div>
             </div>
@@ -1535,15 +1535,15 @@
             <h3>Three statutory UBO definitions</h3>
             <div class="grid grid--3">
                 <div class="card card--green">
-                    <div class="card__title">10% participation floor</div>
+                    <div class="card__title"><span class="deadline">10%</span> participation floor</div>
                     <p class="card__sub">Operational baseline (stricter rule)</p>
-                    <p>Natural person who directly or indirectly owns or controls <strong>≥10%</strong> of capital or voting rights of a legal person, OR exercises direct/indirect control by other means of management.</p>
+                    <p>Natural person who directly or indirectly owns or controls <span class="deadline">≥ 10%</span> of capital or voting rights of a legal person, OR exercises direct/indirect control by other means of management.</p>
                     <div class="card__foot"><span class="cite cite--instr">Instr. Arts. 12(a), 20(b)</span></div>
                 </div>
                 <div class="card card--blue">
-                    <div class="card__title">25% statutory threshold</div>
+                    <div class="card__title"><span class="deadline">25%</span> statutory threshold</div>
                     <p class="card__sub">LCLDA floor — Instructivo overrides stricter</p>
-                    <p>The AML Law uses 25% as the participation threshold for legal persons. The Instructivo lowers it to 10% for operational rigour. Apply the stricter (10%) per the stricter rule.</p>
+                    <p>The AML Law uses <span class="deadline">25%</span> as the participation threshold for legal persons. The Instructivo lowers it to <span class="deadline">10%</span> for operational rigour. Apply the stricter (<span class="deadline">10%</span>) per the stricter rule.</p>
                     <div class="card__foot"><span class="cite cite--d426">LCLDA Art. 15 par. 5</span></div>
                 </div>
                 <div class="card card--amber">
@@ -1578,7 +1578,7 @@
                     <ul>
                         <li><strong>Standard customers:</strong> periodic update per Reporting Entity's own manual; customer may self-confirm "no change" via accepted channel</li>
                         <li><strong>High-risk customers:</strong> updates required <strong>at any time</strong> — no fixed scheduled cadence; reactive to risk signals</li>
-                        <li><strong>Reclassification trigger:</strong> if a customer is newly classified as high-risk and their data have not been updated for <strong>more than 1 year</strong>, full update must be completed within <strong>60 calendar days</strong> of the reclassification</li>
+                        <li><strong>Reclassification trigger:</strong> if a customer is newly classified as high-risk and their data have not been updated for <span class="deadline">more than 1 year</span>, full update must be completed within <span class="deadline">60 calendar days</span> of the reclassification</li>
                         <li><strong>Profile inconsistency trigger:</strong> entities may require updates outside their scheduled cadence whenever an operation is inconsistent with the customer profile</li>
                     </ul>
                     <div class="card__foot"><span class="cite cite--instr">Instr. Art. 23</span></div>
@@ -1595,12 +1595,12 @@
                         <li>Material deviation from declared activity profile</li>
                         <li>Cross-border counterparty in newly EDD-listed jurisdiction</li>
                     </ul>
-                    <div class="card__foot">Scheduled refresh cadence is set in the entity's AML Policy under the risk-based approach (Instr. Art. 23 — periodic update + immediate update on reclassification to high-risk within 60 calendar days).</div>
+                    <div class="card__foot">Scheduled refresh cadence is set in the entity's AML Policy under the risk-based approach (Instr. Art. 23 — periodic update + immediate update on reclassification to high-risk within <span class="deadline">60 calendar days</span>).</div>
                 </div>
             </div>
 
             <div class="callout callout--amber" style="margin-top:1rem;">
-                <p>Common citation error. The "15 business days" deadline that some manuals attach to BO updates is in fact <strong>Instr. Art. 3</strong> (the Reporting Entity's own UIF-registration data update — own corporate data, CO appointment, etc.), not Art. 23. Customer / BO data updates follow the Art. 23 framework above (60 calendar days for high-risk reclassification; "at any time" for ongoing high-risk; periodic per own manual for standard).</p>
+                <p>Common citation error. The "<span class="deadline">15 business days</span>" deadline that some manuals attach to BO updates is in fact <strong>Instr. Art. 3</strong> (the Reporting Entity's own UIF-registration data update — own corporate data, CO appointment, etc.), not Art. 23. Customer / BO data updates follow the Art. 23 framework above (<span class="deadline">60 calendar days</span> for high-risk reclassification; "at any time" for ongoing high-risk; periodic per own manual for standard).</p>
             </div>
         </section>
 
@@ -2266,7 +2266,7 @@
                     <tr>
                         <td>Risk reclassification to high-risk + data &gt; 1 yr stale</td>
                         <td>Updated CDD file with full data refresh; risk-rating change rationale</td>
-                        <td class="num">60 calendar days</td>
+                        <td><span class="deadline">60 calendar days</span></td>
                         <td><span class="cite cite--instr">Instr. Art. 23</span></td>
                     </tr>
                     <tr>

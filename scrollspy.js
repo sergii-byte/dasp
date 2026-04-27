@@ -95,23 +95,28 @@
     updates.forEach(function (n) { n.nodeValue = curlyQuote(n.nodeValue); });
   };
 
-  /* ----- Deadline highlighter — wraps "10 bd" / "24 h" / "6 months" etc. ----- */
-  // Matches:  <number><opt-decimal/range><opt-spaces><unit>
-  //   units: bd | wd | h(ours?) | wk(s)? / week(s)? | mo(s)? / month(s)? | yr(s)? / year(s)? | day(s)?
-  // Examples covered: 10 bd · 5wd · 24 h · 24 hours · 5 wd · 6 months · 15 yr · 8–12 months · 2–3 weeks
-  const DEADLINE_RX = /(\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?)(\s|&nbsp;| )?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b/gi;
+  /* ----- Highlighter — wraps deadlines, $-amounts and percentages with .deadline ----- */
+  // 1. DEADLINE: <number><opt-range><opt-space><unit>
+  //    units: bd | wd | h(ours?) | wk(s)? / week(s)? | mo(s)? / month(s)? | yr(s)? / year(s)? | day(s)?
+  // 2. AMOUNT: optional "US"+$+digits with thousands separators + optional decimals + optional K/M/B
+  // 3. PERCENT: digits + optional decimal + optional range + %
+  const HIGHLIGHT_PATTERNS = [
+    /(\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?)(\s|&nbsp;| )?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b/gi,
+    /(?:US)?\$\s?\d+(?:[.,]\d{3})*(?:[.,]\d+)?\s?[KMB]?\b/g,
+    /\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?\s?%/g
+  ];
+  const COMBINED_TEST_RX = /(\b\d+(?:[.,]\d+)?\s?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b)|((?:US)?\$\s?\d)|(\b\d+(?:[.,]\d+)?\s?%)/i;
 
   const initDeadlines = function () {
     const root = document.body;
     if (!root) return;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
-        if (!node.nodeValue || !DEADLINE_RX.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
-        DEADLINE_RX.lastIndex = 0; // reset stateful regex
+        if (!node.nodeValue || !COMBINED_TEST_RX.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
         let p = node.parentNode;
         while (p && p !== root) {
           if (SKIP_TAGS.has(p.nodeName)) return NodeFilter.FILTER_REJECT;
-          if (p.classList && (p.classList.contains('deadline') || SKIP_CLASS_RX.test(p.className || ''))) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('deadline') || p.classList.contains('pill') || SKIP_CLASS_RX.test(p.className || ''))) return NodeFilter.FILTER_REJECT;
           p = p.parentNode;
         }
         return NodeFilter.FILTER_ACCEPT;
@@ -122,21 +127,39 @@
     while ((n = walker.nextNode())) targets.push(n);
     targets.forEach(function (textNode) {
       const text = textNode.nodeValue;
+      const matches = [];
+      HIGHLIGHT_PATTERNS.forEach(function (rx) {
+        rx.lastIndex = 0;
+        let m;
+        while ((m = rx.exec(text)) !== null) {
+          matches.push({ start: m.index, end: m.index + m[0].length, text: m[0] });
+        }
+      });
+      if (!matches.length) return;
+      matches.sort(function (a, b) { return a.start - b.start; });
+      // Drop overlaps — keep first-encountered
+      const accepted = [];
+      let cursor = 0;
+      matches.forEach(function (mm) {
+        if (mm.start >= cursor) {
+          accepted.push(mm);
+          cursor = mm.end;
+        }
+      });
+      if (!accepted.length) return;
+
       const fragment = document.createDocumentFragment();
       let lastIndex = 0;
-      let m;
-      DEADLINE_RX.lastIndex = 0;
-      while ((m = DEADLINE_RX.exec(text)) !== null) {
-        const start = m.index;
-        if (start > lastIndex) fragment.appendChild(document.createTextNode(text.slice(lastIndex, start)));
+      accepted.forEach(function (mm) {
+        if (mm.start > lastIndex) fragment.appendChild(document.createTextNode(text.slice(lastIndex, mm.start)));
         const span = document.createElement('span');
         span.className = 'deadline';
-        span.textContent = m[0];
+        span.textContent = mm.text;
         fragment.appendChild(span);
-        lastIndex = start + m[0].length;
-      }
+        lastIndex = mm.end;
+      });
       if (lastIndex < text.length) fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
-      if (fragment.childNodes.length) textNode.parentNode.replaceChild(fragment, textNode);
+      textNode.parentNode.replaceChild(fragment, textNode);
     });
   };
 
