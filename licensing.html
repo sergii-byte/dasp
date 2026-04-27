@@ -936,6 +936,7 @@
 
         .card {
             background: var(--white); border: 1px solid var(--border);
+            border-left: 1px solid var(--text-3);
             border-radius: 10px; padding: 1.5rem;
             transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
             display: flex; flex-direction: column;
@@ -945,12 +946,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
         /* Left-accent variants — semantic grouping */
-        .card--accent-blue    { border-left: 4px solid var(--blue); }
-        .card--accent-green   { border-left: 4px solid var(--emerald); }
-        .card--accent-amber   { border-left: 4px solid var(--amber); }
-        .card--accent-red     { border-left: 4px solid var(--red); }
-        .card--accent-navy    { border-left: 4px solid var(--navy); }
-        .card--accent-muted   { border-left: 4px solid var(--text-3); }
+        .card--accent-blue    { border-left: 1px solid var(--blue); }
+        .card--accent-green   { border-left: 1px solid var(--emerald); }
+        .card--accent-amber   { border-left: 1px solid var(--amber); }
+        .card--accent-red     { border-left: 1px solid var(--red); }
+        .card--accent-navy    { border-left: 1px solid var(--navy); }
+        .card--accent-muted   { border-left: 1px solid var(--text-3); }
         /* Top-accent variants (for Costs grid) */
         .card--top-blue    { border-top: 3px solid var(--accent); }
         .card--top-green   { border-top: 3px solid var(--emerald); }
@@ -1232,7 +1233,7 @@
         }
         .wizard__verdict {
             padding: 1rem 1.15rem; border-radius: var(--r-md);
-            margin-bottom: 1rem; border-left: 4px solid var(--accent);
+            margin-bottom: 1rem; border-left: 1px solid var(--accent);
             background: var(--accent-light);
         }
         .wizard__verdict--sdd { border-left-color: var(--emerald); background: var(--emerald-light); }

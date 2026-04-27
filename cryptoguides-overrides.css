@@ -365,7 +365,7 @@ ol.tl > li.tl-item:last-child::after {
 
 /* L9 — Visible focus rings for keyboard users (was default browser dotted outline) */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -465,13 +465,13 @@ a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a
    Use !important to override the global `.card { border-color: transparent !important }`
    ring-only rule earlier in this file (the ring still draws via box-shadow; only the
    left edge is replaced by the colored accent). */
-.card--accent-amber, .card--amber  { border-left: 4px solid var(--accent) !important; }
-.card--accent-green, .card--green  { border-left: 4px solid var(--green) !important; }
-.card--accent-red,   .card--red    { border-left: 4px solid var(--red) !important; }
-.card--accent-blue,  .card--blue   { border-left: 4px solid var(--blue) !important; }
-.card--accent-navy                 { border-left: 4px solid var(--navy) !important; }
-.card--accent-muted                { border-left: 4px solid var(--text-3) !important; }
-.card--purple                      { border-left: 4px solid #6B5BD2 !important; }
+.card--accent-amber, .card--amber  { border-left: 1px solid var(--accent) !important; }
+.card--accent-green, .card--green  { border-left: 1px solid var(--green) !important; }
+.card--accent-red,   .card--red    { border-left: 1px solid var(--red) !important; }
+.card--accent-blue,  .card--blue   { border-left: 1px solid var(--blue) !important; }
+.card--accent-navy                 { border-left: 1px solid var(--navy) !important; }
+.card--accent-muted                { border-left: 1px solid var(--text-3) !important; }
+.card--purple                      { border-left: 1px solid #6B5BD2 !important; }
 
 /* ---------- Buttons ---------- */
 .btn, .button, button.btn {
@@ -549,7 +549,7 @@ strong .deadline { font-weight: 700; }
   padding: 0 0.3rem;
   border-radius: 0;
   border: 0;
-  border-left: 2px solid var(--rule-2);
+  border-left: 1px solid var(--rule-2);
   white-space: nowrap;
   margin-left: 0.25rem;
 }
@@ -576,7 +576,7 @@ strong .deadline { font-weight: 700; }
 
 /* ---------- Callouts — editorial style ---------- */
 .callout {
-  border-left: 2px solid var(--ink);
+  border-left: 1px solid var(--ink);
   background: var(--paper-2);
   padding: 16px 20px;
   border-radius: 0 var(--r) var(--r) 0;
@@ -879,7 +879,7 @@ strong, b {
   color: var(--ink);
   font-weight: 600;
   background: var(--paper-3);
-  border-left: 2px solid var(--accent);
+  border-left: 1px solid var(--accent);
   padding-left: calc(0.5rem - 2px);
 }
 
@@ -963,7 +963,7 @@ strong, b {
   color: var(--paper);
 }
 .timeline__track .phase-card__summary:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 1px solid var(--accent);
   outline-offset: -2px;
 }
 
@@ -1225,7 +1225,7 @@ strong, b {
   padding: 18px 20px;
   background: linear-gradient(135deg, var(--accent-light, #fbf0eb) 0%, var(--paper) 70%);
   border: 1px solid var(--accent-border, #ecc8b8);
-  border-left: 4px solid var(--accent, #d97757);
+  border-left: 1px solid var(--accent, #d97757);
   border-radius: var(--r);
   text-decoration: none;
   color: inherit;
@@ -1707,7 +1707,7 @@ strong, b {
   height: 14px;
   border-radius: 50%;
   background: var(--paper);
-  border: 2px solid var(--ink);
+  border: 1px solid var(--ink);
   box-sizing: border-box;
 }
 .tl-item.future::before { border-color: var(--rule-2); }
