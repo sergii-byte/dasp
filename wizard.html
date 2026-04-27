@@ -373,11 +373,12 @@
             <fieldset class="form__field form__field--span-3">
                 <legend class="field__legend">Channel</legend>
                 <div class="chips">
-                    <label class="chip"><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
-                    <label class="chip"><input type="radio" name="channel" value="cash"> Cash</label>
-                    <label class="chip"><input type="radio" name="channel" value="other"> Other</label>
-                    <label class="chip"><input type="radio" name="channel" value="remittance"> Remittance</label>
+                    <label class="chip" title="On-platform or on-chain transfer (fiat↔crypto, wallet↔wallet, internal book transfer). Default DASP operation."><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
+                    <label class="chip" title="Physical cash in/out at point-of-service. Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
+                    <label class="chip" title="Wire, voucher, gift-card, alternative payment rail. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
+                    <label class="chip" title="Cross-border family transfer (diaspora → ES). Lower CDD threshold: ≥ $200 per Instructivo UIF."><input type="radio" name="channel" value="remittance"> Remittance</label>
                 </div>
+                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>E-transfer</strong> on-platform / on-chain · <strong>Remittance</strong> = cross-border family transfer (≥ $200 trigger). Hover any chip for details.</p>
             </fieldset>
 
             <fieldset class="form__field form__field--span-3">
@@ -390,56 +391,11 @@
             <fieldset class="form__field form__field--span-6">
                 <legend class="field__legend">Counterparty / client jurisdiction</legend>
                 <select id="wiz-jur" class="select">
-                    <option value="standard" data-cat="">El Salvador / standard low-risk jurisdiction</option>
-                    <option disabled>──── REJECT (geofence) ────</option>
-                    <option value="reject" data-cat="FATF Call for Action">North Korea (DPRK)</option>
-                    <option value="reject" data-cat="FATF Call for Action">Iran</option>
-                    <option value="reject" data-cat="FATF Call for Action">Myanmar (Burma)</option>
-                    <option value="reject" data-cat="UN Security Council">Central African Republic</option>
-                    <option value="reject" data-cat="UN Security Council">DR Congo</option>
-                    <option value="reject" data-cat="UN Security Council">Eritrea</option>
-                    <option value="reject" data-cat="UN Security Council">Guinea-Bissau</option>
-                    <option value="reject" data-cat="UN Security Council">Iraq</option>
-                    <option value="reject" data-cat="UN Security Council">Lebanon</option>
-                    <option value="reject" data-cat="UN Security Council">Libya</option>
-                    <option value="reject" data-cat="UN Security Council">Mali</option>
-                    <option value="reject" data-cat="UN Security Council">Somalia</option>
-                    <option value="reject" data-cat="UN Security Council">South Sudan</option>
-                    <option value="reject" data-cat="UN Security Council">Sudan</option>
-                    <option value="reject" data-cat="UN Security Council">Yemen</option>
-                    <option value="reject" data-cat="OFAC Comprehensive">Cuba</option>
-                    <option value="reject" data-cat="OFAC Comprehensive">Russia-occupied UA territories (Crimea / Donetsk / Luhansk / Zaporizhzhia / Kherson)</option>
-                    <option value="reject" data-cat="Crypto Ban">Algeria</option>
-                    <option value="reject" data-cat="Crypto Ban">Bangladesh</option>
-                    <option value="reject" data-cat="Crypto Ban">China</option>
-                    <option value="reject" data-cat="Crypto Ban">Egypt</option>
-                    <option value="reject" data-cat="Crypto Ban">Morocco</option>
-                    <option value="reject" data-cat="Crypto Ban">Nepal</option>
-                    <option value="reject" data-cat="Crypto Ban">Oman</option>
-                    <option value="reject" data-cat="Crypto Ban">Qatar</option>
-                    <option value="reject" data-cat="Crypto Ban">Tunisia</option>
-                    <option disabled>──── EDD (senior approval) ────</option>
-                    <option value="edd" data-cat="FATF Grey List">Angola</option>
-                    <option value="edd" data-cat="FATF Grey List">Bolivia</option>
-                    <option value="edd" data-cat="FATF Grey List">Bulgaria</option>
-                    <option value="edd" data-cat="FATF Grey List">Cameroon</option>
-                    <option value="edd" data-cat="FATF Grey List">Côte d'Ivoire</option>
-                    <option value="edd" data-cat="FATF Grey List">Haiti</option>
-                    <option value="edd" data-cat="FATF Grey List">Kenya</option>
-                    <option value="edd" data-cat="FATF Grey List">Kuwait</option>
-                    <option value="edd" data-cat="FATF Grey List">Laos</option>
-                    <option value="edd" data-cat="FATF Grey List">Monaco</option>
-                    <option value="edd" data-cat="FATF Grey List">Namibia</option>
-                    <option value="edd" data-cat="FATF Grey List">Papua New Guinea</option>
-                    <option value="edd" data-cat="FATF Grey List">Syria</option>
-                    <option value="edd" data-cat="FATF Grey List">Venezuela</option>
-                    <option value="edd" data-cat="FATF Grey List">Vietnam</option>
-                    <option value="edd" data-cat="FATF Grey List">Virgin Islands (UK)</option>
-                    <option value="edd" data-cat="Partial Sanctions">Belarus</option>
-                    <option value="edd" data-cat="Partial Sanctions">Russia</option>
-                    <option value="edd" data-cat="Partial Sanctions">Zimbabwe</option>
+                    <option value="standard" data-cat="">Approved — El Salvador or FATF-compliant jurisdiction (standard CDD)</option>
+                    <option value="edd" data-cat="FATF Grey List / partial sanctions">High-risk — FATF Grey List or partial sanctions (EDD required)</option>
+                    <option value="reject" data-cat="UN sanctions / OFAC comprehensive / crypto-ban / FATF Call for Action">Restricted — UN / OFAC / crypto-ban / FATF Call for Action (geofence → Reject)</option>
                 </select>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;">List verified Q1 2026 against FATF plenary outputs, UNSC consolidated lists and OFAC comprehensive sanctions. <strong>Refresh after each FATF plenary</strong> (Feb / Jun / Oct annually). Salvadoran statute binds UNSC + UIF national lists only — OFAC / EU / UK relevant via banking-partner contracts and USD-corridor exposure (commercial-risk layer).</p>
+                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;">Three working buckets — pick the one the counterparty falls into. <strong>High-risk</strong> = FATF Grey List + partial sanctions regimes. <strong>Restricted</strong> = UN Security Council lists, OFAC comprehensive, national crypto-bans and FATF Call for Action. Lists verified Q1 2026 — <strong>refresh after each FATF plenary</strong> (Feb / Jun / Oct). Salvadoran statute binds UNSC + UIF national lists only; OFAC / EU / UK enter through banking-partner contracts and USD-corridor exposure.</p>
             </fieldset>
 
             <fieldset class="form__field form__field--span-6">
@@ -525,7 +481,7 @@
         if (s.f.sanctions) return { v: 'reject', icon: '✕', title: 'Reject — sanctions match',
             reason: 'Confirmed match against UNSC or UIF national list. Freeze immediately, report to UIF, no tipping-off.' };
         if (s.jur === 'reject') return { v: 'reject', icon: '✕', title: 'Reject — restricted jurisdiction',
-            reason: esc(s.jurName) + ' (' + esc(s.jurCat) + ') is on the restricted-jurisdictions list. Geofence + reject.' };
+            reason: 'Counterparty jurisdiction falls in the restricted bucket (' + esc(s.jurCat) + '). Geofence + reject.' };
         if (s.f.refuses) return { v: 'reject', icon: '✕', title: 'Reject — client refuses CDD',
             reason: 'Client declines required CDD or Travel Rule data. Onboarding prohibited; the attempt itself is reportable.' };
 
@@ -539,7 +495,7 @@
         if (s.f.mixer) eddTriggers.push('flagged counterparty wallet');
         if (s.f.thirdparty) eddTriggers.push('third-party funder');
         if (s.f.adverse) eddTriggers.push('adverse media');
-        if (s.jur === 'edd') eddTriggers.push('high-risk jurisdiction (' + esc(s.jurName) + ')');
+        if (s.jur === 'edd') eddTriggers.push('high-risk jurisdiction (' + esc(s.jurCat) + ')');
         if (eddTriggers.length) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
             reason: 'EDD trigger(s): ' + eddTriggers.join(', ') + '. Senior-management written approval required.', triggers: eddTriggers };
 
@@ -715,9 +671,8 @@
             }
             if (s.jur === 'edd') {
                 parts.push(block('block--amber',
-                    'Jurisdiction-specific (' + esc(s.jurName) + ')',
+                    'Jurisdiction-specific (high-risk: ' + esc(s.jurCat) + ')',
                     [
-                        'Category: ' + esc(s.jurCat),
                         'Per Risk Management Policy — EDD baseline + senior approval',
                         'KYT on every transaction with this counterparty',
                         'Periodic re-screen against jurisdiction-specific sanctions',
