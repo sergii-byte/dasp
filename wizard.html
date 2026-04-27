@@ -373,12 +373,12 @@
             <fieldset class="form__field form__field--span-3">
                 <legend class="field__legend">Channel</legend>
                 <div class="chips">
-                    <label class="chip" title="On-platform or on-chain transfer (fiat↔crypto, wallet↔wallet, internal book transfer). Default DASP operation."><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
-                    <label class="chip" title="Physical cash in/out at point-of-service. Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
-                    <label class="chip" title="Wire, voucher, gift-card, alternative payment rail. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
-                    <label class="chip" title="Cross-border family transfer (diaspora → ES). Lower CDD threshold: ≥ $200 per Instructivo UIF."><input type="radio" name="channel" value="remittance"> Remittance</label>
+                    <label class="chip" title="Any electronic rail: crypto↔fiat exchange (on-ramp/off-ramp via SPEI/ACH/SEPA/SWIFT/card), crypto↔crypto, wallet↔wallet on-chain, internal book transfer. Default DASP operation."><input type="radio" name="channel" value="etransfer" checked> E-transfer</label>
+                    <label class="chip" title="Physical cash in/out at point-of-service (kiosk, branch, OTC desk). Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
+                    <label class="chip" title="Voucher, gift-card, money order, cashier's check or other non-electronic non-cash instrument. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
+                    <label class="chip" title="Cross-border family transfer (diaspora → ES) — applies regardless of crypto or fiat leg. Lower CDD threshold: ≥ $200 per Instructivo UIF."><input type="radio" name="channel" value="remittance"> Remittance</label>
                 </div>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>E-transfer</strong> on-platform / on-chain · <strong>Remittance</strong> = cross-border family transfer (≥ $200 trigger). Hover any chip for details.</p>
+                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. <strong>Crypto↔fiat</strong> via card / bank wire = <strong>E-transfer</strong>. Crypto bought with physical cash at a kiosk = <strong>Cash</strong>. Off-ramp paid by voucher / gift card = <strong>Other</strong>. Hover any chip for details.</p>
             </fieldset>
 
             <fieldset class="form__field form__field--span-3">
