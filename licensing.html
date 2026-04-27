@@ -1353,7 +1353,7 @@
     <div class="hero__inner">
         <div class="hero__label">Practitioner's Guide · Updated April 2026</div>
         <h1 id="hero-title" class="hero__title">DASP <em>Licensing</em><br>in El Salvador</h1>
-        <p class="hero__desc">A hands-on walkthrough of Digital Asset Service Provider registration under <abbr title="Ley de Emisión de Activos Digitales">LEAD</abbr> (Decree No.&nbsp;643 of 9&nbsp;January 2023), end-to-end with <abbr title="Comisión Nacional de Activos Digitales">CNAD</abbr>.</p>
+        <p class="hero__desc">A hands-on walkthrough of Digital Asset Service Provider registration under <abbr title="Ley de Emisión de Activos Digitales">LEAD</abbr> (Decree No.&nbsp;643 of 9&nbsp;January 2023), end-to-end with <abbr title="Comisión Nacional de Activos Digitales">CNAD</abbr>. <strong>Scope: DASP services only</strong> (LEAD Art. 19) — token issuance / public offerings (CNAD-017-2023, REOPME) are a separate regime not covered here.</p>
         <div class="hero__cta">
             <a href="#dasp" class="btn btn--primary">Start with the Flow <span class="btn__arrow">→</span></a>
             <a href="#costs" class="btn btn--secondary">See the Costs</a>
@@ -1629,8 +1629,8 @@
     <table class="tbl">
         <thead><tr><th>Activity</th><th>Source</th></tr></thead>
         <tbody>
-            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets, using own or third-party capital</td><td>LEAD Art. 19(a)</td></tr>
-            <tr><td><strong>Exchange platform</strong> — operate a platform for exchange or commercialisation of digital assets / derivatives</td><td>LEAD Art. 19(b)</td></tr>
+            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets, using own or third-party capital. <strong>Spot only</strong> — per CNAD Guía Anexo 1(a), all transactions take place in the spot market, <em>without including derivatives or futures</em></td><td>LEAD Art. 19(a)</td></tr>
+            <tr><td><strong>Exchange platform</strong> — operate a platform for exchange or commercialisation of digital assets / derivatives. <strong>Spot + derivatives + futures</strong> permitted per CNAD Guía Anexo 1(b) (includes OTC, derivative and futures operations)</td><td>LEAD Art. 19(b)</td></tr>
             <tr><td><strong>Risk + price evaluation, underwriting</strong> — for digital-asset issuances</td><td>LEAD Art. 19(c)</td></tr>
             <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>LEAD Art. 19(d)</td></tr>
             <tr><td><strong>Investment products</strong> — promote, structure, manage investment products in digital assets</td><td>LEAD Art. 19(e)</td></tr>
@@ -1976,7 +1976,7 @@
                     <h5>KYC / KYB / KYT &amp; tech</h5>
                     <ul>
                         <li>KYC / KYB procedures with technical integration documentation <span class="ref">RPSAD Art. 19</span></li>
-                        <li>KYT protocol — risk-based; integral risk manual <span class="ref">RPSAD Art. 21</span></li>
+                        <li>KYT protocol — risk-based; integral risk manual <span class="ref">RPSAD Art. 21</span>. <strong>Per CNAD Guía § Fase 2</strong>, the manual must cover <strong>9 risk categories</strong>: liquidity · market · counterparty · credit · legal · operational · technological · reputational · ML/TF/FPWMD <span class="ref">CNAD Guía § Fase 2 Riesgos</span></li>
                         <li>Business Continuity Plan + Contingency Plan (resumption / orderly cessation if critical operations cannot restart in 6 h) <span class="ref">RPSAD Art. 27(e)(iii)</span></li>
                         <li>Asset custody policy + fund segregation <span class="ref">LEAD Art. 21(j)</span> + Cybersecurity + ICT remediation <span class="ref">RPSAD Arts. 27–28</span></li>
                     </ul>
@@ -2258,7 +2258,7 @@
             <tr>
                 <td><strong>Principal Compliance Officer</strong></td>
                 <td>AML/CFT oversight. Board-appointed; managerial position; functional reporting to the highest governing body.</td>
-                <td>Independence + autonomy + exclusivity + direct employment with the entity <span class="ref">LCLDA Art. 20</span> <span class="ref">Instr. Art. 84-B(2)</span>. Practical CNAD expectation <span class="ref ref--practice">practice / analogy</span>: AML/CFT certification + ≥ 2 yr AML experience + university degree (by analogy to <span class="ref">Instr. Art. 64</span>).</td>
+                <td>Independence + autonomy + exclusivity + direct employment with the entity <span class="ref">LCLDA Art. 20</span> <span class="ref">Instr. Art. 84-B(2)</span>. <strong>Direct VASP-CO requirements per Acuerdo 734 § Annex II.1.1</strong>: AML/CFT certification + ≥ 2 yr AML/CFT/FPWMD experience + employment relationship + managerial position + university degree + skills in legal / business / control matters. <span class="ref">Acuerdo 734 § Annex II.1.1</span>. (For non-domiciled CO: § Annex II.1.2 sets a homologación path — verify against country-of-origin requirements; if none, demonstrate AML/CFT/FPWMD knowledge + employment relationship + skills.)</td>
                 <td>Not required for DASPs <span class="ref">Instr. Art. 84-B(2) Reform 1</span></td>
                 <td><strong>CNAD + UIF</strong> · UIF registration of CO within <strong>5 bd</strong> of appointment <span class="ref">Instr. Art. 64</span> + CNAD <strong>5 bd</strong> <span class="ref">RPSAD Art. 9</span></td>
             </tr>
@@ -2325,10 +2325,10 @@
     <h3 class="section__subh" style="margin-top:2rem;">Computer systems &amp; operational platforms — Art. 20</h3>
     <p class="section__desc" style="margin-bottom:1rem;">If the DASP operates digital platforms / wallets / similar applications, the computer systems must perform at minimum the following four functions:</p>
     <ul>
-        <li><strong>Settlement quality.</strong> Quick, correct and accurate settlement of all transactions made on the platform / wallet.</li>
-        <li><strong>Electronic Book.</strong> Accurate, auditable and verifiable record of each transaction. Must include: date · type of transaction · participating users · total amount.</li>
-        <li><strong>Permanent monitoring.</strong> Real-time / near-real-time monitoring of all operations to detect errors and failures of any nature. Capability to recover damaged or deleted information from impacted operations or significant controversies.</li>
-        <li><strong>Account suspension / closure.</strong> Mechanism to suspend and close customer accounts that have breached the platform&rsquo;s terms and conditions.</li>
+        <li><strong>Settlement quality.</strong> Quick, correct and accurate settlement of all transactions made on the platform / wallet. <span class="cite cite--rpsad">RPSAD Art. 20(a)</span></li>
+        <li><strong>Electronic Book.</strong> Accurate, auditable and verifiable record of each transaction. Must include: date · type of transaction · participating users · total amount. <span class="cite cite--rpsad">RPSAD Art. 20(b)</span></li>
+        <li><strong>Permanent monitoring.</strong> Real-time / near-real-time monitoring of all operations to detect errors and failures of any nature. Capability to recover damaged or deleted information from impacted operations or significant controversies. <span class="cite cite--rpsad">RPSAD Art. 20(c)</span></li>
+        <li><strong>Account suspension / closure.</strong> Mechanism to suspend and close customer accounts that have breached the platform&rsquo;s terms and conditions. <span class="cite cite--rpsad">RPSAD Art. 20(d)</span></li>
     </ul>
 
     <h3 class="section__subh" style="margin-top:2rem;">Website (URL) disclosure — Art. 23</h3>
@@ -2388,6 +2388,16 @@
             <li>In case of fortuitous event or force majeure: DASP must <em>terminate the operation</em> AND <em>credit the client's wallet within forty-eight (48) hours</em> with the funds delivered for the investment</li>
             <li>Operational hook: the wallet-credit timing is independent of CNAD review or external dispute resolution — internal SLA must enable 48 h restoration</li>
             <li>Document the force-majeure / fortuitous-event determination and the wallet-credit confirmation in the client file</li>
+        </ul>
+    </div>
+
+    <h3 class="section__subh" style="margin-top:2rem;">Dispute resolution &amp; arbitration — Art. 35</h3>
+    <div class="callout callout--blue">
+        <p>Two clauses operators usually overlook.</p>
+        <ul style="margin-top:0.5rem;">
+            <li><strong>Default jurisdiction.</strong> If the parties do not expressly submit to arbitration, disputes default to the <strong>jurisdiction of the courts of justice of the Republic of El Salvador</strong>. If parties agree to arbitration but do not specify a seat, the seat defaults to El Salvador.</li>
+            <li><strong>Monthly arbitration report to CNAD.</strong> Whenever a DASP is party to an arbitration proceeding, the parties must <strong>communicate and update CNAD monthly</strong> on the initiation, progress and completion of the arbitration. <span class="ref">RPSAD Art. 35</span></li>
+            <li>Operational hook: include arbitration-monitoring as a recurring CO / Legal calendar item; have a CNAD-notification template ready.</li>
         </ul>
     </div>
 
@@ -2825,7 +2835,7 @@
         </details>
         <details class="faq-item">
             <summary>What happens if the CEO, a director or the board changes post-registration?</summary>
-            <div>Submit a modification-of-registration application to CNAD <span class="ref">RPSAD Art. 13</span> — RPSAD does not set a fixed entity deadline; CNAD responds within 20 business days. Separately, if the Compliance Officer or a UBO changes, the entity's UIF registration data must be kept updated — changes notified within 15 business days <span class="ref">Instr. Art. 3</span>. See <a href="#dasp" style="color:var(--accent);">Ongoing Obligations</a>.</div>
+            <div>Submit a modification-of-registration application to CNAD <span class="ref">RPSAD Art. 13</span> — RPSAD does not set a fixed entity deadline; CNAD responds within 20 business days. Separately, if the Compliance Officer or a UBO changes, the entity's UIF registration data must be kept updated — changes notified within 15 business days <span class="ref">Acuerdo 734 § Annex I.3</span> (DASP-specific anchor; cf. <span class="ref">Instr. Art. 3</span> for the general FI rule). See <a href="#dasp" style="color:var(--accent);">Ongoing Obligations</a>.</div>
         </details>
         <details class="faq-item">
             <summary>Can a Salvadoran bank or other SSF-supervised entity register as a DASP?</summary>
