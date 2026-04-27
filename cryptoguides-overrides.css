@@ -591,10 +591,14 @@ strong .deadline { font-weight: 700; }
 .callout p:last-child { margin-bottom: 0; }
 
 /* ---------- Tables — softer, more readable ---------- */
+/* Canonical size system (unified across all pages):
+   .tbl tables: body 0.85rem · thead 0.74rem
+   .qrc-box tables: body 0.78rem · thead 0.7rem (defined in compliance inline)
+   Override uses !important to defeat inline rules in compliance.html / licensing.html */
 .tbl, .j-table, table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.875rem;
+  font-size: 0.85rem !important;
   background: var(--paper);
   border: 1px solid var(--rule);
   border-radius: var(--r);
@@ -604,7 +608,7 @@ strong .deadline { font-weight: 700; }
   text-align: left;
   padding: 10px 14px;
   font-family: "Inter Tight", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.74rem !important;
   font-weight: 600;
   letter-spacing: 0;
   text-transform: none;
@@ -614,11 +618,17 @@ strong .deadline { font-weight: 700; }
 }
 .tbl tbody td, table tbody td {
   padding: 12px 14px;
+  font-size: inherit !important;
   border-bottom: 1px solid var(--rule);
   vertical-align: top;
   color: var(--ink-2);
   line-height: 1.5;
 }
+/* QRC tables stay smaller — Quick Reference Card is intentionally more compact */
+.qrc-box table { font-size: 0.78rem !important; }
+.qrc-box thead th, .qrc-box table thead th { font-size: 0.7rem !important; }
+.qrc-box tbody td { font-size: inherit !important; }
+.tbl-note { font-size: 0.75rem !important; }
 .tbl tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
   background: rgba(244, 242, 236, 0.45);
 }

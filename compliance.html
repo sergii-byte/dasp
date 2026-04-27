@@ -1131,56 +1131,56 @@
             <h2 class="sec__title">CDD by trigger — what activates, when</h2>
             <p class="sec__lead">El Salvador anchors the CDD trigger in <strong>LCLDA Art.&nbsp;15</strong>. Two independent paths trigger full CDD: an ongoing relationship, or an occasional transaction above the applicable reporting threshold for that channel. EDD is a separate layer — triggered by risk factors regardless of amount.</p>
 
-            <h3>The All CDD / EDD triggers</h3>
+            <h3>CDD / EDD triggers — full table</h3>
             <div class="tbl-wrap">
             <table class="tbl">
                 <thead><tr><th>Trigger</th><th>Threshold</th><th>Result</th><th>Source</th></tr></thead>
                 <tbody>
                     <tr>
                         <td>Ongoing relationship (account, recurring service, custody)</td>
-                        <td class="num">Any amount</td>
+                        <td><span class="deadline">Any amount</span></td>
                         <td><span class="pill pill--cdd">Standard CDD</span> from day&nbsp;1</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(a)</span> <span class="cite cite--instr">Instr. Art. 12</span></td>
                     </tr>
                     <tr>
                         <td>Occasional e-transfer (crypto on-chain or bank wire)</td>
-                        <td class="num">≥ $1,000</td>
+                        <td>≥ $1,000</td>
                         <td><span class="pill pill--cdd">Standard CDD</span></td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">UIF Acuerdo 734/2022 § V.2.b.II</span></td>
                     </tr>
                     <tr>
                         <td>Occasional cash</td>
-                        <td class="num">&gt; $10,000</td>
+                        <td>&gt; $10,000</td>
                         <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
                         <td>Occasional other means (cheque, card not under Art. 52)</td>
-                        <td class="num">&gt; $25,000</td>
+                        <td>&gt; $25,000</td>
                         <td><span class="pill pill--cdd">Standard CDD</span> + Operación Regulada</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> → <span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
                         <td><strong>Suspicion</strong> of laundering / terrorism / proliferation financing</td>
-                        <td class="num">Any amount</td>
+                        <td><span class="deadline">Any amount</span></td>
                         <td><span class="pill pill--cdd">CDD</span> + STR pipeline</td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(c)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Doubt</strong> about veracity / adequacy of prior identification</td>
-                        <td class="num">Any amount</td>
+                        <td><span class="deadline">Any amount</span></td>
                         <td><span class="pill pill--cdd">Re-CDD</span></td>
                         <td><span class="cite cite--d426">LCLDA Art. 15(d)</span></td>
                     </tr>
                     <tr>
                         <td>Risk factor present (PEP, high-risk jurisdiction, opaque ownership, structuring, cash-intensive)</td>
-                        <td class="num">Any amount</td>
+                        <td><span class="deadline">Any amount</span></td>
                         <td><span class="pill pill--edd">EDD</span> + senior approval</td>
                         <td><span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span></td>
                     </tr>
                     <tr>
                         <td>Below all thresholds AND no risk factor (low-risk)</td>
-                        <td class="num">— </td>
+                        <td>—</td>
                         <td><span class="pill pill--no">Simplified DD</span> — Art. 14 measures (deferred verification, reduced monitoring) + Travel Rule + sanctions screen</td>
                         <td><span class="cite cite--d426">LCLDA Art. 17</span> + <span class="cite cite--instr">Instr. Art. 14</span></td>
                     </tr>
@@ -1323,16 +1323,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>E-tx &lt; $1,000 + low-risk + no PEP / high-risk jurisdiction / opaque ownership</td>
+                        <td>E-tx ≤ $1,000 + low-risk + no PEP / high-risk jurisdiction / opaque ownership</td>
                         <td><span class="pill pill--no">SDD</span></td>
                         <td>Basic identification (name + ID + account) + sanctions / PEP screen + Travel Rule data fields. Verification scope reduced (no biometric match / full document authentication required). No full risk profile, no SoF documentation.</td>
-                        <td><span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">LCLDA Art. 17</span></td>
+                        <td><span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">LCLDA Art. 17</span> <span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span></td>
                     </tr>
                     <tr>
-                        <td>E-tx ≥ $1,000 OR cash &gt; $10K OR other &gt; $25K</td>
+                        <td>E-tx $1,000 – $4,000 OR cash &gt; $10K OR other &gt; $25K</td>
                         <td><span class="pill pill--cdd">Standard CDD</span></td>
                         <td>Full identification + verification immediate (official document, not deferred) + BO chain (≥ 10% floor) + risk profile + SoF declared + report submission to UIF.</td>
-                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> <span class="cite cite--instr">Instr. Arts. 12, 51, 52</span></td>
+                        <td><span class="cite cite--d426">LCLDA Art. 15(b)</span> <span class="cite cite--instr">Instr. Arts. 12, 51</span> <span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span></td>
+                    </tr>
+                    <tr>
+                        <td>E-tx &gt; $4,000 (automatic EDD by amount, regardless of risk factors)</td>
+                        <td><span class="pill pill--edd">EDD</span></td>
+                        <td>Standard CDD measures + senior-management written approval + documentary SoF + SoW + enhanced monitoring. Automatic by amount — no risk-factor trigger needed.</td>
+                        <td><span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span> <span class="cite cite--instr">Instr. Art. 13 Reform 2</span></td>
                     </tr>
                     <tr>
                         <td>Any amount + risk factor (PEP, high-risk jurisdiction, opaque ownership, structuring, profile deviation, flagged wallet, third-party funder, adverse media)</td>
