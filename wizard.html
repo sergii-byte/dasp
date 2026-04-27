@@ -270,10 +270,25 @@
             content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px;
             background: var(--text-muted); flex-shrink: 0;
         }
-        .block--green .block__head::before { background: var(--emerald); }
-        .block--blue  .block__head::before { background: var(--blue); }
-        .block--amber .block__head::before { background: var(--amber); }
-        .block--red   .block__head::before { background: var(--red); }
+        .block--green  .block__head::before { background: var(--emerald); }
+        .block--blue   .block__head::before { background: var(--blue); }
+        .block--amber  .block__head::before { background: var(--amber); }
+        .block--red    .block__head::before { background: var(--red); }
+        .block--purple .block__head::before { background: var(--purple); }
+        .block--purple { border-left: 1px solid var(--purple); }
+
+        /* Operation badge inside verdict header */
+        .op-badge {
+            margin-top: 0.55rem; display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.22rem 0.55rem; border-radius: 5px;
+            background: var(--white); border: 1px solid var(--border);
+            font-size: 0.74rem; color: var(--navy); line-height: 1.3;
+        }
+        .op-badge strong { font-weight: 600; letter-spacing: -0.005em; }
+        .op-badge__anchor {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.66rem;
+            color: var(--text-3); padding-left: 0.45rem; border-left: 1px solid var(--border);
+        }
         .block ul { padding-left: 1.1rem; font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
         .block li { margin: 0.15rem 0; }
         .block li strong { color: var(--navy); }
@@ -505,6 +520,164 @@
 
     function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
+    /* ── Operation taxonomy: labels + per-subop obligations + UIF Anexo IV form map ── */
+    const OP_LABEL = {
+        exchange: 'Exchange', transfer: 'Transfer',
+        payments: 'Payments', custody: 'Custody',
+    };
+    const SUBOP_LABEL = {
+        onramp: 'On-ramp', offramp: 'Off-ramp', otc: 'OTC',
+        p2p: 'Internal P2P', extin: 'External in', extout: 'External out',
+        payreceipt: 'Payment receipt', settlement: 'Settlement', payoutgoing: 'Payment outgoing',
+        deposit: 'Deposit', withdrawal: 'Withdrawal',
+    };
+    const OP_ANCHOR = {
+        exchange: 'LEAD Art. 19(a)(b)', transfer: 'LEAD Art. 19(f.1)',
+        payments: 'LEAD Art. 19 composite (a) + (f.1) + (f.2)', custody: 'LEAD Art. 19(f.2)',
+    };
+    /* Per-subop operational obligations + likely UIF Anexo IV forms.
+       Forms: 1=Wallet↔Wallet same · 2=Wallets distintas · 3=Wallet→Banco · 4=Cajero→Wallet
+              5=Wallet→Cajero · 6=Tarjeta→Wallet · 7=Compraventa · 8=Intercambio Moneda */
+    const SUBOP_NOTES = {
+        // Exchange
+        onramp: {
+            summary: 'Fiat → crypto purchase. Funding-rail risk on the fiat side; KYT on the destination wallet.',
+            items: [
+                'Capture funding-rail data (card / bank / cash-in) — funding-side counterparty traceability',
+                'KYT on the outbound wallet address (sanctions · mixer · darknet)',
+                'SoF proportionality check vs declared customer profile',
+            ],
+            forms: ['6 — Tarjeta → Wallet', '4 — Cajero → Wallet', '7 — Compraventa con Wallet'],
+        },
+        offramp: {
+            summary: 'Crypto → fiat sale. KYT on the incoming chain leg; bank-corridor risk on settlement.',
+            items: [
+                'KYT on the source wallet (sanctions · mixer · darknet · prior hops)',
+                'Beneficiary bank account verified (name match, proof of ownership)',
+                'Bank-corridor risk: funds may be frozen by settlement bank if KYT trail is weak',
+            ],
+            forms: ['3 — Wallet → Cuenta bancaria', '5 — Wallet → Cajero', '7 — Compraventa con Wallet'],
+        },
+        otc: {
+            summary: 'Bilateral block trade. Large-ticket → automatic EDD posture; structuring scrutiny.',
+            items: [
+                'Documented SoF + SoW required from inception (regardless of EDD trigger)',
+                'KYT on counterparty address(es) — including counterparty platform if VASP',
+                'Off-platform negotiation log retained alongside on-platform settlement record',
+                'Pre-trade sanctions / PEP screen on all parties; independent review on amounts &gt; US$50K',
+            ],
+            forms: ['7 — Compraventa con Wallet', '8 — Intercambio de Moneda con Wallet'],
+        },
+        // Transfer
+        p2p: {
+            summary: 'Book transfer between two clients of this DASP. No chain leg → no Travel Rule on this leg.',
+            items: [
+                'Sanctions / PEP screen on <strong>both</strong> internal accounts (originator + beneficiary)',
+                '<strong>No Travel Rule message</strong> required for the internal book leg (no external counterparty)',
+                'Internal monitoring: aggregate same-day P2P volume per pair — structuring scrutiny',
+                'Per-tx record retained even though no chain hash exists',
+            ],
+            forms: ['1 — Wallet ↔ Wallet (same provider)'],
+        },
+        extin: {
+            summary: 'Inbound from an external wallet or another VASP. KYT on source; receive Travel Rule data if counterparty is VASP.',
+            items: [
+                'KYT on source address — sanctions, mixer, darknet, prior-hop exposure',
+                'Receive Travel Rule data set if counterparty is a VASP; if missing, hold and request before crediting client',
+                'Unhosted / self-custodied source: enhanced scrutiny + statement from client confirming ownership',
+                'Sanctions screen against UNSC / UIF national lists on the source address',
+            ],
+            forms: ['2 — Wallets distintas'],
+        },
+        extout: {
+            summary: 'Outbound to an external wallet or another VASP. <strong>Travel Rule + KYT critical</strong>.',
+            items: [
+                '<strong>Travel Rule</strong> data set transmitted to receiving VASP per Acuerdo 734 § V (chain to Instr. Art. 52 par. 2)',
+                'KYT on destination address — abort if sanctions / mixer / darknet hit',
+                'Unhosted destination: capture client attestation of ownership; pre-flight test transfer for new addresses recommended',
+                'Confirmation log retained — counterparty VASP receipt of Travel Rule data',
+            ],
+            forms: ['2 — Wallets distintas', '3 — Wallet → Cuenta bancaria (if fiat off-ramp leg)'],
+        },
+        // Payments (composite)
+        payreceipt: {
+            summary: 'Payer sends crypto to DASP for the merchant. DASP is beneficiary on this leg.',
+            items: [
+                'Payer (originator) Travel Rule data captured if counterparty VASP transmits it',
+                'KYT on incoming chain leg (sanctions / mixer / merchant-impersonation patterns)',
+                'Merchant CDD held under settlement leg (separate operational record)',
+                'Conversion-to-fiat (if any) recorded as a separate leg with its own form',
+            ],
+            forms: ['1 — Wallet ↔ Wallet (same provider)', '2 — Wallets distintas', '6 — Tarjeta → Wallet'],
+        },
+        settlement: {
+            summary: 'DASP transfers funds (crypto or fiat) to merchant. Merchant CDD applies as ongoing relationship.',
+            items: [
+                'Merchant CDD: legal-person documentation + UBO chain + business purpose',
+                'Settlement window log (T+0 / T+1 / T+2) retained — ties payreceipt to payout',
+                'Bank-corridor risk on fiat settlement leg — banking-partner sanctions screen',
+                'Refunds / reversals processed under <em>Payment outgoing</em> sub-op',
+            ],
+            forms: ['3 — Wallet → Cuenta bancaria', '1 — Wallet ↔ Wallet (same provider)'],
+        },
+        payoutgoing: {
+            summary: 'DASP-initiated outbound payment (refund, payout, etc.).',
+            items: [
+                'Travel Rule on outbound transfer to receiving VASP (or banking-style fields on fiat rail)',
+                'Payee identity verified — refunds only to the original funding instrument unless documented exception',
+                'KYT on destination address; sanctions screen pre-execution',
+                'Reason-for-payment classification recorded (refund · payout · adjustment)',
+            ],
+            forms: ['1 — Wallet ↔ Wallet (same provider)', '2 — Wallets distintas', '3 — Wallet → Cuenta bancaria'],
+        },
+        // Custody
+        deposit: {
+            summary: 'Client deposits crypto onto DASP for safekeeping. KYT on inbound chain.',
+            items: [
+                'KYT on source address before crediting client balance',
+                'Cold / hot wallet segregation per <span class="cite cite--rpsad">RPSAD Art. 17(b)</span> fiduciary duty for client balances',
+                'Per-deposit hash + timestamp + amount + asset — retained 15 yr',
+                'Whitelisted-address policy (if applicable) — record any new-address approval',
+            ],
+            forms: ['2 — Wallets distintas', '4 — Cajero → Wallet (if cash deposit via ATM)'],
+        },
+        withdrawal: {
+            summary: 'Client withdraws crypto from DASP custody to external wallet. <strong>Travel Rule + KYT on destination</strong>.',
+            items: [
+                'Travel Rule data set on outbound to a receiving VASP',
+                'KYT on destination address — abort if sanctions / mixer / darknet hit',
+                'Step-up auth on first-time-address withdrawals',
+                'Withdrawal log: client + amount + destination + chain TXID + timestamp — 15 yr retention',
+            ],
+            forms: ['2 — Wallets distintas', '5 — Wallet → Cajero (if cash withdrawal via ATM)'],
+        },
+    };
+
+    function operationBadge(s) {
+        if (!s.operation) return '';
+        const op = OP_LABEL[s.operation] || s.operation;
+        const sub = s.subop ? (SUBOP_LABEL[s.subop] || s.subop) : '';
+        const anchor = OP_ANCHOR[s.operation] || '';
+        return '<div class="op-badge"><strong>' + esc(op) + (sub ? ' · ' + esc(sub) : '') + '</strong>'
+            + (anchor ? ' <span class="op-badge__anchor">' + esc(anchor) + '</span>' : '') + '</div>';
+    }
+
+    function operationContextBlock(s) {
+        if (!s.subop || !SUBOP_NOTES[s.subop]) return '';
+        const note = SUBOP_NOTES[s.subop];
+        const op = OP_LABEL[s.operation] || s.operation;
+        const sub = SUBOP_LABEL[s.subop] || s.subop;
+        const items = note.items.slice();
+        if (note.forms && note.forms.length) {
+            items.push('<strong>Likely UIF Anexo IV form(s):</strong> ' + note.forms.map(esc).join(' · '));
+        }
+        return block('block--purple',
+            esc(op) + ' · ' + esc(sub) + ' — operation-specific obligations'
+                + ' <span class="cite cite--instr">UIF Acuerdo 734 § Anexo IV</span>',
+            ['<em>' + note.summary + '</em>'].concat(items)
+        );
+    }
+
     function decide(s) {
         // ── Hard stops ──
         if (s.f.sanctions) return { v: 'reject', icon: '✕', title: 'Reject — sanctions match',
@@ -558,7 +731,7 @@
     function buildOutput(s, d) {
         const parts = [];
 
-        // Verdict (full-width)
+        // Verdict (full-width) — with operation badge
         parts.push(
             '<div class="results__verdict-wrap">' +
                 '<div class="verdict verdict--' + d.v + '">' +
@@ -566,13 +739,23 @@
                     '<div>' +
                         '<div class="verdict__title">' + d.title + '</div>' +
                         '<div class="verdict__reason">' + d.reason + '</div>' +
+                        operationBadge(s) +
                     '</div>' +
                 '</div>' +
             '</div>'
         );
 
-        // ── Travel Rule (always except reject) ──
+        // ── Operation-specific obligations (always except reject) ──
         if (d.v !== 'reject') {
+            const opBlock = operationContextBlock(s);
+            if (opBlock) parts.push(opBlock);
+        }
+
+        // ── Travel Rule (always except reject and Internal P2P book transfers) ──
+        // Internal P2P has no external counterparty leg, so no Travel Rule message fires.
+        // Sanctions / PEP screen still applies to both internal accounts (kept below).
+        const isInternalP2P = (s.operation === 'transfer' && s.subop === 'p2p');
+        if (d.v !== 'reject' && !isInternalP2P) {
             const isLegal = s.clientType === 'legal';
             const idLine = isLegal
                 ? 'Type and number of identification document — NIT or registration number'
@@ -717,7 +900,14 @@
         if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 business days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
         // DASP-specific individual transaction report (≥ $1,000 within 5 bd) per UIF Acuerdo 734/2022.
         // Distinct from FI-only Art. 52(a)(b)(c) monthly reports.
-        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 business days to UIF — one of 8 transaction-type forms <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) {
+            const note = s.subop && SUBOP_NOTES[s.subop];
+            const formHint = (note && note.forms && note.forms.length)
+                ? ' — likely form: <strong>' + esc(note.forms[0]) + '</strong>'
+                : ' — one of 8 transaction-type forms';
+            reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 business days to UIF' + formHint
+                + ' <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+        }
         // DASP monthly client report — fired regardless (always due monthly)
         reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span>');
         if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
