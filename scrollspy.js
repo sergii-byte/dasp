@@ -61,7 +61,7 @@
     'CODE', 'PRE', 'KBD', 'SAMP', 'SCRIPT', 'STYLE', 'TEXTAREA',
     'INPUT', 'OPTION', 'SELECT'
   ]);
-  const SKIP_CLASS_RX = /\b(cite|ref|tag|mono|t-mono)\b/i;
+  const SKIP_CLASS_RX = /\b(cite|ref|tag|mono|t-mono|num-hl)\b/i;
 
   const curlyQuote = function (str) {
     // Double quotes: opening if preceded by start/space/punct, closing otherwise
@@ -120,7 +120,7 @@
         let p = node.parentNode;
         while (p && p !== root) {
           if (SKIP_TAGS.has(p.nodeName)) return NodeFilter.FILTER_REJECT;
-          if (p.classList && (p.classList.contains('deadline') || p.classList.contains('pill') || SKIP_CLASS_RX.test(p.className || ''))) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (p.classList.contains('deadline') || p.classList.contains('pill') || p.classList.contains('num-hl') || SKIP_CLASS_RX.test(p.className || ''))) return NodeFilter.FILTER_REJECT;
           p = p.parentNode;
         }
         return NodeFilter.FILTER_ACCEPT;
