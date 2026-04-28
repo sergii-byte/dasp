@@ -442,13 +442,14 @@
 
         /* ── QRC (Quick Reference Card — playbook-style 8-box grid) ── */
         .qrc-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 0.85rem; margin: 1rem 0 1.5rem;
         }
         .qrc-box {
             background: var(--white); border: 1px solid var(--border);
             border-radius: var(--r-md); padding: 0.9rem 1.1rem;
             border-top: 3px solid var(--accent);
+            min-width: 0; overflow-x: auto;
         }
         .qrc-box--blue { border-top-color: var(--blue); }
         .qrc-box--green { border-top-color: var(--emerald); }
