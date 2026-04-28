@@ -98,14 +98,18 @@
   /* ----- Highlighter — wraps deadlines, $-amounts and percentages with .deadline ----- */
   // 1. DEADLINE: <number><opt-range><opt-space><unit>
   //    units: bd | wd | h(ours?) | wk(s)? / week(s)? | mo(s)? / month(s)? | yr(s)? / year(s)? | day(s)?
-  // 2. AMOUNT: optional "US"+$+digits with thousands separators + optional decimals + optional K/M/B
-  // 3. PERCENT: digits + optional decimal + optional range + %
+  // 2. PROSE-DEADLINE: <number> + (business|calendar|working|natural) + day(s)
+  // 3. HYPHEN-DEADLINE: <number>-(hour|day|month|week|year)(-...)?
+  // 4. AMOUNT: optional "US"+$+digits with thousands separators + optional decimals + optional K/M/B
+  // 5. PERCENT: digits + optional decimal + optional range + %
   const HIGHLIGHT_PATTERNS = [
     /(\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?)(\s|&nbsp;| )?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b/gi,
+    /\b\d+(?:[.,]\d+)?\s+(?:business|calendar|working|natural)\s+days?\b/gi,
+    /\b\d+(?:[.,]\d+)?[-‑](?:hours?|days?|months?|weeks?|years?)(?:[-‑]\w+)?\b/gi,
     /(?:US)?\$\s?\d+(?:[.,]\d{3})*(?:[.,]\d+)?\s?[KMB]?\b/g,
     /\b\d+(?:[.,]\d+)?(?:[–—\-]\d+(?:[.,]\d+)?)?\s?%/g
   ];
-  const COMBINED_TEST_RX = /(\b\d+(?:[.,]\d+)?\s?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b)|((?:US)?\$\s?\d)|(\b\d+(?:[.,]\d+)?\s?%)/i;
+  const COMBINED_TEST_RX = /(\b\d+(?:[.,]\d+)?\s?(bd|wd|hr?|hours?|wk|weeks?|mo|months?|yr|years?|days?)\b)|(\b\d+\s+(business|calendar|working|natural)\s+days?\b)|(\b\d+[-‑](hours?|days?|months?|weeks?|years?)\b)|((?:US)?\$\s?\d)|(\b\d+(?:[.,]\d+)?\s?%)/i;
 
   const initDeadlines = function () {
     const root = document.body;
