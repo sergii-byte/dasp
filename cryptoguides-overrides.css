@@ -1780,6 +1780,124 @@ strong, b {
   color: var(--ink-2);
 }
 
+/* =====================================================================
+   Comparison block — Jurisdiction comparison (ES vs EU MiCA)
+   Used on Overview (index.html). Imports vars from page-level :root.
+   ===================================================================== */
+
+/* Inline number highlight (table cells, prose) */
+.num-hl {
+  font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 600;
+  color: #b76629;
+  background: #fbf0eb;
+  padding: 0.08em 0.42em;
+  border-radius: 4px;
+  font-size: 0.92em;
+  white-space: nowrap;
+  letter-spacing: 0;
+  display: inline-block;
+  line-height: 1.35;
+}
+
+/* Comparison scoreboard — colored ES vs EU lines */
+.vs-scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0 0 1.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+.vs-scoreboard__line {
+  padding: 0.75rem 1.1rem;
+  border-radius: 6px;
+  border-left: 3px solid;
+}
+.vs-scoreboard__line strong { font-weight: 600; }
+.vs-scoreboard__line--es {
+  background: rgba(217, 119, 87, 0.07);
+  border-left-color: var(--accent);
+}
+.vs-scoreboard__line--es strong { color: #b76629; }
+.vs-scoreboard__line--eu {
+  background: rgba(106, 155, 204, 0.08);
+  border-left-color: var(--blue);
+}
+.vs-scoreboard__line--eu strong { color: #4a78a8; }
+.vs-scoreboard__sep {
+  display: inline-block;
+  margin: 0 0.4rem;
+  color: var(--border);
+}
+
+/* Win / lose / parity marks in compare table */
+.vs-mark {
+  display: inline-block;
+  width: 1.1em; height: 1.1em;
+  line-height: 1.1em;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.78em;
+  margin-right: 0.35em;
+  vertical-align: 0.05em;
+}
+.vs-mark--win { background: var(--emerald-light); color: var(--emerald-2); }
+.vs-mark--lose { background: var(--red-light); color: var(--red); }
+.vs-mark--parity { background: var(--border-light); color: var(--text-3); }
+
+/* Best-fit row (decision aid) */
+.tbl-row-bestfit td {
+  background: rgba(217, 119, 87, 0.04);
+  border-top: 2px solid var(--accent-border);
+}
+.tbl-row-bestfit td:first-child strong { color: var(--accent); }
+.tbl-row-bestfit__sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+/* Compare table — equal column widths + larger reading font */
+.tbl--compare { table-layout: fixed; width: 100%; }
+.tbl--compare th:nth-child(1),
+.tbl--compare td:nth-child(1) { width: 18%; }
+.tbl--compare th:nth-child(2),
+.tbl--compare td:nth-child(2),
+.tbl--compare th:nth-child(3),
+.tbl--compare td:nth-child(3) { width: 41%; }
+.tbl--compare td { vertical-align: top; word-wrap: break-word; }
+.tbl--compare thead th {
+  font-size: 0.78rem !important;
+  padding: 0.95rem 1.1rem !important;
+  letter-spacing: 0.07em !important;
+}
+.tbl--compare tbody td {
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  padding: 0.95rem 1.1rem !important;
+  color: var(--text) !important;
+}
+.tbl--compare tbody td:first-child {
+  font-size: 0.95rem !important;
+  color: var(--text) !important;
+}
+@media (max-width: 768px) {
+  .tbl--compare th:nth-child(1),
+  .tbl--compare td:nth-child(1) { width: 22%; min-width: 130px; }
+  .tbl--compare th:nth-child(2),
+  .tbl--compare td:nth-child(2),
+  .tbl--compare th:nth-child(3),
+  .tbl--compare td:nth-child(3) { width: 39%; }
+  .tbl--compare tbody td { font-size: 0.85rem !important; padding: 0.75rem 0.85rem !important; }
+}
+
 /* ---------- Print ---------- */
 @media print {
   body { background: white; color: black; }
