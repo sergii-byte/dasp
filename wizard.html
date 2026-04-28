@@ -868,11 +868,12 @@
             const cdd = s.clientType === 'natural' ? [
                 'Government photo ID (DUI / passport / residence)',
                 'Address proof (utility bill (recent) / bank statement)',
-                'Occupation declared (documented at EDD)',
+                'Occupation + income source declared',
                 'Date of birth',
                 'Tax ID (NIT) if applicable',
                 'PEP self-declaration + screening',
                 'Expected activity profile (volume, frequency)',
+                '<strong>Declared SoF (origin of funds)</strong> — stated by client in profile / sworn declaration; <em>not</em> verified by documents at this level (documentary verification at EDD only) <span class="cite cite--d426">D-426 Art. 15</span>',
             ] : [
                 'Articles of incorporation (escritura)',
                 'Commercial registry extract (recent)',
@@ -882,6 +883,7 @@
                 'Authorised signatories: IDs + powers',
                 'Business purpose + main counterparties + jurisdictions',
                 'Expected volume + frequency',
+                '<strong>Declared SoF (origin of funds)</strong> — business activity + funding source stated in profile / sworn declaration; <em>not</em> verified by documents at this level (documentary verification at EDD only) <span class="cite cite--d426">D-426 Art. 15</span>',
             ];
             parts.push(block('block--blue',
                 'Standard CDD documentation <span class="cite cite--instr">Instr. Art. 12</span>',
