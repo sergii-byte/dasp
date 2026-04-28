@@ -484,14 +484,20 @@
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
             font-size: 0.66rem;
             font-weight: 700;
-            color: #2c5780;
-            background: var(--blue-light);
+            color: var(--text-3);
+            background: var(--bg-alt);
             padding: 0.22rem 0.45rem;
             border-radius: 3px;
             letter-spacing: 0.04em;
             text-align: center;
             white-space: nowrap;
         }
+        /* Per-authority colour-coding */
+        .contact-list__auth--uif  { color: var(--emerald-2); background: var(--emerald-light); }
+        .contact-list__auth--cnad { color: var(--accent-2);  background: var(--accent-light); }
+        .contact-list__auth--bcr  { color: var(--amber);     background: var(--amber-light); }
+        .contact-list__auth--fgr  { color: var(--red);       background: var(--red-light); }
+        .contact-list__auth--ssf  { color: #2c5780;          background: var(--blue-light); }
         .contact-list__matter { color: var(--text-2); }
         .contact-list__channel {
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
@@ -960,27 +966,27 @@
                     <h3>Essential contacts &amp; channels</h3>
                     <ul class="contact-list">
                         <li>
-                            <span class="contact-list__auth">UIF (FGR)</span>
+                            <span class="contact-list__auth contact-list__auth--uif">UIF (FGR)</span>
                             <span class="contact-list__matter">STR · Operación Regulada · monthly e-tx · sanctions freeze · CO notification · entity data updates</span>
                             <span class="contact-list__channel">goAML</span>
                         </li>
                         <li>
-                            <span class="contact-list__auth">CNAD</span>
+                            <span class="contact-list__auth contact-list__auth--cnad">CNAD</span>
                             <span class="contact-list__matter">DASP registration · material changes · quarterly reports · cessation · trade suspension</span>
                             <span class="contact-list__channel">registro@cnad.gob.sv</span>
                         </li>
                         <li>
-                            <span class="contact-list__auth">BCR</span>
+                            <span class="contact-list__auth contact-list__auth--bcr">BCR</span>
                             <span class="contact-list__matter">BSP Registry — registration · pre-ops docs · registry updates · discontinuation</span>
                             <span class="contact-list__channel">BCR e-procedure</span>
                         </li>
                         <li>
-                            <span class="contact-list__auth">FGR</span>
+                            <span class="contact-list__auth contact-list__auth--fgr">FGR</span>
                             <span class="contact-list__matter">Criminal referrals (terrorism financing) · tipping-off prosecutions · UNSC freeze orders</span>
                             <span class="contact-list__channel">via UIF / direct</span>
                         </li>
                         <li>
-                            <span class="contact-list__auth">SSF</span>
+                            <span class="contact-list__auth contact-list__auth--ssf">SSF</span>
                             <span class="contact-list__matter">BSP supervision and sanctions · NRP-29/36 standards if banking partner</span>
                             <span class="contact-list__channel">SSF channels</span>
                         </li>
@@ -998,7 +1004,7 @@
                         <li><span class="rba-tag rba-tag--geo">GEO</span><span class="rba-text">Geographic risk — FATF lists, partial sanctions, transit jurisdictions</span></li>
                         <li><span class="rba-tag rba-tag--lists">LISTS</span><span class="rba-text">Sanction-list match — UNSC, UIF national caution lists</span></li>
                         <li><span class="rba-tag rba-tag--tx">TX</span><span class="rba-text">Transaction pattern — KYT shows flow to higher-risk jurisdictions</span></li>
-                        <li><span class="rba-tag rba-tag--volume">VOLUME</span><span class="rba-text"><strong>$125K/month</strong> per client → +SoF, +sworn affidavit <a href="#vasp-cdd" style="color:var(--accent);">(full mechanism)</a></span></li>
+                        <li><span class="rba-tag rba-tag--volume">VOLUME</span><span class="rba-text"><strong>$125K</strong>/month per client → +SoF, +sworn affidavit <a href="#vasp-cdd" style="color:var(--accent);">(full mechanism)</a></span></li>
                     </ul>
                 </div>
 
