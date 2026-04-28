@@ -6,6 +6,16 @@
     <meta name="description" content="El Salvador DASP AML/CTF compliance operations guide for the Compliance Officer. CDD by trigger, identity verification, Travel Rule under reformed Art. 52 par.2, full reporting hub, STR, sanctions, PEP, retention.">
     <meta name="theme-color" content="#faf9f5">
     <title>Compliance Operations — El Salvador DASP</title>
+    <link rel="canonical" href="https://salvadordaps.netlify.app/compliance.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://salvadordaps.netlify.app/compliance.html">
+    <meta property="og:title" content="AML &amp; Compliance for the DASP — El Salvador">
+    <meta property="og:description" content="Practitioner reference for Salvadoran DASP Compliance Officers. CDD by trigger, identity verification, Travel Rule under reformed Art. 52 par. 2, full reporting hub, STR, sanctions, PEP, 15-year retention.">
+    <meta property="og:image" content="https://salvadordaps.netlify.app/og-compliance.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AML &amp; Compliance for the DASP — El Salvador">
+    <meta name="twitter:description" content="Practitioner reference for Salvadoran DASP Compliance Officers. Full reporting hub, STR pipeline, Travel Rule, sanctions screening.">
+    <meta name="twitter:image" content="https://salvadordaps.netlify.app/og-compliance.png">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23788c5d'/%3E%3Cpath d='M7.5 7.5h6.2q5.6 0 5.6 8.2t-5.6 8.3H7.5z' fill='none' stroke='%23faf9f5' stroke-width='2.3' stroke-linejoin='round'/%3E%3Ccircle cx='22.5' cy='22.5' r='2.3' fill='%23faf9f5'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -247,19 +257,23 @@
         .sec strong { color: var(--navy); font-weight: 600; }
         .sec em { font-style: italic; color: var(--text-3); }
 
-        /* ── CITATION CHIPS (colored by source) ── */
+        /* ── CITATION CHIPS (colored by source) ──
+           !important on background defeats the global cryptoguides-overrides.css
+           rule `.cite { background: transparent; border-left: 1px solid var(--rule-2) }`
+           which would otherwise leave only a left-rule and mismatch the legend. */
         .cite {
             display: inline-block; font-size: 0.7rem; font-weight: 600;
             padding: 0.1rem 0.5rem; border-radius: 3px;
             margin-left: 0.25rem; vertical-align: 1px; white-space: nowrap;
             font-family: 'Inter', sans-serif; letter-spacing: 0.01em;
+            border-left: none !important;
         }
-        .cite--d426    { background: var(--blue-light); color: #2c5780; }
-        .cite--instr   { background: var(--emerald-light); color: var(--emerald-2); }
-        .cite--lecat   { background: var(--purple-light); color: #5d4380; }
-        .cite--rpsad   { background: var(--accent-light); color: var(--accent-2); }
-        .cite--lead    { background: var(--amber-light); color: var(--amber); }
-        .cite--practice{ background: var(--bg-deep); color: var(--text-3); font-style: italic; }
+        .cite--d426    { background: var(--blue-light) !important;    color: #2c5780; }
+        .cite--instr   { background: var(--emerald-light) !important; color: var(--emerald-2); }
+        .cite--lecat   { background: var(--purple-light) !important;  color: #5d4380; }
+        .cite--rpsad   { background: var(--accent-light) !important;  color: var(--accent-2); }
+        .cite--lead    { background: var(--amber-light) !important;   color: var(--amber); }
+        .cite--practice{ background: var(--bg-deep) !important;       color: var(--text-3); font-style: italic; }
         @media (prefers-color-scheme: dark) {
             .cite--d426    { color: #9ec0e3; }
             .cite--instr   { color: #b9cea1; }
@@ -1510,7 +1524,7 @@
                 <p>Why this matters operationally. A US$4,500 occasional e-transfer with a low-risk client and no risk factor → under the general Art. 15(b) chain alone, this would be Standard CDD. Under <strong>Acuerdo 734 § V.2.b.II</strong>, it is automatically <strong>EDD</strong> (intensificada). The DASP-specific cascade is stricter than the general regime for amounts &gt; US$4,000. CNAD / UIF supervisors apply Acuerdo 734 during inspection.</p>
             </div>
 
-            <h3 style="margin-top:1.75rem;">UIF transaction-type forms — what your business model must file</h3>
+            <h3 id="reports-anexo" style="margin-top:1.75rem;">UIF transaction-type forms — what your business model must file</h3>
             <p class="sec__lead">Per Acuerdo 734 § Anexo IV, individual transaction reports (≥ US$1,000 within 5 bd) and monthly client reports flow through up to eight transaction-type forms in the UIF Portal. <strong>Find your business model in the table below</strong> — the right column shows exactly which form numbers you file. Filing the wrong form → UIF rejection.</p>
 
             <div class="tbl-wrap">
@@ -2205,7 +2219,7 @@
             </div>
 
             <div class="callout callout--amber" style="margin-top:0.75rem;">
-                <p>"Not every unusual transaction is suspicious" <span class="cite cite--instr">Instr. Art. 41 last sentence</span>. Red flags trigger <strong>analysis</strong>, not automatic STR. The CO has <strong>15 business days</strong> to analyze each unusual transaction (extendable once via UIF request through CEP) <span class="cite cite--instr">Instr. Art. 42</span>. Only confirmed suspicion → STR pipeline (24-h clock per LCLDA Art. 24).</p>
+                <p>"Not every unusual transaction is suspicious" <span class="cite cite--instr">Instr. Art. 41 last sentence</span>. Red flags trigger <strong>analysis</strong>, not automatic STR. The CO has <strong>15 business days</strong> to analyze each unusual transaction (extendable once on a written request from the CO to UIF) <span class="cite cite--instr">Instr. Art. 42</span>. Only confirmed suspicion → STR pipeline (24-h clock per LCLDA Art. 24).</p>
             </div>
         </section>
 
@@ -2248,9 +2262,9 @@
                         <td>Attempted Suspicious Operation<br><em>(Operación Intentada)</em></td>
                         <td>Client attempts but does not consummate a suspicious operation</td>
                         <td>UIF</td>
-                        <td class="num">24 h<br><span style="font-size:0.72rem;color:var(--text-3);">from determination</span></td>
+                        <td class="num"><span class="deadline">24 h</span> conservative<br><span style="font-size:0.72rem;color:var(--text-3);">(LCLDA Art. 24 statute by analogy) / <span class="deadline">5 bd</span> outer envelope (Instr. Art. 47)</span></td>
                         <td>goAML</td>
-                        <td><span class="cite cite--instr">Instr. Art. 47</span></td>
+                        <td><span class="cite cite--d426">LCLDA Art. 24</span> · <span class="cite cite--instr">Instr. Art. 47</span></td>
                     </tr>
                     <tr>
                         <td>Voluntary STR<br><em>(Reporte Voluntario)</em></td>
@@ -2452,11 +2466,11 @@
                         <td>Registry-administration for Bitcoin Service Providers. No ongoing AML reports — AML supervision is delegated to SSF (D-27/2021 Art. 5).</td>
                         <td>
                             <ul style="margin:0; padding-left:1rem;">
-                                <li>BSP registration application (one-time) <span class="cite cite--rpsad">D-27/2021 Art. 3</span></li>
-                                <li>Pre-operations documentation — within <span class="deadline">20 bd</span> before going live <span class="cite cite--rpsad">D-27/2021 Art. 4</span></li>
-                                <li>Registry update notifications — material changes (services, public-wallet addresses, custodian) <span class="cite cite--rpsad">D-27/2021 Art. 3</span></li>
+                                <li>BSP registration application (one-time) <span class="cite cite--practice">D-27/2021 Art. 3</span></li>
+                                <li>Pre-operations documentation — within <span class="deadline">20 bd</span> before going live <span class="cite cite--practice">D-27/2021 Art. 4</span></li>
+                                <li>Registry update notifications — material changes (services, public-wallet addresses, custodian) <span class="cite cite--practice">D-27/2021 Art. 3</span></li>
                                 <li>Discontinuation notice — <em>immediate</em></li>
-                                <li>Open clause — any further requirement BCR / SSF may issue ad hoc <span class="cite cite--rpsad">D-27/2021 Art. 4 final</span></li>
+                                <li>Open clause — any further requirement BCR / SSF may issue ad hoc <span class="cite cite--practice">D-27/2021 Art. 4 final</span></li>
                             </ul>
                         </td>
                         <td>BCR electronic procedure</td>
@@ -2954,7 +2968,7 @@
                 <div><dt>LECAT</dt><dd>Special Law against Acts of Terrorism (D-108/2006, reformed by D-928 of 3 January 2024, D.O. No. 5 Vol. 442 of 9 January 2024). Source of UNSC sanctions freeze (Art. 37). Tipping-off is in <strong>LCLDA Art. 44</strong>, not in LECAT.</dd></div>
                 <div><dt>LOFGR</dt><dd><em>Ley Orgánica de la Fiscalía General de la República</em> — FGR Organic Law. Art. 72 no. 7 is part of the chain that imports the Travel Rule into the DASP regime via UIF Acuerdo 734/2022 § V.</dd></div>
                 <div><dt>OFAC</dt><dd>US Treasury Office of Foreign Assets Control. Not a Salvadoran AML statute source — only UNSC and UIF national lists are statutorily binding under LECAT and the Instructivo. OFAC matters operationally via banking-partner contracts and USD-corridor exposure; managed in commercial risk policy.</dd></div>
-                <div><dt>Operación Regulada</dt><dd>Threshold report under LCLDA Art. 25 + Instr. Art. 51: cash &gt; $10K or other means &gt; $25K (single op or monthly aggregate per client). Filed within 5 business days. Includes "transactions in digital assets" by name (LCLDA Art. 25).</dd></div>
+                <div><dt>Operación Regulada</dt><dd>Threshold report under LCLDA Art. 25 + Instr. Art. 51: cash &gt; $10K or other means &gt; $25K (single op or monthly aggregate per client). Filed within 5 business days. Includes "transactions in digital assets" by name (LCLDA Art. 25). <strong>Distinct from</strong> the DASP-specific <em>Acuerdo 734 § Anexo IV</em> regime (Monthly Client Report + Individual Tx Report ≥ $1K within 5 bd via 8 forms + Zero-Tx Notification) — see Reporting Hub.</dd></div>
                 <div><dt>PEA</dt><dd>Private Email Account (Cuenta Privada de Correo). Secure communication channel between DASP and UIF, established post-registration via written request to <code>solicitud.info@uif.gob.sv</code> (notarised, or e-signature for foreign DASPs). UIF issues access credentials. PEA serves as the direct channel for DASP-specific reporting submissions: Individual Tx Report, Monthly Client Report, Zero-Tx Notification, ad-hoc UIF requests. STR and Operación Regulada continue to flow through goAML. <span class="cite cite--instr">UIF Acuerdo 734/2022 § III</span></dd></div>
                 <div><dt>PEP</dt><dd>Politically Exposed Person — domestic / foreign / international-organisation public function. Coverage: self + family ≤ 2nd degree + close associates. Always EDD; status persists 5 yr post-cease (LCLDA Art. 19).</dd></div>
                 <div><dt>RBA</dt><dd>Risk-Based Approach — Instr. Art. 4. Five principles: (i) understand ML/TF/FPWMD risks; (ii) assess and document; (iii) calibrate measures proportional to risk; (iv) document the methodology; (v) suspicion always overrides the matrix (no SDD where suspicion exists).</dd></div>
@@ -2988,26 +3002,7 @@
     </div>
 </footer>
 
-<script>
-// Sidebar active-section highlighting (IntersectionObserver)
-(function(){
-    const links = document.querySelectorAll('.sidebar a[href^="#"]');
-    if (!links.length) return;
-    const map = {};
-    links.forEach(a => { const id = a.getAttribute('href').slice(1); map[id] = a; });
-    const sections = document.querySelectorAll('.sec[id]');
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                const id = e.target.id;
-                links.forEach(l => l.classList.remove('is-active'));
-                if (map[id]) map[id].classList.add('is-active');
-            }
-        });
-    }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
-    sections.forEach(s => obs.observe(s));
-})();
-</script>
+<!-- Sidebar active-section highlighting + smart-quote walker + deadline / $-amount / % auto-highlighter — all in scrollspy.js -->
 <script src="scrollspy.js" defer></script>
 </body>
 </html>
