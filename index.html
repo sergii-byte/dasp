@@ -247,49 +247,71 @@
             font-size: 1rem; color: var(--text-2);
             max-width: 720px; margin-bottom: 2.5rem;
         }
-        .reg__grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 0.85rem;
-        }
-        .reg__grid .reg-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-left: 3px solid var(--text-muted) !important;
-            border-radius: var(--r-md);
-            padding: 1.1rem 1.25rem;
+        /* Regulatory Stack — list layout */
+        .reg__list {
             display: flex; flex-direction: column;
-            transition: border-color 0.18s, box-shadow 0.18s;
+            border-top: 1px solid var(--border);
         }
-        .reg__grid .reg-card:hover { box-shadow: 0 1px 3px rgba(20,20,19,0.05); }
-        .reg__grid .reg-card--lead    { border-left-color: #d97757 !important; }
-        .reg__grid .reg-card--rpsad   { border-left-color: #b76629 !important; }
-        .reg__grid .reg-card--lclda   { border-left-color: #6a9bcc !important; }
-        .reg__grid .reg-card--instr   { border-left-color: #788c5d !important; }
-        .reg__grid .reg-card--lecat   { border-left-color: #7a5b9c !important; }
-        .reg__grid .reg-card--a734    { border-left-color: #5a8c4d !important; }
-        .reg__grid .reg-card--cnad    { border-left-color: #d97757 !important; }
-        .reg-card__head {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.66rem; font-weight: 600;
-            letter-spacing: 0.02em; color: var(--text-3);
-            margin-bottom: 0.25rem;
+        .reg-item {
+            display: grid;
+            grid-template-columns: 160px 1fr 130px;
+            gap: 1.5rem;
+            padding: 1.2rem 1rem 1.2rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            border-left: 3px solid var(--text-muted);
+            align-items: start;
+            transition: background 0.15s;
         }
-        .reg-card__name {
+        .reg-item:hover { background: var(--bg-alt); }
+        @media (max-width: 760px) {
+            .reg-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0.85rem; }
+        }
+        .reg-item--lead   { border-left-color: #d97757; }
+        .reg-item--rpsad  { border-left-color: #b76629; }
+        .reg-item--lclda  { border-left-color: #6a9bcc; }
+        .reg-item--instr  { border-left-color: #788c5d; }
+        .reg-item--lecat  { border-left-color: #7a5b9c; }
+        .reg-item--a734   { border-left-color: #5a8c4d; }
+        .reg-item--cnad   { border-left-color: #d97757; }
+        .reg-item__head {
+            display: flex; flex-direction: column; gap: 0.2rem;
+        }
+        .reg-item__acronym {
             font-family: 'Inter Tight', sans-serif;
-            font-size: 1.05rem; line-height: 1.2; color: var(--navy); font-weight: 600;
-            margin-bottom: 0.45rem;
+            font-size: 1.05rem; line-height: 1.15; color: var(--navy); font-weight: 600;
         }
-        .reg-card__desc {
-            font-size: 0.84rem; line-height: 1.5; color: var(--text-2);
-            margin: 0 0 0.6rem;
+        .reg-item__decree {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem; font-weight: 500;
+            color: var(--text-3); letter-spacing: 0.01em;
+            line-height: 1.5;
         }
-        .reg-card__chip {
-            display: inline-block; align-self: flex-start;
+        .reg-item__body {
+            display: flex; flex-direction: column; gap: 0.35rem;
+        }
+        .reg-item__es {
+            font-size: 0.86rem; line-height: 1.35;
+            color: var(--navy); font-weight: 500; font-style: italic;
+        }
+        .reg-item__en {
+            font-size: 0.78rem; line-height: 1.35;
+            color: var(--text-3);
+        }
+        .reg-item__subject {
+            font-size: 0.82rem; line-height: 1.5; color: var(--text-2);
+            margin: 0;
+            padding-top: 0.15rem;
+        }
+        .reg-item__chip {
+            justify-self: end; align-self: start;
             font-size: 0.66rem; font-weight: 600;
-            padding: 0.15rem 0.5rem; border-radius: 3px;
+            padding: 0.18rem 0.55rem; border-radius: 3px;
             background: var(--bg-alt); color: var(--text-3);
-            margin-top: auto;
             text-transform: uppercase; letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+        @media (max-width: 760px) {
+            .reg-item__chip { justify-self: start; }
         }
 
         /* ── FOOTER ── */
@@ -446,50 +468,92 @@
     <div class="container">
         <div class="reg__label">Regulatory Stack</div>
         <h2 class="reg__title">The binding sources, in one view</h2>
-        <p class="reg__sub">Hierarchy under D-426/2025 Art. 59 (Specialty) — the new AML statute prevails over any contradicting rule. The old Reglamento, Instructivo and Acuerdo 734 stay operative under Art. 61 transitional in the part not contravening D-426.</p>
+        <p class="reg__sub">Two parallel verticals govern a DASP — the LEAD vertical (DASP-licensing rails) and the AML/CTF vertical (financial-crime prevention). Each vertical has a statute → regulation → operational guide ladder. Where rules collide, hierarchy controls: <strong>statute &gt; regulation &gt; guide</strong>; within the AML stack, <strong>D-426/2025 Art. 59 (Specialty)</strong> makes the new statute prevail over any contradicting rule, and <strong>Art. 61 transitional</strong> keeps the prior Reglamento, Instructivo and Acuerdo 734 alive only insofar as they do not contradict the new law.</p>
 
-        <div class="reg__grid">
-            <div class="reg-card reg-card--lead">
-                <div class="reg-card__head">D-643/2023 · CNAD</div>
-                <div class="reg-card__name">LEAD — DASP statute</div>
-                <p class="reg-card__desc">Defines PSAD status and the nine Art. 19 regulated services. Anchors the asset list (20(b)), stablecoin admission (21(q)) and tax regime.</p>
-                <span class="reg-card__chip">Licensing</span>
+        <div class="reg__list">
+            <div class="reg-item reg-item--lead">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">LEAD</div>
+                    <div class="reg-item__decree">D-643/2023 · statute<br>in force 17 Jan 2023</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Ley de Emisión de Activos Digitales</div>
+                    <div class="reg-item__en">Digital Asset Issuance Law</div>
+                    <p class="reg-item__subject">Establishes the digital-asset legal regime, creates CNAD as the sectoral supervisor, defines the regulated DASP activities and the tax framework.</p>
+                </div>
+                <span class="reg-item__chip">Licensing</span>
             </div>
-            <div class="reg-card reg-card--rpsad">
-                <div class="reg-card__head">CNAD-035-2023</div>
-                <div class="reg-card__name">RPSAD — DASP regulation</div>
-                <p class="reg-card__desc">CNAD operational rulebook. Art. 19 AML-program hook · Art. 20 Electronic Book + monitoring · Art. 22 $125K monthly aggravator · Arts. 27–28 cybersecurity (3-scenario test + external auditor).</p>
-                <span class="reg-card__chip">Licensing + Ops</span>
+            <div class="reg-item reg-item--rpsad">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">RPSAD</div>
+                    <div class="reg-item__decree">CNAD-035-2023 · regulation<br>in force 2023</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Reglamento de los Proveedores de Servicios de Activos Digitales</div>
+                    <div class="reg-item__en">Regulation for Digital Asset Service Providers</div>
+                    <p class="reg-item__subject">Implements LEAD. Registration procedure, prudential and conduct rules, governance, cybersecurity, ongoing CNAD reporting.</p>
+                </div>
+                <span class="reg-item__chip">Licensing + Ops</span>
             </div>
-            <div class="reg-card reg-card--lclda">
-                <div class="reg-card__head">D-426/2025 · in force 17 Oct 2025</div>
-                <div class="reg-card__name">LCLDA — AML/CTF statute</div>
-                <p class="reg-card__desc">Replaces D-498/1998. CDD trigger (15) · termination + UIF 10-bd hold (18) · PEP 5-yr (19) · CO + Prevention Committee (20, 23) · 24-h STR (24) · 15-yr retention (26) · tipping-off (44) · transitional savings (61).</p>
-                <span class="reg-card__chip">Compliance</span>
+            <div class="reg-item reg-item--cnad">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">CNAD Guía</div>
+                    <div class="reg-item__decree">supervisory guide · CNAD<br>current 2024</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Guía de requisitos para el proceso de registro como Proveedores de Servicios de Activos Digitales</div>
+                    <div class="reg-item__en">DASP Registration Application Guide</div>
+                    <p class="reg-item__subject">CNAD's procedural guide for the PSAD application — documentation requirements, risk-management coverage, platform validation.</p>
+                </div>
+                <span class="reg-item__chip">Licensing</span>
             </div>
-            <div class="reg-card reg-card--instr">
-                <div class="reg-card__head">Acuerdo 380/2021 · transitional</div>
-                <div class="reg-card__name">Instructivo UIF</div>
-                <p class="reg-card__desc">UIF operational AML rulebook with Reform 1 (VASP Chapter IV-B Arts. 84-A/B/C) + Reform 2 (CDD 12, EDD 13, Travel Rule 52 par. 2). Replacement Instructions overdue (UIF Art. 56 deadline 9 Apr 2026 passed).</p>
-                <span class="reg-card__chip">Compliance</span>
+            <div class="reg-item reg-item--lclda">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">LCLDA</div>
+                    <div class="reg-item__decree">D-426/2025 · statute<br>in force 17 Oct 2025</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Ley Especial para la Prevención, Control y Sanción del Lavado de Activos, Financiamiento del Terrorismo y Financiamiento de la Proliferación de Armas de Destrucción Masiva</div>
+                    <div class="reg-item__en">Special Law for the Prevention, Control and Sanctioning of Asset Laundering, Financing of Terrorism and Financing of the Proliferation of Weapons of Mass Destruction</div>
+                    <p class="reg-item__subject">The current AML/CTF/CFP statute. Replaces D-498/1998. Prevails over conflicting rules by Art. 59 Specialty.</p>
+                </div>
+                <span class="reg-item__chip">Compliance</span>
             </div>
-            <div class="reg-card reg-card--lecat">
-                <div class="reg-card__head">D-108/2006 + D-928/2024</div>
-                <div class="reg-card__name">LECAT — Counter-terrorism</div>
-                <p class="reg-card__desc">UNSC sanctions freeze (Art. 37 — without delay). Tipping-off prohibition is in LCLDA Art. 44, not LECAT.</p>
-                <span class="reg-card__chip">Compliance</span>
+            <div class="reg-item reg-item--lecat">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">LECAT</div>
+                    <div class="reg-item__decree">D-108/2006 · statute<br>reformed by D-928/2024<br>in force from 9 Jan 2024</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Ley Especial Contra Actos de Terrorismo</div>
+                    <div class="reg-item__en">Special Law Against Acts of Terrorism</div>
+                    <p class="reg-item__subject">Counter-terrorism offences and the UNSC sanctions-freeze obligation binding every Reporting Entity. Tipping-off prohibition is in LCLDA, not here.</p>
+                </div>
+                <span class="reg-item__chip">Compliance</span>
             </div>
-            <div class="reg-card reg-card--a734">
-                <div class="reg-card__head">Acuerdo 734/2022 · DASP-specific</div>
-                <div class="reg-card__name">UIF PSAV Guide</div>
-                <p class="reg-card__desc">§ III PEA · § V Travel Rule chain · § V.2.b.II DD cascade (≤$1K SDD · $1K–$4K Standard · &gt;$4K EDD) · § Annex IV monthly client report + individual Tx ≥$1K within 5 bd via 8 forms · § Annex II.1 VASP-CO requirements.</p>
-                <span class="reg-card__chip">Compliance — DASP</span>
+            <div class="reg-item reg-item--instr">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">Instructivo UIF</div>
+                    <div class="reg-item__decree">Acuerdo 380/2021 · regulation<br>in force 7 Jul 2023<br>(Reform 1 + Reform 2)</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Instructivo de la Unidad de Investigación Financiera para la Prevención, Detección y Control del Lavado de Dinero y de Activos, Financiamiento del Terrorismo y la Financiación de la Proliferación de Armas de Destrucción Masiva</div>
+                    <div class="reg-item__en">UIF Instructive for the Prevention, Detection and Control of Money Laundering, Asset Laundering, Terrorism Financing and Financing of Proliferation of Weapons of Mass Destruction</div>
+                    <p class="reg-item__subject">UIF's operational AML rulebook for all Reporting Entities — CDD / EDD / SDD, PEP, beneficial ownership, reporting mechanics. Transitional under D-426 Art. 61.</p>
+                </div>
+                <span class="reg-item__chip">Compliance</span>
             </div>
-            <div class="reg-card reg-card--cnad">
-                <div class="reg-card__head">CNAD Application Guide</div>
-                <div class="reg-card__name">CNAD Guía</div>
-                <p class="reg-card__desc">PSAD application procedure. Anexo 1: Art. 19(a) spot vs 19(b) derivs/futures. Fase 2: 9-category risk manual. Annex 2 § III.I.d CO residency (tension with Instr. 84-B(2) and Acuerdo 734 § Annex II.1.2).</p>
-                <span class="reg-card__chip">Licensing</span>
+            <div class="reg-item reg-item--a734">
+                <div class="reg-item__head">
+                    <div class="reg-item__acronym">UIF PSAV Guide</div>
+                    <div class="reg-item__decree">Acuerdo 734/2022 · UIF guide<br>in force 2 Dec 2022</div>
+                </div>
+                <div class="reg-item__body">
+                    <div class="reg-item__es">Guía para Proveedores de Servicios de Activos Virtuales sobre Cumplimiento de Obligaciones</div>
+                    <div class="reg-item__en">PSAV Guide on Compliance with AML / CTF / CFP Obligations</div>
+                    <p class="reg-item__subject">UIF's DASP-specific operational guide implementing the Instructivo for the VASP / PSAD perimeter — secure UIF channel, Travel Rule chain, DD cascade, transactional reporting regime.</p>
+                </div>
+                <span class="reg-item__chip">Compliance — DASP</span>
             </div>
         </div>
     </div>
