@@ -455,11 +455,11 @@
             border-top: 3px solid var(--accent);
             min-width: 0;
         }
-        /* Allow deadlines / pills to wrap inside narrow qrc-box cells */
-        .qrc-box .deadline,
-        .qrc-box .pill,
-        .qrc-box .cite { white-space: normal; word-break: break-word; }
+        /* qrc-box tables: auto-size columns to content; allow cite chips to
+           wrap inside narrow cells but keep deadline / DDC pills nowrap so
+           they don't break ugly across two lines */
         .qrc-box table { table-layout: auto !important; }
+        .qrc-box .cite { white-space: normal; word-break: break-word; }
 
         /* ── CONTACT LIST (replaces "Essential contacts" table) ── */
         .contact-list {
@@ -870,15 +870,10 @@
             <div class="qrc-grid">
 
                 <!-- 1. Reporting thresholds -->
-                <div class="qrc-box qrc-box--blue">
+                <div class="qrc-box qrc-box--blue qrc-box--wide">
                     <h3>DASP report obligations — what to file to UIF</h3>
-                    <table style="table-layout:fixed; width:100%;">
-                        <colgroup>
-                            <col style="width:46%;">
-                            <col style="width:30%;">
-                            <col style="width:24%;">
-                        </colgroup>
-                        <thead><tr><th>Trigger</th><th>Threshold</th><th>Deadline</th></tr></thead>
+                    <table style="width:100%;">
+                        <thead><tr><th>Trigger</th><th>Threshold</th><th style="white-space:nowrap;">Deadline</th></tr></thead>
                         <tbody>
                             <tr><td>STR (signed determination)</td><td><span class="deadline">Any amount</span></td><td><span class="deadline">24 h</span></td></tr>
                             <tr><td>Operación Regulada — cash</td><td><span class="deadline">&gt; $10,000</span></td><td><span class="deadline">5 bd</span></td></tr>
