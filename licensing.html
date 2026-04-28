@@ -232,7 +232,7 @@
             background-size: contain; background-repeat: no-repeat;
         }
         .topbar__inner::-webkit-scrollbar { display: none; }
-        .topbar__nav { display: flex; gap: 0.25rem; align-items: center; padding-right: 1rem; border-right: 1px solid var(--border); flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
+        .topbar__nav { display: flex; gap: 0.25rem; align-items: center; padding-right: 1rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
         .topbar__nav::-webkit-scrollbar { display: none; }
         .topbar__link {
             font-size: 0.85rem; font-weight: 500; color: var(--text-2);
@@ -366,8 +366,9 @@
         .btn--secondary {
             background: transparent; color: var(--navy);
             border-color: var(--navy);
+            box-shadow: 0 2px 0 var(--navy);
         }
-        .btn--secondary:hover { background: var(--navy); color: var(--white); }
+        .btn--secondary:hover { background: var(--navy); color: var(--white); box-shadow: 0 2px 0 var(--navy); }
         .btn--ghost {
             background: transparent; color: var(--accent);
             border-color: var(--accent-border);
@@ -1650,21 +1651,17 @@
     <table class="tbl">
         <thead><tr><th>Activity</th><th>Source</th></tr></thead>
         <tbody>
-            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets, using own or third-party capital. <strong>Spot only</strong> — per CNAD Guía Anexo 1(a), all transactions take place in the spot market, <em>without including derivatives or futures</em></td><td>LEAD Art. 19(a)</td></tr>
-            <tr><td><strong>Exchange platform</strong> — operate a platform for exchange or commercialisation of digital assets / derivatives. <strong>Spot + derivatives + futures</strong> permitted per CNAD Guía Anexo 1(b) (includes OTC, derivative and futures operations)</td><td>LEAD Art. 19(b)</td></tr>
-            <tr><td><strong>Risk + price evaluation, underwriting</strong> — for digital-asset issuances</td><td>LEAD Art. 19(c)</td></tr>
-            <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>LEAD Art. 19(d)</td></tr>
-            <tr><td><strong>Investment products</strong> — promote, structure, manage investment products in digital assets</td><td>LEAD Art. 19(e)</td></tr>
-            <tr><td><strong>Transfer</strong> — transfer digital assets between persons / wallets / accounts on behalf of third parties</td><td>LEAD Art. 19(f)(1)</td></tr>
-            <tr><td><strong>Custody &amp; administration</strong> — safekeep, custody or manage digital assets on behalf of clients</td><td>LEAD Art. 19(f)(2)</td></tr>
-            <tr><td><strong>Order reception &amp; transmission</strong> — receive and transmit client buy/sell orders or derivatives negotiation</td><td>LEAD Art. 19(f)(3)</td></tr>
-            <tr><td><strong>Order execution</strong> — execute buy/sell orders for <em>derivative</em> digital assets on behalf of clients</td><td>LEAD Art. 19(f)(4)</td></tr>
+            <tr><td><strong>Exchange</strong> — digital assets for fiat or other digital assets, using own or third-party capital. <strong>Spot only</strong> — per CNAD Guía Anexo 1(a), all transactions take place in the spot market, <em>without including derivatives or futures</em></td><td>LEAD<br>Art. 19(a)</td></tr>
+            <tr><td><strong>Exchange platform</strong> — operate a platform for exchange or commercialisation of digital assets / derivatives. <strong>Spot + derivatives + futures</strong> permitted per CNAD Guía Anexo 1(b) (includes derivative and futures operations)</td><td>LEAD<br>Art. 19(b)</td></tr>
+            <tr><td><strong>Risk + price evaluation, underwriting</strong> — for digital-asset issuances</td><td>LEAD<br>Art. 19(c)</td></tr>
+            <tr><td><strong>Placement</strong> — place digital assets on platforms or wallets</td><td>LEAD<br>Art. 19(d)</td></tr>
+            <tr><td><strong>Investment products</strong> — promote, structure, manage investment products in digital assets</td><td>LEAD<br>Art. 19(e)</td></tr>
+            <tr><td><strong>Transfer</strong> — transfer digital assets between persons / wallets / accounts on behalf of third parties</td><td>LEAD<br>Art. 19(f)(1)</td></tr>
+            <tr><td><strong>Custody &amp; administration</strong> — safekeep, custody or manage digital assets on behalf of clients</td><td>LEAD<br>Art. 19(f)(2)</td></tr>
+            <tr><td><strong>Order reception &amp; transmission</strong> — receive and transmit client buy/sell orders or derivatives negotiation</td><td>LEAD<br>Art. 19(f)(3)</td></tr>
+            <tr><td><strong>Order execution</strong> — execute buy/sell orders for <em>derivative</em> digital assets on behalf of clients</td><td>LEAD<br>Art. 19(f)(4)</td></tr>
         </tbody>
     </table>
-    </div>
-
-    <div class="callout callout--blue" style="margin-top:1rem;">
-        <p><strong>Per Instr. Art. 10:</strong> the inherent ML/TF/FPWMD risk of customers and counterparties is determined by the DASP itself, weighing among other criteria the risk of products / services (Art. 10(c)), channels (Art. 10(d)) and jurisdictions (Art. 10(e)). The activity-specific risk weighting is part of each DASP's own AML risk-management methodology (Instr. Arts. 5, 7(d), 84-B(1)) — there is no statutory pre-rating per Art. 19 activity.</p>
     </div>
 
     <h3 class="section__subh" style="margin-top:2rem;">Per-activity technology requirements</h3>
@@ -1685,7 +1682,7 @@
                 <th>Requirement</th>
                 <th>Exchange / Platform / Placement <span class="ref">19(a)(b)(d)</span></th>
                 <th>Risk &amp; price evaluation (issuance underwriting) <span class="ref">19(c)</span></th>
-                <th>Transfer (no custody) <span class="ref">19(f.1)</span></th>
+                <th>Transfer <span class="ref">19(f.1)</span></th>
                 <th>Custody <span class="ref">19(f.2)</span></th>
                 <th>Order reception &amp; derivatives <span class="ref">19(f.3)(f.4)</span></th>
             </tr>
@@ -1845,8 +1842,8 @@
         <!-- At-a-glance pipeline — 5 stages, clean spacing -->
         <div class="schema schema--clean" aria-label="DASP registration pipeline summary" style="margin-bottom:2rem;">
             <div class="schema-node">
-                <div class="schema-node-meta">Stage 1 · Pre-flight</div>
-                <div class="schema-node-label">Entity &amp; COs</div>
+                <div class="schema-node-meta">Stage 1</div>
+                <div class="schema-node-label">Pre-flight<br>Entity &amp; COs</div>
                 <div class="schema-node-dur">~20&nbsp;bd</div>
             </div>
             <div class="arrow"></div>
@@ -1944,7 +1941,7 @@
                     <h5>CNAD review &amp; cure cycle</h5>
                     <ul>
                         <li>CNAD initial evaluation: <strong>20 bd</strong> from form receipt <span class="ref">RPSAD Art. 8</span></li>
-                        <li>If observations: applicant has <strong>10 bd</strong> to cure, extendable up to <strong>10 additional bd</strong> on motivated request <span class="ref">RPSAD Art. 8</span> <span class="ref">LPA Art. 97</span></li>
+                        <li>If observations: applicant has <strong>10 bd</strong> to cure, extendable up to <strong>10 bd additionally</strong> on motivated request <span class="ref">RPSAD Art. 8</span> <span class="ref">LPA Art. 97</span></li>
                         <li>Failure to cure / blank fields / &laquo;in development&raquo; statements / no-show at meeting → archive of file <span class="ref">LPA Art. 72</span></li>
                     </ul>
                     <h5>Outcome</h5>
@@ -2007,7 +2004,7 @@
                     </ul>
                     <h5>CNAD review cycle</h5>
                     <ul>
-                        <li>Same review-and-cure mechanics as Phase 1 (20 bd CNAD review · 10 bd applicant cure, extendable up to 10 additional bd <span class="ref">LPA Art. 97</span>). Phase-2-specific: each significant change adds +5 bd CNAD-side extension <span class="ref">RPSAD Art. 9</span>; statutory term may be extended up to 50% on motivated request <span class="ref">RPSAD Art. 45</span></li>
+                        <li>Same review-and-cure mechanics as Phase 1 (20 bd CNAD review · 10 bd applicant cure, extendable up to 10 bd additionally <span class="ref">LPA Art. 97</span>). Phase-2-specific: each significant change adds +5 bd CNAD-side extension <span class="ref">RPSAD Art. 9</span>; statutory term may be extended up to 50% on motivated request <span class="ref">RPSAD Art. 45</span></li>
                         <li>Typical Phase 2 cycle: 2–3 rounds = 12–18 weeks</li>
                     </ul>
                 </div>
@@ -2021,8 +2018,8 @@
                     <span class="phase-card__dur"><span class="dur-bd">30–50 bd</span><span class="dur-wk">6–10 wk</span><span class="dur-mo">≈ 1.5–2.5 mo</span></span>
                 </div>
                     <h4 class="phase-card__title">Inscripción</h4>
-                    <p class="phase-card__sub">Operational artefacts + Google Meet platform validation</p>
-                    <p class="phase-card__teaser">Client contract / T&amp;Cs + customer attention system · Compliance Office acta + CO/Alternate appointment + employment contracts · CISO appointment with Board access · technology vendor contracts + public wallet list · Meeting 3 (Google Meet platform validation). Outcome: favourable resolution.</p>
+                    <p class="phase-card__sub">Operational artefacts + platform validation meeting</p>
+                    <p class="phase-card__teaser">Client contract / T&amp;Cs + customer attention system · Compliance Office acta + CO/Alternate appointment + employment contracts · CISO appointment with Board access · technology vendor contracts + public wallet list · Meeting 3 (platform validation). Outcome: favourable resolution.</p>
                 </summary>
                 <div class="phase-card__list">
                     <h5>Client-facing legal</h5>
@@ -2047,7 +2044,7 @@
                         <li>Vendor contracts (KYC, KYB, KYT, custody, cybersecurity, geofencing)</li>
                         <li>Public wallet list in editable format</li>
                     </ul>
-                    <h5>Meeting 3 — Google Meet platform validation (CNAD)</h5>
+                    <h5>Meeting 3 — platform validation (CNAD)</h5>
                     <ul>
                         <li>All communications via <strong>registro@cnad.gob.sv</strong> only — single official channel</li>
                         <li>Cover letter from Legal Rep listing everything filed + dates + changes</li>
@@ -2111,7 +2108,7 @@
             </details>
         </div>
 
-        <p class="timeline__foot"><strong>Cycle rhythm &amp; archive risk.</strong> Every observation (Phase 1, Phase 2 or Inscripción) opens a <strong>10 bd</strong> cure window + up to <strong>10 additional bd</strong> on motivated request <span class="ref">LPA Art. 97</span>. Non-cure, blank fields, &laquo;in-development&raquo; statements, or failure to attend the technical meeting within 10 bd of form submission trigger archive of the file <span class="ref">LPA Art. 72</span> — the file can be refiled but the clock restarts. Appeal of an adverse resolution lies within the time set by <span class="ref">LPA Art. 104</span>; CNAD notifications are by electronic means under <span class="ref">LPA Arts. 18, 19</span>. Government fee $6,132 is paid only after favourable resolution, within 10 bd, or the registration is automatically revoked <span class="ref">RPSAD Art. 10</span>.</p>
+        <p class="timeline__foot"><strong>Cycle rhythm &amp; archive risk.</strong> Every observation (Phase 1, Phase 2 or Inscripción) opens a <strong>10 bd</strong> cure window + up to <strong>10 bd additionally</strong> on motivated request <span class="ref">LPA Art. 97</span>. Non-cure, blank fields, &laquo;in-development&raquo; statements, or failure to attend the technical meeting within 10 bd of form submission trigger archive of the file <span class="ref">LPA Art. 72</span> — the file can be refiled but the clock restarts. Appeal of an adverse resolution lies within the time set by <span class="ref">LPA Art. 104</span>; CNAD notifications are by electronic means under <span class="ref">LPA Arts. 18, 19</span>. Government fee $6,132 is paid only after favourable resolution, within 10 bd, or the registration is automatically revoked <span class="ref">RPSAD Art. 10</span>.</p>
     </div>
 
     <!-- Detailed phase-by-phase view removed — content merged into the timeline cards above. -->
@@ -2173,7 +2170,7 @@
     <p class="section__desc">Two corporate forms qualify: a Salvadoran S.A. de C.V. or a registered branch of a foreign company <span class="ref">LEAD Art. 18(d)</span>. Simplified forms (S.A.S.) and limited liability companies are excluded.</p>
 
     <div class="grid grid--4">
-        <div class="card">
+        <div class="card card--accent-blue">
             <h3>Incorporation</h3>
             <ul>
                 <li>S.A. de C.V. or foreign branch <span class="ref">LEAD Art. 18(d)</span></li>
@@ -2184,7 +2181,7 @@
                 <li>Fiscal domicile in El Salvador</li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card card--accent-blue">
             <h3>UIF Registration</h3>
             <ul>
                 <li>Entity on the UIF platform <span class="ref">LCLDA Art. 9(1)</span></li>
@@ -2195,7 +2192,7 @@
                 <li>Annual AML self-assessment filed to UIF</li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card card--accent-blue">
             <h3>Accounting</h3>
             <ul>
                 <li>Spanish-language books · USD functional currency</li>
@@ -2206,7 +2203,7 @@
                 <li>Local bank account deferred to post-licence (see Pre-flight)</li>
             </ul>
         </div>
-        <div class="card">
+        <div class="card card--accent-blue">
             <h3>External Audits</h3>
             <ul>
                 <li>Annual financial-statement audit <span class="ref">Cód. Com. Art. 289</span></li>
@@ -2279,9 +2276,9 @@
             <tr>
                 <td><strong>Principal Compliance Officer</strong></td>
                 <td>AML/CFT oversight. Board-appointed; managerial position; functional reporting to the highest governing body.</td>
-                <td>Independence + autonomy + exclusivity + direct employment with the entity <span class="ref">LCLDA Art. 20</span> <span class="ref">Instr. Art. 84-B(2)</span>. <strong>Direct VASP-CO requirements per Acuerdo 734 § Annex II.1.1</strong>: AML/CFT certification + ≥ 2 yr AML/CFT/FPWMD experience + employment relationship + managerial position + university degree + skills in legal / business / control matters. <span class="ref">Acuerdo 734 § Annex II.1.1</span>. (For non-domiciled CO: § Annex II.1.2 sets a homologación path — verify against country-of-origin requirements; if none, demonstrate AML/CFT/FPWMD knowledge + employment relationship + skills.)</td>
-                <td>Not required for DASPs <span class="ref">Instr. Art. 84-B(2) Reform 1</span></td>
-                <td><strong>CNAD + UIF</strong> · UIF registration of CO within <strong>5 bd</strong> of appointment <span class="ref">Instr. Art. 64</span> + CNAD <strong>5 bd</strong> <span class="ref">RPSAD Art. 9</span></td>
+                <td>AML/CFT certification + ≥ 2 yr AML/CFT/FPWMD experience + employment relationship + university degree + legal / business / control skills <span class="ref">Acuerdo 734 § Annex II.1.1</span></td>
+                <td>Not required for DASPs <span class="ref">Instr. Art. 84-B(2) Reform 1</span> (see note below)</td>
+                <td><strong>CNAD + UIF</strong> · UIF registration within <strong>5 bd</strong> of appointment <span class="ref">Instr. Art. 64</span> + CNAD <strong>5 bd</strong> <span class="ref">RPSAD Art. 9</span></td>
             </tr>
             <tr>
                 <td><strong>Alternate Compliance Officer</strong></td>
@@ -2303,6 +2300,10 @@
 
     <div class="callout callout--blue" style="margin-top:1.25rem;">
         <p><strong>Prevention Committee</strong> <span class="ref">LCLDA Art. 23</span>. Reporting Entities that must appoint a Compliance Office (incl. DASPs supervised by CNAD) must establish a Prevention Committee. Statutory minimum: <strong>3 members</strong> including one from the highest governing body and the CO. The Instructivo sets <strong>min. 5 members</strong> for SSF-supervised entities and quarterly meetings <span class="ref">Instr. Art. 68</span> — DASPs apply this as practical baseline.</p>
+    </div>
+
+    <div class="callout callout--blue" style="margin-top:0.75rem;">
+        <p><strong>Note on Compliance Officer residency.</strong> AML/CFT certified, UIF-registered. Three texts touch the residency question: (i) <strong>Instr. Art. 84-B(2) Reform 1</strong> explicitly permits both Principal and Alternate CO to be foreign-resident, provided there is an employment relationship to the entity; (ii) <strong>Acuerdo 734 § Annex II.1.2</strong> contemplates a non-domiciled CO via a homologación path — verify country-of-origin AML requirements, or demonstrate AML/CFT/FPWMD knowledge + employment relationship + skills; (iii) <strong>CNAD Application Guide Annex 2 § III.I.d</strong> requires CO residence in El Salvador. Under <span class="ref">D-426 Art. 59 (Specialty)</span>, the statute prevails over administrative guides. Operationally, however, CNAD applies its Guide during registration review — best practice is a Salvadoran-resident Principal CO with a foreign-resident Alternate to avoid registration friction.</p>
     </div>
 </div>
 </section>
@@ -2345,23 +2346,67 @@
 
     <h3 class="section__subh" style="margin-top:2rem;">Computer systems &amp; operational platforms — Art. 20</h3>
     <p class="section__desc" style="margin-bottom:1rem;">If the DASP operates digital platforms / wallets / similar applications, the computer systems must perform at minimum the following four functions:</p>
-    <ul>
-        <li><strong>Settlement quality.</strong> Quick, correct and accurate settlement of all transactions made on the platform / wallet. <span class="cite cite--rpsad">RPSAD Art. 20(a)</span></li>
-        <li><strong>Electronic Book.</strong> Accurate, auditable and verifiable record of each transaction. Must include: date · type of transaction · participating users · total amount. <span class="cite cite--rpsad">RPSAD Art. 20(b)</span></li>
-        <li><strong>Permanent monitoring.</strong> Real-time / near-real-time monitoring of all operations to detect errors and failures of any nature. Capability to recover damaged or deleted information from impacted operations or significant controversies. <span class="cite cite--rpsad">RPSAD Art. 20(c)</span></li>
-        <li><strong>Account suspension / closure.</strong> Mechanism to suspend and close customer accounts that have breached the platform&rsquo;s terms and conditions. <span class="cite cite--rpsad">RPSAD Art. 20(d)</span></li>
-    </ul>
+    <div class="grid grid--4">
+        <div class="card card--accent-blue">
+            <h3>Settlement quality<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 20(a)</span></h3>
+            <p>Quick, correct and accurate settlement of all transactions made on the platform / wallet.</p>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>Electronic Book<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 20(b)</span></h3>
+            <p>Accurate, auditable and verifiable record of each transaction. Must include: date · type of transaction · participating users · total amount.</p>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>Permanent monitoring<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 20(c)</span></h3>
+            <p>Real-time / near-real-time monitoring of all operations to detect errors and failures. Capability to recover damaged or deleted information.</p>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>Account suspension / closure<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 20(d)</span></h3>
+            <p>Mechanism to suspend and close customer accounts that have breached the platform's terms and conditions.</p>
+        </div>
+    </div>
 
     <h3 class="section__subh" style="margin-top:2rem;">Website (URL) disclosure — Art. 23</h3>
-    <p class="section__desc" style="margin-bottom:1rem;">All communication related to the digital assets the DASP markets, promotes or manages must be available <strong>at all times</strong> at the responsible provider's website (URL — Spanish: <em>LRU, Localizador de Recursos Uniformes</em>). Display rules:</p>
+    <p class="section__desc" style="margin-bottom:1rem;">All communication related to the digital assets the DASP markets, promotes or manages must be available <strong>at all times</strong> at the responsible provider's website (URL — Spanish: <em>LRU, Localizador de Recursos Uniformes</em>). Three display rules apply, plus a defined content baseline.</p>
+
     <div class="grid grid--3">
-        <div class="card"><h3>Clear &amp; accessible</h3><p>Clear, transparent and easily accessible — no hiding behind login walls or buried clauses.</p></div>
-        <div class="card"><h3>Not misleading</h3><p>Information presented must not be misleading or biased.</p></div>
-        <div class="card"><h3>Third-party citation</h3><p>If information from a third party is cited, the source must be identified.</p></div>
+        <div class="card card--accent-green">
+            <h3>Clear &amp; accessible<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 23(a)</span></h3>
+            <p>Clear, transparent and easily accessible — no hiding behind login walls or buried clauses.</p>
+        </div>
+        <div class="card card--accent-green">
+            <h3>Not misleading<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 23(b)</span></h3>
+            <p>Information presented must not be misleading or biased.</p>
+        </div>
+        <div class="card card--accent-green">
+            <h3>Third-party citation<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 23(c)</span></h3>
+            <p>If information from a third party is cited, the source must be identified.</p>
+        </div>
     </div>
-    <div class="callout callout--blue" style="margin-top:1rem;">
-        <p><strong>Required URL contents (illustrative, per Art. 23 + adjacent operational standards).</strong> Terms of use · contact info · SSF complaint channel notice · per-asset general explanation (interchangeability, current price, 12-month price history, current platform volume) · custody / loan / deposit complementary products with regular updates · Code of Ethics (after Art. 18 6-month deadline) · service-specific T&amp;Cs · fee schedule · publicly disclosable wallet list. Update cadence: <em>regular and reasonable per product</em>. <span class="ref">RPSAD Arts. 23, 18, 84-B(7) Reform 1</span></p>
+
+    <h4 class="section__subh" style="margin-top:1.5rem; font-size:0.95rem;">Required URL contents — operational baseline</h4>
+    <p class="section__desc" style="margin-bottom:0.75rem;">CNAD reviews this set during ongoing supervision. Maintain a published index of where each item lives on the URL and note the last-updated date per item.</p>
+    <div class="tbl-wrap">
+    <table class="tbl" style="table-layout:fixed; width:100%;">
+        <colgroup>
+            <col style="width:30%;">
+            <col style="width:55%;">
+            <col style="width:15%;">
+        </colgroup>
+        <thead><tr><th>Required item</th><th>What it must show</th><th>Anchor</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Issuer identification</strong></td><td>Issuer of each digital asset, the issuer's URL address and a contact channel.</td><td><span class="ref">RPSAD Art. 23(d)</span></td></tr>
+            <tr><td><strong>Per-asset explanation</strong></td><td>General explanation of each digital asset: interchangeability with other DAs, current price, 12-month price history, current platform volume.</td><td><span class="ref">RPSAD Art. 23(e)</span></td></tr>
+            <tr><td><strong>Buy / sell mechanics</strong></td><td>How the asset is bought and sold on the platform / wallet.</td><td><span class="ref">RPSAD Art. 23(f)</span></td></tr>
+            <tr><td><strong>Commissions</strong></td><td>Commissions applicable to each transaction type — fee schedule.</td><td><span class="ref">RPSAD Art. 23(g)</span></td></tr>
+            <tr><td><strong>Complementary products</strong></td><td>Custody, loans, deposits and any other complementary services offered.</td><td><span class="ref">RPSAD Art. 23(h)</span></td></tr>
+            <tr><td><strong>Terms of use + service-specific T&amp;Cs</strong></td><td>Master URL Terms; specific T&amp;Cs per service / product.</td><td><span class="ref">RPSAD Art. 23</span></td></tr>
+            <tr><td><strong>Code of Ethics</strong></td><td>Public-facing Code of Ethics, after the Art. 18 6-month deadline post-registration.</td><td><span class="ref">RPSAD Art. 18</span></td></tr>
+            <tr><td><strong>Public-wallet list</strong></td><td>Publicly disclosable wallet addresses.</td><td><span class="ref">RPSAD Art. 84-B(7) Reform 1</span></td></tr>
+            <tr><td><strong>SSF complaint channel</strong></td><td>Notice of the SSF (Superintendencia del Sistema Financiero) consumer-complaint channel for financial-services disputes.</td><td>Industry standard</td></tr>
+        </tbody>
+    </table>
     </div>
+    <p class="tbl-note">Update cadence: <em>regular and reasonable per product</em>. CNAD reviews completeness and freshness during ongoing supervision; missing or stale items can be cited under Art. 38(a) sanction tier.</p>
 
     <h3 class="section__subh" style="margin-top:2rem;">Personal-data protection — Art. 36</h3>
     <div class="callout callout--amber">
@@ -2377,7 +2422,7 @@
     <h3 class="section__subh" style="margin-top:2rem;">Privileged-information regime — Arts. 24–26 (insider / market integrity)</h3>
     <div class="grid grid--3">
         <div class="card card--accent-amber">
-            <h3>Prohibition <span class="ref">RPSAD Art. 24</span></h3>
+            <h3>Prohibition<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 24</span></h3>
             <p>No DASP may carry out operations with privileged information of issuers. Refrain from:</p>
             <ul>
                 <li>(a) Acquiring / transferring digital assets using privileged info — direct or indirect, own or third-party account</li>
@@ -2386,13 +2431,13 @@
             </ul>
         </div>
         <div class="card card--accent-amber">
-            <h3>Accidental disclosure <span class="ref">RPSAD Art. 25</span></h3>
+            <h3>Accidental disclosure<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 25</span></h3>
             <p>If accidental access to issuer's privileged information occurs, the exposed executive / employee must disclose to the Compliance Officer (or designated conflict-of-interest manager).</p>
-            <p>Once disclosed: the DASP may continue operations with the affected issuer, provided the exposed individual is <strong>prohibited</strong> from any operation with that issuer and from sharing the info with any other employee.</p>
+            <p>Once disclosed: the DASP may continue operations with the affected issuer, provided the exposed individual is prohibited from any operation with that issuer and from sharing the info with any other employee.</p>
         </div>
         <div class="card card--accent-amber">
-            <h3>Communication restrictions <span class="ref">RPSAD Art. 26</span></h3>
-            <p>No DASP holding privileged information may communicate it to another natural or legal person, <strong>except</strong> when communication occurs in the normal exercise of work, profession or functions.</p>
+            <h3>Communication restrictions<br><span class="ref" style="display:inline-block;margin-top:0.25rem;">RPSAD Art. 26</span></h3>
+            <p>No DASP holding privileged information may communicate it to another natural or legal person, except when communication occurs in the normal exercise of work, profession or functions.</p>
             <p>Document the communication channel and recipient in the case file.</p>
         </div>
     </div>
@@ -2449,12 +2494,12 @@
     <p class="section__desc">RPSAD Arts. 27–28: governance, identification, protection, detection, response/recovery, plus annual tests &amp; simulations.</p>
 
     <div class="grid grid--3">
-        <div class="card"><h3>Governance <span class="ref">RPSAD Art. 27(a)</span></h3><p>Internal procedures, external audits. CISO with authority and independence.</p></div>
-        <div class="card"><h3>Identification <span class="ref">RPSAD Art. 27(b)</span></h3><p>Safeguard mechanisms. Protect order management, custody, acquirer data systems.</p></div>
-        <div class="card"><h3>Protection <span class="ref">RPSAD Art. 27(c)</span></h3><p>SOC, IPS, access controls. Internal threat detection. Employee training.</p></div>
-        <div class="card"><h3>Detection <span class="ref">RPSAD Art. 27(d)</span></h3><p>Continuous real-time monitoring. Multi-level security controls.</p></div>
-        <div class="card"><h3>Response &amp; Recovery <span class="ref">RPSAD Art. 27(e)</span></h3><p>Critical processes: <strong>6 hours</strong>. Transaction settlement: <strong>24 hours</strong>.</p></div>
-        <div class="card"><h3>Tests &amp; Simulations <span class="ref">RPSAD Art. 28</span></h3><p>External cybersecurity auditor. 3 mandatory scenarios verbatim from Art. 28.</p></div>
+        <div class="card card--accent-amber"><h3>Governance <span class="ref">RPSAD Art. 27(a)</span></h3><p>Internal procedures, external audits. CISO with authority and independence.</p></div>
+        <div class="card card--accent-amber"><h3>Identification <span class="ref">RPSAD Art. 27(b)</span></h3><p>Safeguard mechanisms. Protect order management, custody, acquirer data systems.</p></div>
+        <div class="card card--accent-amber"><h3>Protection <span class="ref">RPSAD Art. 27(c)</span></h3><p>SOC, IPS, access controls. Internal threat detection. Employee training.</p></div>
+        <div class="card card--accent-amber"><h3>Detection <span class="ref">RPSAD Art. 27(d)</span></h3><p>Continuous real-time monitoring. Multi-level security controls.</p></div>
+        <div class="card card--accent-amber"><h3>Response &amp; Recovery <span class="ref">RPSAD Art. 27(e)</span></h3><p>Critical processes: 6 hours. Transaction settlement: 24 hours.</p></div>
+        <div class="card card--accent-amber"><h3>Tests &amp; Simulations <span class="ref">RPSAD Art. 28</span></h3><p>External cybersecurity auditor. 3 mandatory scenarios verbatim from Art. 28.</p></div>
     </div>
 
     <div class="callout callout--blue" style="margin-top:1rem;">
@@ -2513,31 +2558,31 @@
     <p class="section__desc">RPSAD Arts. 38–39 contemplate <strong>two types</strong> of cessation. Both follow the same request procedure with CNAD; differences are in scope, timing and downstream obligations. The wind-down plan must protect client assets — return digital assets and fiduciary money to owners.</p>
 
     <div class="grid grid--2">
-        <div class="card card--top-blue">
+        <div class="card card--accent-blue">
             <div class="card__head">
                 <h3>Temporary Cessation</h3>
                 <span class="kbd-label">Pause &amp; resume</span>
             </div>
             <ul>
-                <li><strong>Action plan</strong> with cessation date + planned resumption date</li>
-                <li>Procedures to <strong>protect</strong> digital assets + fiat held under custody</li>
-                <li>Procedures to <strong>refund</strong> assets + fiat to owners on request</li>
-                <li>Maximum suspension window: <strong>20 business days</strong> from declared cessation date</li>
+                <li>Action plan with cessation date + planned resumption date</li>
+                <li>Procedures to protect digital assets + fiat held under custody</li>
+                <li>Procedures to refund assets + fiat to owners on request</li>
+                <li>Maximum suspension window: 20 business days from declared cessation date</li>
                 <li>Mandatory resumption of operations within that window — failure → automatic conversion to definitive cessation grounds</li>
             </ul>
             <div class="card__foot">For cyber outages / system migration / liquidity stress / ownership change. <span class="ref">RPSAD Art. 39(b)</span></div>
         </div>
 
-        <div class="card card--top-amber">
+        <div class="card card--accent-amber">
             <div class="card__head">
                 <h3>Definitive Cessation</h3>
                 <span class="kbd-label">Permanent exit</span>
             </div>
             <ul>
                 <li>Date of cessation of activities</li>
-                <li><strong>Liquidation plan for assets and employees</strong></li>
+                <li>Liquidation plan for assets and employees</li>
                 <li>Procedure to return digital assets + fiduciary money to owners</li>
-                <li>CNAD grants minimum <strong>20 business days</strong> (typically more, per applicant request) to execute liquidation, comply with outstanding obligations, and close operation in country</li>
+                <li>CNAD grants minimum 20 business days (typically more, per applicant request) to execute liquidation, comply with outstanding obligations, and close operation in country</li>
                 <li>After CNAD-set window expires → CNAD orders ex officio cancellation of registration; all rights extinguished</li>
             </ul>
             <div class="card__foot">For business decision / market exit / corporate restructuring. <span class="ref">RPSAD Art. 39(c)</span></div>
@@ -2732,7 +2777,7 @@
                 <tr><td>CISO (may be fractional)</td><td class="price">$1,500 – $2,500</td></tr>
                 <tr><td>Ad-hoc AML policy updates</td><td class="price">from $460 /update</td></tr>
             </table>
-            <p class="card__note">COs: AML/CFT certified and UIF-registered. <strong>Regulatory tension</strong>: <span class="ref">Instr. Art. 84-B(2) Reform 1</span> explicitly permits both Principal and Alternate CO to be foreign-resident (employment relationship required). However, <strong>CNAD Application Guide Annex 2 § III.I.d</strong> requires that COs reside in El Salvador. Until CNAD reconciles the position, plan a Salvadoran-resident Principal CO to avoid registration friction; the foreign-resident carve-out in the Instructivo remains the statutory ceiling.</p>
+            <p class="card__note">COs: AML/CFT certified and UIF-registered. See the <a href="#personnel" style="color:var(--accent);">CO residency note</a> in Personnel for the statute-vs-guide hierarchy.</p>
         </div>
 
     </div>
