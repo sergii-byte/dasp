@@ -553,7 +553,7 @@
 
     function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
-    /* ── Operation taxonomy: labels + per-subop obligations + UIF Anexo IV form map ── */
+    /* ── Operation taxonomy: labels + per-subop obligations + UIF Annex IV form map ── */
     const OP_LABEL = {
         exchange: 'Exchange', transfer: 'Transfer',
         payments: 'Payments', custody: 'Custody',
@@ -568,7 +568,7 @@
         exchange: 'LEAD Art. 19(a)(b)', transfer: 'LEAD Art. 19(f.1)',
         payments: 'LEAD Art. 19 composite (a) + (f.1) + (f.2)', custody: 'LEAD Art. 19(f.2)',
     };
-    /* Per-subop operational obligations + likely UIF Anexo IV forms.
+    /* Per-subop operational obligations + likely UIF Annex IV forms.
        Forms: 1=Wallet↔Wallet same · 2=Wallets distintas · 3=Wallet→Banco · 4=Cajero→Wallet
               5=Wallet→Cajero · 6=Tarjeta→Wallet · 7=Compraventa · 8=Intercambio Moneda */
     const SUBOP_NOTES = {
@@ -702,11 +702,11 @@
         const sub = SUBOP_LABEL[s.subop] || s.subop;
         const items = note.items.slice();
         if (note.forms && note.forms.length) {
-            items.push('<strong>Likely UIF Anexo IV form(s):</strong> ' + note.forms.map(esc).join(' · '));
+            items.push('<strong>Likely UIF Annex IV form(s):</strong> ' + note.forms.map(esc).join(' · '));
         }
         return block('block--purple',
             esc(op) + ' · ' + esc(sub) + ' — operation-specific obligations'
-                + ' <span class="cite cite--instr">UIF Acuerdo 734 § Anexo IV</span>',
+                + ' <span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
             ['<em>' + note.summary + '</em>'].concat(items)
         );
     }
@@ -939,10 +939,10 @@
                 ? ' — likely form: <strong>' + esc(note.forms[0]) + '</strong>'
                 : ' — one of 8 transaction-type forms';
             reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 business days to UIF' + formHint
-                + ' <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.2</span>');
+                + ' <span class="cite cite--instr">UIF Acuerdo 734/2022 § Annex IV.2</span>');
         }
         // DASP monthly client report — fired regardless (always due monthly)
-        reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Anexo IV.1</span>');
+        reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Annex IV.1</span>');
         if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
         if (d.v === 'reject' && s.f.refuses) reports.push('<strong>Attempted operation:</strong> STR pipeline if suspicious <span class="cite cite--instr">Instr. Art. 47</span>');
         if (reports.length) parts.push(block('block--blue', 'Reporting obligations triggered', reports));
