@@ -533,8 +533,8 @@
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
             font-size: 0.62rem;
             font-weight: 700;
-            color: var(--emerald-2);
-            background: var(--emerald-light);
+            color: var(--text-3);
+            background: var(--bg-alt);
             padding: 0.22rem 0.5rem;
             border-radius: 3px;
             letter-spacing: 0.06em;
@@ -542,6 +542,15 @@
             white-space: nowrap;
             align-self: flex-start;
         }
+        /* Per-category tag colours */
+        .rba-tag--meta    { color: #2c5780;          background: var(--blue-light); }
+        .rba-tag--client  { color: var(--emerald-2); background: var(--emerald-light); }
+        .rba-tag--product { color: #5d4380;          background: var(--purple-light); }
+        .rba-tag--channel { color: #2c7a8a;          background: rgba(58, 138, 158, 0.14); }
+        .rba-tag--geo     { color: var(--amber);     background: var(--amber-light); }
+        .rba-tag--lists   { color: var(--red);       background: var(--red-light); }
+        .rba-tag--tx      { color: #4d6b85;          background: rgba(106, 155, 204, 0.18); }
+        .rba-tag--volume  { color: var(--accent-2);  background: var(--accent-light); }
         .rba-text { color: var(--text-2); }
         @media (max-width: 960px) {
             .rba-list { grid-template-columns: repeat(2, 1fr); }
@@ -982,14 +991,14 @@
                 <div class="qrc-box qrc-box--green qrc-box--wide">
                     <h3>RBA — Customer inherent-risk criteria (Art. 10)</h3>
                     <ul class="rba-list">
-                        <li><span class="rba-tag">META</span><span class="rba-text">International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</span></li>
-                        <li><span class="rba-tag">CLIENT</span><span class="rba-text">Entity's own risk analysis — cash-intensive, gambling, NGOs in HR jurisdictions</span></li>
-                        <li><span class="rba-tag">PRODUCT</span><span class="rba-text">Product / service risk per the DASP's own assessment <span class="cite cite--instr">Instr. Art. 10(c)</span></span></li>
-                        <li><span class="rba-tag">CHANNEL</span><span class="rba-text">Non-face-to-face · unhosted wallet · API</span></li>
-                        <li><span class="rba-tag">GEO</span><span class="rba-text">FATF lists, partial sanctions, transit jurisdictions</span></li>
-                        <li><span class="rba-tag">LISTS</span><span class="rba-text">UNSC, UIF national caution / sanction-list presence</span></li>
-                        <li><span class="rba-tag">TX</span><span class="rba-text">Higher-risk-country transactions — KYT trace shows flow</span></li>
-                        <li><span class="rba-tag">VOLUME</span><span class="rba-text"><strong>$125K/month</strong> cumulative per client → +documentary SoF, +sworn affidavit on top of base DD <a href="#vasp-cdd" style="color:var(--accent);">(full mechanism)</a> <span class="cite cite--rpsad">RPSAD Art. 22</span></span></li>
+                        <li><span class="rba-tag rba-tag--meta">META</span><span class="rba-text">International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</span></li>
+                        <li><span class="rba-tag rba-tag--client">CLIENT</span><span class="rba-text">Entity's own risk analysis — cash-intensive, gambling, NGOs in HR jurisdictions</span></li>
+                        <li><span class="rba-tag rba-tag--product">PRODUCT</span><span class="rba-text">Product / service risk per the DASP's own assessment <span class="cite cite--instr">Instr. Art. 10(c)</span></span></li>
+                        <li><span class="rba-tag rba-tag--channel">CHANNEL</span><span class="rba-text">Non-face-to-face · unhosted wallet · API</span></li>
+                        <li><span class="rba-tag rba-tag--geo">GEO</span><span class="rba-text">FATF lists, partial sanctions, transit jurisdictions</span></li>
+                        <li><span class="rba-tag rba-tag--lists">LISTS</span><span class="rba-text">UNSC, UIF national caution / sanction-list presence</span></li>
+                        <li><span class="rba-tag rba-tag--tx">TX</span><span class="rba-text">Higher-risk-country transactions — KYT trace shows flow</span></li>
+                        <li><span class="rba-tag rba-tag--volume">VOLUME</span><span class="rba-text"><strong>$125K/month</strong> cumulative per client → +documentary SoF, +sworn affidavit on top of base DD <a href="#vasp-cdd" style="color:var(--accent);">(full mechanism)</a> <span class="cite cite--rpsad">RPSAD Art. 22</span></span></li>
                     </ul>
                 </div>
 
