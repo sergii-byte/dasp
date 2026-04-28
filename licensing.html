@@ -449,6 +449,14 @@
             margin: 0 0.4rem;
             color: var(--border);
         }
+        .vs-scoreboard__line {
+            padding: 0.5rem 0;
+        }
+        .vs-scoreboard__line:first-child { padding-top: 0; }
+        .vs-scoreboard__line:last-child { padding-bottom: 0; }
+        .vs-scoreboard__line + .vs-scoreboard__line {
+            border-top: 1px solid rgba(217, 119, 87, 0.18);
+        }
         /* ── WIN / LOSE MARKS IN COMPARE TABLE ── */
         .vs-mark {
             display: inline-block;
@@ -1620,10 +1628,10 @@
             <h3 class="vs-block__title">El Salvador DASP vs EU MiCA — factual dimensions</h3>
         </div>
         <p class="vs-block__lead">Both regimes are FATF-aligned on AML substance. They differ materially on stablecoin scope, tax, capital, fees, market access and predictability.</p>
-        <p class="vs-scoreboard">
-            <strong>ES wins:</strong> USDT operations, tax, capital, fees, timeline predictability.<br>
-            <strong>EU wins:</strong> EU market reach, banking access, institutional trust, euro-rail.
-        </p>
+        <div class="vs-scoreboard">
+            <div class="vs-scoreboard__line"><strong>ES wins:</strong> USDT operations, tax, capital, fees, timeline predictability.</div>
+            <div class="vs-scoreboard__line"><strong>EU wins:</strong> EU market reach, banking access, institutional trust, euro-rail.</div>
+        </div>
         <div class="tbl-wrap">
         <table class="tbl tbl--compare">
             <thead>
