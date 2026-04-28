@@ -508,51 +508,45 @@
             .contact-list__auth, .contact-list__channel { justify-self: start; }
         }
 
-        /* ── RBA LIST (replaces RBA bullet list) ── */
+        /* ── RBA LIST — 4-col grid (2 rows × 4 cards) ── */
         .rba-list {
             list-style: none;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.6rem;
         }
         .rba-list li {
-            display: grid;
-            grid-template-columns: 70px 1fr;
-            gap: 0.7rem;
-            align-items: start;
-            padding: 0.5rem 0;
-            border-top: 1px solid var(--border-light);
-            font-size: 0.82rem;
-            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding: 0.75rem 0.8rem;
+            background: var(--bg-deep);
+            border-radius: 5px;
+            font-size: 0.78rem;
+            line-height: 1.45;
         }
-        .rba-list li:first-child { border-top: 0; padding-top: 0.2rem; }
         .rba-tag {
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
             font-size: 0.62rem;
             font-weight: 700;
             color: var(--emerald-2);
             background: var(--emerald-light);
-            padding: 0.25rem 0;
+            padding: 0.22rem 0.5rem;
             border-radius: 3px;
-            text-align: center;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             white-space: nowrap;
-            height: fit-content;
-        }
-        .rba-tag--alert {
-            color: var(--accent);
-            background: var(--accent-light);
-        }
-        .rba-list__special {
-            background: var(--accent-light);
-            border-radius: 5px;
-            padding: 0.6rem 0.65rem !important;
-            border-top: 0 !important;
-            margin-top: 0.4rem;
+            align-self: flex-start;
         }
         .rba-text { color: var(--text-2); }
+        @media (max-width: 960px) {
+            .rba-list { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 540px) {
+            .rba-list { grid-template-columns: 1fr; }
+        }
         .qrc-box--blue { border-top-color: var(--blue); }
         .qrc-box--green { border-top-color: var(--emerald); }
         .qrc-box--amber { border-top-color: var(--amber); }
