@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <rect x="0" y="0" width="12" height="630" fill="#d97757"/>
+
+  <!-- Logo block -->
+  <g transform="translate(72, 80)">
+    <rect width="64" height="64" rx="14" fill="#d97757"/>
+    <text x="32" y="44" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="#faf9f5" text-anchor="middle">ES</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="72" y="200" font-family="Menlo, monospace" font-size="20" font-weight="600" fill="#b76629" letter-spacing="3">GUIDE 01 · LICENSING</text>
+
+  <!-- Title -->
+  <text x="72" y="295" font-family="Georgia, serif" font-size="84" font-weight="400" fill="#141413">DASP Licensing</text>
+  <text x="72" y="385" font-family="Georgia, serif" font-size="84" font-weight="400" fill="#141413">in <tspan fill="#d97757" font-style="italic">El Salvador</tspan></text>
+
+  <!-- Sub -->
+  <text x="72" y="460" font-family="Inter, sans-serif" font-size="24" fill="#3a3a36">PSAD registration with CNAD under LEAD</text>
+  <text x="72" y="495" font-family="Inter, sans-serif" font-size="24" fill="#3a3a36">D-643/2023 — five-stage timeline · costs · personnel</text>
+
+  <!-- Footer metric strip -->
+  <g transform="translate(72, 545)">
+    <rect x="0" y="0" width="280" height="45" rx="6" fill="#fff" stroke="#d97757"/>
+    <text x="14" y="20" font-family="Inter, sans-serif" font-size="13" fill="#b76629" font-weight="600">REGISTRATION FEE</text>
+    <text x="14" y="38" font-family="Menlo, monospace" font-size="18" fill="#141413" font-weight="600">$6,132</text>
+    <rect x="295" y="0" width="220" height="45" rx="6" fill="#fff" stroke="#d97757"/>
+    <text x="309" y="20" font-family="Inter, sans-serif" font-size="13" fill="#b76629" font-weight="600">TIMELINE</text>
+    <text x="309" y="38" font-family="Menlo, monospace" font-size="18" fill="#141413" font-weight="600">8–12 months</text>
+    <rect x="535" y="0" width="180" height="45" rx="6" fill="#fff" stroke="#d97757"/>
+    <text x="549" y="20" font-family="Inter, sans-serif" font-size="13" fill="#b76629" font-weight="600">TAX</text>
+    <text x="549" y="38" font-family="Menlo, monospace" font-size="18" fill="#141413" font-weight="600">0% capital gains</text>
+  </g>
+
+  <!-- URL -->
+  <text x="1128" y="600" font-family="Menlo, monospace" font-size="18" fill="#8a8a85" text-anchor="end">salvadordaps.netlify.app/licensing</text>
+</svg>

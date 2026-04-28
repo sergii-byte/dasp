@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <rect x="0" y="0" width="12" height="630" fill="#788c5d"/>
+
+  <!-- Logo block -->
+  <g transform="translate(72, 80)">
+    <rect width="64" height="64" rx="14" fill="#788c5d"/>
+    <text x="32" y="44" font-family="Inter, sans-serif" font-weight="700" font-size="28" fill="#faf9f5" text-anchor="middle">ES</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="72" y="200" font-family="Menlo, monospace" font-size="20" font-weight="600" fill="#5a6c40" letter-spacing="3">GUIDE 02 · COMPLIANCE OPERATIONS</text>
+
+  <!-- Title -->
+  <text x="72" y="295" font-family="Georgia, serif" font-size="84" font-weight="400" fill="#141413">AML &amp;</text>
+  <text x="72" y="385" font-family="Georgia, serif" font-size="84" font-weight="400" fill="#141413"><tspan fill="#788c5d" font-style="italic">Compliance</tspan> for the DASP</text>
+
+  <!-- Sub -->
+  <text x="72" y="460" font-family="Inter, sans-serif" font-size="24" fill="#3a3a36">CDD by trigger · Travel Rule · Reporting Hub</text>
+  <text x="72" y="495" font-family="Inter, sans-serif" font-size="24" fill="#3a3a36">STR pipeline · sanctions · 15-year retention</text>
+
+  <!-- Stack pills -->
+  <g transform="translate(72, 545)" font-family="Menlo, monospace" font-size="14" font-weight="600">
+    <rect x="0" y="0" width="120" height="42" rx="4" fill="#fff" stroke="#6a9bcc"/>
+    <text x="60" y="27" fill="#2c5780" text-anchor="middle">LCLDA D-426</text>
+    <rect x="135" y="0" width="120" height="42" rx="4" fill="#fff" stroke="#788c5d"/>
+    <text x="195" y="27" fill="#5a6c40" text-anchor="middle">Instructivo UIF</text>
+    <rect x="270" y="0" width="120" height="42" rx="4" fill="#fff" stroke="#7a5b9c"/>
+    <text x="330" y="27" fill="#5d4380" text-anchor="middle">LECAT Art. 37</text>
+    <rect x="405" y="0" width="135" height="42" rx="4" fill="#fff" stroke="#788c5d"/>
+    <text x="473" y="27" fill="#5a6c40" text-anchor="middle">Acuerdo 734/2022</text>
+  </g>
+
+  <!-- URL -->
+  <text x="1128" y="600" font-family="Menlo, monospace" font-size="18" fill="#8a8a85" text-anchor="end">salvadordaps.netlify.app/compliance</text>
+</svg>
