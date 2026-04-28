@@ -1098,12 +1098,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
         /* Left-accent variants — semantic grouping */
-        .card--accent-blue    { border-left: 1px solid var(--blue); }
-        .card--accent-green   { border-left: 1px solid var(--emerald); }
-        .card--accent-amber   { border-left: 1px solid var(--amber); }
-        .card--accent-red     { border-left: 1px solid var(--red); }
-        .card--accent-navy    { border-left: 1px solid var(--navy); }
-        .card--accent-muted   { border-left: 1px solid var(--text-3); }
+        /* Card accent colours come from cryptoguides-overrides.css (3px top stripe).
+           Local left-border rules removed — they were dead-overridden by the global
+           .card { border-color: transparent !important } rule. */
         /* Top-accent variants (for Costs grid) */
         .card--top-blue    { border-top: 3px solid var(--accent); }
         .card--top-green   { border-top: 3px solid var(--emerald); }

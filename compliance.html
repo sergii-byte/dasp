@@ -255,6 +255,11 @@
         }
         .sec p { margin: 0.55rem 0; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
         .sec ul, .sec ol { margin: 0.55rem 0 0.75rem; padding-left: 1.3rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
+        /* Lists inside table cells inherit cell font-size — fixes the
+           .sec ul rule overriding cell typography in recipients-map and similar
+           ul-inside-td patterns */
+        .sec .tbl td ul, .sec .tbl td ol,
+        .sec .tbl td li { font-size: inherit; line-height: inherit; margin: 0; }
         .sec li { margin: 0.25rem 0; }
         .sec strong { color: var(--navy); font-weight: 600; }
         .sec em { font-style: italic; color: var(--text-3); }
@@ -320,12 +325,9 @@
             border-top: 1px dashed var(--border);
             font-style: italic;
         }
-        .card--blue   { border-left: 1px solid var(--blue); }
-        .card--green  { border-left: 1px solid var(--emerald); }
-        .card--amber  { border-left: 1px solid var(--amber); }
-        .card--red    { border-left: 1px solid var(--red); }
-        .card--accent { border-left: 1px solid var(--accent); }
-        .card--purple { border-left: 1px solid var(--purple); }
+        /* Card accent colours come from cryptoguides-overrides.css (3px top stripe).
+           Local left-border rules removed — they were dead-overridden by the global
+           .card { border-color: transparent !important } rule. */
 
         /* Red Flags — colored bottom border for visual separation between cards.
            !important is required to defeat the global cryptoguides-overrides.css
