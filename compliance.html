@@ -508,14 +508,16 @@
             .contact-list__auth, .contact-list__channel { justify-self: start; }
         }
 
-        /* ── RBA LIST — 4-col grid (2 rows × 4 cards) ── */
+        /* ── RBA LIST — 4-col grid (2 rows × 4 cards), equal-height rows ── */
         .rba-list {
             list-style: none;
             margin: 0;
             padding: 0;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1fr;
             gap: 0.6rem;
+            align-items: stretch;
         }
         .rba-list li {
             display: flex;
