@@ -460,6 +460,99 @@
         .qrc-box .pill,
         .qrc-box .cite { white-space: normal; word-break: break-word; }
         .qrc-box table { table-layout: auto !important; }
+
+        /* ── CONTACT LIST (replaces "Essential contacts" table) ── */
+        .contact-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-list li {
+            display: grid;
+            grid-template-columns: 88px 1fr auto;
+            gap: 0.75rem;
+            align-items: start;
+            padding: 0.55rem 0;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+        .contact-list li:first-child { border-top: 0; padding-top: 0.2rem; }
+        .contact-list__auth {
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: #2c5780;
+            background: var(--blue-light);
+            padding: 0.22rem 0.45rem;
+            border-radius: 3px;
+            letter-spacing: 0.04em;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .contact-list__matter { color: var(--text-2); }
+        .contact-list__channel {
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+            font-size: 0.65rem;
+            color: var(--text-3);
+            background: var(--bg-deep);
+            padding: 0.22rem 0.5rem;
+            border-radius: 3px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .contact-list li { grid-template-columns: 1fr; gap: 0.25rem; }
+            .contact-list__auth, .contact-list__channel { justify-self: start; }
+        }
+
+        /* ── RBA LIST (replaces RBA bullet list) ── */
+        .rba-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .rba-list li {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            padding: 0.5rem 0;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+        .rba-list li:first-child { border-top: 0; padding-top: 0.2rem; }
+        .rba-tag {
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--emerald-2);
+            background: var(--emerald-light);
+            padding: 0.25rem 0;
+            border-radius: 3px;
+            text-align: center;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            height: fit-content;
+        }
+        .rba-tag--alert {
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+        .rba-list__special {
+            background: var(--accent-light);
+            border-radius: 5px;
+            padding: 0.6rem 0.65rem !important;
+            border-top: 0 !important;
+            margin-top: 0.4rem;
+        }
+        .rba-text { color: var(--text-2); }
         .qrc-box--blue { border-top-color: var(--blue); }
         .qrc-box--green { border-top-color: var(--emerald); }
         .qrc-box--amber { border-top-color: var(--amber); }
@@ -860,30 +953,47 @@
                 <!-- 7. Essential contacts & channels -->
                 <div class="qrc-box qrc-box--blue">
                     <h3>Essential contacts &amp; channels</h3>
-                    <table>
-                        <thead><tr><th>Authority</th><th>Matter</th><th>Channel</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>UIF (FGR)</strong></td><td>STR · Operación Regulada · monthly e-tx · sanctions freeze · CO notification · entity data updates</td><td>goAML</td></tr>
-                            <tr><td><strong>CNAD</strong></td><td>DASP registration · material changes · quarterly reports · cessation · trade suspension</td><td>registro@cnad.gob.sv</td></tr>
-                            <tr><td><strong>BCR</strong></td><td>BSP Registry — registration · pre-ops docs · registry updates · discontinuation</td><td>BCR electronic procedure</td></tr>
-                            <tr><td><strong>FGR</strong></td><td>Criminal referrals (terrorism financing) · tipping-off prosecutions · UNSC freeze orders</td><td>via UIF / direct</td></tr>
-                            <tr><td><strong>SSF</strong></td><td>BSP supervision and sanctions · NRP-29/36 standards if banking partner</td><td>SSF channels</td></tr>
-                        </tbody>
-                    </table>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-list__auth">UIF (FGR)</span>
+                            <span class="contact-list__matter">STR · Operación Regulada · monthly e-tx · sanctions freeze · CO notification · entity data updates</span>
+                            <span class="contact-list__channel">goAML</span>
+                        </li>
+                        <li>
+                            <span class="contact-list__auth">CNAD</span>
+                            <span class="contact-list__matter">DASP registration · material changes · quarterly reports · cessation · trade suspension</span>
+                            <span class="contact-list__channel">registro@cnad.gob.sv</span>
+                        </li>
+                        <li>
+                            <span class="contact-list__auth">BCR</span>
+                            <span class="contact-list__matter">BSP Registry — registration · pre-ops docs · registry updates · discontinuation</span>
+                            <span class="contact-list__channel">BCR e-procedure</span>
+                        </li>
+                        <li>
+                            <span class="contact-list__auth">FGR</span>
+                            <span class="contact-list__matter">Criminal referrals (terrorism financing) · tipping-off prosecutions · UNSC freeze orders</span>
+                            <span class="contact-list__channel">via UIF / direct</span>
+                        </li>
+                        <li>
+                            <span class="contact-list__auth">SSF</span>
+                            <span class="contact-list__matter">BSP supervision and sanctions · NRP-29/36 standards if banking partner</span>
+                            <span class="contact-list__channel">SSF channels</span>
+                        </li>
+                    </ul>
                 </div>
 
                 <!-- 8. RBA risk criteria -->
                 <div class="qrc-box qrc-box--green">
                     <h3>RBA — Customer inherent-risk criteria (Art. 10)</h3>
-                    <ul>
-                        <li>International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</li>
-                        <li>Entity's own risk analysis (cash-intensive, gambling, NGOs in HR jur)</li>
-                        <li>Product / service risk (per the DASP's own assessment under Instr. Art. 10(c))</li>
-                        <li>Channel risk (non-face-to-face, unhosted wallet, API)</li>
-                        <li>Geographic risk (FATF lists, partial sanctions, transit jurisdictions)</li>
-                        <li>Caution / sanction list presence (UNSC, UIF national)</li>
-                        <li>Higher-risk-country transactions (KYT trace shows flow)</li>
-                        <li><strong>$125K monthly aggravator</strong> — cumulative monthly capital injections by single client → documentary SoF + affidavit + DA-issuer ID on top of base DD level (<a href="#vasp-cdd" style="color:var(--accent);">full mechanism</a>) <span class="cite cite--rpsad">RPSAD Art. 22</span></li>
+                    <ul class="rba-list">
+                        <li><span class="rba-tag">META</span><span class="rba-text">International high-risk classifications (FATF VASP guidance, Wolfsberg, Basel)</span></li>
+                        <li><span class="rba-tag">CLIENT</span><span class="rba-text">Entity's own risk analysis — cash-intensive, gambling, NGOs in HR jurisdictions</span></li>
+                        <li><span class="rba-tag">PRODUCT</span><span class="rba-text">Product / service risk per the DASP's own assessment <span class="cite cite--instr">Instr. Art. 10(c)</span></span></li>
+                        <li><span class="rba-tag">CHANNEL</span><span class="rba-text">Non-face-to-face · unhosted wallet · API</span></li>
+                        <li><span class="rba-tag">GEO</span><span class="rba-text">FATF lists, partial sanctions, transit jurisdictions</span></li>
+                        <li><span class="rba-tag">LISTS</span><span class="rba-text">UNSC, UIF national caution / sanction-list presence</span></li>
+                        <li><span class="rba-tag">TX</span><span class="rba-text">Higher-risk-country transactions — KYT trace shows flow</span></li>
+                        <li class="rba-list__special"><span class="rba-tag rba-tag--alert">VOLUME</span><span class="rba-text"><strong>$125K monthly aggravator</strong> — cumulative monthly capital injections by single client → documentary SoF + affidavit + DA-issuer ID on top of base DD level (<a href="#vasp-cdd" style="color:var(--accent);">full mechanism</a>) <span class="cite cite--rpsad">RPSAD Art. 22</span></span></li>
                     </ul>
                 </div>
 
