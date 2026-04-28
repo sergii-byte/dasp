@@ -343,10 +343,10 @@
             letter-spacing: 0.01em;
         }
         .hero h1 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2.75rem, 5.5vw, 4.25rem);
-            font-weight: 400; line-height: 1.05;
-            letter-spacing: -0.025em; color: var(--navy);
+            /* font-family / size / weight come from cryptoguides-overrides.css
+               (Inter Tight, design-system convention). Local rule keeps colour
+               + max-width + bottom margin only. */
+            color: var(--navy);
             max-width: 780px; margin-bottom: 1.5rem;
         }
         .hero__desc {

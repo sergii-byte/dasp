@@ -126,10 +126,10 @@
             letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;
         }
         .hero__title {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2.5rem, 5.5vw, 4rem);
-            line-height: 1.05; letter-spacing: -0.02em;
-            color: var(--navy); margin-bottom: 1.25rem; font-weight: 400;
+            /* font-family / size / weight come from cryptoguides-overrides.css
+               (Inter Tight, design-system convention). Local rule keeps colour
+               + bottom margin only. */
+            color: var(--navy); margin-bottom: 1.25rem;
         }
         .hero__title em { font-style: italic; color: var(--accent); }
         .hero__desc {
