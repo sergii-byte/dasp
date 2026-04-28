@@ -725,6 +725,7 @@
         .activity-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
             gap: 1rem;
             margin: 1rem 0 1.5rem;
         }
@@ -735,6 +736,7 @@
             padding: 1.1rem 1.2rem;
             display: flex;
             flex-direction: column;
+            height: 100%;
             transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .activity-card:hover {
@@ -1722,41 +1724,39 @@
     <div class="activity-grid">
         <div class="activity-card">
             <div class="activity-card__head"><h4>Exchange</h4><span class="ref">LEAD Art. 19(a)</span></div>
-            <p>Digital assets for fiat or other digital assets, using own or third-party capital.</p>
-            <p class="activity-card__sub"><strong>Spot only</strong> — per CNAD Guía Anexo 1(a), all transactions take place in the spot market, without derivatives or futures.</p>
+            <p>Buy or sell digital assets for fiat or other digital assets, using own or third-party capital. <strong>Spot only</strong> — no derivatives or futures permitted (CNAD Guía Anexo 1(a)).</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Exchange platform</h4><span class="ref">LEAD Art. 19(b)</span></div>
-            <p>Operate a platform for exchange or commercialisation of digital assets / derivatives.</p>
-            <p class="activity-card__sub"><strong>Spot + derivatives + futures</strong> permitted per CNAD Guía Anexo 1(b).</p>
+            <p>Operate a platform for exchange or commercialisation of digital assets and derivatives. <strong>Spot + derivatives + futures</strong> permitted (CNAD Guía Anexo 1(b)) — wider perimeter than Art. 19(a).</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Risk + price evaluation, underwriting</h4><span class="ref">LEAD Art. 19(c)</span></div>
-            <p>For digital-asset issuances. With-platform or without-platform model — different tech baselines apply.</p>
+            <p>Risk and price evaluation for digital-asset issuances; underwriting role. With-platform or without-platform models apply different tech baselines — qualified personnel mandatory in either case.</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Placement</h4><span class="ref">LEAD Art. 19(d)</span></div>
-            <p>Place digital assets on platforms or wallets.</p>
+            <p>Place digital assets on platforms or wallets — distribution role between issuer and end-client. Token standard documentation required at registration; full Art. 19(b) tech baseline applies.</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Investment products</h4><span class="ref">LEAD Art. 19(e)</span></div>
-            <p>Promote, structure, manage investment products in digital assets.</p>
+            <p>Promote, structure or administer investment products in digital assets. Three layers: promotion (investor channel), structuring (financial viability + smart contracts), administration (portfolio mandate).</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Transfer</h4><span class="ref">LEAD Art. 19(f)(1)</span></div>
-            <p>Transfer digital assets between persons / wallets / accounts on behalf of third parties.</p>
+            <p>Transfer digital assets between persons, wallets or accounts on behalf of third parties. Travel Rule applies at $0 floor — full 7-field data set on every transfer.</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Custody &amp; administration</h4><span class="ref">LEAD Art. 19(f)(2)</span></div>
-            <p>Safekeep, custody or manage digital assets on behalf of clients.</p>
+            <p>Safekeep, custody or manage digital assets on behalf of clients. MPC / multisig / hot &amp; cold wallet segregation; custodian responsibility for client keys.</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Order reception &amp; transmission</h4><span class="ref">LEAD Art. 19(f)(3)</span></div>
-            <p>Receive and transmit client buy/sell orders or derivatives negotiation.</p>
+            <p>Receive and transmit client buy / sell orders or derivatives-negotiation orders. Intermediary role — does not execute, only routes to authorised market.</p>
         </div>
         <div class="activity-card">
             <div class="activity-card__head"><h4>Order execution</h4><span class="ref">LEAD Art. 19(f)(4)</span></div>
-            <p>Execute buy/sell orders for <em>derivative</em> digital assets on behalf of clients.</p>
+            <p>Execute buy / sell orders for <em>derivative</em> digital assets on behalf of clients. Derivatives execution tools required; intermediary policies apply on client orders.</p>
         </div>
     </div>
 
