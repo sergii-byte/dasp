@@ -15,7 +15,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="El Salvador DASP Registration Guide">
-    <meta name="twitter:description" content="Full practitioner's guide to DASP registration under LEAD in El Salvador. 8–12 months, $6,132 fee, 0% tax.">
+    <meta name="twitter:description" content="Full practitioner's guide to DASP registration under LEAD in El Salvador. 8–10 months, $6,132 fee, 0% tax.">
     <meta name="twitter:image" content="https://salvadordaps.netlify.app/og-licensing.png">
     <link rel="canonical" href="https://salvadordaps.netlify.app/licensing.html">
     <title>Licensing &amp; Registration — El Salvador DASP</title>
@@ -369,11 +369,16 @@
         }
         .btn--primary { background: var(--accent); color: var(--white); box-shadow: 0 1px 2px rgba(20,20,19,0.1); }
         .btn--primary:hover { background: var(--accent-2); box-shadow: 0 4px 12px rgba(217,119,87,0.3); }
-        .btn--secondary {
-            background: transparent; color: var(--navy);
-            border-color: var(--navy);
+        .btn.btn--secondary {
+            background: transparent !important;
+            color: var(--navy) !important;
+            border: 1.5px solid var(--navy) !important;
         }
-        .btn--secondary:hover { background: var(--navy); color: var(--white); }
+        .btn.btn--secondary:hover {
+            background: var(--navy) !important;
+            color: var(--white) !important;
+            border-color: var(--navy) !important;
+        }
         .btn--ghost {
             background: transparent; color: var(--accent);
             border-color: var(--accent-border);
@@ -412,6 +417,100 @@
             padding: 0.2rem 0.65rem !important; border-radius: 6px !important;
             display: inline-block !important; line-height: 1.2 !important;
             letter-spacing: 0 !important;
+        }
+        /* ── INLINE NUMBER HIGHLIGHT (table cells, prose) ── */
+        .num-hl {
+            font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+            font-weight: 600;
+            color: #b76629;
+            background: #fbf0eb;
+            padding: 0.08em 0.42em;
+            border-radius: 4px;
+            font-size: 0.92em;
+            white-space: nowrap;
+            letter-spacing: 0;
+            display: inline-block;
+            line-height: 1.35;
+        }
+        /* ── COMPARISON SCOREBOARD ── */
+        .vs-scoreboard {
+            margin: 0 0 1.25rem 0;
+            padding: 0.85rem 1.1rem;
+            background: rgba(217, 119, 87, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--text-2);
+        }
+        .vs-scoreboard strong { color: var(--text); font-weight: 600; }
+        .vs-scoreboard__sep {
+            display: inline-block;
+            margin: 0 0.4rem;
+            color: var(--border);
+        }
+        /* ── WIN / LOSE MARKS IN COMPARE TABLE ── */
+        .vs-mark {
+            display: inline-block;
+            width: 1.1em; height: 1.1em;
+            line-height: 1.1em;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.78em;
+            margin-right: 0.35em;
+            vertical-align: 0.05em;
+        }
+        .vs-mark--win { background: var(--emerald-light); color: var(--emerald-2); }
+        .vs-mark--lose { background: var(--red-light); color: var(--red); }
+        .vs-mark--parity { background: var(--border-light); color: var(--text-3); }
+        /* ── BEST-FIT ROW (decision aid) ── */
+        .tbl-row-bestfit td {
+            background: rgba(217, 119, 87, 0.04);
+            border-top: 2px solid var(--accent-border);
+        }
+        .tbl-row-bestfit td:first-child strong { color: var(--accent); }
+        .tbl-row-bestfit__sub {
+            display: block;
+            font-weight: 400;
+            font-size: 0.72rem;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 2px;
+        }
+        /* ── COMPARE TABLE: equal column widths + larger reading font ── */
+        .tbl--compare { table-layout: fixed; width: 100%; }
+        .tbl--compare th:nth-child(1),
+        .tbl--compare td:nth-child(1) { width: 18%; }
+        .tbl--compare th:nth-child(2),
+        .tbl--compare td:nth-child(2),
+        .tbl--compare th:nth-child(3),
+        .tbl--compare td:nth-child(3) { width: 41%; }
+        .tbl--compare td { vertical-align: top; word-wrap: break-word; }
+        .tbl--compare thead th {
+            font-size: 0.78rem !important;
+            padding: 0.95rem 1.1rem !important;
+            letter-spacing: 0.07em !important;
+        }
+        .tbl--compare tbody td {
+            font-size: 0.92rem !important;
+            line-height: 1.55 !important;
+            padding: 0.95rem 1.1rem !important;
+            color: var(--text) !important;
+        }
+        .tbl--compare tbody td:first-child {
+            font-size: 0.95rem !important;
+            color: var(--text) !important;
+        }
+        @media (max-width: 768px) {
+            .tbl--compare th:nth-child(1),
+            .tbl--compare td:nth-child(1) { width: 22%; min-width: 130px; }
+            .tbl--compare th:nth-child(2),
+            .tbl--compare td:nth-child(2),
+            .tbl--compare th:nth-child(3),
+            .tbl--compare td:nth-child(3) { width: 39%; }
+            .tbl--compare tbody td { font-size: 0.85rem !important; padding: 0.75rem 0.85rem !important; }
         }
         .metric__label {
             font-size: 0.66rem; font-weight: 600; text-transform: uppercase;
@@ -1404,7 +1503,7 @@
         <div class="metrics" role="group" aria-label="Key figures">
             <div class="metric"><span class="metric__val" data-countup data-target="6132" data-prefix="$">$6,132</span><span class="metric__label">Registration Fee</span></div>
             <div class="metric"><span class="metric__val">0%</span><span class="metric__label">Tax Rate</span></div>
-            <div class="metric"><span class="metric__val">8–12 mo</span><span class="metric__label">Timeline</span></div>
+            <div class="metric"><span class="metric__val">8–10 mo</span><span class="metric__label">Timeline</span></div>
             <div class="metric"><span class="metric__val" data-countup data-target="4088" data-prefix="$" data-suffix="/yr">$4,088/yr</span><span class="metric__label">Annual Renewal</span></div>
         </div>
     </div>
@@ -1443,7 +1542,7 @@
         <div class="advantage">
             <span class="advantage__num">04</span>
             <div class="advantage__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-            <h4>8–12 months to licence</h4>
+            <h4>8–10 months to licence</h4>
             <p>Five clearly-defined CNAD phases with statutory clocks (20 bd + 10 bd per cycle).</p>
         </div>
         <div class="advantage">
@@ -1520,57 +1619,84 @@
             <span class="vs-block__eyebrow">Jurisdiction comparison</span>
             <h3 class="vs-block__title">El Salvador DASP vs EU MiCA — factual dimensions</h3>
         </div>
-        <p class="vs-block__lead">Both regimes are FATF-aligned on AML substance (Travel Rule, sanctions screening, CDD/EDD framework). They differ materially on cost, capital, market access and timeline.</p>
+        <p class="vs-block__lead">Both regimes are FATF-aligned on AML substance. They differ materially on stablecoin scope, tax, capital, fees, market access and predictability.</p>
+        <p class="vs-scoreboard">
+            <strong>ES wins:</strong> USDT operations, tax, capital, fees, timeline predictability. <span class="vs-scoreboard__sep">·</span>
+            <strong>EU wins:</strong> market reach (27 EU + 3 EEA states), banking access, institutional trust, euro-rail. <span class="vs-scoreboard__sep">·</span>
+            <strong>AML substance:</strong> parity — both FATF-aligned.
+        </p>
         <div class="tbl-wrap">
-        <table class="tbl">
+        <table class="tbl tbl--compare">
             <thead>
                 <tr>
-                    <th style="min-width:140px;">Dimension</th>
+                    <th style="min-width:160px;">Dimension</th>
                     <th>El Salvador DASP</th>
                     <th>EU CASP under MiCA</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Government / registration fee</strong></td>
-                    <td>$5,475 one-time + $3,650 annual renewal (15 / 10 × commerce minimum wage)</td>
-                    <td>Authorisation fee varies by NCA (member state); typical range €5,000 – €30,000+</td>
-                </tr>
-                <tr>
-                    <td><strong>Minimum capital</strong></td>
-                    <td>$2,000 minimum balance-sheet capital (general commercial law)</td>
-                    <td>€50,000 / €125,000 / €150,000 depending on CASP class (MiCA Art. 67 + Annex IV)</td>
-                </tr>
-                <tr>
-                    <td><strong>Passporting</strong></td>
-                    <td>National only — separate authorisation needed for any foreign market</td>
-                    <td>All 27 EU member states under a single authorisation</td>
-                </tr>
-                <tr>
-                    <td><strong>Typical authorisation timeline</strong></td>
-                    <td>8-12 months (5 CNAD phases with statutory clocks)</td>
-                    <td>Variable by NCA; commonly 6-18 months</td>
+                    <td><strong>Stablecoin operations (USDT)</strong></td>
+                    <td><span class="vs-mark vs-mark--win" aria-label="advantage">✓</span> Fully operational — USDT used freely in settlement</td>
+                    <td><span class="vs-mark vs-mark--lose" aria-label="restriction">✗</span> USDT not MiCA-compliant. Authorised alternatives: USDC, EURC, EURS.</td>
                 </tr>
                 <tr>
                     <td><strong>Tax on DASP-scope activity</strong></td>
-                    <td>0% income / capital gains / VAT / municipal (LEAD Art. 36)</td>
-                    <td>Standard corporate tax of the member state of authorisation</td>
+                    <td><span class="num-hl">0%</span> income / capital gains / VAT / municipal (LEAD Art. 36)</td>
+                    <td>Member-state corporate <span class="num-hl">~19-30%</span> + VAT <span class="num-hl">19-25%</span> where applicable</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimum capital</strong></td>
+                    <td><span class="num-hl">$2,000</span> (general commercial code)</td>
+                    <td><span class="num-hl">€50,000</span> / <span class="num-hl">€125,000</span> <em style="color:var(--text-3);font-style:normal;">(most common)</em> / <span class="num-hl">€150,000</span> depending on CASP class (MiCA Annex IV)</td>
+                </tr>
+                <tr>
+                    <td><strong>Initial registration fee</strong></td>
+                    <td><span class="num-hl">$6,132</span> — statutorily fixed</td>
+                    <td><span class="num-hl">€5K-€30K</span> median, country-dependent</td>
+                </tr>
+                <tr>
+                    <td><strong>Annual supervisory fee</strong></td>
+                    <td><span class="num-hl">$4,088/yr</span> — statutorily fixed</td>
+                    <td><span class="num-hl">€10K-€25K/yr</span> median, country-dependent</td>
+                </tr>
+                <tr>
+                    <td><strong>Legal / advisory fees (typical)</strong></td>
+                    <td><span class="num-hl">$12K-$15K</span> for end-to-end DASP application support</td>
+                    <td><span class="num-hl">€20K-€40K</span> for end-to-end CASP application support</td>
+                </tr>
+                <tr>
+                    <td><strong>Authorisation timeline</strong></td>
+                    <td><span class="num-hl">8-10 mo</span> across 5 phases with statutory clocks (LEAD + RPSAD)</td>
+                    <td><span class="num-hl">8-18 mo</span> NCA-dependent — high variance between authorities</td>
+                </tr>
+                <tr>
+                    <td><strong>Market access</strong></td>
+                    <td><strong>International market access:</strong> reverse solicitation or local authorisation in the target jurisdiction.</td>
+                    <td><strong>Whole EU passporting</strong> under one authorisation. <strong>Non-EU market access:</strong> reverse solicitation or local authorisation in the target jurisdiction.</td>
+                </tr>
+                <tr>
+                    <td><strong>Banking and financial services access</strong></td>
+                    <td><span class="vs-mark vs-mark--lose" aria-label="narrower">✗</span> Narrower.</td>
+                    <td><span class="vs-mark vs-mark--win" aria-label="broader">✓</span> Broader.</td>
                 </tr>
                 <tr>
                     <td><strong>AML / CFT substance</strong></td>
-                    <td>FATF-aligned via LCLDA + Instructivo UIF (CDD cascade, Travel Rule, sanctions, STR)</td>
-                    <td>FATF-aligned via 6AMLD + national transpositions (same core obligations)</td>
+                    <td><span class="vs-mark vs-mark--parity" aria-label="parity">=</span> <strong>Same core obligations.</strong> FATF-aligned: CDD cascade, Travel Rule, sanctions screening, STR. Local stack: LCLDA + Instructivo UIF + Acuerdo 734.</td>
+                    <td><span class="vs-mark vs-mark--parity" aria-label="parity">=</span> <strong>Same core obligations.</strong> FATF-aligned: CDD cascade, Travel Rule, sanctions screening, STR. Local stack: 6AMLD + Wire Transfer Regulation + national transpositions.</td>
                 </tr>
                 <tr>
-                    <td><strong>Stablecoin framework</strong></td>
-                    <td>Dedicated CNAD Stablecoin Regulation (issuer registry, reserve rules)</td>
-                    <td>MiCA Titles III (ART) + IV (EMT) — distinct authorisation regimes</td>
+                    <td><strong>Sanctions and restrictions</strong></td>
+                    <td><strong>Lighter.</strong> UN sanctions and FATF black list.<br>FATF grey list and partially-sanctioned jurisdictions trigger EDD.<br>OFAC / EU lists applied de facto via correspondent banking.</td>
+                    <td><strong>Stricter.</strong> UN sanctions and EU sanctions (Council Regulations under CFSP).<br>EU high-risk third countries list (≈ FATF black / grey) triggers EDD under 6AMLD Art. 18a.<br>OFAC applied de facto via correspondent banking.</td>
+                </tr>
+                <tr class="tbl-row-bestfit">
+                    <td><strong>Best fit</strong><span class="tbl-row-bestfit__sub">decision aid</span></td>
+                    <td>USDT-centric ops, USD-corridor (LATAM, B2B, institutional, OTC), bootstrapped early-stage, tax-optimised profit center, predictable timeline</td>
+                    <td>Retail at scale, EUR-denominated products, EU passporting essential, institutional trust signaling, security-token / MiFID overlay</td>
                 </tr>
             </tbody>
         </table>
-        </div>
-        <div class="callout callout--info" style="margin-top:1rem; margin-bottom:0;">
-            <p><strong>Choosing between regimes.</strong> ES DASP is a fit when the target market is Salvadoran residents, the LATAM / USD corridor, or institutional / B2B clients onboarded one-by-one. EU MiCA is a fit when the target market is European retail at scale and passporting across the single market is essential. Many groups hold both — separate licensed entities, same operational AML stack.</p>
         </div>
     </div>
 </div>
@@ -1852,11 +1978,11 @@
     <p class="section__desc">Official CNAD procedure per the <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>: two consecutive <strong>etapas</strong> — <strong>Pre-inscripción</strong> (with two legal <strong>fases</strong>: Phase 1 + Phase 2) and <strong>Inscripción</strong>.</p>
 
     <!-- ══ TIMELINE V2 ══ -->
-    <div class="timeline" aria-label="DASP registration timeline — 5 operational stages over 8–12 months">
+    <div class="timeline" aria-label="DASP registration timeline — 5 operational stages over 8–10 months">
         <div class="timeline__head">
             <div>
                 <span class="timeline__kicker">End-to-end registration</span>
-                <h3 class="timeline__title">Five stages · 8–12 months</h3>
+                <h3 class="timeline__title">Five stages · 8–10 months</h3>
             </div>
         </div>
 
@@ -2996,7 +3122,7 @@
 
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
-    <p><strong>El Salvador DASP Registration Guide</strong></p>
+    <p><strong>El Salvador Digital Asset Service Provider (DASP) Registration Guide</strong></p>
     <p>A practitioner's reference based on hands-on work with the CNAD registration process.</p>
     <p style="margin-top:0.75rem;">Updated April 2026 · Reflects LEAD, RPSAD, AML Law (Decree 426/2025) and UIF Instructivo as consolidated at that date</p>
     <p style="margin-top:0.75rem;opacity:0.6;font-size:0.7rem;">This guide is informational and does not constitute legal advice. Figures marked <span class="ref ref--practice">practice</span> reflect market observations rather than statutory requirements.</p>
