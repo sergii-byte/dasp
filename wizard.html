@@ -397,7 +397,8 @@
             <div class="form__title">Inputs</div>
             <div class="form__actions">
                 <button type="button" class="btn btn--ghost" id="wiz-reset">Reset</button>
-                <button type="button" class="btn" id="wiz-ex-low">Low-risk example</button>
+                <button type="button" class="btn" id="wiz-ex-sdd">SDD example</button>
+                <button type="button" class="btn" id="wiz-ex-cdd">CDD example</button>
                 <button type="button" class="btn btn--primary" id="wiz-ex-edd">EDD example</button>
             </div>
         </div>
@@ -1011,7 +1012,8 @@
         render();
     });
 
-    document.getElementById('wiz-ex-low').addEventListener('click', () => {
+    document.getElementById('wiz-ex-sdd').addEventListener('click', () => {
+        // SDD: occasional, low-risk, e-tx ≤ $1,000 — Acuerdo 734 § V.2.b.II floor
         form.querySelector('input[name="operation"][value="exchange"]').checked = true;
         form.querySelector('input[name="subop"][value="onramp"]').checked = true;
         syncSubops();
@@ -1019,6 +1021,20 @@
         form.querySelector('input[name="rel"][value="occasional"]').checked = true;
         form.querySelector('input[name="channel"][value="crypto"]').checked = true;
         amountEl.value = 500;
+        jurEl.selectedIndex = 0;
+        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
+        render();
+    });
+
+    document.getElementById('wiz-ex-cdd').addEventListener('click', () => {
+        // Standard CDD: occasional, e-tx $1,000–$4,000 — Acuerdo 734 § V.2.b.II middle band
+        form.querySelector('input[name="operation"][value="exchange"]').checked = true;
+        form.querySelector('input[name="subop"][value="onramp"]').checked = true;
+        syncSubops();
+        form.querySelector('input[name="clientType"][value="natural"]').checked = true;
+        form.querySelector('input[name="rel"][value="occasional"]').checked = true;
+        form.querySelector('input[name="channel"][value="crypto"]').checked = true;
+        amountEl.value = 2500;
         jurEl.selectedIndex = 0;
         form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
         render();
