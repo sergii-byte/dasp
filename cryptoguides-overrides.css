@@ -474,12 +474,12 @@ a.btn, a.guide-card, a.dl-card, a.nav-link, a[class*="btn"], a[class*="card"], a
    Use !important to override the global `.card { border-color: transparent !important }`
    ring-only rule earlier in this file (the ring still draws via box-shadow; only the
    left edge is replaced by the colored accent). */
-.card--accent-amber, .card--amber  { border-left: 1px solid var(--accent) !important; border-bottom: 3px solid var(--accent) !important; }
-.card--accent-green, .card--green  { border-left: 1px solid var(--green) !important; border-bottom: 3px solid var(--green) !important; }
-.card--accent-red,   .card--red    { border-left: 1px solid var(--red) !important; border-bottom: 3px solid var(--red) !important; }
-.card--accent-blue,  .card--blue   { border-left: 1px solid var(--blue) !important; border-bottom: 3px solid var(--blue) !important; }
-.card--accent-navy                 { border-left: 1px solid var(--navy) !important; border-bottom: 3px solid var(--navy) !important; }
-.card--accent-muted                { border-left: 1px solid var(--text-3) !important; border-bottom: 3px solid var(--text-3) !important; }
+.card--accent-amber, .card--amber  { border-top: 3px solid var(--accent) !important; }
+.card--accent-green, .card--green  { border-top: 3px solid var(--green) !important; }
+.card--accent-red,   .card--red    { border-top: 3px solid var(--red) !important; }
+.card--accent-blue,  .card--blue   { border-top: 3px solid var(--blue) !important; }
+.card--accent-navy                 { border-top: 3px solid var(--navy) !important; }
+.card--accent-muted                { border-top: 3px solid var(--text-3) !important; }
 .card--purple                      { border-left: 1px solid #6B5BD2 !important; }
 
 /* ---------- Buttons ---------- */
