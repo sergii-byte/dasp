@@ -304,10 +304,13 @@
         .card--accent { border-left: 1px solid var(--accent); }
         .card--purple { border-left: 1px solid var(--purple); }
 
-        /* Red Flags — colored bottom border for visual separation between cards */
-        #redflags .card { border-bottom-width: 2px; }
-        #redflags .card--red   { border-bottom-color: var(--red); }
-        #redflags .card--amber { border-bottom-color: var(--amber); }
+        /* Red Flags — colored bottom border for visual separation between cards.
+           !important is required to defeat the global cryptoguides-overrides.css
+           rule `.card { border-color: transparent !important }` which would
+           otherwise leave the bottom border invisible. */
+        #redflags .card { border-bottom-width: 2px !important; border-bottom-style: solid !important; }
+        #redflags .card--red   { border-bottom-color: var(--red) !important; }
+        #redflags .card--amber { border-bottom-color: var(--amber) !important; }
 
         /* ── CALLOUTS ── */
         .callout {

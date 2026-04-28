@@ -438,6 +438,8 @@
         }
         .ref:hover { background: var(--accent); color: var(--white); }
         .ref--copied { background: var(--emerald) !important; color: var(--white) !important; }
+        /* Allow long ref chips to wrap inside narrow table cells */
+        .tbl td .ref { white-space: normal; word-break: break-word; }
         .ref--practice {
             color: var(--amber); background: var(--amber-light); cursor: default;
         }
@@ -2236,10 +2238,10 @@
     <div class="tbl-wrap">
     <table class="tbl" style="table-layout:fixed; width:100%;">
         <colgroup>
-            <col style="width:15%;">
-            <col style="width:25%;">
-            <col style="width:30%;">
-            <col style="width:10%;">
+            <col style="width:14%;">
+            <col style="width:22%;">
+            <col style="width:26%;">
+            <col style="width:18%;">
             <col style="width:20%;">
         </colgroup>
         <thead>
