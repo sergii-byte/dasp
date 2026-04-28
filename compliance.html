@@ -932,14 +932,47 @@
                 <div class="qrc-box qrc-box--green qrc-box--wide">
                     <h3>DD level — when applies</h3>
                     <table>
+                        <thead>
+                            <tr>
+                                <th style="white-space:nowrap;">Level</th>
+                                <th>Trigger / when applies</th>
+                                <th style="white-space:nowrap;">Threshold (Acuerdo 734)</th>
+                                <th>Required measures</th>
+                                <th style="white-space:nowrap;">Approval</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td><span class="pill pill--no">SDD</span></td><td>Documented low-risk · &lt; statutory floor + no risk factor + no PEP / HR jur</td></tr>
-                            <tr><td><span class="pill pill--cdd">Standard</span></td><td>Default for any ongoing relationship · occasional ≥ statutory floor</td></tr>
-                            <tr><td><span class="pill pill--edd">EDD</span></td><td>PEP (+ family ≤2nd, close assoc) · high-risk jur · opaque ownership · cash-intensive · structuring · profile deviation · flagged wallet · 3rd-party funder · adverse media</td></tr>
-                            <tr><td><span class="pill pill--reject">Reject</span></td><td>UNSC / UIF national list hit · client refuses CDD · restricted jurisdiction · asset not within the DASP's CNAD-authorised perimeter</td></tr>
+                            <tr>
+                                <td><span class="pill pill--no">SDD</span></td>
+                                <td>Documented low-risk · no risk factor · no PEP / HR jur · suspicion overrides matrix <span class="cite cite--instr">Instr. Art. 14</span></td>
+                                <td><span class="deadline">≤ $1,000</span></td>
+                                <td>Basic ID + sanctions / PEP screen + Travel Rule 7-field data; reduced verification scope; no SoF</td>
+                                <td>CO sign-off</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pill pill--cdd">Standard</span></td>
+                                <td>Default for any ongoing relationship · occasional ≥ statutory floor <span class="cite cite--instr">Instr. Art. 12</span></td>
+                                <td><span class="deadline">$1,000 – $4,000</span></td>
+                                <td>Full ID (DUI / passport, NIT) + UBO ≥ 10% + business profile + ongoing transaction monitoring + KYT</td>
+                                <td>CO sign-off</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pill pill--edd">EDD</span></td>
+                                <td>PEP (+ family ≤2nd, close assoc) · high-risk jur · opaque ownership · cash-intensive · structuring · profile deviation · flagged wallet · 3rd-party funder · adverse media <span class="cite cite--instr">Instr. Arts. 13, 14-A(III) R2</span></td>
+                                <td><span class="deadline">&gt; $4,000</span> or any risk factor</td>
+                                <td>All Standard + documentary SoF + enhanced monitoring frequency + EDD-specific measures + KYT escalation; reasonable steps to establish purpose</td>
+                                <td>Senior mgmt written approval</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pill pill--reject">Reject</span></td>
+                                <td>UNSC / UIF national list hit · client refuses CDD · restricted jurisdiction · asset outside DASP's CNAD-authorised perimeter <span class="cite cite--lecat">LECAT Art. 37</span></td>
+                                <td>Any amount</td>
+                                <td>Decline / close on neutral grounds (no tipping-off) · file STR if suspicious · immediate freeze + UIF report on list match</td>
+                                <td>CO + escalation to Board</td>
+                            </tr>
                         </tbody>
                     </table>
-                    <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 15-17</span> · <span class="cite cite--instr">Instr. Arts. 12, 13, 14, 14-A(III) Reform 2</span></p>
+                    <p class="qrc-foot"><span class="cite cite--d426">LCLDA Arts. 15-17</span> · <span class="cite cite--instr">Instr. Arts. 12, 13, 14, 14-A(III) Reform 2</span> · <span class="cite cite--instr">UIF Acuerdo 734/2022 § V.2.b.II</span></p>
                 </div>
 
                 <!-- 6. Asset perimeter -->
@@ -958,7 +991,22 @@
                     <p class="qrc-foot"><span class="cite cite--rpsad">RPSAD Arts. 7(h), 13, 16</span> · <span class="cite cite--lead">LEAD Arts. 18(a), 20(b), 21(q)</span> · <span class="cite cite--d426">LCLDA Art. 9</span> + <span class="cite cite--lecat">LECAT Art. 37</span></p>
                 </div>
 
-                <!-- 7. Essential contacts & channels -->
+                <!-- 7. RBA risk criteria -->
+                <div class="qrc-box qrc-box--green qrc-box--wide">
+                    <h3>RBA — Customer inherent-risk criteria</h3>
+                    <ul class="rba-list">
+                        <li><span class="rba-tag rba-tag--meta">META</span><span class="rba-text">International standards — FATF VASP, Wolfsberg, Basel guidance <span class="cite cite--instr">Instr. Art. 10(a)</span></span></li>
+                        <li><span class="rba-tag rba-tag--client">CLIENT</span><span class="rba-text">Customer profile — cash-intensive, gambling, NGOs in HR jurisdictions <span class="cite cite--instr">Instr. Art. 10(b)</span></span></li>
+                        <li><span class="rba-tag rba-tag--product">PRODUCT</span><span class="rba-text">Product / service risk — DASP self-assessment <span class="cite cite--instr">Instr. Art. 10(c)</span></span></li>
+                        <li><span class="rba-tag rba-tag--channel">CHANNEL</span><span class="rba-text">Delivery method — non-face-to-face, unhosted wallet, API <span class="cite cite--instr">Instr. Art. 10(d)</span></span></li>
+                        <li><span class="rba-tag rba-tag--geo">GEO</span><span class="rba-text">Geographic risk — FATF lists, partial sanctions, transit jurisdictions <span class="cite cite--instr">Instr. Art. 10(e)</span></span></li>
+                        <li><span class="rba-tag rba-tag--lists">LISTS</span><span class="rba-text">Sanction-list match — UNSC, UIF national caution lists <span class="cite cite--instr">Instr. Art. 10(f)</span></span></li>
+                        <li><span class="rba-tag rba-tag--tx">TX</span><span class="rba-text">Transaction pattern — KYT shows flow to higher-risk jurisdictions <span class="cite cite--instr">Instr. Art. 10(g)</span></span></li>
+                        <li><span class="rba-tag rba-tag--volume">VOLUME</span><span class="rba-text"><strong>$125K</strong>/month per client → +SoF, +affidavit <span class="cite cite--rpsad">RPSAD Art. 22</span></span></li>
+                    </ul>
+                </div>
+
+                <!-- 8. Essential contacts & channels -->
                 <div class="qrc-box qrc-box--blue qrc-box--wide">
                     <h3>Essential contacts &amp; channels</h3>
                     <ul class="contact-list">
@@ -987,21 +1035,6 @@
                             <span class="contact-list__matter">BSP supervision and sanctions · NRP-29/36 standards if banking partner</span>
                             <span class="contact-list__channel">SSF channels</span>
                         </li>
-                    </ul>
-                </div>
-
-                <!-- 8. RBA risk criteria -->
-                <div class="qrc-box qrc-box--green qrc-box--wide">
-                    <h3>RBA — Customer inherent-risk criteria</h3>
-                    <ul class="rba-list">
-                        <li><span class="rba-tag rba-tag--meta">META</span><span class="rba-text">International standards — FATF VASP, Wolfsberg, Basel guidance <span class="cite cite--instr">Instr. Art. 10(a)</span></span></li>
-                        <li><span class="rba-tag rba-tag--client">CLIENT</span><span class="rba-text">Customer profile — cash-intensive, gambling, NGOs in HR jurisdictions <span class="cite cite--instr">Instr. Art. 10(b)</span></span></li>
-                        <li><span class="rba-tag rba-tag--product">PRODUCT</span><span class="rba-text">Product / service risk — DASP self-assessment <span class="cite cite--instr">Instr. Art. 10(c)</span></span></li>
-                        <li><span class="rba-tag rba-tag--channel">CHANNEL</span><span class="rba-text">Delivery method — non-face-to-face, unhosted wallet, API <span class="cite cite--instr">Instr. Art. 10(d)</span></span></li>
-                        <li><span class="rba-tag rba-tag--geo">GEO</span><span class="rba-text">Geographic risk — FATF lists, partial sanctions, transit jurisdictions <span class="cite cite--instr">Instr. Art. 10(e)</span></span></li>
-                        <li><span class="rba-tag rba-tag--lists">LISTS</span><span class="rba-text">Sanction-list match — UNSC, UIF national caution lists <span class="cite cite--instr">Instr. Art. 10(f)</span></span></li>
-                        <li><span class="rba-tag rba-tag--tx">TX</span><span class="rba-text">Transaction pattern — KYT shows flow to higher-risk jurisdictions <span class="cite cite--instr">Instr. Art. 10(g)</span></span></li>
-                        <li><span class="rba-tag rba-tag--volume">VOLUME</span><span class="rba-text"><strong>$125K</strong>/month per client → +SoF, +affidavit <span class="cite cite--rpsad">RPSAD Art. 22</span></span></li>
                     </ul>
                 </div>
 
