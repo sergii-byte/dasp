@@ -126,12 +126,13 @@
         /* ── INPUT FORM (full-width, no sticky/scroll) ── */
         .form {
             background: var(--white); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.25rem 1.5rem;
+            border-radius: var(--r-lg); padding: 1.75rem 2rem;
             margin-bottom: 1.25rem;
         }
+        @media (max-width: 600px) { .form { padding: 1.25rem 1.25rem; } }
         .form__head {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;
+            margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;
         }
         .form__title {
             font-family: 'Inter Tight', 'Inter', sans-serif; font-weight: 600;
