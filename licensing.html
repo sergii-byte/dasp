@@ -1455,6 +1455,7 @@
                 <li><a href="#understanding">Why El Salvador</a></li>
                 <li><a href="#legislation">Applicable legislation</a></li>
                 <li><a href="#activities">DASP activities</a></li>
+                <li><a href="#custody">Custody framework</a></li>
                 <li><a href="#assets">Permitted assets</a></li>
             </ul>
         </div>
@@ -1829,6 +1830,101 @@
 
     <p class="tbl-note">Source: CNAD <em>Guía de requisitos para el proceso de registro como Proveedores de Activos Digitales</em>, Anexo 1. Each application must show how the tech stack maps to each requested Art. 19 activity.</p>
 
+</div>
+</section>
+
+<!-- ══ CUSTODY FRAMEWORK ══ -->
+<section class="section" id="custody">
+<div class="container fade-in">
+    <p class="section__label">Custody Framework</p>
+    <h2 class="section__title">Crypto Custody Under LEAD Art. 19(f)(2)</h2>
+    <p class="section__desc">Salvadoran statute treats safekeeping of digital assets and the means to access or control them as a regulated activity in its own right — distinct from transfer or exchange. This section maps the statutory definition, the two business models CNAD recognises, the mandatory custody-side tech baseline and the fiduciary / record-retention obligations.</p>
+
+    <div class="callout callout--info" style="margin-top:1.25rem;">
+        <p><strong>Statutory definition <span class="ref">LEAD Art. 19(f)(2)</span></strong>: <em>"Resguardar, custodiar o administrar activos digitales o los medios para accesarlos o controlarlos"</em> — safekeep, custody or administer digital assets <strong>or the means to access or control them</strong>. The "means to access or control" wording brings <strong>private keys, seed phrases and hardware wallets</strong> into custody scope, not just the asset balance itself.</p>
+    </div>
+
+    <h3 class="section__subh" style="margin-top:2rem;">Two business models — CNAD Guía Anexo 1</h3>
+    <p style="margin-bottom:0.75rem;">CNAD's operational guide distinguishes self-custody (Art. 19(f)(1) Transfer) from DASP-side custody (Art. 19(f)(2)). The split determines who holds the keys and who carries the custodian liability.</p>
+
+    <div class="grid grid--2">
+        <div class="card card--accent-blue">
+            <h3>Self-custody <span class="ref">Art. 19(f)(1)</span></h3>
+            <ul>
+                <li><strong>User holds keys</strong> — auto custodia model</li>
+                <li>User assumes total responsibility for private + public keys</li>
+                <li>DASP provides transfer rails / wallet UI but never controls keys</li>
+                <li>Standard tech baseline only (KYC / KYB / KYT · geofencing · cyber · audit · liquidity + FIAT)</li>
+            </ul>
+            <div class="card__foot">No custody-side fiduciary duty under Art. 17(b); user-side risk.</div>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>DASP custody <span class="ref">Art. 19(f)(2)</span></h3>
+            <ul>
+                <li><strong>DASP holds keys</strong> — entity is responsable de resguardar y administrar la llave privada de su cliente</li>
+                <li>Carries fiduciary duty of resguardo + valor de reintegro <span class="ref">RPSAD Art. 17(b)</span></li>
+                <li>Standard tech + custody-specific tech mandatory (see below)</li>
+                <li>Subject to UNSC freeze + judicial embargo execution</li>
+            </ul>
+            <div class="card__foot">Custodian liability + segregation + record-retention obligations apply.</div>
+        </div>
+    </div>
+
+    <h3 class="section__subh" style="margin-top:2rem;">Mandatory tech baseline — DASP custody only</h3>
+    <p style="margin-bottom:0.75rem;">CNAD Guía Anexo 1 § f.2 lists four custody-specific tech requirements <em>in addition to</em> the standard DASP baseline. Each is statutorily required at registration; the application must show how the entity implements them.</p>
+
+    <div class="grid grid--4">
+        <div class="card card--accent-amber">
+            <h3>MPC</h3>
+            <p>Multi-Party Computation — distributed key management; no single party holds the full private key.</p>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>Multifirma</h3>
+            <p>Multi-signature transactions — release of funds requires N-of-M signatures from independent parties.</p>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>Hot &amp; Cold wallets</h3>
+            <p>Operational vs long-term storage segregation — minority of holdings exposed to operational hot keys; majority kept offline.</p>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>Fund segregation</h3>
+            <p>Client assets segregated from the DASP's own assets — operational and accounting separation.</p>
+        </div>
+    </div>
+    <p class="tbl-note">Source: CNAD Guía Anexo 1 § f.2 — <em>"políticas y procedimientos de seguridad y custodia: MPC, Multifirma, Hot y Cold Wallet y segregación de fondos"</em>.</p>
+
+    <h3 class="section__subh" style="margin-top:2rem;">Operational obligations specific to custody</h3>
+
+    <div class="grid grid--3">
+        <div class="card card--accent-blue">
+            <h3>Fiduciary duty</h3>
+            <ul>
+                <li><strong>Resguardo + valor de reintegro</strong> — guarantee safekeeping and the refund-value of client balances <span class="ref">RPSAD Art. 17(b)</span></li>
+                <li>Basis for civil liability if custody is lost or assets misappropriated</li>
+                <li>Implies prohibition on speculative use of client assets (no re-hypothecation without client consent — implied via Art. 17(b) + Art. 18)</li>
+            </ul>
+        </div>
+        <div class="card card--accent-blue">
+            <h3>Records retention — 15 years</h3>
+            <ul>
+                <li>All custody-related records preserved for <strong>not less than 15 years</strong> <span class="cite cite--d426">LCLDA D-426 Art. 26</span></li>
+                <li>Covers: deposits / withdrawals · key-management logs · segregation accounting · freeze events · key-rotation / audit trails</li>
+                <li>Records must allow reconstruction of each transaction and serve as evidence in criminal proceedings</li>
+            </ul>
+        </div>
+        <div class="card card--accent-amber">
+            <h3>Embargo &amp; freeze regime</h3>
+            <ul>
+                <li><strong>Judicial embargo</strong> — DASP executes from notification <span class="ref">RPSAD Art. 34</span></li>
+                <li><strong>UNSC sanctions freeze</strong> — without delay on UN list match <span class="ref">LECAT Art. 37 ¶3</span></li>
+                <li>Custody-held assets fully reachable by both regimes; segregation does not shield against statutory freeze orders</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="callout callout--amber" style="margin-top:1.25rem;">
+        <p><strong>What the statute does <em>not</em> specify (governance hygiene rather than law).</strong> No statutory minimum for the hot-vs-cold ratio (best practice: ≤5% in hot wallets); no explicit multisig threshold (e.g. 2-of-3 vs 3-of-5); no insurance / bonding minimum; no crypto-specific bankruptcy / resolution regime (general commercial code applies); no explicit re-hypothecation prohibition (Art. 17(b) fiduciary duty + fund segregation are the indirect anchor). Cover these gaps via internal AML / risk policy <span class="ref">RPSAD Art. 18</span>, cybersecurity audit standards <span class="ref">RPSAD Arts. 27–28</span> and the Code of Ethics <span class="ref">RPSAD Art. 18</span>.</p>
+    </div>
 </div>
 </section>
 
