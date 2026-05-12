@@ -1418,12 +1418,9 @@
         // Exchange
         onramp: {
             summary: 'Fiat → crypto purchase. Funding-rail risk on the fiat side; KYT on the destination wallet.',
-            clientCDD: [
-                {l: 'Disclose funding source', v: 'card / bank account / cash-in voucher — type + reference'},
-            ],
+            clientCDD: [],
             clientEDD: [
                 {l: 'Funding ownership proof', v: 'card statement or bank statement (recent ≤3 mo) in client name'},
-                {l: 'Destination wallet ownership attestation', v: 'sign if not auto-created by DASP'},
             ],
             dasp: [
                 {l: 'Capture funding-rail data', v: 'card BIN / bank routing / cash voucher ref — counterparty traceability'},
@@ -1434,12 +1431,9 @@
         },
         offramp: {
             summary: 'Crypto → fiat sale. KYT on the incoming chain leg; bank-corridor risk on settlement.',
-            clientCDD: [
-                {l: 'Provide bank account details', v: 'IBAN + bank name'},
-            ],
+            clientCDD: [],
             clientEDD: [
                 {l: 'Bank account ownership proof', v: 'name-match certified extract / bank letter'},
-                {l: 'Source wallet ownership attestation', v: 'sign if unhosted source'},
             ],
             dasp: [
                 {l: 'KYT on source wallet', v: 'sanctions · mixer · darknet · prior-hop exposure'},
@@ -1480,9 +1474,7 @@
         extin: {
             summary: 'Inbound from an external wallet or another VASP. KYT on source; receive Travel Rule data if counterparty is VASP.',
             clientCDD: [],
-            clientEDD: [
-                {l: 'Source wallet ownership attestation', v: 'sign if unhosted / self-custodied source'},
-            ],
+            clientEDD: [],
             dasp: [
                 {l: 'KYT on source address', v: 'sanctions · mixer · darknet · prior-hop exposure'},
                 {l: 'Receive Travel Rule data set', v: 'from counterparty VASP — hold credit if missing'},
@@ -1493,11 +1485,8 @@
         },
         extout: {
             summary: 'Outbound to an external wallet or another VASP. Travel Rule + KYT critical.',
-            clientCDD: [
-                {l: 'Specify destination wallet', v: 'address + chain'},
-            ],
+            clientCDD: [],
             clientEDD: [
-                {l: 'Destination wallet ownership attestation', v: 'sign if unhosted destination'},
                 {l: 'Approve first-time-address withdrawal', v: 'step-up auth (2FA + cool-down)'},
             ],
             dasp: [
@@ -1522,9 +1511,7 @@
         },
         settlement: {
             summary: 'DASP transfers funds (crypto or fiat) to merchant. Merchant CDD applies as ongoing relationship.',
-            clientCDD: [
-                {l: 'Provide settlement bank account', v: 'IBAN + bank name'},
-            ],
+            clientCDD: [],
             clientEDD: [
                 {l: 'Settlement bank ownership proof', v: 'certified extract / name-match letter'},
             ],
@@ -1552,10 +1539,9 @@
         deposit: {
             summary: 'Client deposits crypto onto DASP for safekeeping. KYT on inbound chain.',
             clientCDD: [
-                {l: 'Disclose source wallet', v: 'address + chain'},
+                {l: 'Disclose source wallet', v: 'address + chain', hint: 'Specific to custody onboarding — DASP whitelists permitted source addresses.'},
             ],
             clientEDD: [
-                {l: 'Source wallet ownership attestation', v: 'sign if unhosted source'},
                 {l: 'Pre-approve new source addresses', v: 'whitelist workflow before first deposit'},
             ],
             dasp: [
@@ -1569,11 +1555,9 @@
         withdrawal: {
             summary: 'Client withdraws crypto from DASP custody to external wallet. Travel Rule + KYT on destination.',
             clientCDD: [
-                {l: 'Specify destination wallet', v: 'address + chain'},
                 {l: 'Pass step-up auth', v: '2FA on submission'},
             ],
             clientEDD: [
-                {l: 'Destination wallet ownership attestation', v: 'sign if first-time / unhosted'},
                 {l: 'Cool-down on first-time-address', v: 'approve after cool-down window'},
             ],
             dasp: [
