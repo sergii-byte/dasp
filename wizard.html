@@ -138,73 +138,169 @@
         /* ── INPUT FORM (full-width, no sticky/scroll) ── */
         .form {
             background: var(--white); border: 1px solid var(--border);
-            border-radius: var(--r-lg); padding: 1.75rem 2rem;
-            margin-bottom: 1.25rem;
+            border-radius: var(--r-lg); padding: 0.75rem 1rem 0.85rem;
+            margin-bottom: 1rem;
         }
-        @media (max-width: 600px) { .form { padding: 1.25rem 1.25rem; } }
+        @media (max-width: 600px) { .form { padding: 0.7rem 0.8rem; } }
         .form__head {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;
+            margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid var(--border-light);
         }
         .form__title {
             font-family: 'Inter Tight', 'Inter', sans-serif; font-weight: 600;
-            font-size: 1rem; color: var(--navy); letter-spacing: -0.005em;
+            font-size: 0.9rem; color: var(--navy); letter-spacing: -0.005em;
         }
-        .form__actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .form__actions {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
+        }
         .btn {
-            font: inherit; font-size: 0.78rem; padding: 0.5rem 0.9rem;
-            border-radius: 6px; cursor: pointer; border: 1px solid var(--border);
+            font: inherit; font-size: 0.74rem; font-weight: 500;
+            padding: 0.4rem 0.75rem;
+            border-radius: 5px; cursor: pointer; border: 1px solid var(--border);
             background: var(--white); color: var(--text-2);
-            transition: background 0.15s, color 0.15s, border-color 0.15s;
+            transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.08s;
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            line-height: 1;
         }
-        .btn:hover { background: var(--bg-alt); color: var(--accent); border-color: var(--accent-light); }
+        .btn:hover {
+            background: var(--bg-alt); color: var(--accent); border-color: var(--accent-light);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .btn:active { transform: translateY(1px); }
+        .btn__icon { font-size: 0.85rem; line-height: 1; opacity: 0.7; }
+        .btn:hover .btn__icon { opacity: 1; }
         .btn--primary { background: var(--accent); color: white; border-color: var(--accent); }
         .btn--primary:hover { background: var(--accent-2); color: white; border-color: var(--accent-2); }
         .btn--ghost { background: transparent; }
 
-        /* ── FORM GRID ── */
+        /* Reset — neutral grey, distinct from examples + export */
+        .btn--reset { color: var(--text-3); }
+        .btn--reset:hover { color: var(--text-1); background: var(--bg-deep); border-color: var(--text-3); }
+
+        /* Example buttons — verdict-tier color dot prefix */
+        .btn--example {
+            position: relative;
+            padding-left: 1.65rem;
+        }
+        .btn--example::before {
+            content: ''; position: absolute; left: 0.65rem; top: 50%;
+            transform: translateY(-50%);
+            width: 7px; height: 7px; border-radius: 50%;
+            background: currentColor; opacity: 0.85;
+        }
+        .btn--example-sdd { color: #3d7a52; border-color: #b9d09f; background: #f0f6ec; }
+        .btn--example-sdd:hover { background: #e3eed8; color: #1e4d2c; border-color: #6cb87f; }
+        .btn--example-cdd { color: #1f3f66; border-color: #98b8d8; background: #ecf2f8; }
+        .btn--example-cdd:hover { background: #d8e6f3; color: #1f3458; border-color: #5a8ec4; }
+        .btn--example-edd { color: #6b4b14; border-color: #d9b870; background: #faf2dc; }
+        .btn--example-edd:hover { background: #f5e9c8; color: #4a3a18; border-color: #b8893a; }
+
+        /* Export JSON — primary-style emphasis (output action) */
+        .btn--export {
+            background: #2c5780; color: white; border-color: #2c5780;
+        }
+        .btn--export:hover {
+            background: #1f3f66; color: white; border-color: #1f3f66;
+        }
+        .btn--export .btn__icon { opacity: 1; }
+
+        /* Group label + separator between action groups */
+        .form__actions-grp-label {
+            font-size: 0.6rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            color: var(--text-3); margin-right: 0.15rem;
+        }
+        .form__actions-sep {
+            width: 1px; height: 1.4rem; background: var(--border);
+            margin: 0 0.15rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            .btn--example-sdd { color: #a8d8b8; border-color: rgba(120,140,93,0.40); background: rgba(80,150,100,0.15); }
+            .btn--example-sdd:hover { background: rgba(80,150,100,0.25); border-color: #6cb87f; }
+            .btn--example-cdd { color: #b8d4ee; border-color: rgba(106,155,204,0.40); background: rgba(106,155,204,0.15); }
+            .btn--example-cdd:hover { background: rgba(106,155,204,0.25); border-color: #5a8ec4; }
+            .btn--example-edd { color: #e8c997; border-color: rgba(217,184,112,0.40); background: rgba(217,184,112,0.15); }
+            .btn--example-edd:hover { background: rgba(217,184,112,0.25); border-color: #d9b870; }
+            .btn--export { background: #5a8ec4; border-color: #5a8ec4; color: #0f1e2e; }
+            .btn--export:hover { background: #7eb0e0; border-color: #7eb0e0; color: #0f1e2e; }
+        }
+
+        /* ── FORM GRID — ultra-compact, no field borders, inline labels ── */
         .form__grid {
             display: grid; grid-template-columns: repeat(12, 1fr);
-            gap: 1rem 1.25rem;
+            gap: 0.45rem 0.65rem;
         }
         .form__field {
             min-width: 0;
-            border: 1px solid var(--border-light);
-            border-radius: 8px;
-            padding: 0.85rem 1.05rem 1rem;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
             margin: 0;
         }
+        .form__field--span-2 { grid-column: span 2; }
         .form__field--span-3 { grid-column: span 3; }
         .form__field--span-4 { grid-column: span 4; }
+        .form__field--span-5 { grid-column: span 5; }
         .form__field--span-6 { grid-column: span 6; }
+        .form__field--span-7 { grid-column: span 7; }
         .form__field--span-12 { grid-column: span 12; }
         @media (max-width: 768px) {
+            .form__field--span-2 { grid-column: span 4; }
             .form__field--span-3 { grid-column: span 6; }
             .form__field--span-4 { grid-column: span 12; }
+            .form__field--span-5 { grid-column: span 12; }
             .form__field--span-6 { grid-column: span 12; }
+            .form__field--span-7 { grid-column: span 12; }
         }
         @media (max-width: 480px) {
-            .form__field--span-3 { grid-column: span 12; }
+            .form__field--span-2, .form__field--span-3 { grid-column: span 12; }
         }
 
         .field__legend {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.55rem;
-            display: block; padding: 0 0.4rem;
+            font-size: 0.58rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.18rem;
+            display: block; padding: 0;
+            line-height: 1.2;
         }
-        .field__hint { font-size: 0.74rem; color: var(--text-3); margin-top: 0.3rem; }
+        .field__legend-note {
+            font-weight: 400; color: var(--text-3); text-transform: none;
+            letter-spacing: 0; font-size: 0.6rem;
+        }
+        .field__hint { font-size: 0.7rem; color: var(--text-3); margin-top: 0.3rem; }
+        /* Inline expandable hint — replaces long <p> paragraphs */
+        .field__help {
+            margin-top: 0.3rem; font-size: 0.66rem;
+        }
+        .field__help summary {
+            cursor: pointer; color: var(--text-3); list-style: none;
+            display: inline-flex; align-items: center; gap: 0.25rem;
+            padding: 0.08rem 0;
+            font-weight: 600; user-select: none;
+        }
+        .field__help summary::-webkit-details-marker { display: none; }
+        .field__help summary::before {
+            content: 'ⓘ'; font-size: 0.8rem; color: var(--text-3);
+        }
+        .field__help summary:hover { color: var(--accent); }
+        .field__help[open] summary { color: var(--accent); }
+        .field__help p {
+            margin: 0.25rem 0 0; font-size: 0.68rem; color: var(--text-2);
+            line-height: 1.45;
+        }
 
         /* Chip-style radio groups
            NOTE: scoped to .chips .chip to defeat the global cryptoguides-overrides.css
            rule on .tag, .chip (which sets uppercase mono + tight padding). */
-        .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .chips { display: flex; flex-wrap: wrap; gap: 0.28rem; }
         .chips .chip {
             font-family: 'Inter Tight', 'Inter', sans-serif;
-            font-size: 0.82rem; font-weight: 500;
+            font-size: 0.74rem; font-weight: 500;
             text-transform: none; letter-spacing: 0;
-            cursor: pointer; user-select: none; line-height: 1.25;
+            cursor: pointer; user-select: none; line-height: 1.2;
             background: var(--bg-alt); border: 1px solid var(--border-light);
-            padding: 0.5rem 0.9rem; border-radius: 6px; color: var(--text-2);
+            padding: 0.32rem 0.62rem; border-radius: 5px; color: var(--text-2);
             transition: background 0.12s, color 0.12s, border-color 0.12s;
         }
         .chips .chip:hover { background: var(--bg-deep); }
@@ -213,8 +309,9 @@
 
         /* Sub-operation chips — distinct color so they don't merge visually
            with the parent Operation row. Indented, blue-on-checked. */
+        #wiz-subop-chips { margin-top: 0.3rem; }
         #wiz-subop-chips .chip {
-            font-size: 0.78rem; padding: 0.42rem 0.8rem;
+            font-size: 0.7rem; padding: 0.28rem 0.55rem;
             background: var(--white); border-color: var(--border);
         }
         #wiz-subop-chips .chip:hover { background: var(--bg-alt); border-color: var(--blue); color: var(--blue); }
@@ -224,36 +321,283 @@
 
         /* Inputs */
         .input, .select {
-            width: 100%; padding: 0.6rem 0.85rem;
-            border: 1px solid var(--border); border-radius: 6px;
-            background: var(--white); color: var(--text); font: inherit; font-size: 0.88rem;
+            width: 100%; padding: 0.4rem 0.65rem;
+            border: 1px solid var(--border); border-radius: 5px;
+            background: var(--white); color: var(--text); font: inherit; font-size: 0.78rem;
         }
         .input:focus, .select:focus {
             outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-light);
+            box-shadow: 0 0 0 2px var(--accent-light);
         }
         .amount-wrap { position: relative; }
         .amount-wrap::before {
-            content: "$"; position: absolute; left: 0.7rem; top: 50%;
-            transform: translateY(-50%); color: var(--text-3); font-size: 0.92rem;
+            content: "$"; position: absolute; left: 0.55rem; top: 50%;
+            transform: translateY(-50%); color: var(--text-3); font-size: 0.82rem;
             pointer-events: none;
         }
-        .amount-wrap .input { padding-left: 1.45rem; }
+        .amount-wrap .input { padding-left: 1.2rem; }
 
-        /* Risk-factor checks */
+        /* Risk-factor toggles — same chip styling as operations, in a wrap flow */
         .checks {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 0.15rem 0.5rem;
+            display: flex; flex-wrap: wrap; gap: 0.28rem;
         }
-        @media (max-width: 600px) { .checks { grid-template-columns: 1fr; } }
         .check {
-            display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem;
-            cursor: pointer; padding: 0.45rem 0.55rem; border-radius: 5px;
-            color: var(--text-2);
+            font-family: 'Inter Tight', 'Inter', sans-serif;
+            font-size: 0.72rem; font-weight: 500;
+            text-transform: none; letter-spacing: 0;
+            cursor: pointer; user-select: none; line-height: 1.2;
+            background: var(--bg-alt); border: 1px solid var(--border-light);
+            padding: 0.3rem 0.6rem; border-radius: 5px; color: var(--text-2);
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+            display: inline-flex; align-items: center;
+            position: relative;
         }
-        .check:hover { background: var(--bg-alt); }
-        .check input { margin-top: 0.18rem; accent-color: var(--accent); flex-shrink: 0; }
-        .check.danger:has(input:checked) { background: var(--red-light); color: var(--red); }
+        .check:hover { background: var(--bg-deep); }
+        .check input { position: absolute; opacity: 0; pointer-events: none; }
+        .check:has(input:checked) {
+            background: #b8893a; color: white; border-color: #b8893a;
+        }
+        .check.danger:has(input:checked) {
+            background: #c44; color: white; border-color: #c44;
+        }
+        .check.danger { border-color: #e8a499; color: #8a2718; }
+
+        /* ── INPUT BAR — clear row identity, label-above-control structure ── */
+        .input-flow {
+            display: flex; flex-direction: column;
+            gap: 0.75rem;
+        }
+        .input-row {
+            position: relative;
+            padding: 0.8rem 1rem 0.85rem 1.1rem;
+            border-radius: 7px;
+            border: 1px solid transparent;
+        }
+        .input-row__head {
+            display: flex; align-items: baseline; gap: 0.45rem;
+            margin-bottom: 0.55rem;
+        }
+        .input-row__head-desc {
+            font-size: 0.7rem; font-weight: 400; color: var(--text-3);
+            text-transform: none; letter-spacing: 0;
+        }
+        .input-row::before {
+            content: ''; position: absolute; left: 0; top: 0.6rem; bottom: 0.6rem;
+            width: 3px; border-radius: 2px;
+        }
+        /* Per-row tinting — distinct background + left-rail + border */
+        .input-row--operation { background: rgba(184,137,58,0.06); border-color: rgba(184,137,58,0.18); }
+        .input-row--operation::before { background: #b8893a; }
+        .input-row--scenario  { background: rgba(44,87,128,0.055); border-color: rgba(44,87,128,0.16); }
+        .input-row--scenario::before  { background: #2c5780; }
+        .input-row--risk      { background: rgba(196,68,68,0.055); border-color: rgba(196,68,68,0.16); }
+        .input-row--risk::before      { background: #c44; }
+        @media (prefers-color-scheme: dark) {
+            .input-row--operation { background: rgba(184,137,58,0.13); border-color: rgba(184,137,58,0.30); }
+            .input-row--scenario  { background: rgba(106,155,204,0.12); border-color: rgba(106,155,204,0.28); }
+            .input-row--risk      { background: rgba(217,108,87,0.12); border-color: rgba(217,108,87,0.30); }
+        }
+        .input-row__label {
+            font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .input-row--operation .input-row__label { color: #6b4b14; }
+        .input-row--scenario  .input-row__label { color: #1f3f66; }
+        .input-row--risk      .input-row__label { color: #8a2718; }
+        @media (prefers-color-scheme: dark) {
+            .input-row--operation .input-row__label { color: #e8c997; }
+            .input-row--scenario  .input-row__label { color: #b8d4ee; }
+            .input-row--risk      .input-row__label { color: #f0b1a3; }
+        }
+
+        /* Operation row body — inline op + subop chips with separator */
+        .op-body {
+            display: flex; flex-wrap: wrap; align-items: center;
+            gap: 0.5rem 0.7rem;
+        }
+        .op-body__sublabel {
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3);
+            padding-left: 0.5rem; border-left: 1px solid var(--border);
+            margin-left: 0.2rem;
+        }
+
+        /* Scenario row body — labeled grid: 5 columns with proper label-above-control */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: auto auto 1fr auto auto;
+            gap: 0.55rem 0.85rem;
+            align-items: end;
+        }
+        @media (max-width: 880px) {
+            .scenario-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
+        @media (max-width: 520px) {
+            .scenario-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .field-card {
+            display: flex; flex-direction: column; gap: 0.3rem;
+            min-width: 0;
+        }
+        .field-card__lbl {
+            font-size: 0.66rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em; color: #1f3f66;
+        }
+        @media (prefers-color-scheme: dark) {
+            .field-card__lbl { color: #b8d4ee; }
+        }
+        .field-card .input, .field-card .select {
+            width: 100%;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.82rem;
+            background: var(--white);
+        }
+        .field-card .amount-wrap { display: block; }
+        .field-card .amount-wrap .input { padding-left: 1.2rem; }
+        .field-card .seg { width: 100%; }
+        .field-card .seg .chip {
+            flex: 1; text-align: center; justify-content: center;
+            white-space: nowrap;
+        }
+        /* Help button under scenario grid */
+        .scenario-help { margin-top: 0.55rem; }
+        .scenario-help summary {
+            cursor: pointer; color: var(--text-3); list-style: none;
+            padding: 0.18rem 0.55rem; display: inline-block;
+            border: 1px solid var(--border); border-radius: 4px;
+            font-weight: 600; font-size: 0.66rem;
+            white-space: nowrap; background: var(--white);
+        }
+        .scenario-help summary::-webkit-details-marker { display: none; }
+        .scenario-help summary::before { content: 'ⓘ '; }
+        .scenario-help summary:hover { color: var(--accent); border-color: var(--accent); }
+        .scenario-help[open] summary { background: var(--bg-alt); color: var(--accent); }
+        .scenario-help p {
+            margin: 0.4rem 0 0; font-size: 0.7rem; color: var(--text-2);
+            line-height: 1.5;
+        }
+
+        /* Risk row body — sub-groups stacked vertically for readability */
+        .risk-body { display: flex; flex-direction: column; gap: 0.4rem; }
+
+        /* Segmented-control: scenario-level chip groups appear as a single unified pill.
+           Visually distinct from the larger Operation chips. */
+        .seg {
+            display: inline-flex; align-items: stretch;
+            border: 1px solid #2c5780; border-radius: 5px; overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 1px 0 rgba(44,87,128,0.06);
+        }
+        .seg .chip {
+            font-family: 'Inter Tight', 'Inter', sans-serif;
+            font-size: 0.72rem; font-weight: 600;
+            cursor: pointer; user-select: none; line-height: 1.2;
+            background: var(--white); border: 0; border-radius: 0;
+            padding: 0.3rem 0.65rem; color: var(--text-2);
+            transition: background 0.12s, color 0.12s;
+            position: relative;
+        }
+        .seg .chip + .chip { border-left: 1px solid rgba(44,87,128,0.25); }
+        .seg .chip:hover { background: #f0f5fa; color: #1f3f66; }
+        .seg .chip:has(input:checked) {
+            background: #2c5780; color: white;
+        }
+        .seg .chip input { position: absolute; opacity: 0; pointer-events: none; }
+        @media (prefers-color-scheme: dark) {
+            .seg { border-color: #5a8ec4; background: #14283f; }
+            .seg .chip { background: #14283f; color: #b8d4ee; }
+            .seg .chip + .chip { border-left-color: rgba(106,155,204,0.40); }
+            .seg .chip:hover { background: #1c344f; }
+            .seg .chip:has(input:checked) { background: #5a8ec4; color: #0f1e2e; }
+        }
+
+        /* Risk-flag sub-groups — split into hard-stops vs EDD-triggers, stacked */
+        .risk-sub {
+            display: flex; align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.55rem 0.8rem;
+            border-radius: 5px;
+        }
+        .risk-sub--stop {
+            background: rgba(196,68,68,0.10);
+            border: 1px solid rgba(196,68,68,0.30);
+        }
+        .risk-sub--edd {
+            background: rgba(255,255,255,0.55);
+            border: 1px solid rgba(196,68,68,0.18);
+        }
+        @media (prefers-color-scheme: dark) {
+            .risk-sub--stop { background: rgba(196,68,68,0.18); border-color: rgba(196,68,68,0.45); }
+            .risk-sub--edd  { background: rgba(255,255,255,0.05); border-color: rgba(196,68,68,0.28); }
+        }
+        .risk-sub__lbl {
+            font-size: 0.66rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding-right: 0.6rem;
+            border-right: 1px solid rgba(0,0,0,0.15);
+            min-width: 7.5rem; flex-shrink: 0;
+            padding-top: 0.35rem;
+        }
+        .risk-sub--stop .risk-sub__lbl { color: #8a2718; }
+        .risk-sub--edd  .risk-sub__lbl { color: #b8893a; }
+        @media (prefers-color-scheme: dark) {
+            .risk-sub--stop .risk-sub__lbl { color: #f0a8a0; }
+            .risk-sub--edd  .risk-sub__lbl { color: #e8c997; }
+            .risk-sub__lbl { border-right-color: rgba(255,255,255,0.18); }
+        }
+        .risk-sub__chips {
+            flex: 1; display: flex; flex-wrap: wrap; gap: 0.4rem;
+            align-items: center;
+        }
+        /* EDD trigger — explicit 2-row grid (4 columns × 2 rows for 8 chips) */
+        .risk-sub--edd .risk-sub__chips {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.4rem 0.45rem;
+        }
+        @media (max-width: 880px) {
+            .risk-sub--edd .risk-sub__chips { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .risk-sub--edd .risk-sub__chips { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 420px) {
+            .risk-sub--edd .risk-sub__chips { grid-template-columns: 1fr; }
+        }
+        .risk-sub .check {
+            font-size: 0.76rem;
+            padding: 0.38rem 0.7rem;
+            white-space: nowrap;
+            justify-content: flex-start;
+        }
+        .risk-sub--edd .check {
+            white-space: normal; /* allow wrap inside grid cell */
+            justify-content: center; text-align: center;
+        }
+        .input-row__help {
+            font-size: 0.62rem; margin-left: auto;
+        }
+        .input-row__help summary {
+            cursor: pointer; color: var(--text-3); list-style: none;
+            padding: 0.14rem 0.5rem;
+            border: 1px solid var(--border); border-radius: 3px;
+            font-weight: 600; font-size: 0.6rem;
+            white-space: nowrap; background: var(--white);
+        }
+        .input-row__help summary::-webkit-details-marker { display: none; }
+        .input-row__help summary::before { content: 'ⓘ '; }
+        .input-row__help summary:hover { color: var(--accent); border-color: var(--accent); }
+        .input-row__help[open] {
+            width: 100%; margin-top: 0.3rem; margin-left: 0;
+        }
+        .input-row__help[open] summary { background: var(--bg-alt); color: var(--accent); }
+        .input-row__help p {
+            margin: 0.3rem 0 0; font-size: 0.68rem; color: var(--text-2);
+            line-height: 1.45;
+        }
+        @media (max-width: 720px) {
+            .input-row__label { min-width: 100%; }
+        }
 
         /* ── RESULTS ── */
         .results {
@@ -328,6 +672,458 @@
         .block li { margin: 0.15rem 0; }
         .block li strong { color: var(--navy); }
 
+        /* Field-style block content — concrete data to capture / docs / verify */
+        .block__fields { display: grid; gap: 0.3rem; margin: 0.55rem 0 0.4rem; }
+        .field-row {
+            display: grid; grid-template-columns: minmax(170px, 0.50fr) 1fr;
+            gap: 0.7rem; padding: 0.32rem 0.55rem;
+            background: var(--bg-alt); border-radius: 5px;
+            align-items: baseline;
+            font-size: 0.78rem; line-height: 1.35;
+        }
+        .field-row__label { font-weight: 600; color: var(--navy); font-size: 0.76rem; }
+        .field-row__input {
+            color: var(--text-2); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; word-break: break-word;
+        }
+        .field-row__input--choice { font-family: inherit; font-style: italic; color: var(--text-1); }
+        .field-row__input strong { color: var(--navy); font-weight: 600; }
+        /* Hint — small explanatory text under the field */
+        .field-row__hint {
+            grid-column: 1 / -1; font-size: 0.66rem; color: var(--text-3);
+            font-style: italic; line-height: 1.35; padding-top: 0.1rem;
+        }
+        /* Consolidated CLIENT block — one card with topical sub-sections */
+        .client-flow, .dasp-flow { grid-column: 1 / -1; }
+        .client-flow .block__head::before { background: var(--amber); }
+        .dasp-flow   .block__head::before { background: var(--blue); }
+        .flow-step {
+            margin-top: 0.85rem;
+            padding-top: 0.65rem;
+            border-top: 1px dashed transparent;
+        }
+        .flow-step:first-of-type { margin-top: 0.55rem; padding-top: 0; border-top: none; }
+        .client-flow .flow-step { border-top-color: var(--amber-border); }
+        .dasp-flow   .flow-step { border-top-color: #b8c8da; }
+        .flow-step__head {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.78rem; font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.003em;
+        }
+        .client-flow .flow-step__head { color: #6b4b14; }
+        .dasp-flow   .flow-step__head { color: #1f3f66; }
+        .flow-step__num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px;
+            color: #fff;
+            font-size: 0.72rem; font-weight: 800;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .client-flow .flow-step__num { background: #b8893a; }
+        .dasp-flow   .flow-step__num { background: #2c5780; }
+        .flow-step__title { flex: 1; }
+        .flow-step__when {
+            font-size: 0.65rem; font-weight: 500; color: var(--text-3);
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .flow-step__badges {
+            display: inline-flex; gap: 0.35rem; flex-wrap: wrap;
+        }
+        .tier-badge {
+            display: inline-block;
+            font-size: 0.58rem; font-weight: 800;
+            letter-spacing: 0.06em;
+            padding: 0.18rem 0.45rem;
+            border-radius: 3px;
+            border: 1px solid transparent;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .tier-badge--onboarding { background: #e6efe1; color: #3d5a2c; border-color: #b9d09f; }
+        .tier-badge--per-tx     { background: #e6efff; color: #1f3f66; border-color: #a0bdde; }
+        .tier-badge--periodic   { background: #f0e8ef; color: #5c3956; border-color: #c7a3c1; }
+        .tier-badge--blocking   { background: #fde4e0; color: #8a2718; border-color: #e8a499; font-weight: 900; }
+        .tier-badge--new        { background: #fff4d6; color: #6b4b14; border-color: #d9b870; font-weight: 900; }
+        /* Owner badges — who actually executes the step */
+        .owner-badge {
+            display: inline-block;
+            font-size: 0.56rem; font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 0.16rem 0.4rem;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            line-height: 1;
+            white-space: nowrap;
+            opacity: 0.92;
+        }
+        .owner-badge--co   { background: #efe5d5; color: #5a3f12; border-color: #c8a87a; }
+        .owner-badge--risk { background: #efd5d5; color: #5a1f1f; border-color: #c87a7a; }
+        .owner-badge--ops  { background: #d5dfef; color: #1f3458; border-color: #7a98c8; }
+        .owner-badge--tech { background: #d5efd9; color: #1f5a26; border-color: #7ac88a; }
+        /* SLA badge — execution-time expectation per step */
+        .sla-badge {
+            display: inline-flex; align-items: center; gap: 0.2rem;
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.03em;
+            padding: 0.16rem 0.42rem;
+            border-radius: 2px;
+            background: rgba(0,0,0,0.04);
+            color: var(--text-2);
+            border: 1px solid var(--border);
+            white-space: nowrap;
+            line-height: 1;
+        }
+        .sla-badge--instant   { background: #d5efd9; color: #1f5a26; border-color: #7ac88a; }
+        .sla-badge--fast      { background: #e7f0e2; color: #3d5a2c; border-color: #b9d09f; }
+        .sla-badge--medium    { background: #efe5d5; color: #5a3f12; border-color: #c8a87a; }
+        .sla-badge--statutory { background: #efd5d5; color: #5a1f1f; border-color: #c87a7a; font-weight: 800; }
+        @media (prefers-color-scheme: dark) {
+            .sla-badge            { background: rgba(255,255,255,0.05); }
+            .sla-badge--instant   { background: rgba(122,200,138,0.22); color: #a8e0b8; border-color: rgba(122,200,138,0.45); }
+            .sla-badge--fast      { background: rgba(120,140,93,0.22); color: #c2dca6; border-color: rgba(120,140,93,0.45); }
+            .sla-badge--medium    { background: rgba(200,168,122,0.20); color: #e8c997; border-color: rgba(200,168,122,0.45); }
+            .sla-badge--statutory { background: rgba(200,122,122,0.22); color: #e8a0a0; border-color: rgba(200,122,122,0.45); }
+        }
+        @media (prefers-color-scheme: dark) {
+            .tier-badge--new        { background: rgba(217,151,87,0.25); color: #f0d2a3; border-color: rgba(217,151,87,0.55); }
+            .owner-badge--co   { background: rgba(200,168,122,0.20); color: #e8c997; border-color: rgba(200,168,122,0.45); }
+            .owner-badge--risk { background: rgba(200,122,122,0.22); color: #e8a0a0; border-color: rgba(200,122,122,0.45); }
+            .owner-badge--ops  { background: rgba(122,152,200,0.20); color: #a8c2e6; border-color: rgba(122,152,200,0.45); }
+            .owner-badge--tech { background: rgba(122,200,138,0.22); color: #a8e0b8; border-color: rgba(122,200,138,0.45); }
+        }
+        @media (prefers-color-scheme: dark) {
+            .tier-badge--onboarding { background: rgba(120,140,93,0.22); color: #c2dca6; border-color: rgba(120,140,93,0.45); }
+            .tier-badge--per-tx     { background: rgba(106,155,204,0.20); color: #b8d4ee; border-color: rgba(106,155,204,0.45); }
+            .tier-badge--periodic   { background: rgba(140,90,135,0.22); color: #e3c0dc; border-color: rgba(140,90,135,0.45); }
+            .tier-badge--blocking   { background: rgba(217,108,87,0.22); color: #f0b1a3; border-color: rgba(217,108,87,0.45); }
+            .tier-badge--new        { background: rgba(217,151,87,0.25); color: #f0d2a3; border-color: rgba(217,151,87,0.55); }
+        }
+        /* NEW @ tier sections — identified by the badge in header only, no side rail */
+
+        /* Accent rows — color override only, same structural style as other DASP steps */
+        .flow-step--accent-reporting .flow-step__head { color: #4a2e74; }
+        .flow-step--accent-reporting .flow-step__num { background: #7d54a8; }
+        .flow-step--accent-reporting .field-row--dasp {
+            background: #ede5f5; border-left-color: #7d54a8;
+        }
+        .flow-step--accent-reporting .field-row--dasp .field-row__label { color: #4a2e74; }
+        .flow-step--accent-reporting .field-row--dasp .field-row__input { color: #5a3e84; }
+
+        .flow-step--accent-retention .flow-step__head { color: #1f4a48; }
+        .flow-step--accent-retention .flow-step__num { background: #3a7f7c; }
+        .flow-step--accent-retention .field-row--dasp {
+            background: #d8eae9; border-left-color: #3a7f7c;
+        }
+        .flow-step--accent-retention .field-row--dasp .field-row__label { color: #1f4a48; }
+        .flow-step--accent-retention .field-row--dasp .field-row__input { color: #2e5a58; }
+
+        @media (prefers-color-scheme: dark) {
+            .flow-step--accent-reporting .flow-step__head { color: #d8b8f0; }
+            .flow-step--accent-reporting .flow-step__num { background: #a87cd0; color: #2b1840; }
+            .flow-step--accent-reporting .field-row--dasp { background: rgba(125,84,168,0.18); border-left-color: #a87cd0; }
+            .flow-step--accent-reporting .field-row--dasp .field-row__label { color: #d8b8f0; }
+            .flow-step--accent-reporting .field-row--dasp .field-row__input { color: #c8a8e0; }
+
+            .flow-step--accent-retention .flow-step__head { color: #a8d8d6; }
+            .flow-step--accent-retention .flow-step__num { background: #6cb0ad; color: #102828; }
+            .flow-step--accent-retention .field-row--dasp { background: rgba(58,127,124,0.18); border-left-color: #6cb0ad; }
+            .flow-step--accent-retention .field-row--dasp .field-row__label { color: #a8d8d6; }
+            .flow-step--accent-retention .field-row--dasp .field-row__input { color: #98c8c6; }
+        }
+
+        /* Version stamp — compliance product must show effective-date / version */
+        .version-stamp {
+            grid-column: 1 / -1;
+            margin: 0.4rem 0 1rem;
+            padding: 0.55rem 0.9rem;
+            background: var(--bg-alt); border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.7rem; color: var(--text-2);
+            display: flex; flex-wrap: wrap; gap: 0.35rem 1rem;
+            line-height: 1.4;
+        }
+        .version-stamp__label {
+            font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+            color: var(--text-1);
+        }
+        .version-stamp__item { display: inline-flex; gap: 0.3rem; }
+        .version-stamp__item strong { color: var(--text-1); font-weight: 700; }
+
+        /* Risk factor list — structured breakdown alongside verdict */
+        .factor-list {
+            margin-top: 0.6rem;
+            display: flex; flex-direction: column; gap: 0.3rem;
+        }
+        .factor-list__head {
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.07em; color: var(--text-3); margin-bottom: 0.15rem;
+        }
+        .factor-row {
+            display: flex; align-items: baseline; gap: 0.6rem;
+            font-size: 0.78rem; line-height: 1.4;
+            padding: 0.3rem 0.55rem;
+            background: rgba(255,255,255,0.55);
+            border-left: 3px solid var(--text-3);
+            border-radius: 3px;
+        }
+        .factor-row__label { font-weight: 600; color: var(--text-1); flex: 1; }
+        .factor-row__effect {
+            font-weight: 700; font-size: 0.72rem;
+            text-transform: uppercase; letter-spacing: 0.04em;
+            padding: 0.1rem 0.4rem; border-radius: 3px;
+            border: 1px solid transparent;
+        }
+        .factor-row__effect--edd    { background: #fde4d0; color: #8a4a18; border-color: #e8b87c; }
+        .factor-row__effect--cdd    { background: #d8e6f3; color: #1f3f66; border-color: #98b8d8; }
+        .factor-row__effect--sdd    { background: #e6efe1; color: #3d5a2c; border-color: #b9d09f; }
+        .factor-row__effect--reject { background: #fde4e0; color: #8a2718; border-color: #e8a499; }
+        .factor-row__cite { font-size: 0.66rem; color: var(--text-3); }
+        @media (prefers-color-scheme: dark) {
+            .factor-row { background: rgba(255,255,255,0.06); }
+            .factor-row__effect--edd    { background: rgba(217,119,87,0.20); color: #f0c8a3; border-color: rgba(217,119,87,0.45); }
+            .factor-row__effect--cdd    { background: rgba(106,155,204,0.20); color: #b8d4ee; border-color: rgba(106,155,204,0.45); }
+            .factor-row__effect--sdd    { background: rgba(120,140,93,0.22); color: #c2dca6; border-color: rgba(120,140,93,0.45); }
+            .factor-row__effect--reject { background: rgba(217,108,87,0.25); color: #f0b1a3; border-color: rgba(217,108,87,0.55); }
+        }
+        @media (prefers-color-scheme: dark) {
+            .client-flow .flow-step { border-top-color: rgba(184,137,58,0.35); }
+            .dasp-flow   .flow-step { border-top-color: rgba(106,155,204,0.30); }
+            .client-flow .flow-step__head { color: #e8c97a; }
+            .dasp-flow   .flow-step__head { color: #b8d4ee; }
+            .client-flow .flow-step__num { background: #b8893a; color: #2b2210; }
+            .dasp-flow   .flow-step__num { background: #5a8ec4; color: #14283f; }
+        }
+
+        /* Reference panel — collapsible static educational content */
+        .ref-panel {
+            grid-column: 1 / -1; margin-top: 1.25rem;
+            background: var(--bg-alt); border: 1px solid var(--border);
+            border-radius: var(--r-md); overflow: hidden;
+        }
+        .ref-panel summary {
+            cursor: pointer; padding: 0.85rem 1.2rem;
+            font-size: 0.85rem; font-weight: 700;
+            color: var(--text-1); list-style: none;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .ref-panel summary::before {
+            content: '▸'; font-size: 0.7rem; color: var(--text-3);
+            transition: transform 0.2s;
+        }
+        .ref-panel[open] summary::before { transform: rotate(90deg); }
+        .ref-panel summary::-webkit-details-marker { display: none; }
+        .ref-panel__body { padding: 0.4rem 1.2rem 1rem; }
+        .ref-panel__toolbar {
+            display: flex; gap: 0.6rem; align-items: center;
+            margin: 0.4rem 0 0.8rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .ref-panel__search {
+            flex: 1;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.78rem;
+            font-family: inherit;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--bg);
+            color: var(--text-1);
+            outline: none;
+        }
+        .ref-panel__search:focus {
+            border-color: var(--accent, #b8893a);
+            box-shadow: 0 0 0 2px rgba(184,137,58,0.18);
+        }
+        .ref-panel__filter-btn {
+            padding: 0.45rem 0.8rem;
+            font-size: 0.72rem; font-weight: 700;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--bg);
+            color: var(--text-1);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .ref-panel__filter-btn[data-active="relevant"] {
+            background: #f7e9c8; color: #6b4b14; border-color: #d9b870;
+        }
+        @media (prefers-color-scheme: dark) {
+            .ref-panel__filter-btn[data-active="relevant"] {
+                background: rgba(217,184,112,0.22); color: #e8c997; border-color: rgba(217,184,112,0.45);
+            }
+        }
+        .ref-section { margin-top: 1rem; }
+        .ref-section:first-child { margin-top: 0.2rem; }
+        .ref-section--relevant {
+            padding: 0.7rem 0.9rem;
+            background: rgba(184,137,58,0.06);
+            border-left: 3px solid #b8893a;
+            border-radius: 0 4px 4px 0;
+            margin-left: -0.9rem; margin-right: -0.9rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            .ref-section--relevant {
+                background: rgba(184,137,58,0.10);
+                border-left-color: #d9b870;
+            }
+        }
+        .ref-section__relevant {
+            display: inline-block; margin-left: 0.5rem;
+            font-size: 0.58rem; font-weight: 800;
+            padding: 0.14rem 0.42rem;
+            border-radius: 2px;
+            background: #fff4d6; color: #6b4b14; border: 1px solid #d9b870;
+            letter-spacing: 0.07em;
+        }
+        @media (prefers-color-scheme: dark) {
+            .ref-section__relevant {
+                background: rgba(217,184,112,0.22); color: #f0d2a3; border-color: rgba(217,184,112,0.45);
+            }
+        }
+        .ref-section__head {
+            font-size: 0.72rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.07em;
+            color: var(--text-1); margin-bottom: 0.35rem;
+        }
+        .ref-section__body {
+            font-size: 0.78rem; color: var(--text-2); line-height: 1.55;
+        }
+        .ref-section__body ul { padding-left: 1.1rem; margin: 0.2rem 0; }
+        .ref-section__body li { margin: 0.15rem 0; }
+        .ref-section__body strong { color: var(--text-1); }
+
+        /* Section sub-headings — split block into "From client" / "Our actions" */
+        .block__sub-head {
+            font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0.85rem 0 0.45rem;
+            padding: 0.28rem 0.7rem;
+            border-radius: 4px;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+        .block__sub-head:first-of-type { margin-top: 0.55rem; }
+        .block__sub-head--client {
+            background: #f7e9c8; color: #6b4b14; border-color: #d9b870;
+        }
+        .block__sub-head--dasp {
+            background: #d8e6f3; color: #1f3f66; border-color: #98b8d8;
+        }
+        /* Section: client provides — per-sub-kind border for visual differentiation.
+           Different colors / styles per sub-kind = no monolithic block-wide stripe. */
+        .field-row--client {
+            background: #fbf2dc;
+        }
+        .field-row--client .field-row__label { color: #6b4b14; }
+        .field-row--client .field-row__input { font-family: inherit; color: #4a3a18; }
+        .field-row--subkind-upload    { border-left: 4px solid  #2c5780; }
+        .field-row--subkind-biometric { border-left: 5px dotted #8a4ec8; }
+        .field-row--subkind-proof     { border-left: 6px double #3d7a52; }
+        .field-row--subkind-sign      { border-left: 4px solid  #c44e4e; }
+        .field-row--subkind-info      { border-left: 4px solid  #c8a87a; }
+        /* Kind groups — compliance-grade split: DECLARED (self-stated, no independent
+           verification) vs VERIFIABLE (document / biometric / cryptographic evidence).
+           This is the legally meaningful distinction per D-426 Art. 15 (CDD = declared)
+           vs Instr. Art. 13 (EDD = verifiable). */
+        .kind-group {
+            margin-top: 0.65rem; padding: 0.3rem 0 0 0;
+        }
+        .kind-group:first-child { margin-top: 0.4rem; padding-top: 0; }
+        .kind-group__head {
+            display: flex; align-items: center; gap: 0.45rem;
+            padding: 0.42rem 0.7rem; margin-bottom: 0.32rem;
+            font-size: 0.7rem; font-weight: 800;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            border-radius: 4px; cursor: help;
+        }
+        .kind-group__lbl { flex: 1; }
+        .kind-group__sub {
+            font-weight: 600; font-style: normal;
+            text-transform: lowercase; letter-spacing: 0;
+            font-size: 0.7rem; opacity: 0.7;
+            margin-left: 0.25rem;
+        }
+        .kind-group__count { font-size: 0.64rem; font-weight: 700; opacity: 0.75; }
+        /* VERIFIABLE — green/teal: evidence-backed, independently checkable */
+        .kind-group--verifiable .kind-group__head {
+            background: #dceadd; color: #1e4d2c;
+        }
+        /* DECLARED — solid amber */
+        .kind-group--declared .kind-group__head {
+            background: #f4e7c4; color: #6b4a14;
+        }
+        @media (prefers-color-scheme: dark) {
+            .kind-group--verifiable .kind-group__head {
+                background: rgba(80,150,100,0.18); color: #a8d8b8;
+            }
+            .kind-group--declared .kind-group__head {
+                background: rgba(217,184,112,0.22); color: #f0d2a3;
+            }
+        }
+        .kind-group__body { display: flex; flex-direction: column; gap: 0.1rem; }
+
+        /* Sub-kind badges — small inline marker inside verifiable/declared group,
+           identifying the specific mechanism (UPLOAD · BIOMETRIC · PROOF · SIGN · INFO). */
+        .subkind-badge {
+            display: inline-block;
+            font-size: 0.54rem; font-weight: 800;
+            letter-spacing: 0.07em;
+            padding: 0.16rem 0.4rem;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            margin-right: 0.5rem;
+            vertical-align: 1px;
+            white-space: nowrap; line-height: 1;
+            min-width: 4.4rem; text-align: center;
+        }
+        /* Verifiable sub-kinds — variations on green/blue (evidence) */
+        .subkind-badge--upload    { background: #d5dfef; color: #1f3458; border-color: #7a98c8; }
+        .subkind-badge--biometric { background: #e5d5ef; color: #4a1f5a; border-color: #b87ac8; }
+        .subkind-badge--proof     { background: #dceadd; color: #1e4d2c; border-color: #6ca87f; }
+        /* Declared sub-kinds — variations on amber (self-stated) */
+        .subkind-badge--sign      { background: #efd5d5; color: #6a1f1f; border-color: #c87a7a; }
+        .subkind-badge--info      { background: #ebe5d4; color: #5a3f12; border-color: #c8a87a; }
+        @media (prefers-color-scheme: dark) {
+            .subkind-badge--upload    { background: rgba(122,152,200,0.22); color: #a8c2e6; border-color: rgba(122,152,200,0.45); }
+            .subkind-badge--biometric { background: rgba(184,122,200,0.22); color: #d8a8e8; border-color: rgba(184,122,200,0.45); }
+            .subkind-badge--proof     { background: rgba(80,150,100,0.22); color: #a8d8b8; border-color: rgba(80,150,100,0.45); }
+            .subkind-badge--sign      { background: rgba(200,122,122,0.22); color: #e8a0a0; border-color: rgba(200,122,122,0.45); }
+            .subkind-badge--info      { background: rgba(200,168,122,0.22); color: #e8c997; border-color: rgba(200,168,122,0.45); }
+        }
+        /* Section: DASP does — no left rail, color identity via background only */
+        .field-row--dasp {
+            background: #dfeaf5; border-left: 0;
+        }
+        .field-row--dasp .field-row__label { color: #1f3f66; }
+        .field-row--dasp .field-row__input { font-family: inherit; color: #2e4a6e; }
+        /* Dark-mode override */
+        @media (prefers-color-scheme: dark) {
+            .block__sub-head--client { background: #3a2c0d; color: #f2d99a; border-color: #6b4b14; }
+            .block__sub-head--dasp { background: #14283f; color: #b0cce6; border-color: #2c5780; }
+            .field-row--client { background: #2b2210; }
+            .field-row--client .field-row__label { color: #e8c97a; }
+            .field-row--client .field-row__input { color: #d4b87a; }
+            .field-row--dasp { background: #142331; }
+            .field-row--dasp .field-row__label { color: #b8d4ee; }
+            .field-row--dasp .field-row__input { color: #a0c0e0; }
+        }
+        .block__sub-head {
+            font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--text-3);
+            margin-top: 0.7rem; margin-bottom: 0.3rem;
+        }
+        .block__notes {
+            margin-top: 0.5rem; padding-top: 0.45rem;
+            border-top: 1px dashed var(--border);
+        }
+        .block__notes ul { padding-left: 1rem; font-size: 0.78rem; }
+        .block__notes li { color: var(--text-2); margin: 0.1rem 0; }
+        @media (max-width: 600px) {
+            .field-row { grid-template-columns: 1fr; gap: 0.15rem; }
+        }
+
         /* Citation chip */
         .cite {
             display: inline-block; font-size: 0.66rem; font-weight: 600;
@@ -396,101 +1192,138 @@
         <div class="form__head">
             <div class="form__title">Inputs</div>
             <div class="form__actions">
-                <button type="button" class="btn btn--ghost" id="wiz-reset">Reset</button>
-                <button type="button" class="btn" id="wiz-ex-sdd">SDD example</button>
-                <button type="button" class="btn" id="wiz-ex-cdd">CDD example</button>
-                <button type="button" class="btn btn--primary" id="wiz-ex-edd">EDD example</button>
+                <button type="button" class="btn btn--reset" id="wiz-reset" title="Clear all inputs to defaults">
+                    <span class="btn__icon" aria-hidden="true">↺</span>Reset
+                </button>
+                <span class="form__actions-sep" aria-hidden="true"></span>
+                <span class="form__actions-grp-label">Load preset</span>
+                <button type="button" class="btn btn--example btn--example-sdd" id="wiz-ex-sdd" title="Simplified DD scenario — occasional crypto exchange, $500, no risk flags">SDD</button>
+                <button type="button" class="btn btn--example btn--example-cdd" id="wiz-ex-cdd" title="Standard CDD scenario — occasional crypto exchange, $2,500, no risk flags">CDD</button>
+                <button type="button" class="btn btn--example btn--example-edd" id="wiz-ex-edd" title="Enhanced DD scenario — ongoing OTC, legal entity, bankwire $50K, PEP + opaque ownership + high-risk jur">EDD</button>
+                <span class="form__actions-sep" aria-hidden="true"></span>
+                <button type="button" class="btn btn--export" id="wiz-export-json" title="Download structured JSON of verdict + obligations">
+                    <span class="btn__icon" aria-hidden="true">⬇</span>Export JSON
+                </button>
             </div>
         </div>
 
-        <div class="form__grid">
+        <div class="input-flow">
 
-            <fieldset class="form__field form__field--span-12">
-                <legend class="field__legend">Operation type <span style="font-weight:400;color:var(--text-3);">— LEAD Art. 19 statutory categories</span></legend>
-                <div class="chips" id="wiz-op-chips">
-                    <label class="chip" title="Inside: On-ramp · Off-ramp · OTC (over-the-counter exchange). LEAD Art. 19(a) — fiat ↔ crypto or crypto ↔ crypto exchange."><input type="radio" name="operation" value="exchange" checked> Exchange</label>
-                    <label class="chip" title="Inside: Internal P2P · External in · External out. LEAD Art. 19(f.1) — moving digital assets between persons, wallets or accounts on behalf of clients."><input type="radio" name="operation" value="transfer"> Transfer</label>
-                    <label class="chip" title="Inside: Payment receipt · Settlement · Payment outgoing. Composite — merchant acquiring (payer + merchant flow) combining (f.1) Transfer + (a) Exchange + (f.2) Custody."><input type="radio" name="operation" value="payments"> Payments</label>
-                    <label class="chip" title="Inside: Deposit · Withdrawal. LEAD Art. 19(f.2) — safekeep, custody or manage digital assets on behalf of clients."><input type="radio" name="operation" value="custody"> Custody</label>
+            <!-- Row 1: Operation — top label, then op chips + subop chips inline -->
+            <div class="input-row input-row--operation">
+                <div class="input-row__head">
+                    <span class="input-row__label">Operation</span>
+                    <span class="input-row__head-desc">LEAD Art. 19 statutory category + sub-operation</span>
                 </div>
-                <div class="chips" id="wiz-subop-chips" style="margin-top:0.5rem;">
-                    <!-- Exchange -->
-                    <label class="chip subop-exchange" title="Fiat → crypto purchase via electronic rail or cash."><input type="radio" name="subop" value="onramp" checked> On-ramp</label>
-                    <label class="chip subop-exchange" title="Crypto → fiat sale + settlement to bank or cash."><input type="radio" name="subop" value="offramp"> Off-ramp</label>
-                    <label class="chip subop-exchange" title="Bilateral block trade (over-the-counter exchange) — large-ticket, off-platform negotiation."><input type="radio" name="subop" value="otc"> OTC (over-the-counter exchange)</label>
-                    <!-- Transfer -->
-                    <label class="chip subop-transfer" style="display:none;" title="Book transfer between two clients of the same DASP — no chain involvement."><input type="radio" name="subop" value="p2p"> Internal P2P</label>
-                    <label class="chip subop-transfer" style="display:none;" title="Inbound from an external wallet or another VASP into the DASP."><input type="radio" name="subop" value="extin"> External in</label>
-                    <label class="chip subop-transfer" style="display:none;" title="Outbound to an external wallet or another VASP. Travel Rule + KYT critical."><input type="radio" name="subop" value="extout"> External out</label>
-                    <!-- Payments -->
-                    <label class="chip subop-payments" style="display:none;" title="Payer sends crypto to DASP for the merchant — DASP is beneficiary."><input type="radio" name="subop" value="payreceipt"> Payment receipt</label>
-                    <label class="chip subop-payments" style="display:none;" title="DASP transfers funds (crypto or fiat) to merchant."><input type="radio" name="subop" value="settlement"> Settlement</label>
-                    <label class="chip subop-payments" style="display:none;" title="DASP-initiated outbound payment (refund, payout, etc.)."><input type="radio" name="subop" value="payoutgoing"> Payment outgoing</label>
-                    <!-- Custody -->
-                    <label class="chip subop-custody" style="display:none;" title="Client deposits crypto onto DASP for safekeeping. KYT on inbound chain."><input type="radio" name="subop" value="deposit"> Deposit</label>
-                    <label class="chip subop-custody" style="display:none;" title="Client withdraws crypto from DASP custody to external wallet. Travel Rule + KYT on destination."><input type="radio" name="subop" value="withdrawal"> Withdrawal</label>
+                <div class="op-body">
+                    <div class="chips" id="wiz-op-chips">
+                        <label class="chip" title="LEAD Art. 19(a) — fiat ↔ crypto or crypto ↔ crypto exchange. Inside: On-ramp · Off-ramp · OTC."><input type="radio" name="operation" value="exchange" checked> Exchange</label>
+                        <label class="chip" title="LEAD Art. 19(f.1) — moving digital assets between persons, wallets or accounts on behalf of clients. Inside: Internal P2P · External in · External out."><input type="radio" name="operation" value="transfer"> Transfer</label>
+                        <label class="chip" title="Composite — merchant acquiring (payer + merchant flow) combining (f.1) Transfer + (a) Exchange + (f.2) Custody. Inside: Payment receipt · Settlement · Payment outgoing."><input type="radio" name="operation" value="payments"> Payments</label>
+                        <label class="chip" title="LEAD Art. 19(f.2) — safekeep, custody or manage digital assets on behalf of clients. Inside: Deposit · Withdrawal."><input type="radio" name="operation" value="custody"> Custody</label>
+                    </div>
+                    <span class="op-body__sublabel">Sub-operation</span>
+                    <div class="chips" id="wiz-subop-chips">
+                        <!-- Exchange -->
+                        <label class="chip subop-exchange" title="Fiat → crypto purchase via electronic rail or cash."><input type="radio" name="subop" value="onramp" checked> On-ramp</label>
+                        <label class="chip subop-exchange" title="Crypto → fiat sale + settlement to bank or cash."><input type="radio" name="subop" value="offramp"> Off-ramp</label>
+                        <label class="chip subop-exchange" title="Bilateral block trade — large-ticket, off-platform negotiation."><input type="radio" name="subop" value="otc"> OTC</label>
+                        <!-- Transfer -->
+                        <label class="chip subop-transfer" style="display:none;" title="Book transfer between two clients of the same DASP — no chain involvement."><input type="radio" name="subop" value="p2p"> Internal P2P</label>
+                        <label class="chip subop-transfer" style="display:none;" title="Inbound from an external wallet or another VASP into the DASP."><input type="radio" name="subop" value="extin"> External in</label>
+                        <label class="chip subop-transfer" style="display:none;" title="Outbound to an external wallet or another VASP. Travel Rule + KYT critical."><input type="radio" name="subop" value="extout"> External out</label>
+                        <!-- Payments -->
+                        <label class="chip subop-payments" style="display:none;" title="Payer sends crypto to DASP for the merchant — DASP is beneficiary."><input type="radio" name="subop" value="payreceipt"> Payment receipt</label>
+                        <label class="chip subop-payments" style="display:none;" title="DASP transfers funds (crypto or fiat) to merchant."><input type="radio" name="subop" value="settlement"> Settlement</label>
+                        <label class="chip subop-payments" style="display:none;" title="DASP-initiated outbound payment (refund, payout, etc.)."><input type="radio" name="subop" value="payoutgoing"> Payment outgoing</label>
+                        <!-- Custody -->
+                        <label class="chip subop-custody" style="display:none;" title="Client deposits crypto onto DASP for safekeeping. KYT on inbound chain."><input type="radio" name="subop" value="deposit"> Deposit</label>
+                        <label class="chip subop-custody" style="display:none;" title="Client withdraws crypto from DASP custody to external wallet. Travel Rule + KYT on destination."><input type="radio" name="subop" value="withdrawal"> Withdrawal</label>
+                    </div>
                 </div>
-            </fieldset>
+            </div>
 
-            <fieldset class="form__field form__field--span-3">
-                <legend class="field__legend">Client type</legend>
-                <div class="chips">
-                    <label class="chip"><input type="radio" name="clientType" value="natural" checked> Natural</label>
-                    <label class="chip"><input type="radio" name="clientType" value="legal"> Legal</label>
+            <!-- Row 2: Scenario — proper labeled grid, 5 columns -->
+            <div class="input-row input-row--scenario">
+                <div class="input-row__head">
+                    <span class="input-row__label">Scenario</span>
+                    <span class="input-row__head-desc">Who · how often · how · how much · where</span>
                 </div>
-            </fieldset>
-
-            <fieldset class="form__field form__field--span-3">
-                <legend class="field__legend">Relationship</legend>
-                <div class="chips">
-                    <label class="chip"><input type="radio" name="rel" value="occasional" checked> Occasional</label>
-                    <label class="chip"><input type="radio" name="rel" value="ongoing"> Ongoing</label>
+                <div class="scenario-grid">
+                    <div class="field-card">
+                        <span class="field-card__lbl">Client</span>
+                        <div class="seg">
+                            <label class="chip"><input type="radio" name="clientType" value="natural" checked> Natural</label>
+                            <label class="chip"><input type="radio" name="clientType" value="legal"> Legal</label>
+                        </div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-card__lbl">Relationship</span>
+                        <div class="seg">
+                            <label class="chip"><input type="radio" name="rel" value="occasional" checked> Occasional</label>
+                            <label class="chip"><input type="radio" name="rel" value="ongoing"> Ongoing</label>
+                        </div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-card__lbl">Channel (settlement rail)</span>
+                        <div class="seg">
+                            <label class="chip" title="Crypto on-chain transfer (BTC / ETH / USDT / etc.). KYT chain analysis on source / destination addresses; VASP-to-VASP Travel Rule."><input type="radio" name="channel" value="crypto" checked> Crypto</label>
+                            <label class="chip" title="Banking electronic transfer — SWIFT, SEPA, ACH, SPEI, Fedwire."><input type="radio" name="channel" value="bankwire"> Bank wire</label>
+                            <label class="chip" title="Physical cash in/out at point-of-service. Triggers Operación Regulada at > $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
+                            <label class="chip" title="Voucher / gift-card / money order. Triggers Operación Regulada at > $25,000."><input type="radio" name="channel" value="other"> Other</label>
+                        </div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-card__lbl">Amount (USD)</span>
+                        <div class="amount-wrap">
+                            <input type="number" id="wiz-amount" class="input" value="500" min="0" step="100">
+                        </div>
+                    </div>
+                    <div class="field-card">
+                        <span class="field-card__lbl">Jurisdiction</span>
+                        <select id="wiz-jur" class="select">
+                            <option value="standard" data-cat="">Approved</option>
+                            <option value="edd" data-cat="FATF Grey List / partial sanctions">High-risk → EDD</option>
+                            <option value="reject" data-cat="UN sanctions / OFAC comprehensive / crypto-ban / FATF Call for Action">Restricted → Reject</option>
+                        </select>
+                    </div>
                 </div>
-            </fieldset>
+                <details class="scenario-help">
+                    <summary>Channel / Jurisdiction guide</summary>
+                    <p><strong>Channel = the money-flow rail</strong>, not the asset direction. <strong>Crypto</strong> for any BTC/ETH/USDT etc. transfer. <strong>Bank wire</strong> for fiat electronic rails. <strong>Cash</strong> for physical money. <strong>Other</strong> for vouchers / gift-cards / money orders.</p>
+                    <p><strong>Jurisdiction:</strong> <strong>High-risk</strong> = FATF Grey List + partial sanctions regimes. <strong>Restricted</strong> = UN Security Council lists, OFAC comprehensive, national crypto-bans and FATF Call for Action. Lists verified Q1 2026 — refresh after each FATF plenary (Feb / Jun / Oct). Salvadoran statute binds UNSC + UIF national lists only; OFAC / EU / UK enter through banking-partner contracts and USD-corridor exposure.</p>
+                </details>
+            </div>
 
-            <fieldset class="form__field form__field--span-3">
-                <legend class="field__legend">Channel (settlement rail)</legend>
-                <div class="chips">
-                    <label class="chip" title="Crypto on-chain transfer (BTC / ETH / USDT / etc.). KYT chain analysis on source / destination addresses; VASP-to-VASP Travel Rule."><input type="radio" name="channel" value="crypto" checked> Crypto on-chain</label>
-                    <label class="chip" title="Banking electronic transfer — SWIFT, SEPA, ACH, SPEI, Fedwire. Banking-style Travel Rule (MT103-style fields), bank-corridor risk."><input type="radio" name="channel" value="bankwire"> Bank wire (E-transfer)</label>
-                    <label class="chip" title="Physical cash in/out at point-of-service (kiosk, branch, OTC desk). Triggers Operación Regulada at &gt; $10,000."><input type="radio" name="channel" value="cash"> Cash</label>
-                    <label class="chip" title="Voucher, gift-card, money order, cashier's check or other non-electronic non-cash instrument. Triggers Operación Regulada at &gt; $25,000."><input type="radio" name="channel" value="other"> Other</label>
+            <!-- Row 3: Risk factors — 2 stacked sub-groups for clarity -->
+            <div class="input-row input-row--risk">
+                <div class="input-row__head">
+                    <span class="input-row__label">Risk flags</span>
+                    <span class="input-row__head-desc">Hard-stop → reject · EDD trigger → enhanced due diligence</span>
                 </div>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;"><strong>Channel = the money-flow rail</strong>, not the asset direction. <strong>Crypto on-chain</strong> for any BTC/ETH/USDT etc. transfer. <strong>Bank wire (E-transfer)</strong> for fiat electronic rails. <strong>Cash</strong> for physical money. <strong>Other</strong> for vouchers / gift-cards / money orders.</p>
-            </fieldset>
-
-            <fieldset class="form__field form__field--span-3">
-                <legend class="field__legend">Amount (USD)</legend>
-                <div class="amount-wrap">
-                    <input type="number" id="wiz-amount" class="input" value="500" min="0" step="100">
+                <div class="risk-body">
+                    <div class="risk-sub risk-sub--stop">
+                        <span class="risk-sub__lbl" title="Confirmed match → automatic REJECT (no EDD path)">🛑 Hard-stop</span>
+                        <div class="risk-sub__chips">
+                            <label class="check danger" title="Hard-stop: REJECT + freeze + UIF notify."><input type="checkbox" name="f" value="sanctions"> Sanctions hit</label>
+                            <label class="check danger" title="Hard-stop: client refuses required CDD or Travel Rule data."><input type="checkbox" name="f" value="refuses"> Refuses CDD</label>
+                        </div>
+                    </div>
+                    <div class="risk-sub risk-sub--edd">
+                        <span class="risk-sub__lbl" title="Any one → escalates verdict to EDD">⚠ EDD trigger</span>
+                        <div class="risk-sub__chips">
+                            <label class="check" title="PEP — self / family ≤ 2nd degree / close associate. Triggers EDD."><input type="checkbox" name="f" value="pep"> PEP</label>
+                            <label class="check" title="Opaque / multi-layer ownership structure."><input type="checkbox" name="f" value="opaque"> Opaque ownership</label>
+                            <label class="check" title="Cash-intensive business or unclear source of funds."><input type="checkbox" name="f" value="cash"> Cash-intensive</label>
+                            <label class="check" title="Structuring pattern detected in transaction history."><input type="checkbox" name="f" value="structuring"> Structuring</label>
+                            <label class="check" title="Customer profile deviation from declared expected behaviour."><input type="checkbox" name="f" value="profile"> Profile deviation</label>
+                            <label class="check" title="Counterparty wallet flagged (mixer / darknet exposure via KYT)."><input type="checkbox" name="f" value="mixer"> Mixer / darknet</label>
+                            <label class="check" title="Third-party funder — not the account holder."><input type="checkbox" name="f" value="thirdparty"> 3rd-party funder</label>
+                            <label class="check" title="Adverse media or law-enforcement hits."><input type="checkbox" name="f" value="adverse"> Adverse media</label>
+                        </div>
+                    </div>
                 </div>
-            </fieldset>
-
-            <fieldset class="form__field form__field--span-6">
-                <legend class="field__legend">Counterparty / client jurisdiction</legend>
-                <select id="wiz-jur" class="select">
-                    <option value="standard" data-cat="">Approved — El Salvador or FATF-compliant jurisdiction (standard CDD)</option>
-                    <option value="edd" data-cat="FATF Grey List / partial sanctions">High-risk — FATF Grey List or partial sanctions (EDD required)</option>
-                    <option value="reject" data-cat="UN sanctions / OFAC comprehensive / crypto-ban / FATF Call for Action">Restricted — UN sanctions (statutory) + OFAC / crypto-ban / FATF Call for Action (entity policy) → Reject</option>
-                </select>
-                <p style="font-size:0.7rem; color:var(--text-3); margin-top:0.4rem;">Three working buckets — pick the one the counterparty falls into. <strong>High-risk</strong> = FATF Grey List + partial sanctions regimes. <strong>Restricted</strong> = UN Security Council lists, OFAC comprehensive, national crypto-bans and FATF Call for Action. Lists verified Q1 2026 — <strong>refresh after each FATF plenary</strong> (Feb / Jun / Oct). Salvadoran statute binds UNSC + UIF national lists only; OFAC / EU / UK enter through banking-partner contracts and USD-corridor exposure.</p>
-            </fieldset>
-
-            <fieldset class="form__field form__field--span-6">
-                <legend class="field__legend">Risk factors (any one → EDD)</legend>
-                <div class="checks">
-                    <label class="check danger"><input type="checkbox" name="f" value="sanctions"> Sanctions hit (UNSC / UIF national)</label>
-                    <label class="check"><input type="checkbox" name="f" value="pep"> PEP — self / family ≤ 2nd degree / associate</label>
-                    <label class="check"><input type="checkbox" name="f" value="opaque"> Opaque / multi-layer ownership</label>
-                    <label class="check"><input type="checkbox" name="f" value="cash"> Cash-intensive / SoF unclear</label>
-                    <label class="check"><input type="checkbox" name="f" value="structuring"> Structuring pattern</label>
-                    <label class="check"><input type="checkbox" name="f" value="profile"> Profile deviation</label>
-                    <label class="check"><input type="checkbox" name="f" value="mixer"> Wallet flagged (mixer / darknet)</label>
-                    <label class="check"><input type="checkbox" name="f" value="thirdparty"> Third-party funder</label>
-                    <label class="check danger"><input type="checkbox" name="f" value="refuses"> Client refuses CDD / Travel Rule</label>
-                    <label class="check"><input type="checkbox" name="f" value="adverse"> Adverse media / law-enforcement</label>
-                </div>
-            </fieldset>
+            </div>
 
         </div>
     </form>
@@ -574,118 +1407,182 @@
     /* Per-subop operational obligations + likely UIF Annex IV forms.
        Forms: 1=Wallet↔Wallet same · 2=Wallets distintas · 3=Wallet→Banco · 4=Cajero→Wallet
               5=Wallet→Cajero · 6=Tarjeta→Wallet · 7=Compraventa · 8=Intercambio Moneda */
+    /* SUBOP_NOTES — operation-specific obligations.
+       Tier model:
+         - dasp      = DASP-side operational steps; always shown (any verdict tier).
+         - clientCDD = client obligations at Standard CDD level (shown at CDD + EDD).
+         - clientEDD = ADDITIONAL client obligations at EDD level (shown only at EDD).
+         - At SDD verdict, NO client items in this block — the SDD block already lists
+           the simplified-floor asks (name, ID, Travel Rule, sanctions). */
     const SUBOP_NOTES = {
         // Exchange
         onramp: {
             summary: 'Fiat → crypto purchase. Funding-rail risk on the fiat side; KYT on the destination wallet.',
-            items: [
-                'Capture funding-rail data (card / bank / cash-in) — funding-side counterparty traceability',
-                'KYT on the outbound wallet address (sanctions · mixer · darknet)',
-                'SoF proportionality check vs declared customer profile',
+            clientCDD: [
+                {l: 'Disclose funding source', v: 'card / bank account / cash-in voucher — type + reference'},
             ],
-            forms: ['6 — Tarjeta → Wallet', '4 — Cajero → Wallet', '7 — Compraventa con Wallet'],
+            clientEDD: [
+                {l: 'Funding ownership proof', v: 'card statement or bank statement (recent ≤3 mo) in client name'},
+                {l: 'Destination wallet ownership attestation', v: 'sign if not auto-created by DASP'},
+            ],
+            dasp: [
+                {l: 'Capture funding-rail data', v: 'card BIN / bank routing / cash voucher ref — counterparty traceability'},
+                {l: 'KYT on outbound wallet', v: 'sanctions · mixer · darknet exposure check'},
+                {l: 'SoF proportionality check', v: 'amount vs declared customer profile'},
+                {l: 'File UIF Annex IV form', v: '6 — Tarjeta → Wallet · 4 — Cajero → Wallet · 7 — Compraventa con Wallet'},
+            ],
         },
         offramp: {
             summary: 'Crypto → fiat sale. KYT on the incoming chain leg; bank-corridor risk on settlement.',
-            items: [
-                'KYT on the source wallet (sanctions · mixer · darknet · prior hops)',
-                'Beneficiary bank account verified (name match, proof of ownership)',
-                'Bank-corridor risk: funds may be frozen by settlement bank if KYT trail is weak',
+            clientCDD: [
+                {l: 'Provide bank account details', v: 'IBAN + bank name'},
             ],
-            forms: ['3 — Wallet → Cuenta bancaria', '5 — Wallet → Cajero', '7 — Compraventa con Wallet'],
+            clientEDD: [
+                {l: 'Bank account ownership proof', v: 'name-match certified extract / bank letter'},
+                {l: 'Source wallet ownership attestation', v: 'sign if unhosted source'},
+            ],
+            dasp: [
+                {l: 'KYT on source wallet', v: 'sanctions · mixer · darknet · prior-hop exposure'},
+                {l: 'Beneficiary bank name match', v: 'against client identity on file'},
+                {l: 'Bank-corridor sanctions check', v: 'banking-partner screen pre-settlement'},
+                {l: 'File UIF Annex IV form', v: '3 — Wallet → Cuenta bancaria · 5 — Wallet → Cajero · 7 — Compraventa con Wallet'},
+            ],
         },
         otc: {
             summary: 'Bilateral block trade. Large-ticket → automatic EDD posture; structuring scrutiny.',
-            items: [
-                'Documented SoF + SoW required from inception (regardless of EDD trigger)',
-                'KYT on counterparty address(es) — including counterparty platform if VASP',
-                'Off-platform negotiation log retained alongside on-platform settlement record',
-                'Pre-trade sanctions / PEP screen on all parties; independent review on amounts &gt; US$50K',
+            clientCDD: [
+                {l: 'Provide counterparty information', v: 'name + ID type + ID number + jurisdiction'},
             ],
-            forms: ['7 — Compraventa con Wallet', '8 — Intercambio de Moneda con Wallet'],
+            clientEDD: [
+                {l: 'Sign off-platform negotiation log', v: 'agreed-terms record (amount · rate · timing)', hint: 'SoF/SoW docs are covered globally in EDD measures block.'},
+            ],
+            dasp: [
+                {l: 'KYT on counterparty address(es)', v: 'including counterparty VASP platform if applicable'},
+                {l: 'Pre-trade sanctions / PEP screen', v: 'on all parties to the trade'},
+                {l: 'Independent senior review', v: 'on amounts > US$50K — second-line officer sign-off'},
+                {l: 'Retain off-platform + on-platform log', v: 'negotiation record tied to settlement record'},
+                {l: 'File UIF Annex IV form', v: '7 — Compraventa con Wallet · 8 — Intercambio de Moneda con Wallet'},
+            ],
         },
         // Transfer
         p2p: {
             summary: 'Book transfer between two clients of this DASP. No chain leg → no Travel Rule on this leg.',
-            items: [
-                'Sanctions / PEP screen on <strong>both</strong> internal accounts (originator + beneficiary)',
-                '<strong>No Travel Rule message</strong> required for the internal book leg (no external counterparty)',
-                'Internal monitoring: aggregate same-day P2P volume per pair — structuring scrutiny',
-                'Per-tx record retained even though no chain hash exists',
+            clientCDD: [],
+            clientEDD: [],
+            dasp: [
+                {l: 'Sanctions / PEP screen on both internal accounts', v: 'originator + beneficiary parties'},
+                {l: 'No Travel Rule message required', v: 'internal book leg — no external counterparty'},
+                {l: 'Aggregate same-day P2P volume per pair', v: 'structuring scrutiny + auto-alert'},
+                {l: 'Per-tx record retained', v: 'no chain hash but internal reference retained 15 yr'},
+                {l: 'File UIF Annex IV form', v: '1 — Wallet ↔ Wallet (same provider)'},
             ],
-            forms: ['1 — Wallet ↔ Wallet (same provider)'],
         },
         extin: {
             summary: 'Inbound from an external wallet or another VASP. KYT on source; receive Travel Rule data if counterparty is VASP.',
-            items: [
-                'KYT on source address — sanctions, mixer, darknet, prior-hop exposure',
-                'Receive Travel Rule data set if counterparty is a VASP; if missing, hold and request before crediting client',
-                'Unhosted / self-custodied source: enhanced scrutiny + statement from client confirming ownership',
-                'Sanctions screen against UNSC / UIF national lists on the source address',
+            clientCDD: [],
+            clientEDD: [
+                {l: 'Source wallet ownership attestation', v: 'sign if unhosted / self-custodied source'},
             ],
-            forms: ['2 — Wallets distintas'],
+            dasp: [
+                {l: 'KYT on source address', v: 'sanctions · mixer · darknet · prior-hop exposure'},
+                {l: 'Receive Travel Rule data set', v: 'from counterparty VASP — hold credit if missing'},
+                {l: 'Enhanced scrutiny if unhosted', v: 'adverse-flag check + ownership attestation review'},
+                {l: 'Sanctions screen on source address', v: 'UNSC + UIF national lists'},
+                {l: 'File UIF Annex IV form', v: '2 — Wallets distintas'},
+            ],
         },
         extout: {
-            summary: 'Outbound to an external wallet or another VASP. <strong>Travel Rule + KYT critical</strong>.',
-            items: [
-                '<strong>Travel Rule</strong> data set transmitted to receiving VASP per Acuerdo 734 § V (chain to Instr. Art. 52 par. 2)',
-                'KYT on destination address — abort if sanctions / mixer / darknet hit',
-                'Unhosted destination: capture client attestation of ownership; pre-flight test transfer for new addresses recommended',
-                'Confirmation log retained — counterparty VASP receipt of Travel Rule data',
+            summary: 'Outbound to an external wallet or another VASP. Travel Rule + KYT critical.',
+            clientCDD: [
+                {l: 'Specify destination wallet', v: 'address + chain'},
             ],
-            forms: ['2 — Wallets distintas', '3 — Wallet → Cuenta bancaria (if fiat off-ramp leg)'],
+            clientEDD: [
+                {l: 'Destination wallet ownership attestation', v: 'sign if unhosted destination'},
+                {l: 'Approve first-time-address withdrawal', v: 'step-up auth (2FA + cool-down)'},
+            ],
+            dasp: [
+                {l: 'Build + transmit Travel Rule data set', v: 'to receiving VASP per Acuerdo 734 § V / Instr. Art. 52 par. 2'},
+                {l: 'KYT on destination address', v: 'abort if sanctions / mixer / darknet hit'},
+                {l: 'Retain Travel Rule receipt confirmation', v: 'counterparty VASP acknowledgement log'},
+                {l: 'Sanctions screen pre-execution', v: 'on destination + counterparty VASP'},
+                {l: 'File UIF Annex IV form', v: '2 — Wallets distintas · 3 — Wallet → Cuenta bancaria (if fiat off-ramp leg)'},
+            ],
         },
         // Payments (composite)
         payreceipt: {
             summary: 'Payer sends crypto to DASP for the merchant. DASP is beneficiary on this leg.',
-            items: [
-                'Payer (originator) Travel Rule data captured if counterparty VASP transmits it',
-                'KYT on incoming chain leg (sanctions / mixer / merchant-impersonation patterns)',
-                'Merchant CDD held under settlement leg (separate operational record)',
-                'Conversion-to-fiat (if any) recorded as a separate leg with its own form',
+            clientCDD: [],
+            clientEDD: [],
+            dasp: [
+                {l: 'Receive payer Travel Rule data', v: 'if counterparty VASP transmits it'},
+                {l: 'KYT on incoming chain leg', v: 'sanctions · mixer · merchant-impersonation patterns'},
+                {l: 'Record conversion-to-fiat as separate leg', v: 'with its own UIF form if applicable'},
+                {l: 'File UIF Annex IV form', v: '1 — Wallet ↔ Wallet · 2 — Wallets distintas · 6 — Tarjeta → Wallet'},
             ],
-            forms: ['1 — Wallet ↔ Wallet (same provider)', '2 — Wallets distintas', '6 — Tarjeta → Wallet'],
         },
         settlement: {
             summary: 'DASP transfers funds (crypto or fiat) to merchant. Merchant CDD applies as ongoing relationship.',
-            items: [
-                'Merchant CDD: legal-person documentation + UBO chain + business purpose',
-                'Settlement window log (T+0 / T+1 / T+2) retained — ties payreceipt to payout',
-                'Bank-corridor risk on fiat settlement leg — banking-partner sanctions screen',
-                'Refunds / reversals processed under <em>Payment outgoing</em> sub-op',
+            clientCDD: [
+                {l: 'Provide settlement bank account', v: 'IBAN + bank name'},
             ],
-            forms: ['3 — Wallet → Cuenta bancaria', '1 — Wallet ↔ Wallet (same provider)'],
+            clientEDD: [
+                {l: 'Settlement bank ownership proof', v: 'certified extract / name-match letter'},
+            ],
+            dasp: [
+                {l: 'Settlement window log', v: 'T+0 / T+1 / T+2 — tying payreceipt to payout'},
+                {l: 'Bank-corridor sanctions check', v: 'banking-partner screen on fiat leg'},
+                {l: 'Refund / reversal classification', v: 'route under Payment outgoing sub-op'},
+                {l: 'File UIF Annex IV form', v: '3 — Wallet → Cuenta bancaria · 1 — Wallet ↔ Wallet'},
+            ],
         },
         payoutgoing: {
             summary: 'DASP-initiated outbound payment (refund, payout, etc.).',
-            items: [
-                'Travel Rule on outbound transfer to receiving VASP (or banking-style fields on fiat rail)',
-                'Payee identity verified — refunds only to the original funding instrument unless documented exception',
-                'KYT on destination address; sanctions screen pre-execution',
-                'Reason-for-payment classification recorded (refund · payout · adjustment)',
+            clientCDD: [
+                {l: 'Confirm payee identity', v: 'refunds only to original funding instrument unless documented exception'},
             ],
-            forms: ['1 — Wallet ↔ Wallet (same provider)', '2 — Wallets distintas', '3 — Wallet → Cuenta bancaria'],
+            clientEDD: [],
+            dasp: [
+                {l: 'Travel Rule on outbound', v: 'to receiving VASP (or banking-style fields on fiat rail)'},
+                {l: 'KYT on destination', v: 'address + sanctions screen pre-execution'},
+                {l: 'Reason-for-payment classification', v: 'refund · payout · adjustment — recorded'},
+                {l: 'File UIF Annex IV form', v: '1 — Wallet ↔ Wallet · 2 — Wallets distintas · 3 — Wallet → Cuenta bancaria'},
+            ],
         },
         // Custody
         deposit: {
             summary: 'Client deposits crypto onto DASP for safekeeping. KYT on inbound chain.',
-            items: [
-                'KYT on source address before crediting client balance',
-                'Cold / hot wallet segregation per <span class="cite cite--rpsad">RPSAD Art. 17(b)</span> fiduciary duty for client balances',
-                'Per-deposit hash + timestamp + amount + asset — retained 15 yr',
-                'Whitelisted-address policy (if applicable) — record any new-address approval',
+            clientCDD: [
+                {l: 'Disclose source wallet', v: 'address + chain'},
             ],
-            forms: ['2 — Wallets distintas', '4 — Cajero → Wallet (if cash deposit via ATM)'],
+            clientEDD: [
+                {l: 'Source wallet ownership attestation', v: 'sign if unhosted source'},
+                {l: 'Pre-approve new source addresses', v: 'whitelist workflow before first deposit'},
+            ],
+            dasp: [
+                {l: 'KYT on source address', v: 'before crediting client balance'},
+                {l: 'Hot / cold wallet segregation', v: 'per <span class="cite cite--rpsad">RPSAD Art. 17(b)</span> fiduciary duty'},
+                {l: 'Per-deposit log', v: 'hash + timestamp + amount + asset — retained 15 yr'},
+                {l: 'Whitelisted-address approval log', v: 'record any new-address approval'},
+                {l: 'File UIF Annex IV form', v: '2 — Wallets distintas · 4 — Cajero → Wallet (if cash deposit via ATM)'},
+            ],
         },
         withdrawal: {
-            summary: 'Client withdraws crypto from DASP custody to external wallet. <strong>Travel Rule + KYT on destination</strong>.',
-            items: [
-                'Travel Rule data set on outbound to a receiving VASP',
-                'KYT on destination address — abort if sanctions / mixer / darknet hit',
-                'Step-up auth on first-time-address withdrawals',
-                'Withdrawal log: client + amount + destination + chain TXID + timestamp — 15 yr retention',
+            summary: 'Client withdraws crypto from DASP custody to external wallet. Travel Rule + KYT on destination.',
+            clientCDD: [
+                {l: 'Specify destination wallet', v: 'address + chain'},
+                {l: 'Pass step-up auth', v: '2FA on submission'},
             ],
-            forms: ['2 — Wallets distintas', '5 — Wallet → Cajero (if cash withdrawal via ATM)'],
+            clientEDD: [
+                {l: 'Destination wallet ownership attestation', v: 'sign if first-time / unhosted'},
+                {l: 'Cool-down on first-time-address', v: 'approve after cool-down window'},
+            ],
+            dasp: [
+                {l: 'Build + transmit Travel Rule data set', v: 'on outbound to receiving VASP'},
+                {l: 'KYT on destination address', v: 'abort if sanctions / mixer / darknet hit'},
+                {l: 'Step-up auth enforcement', v: 'first-time-address policy'},
+                {l: 'Withdrawal log', v: 'client + amount + destination + chain TXID + timestamp — 15 yr retention'},
+                {l: 'File UIF Annex IV form', v: '2 — Wallets distintas · 5 — Wallet → Cajero (if cash withdrawal via ATM)'},
+            ],
         },
     };
 
@@ -698,19 +1595,644 @@
             + (anchor ? ' <span class="op-badge__anchor">' + esc(anchor) + '</span>' : '') + '</div>';
     }
 
-    function operationContextBlock(s) {
+    /* Build CLIENT mega-block subsections — organised by PROCEDURE TOPIC.
+       Returns array of subsection objects: { title, when, fields } */
+    function buildClientFlow(s, d) {
+        const sections = [];
+        const isLegal = s.clientType === 'legal';
+        const subop = s.subop;
+
+        // Travel-Rule role analysis — which side(s) client participates in
+        const isInternalP2P = (s.operation === 'transfer' && subop === 'p2p');
+        // OTC = bilateral block trade. Client direction unknown a priori → treat as BOTH originator + beneficiary.
+        // Settlement = DASP pays merchant on completed tx. Merchant = client = beneficiary on receiving leg.
+        const clientIsOriginator = ['extout', 'withdrawal', 'offramp', 'payoutgoing', 'otc'].includes(subop);
+        const clientIsBeneficiary = ['extin', 'deposit', 'payreceipt', 'settlement', 'otc'].includes(subop);
+        const isFiatFunded = subop === 'onramp'; // client pays fiat, gets crypto = client is BOTH (originator-fiat + beneficiary-crypto)
+        const isFiatPayout = subop === 'offramp' || subop === 'settlement'; // client sends crypto OR gets fiat = needs destination bank
+        const isOTC = subop === 'otc';
+
+        // ── 1. SDD — Simplified Due Diligence (only at SDD) ──
+        if (d.v === 'sdd') {
+            const fields = isLegal ? [
+                {l: 'Legal entity name', v: 'as registered'},
+                {l: 'Registration country + number', v: 'jurisdiction + commercial registry ID'},
+                {l: 'NIT', v: 'tax registration number'},
+                {l: 'Contact email + phone', v: 'authorised representative (verified via OTP)'},
+            ] : [
+                {l: 'Full legal name', v: 'as on government ID'},
+                {l: 'ID document type + number', v: 'DUI · Passport · Carnet de Residente'},
+                {l: 'Date of birth', v: 'DD / MM / YYYY'},
+                {l: 'Contact email + phone', v: 'verified via OTP'},
+            ];
+            sections.push({
+                title: 'SDD — Simplified Due Diligence',
+                when: '<span class="cite cite--instr">Instr. Art. 14</span> · <span class="cite cite--d426">LCLDA Art. 17</span>',
+                tier: s.rel === 'ongoing' ? ['onboarding'] : ['per-tx'],
+                fields,
+            });
+        }
+
+        // ── 2. Identification (CDD+) ──
+        if (d.v === 'cdd' || d.v === 'edd') {
+            const fields = isLegal ? [
+                {l: 'Certificate of Incorporation — upload', v: 'escritura — original or notarised copy'},
+                {l: 'Commercial registry extract — upload', v: 'recent ≤3 months'},
+                {l: 'Articles of Incorporation / by-laws — upload', v: 'PDF / scan'},
+                {l: 'Power of Attorney per signatory — upload', v: 'POA — original or notarised copy'},
+                {l: 'NIT certificate — upload', v: 'tax registration document'},
+                {l: 'Each signatory passes biometric session', v: 'Sumsub / Veriff — liveness + face match vs ID', hint: 'One session per authorised signatory.'},
+            ] : [
+                {l: 'Government-issued photo ID — upload', v: 'DUI · Passport · Carnet de Residente — clear scan', hint: 'Salvadoran nationals: DUI · Foreigners: Passport · Foreign residents: Carnet de Residente.'},
+                {l: 'Biometric liveness session', v: 'Sumsub / Veriff — real-time selfie + face match vs ID'},
+            ];
+            sections.push({
+                title: 'Identification & biometric verification',
+                when: '<span class="cite cite--instr">Instr. Art. 12 (Reform 2)</span>',
+                tier: ['onboarding'],
+                addedAt: 'cdd',
+                fields,
+            });
+        }
+
+        // ── 3. Standard CDD profile + declarations (CDD+) ──
+        if (d.v === 'cdd' || d.v === 'edd') {
+            const fields = isLegal ? [
+                {l: 'Operating licence — upload', v: 'business-activity-specific authorisation'},
+                {l: 'Board / assembly resolution — upload', v: 'signed minutes authorising the relationship'},
+                {l: 'Shareholder register — upload', v: 'with chain to natural UBOs ≥10%'},
+                {l: 'Business purpose', v: 'free-text description of activity'},
+                {l: 'Main counterparties', v: 'list of major business partners (top 3-5)'},
+                {l: 'Main jurisdictions of operation', v: 'list of countries'},
+                {l: 'Expected monthly volume (USD)', v: 'under $10K · $10K-$100K · $100K-$1M · $1M+'},
+                {l: 'Expected transaction frequency', v: 'daily · weekly · monthly · quarterly · ad-hoc'},
+                {l: 'SoF sworn declaration — sign', v: 'authorised representative — statement of origin of funds'},
+            ] : [
+                {l: 'Residential address', v: 'street + city + country'},
+                {l: 'Proof of address — upload', v: 'utility bill or bank statement (≤3 months)', hint: 'Name on the proof must match ID name.'},
+                {l: 'Occupation', v: 'free-text job title / profession'},
+                {l: 'Employer (if applicable)', v: 'company name'},
+                {l: 'Declared income source', v: 'salary · business · pension · investment · other'},
+                {l: 'Monthly income range (USD)', v: 'under $1K · $1K-$5K · $5K-$25K · $25K+'},
+                {l: 'Expected monthly volume (USD)', v: 'under $1K · $1K-$10K · $10K-$50K · $50K+'},
+                {l: 'Expected transaction frequency', v: 'daily · weekly · monthly · quarterly · ad-hoc'},
+                {l: 'Tax ID (NIT) if applicable', v: 'tax number'},
+                {l: 'PEP self-declaration — sign', v: 'sworn statement: are you a PEP? Yes/No + category if Yes'},
+                {l: 'SoF sworn declaration — sign', v: 'free-text statement of origin of funds'},
+            ];
+            sections.push({
+                title: 'Standard CDD profile + declarations',
+                when: '<span class="cite cite--instr">Instr. Art. 12</span>',
+                tier: ['onboarding'],
+                addedAt: 'cdd',
+                fields,
+            });
+        }
+
+        // ── 4. EDD documentary evidence (EDD only) — natural vs legal tailored ──
+        if (d.v === 'edd') {
+            const fields = isLegal ? [
+                // LEGAL — corporate documentary set
+                {l: 'Source of Funds documents — upload', v: 'recent revenue invoices · sales contracts · client receivables · loan agreements · trade financing letters', hint: 'Covering 3-12 months. Must reconcile to declared business activity + expected volume.'},
+                {l: 'Source of Wealth documents — upload', v: 'audited balance sheet · capitalisation table · UBO chain · profit reinvestment trail · M&amp;A history', hint: 'Documentary basis for accumulated business wealth — not just current cash-flow.'},
+                {l: 'Audited financials — upload', v: 'last fiscal year, signed by external auditor + management letter'},
+                {l: 'Bank reference / corporate bank statements — upload', v: 'last 3-6 months from primary banking relationship'},
+                {l: 'Beneficial-ownership declaration — sign', v: 'sworn UBO chain ≥10% to natural persons + no nominee structure'},
+            ] : [
+                // NATURAL — personal documentary set
+                {l: 'Source of Funds documents — upload', v: 'payslips (3-12 mo) · employment contract · self-employed invoices · bank statements · sale-of-asset deeds · inheritance / gift letters · investment statements · lottery / settlement proof', hint: 'Document set must match declared income source + monthly income range. Multiple sources require separate evidence for each.'},
+                {l: 'Source of Wealth documents — upload', v: 'tax returns (last 2-3 yrs) · property deeds · investment portfolio statements · estate / inheritance records · audited estate valuation', hint: 'Historical wealth accumulation evidence — separate from current SoF. Required at EDD per Instr. Art. 13(c).'},
+                {l: 'Personal bank statements — upload', v: 'last 3-6 months from primary account — reconciles SoF / SoW story'},
+                {l: 'Secondary biometric session', v: 'Sumsub re-verify with notarised ID + selfie + additional doc set'},
+                {l: 'Net-worth self-declaration — sign', v: 'sworn statement: total estimated net worth + liquid assets + jurisdiction of assets'},
+            ];
+            sections.push({
+                title: 'EDD documentary evidence',
+                when: '<span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span>',
+                tier: ['onboarding', 'periodic'],
+                addedAt: 'edd',
+                fields,
+            });
+        }
+
+        // ── 5. PEP detailed disclosure (EDD + PEP flag) ──
+        if (d.v === 'edd' && s.f.pep) {
+            sections.push({
+                title: 'PEP detailed disclosure',
+                when: '<span class="cite cite--d426">LCLDA Art. 19</span>',
+                tier: ['onboarding'],
+                addedAt: 'edd',
+                fields: [
+                    {l: 'PEP function / role', v: 'name of public office or position'},
+                    {l: 'Function start / cease dates', v: 'DD / MM / YYYY each (or "active")'},
+                    {l: 'Family members ≤2nd degree', v: 'parents · siblings · children · in-laws — name + relationship each'},
+                    {l: 'Spouse(s)', v: 'list of names'},
+                    {l: 'Close associates', v: 'name + nature of association (business partner, board co-member, etc.)'},
+                ],
+            });
+        }
+
+        // ── 6. Jurisdiction disclosure (EDD + high-risk jur) ──
+        if (d.v === 'edd' && s.jur === 'edd') {
+            sections.push({
+                title: 'High-risk jurisdiction disclosure',
+                when: esc(s.jurCat),
+                tier: ['onboarding'],
+                addedAt: 'edd',
+                fields: [
+                    {l: 'Jurisdictional ties', v: 'residency · business operations · counterparties in ' + esc(s.jurCat)},
+                    {l: 'Additional SoF rationale', v: 'why funds originate / pass through this jurisdiction'},
+                ],
+            });
+        }
+
+        // ── 7. Travel Rule — direction-aware (per-transaction) ──
+        if (!isInternalP2P) {
+            const trFields = [];
+
+            // OTC — bilateral block trade: notify client this is two-sided
+            if (isOTC) {
+                trFields.push(
+                    {l: 'Trade direction', v: 'select buy / sell · counterparty name + type', hint: 'OTC is bilateral — DASP captures direction (you buy or sell crypto) before applying Travel Rule fields. Both legs may need data.'},
+                );
+            }
+
+            // CLIENT IS ORIGINATOR — supplies beneficiary side
+            if (clientIsOriginator || isFiatFunded) {
+                if (isFiatFunded) {
+                    // On-ramp: client = originator on FIAT leg → needs funding source data
+                    trFields.push(
+                        {l: 'Funding source type', v: 'card · bank account · cash voucher', hint: 'Client is originator on fiat leg (on-ramp).'},
+                        {l: 'Funding source details', v: 'card BIN / IBAN / cash-in voucher reference'},
+                    );
+                }
+                if (clientIsOriginator) {
+                    // Out-bound crypto: client = originator on CRYPTO leg → DASP auto-pulls ①②③
+                    trFields.push(
+                        {l: '④ Beneficiary full name', v: 'legal entity / natural person name'},
+                        {l: '⑤ Beneficiary account / wallet', v: 'wallet address (crypto) or IBAN (fiat)'},
+                        {l: '⑥ Beneficiary bank / VASP name', v: 'receiving institution (or "self-custody" if unhosted)'},
+                    );
+                    // Destination wallet type attestation — needed for outbound-to-unhosted scenarios
+                    trFields.push(
+                        {l: 'Destination wallet type — attest', v: 'VASP-hosted · self-custodied (own) · self-custodied (third-party)', hint: 'Per FATF Rec 16 + Acuerdo 734 § V RBA: outbound to unhosted (self-custody) wallet requires explicit attestation of wallet control. Auto-pulled to Travel Rule packet ⑥ field semantics.'},
+                    );
+                    // If self-custody own → ownership attestation; if third-party → at EDD, KYC of beneficiary
+                    if (d.v === 'edd') {
+                        trFields.push(
+                            {l: 'Self-custody ownership proof (if own)', v: 'sign-of-message challenge from declared wallet — proves control'},
+                            {l: 'Third-party beneficiary identification (if not own)', v: 'name + ID type/№ + relationship to originator'},
+                        );
+                    } else {
+                        trFields.push(
+                            {l: 'Self-custody ownership confirmation (if own)', v: 'click-to-confirm declaration — wallet under your control'},
+                        );
+                    }
+                }
+            }
+
+            // CLIENT IS BENEFICIARY — supplies destination wallet for on-ramp / OTC-buy; attestation at EDD if unhosted source
+            if (isFiatFunded || isOTC) {
+                // On-ramp / OTC: client = beneficiary on CRYPTO leg → needs destination wallet
+                trFields.push(
+                    {l: '⑤ Beneficiary wallet (crypto)', v: 'destination wallet address — if external, otherwise auto-created', hint: isOTC ? 'OTC: required if client is buying crypto and wants delivery to external wallet.' : null},
+                );
+            }
+            if (isFiatPayout) {
+                // Off-ramp / Settlement: client = beneficiary on FIAT leg → needs destination bank account
+                const fiatHint = subop === 'settlement'
+                    ? 'Settlement: merchant payout to registered bank account; auto-fill from CDD profile unless changed.'
+                    : null;
+                trFields.push(
+                    {l: 'Destination bank account (fiat)', v: 'IBAN + bank name', hint: fiatHint},
+                );
+            }
+            if (clientIsBeneficiary && !isFiatFunded && !isOTC && d.v === 'edd') {
+                // Inbound external: client is beneficiary — at EDD, attestation if unhosted source
+                trFields.push(
+                    {l: 'Source wallet ownership attestation', v: 'sign if originator wallet is unhosted / self-custodied'},
+                );
+            }
+
+            // Transaction purpose — RBA: explicit only when EDD or risk-flag, else inferred from subop
+            const hasRbaFlag = s.f.mixer || s.f.thirdparty || s.f.structuring || s.f.profile || s.f.adverse || s.f.cash;
+            const explicitPurpose = (d.v === 'edd') || hasRbaFlag;
+            if (explicitPurpose) {
+                const reason = (d.v === 'edd')
+                    ? 'EDD — deeper rationale required beyond operation type'
+                    : 'RBA flag triggered — explicit context corroborates KYT';
+                trFields.push(
+                    {l: 'Transaction purpose — explicit rationale', v: 'business context · counterparty relation · funds source link', hint: reason + '. Not in 7 statutory fields, but required at this risk tier per <span class="cite cite--instr">Instr. Art. 13</span>.'},
+                );
+            }
+            // For SDD / standard CDD on unambiguous subop, purpose is inferred from operation+subop — see DASP side.
+
+            sections.push({
+                title: 'Travel Rule (per-transaction)',
+                when: '<span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> · $0 floor',
+                tier: ['per-tx'],
+                fields: trFields,
+            });
+        }
+
+        // ── 8. Operation-specific (per subop, tier-gated) ──
+        const note = SUBOP_NOTES[subop];
+        if (note) {
+            const opFields = [];
+            if (d.v === 'cdd' || d.v === 'edd') {
+                (note.clientCDD || []).forEach(f => opFields.push(f));
+            }
+            if (d.v === 'edd') {
+                (note.clientEDD || []).forEach(f => opFields.push(f));
+            }
+            if (opFields.length) {
+                const op = OP_LABEL[s.operation] || s.operation;
+                const sub = SUBOP_LABEL[subop] || subop;
+                sections.push({
+                    title: 'Operation-specific — ' + esc(op) + ' · ' + esc(sub),
+                    when: '<span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
+                    tier: ['per-tx'],
+                    fields: opFields,
+                });
+            }
+        }
+
+        return sections;
+    }
+
+    /* Build DASP mega-block subsections — organised by PROCEDURE TOPIC.
+       Returns array of subsection objects: { title, when, fields } */
+    function buildDaspFlow(s, d) {
+        const sections = [];
+        const isLegal = s.clientType === 'legal';
+        const subop = s.subop;
+        const isInternalP2P = (s.operation === 'transfer' && subop === 'p2p');
+
+        // ── 1. SDD measures (DASP side, only at SDD) ──
+        if (d.v === 'sdd' && s.rel === 'ongoing') {
+            sections.push({
+                title: 'SDD measures — ongoing low-risk customer',
+                when: '<span class="cite cite--instr">Instr. Art. 14</span>',
+                tier: ['onboarding', 'periodic'],
+                owner: ['co', 'risk'],
+                sla: 'same session', slaClass: 'fast', slaHint: 'Captured at signup; periodic review every 3 yrs',
+                fields: [
+                    {l: 'Document RBA low-risk classification', v: 'criteria + factors that justify SDD posture — retained in file'},
+                    {l: 'Capture ID data without full verification', v: 'verification may be deferred per Art. 14(a)'},
+                    {l: 'Set reduced ID refresh cadence', v: 'e.g. every 3 yrs (vs annual at CDD) per Art. 14(b)'},
+                    {l: 'Set reduced monitoring threshold', v: 'reasonable monetary floor per Art. 14(c)'},
+                    {l: 'Infer purpose from transaction pattern', v: 'no separate collection (Art. 14(d))'},
+                ],
+            });
+            // Re-classification triggers — what auto-escalates the SDD-classified customer
+            sections.push({
+                title: 'Auto-escalation triggers — SDD → CDD / EDD',
+                when: '<span class="cite cite--instr">Instr. Art. 14 last par.</span> · <span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span>',
+                tier: ['periodic'],
+                owner: ['risk', 'tech'],
+                sla: 'real-time', slaClass: 'instant', slaHint: 'Automated rule-based monitoring; thresholds checked on every customer event',
+                fields: [
+                    {l: 'Single e-tx > US$1,000', v: 'auto-escalate to Standard CDD', hint: 'Acuerdo 734 § V.2.b.II middle band.'},
+                    {l: 'Single e-tx > US$4,000', v: 'auto-escalate to EDD (intensificada)', hint: 'Acuerdo 734 § V.2.b.II EDD band — senior approval + documentary SoF + SoW.'},
+                    {l: 'Cumulative volume spike vs declared expected', v: 'profile-deviation trigger → STR analysis'},
+                    {l: 'Cash > US$10,000 / other-means > US$25,000', v: 'CDD + Operación Regulada filing'},
+                    {l: 'KYT score breach (mixer / darknet exposure)', v: 'EDD + STR analysis'},
+                    {l: 'New PEP / adverse-media / sanctions hit', v: 'EDD + UIF action chain'},
+                    {l: 'Counterparty in high-risk jurisdiction', v: 'EDD + jurisdiction-specific cadence'},
+                    {l: 'Any suspicion (Art. 14 last par.)', v: 'mandatory escalation to CDD/EDD or STR pipeline — SDD posture no longer permissible'},
+                ],
+            });
+        }
+        if (d.v === 'sdd' && s.rel !== 'ongoing') {
+            sections.push({
+                title: 'SDD measures — occasional low-risk transaction',
+                when: '<span class="cite cite--instr">Instr. Art. 14-A(III) Reform 2</span>',
+                tier: ['per-tx'],
+                owner: ['ops', 'tech'],
+                sla: '~1 min', slaClass: 'fast', slaHint: 'Automated capture; reduced verification scope for low-risk occasional tx',
+                fields: [
+                    {l: 'Validate Travel Rule 7 fields captured', v: 'mandatory at $0 floor — even at SDD'},
+                    {l: 'Apply reduced ID verification scope', v: 'no biometric / no full document authentication at low risk'},
+                    {l: 'Decide on SoF request (RBA)', v: 'request only if RBA-warranted per Art. 12(c)'},
+                ],
+            });
+        }
+
+        // ── 2. Identity verification ops (CDD+) ──
+        if (d.v === 'cdd' || d.v === 'edd') {
+            const fields = isLegal ? [
+                {l: 'Cross-check entity at Registro de Comercio', v: 'public registry verification'},
+                {l: 'Authenticate documents', v: 'OCR + signature validation + amendment chain'},
+                {l: 'Run biometric verification on signatories', v: 'face match vs ID, liveness pass'},
+                {l: 'Record senior management names + titles', v: 'roster from documentation'},
+                {l: 'Record verification timestamp + verifier', v: 'YYYY-MM-DD HH:MM + officer name'},
+                {l: 'Record verification outcome', v: 'pass / fail'},
+            ] : [
+                {l: 'Document authenticity check', v: 'OCR + security features + MRZ validation'},
+                {l: 'Face match vs ID photo', v: 'biometric comparison selfie ↔ document image'},
+                {l: 'Verify document is current', v: 'reject expired IDs'},
+                {l: 'Record document type + № + dates', v: 'type, number, issue, expiry, issuing authority'},
+                {l: 'Record verification timestamp + verifier', v: 'YYYY-MM-DD HH:MM + officer name'},
+                {l: 'Record verification outcome', v: 'pass / fail'},
+            ];
+            sections.push({
+                title: 'Identity verification ops',
+                when: '<span class="cite cite--instr">Instr. Art. 12 (Reform 2)</span>',
+                tier: ['onboarding'],
+                addedAt: 'cdd',
+                owner: ['ops', 'tech'],
+                sla: '≤5 min', slaClass: 'fast', slaHint: 'Auto via Sumsub/Veriff/Onfido — biometric + doc check. Manual review queue for edge cases.',
+                fields,
+            });
+        }
+
+        // ── 3. CDD profile capture + classification (CDD+) ──
+        if (d.v === 'cdd' || d.v === 'edd') {
+            const fields = isLegal ? [
+                {l: 'Capture entity profile', v: 'business activity + expected volume / frequency'},
+                {l: 'Identify UBOs ≥10%', v: 'names + DUI/Passport № + % held — chain to natural persons'},
+                {l: 'Capture business profile answers', v: 'purpose + counterparties + jurisdictions'},
+                {l: 'Capture declared SoF text', v: 'free-text retained in profile'},
+                {l: 'Validate consistency', v: 'business activity vs expected volume; UBO chain vs declared structure'},
+                {l: 'Assign customer risk profile', v: 'Low · Medium · High per RBA — documented'},
+            ] : [
+                {l: 'Capture address + proof type + date', v: 'into client profile'},
+                {l: 'Capture profile answers', v: 'occupation, employer, income range, volume, frequency'},
+                {l: 'Capture PEP self-declaration result', v: 'no PEP · domestic · foreign · int\'l org'},
+                {l: 'Capture declared SoF text', v: 'free-text retained in profile'},
+                {l: 'Validate name consistency', v: 'address proof name = ID name'},
+                {l: 'Validate volume-vs-income consistency', v: 'expected volume reasonable vs declared income'},
+                {l: 'Assign customer risk profile', v: 'Low · Medium · High per RBA — documented'},
+            ];
+            sections.push({
+                title: 'CDD profile capture + risk classification',
+                when: '<span class="cite cite--instr">Instr. Art. 12</span>',
+                tier: ['onboarding', 'periodic'],
+                addedAt: 'cdd',
+                owner: ['ops', 'risk'],
+                sla: 'same session', slaClass: 'fast', slaHint: 'Captured during onboarding; risk-score computed before relationship opens',
+                fields,
+            });
+        }
+
+        // ── 4. EDD measures (EDD only) ──
+        if (d.v === 'edd') {
+            const sofVerifyFields = isLegal ? [
+                {l: 'Verify SoF — corporate documents', v: 'revenue invoices / contracts / receivables — reconcile to declared business activity + bank statements', hint: 'Cross-check invoice counterparties against sanctions + KYT.'},
+                {l: 'Verify SoW — capital structure', v: 'audited financials + UBO chain + reinvestment history — coherent corporate wealth story'},
+                {l: 'Verify bank reference / statements', v: 'authenticity check + consistency with declared volume'},
+            ] : [
+                {l: 'Verify SoF — personal income docs', v: 'payslips / employment contract / invoices — reconcile to declared income source + range', hint: 'Cross-check employer / counterparty names against sanctions + adverse media.'},
+                {l: 'Verify SoW — accumulated wealth', v: 'tax returns + property / investment / inheritance docs — historical coherence with declared net worth'},
+                {l: 'Verify bank statements', v: 'authenticity + reconciliation with declared SoF / SoW story'},
+                {l: 'Match secondary biometric vs primary', v: 'liveness on second session + notarised-ID check'},
+            ];
+            sections.push({
+                title: 'EDD measures',
+                when: '<span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span>',
+                tier: ['onboarding', 'periodic'],
+                addedAt: 'edd',
+                owner: ['co', 'risk'],
+                sla: '1-5 BD', slaClass: 'medium', slaHint: 'Manual SoF/SoW document review + senior-management approval lead time',
+                fields: [
+                    {l: 'Obtain senior-management written approval', v: 'signed memo / board minutes — dated, retained in client file', hint: 'Approval to open or continue the relationship.'},
+                    ...sofVerifyFields,
+                    {l: 'Activate continuous KYT monitoring', v: 'on every transaction — Chainalysis / Elliptic / TRM'},
+                    {l: 'Assign initial KYT score', v: 'numeric (1-100) or risk band (Low · Med · High · Critical)'},
+                    {l: 'Set EDD refresh cadence', v: 'quarterly · semi-annually · annually'},
+                    {l: 'Periodic EDD refresh', v: 'on any material change <span class="cite cite--instr">Instr. Art. 23</span>'},
+                ],
+            });
+        }
+
+        // ── 5. PEP-specific ops (EDD + PEP) ──
+        if (d.v === 'edd' && s.f.pep) {
+            sections.push({
+                title: 'PEP-specific operations',
+                when: '<span class="cite cite--d426">LCLDA Art. 19</span>',
+                tier: ['onboarding', 'periodic'],
+                addedAt: 'edd',
+                owner: ['co'],
+                sla: '1-2 BD', slaClass: 'medium', slaHint: 'PEP file build + related-parties screen — CO desk turnaround',
+                fields: [
+                    {l: 'Categorise PEP', v: 'domestic · foreign · international organisation'},
+                    {l: 'Screen related parties', v: 'family · spouses · close associates against PEP DB'},
+                    {l: 'Open PEP file with full record', v: 'function, dates, related parties, evidence'},
+                    {l: 'Set re-screen cadence', v: 'every ___ months — persists 5 yrs post-cease'},
+                    {l: 'Re-screen on material change', v: 'function change · jurisdictional change'},
+                ],
+            });
+        }
+
+        // ── 6. Jurisdiction-specific ops (EDD + jur=edd) ──
+        if (d.v === 'edd' && s.jur === 'edd') {
+            sections.push({
+                title: 'Jurisdiction-specific operations',
+                when: esc(s.jurCat),
+                tier: ['onboarding', 'periodic'],
+                addedAt: 'edd',
+                owner: ['co', 'risk'],
+                sla: '1-2 BD', slaClass: 'medium', slaHint: 'Sectoral / regional list verification + CO sign-off',
+                fields: [
+                    {l: 'Apply jurisdiction-specific sanctions lists', v: 'sectoral / regional lists checked + date'},
+                    {l: 'Obtain senior approval', v: 'approver name + date'},
+                    {l: 'KYT on every transaction with this counterparty', v: 'enhanced cadence'},
+                    {l: 'Set periodic re-screen cadence', v: 'weekly · monthly · quarterly'},
+                    {l: 'Set risk-appetite review trigger', v: 'event-based (status change / sanctions hit)'},
+                ],
+            });
+        }
+
+        // ── 7. Sanctions + PEP screening (every tx, any tier) ──
+        sections.push({
+            title: 'Sanctions, PEP & adverse-media screening',
+            when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LCLDA Art. 19</span>',
+            tier: ['onboarding', 'per-tx'],
+            blocking: true,
+            owner: ['co', 'tech'],
+            sla: 'instant (~1s)', slaClass: 'instant', slaHint: 'Automated API screen via Chainalysis / Elliptic / TRM / WorldCheck. Sanction freeze: without delay (LECAT Art. 37 ¶3).',
+            fields: [
+                {l: 'Run sanctions screen', v: 'UNSC 1267 / 1373 / 1718 / 1988 / 2231 + UIF national list', hint: 'Tool: Chainalysis · Elliptic · TRM · WorldCheck · Dow Jones.'},
+                {l: 'Run PEP screen', v: 'UIF official list (binding) + commercial DB (supplementary)'},
+                {l: 'Run adverse-media screen', v: 'name + ID against open-source intelligence'},
+                {l: 'Record results + reviewer + timestamp', v: 'snapshot of result + lists version + officer name'},
+                {l: 'On hit: freeze + STR + tipping-off prohibited', v: '<span class="cite cite--d426">LCLDA Art. 44</span>'},
+            ],
+        });
+
+        // ── 8. Travel Rule ops (every tx except P2P) ──
+        if (!isInternalP2P) {
+            const op = OP_LABEL[s.operation] || s.operation;
+            const sub = SUBOP_LABEL[subop] || subop;
+            const purposeFromSubop = subop ? (op + ' · ' + sub) : op;
+            const hasRbaFlag2 = s.f.mixer || s.f.thirdparty || s.f.structuring || s.f.profile || s.f.adverse || s.f.cash;
+            const purposeRow = (d.v === 'edd' || hasRbaFlag2)
+                ? {l: 'Capture explicit purpose declaration', v: 'free-text from client (EDD / RBA-flag)', hint: 'Required at this risk tier per <span class="cite cite--instr">Instr. Art. 13</span>. Cross-check vs declared expected pattern.'}
+                : {l: 'Infer purpose from operation+subop', v: 'auto-fill: ' + esc(purposeFromSubop), hint: 'SDD / standard CDD on unambiguous subop — purpose deduced from selected operation type per <span class="cite cite--instr">Instr. Art. 14(d)</span> (SDD) / RBA principle. No separate client query.'};
+            sections.push({
+                title: 'Travel Rule build / route / validate',
+                when: '<span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>',
+                tier: ['per-tx'],
+                blocking: true,
+                owner: ['tech', 'ops'],
+                sla: 'instant', slaClass: 'instant', slaHint: 'Pre-transmission gate — automated. Inbound holds: minutes to hours pending counterparty response.',
+                fields: [
+                    {l: '①②③ Auto-pull originator from CDD profile', v: 'name + account / wallet + ID type and №'},
+                    {l: '⑦ Generate transaction identifier', v: 'tx hash (crypto) / unique reference (fiat)'},
+                    purposeRow,
+                    {l: 'Classify destination wallet', v: 'VASP-hosted · self-custody (own) · self-custody (third-party)', hint: 'Drives routing branch — IVMS101 to VASP vs off-chain attestation pack for unhosted.'},
+                    {l: 'Sanctions + KYT screen on counterparty', v: 'pre-transmission — sanctions / mixer / darknet check on beneficiary address'},
+                    {l: 'Build IVMS101 / TRP packet', v: 'assemble 7 fields into protocol format'},
+                    {l: 'Outbound to VASP: route via Travel Rule rail', v: 'IVMS101 / TRP / Sygna / Notabene / Shyft'},
+                    {l: 'Outbound to unhosted: build attestation pack', v: 'ownership / third-party-identification record + sign-of-message proof (EDD)', hint: 'No counterparty VASP to deliver to; pack is retained internally as the Travel Rule equivalent record per FATF Rec 16 unhosted-wallet guidance.'},
+                    {l: 'Inbound: validate received packet', v: 'hold credit if missing fields — request before release'},
+                    {l: 'Inbound from unhosted: validate source attestation', v: 'EDD-only — verify ownership-proof if signed; freeze for review if missing'},
+                    {l: 'Retain packet + acknowledgement', v: '15-year audit trail per <span class="cite cite--d426">D-426 Art. 26</span>'},
+                ],
+            });
+        }
+
+        // ── 9. Operation-specific actions ──
+        const note = SUBOP_NOTES[subop];
+        if (note && note.dasp && note.dasp.length) {
+            const op = OP_LABEL[s.operation] || s.operation;
+            const sub = SUBOP_LABEL[subop] || subop;
+            sections.push({
+                title: 'Operation-specific — ' + esc(op) + ' · ' + esc(sub),
+                when: '<span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
+                tier: ['per-tx'],
+                owner: ['ops'],
+                sla: 'instant', slaClass: 'instant', slaHint: 'Real-time per-tx processing per Annex IV form code',
+                fields: note.dasp,
+            });
+        }
+
+        // ── 10. STR analysis (if flagged) ──
+        const strFlags = [];
+        if (s.f.structuring) strFlags.push('structuring pattern');
+        if (s.f.mixer) strFlags.push('flagged wallet / mixer exposure');
+        if (s.f.profile) strFlags.push('profile deviation');
+        if (s.f.thirdparty) strFlags.push('third-party funder');
+        if (s.f.adverse) strFlags.push('adverse media');
+        if (strFlags.length) {
+            sections.push({
+                title: 'STR analysis — elevated sensitivity',
+                when: '<span class="cite cite--d426">LCLDA Arts. 24, 44</span>',
+                tier: ['per-tx'],
+                owner: ['co', 'risk'],
+                sla: '≤15 BD analysis · 24h filing', slaClass: 'statutory', slaHint: 'Internal analysis ≤15 BD (Art. 24); STR filing 24h wall-clock from determination',
+                fields: [
+                    {l: 'Open STR analysis ticket', v: 'indicators: ' + strFlags.join(', ')},
+                    {l: 'Assign Compliance Officer', v: 'CO + primary analyst'},
+                    {l: 'Conduct internal analysis', v: '≤ 15 business days'},
+                    {l: 'Determine outcome', v: 'STR / no STR / pending — recorded with rationale'},
+                    {l: 'Submit STR to UIF (if filed)', v: 'within 24h wall-clock of determination'},
+                    {l: 'Apply tipping-off control', v: 'no client / third-party communication'},
+                    {l: 'Retain UIF acknowledgement', v: 'STR reference ID + timestamp'},
+                ],
+            });
+        }
+
+        // ── 11. Reporting obligations — only applicable to current scenario ──
+        const reports = [];
+        const ch = s.channel, amt = s.amount;
+        const isElec = (ch === 'crypto' || ch === 'bankwire');
+
+        // STR — only when suspicion flag triggers it
+        const strFlags2 = [];
+        if (s.f.structuring) strFlags2.push('structuring');
+        if (s.f.mixer) strFlags2.push('mixer');
+        if (s.f.profile) strFlags2.push('profile deviation');
+        if (s.f.thirdparty) strFlags2.push('3rd-party funder');
+        if (s.f.adverse) strFlags2.push('adverse media');
+        if (s.f.refuses) strFlags2.push('refuses CDD');
+        if (strFlags2.length) reports.push({
+            l: 'STR — Suspicious Transaction Report',
+            v: '24h wall-clock from determination to UIF · <span class="cite cite--d426">LCLDA Art. 24</span>',
+            hint: 'Triggered by: ' + strFlags2.join(', ') + '. Tipping-off prohibited per Art. 44.',
+        });
+
+        // Sanctions freeze — only on sanctions match
+        if (s.f.sanctions) reports.push({
+            l: 'Sanctions freeze report',
+            v: 'Without delay to FGR via UIF · <span class="cite cite--lecat">LECAT Art. 37 ¶3</span>',
+            hint: 'Administrative obligation — no judicial threshold for notification.',
+        });
+
+        // DASP Individual Tx Report — for ANY DASP operation ≥ $1,000.
+        // Annex IV.2 covers 8 forms incl. cash → wallet (#4), card → wallet (#6),
+        // voucher / OTC etc. — channel does not exclude the wallet-side filing.
+        if (amt >= 1000) {
+            const subopNote = subop && SUBOP_NOTES[subop];
+            const formHint = (subopNote && subopNote.forms && subopNote.forms.length)
+                ? 'form <strong>' + esc(subopNote.forms[0]) + '</strong>'
+                : 'one of 8 Annex IV transaction-type forms';
+            reports.push({
+                l: 'DASP Individual Tx Report (≥ $1,000)',
+                v: '5 BD to UIF — ' + formHint + ' · <span class="cite cite--instr">Acuerdo 734 § Annex IV.2</span>',
+                hint: 'Required for any DASP operation ≥ US$1,000 — applies regardless of fiat-leg channel (crypto · bank · cash · voucher). Note: at exactly $1,000 the verdict may still be SDD (Acuerdo 734 § V.2.b.II uses "mayor a $1,000" — strict above) while this report fires (§ Annex IV.2 uses "mayores o iguales a $1,000" — inclusive). Both thresholds are statutorily distinct.',
+            });
+        }
+
+        // Operación Regulada — cash > $10,000
+        if (ch === 'cash' && amt > 10000) reports.push({
+            l: 'Operación Regulada — cash',
+            v: '5 BD to UIF · <span class="cite cite--d426">LCLDA Art. 25</span>',
+        });
+
+        // Operación Regulada — other means > $25,000
+        if (ch === 'other' && amt > 25000) reports.push({
+            l: 'Operación Regulada — other means',
+            v: '5 BD to UIF · <span class="cite cite--instr">Instr. Art. 51</span>',
+        });
+
+        // DASP Monthly Client Report — always (mandatory periodic baseline)
+        reports.push({
+            l: 'DASP Monthly Client Report',
+            v: 'active / inactive / disconnected clients with any interaction — UIF Portal monthly · <span class="cite cite--instr">Acuerdo 734 § Annex IV.1</span>',
+        });
+
+        sections.push({
+            title: 'UIF reporting filings',
+            when: '<span class="cite cite--instr">Acuerdo 734 § Annex IV</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span>',
+            tier: ['per-tx', 'periodic'],
+            owner: ['co'],
+            sla: 'see per-filing', slaClass: 'statutory', slaHint: 'STR 24h · Sanctions freeze without delay · Operación Regulada 5 BD · Monthly + Annual on cadence.',
+            accent: 'reporting',
+            fields: reports,
+        });
+
+        // ── 12. Retention 15-yr (always) ──
+        sections.push({
+            title: 'Retention & records',
+            when: '<span class="cite cite--d426">LCLDA Art. 26</span>',
+            tier: ['periodic'],
+            owner: ['ops', 'tech'],
+            sla: '15 yrs', slaClass: 'statutory', slaHint: 'Minimum retention period from operation date or relationship end. Available to UIF on request without delay.',
+            accent: 'retention',
+            fields: [
+                {l: 'Retain operation record', v: '15 years minimum — from operation date or relationship termination'},
+                {l: 'Maintain per-client file', v: 'chronological transaction log'},
+                {l: 'Choose records format', v: 'physical · digital · electronic (equally valid)'},
+                {l: 'Assign per-client file ID + tx log ref', v: 'unique references for retrieval'},
+                {l: 'Ensure UIF accessibility', v: 'available on request without delay'},
+            ],
+        });
+
+        return sections;
+    }
+
+    function operationContextBlock(s, verdict) {
         if (!s.subop || !SUBOP_NOTES[s.subop]) return '';
         const note = SUBOP_NOTES[s.subop];
         const op = OP_LABEL[s.operation] || s.operation;
         const sub = SUBOP_LABEL[s.subop] || s.subop;
-        const items = note.items.slice();
-        if (note.forms && note.forms.length) {
-            items.push('<strong>Likely UIF Annex IV form(s):</strong> ' + note.forms.map(esc).join(' · '));
-        }
-        return block('block--purple',
-            esc(op) + ' · ' + esc(sub) + ' — operation-specific obligations'
-                + ' <span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
-            ['<em>' + note.summary + '</em>'].concat(items)
+        const head = esc(op) + ' · ' + esc(sub) + ' — operation-specific DASP actions'
+            + ' <span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>';
+        // Client items are now consolidated in the client-flow block above.
+        return blockFields('block--purple', head,
+            { client: [], dasp: note.dasp || [] },
+            [ '<em>' + note.summary + '</em>' ]
         );
     }
 
@@ -764,10 +2286,504 @@
         return '<div class="block ' + cls + '"><div class="block__head">' + head + '</div><ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul></div>';
     }
 
+    // Compliance-grade classification: DECLARED vs VERIFIABLE.
+    //   declared   — client self-states; DASP cannot independently verify content.
+    //                Includes typed info, sworn declarations, click-to-confirm.
+    //                At CDD this is the statutory baseline (D-426 Art. 15).
+    //   verifiable — documentary or biometric / cryptographic evidence the DASP
+    //                can verify against independent source. Required at EDD for SoF/SoW
+    //                (Instr. Art. 13). Includes uploaded docs, biometric sessions,
+    //                sign-of-message proofs, bank statements.
+    function detectFieldKind(field) {
+        if (field.kind) return field.kind; // explicit override
+        const l = (field.l || '').toLowerCase();
+        if (l.indexOf('upload') !== -1) return 'verifiable';
+        if (l.indexOf('biometric') !== -1 || l.indexOf(' session') !== -1) return 'verifiable';
+        if (l.indexOf('proof') !== -1) return 'verifiable';
+        if (l.indexOf('bank statements') !== -1) return 'verifiable';
+        return 'declared';
+    }
+
+    // Finer-grained sub-kind: what IS this row, mechanically.
+    //   Verifiable: UPLOAD / BIOMETRIC / PROOF
+    //   Declared:   SIGN / INFO
+    function detectFieldSubKind(field) {
+        if (field.subKind) return field.subKind;
+        const l = (field.l || '').toLowerCase();
+        if (l.indexOf('upload') !== -1) return 'upload';
+        if (l.indexOf('biometric') !== -1 || l.indexOf(' session') !== -1) return 'biometric';
+        if (l.indexOf('proof') !== -1) return 'proof';
+        if (l.indexOf('bank statements') !== -1) return 'upload'; // bank stmt is a document
+        if (l.indexOf('— sign') !== -1
+            || l.indexOf('sworn') !== -1
+            || l.indexOf('attest') !== -1
+            || l.indexOf('confirmation') !== -1
+            || l.indexOf('declaration') !== -1
+            || l.indexOf('sign ') === 0) return 'sign';
+        return 'info';
+    }
+
+    const SUBKIND_META = {
+        upload:    { lbl: 'UPLOAD',    title: 'Document attachment / file scan' },
+        biometric: { lbl: 'BIOMETRIC', title: 'Live biometric session (face-match + liveness)' },
+        proof:     { lbl: 'PROOF',     title: 'Cryptographic proof (sign-of-message / on-chain attestation)' },
+        sign:      { lbl: 'SIGN',      title: 'Sworn declaration / signed attestation — legal weight' },
+        info:      { lbl: 'INFO',      title: 'Typed information into the form' },
+    };
+
+    // Render a single field row inside a section ("client" or "dasp").
+    //   f.l    = label (action / item)
+    //   f.v    = value (placeholder / brief description)
+    //   f.hint = optional explanatory text under the row
+    function fieldRow(f, kind) {
+        const hintHtml = f.hint
+            ? '<div class="field-row__hint">' + f.hint + '</div>'
+            : '';
+        // Client-side: small sub-kind badge (UPLOAD / BIOMETRIC / PROOF / SIGN / INFO)
+        let subBadge = '';
+        let rowCls = 'field-row field-row--' + kind;
+        if (kind === 'client') {
+            const sk = detectFieldSubKind(f);
+            const m = SUBKIND_META[sk];
+            if (m) subBadge = '<span class="subkind-badge subkind-badge--' + sk + '" title="' + m.title + '">' + m.lbl + '</span>';
+            rowCls += ' field-row--subkind-' + sk;
+        }
+        return '<div class="' + rowCls + '">' +
+                  '<span class="field-row__label">' + subBadge + f.l + '</span>' +
+                  '<span class="field-row__input">' + f.v + '</span>' +
+                  hintHtml +
+               '</div>';
+    }
+
+    // Render CLIENT-side fields GROUPED by declared/verifiable.
+    // Verifiable first (legally stronger evidence: docs, biometric, cryptographic proof).
+    // Declared second (client self-states: typed info + sworn declarations).
+    const KIND_ORDER = ['verifiable', 'declared'];
+    const KIND_META = {
+        verifiable: {
+            lbl: 'Verifiable evidence',
+            hint: 'DASP verifies independently — document upload · biometric session · cryptographic proof. Required at EDD for SoF / SoW per Instr. Art. 13. Hover for details.',
+        },
+        declared: {
+            lbl: 'Self-declared <span class="kind-group__sub">(unverified)</span>',
+            hint: 'DASP does not verify content — client states this; legal weight at signing only. At CDD this is the statutory baseline per D-426 Art. 15.',
+        },
+    };
+    function clientFieldsGrouped(fields) {
+        const buckets = { verifiable: [], declared: [] };
+        fields.forEach(f => {
+            const k = detectFieldKind(f);
+            (buckets[k] || buckets.declared).push(f);
+        });
+        let html = '';
+        KIND_ORDER.forEach(k => {
+            if (!buckets[k].length) return;
+            const m = KIND_META[k];
+            html += '<div class="kind-group kind-group--' + k + '">' +
+                      '<div class="kind-group__head" title="' + m.hint + '">' +
+                          '<span class="kind-group__lbl">' + m.lbl + '</span>' +
+                          '<span class="kind-group__count">· ' + buckets[k].length + '</span>' +
+                      '</div>' +
+                      '<div class="kind-group__body">' +
+                          buckets[k].map(f => fieldRow(f, 'client')).join('') +
+                      '</div>' +
+                    '</div>';
+        });
+        return html;
+    }
+
+    // Generic mega-block renderer for either CLIENT or DASP side.
+    //   kind: 'client' | 'dasp'
+    //   head: top header text
+    //   sections: [{title, when, fields:[{l,v,hint}]}]
+    //   notes: optional [string]
+    function flowMegaBlock(kind, head, sections, notes, currentVerdict) {
+        const validSections = sections.filter(st => st.fields && st.fields.length);
+        if (!validSections.length) return '';
+        const wrapCls = kind === 'client' ? 'client-flow' : 'dasp-flow';
+        let html = '<div class="block ' + wrapCls + '">' +
+                      '<div class="block__head">' + head + '</div>';
+        validSections.forEach((st, i) => {
+            const num = (i + 1).toString().padStart(2, '0');
+            const when = st.when ? '<span class="flow-step__when">' + st.when + '</span>' : '';
+            const tiers = Array.isArray(st.tier) ? st.tier : (st.tier ? [st.tier] : []);
+            const tierBadges = tiers.map(t => {
+                const lbl = t === 'onboarding' ? 'ONBOARDING' :
+                            t === 'per-tx' ? 'PER-TX' :
+                            t === 'periodic' ? 'PERIODIC' : t.toUpperCase();
+                return '<span class="tier-badge tier-badge--' + t + '">' + lbl + '</span>';
+            }).join('');
+            const blockingBadge = st.blocking
+                ? '<span class="tier-badge tier-badge--blocking">⛔ BLOCKING</span>'
+                : '';
+            // NEW-at-tier badge: section appears only at this tier (not present at lower tier)
+            // Only meaningful when currentVerdict is 'cdd' or 'edd' AND section has explicit addedAt.
+            let newBadge = '';
+            let stepCls = 'flow-step';
+            if (st.addedAt && (currentVerdict === 'cdd' || currentVerdict === 'edd') && st.addedAt === currentVerdict) {
+                const lbl = currentVerdict === 'edd' ? 'NEW @ EDD' : 'NEW @ CDD';
+                newBadge = '<span class="tier-badge tier-badge--new">+ ' + lbl + '</span>';
+                stepCls += ' flow-step--new';
+            }
+            // Accent — distinct color for special-purpose sections (reporting, retention)
+            if (st.accent) stepCls += ' flow-step--accent-' + st.accent;
+            // Owner badges — who executes this step on the DASP side
+            const owners = Array.isArray(st.owner) ? st.owner : (st.owner ? [st.owner] : []);
+            const ownerBadges = owners.map(o => {
+                const lbl = o === 'co' ? 'CO' :
+                            o === 'risk' ? 'RISK' :
+                            o === 'ops' ? 'OPS' :
+                            o === 'tech' ? 'TECH' : o.toUpperCase();
+                return '<span class="owner-badge owner-badge--' + o + '" title="Step owner: ' + lbl + '">' + lbl + '</span>';
+            }).join('');
+            // SLA badge — expected execution time / statutory deadline
+            const slaBadge = st.sla
+                ? '<span class="sla-badge sla-badge--' + (st.slaClass || 'medium') + '" title="' + (st.slaHint || 'Expected execution time') + '">⏱ ' + st.sla + '</span>'
+                : '';
+            // Body: group by kind on client side, plain list on DASP side
+            const bodyHtml = (kind === 'client')
+                ? clientFieldsGrouped(st.fields)
+                : '<div class="block__fields">' + st.fields.map(f => fieldRow(f, kind)).join('') + '</div>';
+            html += '<div class="' + stepCls + '">' +
+                       '<div class="flow-step__head">' +
+                          '<span class="flow-step__num">' + num + '</span>' +
+                          '<span class="flow-step__title">' + st.title + '</span>' +
+                          '<span class="flow-step__badges">' + newBadge + tierBadges + blockingBadge + slaBadge + ownerBadges + '</span>' +
+                          when +
+                       '</div>' +
+                       bodyHtml +
+                    '</div>';
+        });
+        if (notes && notes.length) {
+            html += '<div class="block__notes"><ul>' +
+                    notes.map(n => '<li>' + n + '</li>').join('') +
+                    '</ul></div>';
+        }
+        html += '</div>';
+        return html;
+    }
+
+    function clientFlowBlock(sections, notes, currentVerdict) {
+        return flowMegaBlock('client',
+            'Client side — what we collect from the client for this scenario',
+            sections, notes, currentVerdict);
+    }
+
+    function daspFlowBlock(sections, notes, currentVerdict) {
+        return flowMegaBlock('dasp',
+            'DASP side — what our platform does automatically + backend operations',
+            sections, notes, currentVerdict);
+    }
+
+    /* Reference panel — static educational content (collapsible <details>) */
+    function referenceBlock(currentVerdict) {
+        // Verdict-relevance mapping — which ref-sections apply to current verdict
+        const verdict = currentVerdict || '';
+        const relevanceMap = {
+            'sdd':    ['dd-cascade', 'travel-rule', 'identification', 'sanctions', 'reporting', 'retention'],
+            'cdd':    ['dd-cascade', 'travel-rule', 'identification', 'sanctions', 'reporting', 'retention', 'annex-iv'],
+            'edd':    ['dd-cascade', 'travel-rule', 'identification', 'sanctions', 'reporting', 'retention', 'annex-iv'],
+            'reject': ['sanctions', 'reporting', 'retention'],
+        };
+        const relevantIds = relevanceMap[verdict] || [];
+        const refs = [
+            {
+                id: 'dd-cascade',
+                head: 'Due Diligence cascade — UIF Acuerdo 734 § V.2.b.II',
+                body: '<ul>' +
+                    '<li><strong>SDD (Simplified):</strong> e-tx ≤ US$1,000 — basic identification + Travel Rule + sanctions screen. ID verification may be deferred (Instr. Art. 14(a)).</li>' +
+                    '<li><strong>Standard CDD:</strong> e-tx US$1,000-$4,000 — full identification + customer profile + sworn SoF declaration + PEP self-declaration (Instr. Art. 12).</li>' +
+                    '<li><strong>EDD (Enhanced):</strong> e-tx > US$4,000 — automatic. Documentary SoF + SoW + senior-management approval + continuous KYT (Instr. Art. 13 Reform 2).</li>' +
+                    '<li><strong>Risk-based trigger</strong> regardless of amount: PEP, opaque ownership, cash-intensive, structuring, mixer exposure, third-party funder, adverse media, high-risk jurisdiction → EDD.</li>' +
+                    '</ul>',
+            },
+            {
+                id: 'travel-rule',
+                head: 'Travel Rule — 7 mandatory fields per Instr. Art. 52 par. 2 (Reform 2)',
+                body: '<ul>' +
+                    '<li><strong>① Originator name</strong> — natural / legal person initiating the transfer.</li>' +
+                    '<li><strong>② Originator account / wallet</strong> — wallet address or bank account / IBAN.</li>' +
+                    '<li><strong>③ Originator ID document type + number</strong> — DUI / Passport / NIT / Carnet.</li>' +
+                    '<li><strong>④ Beneficiary name.</strong></li>' +
+                    '<li><strong>⑤ Beneficiary account / wallet.</strong></li>' +
+                    '<li><strong>⑥ Beneficiary bank / VASP name.</strong> (Beneficiary ID NOT required.)</li>' +
+                    '<li><strong>⑦ Transaction identifier</strong> — tx hash or unique reference.</li>' +
+                    '</ul>' +
+                    '<p>Applies at <strong>$0 floor</strong> — every transfer regardless of amount or tier. ' +
+                    'Routing: IVMS101 / TRP for VASP-to-VASP; off-chain attestation for self-custody counterparty. ' +
+                    'Inbound: validate received packet — hold credit if missing fields.</p>',
+            },
+            {
+                id: 'identification',
+                head: 'Identification — Instr. Art. 12 (Reform 2)',
+                body: '<ul>' +
+                    '<li><strong>Natural person:</strong> government-issued photo ID (DUI · Passport · Carnet de Residente) + biometric liveness + face match vs ID.</li>' +
+                    '<li><strong>Legal entity:</strong> Cert. of Inc. + commercial registry extract (≤3 mo) + Articles + POA per signatory + NIT + biometric for each authorised signatory.</li>' +
+                    '<li><strong>Methods:</strong> Sumsub · Veriff · Onfido · in-person verification by trained officer.</li>' +
+                    '<li><strong>Verification must be current</strong> — reject expired documents (Instr. Art. 12 Reform 2).</li>' +
+                    '<li><strong>If verification fails</strong> — relationship cannot start; analyse under suspicious-transaction framework (Instr. Art. 47).</li>' +
+                    '</ul>',
+            },
+            {
+                id: 'sanctions',
+                head: 'Sanctions & PEP framework',
+                body: '<ul>' +
+                    '<li><strong>UNSC consolidated lists</strong> — Resolutions 1267 (Al-Qaida/Taliban), 1373 (terrorist financing), 1718 (DPRK), 1988 (Taliban), 2231 (Iran). Authority: LECAT Art. 37.</li>' +
+                    '<li><strong>UIF national designated list</strong> — Salvadoran national designations.</li>' +
+                    '<li><strong>PEP:</strong> domestic · foreign · international organisation. UIF official list (binding) + commercial DB (supplementary). PEP status persists 5 yrs post-cease (LCLDA Art. 19).</li>' +
+                    '<li><strong>Adverse media:</strong> open-source intelligence on name + ID.</li>' +
+                    '<li><strong>On hit:</strong> freeze + UIF report + tipping-off prohibited (LCLDA Art. 44).</li>' +
+                    '</ul>',
+            },
+            {
+                id: 'reporting',
+                head: 'Reporting obligations — UIF',
+                body: '<ul>' +
+                    '<li><strong>STR (Suspicious Transaction Report):</strong> 24h wall-clock from determination (LCLDA Art. 24). Internal analysis ≤15 BD.</li>' +
+                    '<li><strong>Operación Regulada — cash:</strong> 5 business days for cash > $10,000 (LCLDA Art. 25).</li>' +
+                    '<li><strong>Operación Regulada — other means:</strong> 5 BD for other-means > $25,000 (Instr. Art. 51).</li>' +
+                    '<li><strong>DASP Individual Tx Report:</strong> 5 BD for crypto/bankwire ≥ $1,000 — one of 8 Annex IV forms (Acuerdo 734 § Annex IV.2).</li>' +
+                    '<li><strong>DASP Monthly Client Report:</strong> active / inactive / disconnected — monthly via UIF Portal (Acuerdo 734 § Annex IV.1).</li>' +
+                    '</ul>',
+            },
+            {
+                id: 'retention',
+                head: 'Retention — LCLDA Art. 26',
+                body: '<p><strong>15 years minimum</strong> from operation date or relationship termination. Format: physical · digital · electronic (all equally valid). Per-client file + chronological transaction log. Must be accessible to UIF on request without delay.</p>',
+            },
+            {
+                id: 'annex-iv',
+                head: 'UIF Acuerdo 734 § Annex IV — 8 transaction-type forms',
+                body: '<ul>' +
+                    '<li><strong>1 — Wallet ↔ Wallet</strong> (same provider, internal book transfer).</li>' +
+                    '<li><strong>2 — Wallets distintas</strong> (different wallets, different providers).</li>' +
+                    '<li><strong>3 — Wallet → Cuenta bancaria</strong> (crypto to bank account).</li>' +
+                    '<li><strong>4 — Cajero → Wallet</strong> (ATM cash-in to wallet).</li>' +
+                    '<li><strong>5 — Wallet → Cajero</strong> (wallet to ATM cash-out).</li>' +
+                    '<li><strong>6 — Tarjeta → Wallet</strong> (card → wallet on-ramp).</li>' +
+                    '<li><strong>7 — Compraventa con Wallet</strong> (purchase/sale via wallet — OTC).</li>' +
+                    '<li><strong>8 — Intercambio de Moneda con Wallet</strong> (currency exchange via wallet).</li>' +
+                    '</ul>',
+            },
+        ];
+        let body = '';
+        refs.forEach(r => {
+            const isRelevant = r.id && relevantIds.indexOf(r.id) !== -1;
+            const relevantBadge = isRelevant
+                ? '<span class="ref-section__relevant" title="Applies to current verdict: ' + (verdict || '—').toUpperCase() + '">★ RELEVANT</span>'
+                : '';
+            const cls = 'ref-section' + (isRelevant ? ' ref-section--relevant' : '');
+            const haystack = (r.head + ' ' + r.body).toLowerCase().replace(/<[^>]+>/g, ' ');
+            body += '<div class="' + cls + '" data-haystack="' + haystack.replace(/"/g, '&quot;') + '">' +
+                       '<div class="ref-section__head">' + r.head + relevantBadge + '</div>' +
+                       '<div class="ref-section__body">' + r.body + '</div>' +
+                    '</div>';
+        });
+        const toolbar =
+            '<div class="ref-panel__toolbar">' +
+                '<input type="search" class="ref-panel__search" placeholder="Filter reference (e.g. \'PEP\', \'travel rule\', \'15 yrs\')" oninput="filterReference(this)" />' +
+                '<button type="button" class="ref-panel__filter-btn" data-active="all" onclick="toggleRefRelevant(this)">Show: all</button>' +
+            '</div>';
+        return '<details class="ref-panel" open>' +
+                  '<summary>Reference — full statutory framework + process overview</summary>' +
+                  '<div class="ref-panel__body">' +
+                      toolbar +
+                      '<div class="ref-panel__sections">' + body + '</div>' +
+                  '</div>' +
+               '</details>';
+    }
+
+    /* Reference panel — filter + verdict-relevance toggle */
+    window.filterReference = function(input) {
+        const q = (input.value || '').toLowerCase().trim();
+        const sections = input.closest('.ref-panel').querySelectorAll('.ref-section');
+        sections.forEach(sec => {
+            const hay = sec.getAttribute('data-haystack') || '';
+            sec.style.display = (!q || hay.indexOf(q) !== -1) ? '' : 'none';
+        });
+    };
+    window.toggleRefRelevant = function(btn) {
+        const current = btn.getAttribute('data-active');
+        const next = (current === 'all') ? 'relevant' : 'all';
+        btn.setAttribute('data-active', next);
+        btn.textContent = next === 'relevant' ? 'Show: relevant only' : 'Show: all';
+        const panel = btn.closest('.ref-panel');
+        panel.querySelectorAll('.ref-section').forEach(sec => {
+            if (next === 'relevant' && !sec.classList.contains('ref-section--relevant')) {
+                sec.style.display = 'none';
+            } else {
+                sec.style.display = '';
+            }
+        });
+        // Clear search when toggling
+        const search = panel.querySelector('.ref-panel__search');
+        if (search) search.value = '';
+    };
+
+    // Render a block split into two sections:
+    //   sections.client = items the CLIENT must provide / submit / sign / answer / pass
+    //   sections.dasp   = items the DASP performs (capture, screen, verify, file, retain)
+    //   notes = bottom-line citations / caveats
+    function blockFields(cls, head, sections, notes) {
+        let html = '<div class="block ' + cls + '"><div class="block__head">' + head + '</div>';
+        sections = sections || {};
+        if (sections.client && sections.client.length) {
+            html += '<div class="block__sub-head block__sub-head--client">From client</div>';
+            html += '<div class="block__fields">'
+                  + sections.client.map(f => fieldRow(f, 'client')).join('')
+                  + '</div>';
+        }
+        if (sections.dasp && sections.dasp.length) {
+            html += '<div class="block__sub-head block__sub-head--dasp">Our actions (DASP)</div>';
+            html += '<div class="block__fields">'
+                  + sections.dasp.map(f => fieldRow(f, 'dasp')).join('')
+                  + '</div>';
+        }
+        if (notes && notes.length) {
+            html += '<div class="block__notes"><ul>'
+                  + notes.map(n => '<li>' + n + '</li>').join('')
+                  + '</ul></div>';
+        }
+        html += '</div>';
+        return html;
+    }
+
+    /* Risk-factor breakdown — what specific facts trigger which statutory consequence.
+       Transparent decision-support: CO sees factor → effect → citation, not just final verdict. */
+    function buildFactorList(s, d) {
+        const list = [];
+        const ch = s.channel, amt = s.amount;
+        const isElectronic = (ch === 'crypto' || ch === 'bankwire');
+
+        // Hard stops (highest priority)
+        if (s.f.sanctions) list.push({
+            label: 'Sanctions match (UNSC / UIF list)',
+            effect: 'REJECT + freeze + UIF', effectClass: 'reject',
+            cite: 'LECAT Art. 37',
+        });
+        if (s.jur === 'reject') list.push({
+            label: 'Counterparty jurisdiction: ' + esc(s.jurCat),
+            effect: 'REJECT — geofence', effectClass: 'reject',
+            cite: 'Acuerdo 734 § V',
+        });
+        if (s.f.refuses) list.push({
+            label: 'Client refuses CDD / Travel Rule data',
+            effect: 'REJECT + STR', effectClass: 'reject',
+            cite: 'Instr. Art. 47',
+        });
+
+        // EDD risk-flags
+        if (s.f.pep) list.push({
+            label: 'PEP (self-declared or screen hit)',
+            effect: 'EDD', effectClass: 'edd', cite: 'LCLDA Art. 19',
+        });
+        if (s.f.opaque) list.push({
+            label: 'Opaque ownership structure',
+            effect: 'EDD', effectClass: 'edd', cite: 'Instr. Art. 13',
+        });
+        if (s.f.cash) list.push({
+            label: 'Cash-intensive / unclear SoF',
+            effect: 'EDD', effectClass: 'edd', cite: 'Instr. Art. 13',
+        });
+        if (s.f.structuring) list.push({
+            label: 'Structuring pattern detected',
+            effect: 'EDD + STR analysis', effectClass: 'edd',
+            cite: 'LCLDA Art. 24',
+        });
+        if (s.f.mixer) list.push({
+            label: 'Mixer / darknet exposure (KYT hit)',
+            effect: 'EDD + STR analysis', effectClass: 'edd',
+            cite: 'LCLDA Art. 24',
+        });
+        if (s.f.profile) list.push({
+            label: 'Customer profile deviation',
+            effect: 'EDD + STR analysis', effectClass: 'edd',
+            cite: 'LCLDA Art. 24',
+        });
+        if (s.f.thirdparty) list.push({
+            label: 'Third-party funder',
+            effect: 'EDD', effectClass: 'edd', cite: 'Instr. Art. 13',
+        });
+        if (s.f.adverse) list.push({
+            label: 'Adverse media hit',
+            effect: 'EDD', effectClass: 'edd', cite: 'Instr. Art. 13',
+        });
+        if (s.jur === 'edd') list.push({
+            label: 'High-risk jurisdiction: ' + esc(s.jurCat),
+            effect: 'EDD', effectClass: 'edd', cite: 'Acuerdo 734 § V',
+        });
+
+        // At reject, hard-stops dominate — amount/risk factors are not driving the verdict, suppress them
+        if (d.v === 'reject') return list;
+
+        // Amount-based DD cascade (statutory thresholds)
+        if (isElectronic && amt > 4000) list.push({
+            label: 'Electronic operation > US$4,000 ($' + amt.toLocaleString() + ')',
+            effect: 'EDD (automatic)', effectClass: 'edd',
+            cite: 'Acuerdo 734 § V.2.b.II',
+        });
+        else if (isElectronic && amt > 1000) list.push({
+            label: 'Electronic operation US$1,000–$4,000 ($' + amt.toLocaleString() + ')',
+            effect: 'Standard CDD', effectClass: 'cdd',
+            cite: 'Acuerdo 734 § V.2.b.II',
+        });
+        else if (isElectronic) list.push({
+            label: 'Electronic operation ≤ US$1,000 ($' + amt.toLocaleString() + ')',
+            effect: 'SDD eligible', effectClass: 'sdd',
+            cite: 'Acuerdo 734 § V.2.b.II',
+        });
+
+        if (ch === 'cash' && amt > 10000) list.push({
+            label: 'Cash > US$10,000 ($' + amt.toLocaleString() + ')',
+            effect: 'CDD + Operación Regulada', effectClass: 'cdd',
+            cite: 'LCLDA Art. 25',
+        });
+        if (ch === 'other' && amt > 25000) list.push({
+            label: 'Other-means > US$25,000 ($' + amt.toLocaleString() + ')',
+            effect: 'CDD + Operación Regulada', effectClass: 'cdd',
+            cite: 'Instr. Art. 51',
+        });
+
+        // Relationship context (only show when relevant)
+        if (d.v === 'sdd' && s.rel === 'ongoing') list.push({
+            label: 'Ongoing low-risk customer',
+            effect: 'SDD profile', effectClass: 'sdd',
+            cite: 'LCLDA Art. 17',
+        });
+
+        return list;
+    }
+
     function buildOutput(s, d) {
         const parts = [];
 
-        // Verdict (full-width) — with operation badge
+        // ── 0. Version stamp — effective date + statutes ──
+        parts.push(
+            '<div class="version-stamp">' +
+                '<span class="version-stamp__label">As of</span>' +
+                '<span class="version-stamp__item"><strong>2026-05-12</strong></span>' +
+                '<span class="version-stamp__item"><strong>LEAD</strong> D-643/2023</span>' +
+                '<span class="version-stamp__item"><strong>LCLDA</strong> D-426/2025</span>' +
+                '<span class="version-stamp__item"><strong>LECAT</strong> D-108</span>' +
+                '<span class="version-stamp__item"><strong>Instructivo UIF</strong> Reform 2 (2024)</span>' +
+                '<span class="version-stamp__item"><strong>Acuerdo</strong> 734/2022</span>' +
+            '</div>'
+        );
+
+        // ── 1. Verdict (full-width) — with operation badge + risk-factor breakdown ──
+        const factors = buildFactorList(s, d);
+        const factorHtml = factors.length
+            ? '<div class="factor-list">' +
+                '<div class="factor-list__head">Risk factors driving this verdict</div>' +
+                factors.map(f =>
+                    '<div class="factor-row">' +
+                        '<span class="factor-row__label">' + f.label + '</span>' +
+                        '<span class="factor-row__effect factor-row__effect--' + f.effectClass + '">→ ' + f.effect + '</span>' +
+                        '<span class="factor-row__cite">' + f.cite + '</span>' +
+                    '</div>'
+                ).join('') +
+              '</div>'
+            : '';
         parts.push(
             '<div class="results__verdict-wrap">' +
                 '<div class="verdict verdict--' + d.v + '">' +
@@ -776,209 +2792,132 @@
                         '<div class="verdict__title">' + d.title + '</div>' +
                         '<div class="verdict__reason">' + d.reason + '</div>' +
                         operationBadge(s) +
+                        factorHtml +
                     '</div>' +
                 '</div>' +
             '</div>'
         );
 
-        // ── Operation-specific obligations (always except reject) ──
+        // ── 2. CLIENT mega-block — what client provides for this scenario ──
         if (d.v !== 'reject') {
-            const opBlock = operationContextBlock(s);
-            if (opBlock) parts.push(opBlock);
-        }
-
-        // ── Travel Rule (always except reject and Internal P2P book transfers) ──
-        // Internal P2P has no external counterparty leg, so no Travel Rule message fires.
-        // Sanctions / PEP screen still applies to both internal accounts (kept below).
-        const isInternalP2P = (s.operation === 'transfer' && s.subop === 'p2p');
-        if (d.v !== 'reject' && !isInternalP2P) {
-            const isLegal = s.clientType === 'legal';
-            const idLine = isLegal
-                ? 'Type and number of identification document — NIT or registration number'
-                : 'Type and number of identification document — DUI or passport';
-            parts.push(block('block--green',
-                'Travel Rule data — every transfer, any amount <span class="cite cite--instr">Instr. Art. 52 par. 2</span>',
-                [
-                    '<strong>Originator:</strong> name, account number, ' + idLine,
-                    '<strong>Beneficiary:</strong> name, account number, beneficiary bank name',
-                    '<strong>Transaction:</strong> identifier (reference / hash / unique ID)',
-                    'Batch processing: full data per transfer in any grouped file',
-                ]
-            ));
-        }
-
-        // ── Sanctions / PEP screen (always except reject) ──
-        if (d.v !== 'reject') {
-            parts.push(block('block--blue',
-                'Sanctions &amp; PEP screening — every transaction',
-                [
-                    'UNSC consolidated lists (1267, 1373, 1718, 1988, 2231) <span class="cite cite--lecat">LECAT Art. 37</span>',
-                    'UIF national designated list',
-                    'PEP screen — UIF official list (binding) + commercial PEP database as supplementary source <span class="cite cite--d426">LCLDA Art. 19</span>',
-                    'On hit: freeze + UIF report + tipping-off prohibited <span class="cite cite--d426">LCLDA Art. 44</span>',
-                ]
-            ));
-        }
-
-        // ── SDD measures (only when verdict = sdd) — differentiate ongoing vs occasional ──
-        if (d.v === 'sdd' && s.rel === 'ongoing') {
-            parts.push(block('block--green',
-                'Simplified DD — ongoing low-risk customer <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--d426">LCLDA Art. 17</span>',
-                [
-                    'Identify the customer at onboarding (name + ID number captured)',
-                    '<strong>Verification of identity may be deferred</strong> until after the relationship is established <span class="cite cite--instr">Instr. Art. 14(a)</span>',
-                    '<strong>Reduced frequency</strong> of identification updates <span class="cite cite--instr">Instr. Art. 14(b)</span>',
-                    '<strong>Reduced ongoing monitoring</strong> based on a reasonable monetary threshold <span class="cite cite--instr">Instr. Art. 14(c)</span>',
-                    'Purpose / nature of relationship may be inferred from transaction pattern (no separate collection) <span class="cite cite--instr">Instr. Art. 14(d)</span>',
-                    'Documented risk-based assessment classifying customer as low-risk',
-                    'SDD <strong>not acceptable</strong> if any suspicion arises or higher-risk scenario — escalates to Standard CDD or STR pipeline <span class="cite cite--instr">Instr. Art. 14 last par.</span>',
-                ]
-            ));
-        }
-        if (d.v === 'sdd' && s.rel !== 'ongoing') {
-            parts.push(block('block--green',
-                'Simplified DD — occasional low-risk transaction <span class="cite cite--instr">Instr. Art. 14</span> <span class="cite cite--instr">Art. 14-A(III) Reform 2</span>',
-                [
-                    '<strong>Travel Rule data set</strong> is mandatory at $0 floor — every occasional e-transfer requires the 7-field data regardless of amount <span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span>',
-                    'Identify the customer at the operation (name + ID number captured)',
-                    'Verification scope reduced (no full document authentication / biometric match required at low risk)',
-                    'Risk profile inferred from transaction pattern — no separate collection required <span class="cite cite--instr">Instr. Art. 14(d)</span>',
-                    'SoF documentation optional per RBA — entity may request <span class="cite cite--instr">Instr. Art. 12(c)</span>',
-                    'Sanctions + PEP screening still required',
-                    'No deferred verification — there is no commercial relationship to defer into; verification is concurrent but lighter',
-                    'SDD <strong>not acceptable</strong> on any suspicion or higher-risk scenario — escalate to Standard CDD or STR <span class="cite cite--instr">Instr. Art. 14 last par.</span>',
-                ]
-            ));
-        }
-
-        // ── Identity Verification (CDD or EDD) ──
-        if (d.v === 'cdd' || d.v === 'edd') {
-            parts.push(block('block--green',
-                'Identity verification — BEFORE relationship begins <span class="cite cite--instr">Instr. Art. 12 (Reform 2)</span>',
-                [
-                    'Verify identity via official document issued by competent public authority',
-                    'Document must be current at the time of onboarding',
-                    'For legal persons: verify articles of incorporation + powers + senior management names',
-                    'If verification fails → relationship cannot start; analyse under suspicious-transaction framework <span class="cite cite--instr">Instr. Art. 47</span>',
-                ]
-            ));
-        }
-
-        // ── Standard CDD documentation ──
-        if (d.v === 'cdd' || d.v === 'edd') {
-            const cdd = s.clientType === 'natural' ? [
-                'Government photo ID (DUI / passport / residence)',
-                'Address proof (utility bill (recent) / bank statement)',
-                'Occupation + income source declared',
-                'Date of birth',
-                'Tax ID (NIT) if applicable',
-                'PEP self-declaration + screening',
-                'Expected activity profile (volume, frequency)',
-                '<strong>Declared SoF (origin of funds)</strong> — stated by client in profile / sworn declaration; <em>not</em> verified by documents at this level (documentary verification at EDD only) <span class="cite cite--d426">D-426 Art. 15</span>',
-            ] : [
-                'Articles of incorporation (escritura)',
-                'Commercial registry extract (recent)',
-                'NIT + operating licence',
-                'Board / assembly resolution authorising relationship',
-                'Shareholder register — chain to natural BO (≥10% floor)',
-                'Authorised signatories: IDs + powers',
-                'Business purpose + main counterparties + jurisdictions',
-                'Expected volume + frequency',
-                '<strong>Declared SoF (origin of funds)</strong> — business activity + funding source stated in profile / sworn declaration; <em>not</em> verified by documents at this level (documentary verification at EDD only) <span class="cite cite--d426">D-426 Art. 15</span>',
+            const clientSections = buildClientFlow(s, d);
+            const clientNotes = [
+                'Each numbered step maps to a discrete UI section / onboarding screen.',
+                'Items already collected at earlier stages are NOT re-requested — onboarding-once principle.',
             ];
-            parts.push(block('block--blue',
-                'Standard CDD documentation <span class="cite cite--instr">Instr. Art. 12</span>',
-                cdd
-            ));
+            if (d.v === 'cdd') clientNotes.push('Steps marked <strong>+ NEW @ CDD</strong> are those that escalate from the SDD baseline.');
+            if (d.v === 'edd') clientNotes.push('Steps marked <strong>+ NEW @ EDD</strong> are those that escalate from the Standard CDD baseline.');
+            const clientBlock = clientFlowBlock(clientSections, clientNotes, d.v);
+            if (clientBlock) parts.push(clientBlock);
         }
 
-        // ── EDD-only additions ──
-        if (d.v === 'edd') {
-            parts.push(block('block--amber',
-                'EDD measures <span class="cite cite--instr">Instr. Art. 13 (Reform 2)</span>',
-                [
-                    '<strong>Senior-management written approval</strong> to open / continue (dated, signed)',
-                    '<strong>Source of Funds</strong> documentary (payslip / contract / invoice / bank statement)',
-                    '<strong>Source of Wealth</strong> documentary (asset declaration, deeds, financial statements)',
-                    'Reinforced identity verification (specific document set at entity discretion under risk-based approach)',
-                    'Audited financials if size warrants (legal entity)',
-                    'Enhanced ongoing monitoring — KYT on every transaction',
-                    'Periodic EDD refresh on any material change <span class="cite cite--instr">Instr. Art. 23</span>',
-                ]
-            ));
-
-            if (s.f.pep) {
-                parts.push(block('block--amber',
-                    'PEP-specific obligations <span class="cite cite--d426">LCLDA Art. 19</span>',
-                    [
-                        'PEP file with category (national / foreign / international organisation)',
-                        'Family ≤ 2nd degree + spouses + close associates screened as PEP-related',
-                        'PEP status persists 5 years post-cease of public function; re-screen on any material change <span class="cite cite--d426">LCLDA Art. 19</span>',
-                    ]
-                ));
-            }
-            if (s.jur === 'edd') {
-                parts.push(block('block--amber',
-                    'Jurisdiction-specific (high-risk: ' + esc(s.jurCat) + ')',
-                    [
-                        'Per Risk Management Policy — EDD baseline + senior approval',
-                        'KYT on every transaction with this counterparty',
-                        'Periodic re-screen against jurisdiction-specific sanctions',
-                        'If risk appetite declines → neutral-ground termination (do not cite jurisdiction)',
-                    ]
-                ));
-            }
-        }
-
-        // ── Reporting obligations ──
-        const reports = [];
-        const ch = s.channel, amt = s.amount;
-        if (ch === 'cash' && amt > 10000) reports.push('<strong>Operación Regulada — cash:</strong> 5 business days to UIF <span class="cite cite--d426">LCLDA Art. 25</span>');
-        if (ch === 'other' && amt > 25000) reports.push('<strong>Operación Regulada — other means:</strong> 5 business days to UIF <span class="cite cite--instr">Instr. Art. 51</span>');
-        // DASP-specific individual transaction report (≥ $1,000 within 5 bd) per UIF Acuerdo 734/2022.
-        // Distinct from FI-only Art. 52(a)(b)(c) monthly reports.
-        if ((ch === 'crypto' || ch === 'bankwire') && amt >= 1000) {
-            const note = s.subop && SUBOP_NOTES[s.subop];
-            const formHint = (note && note.forms && note.forms.length)
-                ? ' — likely form: <strong>' + esc(note.forms[0]) + '</strong>'
-                : ' — one of 8 transaction-type forms';
-            reports.push('<strong>DASP Individual Tx Report (≥ $1,000):</strong> 5 business days to UIF' + formHint
-                + ' <span class="cite cite--instr">UIF Acuerdo 734/2022 § Annex IV.2</span>');
-        }
-        // DASP monthly client report — fired regardless (always due monthly)
-        reports.push('<strong>DASP Monthly Client Report:</strong> active / inactive / disconnected clients with any interaction this month — UIF Portal monthly <span class="cite cite--instr">UIF Acuerdo 734/2022 § Annex IV.1</span>');
-        if (d.v === 'reject' && s.f.sanctions) reports.push('<strong>Sanctions freeze report:</strong> immediate to UIF <span class="cite cite--lecat">LECAT Art. 37</span>');
-        if (d.v === 'reject' && s.f.refuses) reports.push('<strong>Attempted operation:</strong> STR pipeline if suspicious <span class="cite cite--instr">Instr. Art. 47</span>');
-        if (reports.length) parts.push(block('block--blue', 'Reporting obligations triggered', reports));
-
-        // ── STR sensitivity ──
-        const strFlags = [];
-        if (s.f.structuring) strFlags.push('structuring pattern');
-        if (s.f.mixer) strFlags.push('flagged wallet / mixer exposure');
-        if (s.f.profile) strFlags.push('profile deviation');
-        if (s.f.thirdparty) strFlags.push('third-party funder');
-        if (s.f.adverse) strFlags.push('adverse media');
-        if (strFlags.length) {
-            parts.push(block('block--red', 'Elevated STR sensitivity — analyse', [
-                'Indicator(s): ' + strFlags.join(', '),
-                'Open analysis ticket; assign to CO',
-                'Internal analysis ≤ 15 business days <span class="cite cite--d426">LCLDA Art. 24</span>',
-                'On determination: <strong>STR within 24 hours wall-clock</strong>',
-                'Tipping-off prohibited <span class="cite cite--d426">LCLDA Art. 44</span>',
-            ]));
-        }
-
-        // ── Retention ──
+        // ── 3. DASP mega-block — what platform + compliance officer do on the backend ──
         if (d.v !== 'reject') {
-            parts.push(block('block--green', 'Retention &amp; records <span class="cite cite--d426">LCLDA Art. 26</span>', [
-                '<strong>15 years</strong> from operation date or relationship termination',
-                'Format: physical / digital / electronic — equally valid',
-                'Per-client organised; chronological per transaction',
-                'Accessible to UIF on request without delay',
-            ]));
+            const daspSections = buildDaspFlow(s, d);
+            const daspNotes = [
+                'Every step is logged with reviewer + timestamp + outcome for 15-yr audit trail <span class="cite cite--d426">LCLDA Art. 26</span>',
+                'Steps run in parallel where dependencies allow; sanctions + Travel Rule are blocking pre-conditions for transfer execution.',
+            ];
+            if (d.v === 'cdd') daspNotes.push('Steps marked <strong>+ NEW @ CDD</strong> are those that escalate from the SDD baseline.');
+            if (d.v === 'edd') daspNotes.push('Steps marked <strong>+ NEW @ EDD</strong> are those that escalate from the Standard CDD baseline.');
+            const daspBlock = daspFlowBlock(daspSections, daspNotes, d.v);
+            if (daspBlock) parts.push(daspBlock);
         }
 
-        // ── Footer: scope disclaimer ──
+        // ── 3b. Reject-scenario DASP actions — split into operational / legal / behavioral / records ──
+        if (d.v === 'reject') {
+            const rejectSections = [];
+
+            // 1. OPERATIONAL — platform-level instant block (Tech)
+            const operational = [];
+            if (s.f.sanctions) {
+                operational.push({l: 'Platform-level wallet / account lock', v: 'instant — block at custody layer · pre-execution', hint: 'This is OPERATIONAL pre-emption by the DASP (denying execution on the platform). It is NOT the legal asset-freeze itself — that requires judicial / prosecutorial order under LECAT Art. 37 ¶3.'});
+                operational.push({l: 'Cancel pending in-flight operations', v: 'reverse any non-finalised ledger entries'});
+            }
+            if (s.jur === 'reject') {
+                operational.push({l: 'Apply geofence rule', v: 'jurisdiction = ' + esc(s.jurCat) + ' — automated block at routing layer'});
+                operational.push({l: 'Reject the in-flight transaction', v: 'no platform exposure to restricted jurisdiction'});
+            }
+            if (s.f.refuses) {
+                operational.push({l: 'Block onboarding / transaction', v: 'CDD or Travel Rule data refused — prohibited to proceed'});
+            }
+            if (operational.length) rejectSections.push({
+                title: 'Operational pre-emption (platform-level)',
+                when: 'Internal control · Code of Ethics',
+                tier: ['per-tx'],
+                blocking: true,
+                owner: ['tech', 'ops'],
+                sla: 'instant', slaClass: 'instant', slaHint: 'Pre-execution block at custody / routing layer — operational decision, no judicial threshold needed',
+                fields: operational,
+            });
+
+            // 2. LEGAL — UIF / FGR notification chain (CO)
+            const legal = [];
+            if (s.f.sanctions) {
+                legal.push({l: 'Notify FGR via UIF without delay', v: '<span class="cite cite--lecat">LECAT Art. 37 ¶3</span> — administrative obligation, no judicial threshold', hint: 'The notification is on YOU as DASP; the actual asset freeze order comes from FGR / judicial authority following the report.'});
+                legal.push({l: 'Await formal freeze order if served', v: 'judicial / prosecutorial — execute when received'});
+            }
+            if (s.f.refuses) {
+                legal.push({l: 'Open STR analysis ticket', v: 'attempted-operation flag <span class="cite cite--instr">Instr. Art. 47</span>'});
+                legal.push({l: 'Submit STR to UIF if suspicion confirmed', v: '24h wall-clock of determination <span class="cite cite--d426">LCLDA Art. 24</span>'});
+            }
+            if (s.jur === 'reject') {
+                legal.push({l: 'Record attempted operation', v: 'evidence pack — date · counterparty · indicators · screenshots'});
+                legal.push({l: 'Consider STR if suspicion exists', v: 'jurisdiction-block alone may not require STR — assess per Art. 47'});
+            }
+            if (legal.length) rejectSections.push({
+                title: 'Legal — UIF / FGR notification chain',
+                when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LCLDA Arts. 24, 44</span> · <span class="cite cite--instr">Instr. Art. 47</span>',
+                tier: ['per-tx'],
+                blocking: true,
+                owner: ['co'],
+                sla: 'without delay', slaClass: 'statutory', slaHint: 'LECAT Art. 37 ¶3: sanctions notification to FGR via UIF immediately. STR (if filed): 24h from determination.',
+                fields: legal,
+            });
+
+            // 3. BEHAVIORAL — tipping-off & confidentiality (all staff)
+            rejectSections.push({
+                title: 'Behavioral controls — tipping-off prohibition',
+                when: '<span class="cite cite--d426">LCLDA Art. 44</span>',
+                tier: ['per-tx'],
+                owner: ['co'],
+                sla: 'ongoing', slaClass: 'fast', slaHint: 'Continuous obligation — applies from moment of suspicion onward, indefinitely',
+                fields: [
+                    {l: 'No reason disclosure to client', v: 'rejection message cannot reference sanctions / STR / suspicion'},
+                    {l: 'No disclosure to related parties', v: 'family · counterparties · third parties'},
+                    {l: 'Internal-only logging access', v: 'STR / freeze data restricted to CO + assigned analyst'},
+                    {l: 'Train ops staff on tipping-off scope', v: 'standardised neutral rejection script'},
+                ],
+            });
+
+            // 4. RECORDS — evidence pack retention
+            rejectSections.push({
+                title: 'Records — evidence retention',
+                when: '<span class="cite cite--d426">LCLDA Art. 26</span>',
+                tier: ['periodic'],
+                owner: ['ops', 'tech'],
+                sla: '15 yrs', slaClass: 'statutory', slaHint: '15-year minimum from attempted-operation date',
+                accent: 'retention',
+                fields: [
+                    {l: 'Retain full evidence pack', v: '15-yr minimum from attempted-operation date'},
+                    {l: 'Snapshot sanctions / list version', v: 'UNSC + UIF list version + screening timestamp'},
+                    {l: 'Snapshot KYT / risk signals', v: 'tool + score + indicators at moment of decision'},
+                    {l: 'Document reviewer + decision chain', v: 'CO name + analyst + timestamp + outcome'},
+                ],
+            });
+
+            parts.push(daspFlowBlock(
+                rejectSections,
+                ['<strong>⚠ NO CLIENT COMMUNICATION on reason for rejection</strong> — tipping-off prohibited regardless of trigger <span class="cite cite--d426">LCLDA Art. 44</span>.',
+                 '<strong>Platform-block ≠ Legal-freeze.</strong> DASP performs operational pre-emption (denying execution). Actual asset-freeze authority belongs to FGR / judicial under LECAT Art. 37 ¶3 — DASP\'s obligation is to NOTIFY without delay.'],
+                d.v
+            ));
+        }
+
+        // ── 4. Reference panel — collapsible static educational content + verdict-relevance highlight ──
+        parts.push(referenceBlock(d.v));
+
+        // ── 5. Footer: scope disclaimer ──
         parts.push(
             '<div style="grid-column:1 / -1; margin-top:1.25rem; padding:0.75rem 1rem; border:1px dashed var(--text-3); border-radius:8px; background:var(--bg-alt); font-size:0.72rem; color:var(--text-2); line-height:1.55;">' +
                 '<strong>ⓘ Scope.</strong> This wizard reflects strict statutory baseline ' +
@@ -1006,9 +2945,14 @@
     form.addEventListener('change', render);
 
     document.getElementById('wiz-reset').addEventListener('click', () => {
+        // Restore HTML defaults
         form.reset();
-        amountEl.value = 500;
+        // Explicit zero-state for amount + jurisdiction + all risk flags
+        amountEl.value = 0;
         jurEl.selectedIndex = 0;
+        form.querySelectorAll('input[name="f"]').forEach(i => i.checked = false);
+        // Re-sync subop chip visibility after operation reset
+        syncSubops();
         render();
     });
 
@@ -1056,6 +3000,92 @@
         form.querySelector('input[name="f"][value="opaque"]').checked = true;
         render();
     });
+
+    /* ── JSON export — structured machine-readable verdict + obligations ─── */
+    function stripHtml(str) {
+        return String(str || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    }
+    function sectionsToJson(sections, blockKind) {
+        return sections.map((st, i) => ({
+            step: i + 1,
+            title: stripHtml(st.title),
+            when: stripHtml(st.when),
+            tier: Array.isArray(st.tier) ? st.tier : (st.tier ? [st.tier] : []),
+            blocking: !!st.blocking,
+            addedAt: st.addedAt || null,
+            owner: Array.isArray(st.owner) ? st.owner : (st.owner ? [st.owner] : []),
+            sla: st.sla ? { value: st.sla, class: st.slaClass || 'medium', hint: stripHtml(st.slaHint || '') } : null,
+            fields: (st.fields || []).map(f => ({
+                label: stripHtml(f.l),
+                value: stripHtml(f.v),
+                hint: f.hint ? stripHtml(f.hint) : null,
+                kind: blockKind === 'client' ? detectFieldKind(f) : null,
+            })),
+        }));
+    }
+    function buildExportPayload() {
+        const s = readState();
+        const d = decide(s);
+        const factors = buildFactorList(s, d);
+        const clientSections = (d.v !== 'reject') ? buildClientFlow(s, d) : [];
+        const daspSections = (d.v !== 'reject') ? buildDaspFlow(s, d) : [];
+        return {
+            schemaVersion: '1.0',
+            generatedAt: new Date().toISOString(),
+            statutoryBaseline: {
+                effectiveAsOf: '2026-05-12',
+                instruments: [
+                    { code: 'LEAD',       reference: 'D-643/2023' },
+                    { code: 'LCLDA',      reference: 'D-426/2025' },
+                    { code: 'LECAT',      reference: 'D-108' },
+                    { code: 'Instructivo UIF', reference: 'Reform 2 (2024)' },
+                    { code: 'Acuerdo UIF',     reference: '734/2022' },
+                ],
+            },
+            scenario: {
+                operation: s.operation,
+                subop: s.subop,
+                clientType: s.clientType,
+                relationship: s.rel,
+                channel: s.channel,
+                amountUSD: s.amount,
+                jurisdictionCategory: s.jurCat || null,
+                jurisdictionBucket: s.jur,
+                riskFlags: Object.keys(s.f).filter(k => s.f[k]),
+            },
+            verdict: {
+                code: d.v,
+                title: d.title,
+                reason: stripHtml(d.reason),
+                triggers: d.triggers || [],
+            },
+            riskFactors: factors.map(f => ({
+                label: stripHtml(f.label),
+                effect: f.effect,
+                effectClass: f.effectClass,
+                citation: f.cite,
+            })),
+            clientFlow: sectionsToJson(clientSections, 'client'),
+            daspFlow: sectionsToJson(daspSections, 'dasp'),
+            disclaimer: 'Strict statutory baseline. Internal AML methodology may layer additional measures per Instr. Arts. 5, 7(d), 10.',
+        };
+    }
+    document.getElementById('wiz-export-json').addEventListener('click', () => {
+        const payload = buildExportPayload();
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+        a.href = url;
+        a.download = 'dasp-wizard-' + payload.verdict.code + '-' + ts + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+
+    // Expose for inspection / API integration (read-only export of current state)
+    window.dasWizardExport = buildExportPayload;
 
     /* ── Sub-operation chip-set toggle by operation ───────────────── */
     const subopMap = {
