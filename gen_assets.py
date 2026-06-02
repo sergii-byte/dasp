@@ -105,10 +105,10 @@ class A(FPDF):
         conn(58,y1+h1,80,y2); conn(152,y1+h1,130,y2)
         conn(80,y2+h2,58,y3); conn(130,y2+h2,152,y3)
         # flow markers
-        self.set_font("D","B",6.8); self.set_text_color(*GRN); self.set_xy(40,y1+h1+4.5); self.cell(36,3,"▲ прибыль наверх")
-        self.set_text_color(*NV); self.set_xy(122,y1+h1+4.5); self.cell(48,3,"▼ голос и контроль вниз")
-        self.set_text_color(*GRN); self.set_xy(40,y2+h2+4.5); self.cell(36,3,"▲ прибыль")
-        self.set_text_color(*NV); self.set_xy(122,y2+h2+4.5); self.cell(48,3,"▼ 100% владение и контроль")
+        self.set_font("D","B",6.8); self.set_text_color(*GRN); self.set_xy(16,y1+h1+4.8); self.cell(42,3,"▲ прибыль наверх")
+        self.set_text_color(*NV); self.set_xy(154,y1+h1+4.8); self.cell(40,3,"▼ голос и контроль")
+        self.set_text_color(*GRN); self.set_xy(16,y2+h2+4.8); self.cell(42,3,"▲ прибыль")
+        self.set_text_color(*NV); self.set_xy(150,y2+h2+4.8); self.cell(44,3,"▼ 100% и контроль")
         # caption under bottom companies
         cy=y3+h3+2
         self.set_font("D","",6.9); self.set_text_color(*STEEL)
