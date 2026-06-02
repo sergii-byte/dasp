@@ -94,9 +94,9 @@ class A(FPDF):
 
     def jurisdiction_map(self):
         y=self.get_y()+2
-        cards=[("Великобритания","Холдинг","0%","на дивиденды","НАТО"),("Болгария","Операции и продажи","10%","на прибыль","НАТО и ЕС"),
-               ("Чехия","Сборка · этап 1","21%","на прибыль","НАТО и ЕС")]
-        n=len(cards); gap=6; cw=(self.cw-gap*(n-1))/n; ch=30; x=18
+        cards=[("Великобритания","Холдинг","0%","на дивиденды","НАТО"),("Болгария","Операции и продажи","10%","на прибыль","НАТО и ЕС")]
+        n=len(cards); gap=8; cw=min((self.cw-gap*(n-1))/n, 80); ch=32
+        total=cw*n+gap*(n-1); x=18+(self.cw-total)/2
         for name,role,rate,rlab,tag in cards:
             self.set_fill_color(*BOXF); self.set_draw_color(*NAVY); self.set_line_width(0.4); self.rect(x,y,cw,ch,"DF")
             self.set_fill_color(*NAVY); self.rect(x,y,cw,1.8,"F"); self.set_line_width(0.2)
@@ -133,7 +133,10 @@ class A(FPDF):
                 self.set_fill_color(*BOXF); self.set_draw_color(*NAVY); self.rect(x,zero_y,bw,h,"DF")
                 self.set_font("D","",6.0); self.set_text_color(110,110,110); self.set_xy(x-1,zero_y+h+0.5); self.cell(bw+2,3,str(v),align="C")
             if i==breakeven_idx:
-                self.set_draw_color(*ACC); self.set_line_width(0.5); self.line(x+bw/2,y0-1,x+bw/2,zero_y+below); self.set_line_width(0.2)
+                lx=x-gap/2
+                self.set_draw_color(*ACC); self.set_line_width(0.6); self.set_dash_pattern(dash=1.5,gap=1.2)
+                self.line(lx,y0-3,lx,zero_y+below+1); self.set_dash_pattern(); self.set_line_width(0.2)
+                self.set_font("D","B",6.4); self.set_text_color(*ACC); self.set_xy(lx-14,y0-5.5); self.cell(28,3,"окупаемость",align="C")
             x+=bw+gap
         x=18; self.set_font("D","",6.4); self.set_text_color(90,90,90)
         for lbl,v in data:
@@ -152,7 +155,7 @@ class A(FPDF):
 
 def render(name, fn):
     a=A(); a.add_page(); a.set_y(14); fn(a); a.output(f"/tmp/{name}.pdf")
-    page=pdfium.PdfDocument(f"/tmp/{name}.pdf")[0].render(scale=4.0).to_pil().convert("RGB")
+    page=pdfium.PdfDocument(f"/tmp/{name}.pdf")[0].render(scale=6.0).to_pil().convert("RGB")
     # autocrop white
     from PIL import ImageChops
     bg=Image.new("RGB",page.size,(255,255,255))
