@@ -95,7 +95,7 @@ class A(FPDF):
             self.set_line_width(0.2)
         # tier 1 — investors (economic vs control)
         box(18,y1,80,h1,"Инвесторы вне НАТО","экономические акции: доля в прибыли, без права контроля",dashed=True)
-        box(112,y1,80,h1,"Инициаторы и инвесторы из НАТО и ЕС","голосующие (контрольные) акции")
+        box(112,y1,80,h1,"Инициаторы и инвесторы из НАТО и ЕС","голосующие (контрольные) акции и право вето")
         # tier 2 — holding
         box(60,y2,90,h2,"Холдинг — Великобритания","разные классы акций разделяют экономику и голос")
         # tier 3 — bulgarian companies
@@ -112,13 +112,13 @@ class A(FPDF):
         # caption under bottom companies
         cy=y3+h3+2
         self.set_font("D","",6.9); self.set_text_color(*STEEL)
-        self.set_xy(18,cy); self.cell(174,4,"Совет директоров с допуском к гостайне и «золотая акция» (право вето) — у лиц из НАТО и ЕС",align="C")
+        self.set_xy(18,cy); self.cell(174,4,"Совет директоров и ключевые управленцы — лица из НАТО и ЕС с допуском к гостайне; соглашение о безопасности",align="C")
         # legend
         ly=cy+7
         self.set_font("D","",6.6); self.set_text_color(*GRN); self.set_xy(18,ly); self.cell(8,3,"▲")
         self.set_text_color(80,80,80); self.set_xy(25,ly); self.cell(80,3,"Прибыль поднимается ко всем инвесторам (экономика).")
         self.set_text_color(*NV); self.set_xy(18,ly+4.2); self.cell(8,3,"▼")
-        self.set_text_color(80,80,80); self.set_xy(25,ly+4.2); self.cell(120,3,"Контроль и управление — у лиц из НАТО и ЕС (голос, совет, золотая акция).")
+        self.set_text_color(80,80,80); self.set_xy(25,ly+4.2); self.cell(160,3,"Контроль — у лиц из НАТО и ЕС: голос и вето в холдинге, совет с допуском в Болгарии.")
 
     def jurisdiction_map(self):
         y=self.get_y()+2
