@@ -95,7 +95,7 @@ class A(FPDF):
     def jurisdiction_map(self):
         y=self.get_y()+2
         cards=[("Великобритания","Холдинг","0%","на дивиденды","НАТО"),("Болгария","Операции и продажи","10%","на прибыль","НАТО и ЕС"),
-               ("Чехия","Сборка · этап 1","21%","на прибыль","НАТО и ЕС"),("Польша","Завод · этап 2","19%","на прибыль","НАТО и ЕС")]
+               ("Чехия","Сборка · этап 1","21%","на прибыль","НАТО и ЕС")]
         n=len(cards); gap=6; cw=(self.cw-gap*(n-1))/n; ch=30; x=18
         for name,role,rate,rlab,tag in cards:
             self.set_fill_color(*BOXF); self.set_draw_color(*NAVY); self.set_line_width(0.4); self.rect(x,y,cw,ch,"DF")
@@ -119,6 +119,37 @@ class A(FPDF):
             self.set_font("D","",6.9); self.set_text_color(75,75,75); self.set_xy(x,base+1.5); self.multi_cell(bw,3.2,labl,align="C",new_x="LMARGIN",new_y="NEXT")
             x+=bw+gap
 
+    def cashflow_chart(self, data, breakeven_idx):
+        y0=self.get_y()+4; above,below=22.0,22.0; zero_y=y0+above
+        rng=max(max(v for _,v in data), -min(v for _,v in data)); scale=min(above/rng,below/rng)*0.92
+        n=len(data); gap=2.5; bw=(self.cw-gap*(n-1))/n; x=18
+        self.set_draw_color(120,130,150); self.set_line_width(0.4); self.line(18,zero_y,18+self.cw,zero_y); self.set_line_width(0.2)
+        for i,(lbl,v) in enumerate(data):
+            h=abs(v)*scale
+            if v>=0:
+                self.set_fill_color(40,120,70); self.set_draw_color(30,100,55); self.rect(x,zero_y-h,bw,h,"DF")
+                self.set_font("D","B",6.2); self.set_text_color(30,100,55); self.set_xy(x-1,zero_y-h-3.4); self.cell(bw+2,3,("+%d"%v),align="C")
+            else:
+                self.set_fill_color(*BOXF); self.set_draw_color(*NAVY); self.rect(x,zero_y,bw,h,"DF")
+                self.set_font("D","",6.0); self.set_text_color(110,110,110); self.set_xy(x-1,zero_y+h+0.5); self.cell(bw+2,3,str(v),align="C")
+            if i==breakeven_idx:
+                self.set_draw_color(*ACC); self.set_line_width(0.5); self.line(x+bw/2,y0-1,x+bw/2,zero_y+below); self.set_line_width(0.2)
+            x+=bw+gap
+        x=18; self.set_font("D","",6.4); self.set_text_color(90,90,90)
+        for lbl,v in data:
+            self.set_xy(x,y0+above+below+0.5); self.cell(bw,3,lbl,align="C"); x+=bw+gap
+
+    def gantt(self, tasks, total=38):
+        y0=self.get_y()+5; label_w=70; tx=18+label_w; tw=self.cw-label_w; row_h=7.5
+        self.set_font("D","",6.4); self.set_text_color(120,120,120)
+        for m in (0,12,24,36):
+            gx=tx+tw*m/total; self.set_draw_color(*LINE); self.set_line_width(0.2); self.line(gx,y0-3,gx,y0+row_h*len(tasks))
+            self.set_xy(gx-6,y0-6); self.cell(12,3,("%d мес."%m) if m else "старт",align="C")
+        for i,(label,s,e) in enumerate(tasks):
+            ry=y0+i*row_h
+            self.set_font("D","",7.4); self.set_text_color(*INK); self.set_xy(18,ry+1.4); self.multi_cell(label_w-2,3.2,label,new_x="LMARGIN",new_y="TOP")
+            bx=tx+tw*s/total; bw2=max(tw*(e-s)/total,1.5); self.set_fill_color(*NAVY); self.set_draw_color(*NAVY); self.rect(bx,ry+1,bw2,row_h-3.2,"DF")
+
 def render(name, fn):
     a=A(); a.add_page(); a.set_y(14); fn(a); a.output(f"/tmp/{name}.pdf")
     page=pdfium.PdfDocument(f"/tmp/{name}.pdf")[0].render(scale=4.0).to_pil().convert("RGB")
@@ -139,4 +170,6 @@ render("stage2", lambda a: a.structure(2,compact=False))
 render("flow", lambda a: a.flow_diagram([("1 000 000 €","операционная прибыль · Болгария",None),("900 000 €","после налога на прибыль","−10% налог"),("900 000 €","в холдинге · Великобритания","0%"),("900 000 €","выплата инвестору","0%")]))
 render("bars", lambda a: a.bar_chart([(900000,"Рекомендуемая\nБолгария 10%, далее 0%","10%",True),(855000,"Болгария 10%\nи удержание 5%","14,5%",False),(790000,"Операционная 21%,\nдалее 0%","21%",False),(637500,"Высокий налог 25%\nи удержание 15%","36,3%",False)]))
 render("control", lambda a: a.control_split())
+render("cashflow", lambda a: a.cashflow_chart([("1",-150),("2",-320),("3",-420),("4",-348),("5",-276),("6",-180),("7",-84),("8",60),("9",204),("10",348),("11",492)], 7))
+render("gantt", lambda a: a.gantt([("Двигатель, крыло, КД, макет, 1-й опытный",0,14),("2-й опытный (испытания на прочность)",0,18),("3-й и 4-й опытные (крыло, вооружение)",0,22),("Все виды испытаний",14,36),("Предсерийный самолёт заказчику",30,36),("Начало серийного производства",37,38)]))
 print("done")
