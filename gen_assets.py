@@ -57,18 +57,18 @@ class A(FPDF):
             box(108,oy,78,oh,"SalesCo — Болгария","военно-экспортная лицензия; продажа готовых самолётов")
 
     def flow_diagram(self, steps):
-        y=self.get_y()+2; n=len(steps); gap=11; bw=(self.cw-gap*(n-1))/n; h=17; x=18
+        y=self.get_y()+2; n=len(steps); gap=18; bw=(self.cw-gap*(n-1))/n; h=21; x=18
         for i,(amount,labl,arrow) in enumerate(steps):
             self.set_fill_color(*((214,228,214) if i==n-1 else BOXF)); self.set_draw_color(*NAVY); self.set_line_width(0.4)
             self.rect(x,y,bw,h,"DF"); self.set_line_width(0.2)
-            self.set_font("D","B",9.5); self.set_text_color(*NAVY); self.set_xy(x,y+2.6); self.cell(bw,5,amount,align="C")
-            self.set_font("D","",6.9); self.set_text_color(75,75,75); self.set_xy(x+1.5,y+8.4); self.multi_cell(bw-3,3.1,labl,align="C",new_x="LMARGIN",new_y="NEXT")
+            self.set_font("D","B",9), self.set_text_color(*NAVY); self.set_xy(x,y+2.8); self.cell(bw,5,amount,align="C")
+            self.set_font("D","",6.8); self.set_text_color(75,75,75); self.set_xy(x+1.5,y+8.6); self.multi_cell(bw-3,3.1,labl,align="C",new_x="LMARGIN",new_y="NEXT")
             if i>0:
                 ax=x; ay=y+h/2; self.set_draw_color(*CONN); self.set_line_width(0.5)
-                self.line(ax-gap,ay,ax-0.5,ay); self.line(ax-2,ay-1.3,ax,ay); self.line(ax-2,ay+1.3,ax,ay); self.set_line_width(0.2)
+                self.line(ax-gap,ay,ax-1.2,ay); self.line(ax-3,ay-1.4,ax,ay); self.line(ax-3,ay+1.4,ax,ay); self.set_line_width(0.2)
                 if arrow:
-                    red=arrow.startswith("−"); self.set_font("D","B",6.8); self.set_text_color(*(ACC if red else (90,110,90)))
-                    self.set_xy(ax-gap-1,ay-4.4); self.cell(gap+2,3,arrow,align="C")
+                    red=arrow.startswith("−"); self.set_font("D","B",6.3); self.set_text_color(*(ACC if red else (90,110,90)))
+                    self.set_xy(ax-gap,ay-4.3); self.cell(gap,3,arrow,align="C")
             x+=bw+gap
 
     def control_split(self):
@@ -151,7 +151,15 @@ class A(FPDF):
         for i,(label,s,e) in enumerate(tasks):
             ry=y0+i*row_h
             self.set_font("D","",7.4); self.set_text_color(*INK); self.set_xy(18,ry+1.4); self.multi_cell(label_w-2,3.2,label,new_x="LMARGIN",new_y="TOP")
-            bx=tx+tw*s/total; bw2=max(tw*(e-s)/total,1.5); self.set_fill_color(*NAVY); self.set_draw_color(*NAVY); self.rect(bx,ry+1,bw2,row_h-3.2,"DF")
+            bx=tx+tw*s/total; bw2=max(tw*(e-s)/total,1.5); bh=row_h-3.2; cy=ry+1+bh/2
+            self.set_fill_color(*NAVY); self.set_draw_color(*NAVY); self.rect(bx,ry+1,bw2,bh,"DF")
+            if e>=total:  # ongoing — стрелка вправо
+                tip=bx+bw2+3
+                self.set_fill_color(*NAVY)
+                try:
+                    self.polygon([(bx+bw2,cy-2.2),(bx+bw2,cy+2.2),(tip,cy)],style="F")
+                except Exception:
+                    self.set_line_width(0.6); self.line(bx+bw2,cy-2.2,tip,cy); self.line(bx+bw2,cy+2.2,tip,cy); self.set_line_width(0.2)
 
 def render(name, fn):
     a=A(); a.add_page(); a.set_y(14); fn(a); a.output(f"/tmp/{name}.pdf")
@@ -171,8 +179,8 @@ render("jurmap", lambda a: a.jurisdiction_map())
 render("stage1", lambda a: a.structure(1,compact=False,show_plant=True))
 render("stage2", lambda a: a.structure(2,compact=False))
 render("flow", lambda a: a.flow_diagram([("1 000 000 €","операционная прибыль · Болгария",None),("900 000 €","после налога на прибыль","−10% налог"),("900 000 €","в холдинге · Великобритания","0%"),("900 000 €","выплата инвестору","0%")]))
-render("bars", lambda a: a.bar_chart([(900000,"Рекомендуемая\nБолгария 10%, далее 0%","10%",True),(855000,"Болгария 10%\nи удержание 5%","14,5%",False),(790000,"Операционная 21%,\nдалее 0%","21%",False),(637500,"Высокий налог 25%\nи удержание 15%","36,3%",False)]))
+render("bars", lambda a: a.bar_chart([(900000,"Болгария\n10%","10%",True),(840000,"Румыния\n16%","16%",False),(810000,"Польша\n19%","19%",False),(790000,"Чехия\n21%","21%",False)]))
 render("control", lambda a: a.control_split())
 render("cashflow", lambda a: a.cashflow_chart([("1",-150),("2",-320),("3",-420),("4",-348),("5",-276),("6",-180),("7",-84),("8",60),("9",204),("10",348),("11",492)], 7))
-render("gantt", lambda a: a.gantt([("Двигатель, крыло, КД, макет, 1-й опытный",0,14),("2-й опытный (испытания на прочность)",0,18),("3-й и 4-й опытные (крыло, вооружение)",0,22),("Все виды испытаний",14,36),("Предсерийный самолёт заказчику",30,36),("Начало серийного производства",37,38)]))
+render("gantt", lambda a: a.gantt([("Двигатель, крыло, КД, макет, 1-й опытный",0,14),("2-й опытный (испытания на прочность)",0,18),("3-й и 4-й опытные (крыло, вооружение)",0,22),("Все виды испытаний",14,36),("Предсерийный самолёт заказчику",30,36),("Серийное производство (с 37-го мес.)",37,42)],total=42))
 print("done")
