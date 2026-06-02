@@ -72,25 +72,53 @@ class A(FPDF):
             x+=bw+gap
 
     def control_split(self):
-        y=self.get_y()+2; NV=NAVY; th=13
-        self.set_draw_color(*NV); self.set_line_width(0.45)
-        self.set_fill_color(255,255,255); self.set_dash_pattern(dash=1.3,gap=1.3); self.rect(20,y,74,th,"DF"); self.set_dash_pattern()
-        self.set_fill_color(*BOXF); self.rect(100,y,74,th,"DF"); self.set_line_width(0.2)
-        self.set_font("D","B",8.2); self.set_text_color(*NV)
-        self.set_xy(20,y+1.8); self.cell(74,4,"Экономическое участие",align="C")
-        self.set_xy(100,y+1.8); self.cell(74,4,"Право голоса и контроль",align="C")
-        self.set_font("D","",7.0); self.set_text_color(75,75,75)
-        self.set_xy(21.5,y+5.8); self.multi_cell(71,3.2,"все инвесторы, включая инвесторов вне НАТО — получают прибыль",align="C",new_x="LMARGIN",new_y="NEXT")
-        self.set_xy(101.5,y+5.8); self.multi_cell(71,3.2,"только лица НАТО и ЕС: директора с допуском, «золотая акция»",align="C",new_x="LMARGIN",new_y="NEXT")
-        by=y+th+12; self.set_fill_color(*BOXF); self.set_draw_color(*NV); self.set_line_width(0.5); self.rect(52,by,90,13,"DF"); self.set_line_width(0.2)
-        self.set_font("D","B",8.3); self.set_text_color(*NV); self.set_xy(52,by+2); self.cell(90,4,"SalesCo — держатель экспортной лицензии",align="C")
-        self.set_font("D","",7.0); self.set_text_color(75,75,75); self.set_xy(53.5,by+6.2); self.multi_cell(87,3.2,"Болгария · член НАТО и ЕС",align="C",new_x="LMARGIN",new_y="NEXT")
-        self.set_draw_color(*CONN); self.set_line_width(0.5)
-        self.set_dash_pattern(dash=1.3,gap=1.3); self.line(75,by,57,y+th); self.set_dash_pattern()
-        self.line(57,y+th,55.5,y+th+1.9); self.line(57,y+th,58.5,y+th+1.7)
-        self.line(137,y+th,119,by); self.line(119,by,120.5,by-1.8); self.line(119,by,117.6,by-1.6); self.set_line_width(0.2)
-        self.set_font("D","",6.6); self.set_text_color(*GREY)
-        self.set_xy(40,y+th+4); self.cell(40,3,"прибыль"); self.set_xy(135,y+th+4); self.cell(40,3,"решения и управление")
+        import math
+        NV=NAVY; GRN=(40,120,70)
+        y0=self.get_y()+3
+        h1,h2,h3=17,15,18
+        y1=y0; y2=y1+h1+13; y3=y2+h2+13
+        def box(x,y,w,h,title,sub,dashed=False):
+            self.set_fill_color(*((255,255,255) if dashed else BOXF)); self.set_draw_color(*NV); self.set_line_width(0.5)
+            if dashed: self.set_dash_pattern(dash=1.3,gap=1.3)
+            self.rect(x,y,w,h,"DF")
+            if dashed: self.set_dash_pattern()
+            self.set_line_width(0.2)
+            self.set_font("D","B",8.2); self.set_text_color(*NV)
+            self.set_xy(x,y+2); self.cell(w,4,title,align="C")
+            self.set_font("D","",6.8); self.set_text_color(75,75,75)
+            self.set_xy(x+1.5,y+6.6); self.multi_cell(w-3,3.2,sub,align="C",new_x="LMARGIN",new_y="NEXT")
+        def conn(x1,ya,x2,yb,col=CONN,lw=0.5,size=2.0):
+            self.set_draw_color(*col); self.set_line_width(lw); self.line(x1,ya,x2,yb)
+            ang=math.atan2(yb-ya,x2-x1)
+            for da in (2.618,-2.618):
+                self.line(x2,yb,x2+size*math.cos(ang+da),yb+size*math.sin(ang+da))
+            self.set_line_width(0.2)
+        # tier 1 — investors (economic vs control)
+        box(18,y1,80,h1,"Инвесторы вне НАТО","экономические акции: доля в прибыли, без права контроля",dashed=True)
+        box(112,y1,80,h1,"Инициаторы и инвесторы из НАТО и ЕС","голосующие (контрольные) акции")
+        # tier 2 — holding
+        box(60,y2,90,h2,"Холдинг — Великобритания","разные классы акций разделяют экономику и голос")
+        # tier 3 — bulgarian companies
+        box(18,y3,80,h3,"PrincipalCo · Болгария","разработка, производство, сертификат типа и DOA")
+        box(112,y3,80,h3,"SalesCo · Болгария","военно-экспортная лицензия")
+        # ownership connectors (down)
+        conn(58,y1+h1,80,y2); conn(152,y1+h1,130,y2)
+        conn(80,y2+h2,58,y3); conn(130,y2+h2,152,y3)
+        # flow markers
+        self.set_font("D","B",6.8); self.set_text_color(*GRN); self.set_xy(40,y1+h1+4.5); self.cell(36,3,"▲ прибыль наверх")
+        self.set_text_color(*NV); self.set_xy(122,y1+h1+4.5); self.cell(48,3,"▼ голос и контроль вниз")
+        self.set_text_color(*GRN); self.set_xy(40,y2+h2+4.5); self.cell(36,3,"▲ прибыль")
+        self.set_text_color(*NV); self.set_xy(122,y2+h2+4.5); self.cell(48,3,"▼ 100% владение и контроль")
+        # caption under bottom companies
+        cy=y3+h3+2
+        self.set_font("D","",6.9); self.set_text_color(*STEEL)
+        self.set_xy(18,cy); self.cell(174,4,"Совет директоров с допуском к гостайне и «золотая акция» (право вето) — у лиц из НАТО и ЕС",align="C")
+        # legend
+        ly=cy+7
+        self.set_font("D","",6.6); self.set_text_color(*GRN); self.set_xy(18,ly); self.cell(8,3,"▲")
+        self.set_text_color(80,80,80); self.set_xy(25,ly); self.cell(80,3,"Прибыль поднимается ко всем инвесторам (экономика).")
+        self.set_text_color(*NV); self.set_xy(18,ly+4.2); self.cell(8,3,"▼")
+        self.set_text_color(80,80,80); self.set_xy(25,ly+4.2); self.cell(120,3,"Контроль и управление — у лиц из НАТО и ЕС (голос, совет, золотая акция).")
 
     def jurisdiction_map(self):
         y=self.get_y()+2
