@@ -1490,7 +1490,7 @@
                 {l: 'Approve first-time-address withdrawal', v: 'step-up auth (2FA + cool-down)'},
             ],
             dasp: [
-                {l: 'Build + transmit Travel Rule data set', v: 'to receiving VASP per Acuerdo 734 § V / Instr. Art. 52 par. 2'},
+                {l: 'Build + transmit Travel Rule data set', v: 'to receiving VASP per Instr. Art. 84-B / Instr. Art. 52 par. 2'},
                 {l: 'KYT on destination address', v: 'abort if sanctions / mixer / darknet hit'},
                 {l: 'Retain Travel Rule receipt confirmation', v: 'counterparty VASP acknowledgement log'},
                 {l: 'Sanctions screen pre-execution', v: 'on destination + counterparty VASP'},
@@ -1758,7 +1758,7 @@
                     );
                     // Destination wallet type attestation — needed for outbound-to-unhosted scenarios
                     trFields.push(
-                        {l: 'Destination wallet type — attest', v: 'VASP-hosted · self-custodied (own) · self-custodied (third-party)', hint: 'Per FATF Rec 16 + Acuerdo 734 § V RBA: outbound to unhosted (self-custody) wallet requires explicit attestation of wallet control. Auto-pulled to Travel Rule packet ⑥ field semantics.'},
+                        {l: 'Destination wallet type — attest', v: 'VASP-hosted · self-custodied (own) · self-custodied (third-party)', hint: 'Per FATF Rec 16 + Instr. Art. 84-B RBA: outbound to unhosted (self-custody) wallet requires explicit attestation of wallet control. Auto-pulled to Travel Rule packet ⑥ field semantics.'},
                     );
                     // If self-custody own → ownership attestation; if third-party → at EDD, KYC of beneficiary
                     if (d.v === 'edd') {
@@ -1833,7 +1833,7 @@
                 const sub = SUBOP_LABEL[subop] || subop;
                 sections.push({
                     title: 'Operation-specific — ' + esc(op) + ' · ' + esc(sub),
-                    when: '<span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
+                    when: '<span class="cite cite--instr">UIF Instr. Art. 51 / 84-C</span>',
                     tier: ['per-tx'],
                     fields: opFields,
                 });
@@ -1870,13 +1870,13 @@
             // Re-classification triggers — what auto-escalates the SDD-classified customer
             sections.push({
                 title: 'Auto-escalation triggers — SDD → CDD / EDD',
-                when: '<span class="cite cite--instr">Instr. Art. 14 last par.</span> · <span class="cite cite--instr">Acuerdo 734 § V.2.b.II</span>',
+                when: '<span class="cite cite--instr">Instr. Art. 14 last par.</span> · <span class="cite cite--instr">Instr. Art. 84-B / 14-A</span>',
                 tier: ['periodic'],
                 owner: ['risk', 'tech'],
                 sla: 'real-time', slaClass: 'instant', slaHint: 'Automated rule-based monitoring; thresholds checked on every customer event',
                 fields: [
-                    {l: 'Single e-tx > US$1,000', v: 'auto-escalate to Standard CDD', hint: 'Acuerdo 734 § V.2.b.II middle band.'},
-                    {l: 'Single e-tx > US$4,000', v: 'auto-escalate to EDD (intensificada)', hint: 'Acuerdo 734 § V.2.b.II EDD band — senior approval + documentary SoF + SoW.'},
+                    {l: 'Electronic transfer ≥ US$1,000', v: 'full Travel-Rule verification (CDD)', hint: 'BCR Normas Técnicas Art. 50 / FATF Rec 16 — originator/beneficiary identification required.'},
+                    {l: 'High-risk factor (PEP · opaque · mixer · structuring · adverse media)', v: 'auto-escalate to EDD', hint: 'Risk-based EDD regardless of amount — Instr. Art. 13.'},
                     {l: 'Cumulative volume spike vs declared expected', v: 'profile-deviation trigger → STR analysis'},
                     {l: 'Cash > US$10,000 / other-means > US$25,000', v: 'CDD + Operación Regulada filing'},
                     {l: 'KYT score breach (mixer / darknet exposure)', v: 'EDD + STR analysis'},
@@ -2081,7 +2081,7 @@
             const sub = SUBOP_LABEL[subop] || subop;
             sections.push({
                 title: 'Operation-specific — ' + esc(op) + ' · ' + esc(sub),
-                when: '<span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>',
+                when: '<span class="cite cite--instr">UIF Instr. Art. 51 / 84-C</span>',
                 tier: ['per-tx'],
                 owner: ['ops'],
                 sla: 'instant', slaClass: 'instant', slaHint: 'Real-time per-tx processing per Annex IV form code',
@@ -2141,18 +2141,16 @@
             hint: 'Administrative obligation — no judicial threshold for notification.',
         });
 
-        // DASP Individual Tx Report — for ANY DASP operation ≥ $1,000.
-        // Annex IV.2 covers 8 forms incl. cash → wallet (#4), card → wallet (#6),
-        // voucher / OTC etc. — channel does not exclude the wallet-side filing.
-        if (amt >= 1000) {
+        // Operación Regulada — virtual assets via goAML (crypto = "otro medio")
+        if (ch === 'crypto' && amt > 25000) {
             const subopNote = subop && SUBOP_NOTES[subop];
             const formHint = (subopNote && subopNote.forms && subopNote.forms.length)
-                ? 'form <strong>' + esc(subopNote.forms[0]) + '</strong>'
-                : 'one of 8 Annex IV transaction-type forms';
+                ? 'goAML PSAV form <strong>' + esc(subopNote.forms[0]) + '</strong>'
+                : 'one of the 6 goAML PSAV forms';
             reports.push({
-                l: 'DASP Individual Tx Report (≥ $1,000)',
-                v: '5 BD to UIF — ' + formHint + ' · <span class="cite cite--instr">Acuerdo 734 § Annex IV.2</span>',
-                hint: 'Required for any DASP operation ≥ US$1,000 — applies regardless of fiat-leg channel (crypto · bank · cash · voucher). Note: at exactly $1,000 the verdict may still be SDD (Acuerdo 734 § V.2.b.II uses "mayor a $1,000" — strict above) while this report fires (§ Annex IV.2 uses "mayores o iguales a $1,000" — inclusive). Both thresholds are statutorily distinct.',
+                l: 'Operación Regulada — activos virtuales (goAML)',
+                v: '5 BD to UIF — ' + formHint + ' · <span class="cite cite--instr">Instr. Art. 51 / 84-C</span>',
+                hint: 'PSAV regulated operations are filed via the UIF goAML system using the six PSAV forms (Cajero Electrónico · Compraventa con Wallet · Intercambio de Criptoactivos · Tarjeta a Wallet · Wallet a Cuenta · Wallet a Wallet). Threshold per Instr. Art. 51 (otro medio > US$25,000); confirm the operative de-minimis in the goAML form. There is no standalone "≥ $1,000" individual report in the current framework.',
             });
         }
 
@@ -2168,18 +2166,13 @@
             v: '5 BD to UIF · <span class="cite cite--instr">Instr. Art. 51</span>',
         });
 
-        // DASP Monthly Client Report — always (mandatory periodic baseline)
-        reports.push({
-            l: 'DASP Monthly Client Report',
-            v: 'active / inactive / disconnected clients with any interaction — UIF Portal monthly · <span class="cite cite--instr">Acuerdo 734 § Annex IV.1</span>',
-        });
 
         sections.push({
             title: 'UIF reporting filings',
-            when: '<span class="cite cite--instr">Acuerdo 734 § Annex IV</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span>',
+            when: '<span class="cite cite--instr">Instr. Art. 51 / 84-C</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span>',
             tier: ['per-tx', 'periodic'],
             owner: ['co'],
-            sla: 'see per-filing', slaClass: 'statutory', slaHint: 'STR 24h · Sanctions freeze without delay · Operación Regulada 5 BD · Monthly + Annual on cadence.',
+            sla: 'see per-filing', slaClass: 'statutory', slaHint: 'STR 24h from determination · Sanctions freeze without delay · Operación Regulada 5 BD vía goAML · Travel Rule on every transfer.',
             accent: 'reporting',
             fields: reports,
         });
@@ -2210,7 +2203,7 @@
         const op = OP_LABEL[s.operation] || s.operation;
         const sub = SUBOP_LABEL[s.subop] || s.subop;
         const head = esc(op) + ' · ' + esc(sub) + ' — operation-specific DASP actions'
-            + ' <span class="cite cite--instr">UIF Acuerdo 734 § Annex IV</span>';
+            + ' <span class="cite cite--instr">UIF Instr. Art. 51 / 84-C</span>';
         // Client items are now consolidated in the client-flow block above.
         return blockFields('block--purple', head,
             { client: [], dasp: note.dasp || [] },
@@ -2244,23 +2237,22 @@
         const ch = s.channel, amt = s.amount;
         const isElectronic = (ch === 'crypto' || ch === 'bankwire');
 
-        // ── DASP-specific automatic EDD by amount > $4,000 (Acuerdo 734 § V.2.b.II) ──
-        if (isElectronic && amt > 4000) return { v: 'edd', icon: '!', title: 'Enhanced Due Diligence',
-            reason: 'DASP operation > US$4,000 — automatic EDD (intensificada) per UIF Acuerdo 734/2022 § V.2.b.II. Senior-management approval + documentary SoF + SoW required regardless of risk factors.', triggers: ['amount > $4,000 (Acuerdo 734)'] };
-
-        // ── Standard CDD path — DASP cascade $1K–$4K + Operación Regulada thresholds ──
-        if (isElectronic && amt > 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'DASP operation US$1,000–$4,000 — Standard CDD (estándar) per UIF Acuerdo 734/2022 § V.2.b.II.' };
+        // ── Identification / Travel Rule verification — electronic transfers ≥ US$1,000 ──
+        // BCR Normas Técnicas Art. 50 (Bitcoin traceability) + FATF Rec 16 de-minimis. NOT an amount cascade.
+        if (isElectronic && amt >= 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
+            reason: 'Electronic transfer ≥ US$1,000 — full identification and Travel Rule originator/beneficiary verification required (BCR Normas Técnicas Art. 50; FATF Rec 16). Standard customer diligence applies by default (D-426 Art. 15 / Instr. Art. 12).' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'Cash > $10,000 — Standard CDD; Operación Regulada report due (5 bd to UIF).' };
+            reason: 'Cash > US$10,000 — Standard CDD; Operación Regulada report due (5 BD to UIF via goAML), Instr. Art. 51.' };
         if (ch === 'other' && amt > 25000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: 'Other-means > $25,000 — Standard CDD; Operación Regulada report due (5 bd to UIF).' };
+            reason: 'Other-means > US$25,000 — Standard CDD; Operación Regulada report due (5 BD to UIF via goAML), Instr. Art. 51.' };
 
-        // ── Default: SDD (Simplified Due Diligence) — amounts ≤ $1,000 per Acuerdo 734 § V.2.b.II ──
-        const sddReason = s.rel === 'ongoing'
-            ? 'Ongoing low-risk customer below US$1,000 DASP threshold — Simplified DD per UIF Acuerdo 734/2022 § V.2.b.II + Instr. Art. 14 / LCLDA Art. 17. Identification at onboarding with verification permitted to be deferred (Art. 14(a)). Reduced monitoring frequency. Travel Rule + sanctions screening still apply.'
-            : 'Occasional transaction ≤ US$1,000 + no risk factor — Simplified DD (medida simplificada) per UIF Acuerdo 734/2022 § V.2.b.II. Lighter scope: basic ID + sanctions + Travel Rule data. SDD not acceptable on any suspicion or higher-risk scenario per Art. 14 last par.';
-        return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence', reason: sddReason };
+        // ── Low-risk occasional electronic operation < US$1,000 — SDD permitted ──
+        if (s.rel === 'occasional' && isElectronic && amt < 1000) return { v: 'sdd', icon: '○', title: 'Simplified Due Diligence',
+            reason: 'Occasional low-risk electronic operation < US$1,000 — Simplified DD permitted (D-426 Art. 17 / Instr. Art. 14): basic identification + Travel Rule data + sanctions screen; verification may be deferred below the US$1,000 Travel-Rule threshold (FATF Rec 16). SDD is void on any suspicion or higher-risk factor.' };
+
+        // ── Default: Standard CDD — baseline for all clients (D-426 Art. 15 / Instr. Art. 12) ──
+        return { v: 'cdd', icon: '✓', title: 'Standard CDD',
+            reason: 'Standard customer due diligence applies by default to all clients (D-426 Art. 15 / Instr. Art. 12): full identification, customer profile, sworn source-of-funds declaration, PEP self-declaration, and beneficial owner ≥ 10%. DD is triggered at relationship start, on occasional transactions above the reporting thresholds, on electronic transfers, and on any suspicion or doubt (Instr. Art. 14-A).' };
     }
 
     function block(cls, head, items) {
@@ -2471,11 +2463,12 @@
         const refs = [
             {
                 id: 'dd-cascade',
-                head: 'Due Diligence cascade — UIF Acuerdo 734 § V.2.b.II',
+                head: 'Due Diligence — risk-based (D-426 Art. 15 / Instr. Art. 12-14-A)',
                 body: '<ul>' +
-                    '<li><strong>SDD (Simplified):</strong> e-tx ≤ US$1,000 — basic identification + Travel Rule + sanctions screen. ID verification may be deferred (Instr. Art. 14(a)).</li>' +
-                    '<li><strong>Standard CDD:</strong> e-tx US$1,000-$4,000 — full identification + customer profile + sworn SoF declaration + PEP self-declaration (Instr. Art. 12).</li>' +
-                    '<li><strong>EDD (Enhanced):</strong> e-tx > US$4,000 — automatic. Documentary SoF + SoW + senior-management approval + continuous KYT (Instr. Art. 13 Reform 2).</li>' +
+                    '<li><strong>Standard CDD:</strong> baseline for all clients — full identification + customer profile + sworn SoF declaration + PEP self-declaration + beneficial owner ≥ 10% (Instr. Art. 12).</li>' +
+                    '<li><strong>SDD (Simplified):</strong> low-risk occasional operation &lt; US$1,000 — basic ID + Travel Rule data + sanctions screen; verification deferrable (Instr. Art. 14; FATF Rec 16 de-minimis). Void on any suspicion.</li>' +
+                    '<li><strong>EDD (Enhanced):</strong> high-risk clients/factors — PEP, opaque ownership, high-risk jurisdiction, structuring, adverse media — documentary SoF + SoW + senior-management approval, regardless of amount (Instr. Art. 13).</li>' +
+                    '<li><strong>Identification trigger:</strong> electronic transfers ≥ US$1,000 require full Travel-Rule originator/beneficiary verification (BCR Normas Técnicas Art. 50). DD is also triggered at relationship start, occasional tx &gt; US$10,000, or any suspicion/doubt (Instr. Art. 14-A). No US$1,000/US$4,000 DD cascade exists in the current framework.</li>' +
                     '<li><strong>Risk-based trigger</strong> regardless of amount: PEP, opaque ownership, cash-intensive, structuring, mixer exposure, third-party funder, adverse media, high-risk jurisdiction → EDD.</li>' +
                     '</ul>',
             },
@@ -2524,8 +2517,7 @@
                     '<li><strong>STR (Suspicious Transaction Report):</strong> 24h wall-clock from determination (LCLDA Art. 24). Internal analysis ≤15 BD.</li>' +
                     '<li><strong>Operación Regulada — cash:</strong> 5 business days for cash > $10,000 (LCLDA Art. 25).</li>' +
                     '<li><strong>Operación Regulada — other means:</strong> 5 BD for other-means > $25,000 (Instr. Art. 51).</li>' +
-                    '<li><strong>DASP Individual Tx Report:</strong> 5 BD for crypto/bankwire ≥ $1,000 — one of 8 Annex IV forms (Acuerdo 734 § Annex IV.2).</li>' +
-                    '<li><strong>DASP Monthly Client Report:</strong> active / inactive / disconnected — monthly via UIF Portal (Acuerdo 734 § Annex IV.1).</li>' +
+                    '<li><strong>Operación Regulada — activos virtuales:</strong> filed via the UIF goAML system using the six PSAV forms; threshold per Instr. Art. 51 (otro medio &gt; US$25,000). No standalone "≥ $1,000" report exists in the current framework.</li>' +
                     '</ul>',
             },
             {
@@ -2535,7 +2527,7 @@
             },
             {
                 id: 'annex-iv',
-                head: 'UIF Acuerdo 734 § Annex IV — 8 transaction-type forms',
+                head: 'UIF goAML — 6 PSAV regulated-operation forms',
                 body: '<ul>' +
                     '<li><strong>1 — Wallet ↔ Wallet</strong> (same provider, internal book transfer).</li>' +
                     '<li><strong>2 — Wallets distintas</strong> (different wallets, different providers).</li>' +
@@ -2646,7 +2638,7 @@
         if (s.jur === 'reject') list.push({
             label: 'Counterparty jurisdiction: ' + esc(s.jurCat),
             effect: 'REJECT — geofence', effectClass: 'reject',
-            cite: 'Acuerdo 734 § V',
+            cite: 'Instr. Art. 84-B',
         });
         if (s.f.refuses) list.push({
             label: 'Client refuses CDD / Travel Rule data',
@@ -2692,27 +2684,22 @@
         });
         if (s.jur === 'edd') list.push({
             label: 'High-risk jurisdiction: ' + esc(s.jurCat),
-            effect: 'EDD', effectClass: 'edd', cite: 'Acuerdo 734 § V',
+            effect: 'EDD', effectClass: 'edd', cite: 'Instr. Art. 84-B',
         });
 
         // At reject, hard-stops dominate — amount/risk factors are not driving the verdict, suppress them
         if (d.v === 'reject') return list;
 
         // Amount-based DD cascade (statutory thresholds)
-        if (isElectronic && amt > 4000) list.push({
-            label: 'Electronic operation > US$4,000 ($' + amt.toLocaleString() + ')',
-            effect: 'EDD (automatic)', effectClass: 'edd',
-            cite: 'Acuerdo 734 § V.2.b.II',
-        });
-        else if (isElectronic && amt > 1000) list.push({
-            label: 'Electronic operation US$1,000–$4,000 ($' + amt.toLocaleString() + ')',
-            effect: 'Standard CDD', effectClass: 'cdd',
-            cite: 'Acuerdo 734 § V.2.b.II',
+        if (isElectronic && amt >= 1000) list.push({
+            label: 'Electronic transfer ≥ US$1,000 ($' + amt.toLocaleString() + ')',
+            effect: 'Travel Rule verification + Standard CDD', effectClass: 'cdd',
+            cite: 'BCR Normas Técnicas Art. 50',
         });
         else if (isElectronic) list.push({
-            label: 'Electronic operation ≤ US$1,000 ($' + amt.toLocaleString() + ')',
-            effect: 'SDD eligible', effectClass: 'sdd',
-            cite: 'Acuerdo 734 § V.2.b.II',
+            label: 'Electronic transfer < US$1,000 ($' + amt.toLocaleString() + ')',
+            effect: 'SDD eligible — verification deferrable', effectClass: 'sdd',
+            cite: 'FATF Rec 16 / Instr. Art. 14',
         });
 
         if (ch === 'cash' && amt > 10000) list.push({
@@ -2748,7 +2735,7 @@
                 '<span class="version-stamp__item"><strong>LCLDA</strong> D-426/2025</span>' +
                 '<span class="version-stamp__item"><strong>LECAT</strong> D-108</span>' +
                 '<span class="version-stamp__item"><strong>Instructivo UIF</strong> Reform 2 (2024)</span>' +
-                '<span class="version-stamp__item"><strong>Acuerdo</strong> 734/2022</span>' +
+                '<span class="version-stamp__item"><strong>goAML</strong> + Instr. Cap. IV-B</span>' +
             '</div>'
         );
 
@@ -2904,7 +2891,7 @@
             '<div style="grid-column:1 / -1; margin-top:1.25rem; padding:0.75rem 1rem; border:1px dashed var(--text-3); border-radius:8px; background:var(--bg-alt); font-size:0.72rem; color:var(--text-2); line-height:1.55;">' +
                 '<strong>ⓘ Scope.</strong> This wizard reflects strict statutory baseline ' +
                 '(<span class="cite cite--d426">LCLDA</span> · <span class="cite cite--instr">Instructivo</span> · ' +
-                '<span class="cite cite--lecat">LECAT</span> · LEAD · UIF Acuerdo 734). ' +
+                '<span class="cite cite--lecat">LECAT</span> · LEAD · UIF Instructivo Cap. IV-B). ' +
                 'Per <span class="cite cite--instr">Instr. Arts. 5, 7(d), 10</span>, your internal AML ' +
                 'risk-management methodology determines the inherent ML/TF/FPWMD risk of customers and ' +
                 'counterparties — weighing among other criteria the risk of products / services, channels ' +
@@ -2939,7 +2926,7 @@
     });
 
     document.getElementById('wiz-ex-sdd').addEventListener('click', () => {
-        // SDD: occasional, low-risk, e-tx ≤ $1,000 — Acuerdo 734 § V.2.b.II floor
+        // SDD: occasional, low-risk, e-tx < $1,000 — verification deferrable (FATF Rec 16)
         form.querySelector('input[name="operation"][value="exchange"]').checked = true;
         form.querySelector('input[name="subop"][value="onramp"]').checked = true;
         syncSubops();
@@ -2953,7 +2940,7 @@
     });
 
     document.getElementById('wiz-ex-cdd').addEventListener('click', () => {
-        // Standard CDD: occasional, e-tx $1,000–$4,000 — Acuerdo 734 § V.2.b.II middle band
+        // Standard CDD: occasional, e-tx ≥ $1,000 — Travel Rule verification (BCR Art. 50)
         form.querySelector('input[name="operation"][value="exchange"]').checked = true;
         form.querySelector('input[name="subop"][value="onramp"]').checked = true;
         syncSubops();
@@ -3021,7 +3008,7 @@
                     { code: 'LCLDA',      reference: 'D-426/2025' },
                     { code: 'LECAT',      reference: 'D-108' },
                     { code: 'Instructivo UIF', reference: 'Reform 2 (2024)' },
-                    { code: 'Acuerdo UIF',     reference: '734/2022' },
+                    { code: 'Instructivo UIF',     reference: 'Cap. IV-B' },
                 ],
             },
             scenario: {
