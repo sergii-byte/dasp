@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>AML/CTF Operational Playbook — DASP / PSAV El Salvador</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+  :root{
+    --dark:#141413; --light:#faf9f5; --mid:#b0aea5; --bg-sub:#e8e6dc;
+    --orange:#d97757; --blue:#6a9bcc; --green:#788c5d;
+    --red:#b94a38; --amber:#c98a2c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--light);color:var(--dark);
+    font-family:'Lora',Georgia,serif; font-size:9.8pt; line-height:1.45;}
+  h1,h2,h3,h4,h5{font-family:'Poppins',Arial,sans-serif; color:var(--dark); margin:0 0 .4em; font-weight:600;}
+  h1{font-size:26pt; line-height:1.1; letter-spacing:-.01em;}
+  h2{font-size:17pt; line-height:1.15; margin-top:.5em; border-bottom:1px solid var(--bg-sub); padding-bottom:.25em;}
+  h3{font-size:12.5pt; margin-top:.9em; color:var(--dark);}
+  h4{font-size:10.5pt; margin-top:.8em; color:var(--orange);}
+  h5{font-size:10pt; margin-top:.6em;}
+  p{margin:.35em 0;}
+  ul,ol{margin:.3em 0 .5em 1.1em; padding:0;}
+  li{margin:.15em 0;}
+  code{font-family:'Fira Code',Consolas,monospace; font-size:8.8pt; background:var(--bg-sub); padding:1px 4px; border-radius:3px;}
+  a{color:var(--orange); text-decoration:none;}
+
+  /* Cover */
+  .cover{
+    width:210mm; height:297mm; padding:28mm 22mm; box-sizing:border-box;
+    page-break-after:always; background:var(--dark); color:var(--light);
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .cover h1{color:var(--light); font-size:34pt; line-height:1.05; margin-bottom:.2em;}
+  .cover .sub{font-size:13pt; color:var(--mid); font-family:'Poppins',Arial,sans-serif; font-weight:400;}
+  .cover .tag-line{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+  .cover .tag-line span{display:inline-block; padding:4px 10px; border:1px solid var(--mid); color:var(--light); font-family:'Poppins',Arial,sans-serif; font-size:9pt; border-radius:999px;}
+  .cover .meta{font-family:'Poppins',Arial,sans-serif; font-size:9.5pt; color:var(--mid);}
+  .cover .meta strong{color:var(--light); font-weight:500;}
+  .cover .band{height:6px; background:var(--orange); width:80px; margin:0 0 22px;}
+
+  .page{page-break-after:always;}
+  .page:last-child{page-break-after:auto;}
+
+  .lead{font-family:'Poppins',Arial,sans-serif; font-size:10pt; color:#3a3935; border-left:3px solid var(--orange); padding:.2em 0 .2em .7em; margin:.4em 0 1em;}
+  .callout{border:1px solid var(--bg-sub); border-left:4px solid var(--blue); background:#f4f6fa; padding:9px 13px; margin:.5em 0; border-radius:4px; font-size:9.3pt;}
+  .callout.warn{border-left-color:var(--red); background:#fbf1ee;}
+  .callout.amber{border-left-color:var(--amber); background:#fbf5e8;}
+  .callout.ok{border-left-color:var(--green); background:#f1f4ec;}
+  .callout h4{margin-top:0; color:var(--dark);}
+
+  /* Citation chips */
+  .cite{display:inline-block; font-family:'Poppins',Arial,sans-serif; font-size:7.3pt; background:var(--bg-sub); color:#3a3935; padding:1px 5px; border-radius:3px; margin-left:3px; vertical-align:1px; white-space:nowrap; font-weight:500;}
+  .cite.lead-cite{background:#f0d9cc; color:#7a3319;}
+  .cite.rpsad{background:#d9e4f0; color:#24496f;}
+  .cite.aml{background:#dde5cf; color:#3b4d22;}
+  .cite.uif{background:#efe5d1; color:#6b541a;}
+  .cite.lecat{background:#eadfef; color:#5c2a70;}
+  .cite.gap{background:#f5d6d0; color:#7a2114;}
+  .cite.practice{background:#e8e6dc; color:#666;}
+
+  table{width:100%; border-collapse:collapse; margin:.4em 0 .9em; font-size:8.8pt;}
+  th,td{border:1px solid var(--bg-sub); padding:5px 7px; vertical-align:top; text-align:left;}
+  th{background:var(--bg-sub); font-family:'Poppins',Arial,sans-serif; font-weight:600; font-size:8.8pt;}
+  td.num{white-space:nowrap; font-family:'Poppins',Arial,sans-serif;}
+  td.ok{background:#f1f4ec;}
+  td.warn{background:#fbf1ee;}
+  td.amber{background:#fbf5e8;}
+
+  /* Flow steps */
+  .flow-step{display:flex; gap:10px; align-items:flex-start; margin:5px 0; padding:7px 10px; background:#fff; border:1px solid var(--bg-sub); border-radius:4px;}
+  .flow-step .num{flex:0 0 28px; background:var(--orange); color:var(--light); text-align:center; font-family:'Poppins',Arial,sans-serif; font-weight:600; border-radius:3px; padding:3px 0; font-size:10pt;}
+  .flow-step .body{flex:1; font-size:8.8pt;}
+  .flow-step .body strong{display:block; margin-bottom:2px;}
+
+  /* Scenarios */
+  .scenario{border:1px solid var(--bg-sub); border-radius:6px; padding:11px 14px; margin:.9em 0; background:#fff;}
+  .scenario h3{margin-top:0; color:var(--orange); font-size:11.5pt;}
+  .scenario .inputs{background:var(--bg-sub); padding:6px 9px; border-radius:3px; font-family:'Poppins',Arial,sans-serif; font-size:8.8pt; margin-bottom:7px;}
+  .scenario .inputs strong{color:var(--dark);}
+  .scenario .verdict{border-left:3px solid var(--green); background:#f1f4ec; padding:6px 10px; margin-top:7px; font-size:8.8pt;}
+  .scenario p{font-size:8.8pt;}
+
+  /* Redlines grid */
+  .redlines{display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:.5em 0 1em;}
+  .rl{border:1px solid var(--bg-sub); border-top:3px solid var(--red); padding:7px 9px; border-radius:3px; background:#fff;}
+  .rl h4{color:var(--red); font-size:9.5pt; margin:0 0 .25em;}
+  .rl p{font-size:8.3pt; margin:.1em 0;}
+
+  /* Conflict panels */
+  .conflict{border:1px solid var(--red); border-radius:4px; padding:9px 13px; margin:.5em 0; background:#fef4f2; font-size:8.8pt;}
+  .conflict h4{color:var(--red); margin-top:0;}
+
+  /* TOC */
+  .toc{font-family:'Poppins',Arial,sans-serif; font-size:9.8pt;}
+  .toc ol{list-style:none; padding-left:0; margin:0;}
+  .toc li{padding:3px 0; border-bottom:1px dotted var(--bg-sub);}
+  .toc .num{display:inline-block; width:34px; color:var(--orange); font-weight:600;}
+  .toc .sub li{padding-left:20px; border-bottom:none; font-size:9pt; color:#554f45;}
+
+  .check li{list-style:none; padding-left:1.5em; position:relative;}
+  .check li::before{content:"☐"; position:absolute; left:0; color:var(--orange); font-size:11pt; line-height:1;}
+  .small{font-size:8.3pt; color:#4a4844;}
+  .mono{font-family:'Fira Code',Consolas,monospace; font-size:8.8pt;}
+
+  /* DD pills */
+  .pill{display:inline-block; padding:2px 8px; border-radius:999px; font-family:'Poppins',Arial,sans-serif; font-size:8pt; font-weight:500;}
+  .pill.sdd{background:#dde5cf; color:#3b4d22;}
+  .pill.std{background:#d9e4f0; color:#24496f;}
+  .pill.edd{background:#f5d6d0; color:#7a2114;}
+  .pill.block{background:var(--dark); color:var(--light);}
+
+  .legend{font-family:'Poppins',Arial,sans-serif; font-size:8.3pt; color:#554f45; margin:6px 0;}
+  .legend .cite{margin-right:4px;}
+
+  /* ——— Quick Reference Card ——— */
+  .qrc{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:.5em 0;}
+  .qrc .box{border:1px solid var(--bg-sub); border-top:3px solid var(--orange); padding:8px 10px; background:#fff; border-radius:3px;}
+  .qrc .box h4{margin:0 0 5px; font-size:9.5pt; color:var(--orange);}
+  .qrc .box table{margin:0; font-size:8.3pt;}
+  .qrc .box th, .qrc .box td{padding:3px 5px; font-size:8.3pt;}
+  .qrc .box.wide{grid-column:1 / -1; border-top-color:var(--blue);}
+  .qrc .box.wide h4{color:var(--blue);}
+  .qrc .box.warn{border-top-color:var(--red);}
+  .qrc .box.warn h4{color:var(--red);}
+
+  /* ——— Decision tree ——— */
+  .tree{font-family:'Fira Code',Consolas,monospace; font-size:8.6pt; line-height:1.4; background:#fff; border:1px solid var(--bg-sub); padding:12px 16px; margin:.5em 0; border-radius:4px; white-space:pre; overflow:hidden;}
+  .tree .q{color:var(--dark); font-weight:600;}
+  .tree .reject{color:var(--red); font-weight:600;}
+  .tree .edd{color:#7a2114; font-weight:600;}
+  .tree .std{color:#24496f; font-weight:600;}
+  .tree .sdd{color:#3b4d22; font-weight:600;}
+  .tree .info{color:#4a4844;}
+
+  /* Score matrix */
+  .score-grid td.w0{background:#eef3e5;}
+  .score-grid td.w1{background:#faf4dc;}
+  .score-grid td.w2{background:#fbe7d4;}
+  .score-grid td.w3{background:#f5d6d0;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ COVER ═══════════════════════ -->
+<section class="cover">
+  <div>
+    <div class="band"></div>
+    <div class="sub">AML / CTF Operational Playbook</div>
+    <h1>DASP &amp; PSAV<br/>El&nbsp;Salvador</h1>
+    <p class="sub" style="margin-top:10px;">A working cheat-sheet for the Compliance Officer: inputs (client, amount, risk) → required action (DD level, documents, Travel Rule, reporting, deadlines) — every row cited to statute.</p>
+    <div class="tag-line">
+      <span>LEAD · Decree 643/2023</span>
+      <span>RPSAD · CNAD-035-2023</span>
+      <span>AML Law · Decree 426/2025</span>
+      <span>LECAT · Decree 108/2006 + D-928/2024</span>
+      <span>UIF Instructivo · Acuerdo 380/2021</span>
+    </div>
+  </div>
+  <div class="meta">
+    <p><strong>Version:</strong> 3.4 · desk-reference rewrite<br/>
+       <strong>Legal cutoff:</strong> 21 June 2026<br/>
+       <strong>Method:</strong> every requirement cited to Law + Article + Regulator · FATF / OFAC / EU / UK only as external reference, not as source of obligation<br/>
+       <strong>Audience:</strong> DASP / PSAV registration practitioners, El Salvador</p>
+    <p style="margin-top:16px; color:#8a887f; font-size:8.3pt;">Supersedes v1.0 and v2.0. This document is not legal advice; every row must be validated with admitted Salvadoran counsel before operational rollout. Do not remove citations when copying into internal policy — they are the trail that survives an inspection.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 0 — QUICK REFERENCE CARD ═══════════════════════ -->
+<section class="page">
+  <h2>0. Quick reference card</h2>
+  <p class="lead">One page. Keep it on the desk. Every number is cited. For the reasoning behind a number, go to the section indicated.</p>
+
+  <div class="qrc">
+    <div class="box">
+      <h4>Reporting thresholds — Operaciones Reguladas</h4>
+      <table>
+        <tr><th>Means</th><th>Single</th><th>Monthly</th><th>Report</th></tr>
+        <tr><td>Cash</td><td>&gt; US$10,000</td><td>&gt; US$10,000</td><td class="num">5 bd</td></tr>
+        <tr><td>Other</td><td>&gt; US$25,000</td><td>&gt; US$25,000</td><td class="num">5 bd</td></tr>
+      </table>
+      <p class="small"><span class="cite uif">UIF Instr. Art. 51</span> · detail §8</p>
+    </div>
+
+    <div class="box">
+      <h4>Travel Rule data — PSAV scope</h4>
+      <p style="font-size:8.8pt; margin:0 0 4px;"><strong>PSAV: any digital-asset transfer · any amount.</strong> The 7-field originator + beneficiary set attaches to every transfer regardless of value (Art. 52 par. 2 CAPS: "even those that do not exceed the established thresholds").</p>
+      <p class="small"><span class="cite uif">UIF Instr. Arts. 52 par. 2 (Reform 2), 84-B(1)(e) (Reform 1)</span> · detail §7</p>
+    </div>
+
+    <div class="box">
+      <h4>Statutory deadlines</h4>
+      <table>
+        <tr><td>STR after determination</td><td class="num">24 h</td></tr>
+        <tr><td>Internal analysis (extendable 1×)</td><td class="num">≤15 bd</td></tr>
+        <tr><td>UNSC / national list freeze report</td><td class="num">without delay</td></tr>
+        <tr><td>Operación Regulada</td><td class="num">5 bd</td></tr>
+        <tr><td>UIF data update</td><td class="num">15 bd</td></tr>
+        <tr><td>CO appointment → UIF</td><td class="num">15 bd</td></tr>
+        <tr><td>CO removal → UIF</td><td class="num">5 bd</td></tr>
+        <tr><td>CNAD material change</td><td class="num">5 bd</td></tr>
+        <tr><td>Training plan Board-approved</td><td>by 31 Dec</td></tr>
+        <tr><td>Retention of all AML files</td><td class="num">15 yr</td></tr>
+      </table>
+    </div>
+
+    <div class="box">
+      <h4>Beneficial owner thresholds</h4>
+      <table>
+        <tr><th>Source</th><th>%</th><th>Posture</th></tr>
+        <tr><td>UIF Instr. Arts. 12 last sent., 20(b)</td><td>≥ 10%</td><td><strong>Apply — stricter</strong></td></tr>
+        <tr><td>LECLDA Art. 15 par. 5</td><td>≥ 25%</td><td>Law</td></tr>
+        <tr><td>Instr. Art. 21-A (Reform 2)</td><td>majority + control + highest mgmt fallback</td><td>VASP-specific cascade</td></tr>
+        <tr><td colspan="3">Plus: Art. 20(a) — natural person on whose behalf relationship is sought (nominee detection); listed-company exception.</td></tr>
+      </table>
+      <p class="small">Detail §6</p>
+    </div>
+
+    <div class="box">
+      <h4>DD levels — when</h4>
+      <table>
+        <tr><td><span class="pill sdd">SDD</span></td><td>Documented low risk, no EDD trigger, no PEP, no high-risk jur</td></tr>
+        <tr><td><span class="pill std">Standard</span></td><td>Default for any ongoing relationship</td></tr>
+        <tr><td><span class="pill edd">EDD</span></td><td>PEP (+ family ≤2nd, close assoc, ≤5y post-cease) · high-risk jur · opaque ownership · cash-intensive · unusual pattern · complex structure</td></tr>
+        <tr><td><span class="pill block">REJECT</span></td><td>UNSC / national list hit · client refuses CDD · prohibited asset</td></tr>
+      </table>
+      <p class="small">Detail §5</p>
+    </div>
+
+    <div class="box">
+      <h4>Perimeter of permitted assets</h4>
+      <table>
+        <tr><td class="ok">Allowed</td><td>Transparent-ledger AV listed at registration (BTC, ETH, SOL, TRX…); CNAD-authorised regulated stablecoins (USDT, USDC…).</td></tr>
+        <tr><td class="warn">Rejected</td><td>Privacy coins (XMR, ZEC, DASH); algorithmic stablecoins; additional stablecoins / new tokens without express CNAD authorisation.</td></tr>
+      </table>
+      <p class="small"><span class="cite lead-cite">LEAD Arts. 9(k)(l), 20(b), 21(e)(q)</span> <span class="cite rpsad">RPSAD Art. 9</span> · detail §4</p>
+    </div>
+
+    <div class="box wide">
+      <h4>Essential contacts &amp; channels</h4>
+      <table>
+        <tr><th>Regulator</th><th>Matter</th><th>Channel</th></tr>
+        <tr><td>UIF (FGR)</td><td>Registration, STR, Operación Regulada, list freezes, CO notifications, data updates</td><td>Electronic UIF platform · <span class="cite uif">UIF Instr. Arts. 3, 27–35, 43, 51, 64</span></td></tr>
+        <tr><td>CNAD</td><td>DASP registration, material changes, AML supervision overlay</td><td>CNAD electronic procedure · <span class="cite lead-cite">LEAD Arts. 18, 20</span> <span class="cite rpsad">RPSAD Art. 9</span></td></tr>
+        <tr><td>BCR</td><td>Bitcoin-only PSAV track (if applicable)</td><td><span class="cite uif">UIF Instr. Art. 84-A</span></td></tr>
+        <tr><td>FGR (Fiscalía)</td><td>Criminal referrals (terrorism); tipping-off prosecutions</td><td><span class="cite lecat">LECAT Art. 37</span> · <span class="cite aml">LECLDA Art. 44</span></td></tr>
+      </table>
+    </div>
+
+    <div class="box warn wide">
+      <h4>Red lines — do not cross</h4>
+      <p class="small">(1) No tipping-off to client or third parties — criminal. (2) No STR later than 24 h from determination. (3) No UNSC / national hit without freezing without delay and reporting to UIF. (4) No PSAV transfer without full Travel Rule data. (5) No SDD for PEP / high-risk. (6) No operation on prohibited asset. (7) No relationship without BO identified to a natural person. (8) No file destroyed before 15 years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TOC ═══════════════════════ -->
+<section class="page">
+  <h2>Contents</h2>
+  <div class="toc">
+    <ol>
+      <li><span class="num">0.</span> Quick reference card</li>
+      <li><span class="num">1.</span> How to use this playbook</li>
+      <li><span class="num">2.</span> Executive red lines</li>
+      <li><span class="num">3.</span> Regulatory stack &amp; transitional regime</li>
+      <li><span class="num">4.</span> Asset &amp; activity perimeter — pre-CDD gate</li>
+      <li><span class="num">5.</span> Framework A — CDD level decision
+        <ol class="sub"><li>5.1 Decision tree</li><li>5.2 Risk factor catalogue</li><li>5.3 Risk scoring matrix</li></ol>
+      </li>
+      <li><span class="num">6.</span> Framework B — Identification &amp; documentation by DD level</li>
+      <li><span class="num">7.</span> Framework C — Transaction pipeline &amp; Travel Rule</li>
+      <li><span class="num">8.</span> Framework D — Reporting thresholds (Operaciones Reguladas)</li>
+      <li><span class="num">9.</span> Framework E — Suspicious activity flow</li>
+      <li><span class="num">10.</span> Framework F — Sanctions, UNSC &amp; PEP screening</li>
+      <li><span class="num">11.</span> Framework G — Ongoing compliance calendar</li>
+      <li><span class="num">12.</span> CDD refresh triggers</li>
+      <li><span class="num">13.</span> Escalation matrix</li>
+      <li><span class="num">14.</span> Scenario walkthroughs — standard cases</li>
+      <li><span class="num">15.</span> Scenario walkthroughs — edge cases</li>
+      <li><span class="num">16.</span> Common supervisory findings · do-not-do list</li>
+      <li><span class="num">17.</span> VASP-specific framework — Chapter IV-B + Instructivo Cap. IV-B
+        <ol class="sub"><li>17.1 Six-layer stack</li><li>17.2 $125K monthly aggravator (RPSAD Art. 22)</li><li>17.3 DD on occasional VASP transactions</li><li>17.4 PSAV due diligence — risk-based (Instr. Art. 12-14-A)</li><li>17.5 PSAV reporting framework (Instr. Art. 51 / 84-C)</li></ol>
+      </li>
+      <li><span class="num">18.</span> Cessation &amp; Wind-down (RPSAD Arts. 38–39)
+        <ol class="sub"><li>18.1 Two cessation types</li><li>18.2 CNAD procedure timeline</li><li>18.3 Auto-cancellation paths (Arts. 14, 40)</li></ol>
+      </li>
+      <li><span class="num">19.</span> Conduct &amp; Operational Standards
+        <ol class="sub"><li>19.1 Standards of conduct (Art. 17)</li><li>19.2 Code of Ethics (Art. 18)</li><li>19.3 Computer systems (Art. 20)</li><li>19.4 LRU disclosure (Art. 23)</li><li>19.5 Personal data protection (Art. 36)</li><li>19.6 Privileged information (Arts. 24–26)</li><li>19.7 Investment refund 48h (Art. 37)</li></ol>
+      </li>
+      <li><span class="num">20.</span> Bitcoin Law D-57/2021 + Reform D-199/2025</li>
+      <li><span class="num">21.</span> Anticipated framework updates</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <h4>Citation legend</h4>
+    <p class="legend">
+      <span class="cite lead-cite">LEAD</span> = Digital Asset Issuance Law, Decree 643/2023 · CNAD &nbsp;·&nbsp;
+      <span class="cite rpsad">RPSAD</span> = CNAD-035-2023 &nbsp;·&nbsp;
+      <span class="cite aml">AML Law</span> = Decree 426/2025 · UIF &nbsp;·&nbsp;
+      <span class="cite lecat">LECAT</span> = Decree 108/2006 + 928/2024 · FGR/UIF &nbsp;·&nbsp;
+      <span class="cite uif">UIF Instr.</span> = Acuerdo 380/2021 · UIF &nbsp;·&nbsp;
+      <span class="cite uif">Instructivo UIF Cap. IV-B</span> = UIF Guía PSAV · imperative AML/CFT obligations · DO 2 Dec 2022 &nbsp;·&nbsp;
+      <span class="cite gap">gap</span> = not regulated / pending rulemaking &nbsp;·&nbsp;
+      <span class="cite practice">practice</span> = supervisory expectation, not statutory
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 1 — HOW TO USE ═══════════════════════ -->
+<section class="page">
+  <h2>1. How to use this playbook</h2>
+  <p class="lead">This is a decision tool, not a compendium. For every operational event (onboarding, transaction, change, incident), go to the relevant framework, match inputs, execute the required action. Every row is cited. Where the law is silent, the row is marked <span class="cite gap">gap</span> and the conservative default is shown until the Reglamento (AML Law Art. 60) arrives.</p>
+
+  <h3>The seven operational events</h3>
+  <div class="flow-step"><div class="num">A</div><div class="body"><strong>Client walks in.</strong> Perimeter gate (§4) → DD level (§5) → documents (§6) → screening (§10).</div></div>
+  <div class="flow-step"><div class="num">B</div><div class="body"><strong>Transaction requested.</strong> Re-screen (§10) + Travel Rule (§7) + threshold check (§8) + KYT.</div></div>
+  <div class="flow-step"><div class="num">C</div><div class="body"><strong>Pattern looks off.</strong> Framework E (§9) — analysis ≤15 bd → STR within 24 h.</div></div>
+  <div class="flow-step"><div class="num">D</div><div class="body"><strong>List hit.</strong> Framework F (§10) — freeze, report UIF without delay, no tipping-off.</div></div>
+  <div class="flow-step"><div class="num">E</div><div class="body"><strong>Client data changed.</strong> Refresh triggers (§12) — UIF 15 bd; CNAD 5 bd.</div></div>
+  <div class="flow-step"><div class="num">F</div><div class="body"><strong>Calendar tick.</strong> Framework G (§11) — training plan, audit, committee, BO refresh.</div></div>
+  <div class="flow-step"><div class="num">G</div><div class="body"><strong>CO change.</strong> UIF notification: 15 bd appointment / 5 bd removal.</div></div>
+
+  <h3>Three global rules applied everywhere</h3>
+  <div class="callout">
+    <p><strong>Rule 1 — Stricter of two.</strong> When AML Law and UIF Instructivo conflict, Law prevails by hierarchy and posteriority (Art. 61 Law keeps Instructivo only "in what does not contradict"). Until the Reglamento, apply the <em>stricter</em> of the two (BO 10%, STR 24 h). This eliminates supervisory risk under either reading.</p>
+  </div>
+  <div class="callout">
+    <p><strong>Rule 2 — Cite or don't claim.</strong> Every internal policy line, every training slide, every client-facing statement carries a citation (Law + Article) or is marked <span class="cite practice">practice</span>. No FATF / OFAC / EU / UK in policy bodies — they are external frameworks, not Salvadoran law.</p>
+  </div>
+  <div class="callout">
+    <p><strong>Rule 3 — Document the timestamp.</strong> The STR 24-hour clock starts from the <em>determination</em> after internal analysis. Without a timestamped determination, the clock is ambiguous and UIF reads it against you. Every analysis file closes with a dated, signed determination line.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 2 — RED LINES ═══════════════════════ -->
+<section class="page">
+  <h2>2. Executive red lines</h2>
+  <p class="lead">Ten lines where a single breach exposes the DASP, its Compliance Officer and its Directors to administrative sanction and/or criminal liability under LECAT. Every line is cited to statute.</p>
+
+  <div class="redlines">
+    <div class="rl"><h4>1 · UIF registration before operating</h4><p>PSAV cannot start before UIF + sectoral supervisor registration (BCR for Bitcoin; CNAD for other DA). <span class="cite uif">UIF Instr. Art. 84-A</span> <span class="cite aml">AML Law Art. 9(1)</span></p></div>
+    <div class="rl"><h4>2 · CO + Deputy CO both mandatory</h4><p>Board-appointed, rank immediately below CEO, functional independence. Deputy is not optional. <span class="cite aml">AML Law Art. 20</span> <span class="cite uif">UIF Instr. Art. 64</span></p></div>
+    <div class="rl"><h4>3 · STR within 24 hours</h4><p>AML Law 24 h prevails over Instructivo's 5 bd. Timestamped determination required. <span class="cite aml">AML Law Art. 24</span> <span class="cite uif">UIF Instr. Art. 43</span></p></div>
+    <div class="rl"><h4>4 · Travel Rule no floor (PSAV)</h4><p>Full originator &amp; beneficiary data on every digital-asset transfer, any amount. <span class="cite uif">UIF Instr. Art. 84-B(1)(e)</span></p></div>
+    <div class="rl"><h4>5 · UNSC freeze without delay</h4><p>Screen, freeze immediately, report UIF without any delay (LECAT Art. 37 verbatim — no fixed-day deadline). <span class="cite lecat">LECAT Art. 37</span> <span class="cite uif">UIF Instr. Arts. 27–35</span></p></div>
+    <div class="rl"><h4>6 · Statutory thresholds</h4><p>Cash &gt; US$10,000 single/monthly; other means &gt; US$25,000 single/monthly → 5 bd report. <span class="cite uif">UIF Instr. Art. 51</span></p></div>
+    <div class="rl"><h4>7 · BO identified to a natural person</h4><p>Law 25%; Instructivo 10%. Apply 10%; add control by other means with no floor. <span class="cite aml">AML Law Art. 2</span> <span class="cite uif">UIF Instr. Arts. 12, 20</span></p></div>
+    <div class="rl"><h4>8 · 15-year retention</h4><p>Full CDD, transactions, analysis, STR, training, audits, committee. <span class="cite aml">AML Law Art. 26</span></p></div>
+    <div class="rl"><h4>9 · No tipping-off — ever</h4><p>Criminal offence. No signals, no hints, no "AML reason" decline rationale to client. <span class="cite aml">LECLDA Art. 44</span></p></div>
+    <div class="rl"><h4>10 · Prevention Committee operating</h4><p>≥3 members (Law) incl. director + CO. Quarterly cadence is defensible practice. <span class="cite aml">AML Law Art. 23</span> <span class="cite uif">UIF Instr. Art. 68</span></p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 3 — STACK ═══════════════════════ -->
+<section class="page">
+  <h2>3. Regulatory stack &amp; transitional regime</h2>
+  <p class="lead">Six instruments govern a PSAV / DASP. The UIF Instructivo, issued under repealed D-498/1998, survives transitionally by AML Law Art. 61 — "in what does not contradict" the new Law — until the Reglamento of Art. 60 issues. The CNAD AML/CFT/CPF Risk-Management Guide for the Digital Assets Industry (22.12.2023) is <strong>binding</strong> for DASPs, issued by CNAD's Consejo Directivo under LEAD Art. 21(o) and RPSAD Art. 19 — not soft-law.</p>
+
+  <table>
+    <thead><tr><th>Instrument</th><th>Decree / Act</th><th>Regulator</th><th>In force</th><th>Operational scope</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LEAD</strong></td><td>Decree 643 · 9 Jan 2023</td><td>CNAD</td><td>11 Jan 2023</td><td>DASP statute. Activities (Art. 19), registration (Arts. 18, 20), tax (Art. 36), sanctions (Arts. 38–40).</td></tr>
+      <tr><td><strong>RPSAD</strong></td><td>CNAD-035-2023</td><td>CNAD</td><td>2023</td><td>Registration procedure, documentation, 20-bd/10-bd cycle, material changes, operational rules.</td></tr>
+      <tr><td><strong>LECLDA</strong> (AML Law)</td><td>Decree 426 · 2025</td><td>UIF (FGR)</td><td>8 days after D.O. publication (Art. 62) · Casa Presidencial 8 Oct 2025</td><td><em>Ley Especial Contra el Lavado de Dinero y de Activos.</em> Replaces D-498/1998. CDD, governance, 24-h STR, BO ≥25%, 15-yr retention, sanctions.</td></tr>
+      <tr><td><strong>LECAT</strong></td><td>Decree 108/2006 + D-928/2024</td><td>FGR / UIF</td><td>2006 (amd. 2024)</td><td>Terrorism offences, UNSC freezing (Art. 37). Tipping-off is in LECLDA Art. 44 (not LECAT).</td></tr>
+      <tr><td><strong>UIF Instructivo</strong></td><td>Acuerdo 380/2021 + Reform 1 + Reform 2</td><td>UIF</td><td>2021 — transitional (LECLDA Art. 61). New Instructivo expected.</td><td>CDD (Art. 12 Reform 2 identity gate), EDD (Art. 13 Reform 2), SDD (Art. 14 + Art. 14-A(III) Reform 2 — DD on every occasional e-transfer), PEP (Arts. 16-18), BO ≥10% (Arts. 12 last sent., 20(b)) + UBO cascade (Art. 21-A Reform 2), thresholds (Arts. 51, 52), Travel Rule (Art. 52 par. 2 Reform 2), VASP Chapter IV-B (Arts. 84-A/B/C Reform 1), training (Art. 54), committee (Art. 68), retention, monitoring (Arts. 36-42).</td></tr>
+      <tr><td><strong>Bitcoin Law</strong></td><td>Decree 57/2021 + D-199/2025 Reform</td><td>BCR (Registry) + SSF (supervision)</td><td>7 Sept 2021 (orig.) · 30 Apr 2025 (Reform)</td><td>Bitcoin legal tender + voluntary acceptance (post-Reform); BSP Registry; D-27/2021 Reglamento operational. Reform: Arts. 4/8/9 derogated (no taxes in BTC, Chivo wound down); Art. 7 reformed (private actors only). Affects BSP track only — DASP/AML unchanged.</td></tr>
+      <tr><td><strong>Instructivo UIF Cap. IV-B</strong></td><td>UIF (FGR) — DO 2 Dec 2022</td><td>UIF (FGR)</td><td>Arts. 84-A/B/C (reform 266/2023)</td><td>PSAV-specific obligations: risk-based customer due diligence, regulated-operation reporting via goAML (6 PSAV forms), suspicious-operation reporting (ROS) and Travel Rule. The standalone PSAV guide previously published was repealed and its substance consolidated into the Instructivo.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Transitional regime — LECLDA (Decree 426/2025)</h3>
+  <table>
+    <thead><tr><th>Article</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td class="num">Art. 58</td><td>Supervisors: 6 months from entry into force to perform maturity diagnosis of newly in-scope obligated entities. Obligated entities: 12 months to adapt to supervisor requirements. <em>A new registrant complies from day one.</em></td></tr>
+      <tr><td class="num">Art. 60</td><td>Executive to issue Reglamento within 90 days from entry into force of the Law. <span class="cite gap">Not yet published at cutoff (Q1 2026).</span></td></tr>
+      <tr><td class="num">Art. 61</td><td>Repeals D-498/1998. Pending new Reglamento and Instructivo, the prior D-2/2000 Reglamento and the UIF Instructivo (Acuerdo 380/2021) remain in force in what does not contradict the new Law.</td></tr>
+      <tr><td class="num">Art. 62</td><td>Law enters into force <strong>8 days after publication in the Diario Oficial</strong>. Promulgated by Casa Presidencial on 8 October 2025.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout amber">
+    <h4>Implication on day one</h4>
+    <p>Comply with LECLDA (Decree 426/2025) <em>and</em> UIF Instructivo in non-contradictory items, <em>and</em> Reformed Instructivo (LECLDA + Reform 1 + Reform 2). On conflict (BO 10%/25%/majority; STR 24 h/5 bd), the Law prevails by hierarchy; the safe posture is the <strong>stricter</strong> of the instruments. This covers any supervisory reading.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 4 — PERIMETER ═══════════════════════ -->
+<section class="page">
+  <h2>4. Asset &amp; activity perimeter — pre-CDD gate</h2>
+  <p class="lead">Before any CDD step, check two gates: (a) is the activity within the DASP's registered scope under LEAD Art. 19? (b) is the requested asset within the authorised perimeter? A "no" on either gate ends the flow — no AML workaround can cure a perimeter breach, and operating outside authorised perimeter is sanctionable on its own under LEAD Arts. 38–40.</p>
+
+  <h3>4.1 Allowed / rejected assets</h3>
+  <table>
+    <thead><tr><th>Status</th><th>Asset class</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td class="ok">Allowed</td><td>Transparent-ledger AV listed in the DASP's registration file and accepted by CNAD (e.g., BTC, ETH, SOL, TRX, depending on registration)</td><td>Traceability compatible with AML controls; listed at registration. <span class="cite rpsad">RPSAD Art. 41</span></td></tr>
+      <tr><td class="ok">Allowed</td><td>CNAD-authorised regulated stablecoins (e.g., USDT, USDC)</td><td>Express CNAD authorisation; collateral transparency.</td></tr>
+      <tr><td class="warn">Requires prior CNAD analysis</td><td>Additional stablecoins; tokens from digital-asset issuances</td><td>Must be submitted to CNAD analysis and accepted before marketing. <span class="cite lead-cite">LEAD Arts. 9(k)(l), 21(e)</span></td></tr>
+      <tr><td class="warn">Rejected</td><td>Privacy coins (XMR, ZEC, DASH)</td><td>Design incompatible with Travel Rule (Art. 84-B(1)(e)) and with CDD traceability obligations.</td></tr>
+      <tr><td class="warn">Rejected</td><td>Algorithmic stablecoins; unvetted newly issued tokens; tokens from sanctioned protocols</td><td>Not within authorised perimeter; risk of sanction or collapse.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 Perimeter-as-AML gate — how it is enforced</h3>
+  <div class="flow-step"><div class="num">1</div><div class="body"><strong>Onboarding intake asks:</strong> which assets does the client intend to transact? → If outside perimeter at that layer, offer alternatives within perimeter or decline.</div></div>
+  <div class="flow-step"><div class="num">2</div><div class="body"><strong>Transaction screening:</strong> rejected-asset tokens are blocked by the platform. Any attempt logged for pattern analysis.</div></div>
+  <div class="flow-step"><div class="num">3</div><div class="body"><strong>Incoming blockchain trace (KYT):</strong> exposure to privacy-coin mixers or sanctioned protocols on the incoming leg → red flag even if the asset received is within perimeter.</div></div>
+  <div class="flow-step"><div class="num">4</div><div class="body"><strong>Perimeter changes:</strong> adding a new asset to the offering requires CNAD material change notification within <strong>5 business days</strong> <span class="cite rpsad">RPSAD Art. 9</span> and, for stablecoins / issued tokens, prior CNAD analysis.</div></div>
+
+  <div class="callout warn">
+    <h4>Perimeter breach ≠ AML violation, but cumulative</h4>
+    <p>Operating outside the authorised perimeter is sanctionable under LEAD Arts. 38–40 (up to very grave). If the breach also touches AML (e.g., privacy-coin acceptance frustrates CDD traceability), sanctions under AML Law Arts. 34–35 stack on top. Perimeter discipline is first-line AML discipline.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 5 — FRAMEWORK A · CDD ═══════════════════════ -->
+<section class="page">
+  <h2>5. Framework A — CDD level decision</h2>
+  <p class="lead">Given a client (natural or legal) and a transaction, pick the DD level: <span class="pill sdd">SDD</span>, <span class="pill std">CDD</span>, <span class="pill edd">EDD</span>, or <span class="pill block">REJECT</span>. <strong>Two independent triggers</strong> run in parallel: (i) <em>amount</em> — activates CDD for occasional transactions at US$1,000 (LECLDA Art. 15(b) → Instr. Art. 52(a)(b)); (ii) <em>risk profile</em> — activates EDD regardless of amount (UIF Instr. Art. 13). The Travel Rule is a separate obligation (§7), not a DD level, and applies to every DA transfer irrespective of amount or DD outcome.</p>
+
+  <h3>5.1 Decision tree</h3>
+<pre class="tree"><span class="q">CLIENT / TRANSACTION EVALUATED</span>
+│
+├── <span class="q">Hard stops (any → REJECT)</span>
+│     ├── Sanctions hit (UNSC / national list / confirmed FT)
+│     │       └── <span class="reject">REJECT + FREEZE + UIF report without delay</span> (§10)
+│     ├── Client refuses CDD or provides unverifiable data
+│     │       └── <span class="reject">REJECT relationship or transaction</span>          (§6)
+│     └── Requested asset outside authorised perimeter
+│             └── <span class="reject">REJECT asset; offer permitted alternative</span>   (§4)
+│
+├── <span class="q">Risk-profile trigger → EDD (regardless of amount)</span>      <span class="info">(Instr. Art. 13)</span>
+│     ├── PEP (self / family ≤2nd / close assoc / ≤5y post-cease)
+│     ├── High-risk jurisdiction (UIF list / UNSC-measure)
+│     ├── Opaque / complex / multi-layer ownership
+│     ├── Cash-intensive / structuring / split-below-threshold
+│     ├── Undocumented source of funds or wealth
+│     └── Any single RED factor in 5.2
+│             └── <span class="edd">EDD</span> + senior-mgmt written approval + full Art. 13 measures
+│
+├── <span class="q">Ongoing relationship being established?</span>             <span class="info">(Instr. Art. 12)</span>
+│     └── YES → <span class="std">CDD (full Art. 12 measures)</span> as relationship floor
+│
+├── <span class="q">Occasional transaction ≥ US$1,000?</span>                <span class="info">(LECLDA Art. 15(b) → Instr. Art. 52(a)(b))</span>
+│     └── YES → <span class="std">CDD (full Art. 12 measures)</span>
+│
+├── <span class="q">Occasional transaction &lt; US$1,000 AND all factors LOW?</span>
+│     └── YES → <span class="sdd">SDD eligible</span> (practice, documented) — Travel Rule still applies
+│
+└── Otherwise                                          → <span class="std">CDD (default)</span>   (§6)
+</pre>
+
+  <div class="callout warn">
+    <h4>Hard rule — no SDD for these</h4>
+    <p>SDD is never available for PEP (any), high-risk jurisdictions, cash-intensive profiles, complex / opaque ownership, prior adverse UIF history, or any RED trigger in 5.2. A single red factor → EDD. SDD is <span class="cite practice">practice</span>-based: neither the Law nor the Instructivo names "SDD" as such; it is operational light-touch treatment within Art. 12 where risk is documented low and no amount/risk trigger fires. <span class="cite uif">UIF Instr. Arts. 12, 13</span> <span class="cite aml">LECLDA Art. 15(b)</span> → <span class="cite uif">Instr. Art. 52(a)(b)</span></p>
+  </div>
+
+  <div class="callout">
+    <h4>Three parallel obligations — do not conflate</h4>
+    <p><strong>(1) DD level</strong> (SDD / CDD / EDD) — client-level risk procedure, Arts. 12/13 Instructivo. <strong>(2) Travel Rule</strong> — per-transfer data obligation, every DA transfer regardless of amount, §7 (Instr. Art. 52 par. 2 (Reform 2), final CAPS paragraph of §2; Instr. Art. 84-B(1)(e)). <strong>(3) Operación Regulada reporting</strong> — fiscal-style threshold report, §8 (Instr. Art. 51). The three trigger independently and must coexist in every transaction file.</p>
+  </div>
+
+  <h3>5.2 Risk factor catalogue</h3>
+  <table>
+    <thead><tr><th>Factor family</th><th>SDD allowed · green</th><th>Standard · amber</th><th>EDD required · red</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Client status</strong></td><td class="ok">Local natural person, salaried, low footprint</td><td class="amber">Resident natural person / domestic SME with declared income</td><td class="warn">PEP (any); family ≤2nd; close assoc; person acting for a third party</td></tr>
+      <tr><td><strong>Jurisdiction</strong></td><td class="ok">El Salvador / neighbouring; customer on national territory</td><td class="amber">Recognised AML frameworks</td><td class="warn">High-risk jurisdictions per UIF/FGR; UNSC-measure jurisdictions</td></tr>
+      <tr><td><strong>Ownership (legal entity)</strong></td><td class="ok">Single owner, one jurisdiction, transparent purpose</td><td class="amber">Straightforward group, BOs at 10%</td><td class="warn">Multi-layer / bearer-share / nominee / trust / BO below 10% with control by other means</td></tr>
+      <tr><td><strong>Product / channel</strong></td><td class="ok">Low-value on-ramp, face-to-face / verified remote</td><td class="amber">Standard exchange, custody</td><td class="warn">Cross-border, privacy features, high-velocity, unhosted-wallet counterparties</td></tr>
+      <tr><td><strong>Transaction profile</strong></td><td class="ok">Low, predictable</td><td class="amber">Consistent with declared profile</td><td class="warn">Inconsistent, rapid ramp-up, structuring, split-below-threshold</td></tr>
+      <tr><td><strong>Source of funds</strong></td><td class="ok">Salary / stable business revenue, documented</td><td class="amber">Documented mixed sources</td><td class="warn">Cash, undocumented, unsupported gift / inheritance, unusual asset-sale proceeds</td></tr>
+    </tbody>
+  </table>
+  <p class="small">A single red marker in any row → EDD. Document the assessment in the client file (dated, signed by CO) and refresh at every relationship review.</p>
+</section>
+
+<section class="page">
+  <h3>5.3 Risk scoring matrix</h3>
+  <p class="lead">Internal grid for consistency across analysts and as KYT-configuration baseline. Not a statutory requirement; <span class="cite practice">practice</span>. The scoring is advisory on top of 5.1 — it never overrides a hard trigger (PEP → EDD no matter what the score says).</p>
+
+  <table class="score-grid">
+    <thead><tr><th>Factor family</th><th>0 pts · low</th><th>1 pt</th><th>2 pts</th><th>3 pts · very high</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Client status</strong></td>
+        <td class="w0">Local salaried natural person</td>
+        <td class="w1">Domestic SME, documented</td>
+        <td class="w2">Foreign national; person acting for third party</td>
+        <td class="w3">PEP / family ≤2nd / close associate</td>
+      </tr>
+      <tr>
+        <td><strong>Jurisdiction</strong></td>
+        <td class="w0">El Salvador</td>
+        <td class="w1">Regional, recognised AML</td>
+        <td class="w2">Mixed / weak AML record</td>
+        <td class="w3">UIF-listed high-risk / UNSC-measure</td>
+      </tr>
+      <tr>
+        <td><strong>Ownership (entity)</strong></td>
+        <td class="w0">Single natural owner</td>
+        <td class="w1">Small group, BOs at 10%</td>
+        <td class="w2">Cross-border ownership, one layer</td>
+        <td class="w3">Multi-layer / trust / nominee / opaque</td>
+      </tr>
+      <tr>
+        <td><strong>Product / channel</strong></td>
+        <td class="w0">On-ramp only, face-to-face</td>
+        <td class="w1">Standard exchange</td>
+        <td class="w2">Cross-border transfers, custodied</td>
+        <td class="w3">Unhosted wallets, privacy features, high-velocity</td>
+      </tr>
+      <tr>
+        <td><strong>Transaction profile</strong></td>
+        <td class="w0">Very low, predictable</td>
+        <td class="w1">Within declared profile</td>
+        <td class="w2">Rising volume, mixed counterparties</td>
+        <td class="w3">Inconsistent / structuring signs</td>
+      </tr>
+      <tr>
+        <td><strong>Source of funds</strong></td>
+        <td class="w0">Salary / documented business</td>
+        <td class="w1">Mixed documented</td>
+        <td class="w2">Partial documentation</td>
+        <td class="w3">Cash / undocumented / unusual origin</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>Total score</th><th>Level</th><th>Treatment</th></tr></thead>
+    <tbody>
+      <tr><td class="num">0 – 4</td><td><span class="pill sdd">Low</span></td><td>SDD eligible if no hard EDD trigger (PEP / high-risk jur / prohibited asset). Default SDD; quarterly review.</td></tr>
+      <tr><td class="num">5 – 9</td><td><span class="pill std">Medium</span></td><td>Standard CDD; ongoing monitoring against declared profile; periodic review every 3 years.</td></tr>
+      <tr><td class="num">10 – 14</td><td><span class="pill edd">High</span></td><td>EDD mandatory. Senior-management approval written. Annual refresh. KYT on every transaction.</td></tr>
+      <tr><td class="num">15 – 18</td><td><span class="pill block">Very high</span></td><td>EDD plus Board-level approval; consider declining. Half-yearly refresh. Relationship terms with exit clause.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>Override logic.</strong> Any hard EDD trigger (PEP, high-risk jurisdiction, opaque ownership, cash-intensive, prior adverse history, structuring signs) forces EDD regardless of score. The score's purpose is consistency within the Standard / EDD bands — not to weaken the Framework A decision tree.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 6 — FRAMEWORK B · DOCS ═══════════════════════ -->
+<section class="page">
+  <h2>6. Framework B — Identification &amp; documentation by DD level</h2>
+  <p class="lead">Minimum documentary set per DD level and client type. Column mapping: <span class="pill sdd">SDD</span> = light-touch practice within Art. 12 where risk is documented low and no amount/risk trigger fires; <span class="pill std">CDD</span> = full Instructivo Art. 12 measures (a–i); <span class="pill edd">EDD</span> = Instr. Art. 13 measures (natural persons a–c / legal entities a–i) with verification of source of wealth. "Required" cannot be waived. CO signs off the file before relationship opens.</p>
+
+  <h3>6.1 Natural person</h3>
+  <table>
+    <thead><tr><th>Document / data</th><th>SDD</th><th>CDD (Art. 12)</th><th>EDD (Art. 13)</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Government photo ID (DUI / passport / residence)</td><td>Required</td><td>Required</td><td>Required · two IDs</td><td><span class="cite aml">AML Law Art. 15</span> <span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Current address (utility ≤3m / bank statement / registry)</td><td>Self-declaration</td><td>Documented</td><td>Documented · independently verified</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Occupation &amp; employer</td><td>Self-declaration</td><td>Documented</td><td>Documented · verified</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Tax ID (NIT) if applicable</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Source of funds for the transaction</td><td>Optional · RBA discretion</td><td>Declaration mandatory · docs on RBA</td><td>Full documentary (payroll, sale contract, bank statement)</td><td><span class="cite aml">D-426 Art. 15</span> <span class="cite uif">UIF Instr. Arts. 12(c), 13(a)</span></td></tr>
+      <tr><td>Source of wealth (overall patrimony)</td><td>—</td><td>On request</td><td>Required · documented</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+      <tr><td>Expected activity profile (volume / frequency / counterparties)</td><td>Brief</td><td>Full</td><td>Full + scenarios</td><td><span class="cite uif">UIF Instr. Art. 14-A</span></td></tr>
+      <tr><td>PEP self-declaration + screening</td><td>Required</td><td>Required</td><td>Required · re-checked every review</td><td><span class="cite uif">UIF Instr. Arts. 16–18</span></td></tr>
+      <tr><td>Senior-management written approval to open / continue</td><td>—</td><td>—</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+      <tr><td>Enhanced ongoing-monitoring flag</td><td>—</td><td>—</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.2 Legal entity</h3>
+  <table>
+    <thead><tr><th>Document / data</th><th>SDD</th><th>CDD (Art. 12)</th><th>EDD (Art. 13)</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Deed of incorporation / escritura</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite aml">AML Law Art. 15</span></td></tr>
+      <tr><td>Commercial-registry extract (≤3m)</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>NIT, operating licence</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Board / assembly resolution authorising relationship</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Shareholder register — ≥10% (strict) / ≥25% (Law)</td><td>Required</td><td>Required</td><td>Required · full chain to natural BO</td><td><span class="cite aml">AML Law Art. 2</span> <span class="cite uif">UIF Instr. Arts. 12, 20</span></td></tr>
+      <tr><td>BO identification (natural person) + source of funds / wealth of BO</td><td>Required</td><td>Required</td><td>Required · documentary</td><td><span class="cite uif">UIF Instr. Arts. 20, 21</span></td></tr>
+      <tr><td>Authorised signatories IDs + powers</td><td>Required</td><td>Required</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Business purpose + main counterparties + jurisdictions</td><td>Brief</td><td>Full</td><td>Full + commercial evidence</td><td><span class="cite uif">UIF Instr. Art. 14-A</span></td></tr>
+      <tr><td>Expected volume and frequency</td><td>Brief</td><td>Full</td><td>Full + scenarios</td><td><span class="cite uif">UIF Instr. Art. 14-A</span></td></tr>
+      <tr><td>Audited financials (last year)</td><td>—</td><td>On request</td><td>Required if size warrants</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+      <tr><td>Ownership chart to ultimate BO</td><td>—</td><td>Required</td><td>Required · with supporting docs</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Trust set (settlor, trustee, beneficiaries, protector)</td><td>—</td><td>Required if applicable</td><td>Required if applicable</td><td><span class="cite uif">UIF Instr. Art. 21</span></td></tr>
+      <tr><td>Senior-management written approval</td><td>—</td><td>—</td><td>Required</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 7 — FRAMEWORK C · TRANSACTION ═══════════════════════ -->
+<section class="page">
+  <h2>7. Framework C — Transaction pipeline &amp; Travel Rule</h2>
+  <p class="lead">Every transaction (fiat on-ramp, fiat off-ramp, crypto-to-crypto, external transfer) runs through the same pipeline. Five checkpoints: perimeter, re-screening, Travel Rule, KYT, threshold check.</p>
+
+  <div class="callout warn">
+    <h4>Travel Rule is not a DD level</h4>
+    <p>Travel Rule is a <strong>per-transfer data obligation</strong>, parallel to and independent from the DD level (§5/§6) and from Operación Regulada reporting (§8). Collect and transmit full originator + beneficiary data on <em>every</em> digital-asset transfer, regardless of amount, regardless of whether the client is under SDD / CDD / EDD, regardless of whether the transaction crosses an Art. 51 reporting threshold. Three legal anchors act together: (i) <span class="cite uif">UIF Instr. Art. 84-B(1)(e)</span> — PSAV records obligation to preserve origin and destination of DA operations; (ii) <span class="cite uif">Instr. Art. 52 par. 2 (Reform 2)</span> — FATF Recommendation 16 (wire transfers) imported to DASPs and to DA transfers under the "Travel Rule"; (iii) <span class="cite rpsad">Instr. Art. 52 par. 2 final paragraph</span> — "under no circumstances should DASPs fail to collect and store information to be used through the 'Travel Rule' in Digital Asset transfers, regardless of the transaction amount" (emphasis in Guide).</p>
+  </div>
+
+  <h3>7.1 Transaction pipeline</h3>
+  <div class="flow-step"><div class="num">0</div><div class="body"><strong>Perimeter check</strong> — requested asset within the DASP's authorised perimeter? Otherwise block. <span class="cite lead-cite">LEAD Art. 21(e)</span> <span class="cite rpsad">RPSAD Art. 41</span></div></div>
+  <div class="flow-step"><div class="num">1</div><div class="body"><strong>Re-screen</strong> client + counterparty + wallet against UNSC / national / PEP. Block and freeze on match. <span class="cite lecat">LECAT Art. 37</span></div></div>
+  <div class="flow-step"><div class="num">2</div><div class="body"><strong>Travel Rule data</strong> — full originator + beneficiary set on every DA transfer, no amount floor. <span class="cite uif">UIF Instr. Art. 84-B(1)(e)</span> <span class="cite uif">Instr. Art. 52 par. 2 (Reform 2)</span> + §2 final CAPS</div></div>
+  <div class="flow-step"><div class="num">3</div><div class="body"><strong>KYT analytics</strong> — blockchain trace, counterparty wallet risk, pattern. Tool-agnostic but mandated as risk management. <span class="cite uif">UIF Instr. Art. 84-B(1)</span></div></div>
+  <div class="flow-step"><div class="num">4</div><div class="body"><strong>Threshold check</strong> — does single op or monthly aggregate cross Art. 51? Does pattern diverge from profile? → Framework D / E.</div></div>
+  <div class="flow-step"><div class="num">5</div><div class="body"><strong>Execute or hold.</strong> If data missing, re-screen amber, hold and escalate to CO. No tipping-off at any point. <span class="cite aml">LECLDA Art. 44</span></div></div>
+
+  <h3>7.2 Travel Rule data set — PSAV (any amount)</h3>
+  <p class="small">The Reformed Instructivo Art. 52 par. 2 (Reform 2) sets out the mandatory data accompanying every electronic transfer (regardless of threshold). For DASPs, the parallel anchor in Art. 84-B(1)(e) (Reform 1) requires preserving customer and operation records to know origin and destination of virtual-asset transactions. The data set: (i) transaction date; (ii) type and quantity of each virtual currency; (iii) name of the institution, its address, nature of principal activity or occupation, and (for individuals) date of birth; (iv) name and address of beneficiaries; (v) number of each account affected, type of account, and name of each account holder; (vi) each reference number functioning equivalently to an account number; (vii) each transaction identifier including sending and receiving addresses; (viii) exchange rates used and their source.</p>
+  <table>
+    <thead><tr><th>Party</th><th>Data point</th><th>PSAV — every DA transfer (no floor)</th><th>Traditional wire — banks / non-DASP</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="6"><strong>Originator</strong></td><td>Full legal name / registered name</td><td>Required</td><td>Required ≥ US$1,000 / remittance ≥ US$200</td></tr>
+      <tr><td>Unique ID (account / wallet address)</td><td>Required</td><td>Required</td></tr>
+      <tr><td>National ID or tax number</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Residential / registered address + country</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Nature of principal activity / occupation</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Date of birth (individuals) / date of formation (entities)</td><td>Required</td><td>On request</td></tr>
+      <tr><td rowspan="4"><strong>Beneficiary</strong></td><td>Full legal name / registered name</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Unique ID (account / wallet address)</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Country + address</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Type of account + account-holder name</td><td>Required</td><td>Required</td></tr>
+      <tr><td rowspan="3"><strong>Transaction</strong></td><td>Date + transaction identifier (incl. sending / receiving addresses)</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Reference numbers functioning as account number</td><td>Required</td><td>Required</td></tr>
+      <tr><td>Exchange rates used and their source</td><td>Required</td><td>Required</td></tr>
+    </tbody>
+  </table>
+  <p class="small">PSAV-side sources (stacked): <span class="cite uif">Instr. Art. 84-B(1)(e) (Reform 1)</span> — preserve origin/destination of VA operations + <span class="cite uif">Instr. Art. 52 par. 2 (Reform 2)</span> — minimum data set on every electronic transfer regardless of threshold.. Art. 52 par. 2 (Reform 2)</span> (R.16 imported) + <span class="cite uif">Instr. Art. 52 par. 2 final (Reform 2)</span> (collect regardless of amount). Traditional-wire sources: <span class="cite uif">UIF Instr. Art. 52</span> (international / local electronic wires ≥ US$1,000; remittances ≥ US$200). If a counterparty VASP cannot transmit the full set, hold, document, escalate. Persistent gaps with a specific counterparty → risk-rating downgrade and possible relationship termination.</p>
+</section>
+
+<!-- ═══════════════════════ 8 — FRAMEWORK D · REPORTING ═══════════════════════ -->
+<section class="page">
+  <h2>8. Framework D — Reporting thresholds (Operaciones Reguladas)</h2>
+  <p class="lead">Thresholds are cumulative and independent of suspicion. Crossing any of them triggers a mandatory Operación Regulada to UIF within 5 business days. Do not confuse with STR (Framework E) — different trigger, different clock (24 h from determination), any amount.</p>
+
+  <h3>8.1 Statutory thresholds — UIF Instructivo Art. 51</h3>
+  <table>
+    <thead><tr><th>Means</th><th>Single op</th><th>Monthly aggregate (same client)</th><th>Deadline</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cash</strong></td><td>&gt; US$10,000</td><td>&gt; US$10,000 / calendar month</td><td class="num">5 bd</td></tr>
+      <tr><td><strong>Other means</strong> (wire, cheque, digital asset)</td><td>&gt; US$25,000</td><td>&gt; US$25,000 / calendar month</td><td class="num">5 bd</td></tr>
+    </tbody>
+  </table>
+
+  <h3>8.2 Decision tree</h3>
+<pre class="tree"><span class="q">OPERATION PROPOSED OR EXECUTED</span>
+│
+├── <span class="q">Single op · cash · &gt; US$10,000 ?</span>
+│     └── YES → <span class="std">Operación Regulada to UIF within 5 bd</span>
+│
+├── <span class="q">Single op · other means · &gt; US$25,000 ?</span>
+│     └── YES → <span class="std">Operación Regulada to UIF within 5 bd</span>
+│
+├── <span class="q">Monthly aggregate · cash · &gt; US$10,000 (same client) ?</span>
+│     └── YES → <span class="std">Operación Regulada · 5 bd after month-end</span>
+│
+├── <span class="q">Monthly aggregate · other means · &gt; US$25,000 ?</span>
+│     └── YES → <span class="std">Operación Regulada · 5 bd after month-end</span>
+│
+├── <span class="q">Splitting pattern below thresholds?</span>
+│     └── YES → <span class="edd">Framework E (suspicion) — analyse and likely STR</span>
+│
+├── <span class="q">Other suspicion indicator regardless of amount?</span>
+│     └── YES → <span class="edd">Framework E (suspicion)</span>
+│
+└── Otherwise → no report; retain; continue monitoring
+</pre>
+
+  <h3>8.3 Report vs transaction — separation of duties</h3>
+  <table>
+    <thead><tr><th>Event</th><th>Reporting</th><th>Block transaction?</th></tr></thead>
+    <tbody>
+      <tr><td>Over Art. 51 threshold, no suspicion</td><td>Operación Regulada · 5 bd</td><td>No — proceed if CDD and sanction checks clean</td></tr>
+      <tr><td>Over Art. 51 + suspicion</td><td>Operación Regulada (5 bd) <strong>and</strong> STR (24 h)</td><td>CO decides; no tipping-off</td></tr>
+      <tr><td>Below Art. 51 + suspicion</td><td>STR (24 h). No Operación Regulada.</td><td>CO decision on hold</td></tr>
+      <tr><td>Structuring signs below threshold</td><td>Internal analysis → likely STR</td><td>Hold for analysis</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout amber">
+    <h4>PSAV-specific reporting threshold — status</h4>
+    <p>Neither the AML Law nor the Instructivo set PSAV-specific Operación Regulada thresholds — Art. 51 is the general rule, no carve-out. <span class="cite gap">Pending Reglamento</span>. The LECLDA Art. 15(b) → Instr. Art. 52(a)(b) US$1,000 is a binding <em>CDD-trigger for occasional transactions</em> (§5, §6), not an Operación Regulada threshold. The two obligations are independent — keep them distinct in policy.</p>
+  </div>
+
+  <div class="callout">
+    <h4>Art. 52 monthly transfer / remittance reports — DO NOT FILE as PSAV</h4>
+    <p>Art. 52(a)(b)(c) "reportes complementarios" — international + local e-transfers ≥ US$1,000 + family remittances ≥ US$200 — bind <strong>"las instituciones financieras"</strong> only. UIF official FAQ on Reportería de Operaciones Reguladas confirms FI scope. PSAVs file STR (ROS PSAV form) + Operación Regulada (Art. 51 cash &gt; US$10K / other &gt; US$25K) per <strong>Art. 84-C scope</strong>. The US$1,000 figure is relevant only as the LECLDA Art. 15(b) CDD-trigger anchor + Travel Rule data threshold — not as a PSAV monthly report obligation. Sources: UIF FAQ Operaciones Reguladas · UIF Estudio Estratégico PSAV (2023) · Acuerdo 476/2023.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 9 — FRAMEWORK E · SUSPICIOUS ═══════════════════════ -->
+<section class="page">
+  <h2>9. Framework E — Suspicious activity flow</h2>
+  <p class="lead">From detection to STR filing. Two clocks run: internal analysis (≤15 bd, one extension) and, post-determination, 24 hours to file. No tipping-off at any stage.</p>
+
+  <h3>9.1 Decision tree</h3>
+<pre class="tree"><span class="q">RED FLAG DETECTED</span>      (KYT alert / staff escalation / pattern / structuring)
+│
+├── Stage 1 · <span class="q">Alert opened</span>
+│     └── Timestamped record to CO queue
+│
+├── Stage 2 · <span class="q">Internal analysis</span>  (≤ 15 bd, extendable 1×)
+│     │     • facts review
+│     │     • profile comparison
+│     │     • KYT / blockchain trace
+│     │     • counterparty checks
+│     └── → Determination
+│
+├── Stage 3 · <span class="q">Determination = suspicious?</span>
+│     │     └── NO → Close file; retain 15 yr; continue monitoring
+│     └── YES →
+│
+├── Stage 4 · <span class="edd">STR filed to UIF · 24 h from determination</span>      <span class="info">(AML Law Art. 24)</span>
+│     └── Timestamped determination → 24-h clock → submission
+│
+└── Stage 5 · Post-filing
+       ├── Relationship decision (enhanced / discontinue neutrally)
+       ├── <span class="reject">NEVER tipping-off</span>                            <span class="info">(LECLDA Art. 44)</span>
+       └── Full file retained 15 yr                        <span class="info">(AML Law Art. 26)</span>
+</pre>
+
+  <div class="conflict">
+    <h4>Clock conflict — filing deadline</h4>
+    <p><span class="cite aml">AML Law Art. 24</span> — 24 h from determination. <span class="cite uif">UIF Instr. Art. 43</span> — 5 bd from determination. Law prevails. <strong>Operational posture:</strong> file within 24 h and log the determination timestamp. A determination without a recorded time is effectively undated — file on the day of determination to remove ambiguity.</p>
+  </div>
+
+  <h3>9.2 Attempted operations</h3>
+  <p>Operations the client attempts but does not consummate are reportable if suspicious. Same flow. <span class="cite uif">UIF Instr. Art. 47</span></p>
+
+  <h3>9.3 Red-flag families for PSAV (non-exhaustive)</h3>
+  <table>
+    <thead><tr><th>Family</th><th>Example flags</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Client behaviour</strong></td><td>Reluctance on CDD; nervous on source of funds; third party operating the account; repeated questions about thresholds; document inconsistencies.</td></tr>
+      <tr><td><strong>Transaction pattern</strong></td><td>Rapid in-out of fiat; splitting around Art. 51 thresholds; many small deposits aggregating; round-tripping; sudden volume spike inconsistent with profile.</td></tr>
+      <tr><td><strong>Counterparty risk</strong></td><td>Wallet flagged by KYT; mixer / tumbler exposure; darknet exposure; high-risk jurisdiction; unhosted wallet with no economic rationale.</td></tr>
+      <tr><td><strong>Asset signals</strong></td><td>Attempted privacy-coin use; newly issued tokens with opaque issuer; tokens linked to sanctioned protocols.</td></tr>
+      <tr><td><strong>Documentation</strong></td><td>Forged ID, fabricated invoices, inconsistent addresses, suspicious source-of-funds narrative.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <h4>Tipping-off — the operational line</h4>
+    <p>No disclosure to client, counterparty, family or any third party (other than UIF, FGR, supervisor and counsel under privilege) about: existence of analysis; filing or non-filing of STR; UIF requests; freezes; investigation. Including indirect signals — closing the account with an AML reason, hinting, replying to client queries. Decline or delay with a neutral ground ("documentation pending") and never mention analysis or reporting. <span class="cite aml">LECLDA Art. 44</span></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 10 — FRAMEWORK F · SCREENING ═══════════════════════ -->
+<section class="page">
+  <h2>10. Framework F — Sanctions, UNSC &amp; PEP screening</h2>
+  <p class="lead">Three lists, three moments: onboarding, every transaction, periodic sweeps on list updates. Outputs: clean / PEP / sanction match — each has a defined action.</p>
+
+  <h3>10.1 The three lists</h3>
+  <table>
+    <thead><tr><th>List</th><th>Status in Salvadoran law</th><th>When to check</th><th>On hit</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>UNSC lists (1267, 1373, 1988, 2231, 1718 + successors)</td><td>Binding via LECAT</td><td>Onboarding, every transaction, on list update, periodic sweep</td><td>Freeze + UIF report without delay + no tipping-off</td><td><span class="cite lecat">LECAT Art. 37</span> <span class="cite uif">UIF Instr. Arts. 27–35</span></td></tr>
+      <tr><td>National designated lists (UIF / FGR publications)</td><td>Binding</td><td>Same as UNSC</td><td>Same as UNSC</td><td><span class="cite uif">UIF Instr. Arts. 27–35</span></td></tr>
+      <tr><td>PEP lists (domestic / foreign / int'l org)</td><td>Binding EDD trigger, not a sanction</td><td>Onboarding, periodic review, on role change</td><td>EDD + senior-mgmt approval + enhanced monitoring</td><td><span class="cite uif">UIF Instr. Arts. 16–18</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <h4>OFAC / EU / UK — status</h4>
+    <p>OFAC, EU and UK sanctions are <strong>not Salvadoran law</strong>. They matter through (i) contracts with correspondent banks, (ii) US-nexus (USD corridors through US banks), (iii) operational risk management. If the DASP uses USD corridors routed via US correspondents, OFAC compliance is <em>de facto</em> required — but under contract and private risk management, not AML statute. Manage them in the commercial-risk framework, not in the AML policy body.</p>
+  </div>
+
+  <h3>10.2 PEP decision tree</h3>
+  <table>
+    <thead><tr><th>Input</th><th>Condition</th><th>Action</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Self-declaration + screening</td><td>Domestic PEP / foreign PEP / int'l-org PEP</td><td>EDD. Senior-mgmt written approval. SoF + SoW documented. Enhanced monitoring.</td><td><span class="cite uif">UIF Instr. Arts. 16, 17</span></td></tr>
+      <tr><td>Family / close associate</td><td>Up to 2nd degree consanguinity / affinity; close business assoc</td><td>Same as PEP</td><td><span class="cite uif">UIF Instr. Art. 18</span></td></tr>
+      <tr><td>Post-cease</td><td>Ceased &lt;5 years ago</td><td>Still PEP — full EDD</td><td><span class="cite uif">UIF Instr. Arts. 16–18</span></td></tr>
+      <tr><td>Post-cease</td><td>Ceased &gt;5 years, no residual risk</td><td>Standard CDD unless other EDD trigger</td><td><span class="cite uif">UIF Instr. Arts. 16–18</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>10.3 Freeze procedure on UNSC / national hit</h3>
+  <div class="flow-step"><div class="num">1</div><div class="body"><strong>Match confirmed</strong> (not a false positive after basic verification). Record source, timestamp, evidence.</div></div>
+  <div class="flow-step"><div class="num">2</div><div class="body"><strong>Immediate freeze</strong> of funds, wallets, pending operations.</div></div>
+  <div class="flow-step"><div class="num">3</div><div class="body"><strong>Report UIF without delay</strong> via official channel, with the match record and frozen amount. <span class="cite lecat">LECAT Art. 37 ¶ 3</span></div></div>
+  <div class="flow-step"><div class="num">4</div><div class="body"><strong>No tipping-off</strong>: do not explain the hold; do not return funds unless UIF / judicial authorisation. <span class="cite aml">LECLDA Art. 44</span></div></div>
+  <div class="flow-step"><div class="num">5</div><div class="body"><strong>Cooperate</strong> with UIF / FGR information requests. Retain file 15 yr.</div></div>
+</section>
+
+<!-- ═══════════════════════ 11 — FRAMEWORK G · CALENDAR ═══════════════════════ -->
+<section class="page">
+  <h2>11. Framework G — Ongoing compliance calendar</h2>
+  <p class="lead">Year-round view of statutory obligations with fixed cadence. The CO holds these as hard dates; missing a window = administrative sanction.</p>
+
+  <h3>11.1 Fixed-cadence obligations</h3>
+  <table>
+    <thead><tr><th>Cadence</th><th>Obligation</th><th>Deadline</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="3"><strong>Annual</strong></td><td>Training plan approved by Board</td><td>By 31 December of prior year</td><td><span class="cite uif">UIF Instr. Art. 54</span></td></tr>
+      <tr><td>Internal AML audit</td><td>At least once per calendar year</td><td><span class="cite uif">UIF Instr. Art. 8</span></td></tr>
+      <tr><td>BO information refresh — active clients</td><td>Rolling, at least once per year</td><td><span class="cite uif">UIF Instr. Arts. 13, 20</span></td></tr>
+      <tr><td rowspan="2"><strong>Quarterly</strong></td><td>Prevention Committee session</td><td>Quarter-end</td><td><span class="cite aml">AML Law Art. 23</span> <span class="cite uif">UIF Instr. Art. 68</span></td></tr>
+      <tr><td>Sanctions / PEP list refresh (system)</td><td>Quarterly + on any list update</td><td><span class="cite uif">UIF Instr. Arts. 27–35</span></td></tr>
+      <tr><td rowspan="2"><strong>Monthly</strong></td><td>Aggregate threshold sweep (Art. 51)</td><td>Within 5 bd after month-end if crossed</td><td><span class="cite uif">UIF Instr. Art. 51</span></td></tr>
+      <tr><td>Alert backlog review by CO</td><td>Month-end</td><td><span class="cite uif">UIF Instr. Art. 42</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>11.2 Event-driven obligations</h3>
+  <table>
+    <thead><tr><th>Event</th><th>Deadline</th><th>To</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>CO / Deputy CO appointment</td><td class="num">15 bd from appointment</td><td>UIF</td><td><span class="cite uif">UIF Instr. Arts. 7(m), 64</span></td></tr>
+      <tr><td>CO / Deputy CO removal</td><td class="num">5 bd from removal</td><td>UIF</td><td><span class="cite uif">UIF Instr. Art. 7(m)</span></td></tr>
+      <tr><td>Material change to registration documents (DASP)</td><td class="num">5 bd</td><td>CNAD</td><td><span class="cite rpsad">RPSAD Art. 9</span></td></tr>
+      <tr><td>BO / registration-data change (AML side)</td><td class="num">15 bd</td><td>UIF</td><td><span class="cite uif">UIF Instr. Art. 3</span></td></tr>
+      <tr><td>Operación Regulada (Art. 51 crossed)</td><td class="num">5 bd</td><td>UIF</td><td><span class="cite uif">UIF Instr. Art. 51</span></td></tr>
+      <tr><td>STR after determination</td><td class="num">24 h</td><td>UIF</td><td><span class="cite aml">AML Law Art. 24</span></td></tr>
+      <tr><td>UNSC / national list freeze</td><td class="num">without delay</td><td>UIF</td><td><span class="cite lecat">LECAT Art. 37 ¶ 3</span></td></tr>
+      <tr><td>New hire — AML induction</td><td>Before operational duties begin</td><td>(Internal)</td><td><span class="cite uif">UIF Instr. Art. 55</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>11.3 Retention</h3>
+  <p>All AML records — CDD, transactions, analyses, STR, training, audits, committee minutes — retained <strong>15 years</strong> from relationship end or operation date. Accessible to UIF on request. <span class="cite aml">AML Law Art. 26</span> <span class="cite uif">UIF Instr. Arts. 57–59</span></p>
+</section>
+
+<!-- ═══════════════════════ 12 — REFRESH TRIGGERS ═══════════════════════ -->
+<section class="page">
+  <h2>12. CDD refresh triggers</h2>
+  <p class="lead">Besides the scheduled refresh (SDD 5 yr / Standard 3 yr / EDD 1 yr), the following events trigger an immediate out-of-cycle refresh of the CDD file. Miss a trigger → stale file → supervisory finding.</p>
+
+  <h3>12.1 Immediate-refresh triggers</h3>
+  <table>
+    <thead><tr><th>Event</th><th>Refresh scope</th><th>Deadline</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Change in ownership ≥10% (entity)</td><td>Full BO chain re-verification</td><td>On detection</td><td><span class="cite uif">UIF Instr. Arts. 12, 20</span></td></tr>
+      <tr><td>Change in authorised signatories</td><td>IDs + powers</td><td>On detection</td><td><span class="cite uif">UIF Instr. Art. 20</span></td></tr>
+      <tr><td>Change of residence / registered jurisdiction</td><td>Jurisdiction risk + address verification</td><td>On detection</td><td><span class="cite uif">UIF Instr. Art. 14-A</span></td></tr>
+      <tr><td>Change in beneficial owner (trust party change, nominee change)</td><td>Full BO file</td><td>On detection</td><td><span class="cite uif">UIF Instr. Arts. 20, 21</span></td></tr>
+      <tr><td>Material deviation from declared activity profile</td><td>Source-of-funds re-documented; KYT review</td><td>On detection</td><td><span class="cite uif">UIF Instr. Art. 14-A</span></td></tr>
+      <tr><td>UNSC / national list update naming the client or a related party</td><td>Immediate re-screen; if match, Framework F</td><td>On update</td><td><span class="cite lecat">LECAT Art. 37</span></td></tr>
+      <tr><td>PEP status change (appointment / cease)</td><td>Re-check and re-classify DD level</td><td>On detection</td><td><span class="cite uif">UIF Instr. Arts. 16–18</span></td></tr>
+      <tr><td>Material change in product / channel used by client (e.g. first cross-border, first unhosted wallet)</td><td>Risk-scoring re-run; possible DD level escalation</td><td>On detection</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+      <tr><td>Adverse media / law-enforcement information on client or related party</td><td>Full review; CO determination</td><td>On detection</td><td><span class="cite uif">UIF Instr. Art. 13</span></td></tr>
+      <tr><td>Regulatory request (UIF / CNAD information demand)</td><td>As directed</td><td>As directed</td><td><span class="cite aml">AML Law Art. 25</span></td></tr>
+      <tr><td>Internal audit finding</td><td>As scoped by audit plan</td><td>Per action plan</td><td><span class="cite uif">UIF Instr. Art. 8</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>12.2 Scheduled refresh (baseline)</h3>
+  <table>
+    <thead><tr><th>Level</th><th>Baseline cycle</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill sdd">SDD</span></td><td>Every 5 years</td></tr>
+      <tr><td><span class="pill std">Standard</span></td><td>Every 3 years</td></tr>
+      <tr><td><span class="pill edd">EDD</span></td><td>Every year (half-yearly if score ≥15)</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Trigger refreshes override cycle refreshes — the next full refresh resets the cycle clock only if scope overlap is total. Partial refreshes (e.g., BO only) do not reset the full-file cycle.</p>
+</section>
+
+<!-- ═══════════════════════ 13 — ESCALATION ═══════════════════════ -->
+<section class="page">
+  <h2>13. Escalation matrix</h2>
+  <p class="lead">Who escalates what to whom, by what deadline. The CO is the hub; the Board is the last resort for systemic issues; UIF and CNAD are the external lanes. Keep the matrix short and signed by the Board — it is the single source of truth when an alert fires at 22:00.</p>
+
+  <table>
+    <thead><tr><th>From</th><th>To</th><th>Trigger</th><th>Deadline</th><th>Evidence</th></tr></thead>
+    <tbody>
+      <tr><td>Analyst / teller / first-line</td><td>Deputy CO</td><td>Any alert, any KYT red flag, any CDD gap, any refusal by client</td><td>Same business day</td><td>Ticket with timestamp in CO queue</td></tr>
+      <tr><td>Deputy CO</td><td>CO</td><td>Any red flag above routine; PEP decision; EDD continuation; all list hits</td><td>Same business day</td><td>Analysis note</td></tr>
+      <tr><td>CO</td><td>Prevention Committee</td><td>Material alerts batch; STR decisions; list hits summary; audit findings; regulatory interactions</td><td>Next committee meeting (≤ quarter)</td><td>Committee pack with minutes</td></tr>
+      <tr><td>CO</td><td>Board of Directors</td><td>Systemic issues; very-grave findings; CO change; material supervisory letters; resource constraints impairing AML compliance</td><td>Next Board meeting; immediate for serious events</td><td>Board memo with action plan</td></tr>
+      <tr><td>CO</td><td>UIF</td><td>STR (24 h post-determination); Operación Regulada (5 bd); list-hit freeze (without delay); data updates (15 bd); CO appointment (15 bd Board notification per Art. 7(m) + 5 bd CO own registration per Art. 64) / removal (5 bd)</td><td>As per event</td><td>Official UIF channel submission</td></tr>
+      <tr><td>CO / General Counsel</td><td>CNAD</td><td>Material change to registration; AML-policy update requiring CNAD notice; cybersecurity incidents impacting AML controls</td><td>5 bd</td><td>CNAD channel submission</td></tr>
+      <tr><td>CO</td><td>External counsel / external auditor</td><td>Interpretive questions; UIF / CNAD disputes; sanctions questions with extraterritorial elements; significant change-of-control</td><td>Without delay</td><td>Counsel memo, privileged</td></tr>
+      <tr><td>Any employee</td><td>CO (direct line)</td><td>Suspected internal violation; coercion to breach AML; tipping-off occurrence</td><td>Immediate</td><td>Whistleblowing log; Board copy under seal</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>Out-of-hours rule</h4>
+    <p>UNSC / national list hit or STR determination out-of-hours → CO on-call is reached by phone; the deadline clock does not stop for weekends or holidays on STR (24-hour wall clock). Committee and Board lanes respect business-day cadence; UIF reporting lanes use the statute's wall-clock (24 h) or business-day (3 / 5 / 15 bd) as applicable.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 14 — STANDARD SCENARIOS ═══════════════════════ -->
+<section class="page">
+  <h2>14. Scenario walkthroughs — standard cases</h2>
+  <p class="lead">Six standard scenarios showing the frameworks in action. For each: inputs → framework lookups → action → verdict.</p>
+
+  <div class="scenario">
+    <h3>14.1 Natural person · US$900 occasional fiat→crypto swap</h3>
+    <div class="inputs"><strong>Inputs:</strong> walk-in Salvadoran resident; buys BTC for US$900, one-off; pays by bank card; no ongoing relationship.</div>
+    <p><strong>§4 Perimeter:</strong> BTC on the authorised list → pass.</p>
+    <p><strong>§5 DD:</strong> no EDD trigger; occasional transaction under US$1,000 → below LECLDA Art. 15(b) → Instr. Art. 52(a)(b) CDD trigger; SDD-eligible light-touch (practice) within Art. 12. Travel Rule still applies to the DA transfer regardless of amount (§7). → <span class="pill sdd">SDD (practice)</span> with Travel Rule.</p>
+    <p><strong>§6 Docs:</strong> gov photo ID; self-declared address and occupation; source-of-funds declaration; PEP self-declaration.</p>
+    <p><strong>§7 Transaction:</strong> UNSC / national / PEP re-screen → if clean, collect full Travel Rule set; KYT on destination wallet.</p>
+    <p><strong>§8 Threshold:</strong> below Art. 51 single and monthly — no Operación Regulada (unless aggregation crosses later).</p>
+    <p><strong>§9 Suspicion:</strong> none in fact pattern; hesitation on source of funds / questions about thresholds → escalate.</p>
+    <div class="verdict"><strong>Verdict:</strong> proceed with Standard-light CDD + Travel Rule + KYT. No mandatory report. Retain 15 years. Monitor aggregation.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>14.2 Natural person · new ongoing relationship · US$5,000 monthly</h3>
+    <div class="inputs"><strong>Inputs:</strong> resident employee opens account for monthly salary-to-stablecoin conversions; expected US$5,000 / month.</div>
+    <p><strong>§5:</strong> ongoing relationship → full CDD from start; no EDD trigger → <span class="pill std">Standard CDD</span>.</p>
+    <p><strong>§6:</strong> gov ID; address proof (utility ≤3m); employer &amp; occupation documented; NIT; SoF (payslip / employer letter); expected profile (~US$5K/m, 1–2 ops/m); PEP declaration.</p>
+    <p><strong>§7:</strong> per transaction — re-screen + full Travel Rule + KYT; unknown destination wallets → additional questioning.</p>
+    <p><strong>§8:</strong> below US$25K monthly — no Operación Regulada unless pattern shifts.</p>
+    <p><strong>§9:</strong> monitor against profile; a spike (e.g. US$30K in a month) without explanation → analysis.</p>
+    <p><strong>§11–12:</strong> refresh cycle 3 years; out-of-cycle refresh on profile / jurisdiction / activity change.</p>
+    <div class="verdict"><strong>Verdict:</strong> open under Standard CDD with calibrated monitoring. Retention 15 yr.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>14.3 Natural person · PEP onboarding attempt</h3>
+    <div class="inputs"><strong>Inputs:</strong> former domestic minister (ceased 2 yr ago); wants ongoing relationship; declared profile US$2,000 / month; declared source: post-government consulting fees.</div>
+    <p><strong>§5:</strong> former PEP within 5 y → still PEP → <span class="pill edd">EDD</span>.</p>
+    <p><strong>§6:</strong> two gov IDs; verified address; documented occupation (consulting agreements); NIT; full SoF (consulting invoices, bank statements) + SoW (asset declaration, deeds if material); expected scenarios; PEP file with source list; senior-mgmt written approval; enhanced-monitoring flag.</p>
+    <p><strong>§10:</strong> every transaction re-screened; KYT mandatory; family ≤2nd-degree and close associates screened as PEP-related.</p>
+    <p><strong>§12:</strong> annual EDD refresh; PEP status re-checked each year.</p>
+    <div class="verdict"><strong>Verdict:</strong> proceed only with full EDD and written senior-management approval. If declined (risk appetite), neutral-reason decline — never cite PEP status.</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="scenario">
+    <h3>14.4 Legal entity · US$50,000 monthly with layered ownership</h3>
+    <div class="inputs"><strong>Inputs:</strong> Salvadoran S.A. de C.V., 60% Panama holding + 40% two locals; Panama holding owned by a BVI trust; expected US$50,000 / month in stablecoins for supplier payments; business: consumer-electronics import.</div>
+    <p><strong>§5:</strong> legal entity + cross-border multi-layer + trust in chain + monthly above Art. 51 → <span class="pill edd">EDD</span>.</p>
+    <p><strong>§6:</strong> deed, registry extract (≤3m), NIT, operating licence; Board resolution; shareholder register (≥10%); full chain to ultimate natural BO through Panama + BVI trust (settlor / trustee / beneficiaries / protector); signatory IDs; business purpose + counterparties; audited financials; ownership chart signed by director; SoF per BO; written senior-mgmt approval; enhanced monitoring.</p>
+    <p><strong>§7:</strong> per transaction re-screen of counterparties; full Travel Rule, no floor; KYT on supplier wallets (allowlist after vetting); new counterparties → extra questioning.</p>
+    <p><strong>§8:</strong> monthly aggregate US$50K &gt; US$25K threshold → Operación Regulada within 5 bd of month-end. Single ops &gt; US$25K → individual reports within 5 bd.</p>
+    <p><strong>§9:</strong> KYT against declared profile; sudden counterparty-geography shift / volume surge / deviation → analyse.</p>
+    <p><strong>§12:</strong> annual EDD refresh; quarterly BO re-confirmation given the chain.</p>
+    <div class="verdict"><strong>Verdict:</strong> open under full EDD with mandatory Operación Regulada filings. BO documented to ultimate natural person via trust chain (10% + 25% thresholds). Full Travel Rule on every transfer regardless of amount.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>14.5 UNSC list hit during screening</h3>
+    <div class="inputs"><strong>Inputs:</strong> at onboarding, prospect matches UN 1267 list; verification confirms not false positive.</div>
+    <p><strong>§10:</strong> match confirmed → reject relationship; if funds received, immediate freeze, no outflow.</p>
+    <p><strong>Reporting:</strong> UIF report without delay with match record, source list, timestamp, frozen amount (or zero). <span class="cite lecat">LECAT Art. 37 ¶ 3</span></p>
+    <p><strong>Tipping-off:</strong> no explanation beyond "unable to open the relationship". No third-party disclosure. No fund return absent UIF / judicial authorisation. <span class="cite aml">LECLDA Art. 44</span></p>
+    <p><strong>Retention:</strong> full file 15 yr.</p>
+    <div class="verdict"><strong>Verdict:</strong> rejected · reported without delay · frozen if applicable · tipping-off discipline strict.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>14.6 Ongoing monitoring · structuring pattern</h3>
+    <div class="inputs"><strong>Inputs:</strong> Standard-CDD client; declared profile US$3,000 / month. Over 3 weeks: 9 ops of US$2,700 from 3 different cards to 3 destination wallets.</div>
+    <p><strong>§9 Stage 1:</strong> KYT alert opens; timestamped to CO queue.</p>
+    <p><strong>Stage 2 (≤15 bd):</strong> CO analysis — profile comparison, blockchain trace on 3 wallets, KYT report, counterparty risk. Client communication limited to neutral operational-doc queries; never mention analysis.</p>
+    <p><strong>Stage 3:</strong> signed, dated determination line: "Suspicion confirmed — structuring pattern; destination wallets show mixer exposure — at [ISO timestamp]".</p>
+    <p><strong>Stage 4:</strong> STR to UIF within 24 h of determination. <span class="cite aml">AML Law Art. 24</span></p>
+    <p><strong>Stage 5:</strong> relationship decision (enhanced or discontinue with neutral ground); tipping-off prohibited; file retained 15 yr.</p>
+    <div class="verdict"><strong>Verdict:</strong> alert → 15-bd analysis → determination → 24-h STR → retention. Never discuss with client.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 15 — EDGE CASES ═══════════════════════ -->
+<section class="page">
+  <h2>15. Scenario walkthroughs — edge cases</h2>
+  <p class="lead">Six cases where the rule is not obvious. These are the ones analysts bring to the CO. Resolve each via the frameworks and the conflict logic.</p>
+
+  <div class="scenario">
+    <h3>15.1 Walk-in · exactly US$999 — the grey zone</h3>
+    <div class="inputs"><strong>Inputs:</strong> one-off purchase at exactly US$999, by bank card; new walk-in.</div>
+    <p><strong>§8 threshold:</strong> below Art. 51 everywhere — no Operación Regulada.</p>
+    <p><strong>§7 Travel Rule:</strong> PSAV Art. 84-B(1)(e) + Instr. Art. 52 par. 2 (Reform 2) + §2 final CAPS — <strong>no floor</strong>, full data required.</p>
+    <p><strong>§5 DD:</strong> below the LECLDA Art. 15(b) → Instr. Art. 52(a)(b) US$1,000 trigger by US$1. Two readings: (a) below trigger → SDD formally available; (b) the round-number proximity is itself a mild red flag (structuring-aware clients). Conservative posture — apply full CDD (Instr. Art. 12) even though the Instructivo does not strictly require it at US$999.</p>
+    <p><strong>§9:</strong> if the client returns the next day with another US$999, that is a pattern — open analysis.</p>
+    <div class="verdict"><strong>Verdict:</strong> full Travel Rule; Standard-light CDD; log proximity to the expectation line and watch aggregation. Single US$999 alone is not suspicious by itself.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>15.2 Client asks to split US$15,000 into 3×US$5,000 same day</h3>
+    <div class="inputs"><strong>Inputs:</strong> existing Standard-CDD client asks to execute three US$5,000 transfers on the same day citing "system limits".</div>
+    <p><strong>§8:</strong> "other means" single threshold is US$25,000 — none of the three crosses; the aggregate also does not cross Art. 51 on its own. <em>But</em>:</p>
+    <p><strong>§9:</strong> deliberate split into equal parts below any visible threshold, on the same day, is a textbook structuring indicator. Open internal analysis even though no Art. 51 line triggers.</p>
+    <p><strong>Operational step:</strong> request documented business reason for the split; do not refuse outright unless analysis so dictates; never reveal the AML concern (tipping-off).</p>
+    <div class="verdict"><strong>Verdict:</strong> open internal analysis (≤15 bd); collect business rationale; if not satisfactory → STR within 24 h of determination. Execution may proceed or be held per CO decision; in either case, tipping-off prohibited.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>15.3 Existing client moves to a high-risk jurisdiction</h3>
+    <div class="inputs"><strong>Inputs:</strong> ongoing Standard client notifies change of residence to a UIF-listed high-risk jurisdiction.</div>
+    <p><strong>§12 refresh trigger:</strong> change of residence → immediate refresh. <span class="cite uif">UIF Instr. Art. 14-A</span></p>
+    <p><strong>§5 re-scoring:</strong> jurisdiction factor flips from green/amber to red → DD level escalates to <span class="pill edd">EDD</span>.</p>
+    <p><strong>§6:</strong> collect new address verification, re-document SoF / SoW, re-screen against jurisdiction-specific sanctions; senior-management written approval to continue.</p>
+    <p><strong>§10:</strong> increased screening frequency; KYT on every transaction.</p>
+    <div class="verdict"><strong>Verdict:</strong> not a rejection per se — but EDD with senior-management sign-off, or discontinue under neutral ground if risk appetite does not allow.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>15.4 NGO / charity onboarding</h3>
+    <div class="inputs"><strong>Inputs:</strong> domestic NGO (foundation) wants to use the DASP for cross-border donor fund receipts and disbursements; expected US$20,000 / month.</div>
+    <p><strong>§5:</strong> NGOs are a recognised high-risk segment for terrorism-financing exposure (a standard Salvadoran-UIF concern under LECAT). Jurisdiction of donors + disbursement recipients can be red. Expected amount near but under monthly threshold. → <span class="pill edd">EDD</span>.</p>
+    <p><strong>§6:</strong> escritura; registry (NGOs are often under a specific regime — Ministerio de Gobernación or similar); Board resolution; governance bodies; identification of directors, key beneficiaries, disbursement counterparties; purpose documentation; sample donor list; SoF (donor agreements); financial statements.</p>
+    <p><strong>§7:</strong> full Travel Rule on donor inflows and disbursements; KYT on all wallets involved; allowlist / blocklist of disbursement counterparties.</p>
+    <p><strong>§8:</strong> monitor aggregation to Art. 51 thresholds; NGOs often cross them — anticipate Operación Regulada filings.</p>
+    <p><strong>§9:</strong> pattern deviations, atypical disbursement destinations → analyse.</p>
+    <div class="verdict"><strong>Verdict:</strong> EDD with documented governance, donor / disbursement review, and ongoing KYT. Senior-mgmt approval. If NGO refuses donor transparency → decline neutrally.</div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="scenario">
+    <h3>15.5 Corporate wants to pay for a third-party individual</h3>
+    <div class="inputs"><strong>Inputs:</strong> existing corporate EDD client instructs the DASP to send crypto to a wallet belonging to a natural person who is <em>not</em> the corporate, its employee, or a documented supplier — framed as "a personal favour for the CEO".</div>
+    <p><strong>§9 red flag:</strong> third-party beneficiary unrelated to the declared business purpose is a primary red flag — "person acting for a third party" on the beneficiary side.</p>
+    <p><strong>§7:</strong> Travel Rule data on the beneficiary collected — including the CEO-beneficiary relationship; KYT on the wallet.</p>
+    <p><strong>Operational step:</strong> do not execute on informal instruction. Require Board / senior-management documented authorisation evidencing the corporate purpose of the outflow (loan agreement, salary advance, service contract, gift documented as such) and consistent accounting treatment. Without that, the transaction does not match declared profile → hold and analyse.</p>
+    <p><strong>§9:</strong> if the corporate cannot supply a legitimate business rationale → determination of suspicion → STR within 24 h.</p>
+    <div class="verdict"><strong>Verdict:</strong> execute only against documented corporate authorisation and SoF-matching rationale. Otherwise hold, analyse, and file STR if determination is suspicious. Tipping-off prohibited at every step.</div>
+  </div>
+
+  <div class="scenario">
+    <h3>15.6 Fiat on-ramp → bridge to DeFi · unhosted wallet</h3>
+    <div class="inputs"><strong>Inputs:</strong> Standard-CDD individual client buys USDC for US$3,000 and instructs transfer to an unhosted wallet, which (per KYT) immediately routes into a cross-chain bridge to a DeFi protocol.</div>
+    <p><strong>§7 Travel Rule:</strong> PSAV-side full data collected from client and declared about the destination wallet. For unhosted wallets, self-declaration of beneficiary data is standard operational practice; the counterparty VASP lane does not exist.</p>
+    <p><strong>§10 KYT:</strong> bridge / DeFi exposure is not itself a sanction, but it is a risk factor (tracing becomes harder post-bridge). Check bridge for sanctioned-protocol flags.</p>
+    <p><strong>§5 re-scoring:</strong> first-time unhosted-wallet use bumps product / channel from green to red → re-score → may flip to EDD if cumulative score crosses 10.</p>
+    <p><strong>§9 analysis:</strong> if bridge or downstream protocol is flagged, or pattern is repeat cross-chain velocity → open analysis.</p>
+    <div class="verdict"><strong>Verdict:</strong> allowed in principle but documented per-transaction; repeated unhosted-bridge pattern warrants EDD escalation and, if risk appetite declines, relationship review. Privacy-coin leg downstream would be a hard stop.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 16 — DO-NOT-DO ═══════════════════════ -->
+<section class="page">
+  <h2>16. Common supervisory findings · do-not-do list</h2>
+  <p class="lead">Recurrent UIF / CNAD observations on other obligated entities. Each is avoidable. Every line here is a concrete behaviour the CO can ban internally.</p>
+
+  <table>
+    <thead><tr><th>#</th><th>Finding</th><th>Root cause to avoid</th><th>Fix discipline</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>STR filed after 24 h</td><td>No timestamp on determination; confusion with 5-bd Instructivo line</td><td>Every analysis file ends with a dated signed determination; 24-h clock ticks from there; default to same-day filing.</td></tr>
+      <tr><td class="num">2</td><td>Determination without timestamp</td><td>Verbal sign-off; absent paper trail</td><td>Template enforces a "determination" field with ISO timestamp and signature.</td></tr>
+      <tr><td class="num">3</td><td>BO identified only to a 25% legal entity layer — never to a natural person</td><td>Stopping at the first corporate owner</td><td>File always resolves to a natural person; trust chains opened; nominee arrangements exposed.</td></tr>
+      <tr><td class="num">4</td><td>Persistent Travel Rule data gaps tolerated with specific counterparty</td><td>Commercial friction avoidance</td><td>Gap log; after N failures → counterparty flagged or terminated.</td></tr>
+      <tr><td class="num">5</td><td>Training records without attendance, evaluation or dated material</td><td>Tick-box training</td><td>Sign-in sheet + evaluation + materials version-dated + CO sign-off.</td></tr>
+      <tr><td class="num">6</td><td>Training plan not Board-approved by 31 December</td><td>Calendar slip</td><td>Plan is annual Board-pack item for Q4.</td></tr>
+      <tr><td class="num">7</td><td>Internal audit skipped or cosmetic</td><td>Independence compromised; audit performed by CO's team</td><td>Independent internal audit; Board receives report and tracks action plan.</td></tr>
+      <tr><td class="num">8</td><td>CO appointment / removal notified late to UIF</td><td>HR-Compliance handoff gap</td><td>HR triggers CO-notification sub-workflow; 15 bd / 5 bd respectively.</td></tr>
+      <tr><td class="num">9</td><td>Missed monthly aggregation under Art. 51</td><td>System captures single ops only</td><td>System job at month-end aggregates per client per means and flags breaches.</td></tr>
+      <tr><td class="num">10</td><td>Client told "we closed your account for AML reasons"</td><td>Well-intentioned employee; poor training on tipping-off</td><td>Decline / close scripts use neutral grounds only; LECLDA Art. 44 briefings quarterly.</td></tr>
+      <tr><td class="num">11</td><td>Decline reason reveals analysis ("sanctions match")</td><td>Same</td><td>Scripted neutral response ("eligibility review") + CO sign-off on any non-scripted decline.</td></tr>
+      <tr><td class="num">12</td><td>PEP continued relationship without senior-mgmt written approval</td><td>Approval verbal or implicit</td><td>PEP workflow halts until written approval captured.</td></tr>
+      <tr><td class="num">13</td><td>EDD file stale — &gt;1 year since refresh</td><td>Refresh cycle not tracked</td><td>EDD dashboard with next-refresh dates; monthly CO review.</td></tr>
+      <tr><td class="num">14</td><td>Privacy coin accepted or tolerated as incoming exposure</td><td>Weak perimeter enforcement</td><td>Perimeter whitelist enforced at the protocol layer + KYT alert on inbound privacy-coin trace.</td></tr>
+      <tr><td class="num">15</td><td>Unhosted wallet accepted without compensating controls</td><td>No distinction in CDD for unhosted counterparties</td><td>Per-transaction self-declaration + KYT + DD level bump on first unhosted use.</td></tr>
+      <tr><td class="num">16</td><td>Committee meetings without minutes or without CO attendance</td><td>Informal cadence</td><td>Quarterly Prevention Committee with signed minutes; CO's attendance logged.</td></tr>
+      <tr><td class="num">17</td><td>Records archived in inaccessible form / destroyed before 15 yr</td><td>IT retention policy misaligned</td><td>AML records carve-out in retention policy; retrievable on UIF request.</td></tr>
+      <tr><td class="num">18</td><td>CNAD material change notified late</td><td>AML / corporate lanes siloed</td><td>Material-change register cross-checked by CO and General Counsel monthly.</td></tr>
+      <tr><td class="num">19</td><td>Asset perimeter drift — marketing an asset not in the registration file</td><td>Product team faster than Compliance</td><td>Product-launch gate requires CO sign-off for any new asset; material-change notice to CNAD before marketing.</td></tr>
+      <tr><td class="num">20</td><td>STR template content thin — "client operates unusually"</td><td>Time pressure, template unclear</td><td>STR template demands facts, timeline, KYT outputs, counterparty data, determination rationale.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════ 17 — VASP-SPECIFIC FRAMEWORK ═══════════════════════ -->
+<section class="page">
+  <h2>17. VASP-specific framework — Chapter IV-B layered onto the general regime</h2>
+  <p class="lead">UIF Instructivo Reform 1 added Chapter IV-B (Arts. 84-A / 84-B / 84-C) for Providers of Virtual Asset Services (VASPs / DASPs / BSPs). It does <strong>not</strong> set separate amount thresholds — it adds three VASP-specific layers on top of the general DD architecture: own-platform transaction-limit policies (lex specialis), a pre-relationship identity gate (Art. 12 Reform 2), and the VASP Travel Rule anchor.</p>
+
+  <h3>17.1 Six-layer stack</h3>
+  <table>
+    <thead><tr><th>#</th><th>Layer</th><th>Threshold</th><th>Anchor</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><strong>Identity gate</strong> — verification before relationship begins; relationship cannot start without it</td><td class="num">$0</td><td><span class="cite uif">Instr. Art. 12 last par. (Reform 2)</span></td></tr>
+      <tr><td class="num">2</td><td><strong>Statutory CDD floor</strong> for occasional transactions (DASP)</td><td class="num">$10K cash · $25K other; verification ≥ $1K (FATF Rec 16)</td><td><span class="cite aml">LECLDA Art. 15(b)</span> → <span class="cite uif">Instr. Art. 51</span></td></tr>
+      <tr><td class="num">3</td><td><strong>Ongoing-relationship CDD</strong> from day 1</td><td class="num">$0</td><td><span class="cite aml">LECLDA Art. 15(a)</span> <span class="cite uif">Instr. Art. 12</span></td></tr>
+      <tr><td class="num">4</td><td><strong>VASP internal transaction-limit policies</strong> — lex specialis; VASP must publish own limits in AML manual, calibrated to CDD/risk</td><td class="num">Set by VASP, ≤ statutory floor</td><td><span class="cite uif">Instr. Art. 84-B(1)(b) Reform 1</span></td></tr>
+      <tr><td class="num">5</td><td><strong>EDD escalation</strong> on any risk factor</td><td class="num">Any amount</td><td><span class="cite aml">LECLDA Art. 15 ¶ 4 + Art. 19 (PEP)</span> <span class="cite uif">Instr. Art. 13(c) Reform 2</span></td></tr>
+      <tr><td class="num">6</td><td><strong>Travel Rule data</strong> — 7 fields on every electronic VA transfer</td><td class="num">$0</td><td><span class="cite uif">Instr. Art. 84-B(1)(e) Reform 1 + Art. 52 par. 2 Reform 2</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>Operational logic — why $1,000 drives Travel-Rule verification</h4>
+    <p>At US$1,000 the Travel-Rule verification duty attaches (FATF Rec 16 → D-426 Art. 25): the transfer must carry originator name + ID type/number + account/wallet + beneficiary fields + transaction ID, with the originator's identity verified. Its legal weight differs by track — <strong>black-letter</strong> for the Bitcoin/BSP track (BCR Normas Técnicas Art. 50), and for other digital assets the <strong>FATF Rec 16</strong> standard applied via D-426 Art. 25's delegation, a <em>prudent operating threshold pending the new Reglamento</em>. Travel-Rule <em>data</em> is collected on every transfer from $0 (Instr. Art. 84-B(1)(e)); <em>verification</em> attaches from $1,000. The $200 remittance and $1,000 bank e-transfer figures (Art. 52) are FI-side — they do not bind the DASP directly.</p>
+  </div>
+
+  <h3>17.2 $125K monthly aggravator — RPSAD Art. 22</h3>
+  <p>Independent of the CDD/EDD ladder, RPSAD imposes a VASP-specific aggravating-risk threshold. Any client crossing US$125,000 in cumulative monthly capital injections triggers:</p>
+  <ul>
+    <li><strong>Increased surveillance</strong> by the VASP (KYT intensified, monitoring cadence reduced)</li>
+    <li>Client <strong>explanation of source of funds</strong> supported by documents (not declarative)</li>
+    <li><strong>Electronic affidavit</strong> by client on lawful origin</li>
+    <li><strong>Issuer identification</strong> for any DA involved (name, LRU address, contact)</li>
+    <li>Threshold reviewable annually by CNAD or on material business change</li>
+  </ul>
+  <p class="small">Operates as an aggravator on top of the existing DD level — does not replace SDD/CDD/EDD selection but adds documentary requirements for that month's flow. <span class="cite rpsad">RPSAD Art. 22</span></p>
+
+  <h3>17.3 DD on occasional VASP transactions</h3>
+  <p>A transaction in digital assets is its own category under <strong>D-426 Art. 25</strong>, distinct from a "transferencia electrónica" — so the Art. 14-A(III) electronic-transfer trigger addresses fiat rails. For digital assets, DD triggers at relationship start, on occasional transactions above the reporting thresholds (Instr. Art. 51 — $10K / $25K), on suspicion, and on doubts (D-426 Art. 15 / Instr. Art. 14-A). The level of DD (SDD / Standard / EDD) is determined by risk; Travel-Rule data applies from $0, verification from $1,000.</p>
+  <table>
+    <thead><tr><th>Scenario (occasional)</th><th>DD level</th><th>Required</th></tr></thead>
+    <tbody>
+      <tr><td>E-tx &lt; $1,000 + low-risk + no PEP / HR jur / opaque ownership</td><td><span class="pill sdd">SDD</span></td><td>Basic ID + sanctions/PEP screen + Travel-Rule fields (from $0). Lighter scope (no biometric / no full doc auth); document verification deferrable below $1,000 (FATF Rec 16). Suspicion overrides.</td></tr>
+      <tr><td>E-tx ≥ $1,000 (verification — FATF Rec 16 → D-426 Art. 25) OR cash &gt; $10K OR other &gt; $25K</td><td><span class="pill std">Standard</span></td><td>Full identification + verification immediate + BO chain (≥10%) + risk profile + SoF declared + report submission. ($200 family remittance is FI-only — not a DASP trigger.)</td></tr>
+      <tr><td>Any amount + risk factor (PEP / HR jur / opaque / structuring / flagged wallet / 3rd-party / adverse media)</td><td><span class="pill edd">EDD</span></td><td>Standard CDD + senior-mgmt approval + documentary SoF + SoW + KYT every transaction + annual EDD refresh.</td></tr>
+      <tr><td>Any amount + suspicion</td><td><span class="pill std">CDD + STR</span></td><td>Full CDD + STR pipeline (24h after determination). SDD <strong>not</strong> acceptable.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout amber">
+    <p><strong>SDD for occasional ≠ SDD for ongoing.</strong> Art. 14 measures (deferred verification, reduced update frameworks, reduced monitoring, inferred purpose) are written around <em>commercial relationships</em>. For occasional, "SDD" means lighter scope (basic ID + screening + Travel Rule), with verification concurrent but reduced.</p>
+  </div>
+
+  <h3>17.4 PSAV due diligence — risk-based (D-426 Art. 15 / Instr. Art. 12-14-A)</h3>
+  <p>Beyond the general LECLDA Art. 15 framework, the UIF Instructivo (Capítulo IV-B, Arts. 84-A/B/C) applies a <strong>risk-based due-diligence model</strong>. There is no per-amount DD cascade; the diligence level is graduated by client risk, not by transaction amount.</p>
+  <table>
+    <thead><tr><th>Client risk / context</th><th>DD level</th><th>What this means</th></tr></thead>
+    <tbody>
+      <tr><td class="num">Default — all clients</td><td><span class="pill std">Estándar (Standard CDD)</span></td><td>Baseline diligence (D-426 Art. 15 / Instr. Art. 12): ID + verification + BO &ge; 10% + risk profile + sworn SoF + PEP self-declaration.</td></tr>
+      <tr><td class="num">Low-risk, occasional e-tx &lt; US$1,000</td><td><span class="pill sdd">Simplificada (SDD)</span></td><td>Lighter scope — basic ID + sanctions/PEP screen + Travel Rule; verification deferrable (Instr. Art. 14; FATF Rec 16). Not available on suspicion or higher-risk scenario.</td></tr>
+      <tr><td class="num">High-risk client / factor (any amount)</td><td><span class="pill edd">Intensificada (EDD)</span></td><td>Triggered by risk — PEP, opaque ownership, high-risk jurisdiction, structuring, adverse media (Instr. Art. 13): documentary SoF + SoW + senior-management approval + KYT. Regardless of amount.</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Standard CDD is the default for all clients (D-426 Art. 15 / Instr. Art. 12). Electronic transfers &ge; US$1,000 require full Travel-Rule originator/beneficiary verification (BCR Normas Técnicas Art. 50). Risk factors (PEP / suspicion / high-risk jurisdiction / structuring) escalate to EDD regardless of amount (Instr. Art. 13). DD is triggered at relationship start, on occasional transactions above the reporting thresholds, on electronic transfers, and on any suspicion (Instr. Art. 14-A).</p>
+
+  <h3>17.5 PSAV reporting framework — Instr. Art. 51 / 84-C</h3>
+  <table>
+    <thead><tr><th>Report</th><th>Frequency / Threshold</th><th>Anchor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Operación Regulada PSAV</strong> (via goAML — 6 PSAV forms)</td><td class="num">5 bd</td><td>Instr. Art. 51 / 84-C</td></tr>
+      <tr><td><strong>ROS</strong> — operación sospechosa</td><td class="num">24 h · any amount</td><td>D-426 Art. 24</td></tr>
+      <tr><td><strong>Notificación de ausencia de operaciones</strong> (if no operations in month)</td><td class="num">Monthly</td><td>Instr. Art. 84-C</td></tr>
+      <tr><td>STR + Operación Regulada</td><td>Per LECLDA / Instr.</td><td>cross-cited</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Filing via the six goAML PSAV forms: Cajero Electrónico · Compraventa con Wallet · Intercambio de Criptoactivos · Tarjeta a Wallet · Wallet a Cuenta · Wallet a Wallet. The applicable form depends on the operation type.</p>
+</section>
+
+<!-- ═══════════════════════ 18 — CESSATION ═══════════════════════ -->
+<section class="page">
+  <h2>18. Cessation &amp; Wind-down — RPSAD Arts. 38–39</h2>
+  <p class="lead">Two cessation types. Same request procedure with CNAD; differences in scope, timing and downstream obligations. Wind-down plan must protect client assets (return digital assets and fiduciary money to owners). Distinguish from auto-cancellation paths under Arts. 14 + 40.</p>
+
+  <h3>18.1 Two cessation types</h3>
+  <table>
+    <thead><tr><th>Type</th><th>Required filing</th><th>Window</th><th>Outcome</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Temporary</strong> (pause + resume)</td><td>Action plan: cessation date + planned resumption date; procedures to <strong>protect</strong> + <strong>refund</strong> client assets on request</td><td class="num">Max 20 bd suspension</td><td>Mandatory resumption within window; failure → conversion to definitive cessation grounds</td></tr>
+      <tr><td><strong>Definitive</strong> (permanent exit)</td><td>Date of cessation + <strong>liquidation plan</strong> for assets and employees + procedure to return DA + fiat to owners</td><td class="num">≥ 20 bd execution (CNAD-set)</td><td>After window expires → CNAD orders <strong>ex officio cancellation</strong>; all rights extinguished</td></tr>
+    </tbody>
+  </table>
+
+  <h3>18.2 CNAD procedure timeline</h3>
+  <table>
+    <thead><tr><th>#</th><th>Action</th><th>Timing</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>VASP submits cessation request to CNAD (physical/electronic) with required contents</td><td>Initiated by VASP</td></tr>
+      <tr><td class="num">2</td><td>If documentation incomplete → CNAD grants up to <strong>10 bd</strong> to cure</td><td class="num">10 bd</td></tr>
+      <tr><td class="num">3</td><td>CNAD authorises or denies (temporary or definitive)</td><td class="num">5 bd from complete filing</td></tr>
+      <tr><td class="num">4</td><td>Execution window — VASP executes liquidation / temporary suspension per approved plan</td><td class="num">≥ 20 bd (CNAD-set)</td></tr>
+      <tr><td class="num">5</td><td>(Definitive only) CNAD orders ex officio cancellation; rights extinguished</td><td>Immediately after</td></tr>
+      <tr><td class="num">6</td><td>AML records retained — survive corporate dissolution; custodian designation required</td><td class="num">15 yr</td></tr>
+    </tbody>
+  </table>
+
+  <h3>18.3 Resolution Plan + auto-cancellation paths</h3>
+  <div class="callout">
+    <p><strong>Resolution Plan obligation — LEAD Art. 21(p) + Instr. Art. 84-B(9) Reform 1.</strong> Independently of an actual cessation, every VASP must <strong>maintain a Resolution Plan</strong> at all times — providing for orderly and solvent liquidation. CNAD requires this plan as part of registration documentation pack and reviews it during ongoing supervision. The Cessation procedure above is the operational execution of that pre-existing Resolution Plan.</p>
+  </div>
+  <div class="callout amber">
+    <p><strong>Auto-cancellation paths (distinct from voluntary cessation):</strong></p>
+    <ul>
+      <li><strong>Non-payment of annual renewal fee</strong> within Q1 → automatic cancellation + automatic loss of LEAD Art. 36 tax benefits <span class="cite rpsad">RPSAD Art. 14(b) + Art. 12</span></li>
+      <li><strong>CNAD precautionary trade suspension</strong> — up to 20 bd, exhaustive inspection; if breach confirmed → sanction (LEAD Art. 38) + improvement plan or cancellation; if no breach → annulment, full rights restored <span class="cite rpsad">RPSAD Art. 40</span></li>
+    </ul>
+  </div>
+  <div class="callout">
+    <p><strong>BSP-track parallel.</strong> If the entity also held a BSP registration with BCR, separate discontinuation notice is required: BSP must <strong>immediately</strong> inform BCR; BCR removes from Registry within <strong>72 hours</strong>. <span class="cite uif">D-27/2021 Art. 3</span></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 19 — CONDUCT & OPERATIONAL STANDARDS ═══════════════════════ -->
+<section class="page">
+  <h2>19. Conduct &amp; Operational Standards</h2>
+  <p class="lead">RPSAD Arts. 17–37 set the conduct, ethics, disclosure, market-integrity and operational obligations that bind every DASP from go-live. CNAD reviews during ongoing supervision; breach can trigger sanction (LEAD Art. 38) or precautionary suspension (Art. 40).</p>
+
+  <h3>19.1 Standards of conduct &amp; good faith — Art. 17</h3>
+  <table>
+    <thead><tr><th>Sub-item</th><th>Duty</th></tr></thead>
+    <tbody>
+      <tr><td class="num">(c)</td><td><strong>Investor priority rule</strong> — first in time, first in law for purchase/sale managed on own account; no investor harmed</td></tr>
+      <tr><td class="num">(d)</td><td><strong>No commission abuse</strong> — clients not induced to operations for sole purpose of generating commissions</td></tr>
+      <tr><td class="num">(e)</td><td><strong>Price-formation transparency</strong> — avoid public disclosure of false / inaccurate / biased information about DAs</td></tr>
+      <tr><td class="num">(f)</td><td><strong>Cooperation with CNAD</strong> — collaborate with control and surveillance functions on lawful demand</td></tr>
+      <tr><td class="num">(g)</td><td><strong>Investment-recommendation discipline</strong> — variation to investor's detriment → notify investor + request instructions; presume DASP acts in best interest at best price</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Sanction tier: breach of CNAD-set good-conduct / ethics standards → fine up to <strong>114 minimum salaries (≈ $46,603)</strong> per infraction <span class="cite lead-cite">LEAD Art. 38(a)</span></p>
+
+  <h3>19.2 Code of Ethics — Art. 18</h3>
+  <p>Each DASP must prepare a Código de Ética <strong>within 6 calendar months of final registration</strong>, available on LRU site or attached to offers. Required components:</p>
+  <ul>
+    <li>(a) General &amp; specific principles for employee conduct · (b) Ethical standards for behaviour · (c) Conflict-of-interest policy (operations, investors, employees, directors, representatives) · (d) Fair-treatment policies for clients · (e) AML/CFT/CFP policies · (f) Non-pecuniary penalty regime for employees</li>
+  </ul>
+  <p class="small">CNAD may require modifications; supervision/implementation aspects communicated to CNAD; Ethics Committee complaints + decisions visible to CNAD.</p>
+
+  <h3>19.3 Computer systems — Art. 20 (when operating platforms/wallets)</h3>
+  <ol>
+    <li><strong>(a)</strong> Quick, correct, accurate settlement of all transactions</li>
+    <li><strong>(b) Electronic Book</strong> — auditable record per transaction (date, type, users, amount)</li>
+    <li><strong>(c)</strong> Permanent monitoring system — detect errors/failures + recover damaged/deleted info</li>
+    <li><strong>(d)</strong> Mechanism to suspend/close accounts that breach T&amp;Cs</li>
+  </ol>
+
+  <h3>19.4 LRU / website disclosure — Art. 23</h3>
+  <p>All DA-related communication must be <strong>at all times available</strong> at the LRU address. Display rules: (a) clear &amp; accessible; (b) not misleading; (c) third-party citation rule. Required URL contents (illustrative): T&amp;Cs, contact info, SSF complaint channel notice, per-asset general explanation (interchangeability, current price, 12-month price history, current platform volume), custody/loan/deposit complementary products with regular updates, Code of Ethics, fee schedule, public wallet list.</p>
+
+  <h3>19.5 Personal data protection — Art. 36</h3>
+  <div class="callout amber">
+    <p><strong>Strict-liability regime.</strong> VASP directly responsible for safeguarding acquirer/client/user personal information at all times. <strong>On leak: VASP pays financial compensation to clients AND administrative fine.</strong> No fault requirement. Operationalised through cyber controls + AML record-keeping (15 yr) + Code fair-treatment policy. AML manual must include leak-incident response procedure (compensation calc + CNAD notification).</p>
+  </div>
+
+  <h3>19.6 Privileged-information regime — Arts. 24–26 (insider / market integrity)</h3>
+  <table>
+    <thead><tr><th>Article</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Art. 24</strong></td><td>No DASP may operate with privileged info of issuers — refrain from: (a) acquiring/transferring DAs based on privileged info, own or third-party account; (b) recommending acquisition/disposal based on privileged info; (c) recommending order cancellation/modification based on privileged info</td></tr>
+      <tr><td><strong>Art. 25</strong></td><td>Accidental access to issuer's privileged info → exposed individual must disclose to CO; DASP may continue operations with affected issuer if exposed individual is prohibited from any operation with that issuer + sharing the info</td></tr>
+      <tr><td><strong>Art. 26</strong></td><td>No DASP holding privileged info may communicate it to another person, except in normal exercise of work, profession or functions; document channel + recipient in case file</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Hook: <span class="cite lead-cite">LEAD Art. 21(k)</span> — DASPs must apply effective mechanisms to prevent price manipulation and maintain market integrity.</p>
+
+  <h3>19.7 Investment refund obligation — Art. 37</h3>
+  <div class="callout amber">
+    <p><strong>48-hour refund window on force majeure.</strong> DASP guarantees investment within contracted term/conditions. On <strong>fortuitous event or force majeure</strong>: must terminate operation AND <strong>credit client wallet within 48 hours</strong> with funds delivered for the investment. Internal SLA must enable 48h restoration independent of CNAD review or external dispute resolution. Document force-majeure determination + wallet-credit confirmation in client file.</p>
+  </div>
+
+  <div class="callout">
+    <h4>CNAD precautionary suspension — Art. 40 (cross-reference to §18)</h4>
+    <p>Trigger: suspicion or complaint of breach. Max duration: 20 bd. CNAD notifies, conducts exhaustive inspection. Outcomes: breach confirmed → sanction + improvement plan; no breach → annulment + rights restored. Have an internal "trade-suspension response plan" (CNAD legal contact, client communication template, revenue-impact assessment, regulator engagement protocol).</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 20 — BITCOIN LAW REFORM 2025 ═══════════════════════ -->
+<section class="page">
+  <h2>20. Bitcoin Law D-57/2021 + Reform D-199/2025 — implications for the BSP track</h2>
+  <p class="lead">El Salvador was the first country to make Bitcoin legal tender (D-57/2021, in force 7 Sept 2021). The Reform (D-199/2025, in force 30 April 2025) made acceptance voluntary and limited to private actors, derogated mandatory state acceptance + Chivo wallet alternatives, and ended tax payment in BTC. The BSP framework (D-27/2021 Reglamento) is <strong>unaffected</strong>.</p>
+
+  <h3>What changed</h3>
+  <table>
+    <thead><tr><th>Article</th><th>Original D-57/2021</th><th>Reformed D-199/2025</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Art. 1</strong></td><td>Bitcoin = legal tender, "irrestricto" (universal)</td><td>Bitcoin = legal tender with unlimited liberatory power, but <strong>acceptance voluntary</strong>; only natural persons + fully private legal entities</td></tr>
+      <tr><td><strong>Art. 3</strong></td><td>Prices may be <strong>expressed</strong> in BTC</td><td>Prices may be <strong>converted</strong> in BTC</td></tr>
+      <tr><td><strong>Art. 4</strong></td><td>Taxes payable in BTC</td><td><strong>Derogated</strong> — taxes cannot be paid in BTC</td></tr>
+      <tr><td><strong>Art. 5</strong></td><td>BTC exchanges no capital gains (treated as legal tender)</td><td>BTC exchanges no capital gains (rule maintained, parenthetical removed)</td></tr>
+      <tr><td><strong>Art. 7</strong></td><td>Every economic agent <strong>shall accept</strong> Bitcoin (mandatory)</td><td>Only natural persons, or fully-private legal entities, <strong>may</strong> accept Bitcoin (voluntary)</td></tr>
+      <tr><td><strong>Art. 8</strong></td><td>State provides BTC↔USD conversion (Chivo wallet)</td><td><strong>Derogated</strong> — Chivo wound down</td></tr>
+      <tr><td><strong>Art. 9</strong></td><td>Reglamento on State conversion</td><td><strong>Derogated</strong></td></tr>
+      <tr><td><strong>Art. 11</strong></td><td>BCR + SSF emit normativa within Art. 16 timeframe</td><td>Per legal competences (no time link)</td></tr>
+      <tr><td><strong>Art. 12</strong></td><td>Exclusion from Art. 7 mandatory acceptance for those without tech</td><td>State pays obligations in original currency</td></tr>
+    </tbody>
+  </table>
+
+  <h3>BSP framework — what's unchanged</h3>
+  <p>D-27/2021 Reglamento Ley Bitcoin governs the BSP track. Operationally <strong>unaffected by Reform D-199/2025</strong>:</p>
+  <ul>
+    <li><strong>BSP Registry at BCR</strong> — registration before operations (20 bd), discontinuation immediate + 72h removal <span class="cite uif">D-27/2021 Art. 3</span></li>
+    <li><strong>SSF supervision and sanctions</strong> over BSPs <span class="cite uif">D-27/2021 Art. 5</span></li>
+    <li><strong>Standards of Conduct (Art. 4 a-i):</strong> AML programme · client-asset safeguard · books/records/customer accounts · complaint log · website + SSF notice · cybersecurity · physical security + DRP · resolution plan · transaction-limit policy</li>
+    <li><strong>AML/CFT obligations</strong> under LECLDA + Instructivo (Chapter IV-B Reform 1) — same as DASP track</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Practical implication for combined BSP+DASP entity.</strong> If the entity holds both registrations: (i) AML programme is shared (one CO, one Prevention Committee, one AML manual); (ii) regulator interface is split (BCR Registry + SSF for BSP, CNAD for DASP, UIF for AML); (iii) Reform 2025 affects only the BTC retail-acceptance side, not the entity's compliance burden; (iv) Resolution Plan covers both tracks.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ 21 — ANTICIPATED UPDATES ═══════════════════════ -->
+<section class="page">
+  <h2>21. Anticipated framework updates</h2>
+  <p class="lead">The Salvadoran VASP framework is actively evolving. A new CNAD Reglamento and a new UIF Instructivo are <strong>expected</strong> (no fixed publication date as of this version). This section flags what's in the pipeline so the AML manual can be designed for swap-in.</p>
+
+  <h3>What's expected</h3>
+  <table>
+    <thead><tr><th>Instrument</th><th>Anticipated focus</th></tr></thead>
+    <tbody>
+      <tr><td><strong>New CNAD Reglamento</strong> (replacing / amending RPSAD CNAD-035-2023)</td><td>Operational refresh integrating Reform 1 + Reform 2 of the Instructivo · potential clarification of stablecoin admission process · custody segregation rules · KYT vendor qualification · customer-attention SLAs</td></tr>
+      <tr><td><strong>New UIF Instructivo</strong> (consolidating Reforms 1 + 2)</td><td>Clean consolidated text · VASP-specific reporting forms · deeper Travel Rule operationalisation (IVMS-101 / TRP / OpenVASP) · unhosted-wallet attribution standards</td></tr>
+      <tr><td><strong>Possibly</strong></td><td>Cyber-maturity rating framework · BSP/DASP cross-rail consolidation triggers · stablecoin reserve audit cadence</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>Practical implication for the AML manual</h4>
+    <p>Keep the manual <strong>modular</strong> — discrete sections per Instructivo article so swap-in of new text affects only the impacted module. Maintain an internal change log + version control. Subscribe to CNAD <em>Boletín</em> + UIF announcements; review on each plenary cycle. This playbook reflects the framework as in force at the issue date (footer below); each post-publication update will be cross-referenced in a future revision.</p>
+  </div>
+
+  <div class="callout amber">
+    <h4>What to do today (without waiting)</h4>
+    <ul>
+      <li>AML manual structure: one module per Instructivo article (Arts. 4, 12, 13, 14, 14-A, 16-18, 20, 21, 21-A, 22, 23, 36-43, 51, 52 par. 2, 54, 64, 67-68, 84-A/B/C)</li>
+      <li>Risk matrix: documented methodology aligned to Art. 4 RBA + Art. 10 inherent-risk criteria</li>
+      <li>Travel Rule: implement 7-field data set + batch-processing rule today; protocol-level (IVMS-101) integration when counterparty VASPs support it</li>
+      <li>Resolution Plan: maintain at all times per LEAD Art. 21(p) + Instr. Art. 84-B(9)</li>
+      <li>$125K monthly aggravator: monitor in KYT escalation matrix</li>
+      <li>Internal transaction limits: publish in AML manual (Art. 84-B(1)(b))</li>
+    </ul>
+  </div>
+</section>
+
+<p style="margin-top:20px; font-family:'Poppins',Arial,sans-serif; font-size:9pt; color:var(--mid); padding:0 16mm 20mm;">End of document — v3.5 · 21 June 2026 · Instructivo UIF Cap. IV-B PSAV-specific obligations integrated (risk-based DD, regulated-operation reporting via goAML 6 PSAV forms, ROS, Travel Rule).</p>
+
+</body>
+</html>
