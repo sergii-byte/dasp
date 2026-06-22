@@ -1337,7 +1337,7 @@
 </main>
 
 <footer class="footer">
-    <div>Digital Asset Service Provider (DASP) practitioner reference · Not legal advice · Consult licensed Salvadoran counsel.</div>
+    <div>Digital Asset Service Provider (DASP) practitioner reference · Not legal advice · Consult licensed Salvadoran counsel. · Updated June 2026</div>
     <div class="footer__nav">
         <a href="/">Overview</a> · <a href="/licensing.html">Licensing</a> · <a href="/compliance.html">Compliance</a>
     </div>
@@ -1347,7 +1347,7 @@
 /* ══════════════════════════════════════════════════════════════
    AML DECISION WIZARD · v.4 — full-width layout, no internal scroll
    Verdict tiers: SDD · Standard CDD · EDD · Reject
-   Sources: LCLDA · Reformed Instructivo (Reform 1 + Reform 2) · LECAT
+   Sources: LECLDA · Reformed Instructivo (Reform 1 + Reform 2) · LECAT
    ══════════════════════════════════════════════════════════════ */
 (function () {
     'use strict';
@@ -1612,7 +1612,7 @@
             ];
             sections.push({
                 title: 'SDD — Simplified Due Diligence',
-                when: '<span class="cite cite--instr">Instr. Art. 14</span> · <span class="cite cite--d426">LCLDA Art. 17</span>',
+                when: '<span class="cite cite--instr">Instr. Art. 14</span> · <span class="cite cite--d426">LECLDA Art. 17</span>',
                 tier: s.rel === 'ongoing' ? ['onboarding'] : ['per-tx'],
                 fields,
             });
@@ -1702,7 +1702,7 @@
         if (d.v === 'edd' && s.f.pep) {
             sections.push({
                 title: 'PEP detailed disclosure',
-                when: '<span class="cite cite--d426">LCLDA Art. 19</span>',
+                when: '<span class="cite cite--d426">LECLDA Art. 19</span>',
                 tier: ['onboarding'],
                 addedAt: 'edd',
                 fields: [
@@ -1991,7 +1991,7 @@
         if (d.v === 'edd' && s.f.pep) {
             sections.push({
                 title: 'PEP-specific operations',
-                when: '<span class="cite cite--d426">LCLDA Art. 19</span>',
+                when: '<span class="cite cite--d426">LECLDA Art. 19</span>',
                 tier: ['onboarding', 'periodic'],
                 addedAt: 'edd',
                 owner: ['co'],
@@ -2028,7 +2028,7 @@
         // ── 7. Sanctions + PEP screening (every tx, any tier) ──
         sections.push({
             title: 'Sanctions, PEP & adverse-media screening',
-            when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LCLDA Art. 19</span>',
+            when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LECLDA Art. 19</span>',
             tier: ['onboarding', 'per-tx'],
             blocking: true,
             owner: ['co', 'tech'],
@@ -2038,7 +2038,7 @@
                 {l: 'Run PEP screen', v: 'UIF official list (binding) + commercial DB (supplementary)'},
                 {l: 'Run adverse-media screen', v: 'name + ID against open-source intelligence'},
                 {l: 'Record results + reviewer + timestamp', v: 'snapshot of result + lists version + officer name'},
-                {l: 'On hit: freeze + STR + tipping-off prohibited', v: '<span class="cite cite--d426">LCLDA Art. 44</span>'},
+                {l: 'On hit: freeze + STR + tipping-off prohibited', v: '<span class="cite cite--d426">LECLDA Art. 44</span>'},
             ],
         });
 
@@ -2099,7 +2099,7 @@
         if (strFlags.length) {
             sections.push({
                 title: 'STR analysis — elevated sensitivity',
-                when: '<span class="cite cite--d426">LCLDA Arts. 24, 44</span>',
+                when: '<span class="cite cite--d426">LECLDA Arts. 24, 44</span>',
                 tier: ['per-tx'],
                 owner: ['co', 'risk'],
                 sla: '≤15 BD analysis · 24h filing', slaClass: 'statutory', slaHint: 'Internal analysis ≤15 BD (Art. 24); STR filing 24h wall-clock from determination',
@@ -2130,7 +2130,7 @@
         if (s.f.refuses) strFlags2.push('refuses CDD');
         if (strFlags2.length) reports.push({
             l: 'STR — Suspicious Transaction Report',
-            v: '24h wall-clock from determination to UIF · <span class="cite cite--d426">LCLDA Art. 24</span>',
+            v: '24h wall-clock from determination to UIF · <span class="cite cite--d426">LECLDA Art. 24</span>',
             hint: 'Triggered by: ' + strFlags2.join(', ') + '. Tipping-off prohibited per Art. 44.',
         });
 
@@ -2157,7 +2157,7 @@
         // Operación Regulada — cash > $10,000
         if (ch === 'cash' && amt > 10000) reports.push({
             l: 'Operación Regulada — cash',
-            v: '5 BD to UIF · <span class="cite cite--d426">LCLDA Art. 25</span>',
+            v: '5 BD to UIF · <span class="cite cite--d426">LECLDA Art. 25</span>',
         });
 
         // Operación Regulada — other means > $25,000
@@ -2169,7 +2169,7 @@
 
         sections.push({
             title: 'UIF reporting filings',
-            when: '<span class="cite cite--instr">Instr. Art. 51 / 84-C</span> · <span class="cite cite--d426">LCLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span>',
+            when: '<span class="cite cite--instr">Instr. Art. 51 / 84-C</span> · <span class="cite cite--d426">LECLDA Arts. 24, 25</span> · <span class="cite cite--lecat">LECAT Art. 37</span>',
             tier: ['per-tx', 'periodic'],
             owner: ['co'],
             sla: 'see per-filing', slaClass: 'statutory', slaHint: 'STR 24h from determination · Sanctions freeze without delay · Operación Regulada 5 BD vía goAML · Travel Rule on every transfer.',
@@ -2180,7 +2180,7 @@
         // ── 12. Retention 15-yr (always) ──
         sections.push({
             title: 'Retention & records',
-            when: '<span class="cite cite--d426">LCLDA Art. 26</span>',
+            when: '<span class="cite cite--d426">LECLDA Art. 26</span>',
             tier: ['periodic'],
             owner: ['ops', 'tech'],
             sla: '15 yrs', slaClass: 'statutory', slaHint: 'Minimum retention period from operation date or relationship end. Available to UIF on request without delay.',
@@ -2505,24 +2505,24 @@
                 body: '<ul>' +
                     '<li><strong>UNSC consolidated lists</strong> — Resolutions 1267 (Al-Qaida/Taliban), 1373 (terrorist financing), 1718 (DPRK), 1988 (Taliban), 2231 (Iran). Authority: LECAT Art. 37.</li>' +
                     '<li><strong>UIF national designated list</strong> — Salvadoran national designations.</li>' +
-                    '<li><strong>PEP:</strong> domestic · foreign · international organisation. UIF official list (binding) + commercial DB (supplementary). PEP status persists 5 yrs post-cease (LCLDA Art. 19).</li>' +
+                    '<li><strong>PEP:</strong> domestic · foreign · international organisation. UIF official list (binding) + commercial DB (supplementary). PEP status persists 5 yrs post-cease (LECLDA Art. 19).</li>' +
                     '<li><strong>Adverse media:</strong> open-source intelligence on name + ID.</li>' +
-                    '<li><strong>On hit:</strong> freeze + UIF report + tipping-off prohibited (LCLDA Art. 44).</li>' +
+                    '<li><strong>On hit:</strong> freeze + UIF report + tipping-off prohibited (LECLDA Art. 44).</li>' +
                     '</ul>',
             },
             {
                 id: 'reporting',
                 head: 'Reporting obligations — UIF',
                 body: '<ul>' +
-                    '<li><strong>STR (Suspicious Transaction Report):</strong> 24h wall-clock from determination (LCLDA Art. 24). Internal analysis ≤15 BD.</li>' +
-                    '<li><strong>Operación Regulada — cash:</strong> 5 business days for cash > $10,000 (LCLDA Art. 25).</li>' +
+                    '<li><strong>STR (Suspicious Transaction Report):</strong> 24h wall-clock from determination (LECLDA Art. 24). Internal analysis ≤15 BD.</li>' +
+                    '<li><strong>Operación Regulada — cash:</strong> 5 business days for cash > $10,000 (LECLDA Art. 25).</li>' +
                     '<li><strong>Operación Regulada — other means:</strong> 5 BD for other-means > $25,000 (Instr. Art. 51).</li>' +
                     '<li><strong>Operación Regulada — activos virtuales:</strong> filed via the UIF goAML system using the six PSAV forms; threshold per Instr. Art. 51 (otro medio &gt; US$25,000). No standalone "≥ $1,000" report exists in the current framework.</li>' +
                     '</ul>',
             },
             {
                 id: 'retention',
-                head: 'Retention — LCLDA Art. 26',
+                head: 'Retention — LECLDA Art. 26',
                 body: '<p><strong>15 years minimum</strong> from operation date or relationship termination. Format: physical · digital · electronic (all equally valid). Per-client file + chronological transaction log. Must be accessible to UIF on request without delay.</p>',
             },
             {
@@ -2649,7 +2649,7 @@
         // EDD risk-flags
         if (s.f.pep) list.push({
             label: 'PEP (self-declared or screen hit)',
-            effect: 'EDD', effectClass: 'edd', cite: 'LCLDA Art. 19',
+            effect: 'EDD', effectClass: 'edd', cite: 'LECLDA Art. 19',
         });
         if (s.f.opaque) list.push({
             label: 'Opaque ownership structure',
@@ -2662,17 +2662,17 @@
         if (s.f.structuring) list.push({
             label: 'Structuring pattern detected',
             effect: 'EDD + STR analysis', effectClass: 'edd',
-            cite: 'LCLDA Art. 24',
+            cite: 'LECLDA Art. 24',
         });
         if (s.f.mixer) list.push({
             label: 'Mixer / darknet exposure (KYT hit)',
             effect: 'EDD + STR analysis', effectClass: 'edd',
-            cite: 'LCLDA Art. 24',
+            cite: 'LECLDA Art. 24',
         });
         if (s.f.profile) list.push({
             label: 'Customer profile deviation',
             effect: 'EDD + STR analysis', effectClass: 'edd',
-            cite: 'LCLDA Art. 24',
+            cite: 'LECLDA Art. 24',
         });
         if (s.f.thirdparty) list.push({
             label: 'Third-party funder',
@@ -2705,7 +2705,7 @@
         if (ch === 'cash' && amt > 10000) list.push({
             label: 'Cash > US$10,000 ($' + amt.toLocaleString() + ')',
             effect: 'CDD + Operación Regulada', effectClass: 'cdd',
-            cite: 'LCLDA Art. 25',
+            cite: 'LECLDA Art. 25',
         });
         if (ch === 'other' && amt > 25000) list.push({
             label: 'Other-means > US$25,000 ($' + amt.toLocaleString() + ')',
@@ -2717,7 +2717,7 @@
         if (d.v === 'sdd' && s.rel === 'ongoing') list.push({
             label: 'Ongoing low-risk customer',
             effect: 'SDD profile', effectClass: 'sdd',
-            cite: 'LCLDA Art. 17',
+            cite: 'LECLDA Art. 17',
         });
 
         return list;
@@ -2732,7 +2732,7 @@
                 '<span class="version-stamp__label">As of</span>' +
                 '<span class="version-stamp__item"><strong>2026-05-12</strong></span>' +
                 '<span class="version-stamp__item"><strong>LEAD</strong> D-643/2023</span>' +
-                '<span class="version-stamp__item"><strong>LCLDA</strong> D-426/2025</span>' +
+                '<span class="version-stamp__item"><strong>LECLDA</strong> D-426/2025</span>' +
                 '<span class="version-stamp__item"><strong>LECAT</strong> D-108</span>' +
                 '<span class="version-stamp__item"><strong>Instructivo UIF</strong> Reform 2 (2024)</span>' +
                 '<span class="version-stamp__item"><strong>goAML</strong> + Instr. Cap. IV-B</span>' +
@@ -2767,6 +2767,12 @@
             '</div>'
         );
 
+        parts.push(
+            '<div class="verdict-caveat" style="margin-top:0.55rem; padding:0.55rem 0.75rem; border-left:3px solid var(--border); background:rgba(0,0,0,0.025); font-size:0.8rem; color:var(--text-2); border-radius:6px;">' +
+                '<strong>Indicative only — not legal advice.</strong> This is a decision aid based on the inputs provided. Confirm the DD level, thresholds and reporting obligations with your Compliance Officer and licensed Salvadoran counsel before acting.' +
+            '</div>'
+        );
+
         // ── 2. CLIENT mega-block — what client provides for this scenario ──
         if (d.v !== 'reject') {
             const clientSections = buildClientFlow(s, d);
@@ -2784,7 +2790,7 @@
         if (d.v !== 'reject') {
             const daspSections = buildDaspFlow(s, d);
             const daspNotes = [
-                'Every step is logged with reviewer + timestamp + outcome for 15-yr audit trail <span class="cite cite--d426">LCLDA Art. 26</span>',
+                'Every step is logged with reviewer + timestamp + outcome for 15-yr audit trail <span class="cite cite--d426">LECLDA Art. 26</span>',
                 'Steps run in parallel where dependencies allow; sanctions + Travel Rule are blocking pre-conditions for transfer execution.',
             ];
             if (d.v === 'cdd') daspNotes.push('Steps marked <strong>+ NEW @ CDD</strong> are those that escalate from the SDD baseline.');
@@ -2828,7 +2834,7 @@
             }
             if (s.f.refuses) {
                 legal.push({l: 'Open STR analysis ticket', v: 'attempted-operation flag <span class="cite cite--instr">Instr. Art. 47</span>'});
-                legal.push({l: 'Submit STR to UIF if suspicion confirmed', v: '24h wall-clock of determination <span class="cite cite--d426">LCLDA Art. 24</span>'});
+                legal.push({l: 'Submit STR to UIF if suspicion confirmed', v: '24h wall-clock of determination <span class="cite cite--d426">LECLDA Art. 24</span>'});
             }
             if (s.jur === 'reject') {
                 legal.push({l: 'Record attempted operation', v: 'evidence pack — date · counterparty · indicators · screenshots'});
@@ -2836,7 +2842,7 @@
             }
             if (legal.length) rejectSections.push({
                 title: 'Legal — UIF / FGR notification chain',
-                when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LCLDA Arts. 24, 44</span> · <span class="cite cite--instr">Instr. Art. 47</span>',
+                when: '<span class="cite cite--lecat">LECAT Art. 37</span> · <span class="cite cite--d426">LECLDA Arts. 24, 44</span> · <span class="cite cite--instr">Instr. Art. 47</span>',
                 tier: ['per-tx'],
                 blocking: true,
                 owner: ['co'],
@@ -2847,7 +2853,7 @@
             // 3. BEHAVIORAL — tipping-off & confidentiality (all staff)
             rejectSections.push({
                 title: 'Behavioral controls — tipping-off prohibition',
-                when: '<span class="cite cite--d426">LCLDA Art. 44</span>',
+                when: '<span class="cite cite--d426">LECLDA Art. 44</span>',
                 tier: ['per-tx'],
                 owner: ['co'],
                 sla: 'ongoing', slaClass: 'fast', slaHint: 'Continuous obligation — applies from moment of suspicion onward, indefinitely',
@@ -2862,7 +2868,7 @@
             // 4. RECORDS — evidence pack retention
             rejectSections.push({
                 title: 'Records — evidence retention',
-                when: '<span class="cite cite--d426">LCLDA Art. 26</span>',
+                when: '<span class="cite cite--d426">LECLDA Art. 26</span>',
                 tier: ['periodic'],
                 owner: ['ops', 'tech'],
                 sla: '15 yrs', slaClass: 'statutory', slaHint: '15-year minimum from attempted-operation date',
@@ -2877,7 +2883,7 @@
 
             parts.push(daspFlowBlock(
                 rejectSections,
-                ['<strong>⚠ NO CLIENT COMMUNICATION on reason for rejection</strong> — tipping-off prohibited regardless of trigger <span class="cite cite--d426">LCLDA Art. 44</span>.',
+                ['<strong>⚠ NO CLIENT COMMUNICATION on reason for rejection</strong> — tipping-off prohibited regardless of trigger <span class="cite cite--d426">LECLDA Art. 44</span>.',
                  '<strong>Platform-block ≠ Legal-freeze.</strong> DASP performs operational pre-emption (denying execution). Actual asset-freeze authority belongs to FGR / judicial under LECAT Art. 37 ¶3 — DASP\'s obligation is to NOTIFY without delay.'],
                 d.v
             ));
@@ -2890,7 +2896,7 @@
         parts.push(
             '<div style="grid-column:1 / -1; margin-top:1.25rem; padding:0.75rem 1rem; border:1px dashed var(--text-3); border-radius:8px; background:var(--bg-alt); font-size:0.72rem; color:var(--text-2); line-height:1.55;">' +
                 '<strong>ⓘ Scope.</strong> This wizard reflects strict statutory baseline ' +
-                '(<span class="cite cite--d426">LCLDA</span> · <span class="cite cite--instr">Instructivo</span> · ' +
+                '(<span class="cite cite--d426">LECLDA</span> · <span class="cite cite--instr">Instructivo</span> · ' +
                 '<span class="cite cite--lecat">LECAT</span> · LEAD · UIF Instructivo Cap. IV-B). ' +
                 'Per <span class="cite cite--instr">Instr. Arts. 5, 7(d), 10</span>, your internal AML ' +
                 'risk-management methodology determines the inherent ML/TF/FPWMD risk of customers and ' +
@@ -3005,7 +3011,7 @@
                 effectiveAsOf: '2026-05-12',
                 instruments: [
                     { code: 'LEAD',       reference: 'D-643/2023' },
-                    { code: 'LCLDA',      reference: 'D-426/2025' },
+                    { code: 'LECLDA',      reference: 'D-426/2025' },
                     { code: 'LECAT',      reference: 'D-108' },
                     { code: 'Instructivo UIF', reference: 'Reform 2 (2024)' },
                     { code: 'Instructivo UIF',     reference: 'Cap. IV-B' },
