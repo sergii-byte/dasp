@@ -1265,6 +1265,13 @@
                         </div>
                     </div>
                     <div class="field-card">
+                        <span class="field-card__lbl">License / rail</span>
+                        <div class="seg">
+                            <label class="chip" title="CNAD-registered DASP / PSAD — other digital assets (ETH, USDT, USDC, SOL, TRX). $1,000 verification basis = FATF Rec 16 via D-426 Art. 25 (prudent threshold, pending the new Reglamento)."><input type="radio" name="track" value="cnad" checked> CNAD · PSAD</label>
+                            <label class="chip" title="BCR-registered Bitcoin Service Provider (BSP). $1,000 traceability / verification = black-letter under BCR Normas Tecnicas Art. 50."><input type="radio" name="track" value="btc"> BCR · BSP (Bitcoin)</label>
+                        </div>
+                    </div>
+                    <div class="field-card">
                         <span class="field-card__lbl">Channel (settlement rail)</span>
                         <div class="seg">
                             <label class="chip" title="Crypto on-chain transfer (BTC / ETH / USDT / etc.). KYT chain analysis on source / destination addresses; VASP-to-VASP Travel Rule."><input type="radio" name="channel" value="crypto" checked> Crypto</label>
@@ -1368,6 +1375,7 @@
             clientType: fd.get('clientType'),
             rel: fd.get('rel'),
             channel: fd.get('channel'),
+            track: fd.get('track'),
             amount: parseFloat(amountEl.value) || 0,
             jur: jurEl.value,
             jurName: jurOpt.text,
@@ -2240,7 +2248,7 @@
         // ── Identification / Travel Rule verification — electronic transfers ≥ US$1,000 ──
         // BCR Normas Técnicas Art. 50 (Bitcoin) for the BSP track; FATF Rec 16 → D-426 Art. 25 for other digital assets.
         if (isElectronic && amt >= 1000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
-            reason: '≥ US$1,000 — the Travel-Rule verification duty attaches: full originator/beneficiary identification and verification, bringing diligence to standard-CDD level (FATF Rec 16 → D-426 Art. 25, prudent threshold; black-letter for Bitcoin under BCR Normas Técnicas Art. 50; D-426 Art. 15 / Instr. Art. 12).' };
+            reason: '≥ US$1,000 — the Travel-Rule verification duty attaches: full originator/beneficiary identification and verification, bringing diligence to standard-CDD level (' + (s.track === 'btc' ? 'black-letter under BCR Normas Técnicas Art. 50 — Bitcoin/BSP rail' : 'FATF Rec 16 → D-426 Art. 25, a prudent threshold pending the new Reglamento — CNAD/PSAD rail') + '; D-426 Art. 15 / Instr. Art. 12).' };
         if (ch === 'cash' && amt > 10000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
             reason: 'Cash > US$10,000 — Standard CDD; Operación Regulada report due (5 BD to UIF via goAML), Instr. Art. 51.' };
         if (ch === 'other' && amt > 25000) return { v: 'cdd', icon: '✓', title: 'Standard CDD',
@@ -2694,7 +2702,7 @@
         if (isElectronic && amt >= 1000) list.push({
             label: 'Electronic transfer ≥ US$1,000 ($' + amt.toLocaleString() + ')',
             effect: 'Travel Rule verification + Standard CDD', effectClass: 'cdd',
-            cite: 'BCR Normas Técnicas Art. 50',
+            cite: (s.track === 'btc' ? 'BCR Normas Técnicas Art. 50' : 'FATF Rec 16 → D-426 Art. 25'),
         });
         else if (isElectronic) list.push({
             label: 'Electronic transfer < US$1,000 ($' + amt.toLocaleString() + ')',
