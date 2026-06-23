@@ -262,8 +262,8 @@ td.num, th.num, .num {
 }
 
 /* ---------- Section padding — symmetrical, design-system rhythm ---------- */
-.section, .sec, .guides, .reg, .hero { padding-top: 4rem; padding-bottom: 4rem; }
-.main .section, .main .sec { padding-top: 2rem; padding-bottom: 2rem; }
+.section, .sec, .guides, .reg, .hero { padding-top: 5rem; padding-bottom: 5.5rem; }
+.main .section, .main .sec { padding-top: 4.5rem; padding-bottom: 4.5rem; }
 .hero, .hero--ds { padding-top: 4.5rem; padding-bottom: 3.5rem; }
 
 /* ---------- Hero scaling consistency (non-index pages) ---------- */
@@ -1998,3 +1998,14 @@ p.sec__lead { max-width: 70ch; }
 .pill, .chip, .reg-item__chip { border-radius: 999px; }
 .btn, button.btn { border-radius: 8px; }
 *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+
+/* ─ Coherent type: serif editorial content headings (pair the already-serif body); UI stays sans ─ */
+.hero--ds .hero__title, .hero--ds h1, .hero .hero__title, h1.hero__title,
+.sec__title, h2.sec__title, .reg__title, .guides__title {
+  font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.hero--ds .hero__title, .hero--ds h1 { line-height: 1.0; }
+.sec__title, h2.sec__title { line-height: 1.12; }
