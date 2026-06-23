@@ -2009,3 +2009,13 @@ p.sec__lead { max-width: 70ch; }
 }
 .hero--ds .hero__title, .hero--ds h1 { line-height: 1.0; }
 .sec__title, h2.sec__title { line-height: 1.12; }
+
+
+/* ─ FORCE serif on all content headings (max specificity) — experiment ─ */
+html body .hero--ds .hero__title, html body .hero--ds h1, html body .hero__title,
+html body .sec__title, html body .section__title, html body .vs-block__title,
+html body .reg__title, html body .guides__title, html body .reg-card__name {
+  font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+}
