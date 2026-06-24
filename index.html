@@ -87,7 +87,7 @@
             min-height: 56px;
          min-width: 0; overflow-x: auto; scrollbar-width: none; }
         .topbar__brand {
-            font-weight: 700; font-size: 0.85rem; letter-spacing: -0.01em;
+            font-weight: 700; font-size: 13.5px; letter-spacing: -0.01em;
             color: var(--navy); text-decoration: none;
             display: flex; align-items: center; gap: 0.5rem;
             white-space: nowrap;
@@ -104,7 +104,7 @@
         }
         .topbar__nav::-webkit-scrollbar { display: none; }
         .topbar__link {
-            font-size: 0.85rem; font-weight: 500; color: var(--text-2);
+            font-size: 13.5px; font-weight: 500; color: var(--text-2);
             text-decoration: none; padding: 0.5rem 0.85rem; border-radius: 6px;
             transition: background 0.15s, color 0.15s;
         }
@@ -114,7 +114,7 @@
         }
         @media (max-width: 640px) {
             .topbar__inner { gap: 1rem; padding: 0 1rem; }
-            .topbar__link { padding: 0.4rem 0.6rem; font-size: 0.8rem; }
+            .topbar__link { padding: 0.4rem 0.6rem; font-size: 13.5px; }
         }
 
         /* ── HERO ── */
@@ -122,7 +122,7 @@
             padding: 5rem 0 3.5rem;
         }
         .hero__label {
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--accent); margin-bottom: 1rem;
         }
         .hero__title {
@@ -133,7 +133,7 @@
         }
         .hero__title em { font-style: italic; color: var(--accent); }
         .hero__desc {
-            font-size: 1.1rem; line-height: 1.6; color: var(--text-2);
+            font-size: 18px; line-height: 1.6; color: var(--text-2);
             max-width: 680px; margin-bottom: 2rem;
         }
         .hero__metrics {
@@ -150,18 +150,18 @@
         /* ── GUIDES SECTION ── */
         .guides { padding: 4rem 0 5rem; background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         .guides__label {
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem;
             text-align: center;
         }
         .guides__title {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1;
+            font-size: 30px; line-height: 1.1;
             letter-spacing: -0.01em; color: var(--navy); text-align: center;
             margin-bottom: 0.75rem; font-weight: 400;
         }
         .guides__sub {
-            font-size: 1rem; color: var(--text-2); text-align: center;
+            font-size: 16px; color: var(--text-2); text-align: center;
             max-width: 620px; margin: 0 auto 3rem;
         }
         .guides__grid {
@@ -200,22 +200,22 @@
         .guide-card--playbook .guide-card__num { color: var(--navy, #2c3e50); }
         .guide-card__title {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.6rem; line-height: 1.15; font-weight: 400;
+            font-size: 30px; line-height: 1.15; font-weight: 400;
             color: var(--navy); letter-spacing: -0.01em;
         }
         .guide-card__desc {
-            font-size: 0.95rem; line-height: 1.55; color: var(--text-2);
+            font-size: 16px; line-height: 1.55; color: var(--text-2);
         }
         .guide-card__topics {
             display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem;
         }
         .guide-card__topics span {
-            font-size: 0.72rem; padding: 0.25rem 0.6rem; border-radius: 4px;
+            font-size: 11.5px; padding: 0.25rem 0.6rem; border-radius: 4px;
             background: var(--bg-alt); color: var(--text-2);
             border: 1px solid var(--border-light);
         }
         .guide-card__cta {
-            font-size: 0.85rem; font-weight: 600; color: var(--accent);
+            font-size: 13.5px; font-weight: 600; color: var(--accent);
             margin-top: auto; padding-top: 0.75rem; display: flex;
             align-items: center; gap: 0.4rem;
         }
@@ -230,16 +230,16 @@
         /* ── REGULATORY SUMMARY ── */
         .reg { padding: 5rem 0; }
         .reg__label {
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem;
         }
         .reg__title {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(1.75rem, 3.5vw, 2.4rem); line-height: 1.15;
+            font-size: 30px; line-height: 1.15;
             color: var(--navy); margin-bottom: 0.75rem; font-weight: 400;
         }
         .reg__sub {
-            font-size: 1rem; color: var(--text-2);
+            font-size: 16px; color: var(--text-2);
             max-width: 720px; margin-bottom: 2.5rem;
         }
         /* Regulatory Stack — list layout */
@@ -273,11 +273,11 @@
         }
         .reg-item__acronym {
             font-family: 'Inter Tight', sans-serif;
-            font-size: 1.05rem; line-height: 1.15; color: var(--navy); font-weight: 600;
+            font-size: 16px; line-height: 1.15; color: var(--navy); font-weight: 600;
         }
         .reg-item__decree {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem; font-weight: 500;
+            font-size: 11.5px; font-weight: 500;
             color: var(--text-3); letter-spacing: 0.01em;
             line-height: 1.5;
         }
@@ -285,21 +285,21 @@
             display: flex; flex-direction: column; gap: 0.35rem;
         }
         .reg-item__es {
-            font-size: 0.86rem; line-height: 1.35;
+            font-size: 13.5px; line-height: 1.35;
             color: var(--navy); font-weight: 500; font-style: italic;
         }
         .reg-item__en {
-            font-size: 0.78rem; line-height: 1.35;
+            font-size: 11.5px; line-height: 1.35;
             color: var(--text-3);
         }
         .reg-item__subject {
-            font-size: 0.82rem; line-height: 1.5; color: var(--text-2);
+            font-size: 13.5px; line-height: 1.5; color: var(--text-2);
             margin: 0;
             padding-top: 0.15rem;
         }
         .reg-item__chip {
             justify-self: end; align-self: start;
-            font-size: 0.66rem; font-weight: 600;
+            font-size: 11.5px; font-weight: 600;
             padding: 0.18rem 0.55rem; border-radius: 3px;
             background: var(--bg-alt); color: var(--text-3);
             text-transform: uppercase; letter-spacing: 0.04em;
@@ -312,7 +312,7 @@
         /* ── FOOTER ── */
         .footer {
             border-top: 1px solid var(--border); padding: 2rem 0;
-            font-size: 0.85rem; color: var(--text-3);
+            font-size: 13.5px; color: var(--text-3);
         }
         .footer__inner {
             display: flex; justify-content: space-between; align-items: center;
@@ -320,11 +320,11 @@
         }
         .footer a { color: var(--accent); text-decoration: none; }
         .footer a:hover { text-decoration: underline; }
-        .footer__legal { font-size: 0.75rem; color: var(--text-muted); max-width: 540px; }
+        .footer__legal { font-size: 11.5px; color: var(--text-muted); max-width: 540px; }
     
         @media print {
             .topbar, .footer, .back-to-top, .scroll-progress, .nav, .sidebar, .topbar__pagenav { display: none !important; }
-            body { background: white; color: black; font-size: 10pt; line-height: 1.4; }
+            body { background: white; color: black; font-size: 13.5px; line-height: 1.4; }
             .container, .main { max-width: 100%; padding: 0; }
             .section, .sec { page-break-inside: avoid; padding: 0.5rem 0; border-top: 1px solid #ddd; }
             h1, h2, h3, h4 { page-break-after: avoid; }
@@ -333,7 +333,7 @@
             .ref, .cite { background: #f4f4f4 !important; color: #333 !important; }
             .wizard, .wiz, .panel, .panel--sticky { display: none; }
             .hero { padding: 1rem 0; }
-            .hero__title, .sec__title, .reg__title, .guides__title { font-size: 18pt; margin-bottom: 0.4rem; }
+            .hero__title, .sec__title, .reg__title, .guides__title { font-size: 20px; margin-bottom: 0.4rem; }
         }
     </style>
     <link rel="stylesheet" href="cryptoguides-overrides.css">
@@ -655,18 +655,18 @@
         <h2 class="reg__title">About this resource — scope, basis &amp; currency</h2>
         <div style="display:grid; gap:1rem; margin-top:1rem; max-width:62rem;">
             <div>
-                <h3 style="margin:0 0 0.3rem; font-size:1rem;">Scope &amp; basis of preparation</h3>
+                <h3 style="margin:0 0 0.3rem; font-size: 16px;">Scope &amp; basis of preparation</h3>
                 <p>A practitioner <strong>reference</strong> on the El Salvador regime for Digital Asset Service Providers (DASP / PSAV) and Bitcoin Service Providers (BSP) — covering licensing (LEAD / CNAD; BCR Bitcoin registry) and AML / CTF / CFP obligations (LECLDA, Instructivo UIF, FATF / GAFILAT standards). Prepared from the <strong>primary Spanish-language instruments in the sources register</strong> and the applicable FATF Recommendations; where a Spanish original and an English rendering differ, the <strong>Spanish governs</strong>. <strong>Out of scope:</strong> detailed tax structuring, data-protection / employment law, and any non-Salvadoran regime (the MiCA comparison is illustrative only). <strong>As of June 2026.</strong> Intended to orient compliance officers, in-house legal and founders and to locate the binding source — not to replace advice on specific facts.</p>
             </div>
             <div class="callout callout--amber">
-                <h3 style="margin:0 0 0.3rem; font-size:1rem;">⚠ Regulatory watch — framework in transition</h3>
+                <h3 style="margin:0 0 0.3rem; font-size: 16px;">⚠ Regulatory watch — framework in transition</h3>
                 <p>The AML operational detail rests on instruments preserved <em>transitionally</em> under <strong>D-426 Art. 61</strong>: the old Reglamento (Decreto Ejecutivo 2/2000) and the old Instructivo UIF. The <strong>new Reglamento</strong> (Presidential deadline 15 Jan 2026) and the <strong>new UIF Instructions</strong> (deadline 9 Apr 2026) had <strong>not been issued as of June 2026</strong> — both deadlines have passed. When either issues, material parts of the CDD, Travel-Rule and reporting detail may change. <strong>Re-verify against the official sources before relying on any threshold or procedure.</strong></p>
             </div>
             <div>
-                <h3 style="margin:0 0 0.3rem; font-size:1rem;">Reliance &amp; limitations</h3>
+                <h3 style="margin:0 0 0.3rem; font-size: 16px;">Reliance &amp; limitations</h3>
                 <p>This resource is <strong>not legal advice</strong> and creates no adviser–client relationship. No person should act or refrain from acting on its contents without advice from licensed Salvadoran counsel addressed to their specific facts. It reflects the law as understood at the stated date and may not account for subsequent or pending changes.</p>
             </div>
-            <p style="font-size:0.8rem; color:var(--text-3);"><strong>Governance:</strong> last legal review June 2026 · next review triggered by issuance of the new Reglamento or UIF Instructions, or any reform of the cited instruments.</p>
+            <p style="font-size: 13.5px; color:var(--text-3);"><strong>Governance:</strong> last legal review June 2026 · next review triggered by issuance of the new Reglamento or UIF Instructions, or any reform of the cited instruments.</p>
         </div>
     </div>
 </section>

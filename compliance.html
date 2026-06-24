@@ -101,7 +101,7 @@
             min-height: 56px;
          min-width: 0; overflow-x: auto; scrollbar-width: none; }
         .topbar__brand {
-            font-weight: 700; font-size: 0.85rem; letter-spacing: -0.01em;
+            font-weight: 700; font-size: 13.5px; letter-spacing: -0.01em;
             color: var(--navy); text-decoration: none;
             display: flex; align-items: center; gap: 0.5rem; white-space: nowrap;
         }
@@ -115,7 +115,7 @@
         .topbar__nav { display: flex; gap: 0.25rem; align-items: center; margin-left: auto; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
         .topbar__nav::-webkit-scrollbar { display: none; }
         .topbar__link {
-            font-size: 0.85rem; font-weight: 500; color: var(--text-2);
+            font-size: 13.5px; font-weight: 500; color: var(--text-2);
             text-decoration: none; padding: 0.5rem 0.85rem; border-radius: 6px;
             transition: background 0.15s, color 0.15s;
         }
@@ -152,7 +152,7 @@
             .sidebar__list { display: contents; }
             .sidebar__list li { flex-shrink: 0; }
             .sidebar a {
-                white-space: nowrap; padding: 0.35rem 0.65rem; font-size: 0.78rem;
+                white-space: nowrap; padding: 0.35rem 0.65rem; font-size: 11.5px;
                 border-left: none; border-bottom: 2px solid transparent;
                 border-radius: 0;
             }
@@ -175,10 +175,10 @@
             max-height: calc(100vh - 56px); overflow-y: auto;
             padding: 2rem 1rem 2rem 1.5rem;
             border-right: 1px solid var(--border-light);
-            font-size: 0.85rem;
+            font-size: 13.5px;
         }
         .sidebar__title {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 0.6rem;
         }
         .sidebar__group { margin-bottom: 1.25rem; }
@@ -186,7 +186,7 @@
         .sidebar__list li { margin: 0.05rem 0; }
         .sidebar a {
             display: block; padding: 0.4rem 0.75rem; border-radius: 5px;
-            color: var(--text-2); font-size: 0.85rem;
+            color: var(--text-2); font-size: 13.5px;
             border-left: 2px solid transparent;
             transition: background 0.15s, color 0.15s, border-color 0.15s;
         }
@@ -212,7 +212,7 @@
             margin-bottom: 2.5rem;
         }
         .hero__label {
-            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 0.75rem;
         }
         .hero__title {
@@ -223,14 +223,14 @@
         }
         .hero__title em { font-style: italic; color: var(--emerald); }
         .hero__lead {
-            font-size: 1.05rem; line-height: 1.6; color: var(--text-2);
+            font-size: 16px; line-height: 1.6; color: var(--text-2);
             max-width: 680px;
         }
 
         /* ── SECTIONS ── */
         .sec { margin: 2.5rem 0 2rem; scroll-margin-top: 80px; }
         .sec__label {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--emerald); margin-bottom: 0.4rem;
         }
         .sec__title {
@@ -240,21 +240,21 @@
             letter-spacing: -0.01em; margin-bottom: 0.75rem;
         }
         .sec__lead {
-            font-size: 1rem; line-height: 1.6; color: var(--text-2);
+            font-size: 16px; line-height: 1.6; color: var(--text-2);
             border-left: 3px solid var(--accent); padding-left: 0.85rem;
             margin: 1rem 0 1.5rem; max-width: 720px;
         }
         .sec h3 {
             font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
-            font-size: 1.4rem; line-height: 1.2; color: var(--navy);
+            font-size: 20px; line-height: 1.2; color: var(--navy);
             margin: 2rem 0 0.6rem; letter-spacing: -0.005em;
         }
         .sec h4 {
-            font-size: 0.95rem; font-weight: 600; color: var(--navy);
+            font-size: 16px; font-weight: 600; color: var(--navy);
             margin: 1rem 0 0.4rem;
         }
-        .sec p { margin: 0.55rem 0; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
-        .sec ul, .sec ol { margin: 0.55rem 0 0.75rem; padding-left: 1.3rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.6; }
+        .sec p { margin: 0.55rem 0; color: var(--text-2); font-size: 16px; line-height: 1.6; }
+        .sec ul, .sec ol { margin: 0.55rem 0 0.75rem; padding-left: 1.3rem; color: var(--text-2); font-size: 16px; line-height: 1.6; }
         /* Lists inside table cells inherit cell font-size — fixes the
            .sec ul rule overriding cell typography in recipients-map and similar
            ul-inside-td patterns */
@@ -269,7 +269,7 @@
            rule `.cite { background: transparent; border-left: 1px solid var(--rule-2) }`
            which would otherwise leave only a left-rule and mismatch the legend. */
         .cite {
-            display: inline-block; font-size: 0.7rem; font-weight: 600;
+            display: inline-block; font-size: 11.5px; font-weight: 600;
             padding: 0.1rem 0.5rem; border-radius: 3px;
             margin-left: 0.25rem; vertical-align: 1px; white-space: nowrap;
             font-family: 'Inter', sans-serif; letter-spacing: 0.01em;
@@ -309,19 +309,19 @@
         }
         .card__title {
             font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
-            font-size: 1.15rem; color: var(--navy); margin-bottom: 0.35rem;
+            font-size: 18px; color: var(--navy); margin-bottom: 0.35rem;
             line-height: 1.2;
         }
         .card__sub {
-            font-size: 0.78rem; color: var(--text-3);
+            font-size: 11.5px; color: var(--text-3);
             margin-bottom: 0.6rem; font-style: italic;
         }
-        .card p, .card ul, .card ol { font-size: 0.88rem; line-height: 1.5; }
+        .card p, .card ul, .card ol { font-size: 13.5px; line-height: 1.5; }
         .card ul, .card ol { padding-left: 1.15rem; }
         .card li { margin: 0.18rem 0; }
         .card__foot {
             margin-top: auto; padding-top: 0.6rem;
-            font-size: 0.78rem; color: var(--text-3);
+            font-size: 11.5px; color: var(--text-3);
             border-top: 1px dashed var(--border);
             font-style: italic;
         }
@@ -343,7 +343,7 @@
             background: var(--white); padding: 0.9rem 1.15rem;
             border-radius: var(--r-sm); margin: 1rem 0;
         }
-        .callout p { font-size: 0.92rem; line-height: 1.55; }
+        .callout p { font-size: 13.5px; line-height: 1.55; }
         .callout p + p { margin-top: 0.5rem; }
         .callout--info  { border-left-color: var(--blue);    background: var(--blue-light); }
         .callout--ok    { border-left-color: var(--emerald); background: var(--emerald-light); }
@@ -357,7 +357,7 @@
             background: var(--white);
         }
         .tbl {
-            width: 100%; border-collapse: collapse; font-size: 0.88rem;
+            width: 100%; border-collapse: collapse; font-size: 13.5px;
         }
         .tbl th, .tbl td {
             padding: 0.65rem 0.85rem; text-align: left; vertical-align: top;
@@ -365,7 +365,7 @@
         }
         .tbl th {
             background: var(--bg-alt); font-weight: 600; color: var(--navy);
-            font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
+            font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em;
         }
         .tbl tbody tr:last-child td { border-bottom: none; }
         .tbl tbody tr:hover { background: var(--bg-alt); }
@@ -376,14 +376,14 @@
         /* Allow long citation chips to wrap inside narrow table cells */
         .tbl td .cite { white-space: normal; word-break: break-word; }
         .tbl-note {
-            font-size: 0.78rem; color: var(--text-3); margin: 0.5rem 0 0;
+            font-size: 11.5px; color: var(--text-3); margin: 0.5rem 0 0;
             font-style: italic;
         }
 
         /* ── PILLS ── */
         .pill {
             display: inline-block; padding: 0.16rem 0.55rem; border-radius: 4px;
-            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.04em; white-space: nowrap;
         }
         .pill--no { background: var(--bg-deep); color: var(--text-2); }
@@ -403,11 +403,11 @@
             display: inline-flex; align-items: center; gap: 0.4rem;
             padding: 0.28rem 0.5rem 0.28rem 0.32rem;
             background: var(--blue-light); color: #2c5780;
-            border-radius: 5px; font-size: 0.75rem; line-height: 1.2;
+            border-radius: 5px; font-size: 11.5px; line-height: 1.2;
             overflow: hidden;
         }
         .uif-form__num {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
             font-weight: 700; background: var(--blue); color: #fff;
             border-radius: 3px; padding: 0.05rem 0.34rem;
             flex-shrink: 0; text-align: center; min-width: 1.3rem;
@@ -417,7 +417,7 @@
             overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
         }
         .uif-pill-grid__note {
-            grid-column: 1 / -1; font-size: 0.72rem; color: var(--text-3);
+            grid-column: 1 / -1; font-size: 11.5px; color: var(--text-3);
             margin-top: 0.2rem;
         }
 
@@ -428,7 +428,7 @@
             margin: 1rem 0 2rem;
         }
         .qc__title {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.75rem;
         }
         .qc__grid {
@@ -436,15 +436,15 @@
             gap: 1rem 1.5rem;
         }
         .qc__item-label {
-            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.05em; color: var(--text-3); display: block;
         }
         .qc__item-val {
             font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
-            font-size: 1.2rem; line-height: 1.15; color: var(--navy);
+            font-size: 20px; line-height: 1.15; color: var(--navy);
             margin-top: 0.2rem; display: block;
         }
-        .qc__item-meta { font-size: 0.76rem; color: var(--text-3); display: block; margin-top: 0.15rem; }
+        .qc__item-meta { font-size: 11.5px; color: var(--text-3); display: block; margin-top: 0.15rem; }
 
         /* ── QRC (Quick Reference Card — playbook-style 8-box grid) ── */
         .qrc-grid {
@@ -478,13 +478,13 @@
             align-items: start;
             padding: 0.55rem 0;
             border-top: 1px solid var(--border-light);
-            font-size: 0.78rem;
+            font-size: 11.5px;
             line-height: 1.5;
         }
         .contact-list li:first-child { border-top: 0; padding-top: 0.2rem; }
         .contact-list__auth {
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-            font-size: 0.66rem;
+            font-size: 11.5px;
             font-weight: 700;
             color: var(--text-3);
             background: var(--bg-alt);
@@ -503,7 +503,7 @@
         .contact-list__matter { color: var(--text-2); }
         .contact-list__channel {
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-            font-size: 0.65rem;
+            font-size: 11.5px;
             color: var(--text-3);
             background: var(--bg-deep);
             padding: 0.22rem 0.5rem;
@@ -534,14 +534,14 @@
             padding: 0.75rem 0.8rem;
             background: var(--bg-deep);
             border-radius: 5px;
-            font-size: 0.78rem;
+            font-size: 11.5px;
             line-height: 1.45;
             height: 100%;
         }
         .rba-list .rba-text { flex: 1; }
         .rba-tag {
             font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-            font-size: 0.62rem;
+            font-size: 11.5px;
             font-weight: 700;
             color: var(--text-3);
             background: var(--bg-alt);
@@ -574,11 +574,11 @@
         .qrc-box--red { border-top-color: var(--red); background: #fbf3f1; }
         .qrc-box--wide { grid-column: 1 / -1; }
         .qrc-box h3 {
-            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.04em; color: var(--text-1); margin: 0 0 0.55rem;
         }
         .qrc-box table {
-            width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 0;
+            width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 0;
         }
         .qrc-box td, .qrc-box th {
             padding: 0.3rem 0.5rem; border-bottom: 1px dashed var(--border-light);
@@ -587,16 +587,16 @@
         .qrc-box tr:last-child td, .qrc-box tr:last-child th { border-bottom: none; }
         .qrc-box th {
             font-weight: 600; color: var(--text-3);
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em;
+            font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em;
         }
         .qrc-box td.num { white-space: nowrap; font-weight: 600; color: var(--navy); }
-        .qrc-box ul { margin: 0; padding-left: 1.1rem; font-size: 0.78rem; }
+        .qrc-box ul { margin: 0; padding-left: 1.1rem; font-size: 11.5px; }
         .qrc-box li { margin: 0.18rem 0; }
         .qrc-foot {
-            font-size: 0.68rem; color: var(--text-3); margin: 0.55rem 0 0;
+            font-size: 11.5px; color: var(--text-3); margin: 0.55rem 0 0;
             padding-top: 0.45rem; border-top: 1px solid var(--border-light);
         }
-        .qrc-redline { font-size: 0.78rem; line-height: 1.55; }
+        .qrc-redline { font-size: 11.5px; line-height: 1.55; }
         .qrc-redline strong { color: var(--red); margin-right: 0.25rem; }
         /* Red-lines redesign — grid of rule cards */
         .redline-grid {
@@ -616,25 +616,25 @@
         }
         .redline-num {
             font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 1.2rem; font-weight: 400;
+            font-size: 20px; font-weight: 400;
             color: var(--red); line-height: 1; padding-top: 0.1rem;
             flex-shrink: 0; min-width: 1.4rem;
         }
         .redline-body { flex: 1; }
         .redline-title {
-            font-size: 0.78rem; font-weight: 700;
+            font-size: 11.5px; font-weight: 700;
             color: var(--text); line-height: 1.3;
             margin-bottom: 0.18rem;
         }
         .redline-explain {
-            font-size: 0.72rem; line-height: 1.45;
+            font-size: 11.5px; line-height: 1.45;
             color: var(--text-2);
         }
         .redline-explain .cite { margin-right: 0.2rem; }
         @media print {
             .topbar, .sidebar, .footer, button, .back-to-top { display: none !important; }
             .qrc-grid { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
-            body { font-size: 8.5pt; background: white; }
+            body { font-size: 11.5px; background: white; }
             .sec { padding: 0.5rem 0; }
             .qrc-box { box-shadow: none; }
         }
@@ -648,22 +648,22 @@
         }
         @media (max-width: 640px) {
             .stack-card { grid-template-columns: 1fr; }
-            .stack-card__name { border-right: none; border-bottom: 1px solid var(--border-light); padding: 0.6rem 1rem; font-size: 1rem; justify-content: flex-start; }
+            .stack-card__name { border-right: none; border-bottom: 1px solid var(--border-light); padding: 0.6rem 1rem; font-size: 16px; justify-content: flex-start; }
         }
         .stack-card__name {
             background: var(--bg-alt); padding: 1rem 1.1rem;
             display: flex; align-items: center; justify-content: center;
             font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
-            font-size: 1.15rem; color: var(--navy);
+            font-size: 18px; color: var(--navy);
             border-right: 1px solid var(--border-light);
         }
         .stack-card__body { padding: 0.85rem 1.15rem; }
         .stack-card__body .label {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 0.2rem;
         }
         .stack-card__body p {
-            font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 0.2rem;
+            font-size: 13.5px; color: var(--text-2); line-height: 1.5; margin-top: 0.2rem;
         }
 
         /* ── FAQ ── */
@@ -683,12 +683,12 @@
         }
         .faq-item summary {
             cursor: pointer; font-weight: 600; color: var(--navy);
-            font-size: 0.95rem; list-style: none; line-height: 1.45;
+            font-size: 16px; list-style: none; line-height: 1.45;
             padding-right: 1.75rem; position: relative;
         }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after {
-            content: "+"; color: var(--emerald); font-size: 1.25rem;
+            content: "+"; color: var(--emerald); font-size: 20px;
             font-weight: 400; line-height: 1;
             position: absolute; right: 0; top: 0.1rem;
             transition: transform 0.2s, color 0.2s;
@@ -700,7 +700,7 @@
         .faq-item__body {
             padding: 0.65rem 0 0.1rem; margin-top: 0.55rem;
             border-top: 1px solid var(--border-light);
-            font-size: 0.88rem; line-height: 1.6; color: var(--text-2);
+            font-size: 13.5px; line-height: 1.6; color: var(--text-2);
         }
         .faq-item__body p:first-child { margin-top: 0.4rem; }
         .faq-item__body ul { margin: 0.45rem 0 0.6rem; padding-left: 1.1rem; }
@@ -712,8 +712,8 @@
             gap: 0.9rem 1.5rem; margin-top: 1rem;
         }
         .gloss > div { padding: 0.5rem 0; border-bottom: 1px solid var(--border-light); }
-        .gloss dt { font-weight: 700; color: var(--navy); font-size: 0.92rem; margin-bottom: 0.15rem; }
-        .gloss dd { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
+        .gloss dt { font-weight: 700; color: var(--navy); font-size: 13.5px; margin-bottom: 0.15rem; }
+        .gloss dd { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
 
         /* ── FLOW (5-stage STR) ── */
         .flow { display: grid; gap: 0.6rem; margin: 1rem 0 1.25rem; }
@@ -726,30 +726,30 @@
         .flow-step__num {
             background: var(--emerald); color: white; border-radius: 4px;
             font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
-            font-size: 1rem; text-align: center; line-height: 1.6; min-height: 28px;
+            font-size: 16px; text-align: center; line-height: 1.6; min-height: 28px;
             padding-top: 0.05rem;
         }
-        .flow-step__title { font-weight: 600; color: var(--navy); margin-bottom: 0.15rem; font-size: 0.95rem; }
-        .flow-step__body { font-size: 0.88rem; color: var(--text-2); line-height: 1.5; }
+        .flow-step__title { font-weight: 600; color: var(--navy); margin-bottom: 0.15rem; font-size: 16px; }
+        .flow-step__body { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
 
         /* ── FOOTER ── */
         .footer {
             border-top: 1px solid var(--border); margin-top: 3rem; padding: 2rem 2.25rem;
-            font-size: 0.85rem; color: var(--text-3);
+            font-size: 13.5px; color: var(--text-3);
         }
         .footer__inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .footer a { color: var(--emerald); text-decoration: none; }
-        .footer__legal { font-size: 0.75rem; color: var(--text-muted); max-width: 540px; }
+        .footer__legal { font-size: 11.5px; color: var(--text-muted); max-width: 540px; }
 
         /* ── LEGEND for citation chips ── */
         .legend {
             display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem;
             margin: 0.75rem 0 0; align-items: center;
-            font-size: 0.78rem; color: var(--text-3);
+            font-size: 11.5px; color: var(--text-3);
         }
         .legend__item { display: inline-flex; align-items: center; gap: 0.25rem; }
         .legend__title {
-            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            font-size: 11.5px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.06em; color: var(--text-3);
         }
 
@@ -880,7 +880,7 @@
                             <tr><td>STR (signed determination)</td><td><span class="deadline">Any amount</span></td><td><span class="deadline">24 h</span></td></tr>
                             <tr><td>Operación Regulada — cash</td><td><span class="deadline">&gt; $10,000</span></td><td><span class="deadline">5 bd</span></td></tr>
                             <tr><td>Operación Regulada — other means</td><td><span class="deadline">&gt; $25,000</span></td><td><span class="deadline">5 bd</span></td></tr>
-                            <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size:0.7rem;color:var(--text-2);padding-top:0.45rem;text-transform:uppercase;letter-spacing:0.04em;">DASP Transactional Reporting (Instr. Art. 51 / 84-C)</td></tr>
+                            <tr><td colspan="3" style="background:var(--bg-alt);font-weight:600;font-size: 11.5px;color:var(--text-2);padding-top:0.45rem;text-transform:uppercase;letter-spacing:0.04em;">DASP Transactional Reporting (Instr. Art. 51 / 84-C)</td></tr>
                             <tr><td>(a) Operación Regulada PSAV (goAML, 6 forms)</td><td>≥ threshold (Instr. Art. 51)</td><td><span class="deadline">5 bd</span></td></tr>
                             <tr><td>(b) ROS — operación sospechosa</td><td>any amount, on suspicion</td><td><span class="deadline">24 h</span></td></tr>
                             <tr><td>(c) Notificación de ausencia de operaciones</td><td>If no operations that month</td><td><span class="deadline">Monthly</span></td></tr>
@@ -893,8 +893,8 @@
                 <!-- 2. Travel Rule -->
                 <div class="qrc-box qrc-box--green">
                     <h3>Travel Rule — VASP data on every transfer</h3>
-                    <p style="font-size:0.78rem; margin:0 0 0.4rem;"><strong>VASP scope: any digital-asset transfer · any amount ($0 floor).</strong> The data set applies even to transfers that do not exceed the established thresholds.</p>
-                    <p style="font-size:0.78rem; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
+                    <p style="font-size: 11.5px; margin:0 0 0.4rem;"><strong>VASP scope: any digital-asset transfer · any amount ($0 floor).</strong> The data set applies even to transfers that do not exceed the established thresholds.</p>
+                    <p style="font-size: 11.5px; color:var(--text-2); margin:0.4rem 0 0;"><strong>7 fields (a-g):</strong> originator name · originator account · originator ID type+number · beneficiary name · beneficiary account · beneficiary bank name · transaction ID. Plus batch-processing rule for grouped transfers.</p>
                     <p class="qrc-foot"><span class="cite cite--instr">Instr. Art. 84-B</span><span class="cite-arrow">→</span><span class="cite cite--instr">Instr. Art. 52 par. 2 (Reform 2)</span> + <span class="cite cite--instr">Art. 84-B(1)(e) (Reform 1)</span></p>
                 </div>
 
@@ -925,7 +925,7 @@
                             <tr><td>Instr. Arts. 12 last sent., 20(b)</td><td><span class="deadline">≥ 10%</span></td><td>Apply — stricter</td></tr>
                             <tr><td>LECLDA Art. 15 par. 5</td><td><span class="deadline">≥ 25%</span></td><td>Statute floor</td></tr>
                             <tr><td>Instr. Art. 21-A (Reform 2)</td><td>majority + control + mgmt fallback</td><td>UBO cascade</td></tr>
-                            <tr><td colspan="3" style="font-size:0.72rem; color:var(--text-2);"><strong>Plus:</strong> Art. 20(a) — natural person on whose behalf relationship is sought (nominee detection); listed-company exception applies for stock-exchange-listed customers under disclosure regime.</td></tr>
+                            <tr><td colspan="3" style="font-size: 11.5px; color:var(--text-2);"><strong>Plus:</strong> Art. 20(a) — natural person on whose behalf relationship is sought (nominee detection); listed-company exception applies for stock-exchange-listed customers under disclosure regime.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -1127,7 +1127,7 @@
             <p class="sec__lead">Every citation in this guide resolves to a binding instrument in the register below, each pinned to its official reference and retrieval source. The core AML instruments are detailed in the cards that follow.</p>
 
             <div class="tbl-wrap">
-            <table class="tbl" style="font-size:0.82rem;">
+            <table class="tbl" style="font-size: 13.5px;">
                 <thead><tr><th>Instrument</th><th>Reference</th><th>Published / in force</th><th>Status</th><th>Official source</th></tr></thead>
                 <tbody>
                     <tr><td><strong>LECLDA</strong> — Ley Especial CLDA (AML Law)</td><td>D.L. 426/2025</td><td>D.O. 9 Oct 2025 · in force 17 Oct 2025 (Art. 62)</td><td>In force</td><td><a href="https://www.jurisprudencia.gob.sv" target="_blank" rel="noopener">jurisprudencia.gob.sv</a> · <a href="https://www.asamblea.gob.sv" target="_blank" rel="noopener">asamblea.gob.sv</a></td></tr>
@@ -1272,7 +1272,7 @@
             <h2 class="sec__title">Bitcoin (BCR / SSF) vs other digital assets (CNAD) — who regulates what</h2>
             <p class="sec__lead">El Salvador runs two parallel rails. Bitcoin sits on the BCR / SSF rail; all other digital assets on the CNAD rail. The FIU (UIF) is the single AML reporting authority for both. An entity dealing in Bitcoin <em>and</em> other assets is dual-registered (PSB + PSAD) and carries both columns' obligations cumulatively.</p>
             <div class="tbl-wrap">
-            <table class="tbl" style="font-size:0.82rem;">
+            <table class="tbl" style="font-size: 13.5px;">
                 <thead><tr><th>Dimension</th><th>Bitcoin track — BSP / PSB</th><th>Other digital assets — DASP / PSAD</th></tr></thead>
                 <tbody>
                     <tr><td><strong>Asset</strong></td><td>Bitcoin</td><td>All other virtual / digital assets (ETH, USDT, USDC, SOL, TRX…)</td></tr>
@@ -1823,8 +1823,8 @@
             </div>
 
             <details style="margin-top:0.85rem; padding:0.7rem 0.95rem; background:var(--white); border:1px solid var(--border-light); border-radius:8px;">
-                <summary style="cursor:pointer; font-weight:600; color:var(--navy); font-size:0.86rem;">Form catalogue — what each # means (reverse lookup)</summary>
-                <ul style="margin:0.55rem 0 0 1rem; padding:0; font-size:0.82rem; color:var(--text-2); line-height:1.55;">
+                <summary style="cursor:pointer; font-weight:600; color:var(--navy); font-size: 13.5px;">Form catalogue — what each # means (reverse lookup)</summary>
+                <ul style="margin:0.55rem 0 0 1rem; padding:0; font-size: 13.5px; color:var(--text-2); line-height:1.55;">
                     <li><strong>1.</strong> <strong>Wallet ↔ Wallet</strong> (same provider) — internal P2P between two wallets hosted on the same DASP.</li>
                     <li><strong>2.</strong> <strong>Wallets distintas</strong> (different providers) — external transfer in/out to a wallet hosted by another DASP. Counterparty data optional per template.</li>
                     <li><strong>3.</strong> <strong>Wallet → Cuenta bancaria</strong> — off-ramp to a bank account beneficiary (fiat settlement).</li>
@@ -2499,7 +2499,7 @@
                         <td>Suspicious Transaction Report — STR<br><em>(Reporte de Operación Sospechosa)</em></td>
                         <td>Suspicion confirmed by CO determination — any amount</td>
                         <td>UIF</td>
-                        <td class="num">24 h<br><span style="font-size:0.72rem;color:var(--text-3);">wall-clock</span></td>
+                        <td class="num">24 h<br><span style="font-size: 11.5px;color:var(--text-3);">wall-clock</span></td>
                         <td>goAML</td>
                         <td><span class="cite cite--d426">LECLDA Art. 24</span></td>
                     </tr>
@@ -2507,7 +2507,7 @@
                         <td>Attempted Suspicious Operation<br><em>(Operación Intentada)</em></td>
                         <td>Client attempts but does not consummate a suspicious operation</td>
                         <td>UIF</td>
-                        <td class="num"><span class="deadline">24 h</span> conservative<br><span style="font-size:0.72rem;color:var(--text-3);">(LECLDA Art. 24 statute by analogy) / <span class="deadline">5 bd</span> outer envelope (Instr. Art. 47)</span></td>
+                        <td class="num"><span class="deadline">24 h</span> conservative<br><span style="font-size: 11.5px;color:var(--text-3);">(LECLDA Art. 24 statute by analogy) / <span class="deadline">5 bd</span> outer envelope (Instr. Art. 47)</span></td>
                         <td>goAML</td>
                         <td><span class="cite cite--d426">LECLDA Art. 24</span> · <span class="cite cite--instr">Instr. Art. 47</span></td>
                     </tr>
@@ -2523,7 +2523,7 @@
                         <td>Regulated Cash Operation<br><em>(Operación Regulada — efectivo)</em></td>
                         <td>Single op &gt; $10K OR monthly aggregate &gt; $10K (same client)</td>
                         <td>UIF</td>
-                        <td class="num">5 bd<br><span style="font-size:0.72rem;color:var(--text-3);">after op / month-end</span></td>
+                        <td class="num">5 bd<br><span style="font-size: 11.5px;color:var(--text-3);">after op / month-end</span></td>
                         <td>UIF electronic platform</td>
                         <td><span class="cite cite--d426">LECLDA Art. 25</span> · <span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
@@ -2536,7 +2536,7 @@
                         <td><span class="cite cite--instr">Instr. Art. 51</span></td>
                     </tr>
                     <tr>
-                        <td>DASP Transactional Reporting<br><em>(Reportes transaccionales del PSAV)</em><br><span style="font-size:0.72rem;color:var(--text-3);">filed via goAML — see <a href="#reports-anexo" style="color:var(--accent);">6 PSAV forms</a></span></td>
+                        <td>DASP Transactional Reporting<br><em>(Reportes transaccionales del PSAV)</em><br><span style="font-size: 11.5px;color:var(--text-3);">filed via goAML — see <a href="#reports-anexo" style="color:var(--accent);">6 PSAV forms</a></span></td>
                         <td>Regulated operations filed via goAML (6 PSAV forms)<br>ROS — any amount, on suspicion</td>
                         <td>UIF</td>
                         <td class="num">(a) Monthly<br>(b) 5 bd per tx<br>(c) Monthly</td>
@@ -2603,7 +2603,7 @@
                         <td>Quarterly Report — Digital Asset Issuances<br><em>(Reporte trimestral — Emisiones de Activos Digitales)</em></td>
                         <td>All Digital Asset issuances marketed through the provider's wallets / platforms (confidential)</td>
                         <td>CNAD</td>
-                        <td class="num">First 20 days<br><span style="font-size:0.72rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td class="num">First 20 days<br><span style="font-size: 11.5px;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
                         <td>CNAD channel · confidential</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 15</span></td>
                     </tr>
@@ -2611,7 +2611,7 @@
                         <td>Quarterly Report — Stablecoins Admitted<br><em>(Reporte trimestral — Stablecoins admitidas)</em></td>
                         <td>Stablecoins admitted to trading on the provider's platform / wallets — i.e., available for clients to buy, sell or swap (issuer name, asset name, project, commercialisation start date, technical/commercial characteristics, risk evolution)</td>
                         <td>CNAD</td>
-                        <td class="num">First 20 days<br><span style="font-size:0.72rem;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
+                        <td class="num">First 20 days<br><span style="font-size: 11.5px;color:var(--text-3);">of Apr / Jul / Oct / Jan</span></td>
                         <td>CNAD channel</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 16</span></td>
                     </tr>
@@ -2627,7 +2627,7 @@
                         <td>Pre-resolution material change<br><em>(Cambio significativo durante el trámite)</em></td>
                         <td>Significant change to information submitted in registration application <em>before</em> CNAD issues its resolution</td>
                         <td>CNAD</td>
-                        <td class="num">Immediate<br><span style="font-size:0.72rem;color:var(--text-3);">(adds +5 bd to CNAD's resolution time per RPSAD Art. 9)</span></td>
+                        <td class="num">Immediate<br><span style="font-size: 11.5px;color:var(--text-3);">(adds +5 bd to CNAD's resolution time per RPSAD Art. 9)</span></td>
                         <td>CNAD channel</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 9</span></td>
                     </tr>
@@ -2635,7 +2635,7 @@
                         <td>Post-registration modification<br><em>(Modificación del Registro)</em></td>
                         <td>Expansion of services, change of registered data, ownership, governance after registration is granted</td>
                         <td>CNAD</td>
-                        <td class="num">No fixed entity deadline<br><span style="font-size:0.72rem;color:var(--text-3);">CNAD responds in 20 bd</span></td>
+                        <td class="num">No fixed entity deadline<br><span style="font-size: 11.5px;color:var(--text-3);">CNAD responds in 20 bd</span></td>
                         <td>CNAD channel · modification application</td>
                         <td><span class="cite cite--rpsad">RPSAD Art. 13</span></td>
                     </tr>
